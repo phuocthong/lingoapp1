@@ -1,182 +1,186 @@
 <template>
   <q-page class="bg-white">
     <!-- Hero Section -->
-    <div class="hero-section">
-      <div class="container">
-        <!-- Large Icon -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <!-- Hero Icon -->
         <div class="hero-icon">
-          <div class="icon-wrapper">
-            <q-icon name="computer" size="48px" color="white" />
-          </div>
+          <q-icon name="computer" size="48px" color="white" />
         </div>
 
-        <!-- Main Title -->
-        <div class="hero-title">
-          <h1 class="main-title">Học Tiếng Anh Thông Qua</h1>
-          <h1 class="sub-title">Trò Chuyện AI</h1>
+        <!-- Hero Title -->
+        <div class="hero-titles">
+          <h1 class="hero-main-title">Học Tiếng Anh Thông Qua</h1>
+          <h1 class="hero-sub-title">Trò Chuyện AI</h1>
         </div>
 
-        <!-- Description -->
+        <!-- Hero Description -->
         <p class="hero-description">
-          Khám phá cách học ti��ng Anh hiệu quả nhất với AI chatbot thông minh,
-          thách đấu bạn bè và hệ thống phần thưởng hấp dẫn.
+          Khám phá cách học tiếng Anh hiệu quả nhất với AI chatbot thông minh, thách đấu bạn bè và hệ thống phần thưởng hấp dẫn.
         </p>
 
         <!-- CTA Buttons -->
-        <div class="cta-buttons">
-          <q-btn class="primary-btn" @click="showRegister">
-            <q-icon name="auto_awesome" class="q-mr-sm" />
+        <div class="hero-buttons">
+          <q-btn
+            class="primary-cta-btn"
+            no-caps
+            @click="showRegister"
+          >
+            <q-icon name="auto_awesome" size="16px" />
             Bắt Đầu Miễn Phí
-            <q-icon name="arrow_forward" class="q-ml-sm" />
+            <q-icon name="arrow_forward" size="16px" />
           </q-btn>
 
-          <q-btn class="secondary-btn" @click="showLogin">
-            <q-icon name="play_arrow" class="q-mr-sm" />
+          <q-btn
+            class="secondary-cta-btn"
+            no-caps
+            @click="showLogin"
+          >
+            <q-icon name="play_arrow" size="16px" />
             Đăng Nhập
           </q-btn>
         </div>
 
-        <!-- Stats -->
-        <div class="stats-section">
-          <div class="stat-item">
-            <div class="stat-icon">
-              <q-icon name="people" size="20px" />
+        <!-- Statistics -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-icon-wrapper">
+              <q-icon name="people" size="20px" color="primary" />
             </div>
             <div class="stat-number">10,000+</div>
             <div class="stat-label">Người học</div>
           </div>
 
-          <div class="stat-item">
-            <div class="stat-icon">
-              <q-icon name="quiz" size="20px" />
+          <div class="stat-card">
+            <div class="stat-icon-wrapper">
+              <q-icon name="quiz" size="20px" color="primary" />
             </div>
             <div class="stat-number">50,000+</div>
             <div class="stat-label">Câu hỏi</div>
           </div>
 
-          <div class="stat-item">
-            <div class="stat-icon">
-              <q-icon name="star" size="20px" />
+          <div class="stat-card">
+            <div class="stat-icon-wrapper">
+              <q-icon name="star" size="20px" color="primary" />
             </div>
             <div class="stat-number">95%</div>
             <div class="stat-label">Hài lòng</div>
           </div>
 
-          <div class="stat-item">
-            <div class="stat-icon">
-              <q-icon name="schedule" size="20px" />
+          <div class="stat-card">
+            <div class="stat-icon-wrapper">
+              <q-icon name="schedule" size="20px" color="primary" />
             </div>
             <div class="stat-number">24/7</div>
             <div class="stat-label">Hỗ trợ</div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Features Section -->
-    <div class="features-section">
-      <div class="container">
+    <section class="features-section">
+      <div class="features-container">
         <div class="section-header">
           <h2 class="section-title">Tại Sao Chọn Lingo?</h2>
-          <p class="section-description">
-            Những tính năng độc đáo giúp bạn học tiếng Anh hiệu quả và thú vị
-            hơn bao giờ hết
+          <p class="section-subtitle">
+            Những tính năng độc đáo giúp bạn học tiếng Anh hiệu quả và thú vị hơn bao giờ hết
           </p>
         </div>
 
         <div class="features-grid">
+          <!-- Row 1 -->
           <q-card class="feature-card">
-            <q-card-section class="feature-content">
+            <q-card-section class="feature-card-content">
               <div class="feature-icon">
-                <q-icon name="smart_toy" size="32px" />
+                <q-icon name="computer" size="32px" color="primary" />
               </div>
               <h3 class="feature-title">AI Chatbot Thông Minh</h3>
-              <p class="feature-description">
-                Học tiếng Anh qua trò chuyện tự nhiên với AI bot được thiết kế
-                đặc biệt
+              <p class="feature-desc">
+                Học tiếng Anh qua trò chuyện tự nhiên với AI bot được thiết kế đặc biệt
               </p>
             </q-card-section>
           </q-card>
 
           <q-card class="feature-card">
-            <q-card-section class="feature-content">
+            <q-card-section class="feature-card-content">
               <div class="feature-icon">
-                <q-icon name="people" size="32px" />
+                <q-icon name="people" size="32px" color="primary" />
               </div>
               <h3 class="feature-title">Thách Đấu Bạn Bè</h3>
-              <p class="feature-description">
-                Cạnh tranh với bạn bè trong các cuộc thi tiếng Anh thú vị và hấp
-                dẫn
+              <p class="feature-desc">
+                Cạnh tranh với bạn bè trong các cuộc thi tiếng Anh thú vị và hấp dẫn
               </p>
             </q-card-section>
           </q-card>
 
           <q-card class="feature-card">
-            <q-card-section class="feature-content">
+            <q-card-section class="feature-card-content">
               <div class="feature-icon">
-                <q-icon name="emoji_events" size="32px" />
+                <q-icon name="emoji_events" size="32px" color="primary" />
               </div>
               <h3 class="feature-title">Hệ Thống Xếp Hạng</h3>
-              <p class="feature-description">
-                Theo dõi tiến bộ và cạnh tranh với hàng nghìn người học khác
+              <p class="feature-desc">
+                Theo dõi ti���n bộ và cạnh tranh với hàng nghìn người học khác
               </p>
             </q-card-section>
           </q-card>
 
+          <!-- Row 2 -->
           <q-card class="feature-card">
-            <q-card-section class="feature-content">
+            <q-card-section class="feature-card-content">
               <div class="feature-icon">
-                <q-icon name="target" size="32px" />
+                <q-icon name="target" size="32px" color="primary" />
               </div>
               <h3 class="feature-title">Nhiệm Vụ Hàng Ngày</h3>
-              <p class="feature-description">
+              <p class="feature-desc">
                 Hoàn thành các nhiệm vụ để duy trì động lực và nhận phần thưởng
               </p>
             </q-card-section>
           </q-card>
 
           <q-card class="feature-card">
-            <q-card-section class="feature-content">
+            <q-card-section class="feature-card-content">
               <div class="feature-icon">
-                <q-icon name="redeem" size="32px" />
+                <q-icon name="redeem" size="32px" color="primary" />
               </div>
               <h3 class="feature-title">Đổi Thưởng Hấp Dẫn</h3>
-              <p class="feature-description">
+              <p class="feature-desc">
                 Quy đổi điểm thành thẻ cào điện thoại và nhiều phần quà khác
               </p>
             </q-card-section>
           </q-card>
 
           <q-card class="feature-card">
-            <q-card-section class="feature-content">
+            <q-card-section class="feature-card-content">
               <div class="feature-icon">
-                <q-icon name="analytics" size="32px" />
+                <q-icon name="analytics" size="32px" color="primary" />
               </div>
               <h3 class="feature-title">Thống Kê Chi Tiết</h3>
-              <p class="feature-description">
+              <p class="feature-desc">
                 Theo dõi chi tiết quá trình học tập với biểu đồ và báo cáo
               </p>
             </q-card-section>
           </q-card>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- How It Works Section -->
-    <div class="how-it-works-section">
-      <div class="container">
+    <section class="how-it-works-section">
+      <div class="how-it-works-container">
         <div class="section-header">
           <h2 class="section-title">Cách Thức Hoạt Động</h2>
-          <p class="section-description">
+          <p class="section-subtitle">
             Chỉ 3 bước đơn giản để bắt đầu hành trình học tiếng Anh
           </p>
         </div>
 
-        <div class="steps-container">
+        <div class="steps-grid">
           <div class="step-item">
             <div class="step-number">1</div>
             <h3 class="step-title">Đăng Ký Miễn Phí</h3>
-            <p class="step-description">
+            <p class="step-desc">
               Tạo tài khoản chỉ trong 30 giây với email hoặc số điện thoại
             </p>
           </div>
@@ -184,7 +188,7 @@
           <div class="step-item">
             <div class="step-number">2</div>
             <h3 class="step-title">Bắt Đầu Chat</h3>
-            <p class="step-description">
+            <p class="step-desc">
               Trò chuyện với AI bot và trả lời các câu hỏi tiếng Anh thú vị
             </p>
           </div>
@@ -192,13 +196,13 @@
           <div class="step-item">
             <div class="step-number">3</div>
             <h3 class="step-title">Nhận Phần Thưởng</h3>
-            <p class="step-description">
+            <p class="step-desc">
               Tích lũy điểm và đổi lấy thẻ cào, quà tặng hấp dẫn
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Login Dialog -->
     <q-dialog v-model="showLoginDialog" persistent>
@@ -211,16 +215,6 @@
         </q-card-section>
 
         <q-card-section>
-          <!-- Test Button -->
-          <div class="q-mb-md">
-            <q-btn
-              color="red"
-              label="TEST CLICK"
-              class="full-width"
-              @click="testClick"
-            />
-          </div>
-
           <!-- Demo Login Button -->
           <div class="q-mb-lg">
             <q-btn
@@ -264,12 +258,10 @@
               color="primary"
               label="✨ Đăng ký Demo (Phước Thông)"
               class="full-width q-py-sm"
-              @click="
-                handleRegister({
-                  name: 'Phước Thông',
-                  email: 'phuocthoang@demo.com',
-                })
-              "
+              @click="handleRegister({
+                name: 'Phước Thông',
+                email: 'phuocthoang@demo.com',
+              })"
             />
             <div class="text-center q-mt-sm text-caption text-grey-6">
               Click để tạo tài khoản demo
@@ -351,11 +343,6 @@ const switchToLogin = () => {
   showLoginDialog.value = true;
 };
 
-const testClick = () => {
-  alert("INDEX PAGE TEST BUTTON HOẠT ĐỘNG!");
-  console.log("IndexPage test button clicked!");
-};
-
 const doLogin = () => {
   console.log("IndexPage doLogin called!");
   handleLogin({ name: "Phước Thông", email: "phuocthoang@demo.com" });
@@ -363,42 +350,42 @@ const doLogin = () => {
 </script>
 
 <style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(
-    90deg,
-    rgba(37, 99, 235, 0.1) 100%,
-    rgba(109, 40, 217, 0.1) 0%
-  );
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.1) 0%, rgba(109, 40, 217, 0.1) 100%);
   padding: 80px 0;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-container {
+  max-width: 1136px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .hero-icon {
-  margin-bottom: 34px;
-}
-
-.icon-wrapper {
   display: inline-flex;
   padding: 16px;
   border-radius: 50%;
-  background: linear-gradient(90deg, #2563eb 100%, #6d28d9 0%);
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    0 10px 15px rgba(0, 0, 0, 0.1);
-}
-
-.hero-title {
+  background: linear-gradient(90deg, #2563EB 0%, #6D28D9 100%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 34px;
 }
 
-.main-title {
+.hero-titles {
+  margin-bottom: 34px;
+}
+
+.hero-main-title {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 60px;
   font-weight: 700;
   line-height: 60px;
@@ -406,89 +393,109 @@ const doLogin = () => {
   margin: 0 0 6px 0;
 }
 
-.sub-title {
+.hero-sub-title {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 60px;
   font-weight: 700;
   line-height: 60px;
-  color: #6d28d9;
+  background: linear-gradient(90deg, #2563EB 0%, #6D28D9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0;
 }
 
 .hero-description {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 20px;
-  color: #4b5563;
-  text-align: center;
+  font-weight: 400;
   line-height: 32.5px;
+  color: #4B5563;
+  text-align: center;
   max-width: 732px;
   margin: 0 auto 34px auto;
 }
 
-.cta-buttons {
+.hero-buttons {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 16px;
   margin-bottom: 50px;
+  flex-wrap: wrap;
 }
 
-.primary-btn {
-  background:
-    linear-gradient(0deg, #8457ff 0%, #8457ff 100%),
-    linear-gradient(90deg, #2563eb 100%, #6d28d9 0%);
+.primary-cta-btn {
+  background: linear-gradient(90deg, #2563EB 0%, #6D28D9 100%);
   color: white;
   padding: 8px 32px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 600;
+  line-height: 28px;
   border-radius: 6px;
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-transform: none;
 }
 
-.secondary-btn {
+.secondary-cta-btn {
   background: white;
-  color: #5b21b6;
-  border: 2px solid #e9d5ff;
+  color: #5B21B6;
+  border: 2px solid #E9D5FF;
   padding: 8px 32px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 600;
+  line-height: 28px;
   border-radius: 6px;
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-transform: none;
 }
 
-.stats-section {
+.stats-row {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 24px;
+  flex-wrap: wrap;
 }
 
-.stat-item {
+.stat-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
 }
 
-.stat-icon {
+.stat-icon-wrapper {
   display: flex;
   padding: 8px;
   border-radius: 50%;
-  background: #ede9fe;
+  background: #EDE9FE;
 }
 
 .stat-number {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 30px;
   font-weight: 700;
-  color: #111827;
   line-height: 36px;
+  color: #111827;
+  text-align: center;
 }
 
 .stat-label {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #4b5563;
   line-height: 24px;
+  color: #4B5563;
+  text-align: center;
 }
 
 /* Features Section */
@@ -497,81 +504,118 @@ const doLogin = () => {
   padding: 80px 0;
 }
 
+.features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
 .section-header {
   text-align: center;
   margin-bottom: 64px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-title {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 36px;
   font-weight: 700;
-  color: #111827;
   line-height: 40px;
+  color: #111827;
+  text-align: center;
   margin: 0 0 16px 0;
 }
 
-.section-description {
+.section-subtitle {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 20px;
-  color: #4b5563;
+  font-weight: 400;
   line-height: 28px;
+  color: #4B5563;
+  text-align: center;
   margin: 0;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 24px;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .feature-card {
   border-radius: 8px;
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.1);
+  background: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.feature-content {
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card-content {
   text-align: center;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
 }
 
 .feature-icon {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 56px;
   height: 56px;
-  margin: 0 auto 22px auto;
   border-radius: 50%;
-  background: linear-gradient(90deg, #eff6ff 100%, #f5f3ff 0%);
+  background: linear-gradient(90deg, #EFF6FF 0%, #F5F3FF 100%);
 }
 
 .feature-title {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 700;
-  color: #111827;
   line-height: 28px;
   letter-spacing: -0.5px;
-  margin: 0 0 16px 0;
+  color: #111827;
+  text-align: center;
+  margin: 0;
 }
 
-.feature-description {
+.feature-desc {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 14px;
-  color: #4b5563;
+  font-weight: 400;
   line-height: 22.75px;
+  color: #4B5563;
+  text-align: center;
   margin: 0;
 }
 
 /* How It Works Section */
 .how-it-works-section {
-  background: linear-gradient(90deg, #eff6ff 100%, #f5f3ff 0%);
+  background: linear-gradient(90deg, #EFF6FF 0%, #F5F3FF 100%);
   padding: 80px 0;
 }
 
-.steps-container {
+.how-it-works-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.steps-grid {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   gap: 32px;
+  flex-wrap: wrap;
 }
 
 .step-item {
@@ -580,6 +624,8 @@ const doLogin = () => {
   align-items: center;
   text-align: center;
   max-width: 360px;
+  flex: 1;
+  min-width: 280px;
 }
 
 .step-number {
@@ -589,25 +635,109 @@ const doLogin = () => {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(90deg, #2563eb 100%, #6d28d9 0%);
+  background: linear-gradient(90deg, #2563EB 0%, #6D28D9 100%);
   color: white;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 24px;
   font-weight: 700;
+  line-height: 32px;
   margin-bottom: 21px;
 }
 
 .step-title {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 700;
-  color: #111827;
   line-height: 28px;
+  color: #111827;
+  text-align: center;
   margin: 0 0 21px 0;
 }
 
-.step-description {
+.step-desc {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 16px;
-  color: #4b5563;
+  font-weight: 400;
   line-height: 24px;
+  color: #4B5563;
+  text-align: center;
   margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-main-title,
+  .hero-sub-title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  
+  .hero-description {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .primary-cta-btn,
+  .secondary-cta-btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+  
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .steps-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  
+  .section-subtitle {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container,
+  .features-container,
+  .how-it-works-container {
+    padding: 0 16px;
+  }
+  
+  .hero-main-title,
+  .hero-sub-title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 }
 </style>
