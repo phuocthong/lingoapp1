@@ -153,7 +153,7 @@
           <q-btn flat label="Hủy" @click="showRegisterDialog = false" no-caps />
           <q-btn
             flat
-            label="��ã có tài khoản? Đăng nhập"
+            label="Đã có tài khoản? Đăng nhập"
             color="primary"
             @click="switchToLogin"
             no-caps
@@ -264,8 +264,24 @@ const handleLogout = () => {
 .left-auth-buttons {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex-shrink: 0;
+}
+
+.left-auth-buttons .q-btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.left-auth-buttons .q-btn[outline] {
+  border: 2px solid #667eea;
+  color: #667eea;
+}
+
+.left-auth-buttons .q-btn[outline]:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
 }
 
 .logo-section {
