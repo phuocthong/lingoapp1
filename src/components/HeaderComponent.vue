@@ -77,25 +77,6 @@
             Đăng xuất
           </q-btn>
         </template>
-
-        <template v-else>
-          <!-- Login/Register Buttons -->
-          <q-btn
-            flat
-            label="Đăng nhập"
-            color="grey-7"
-            @click="handleLoginClick"
-            class="q-mr-sm"
-            no-caps
-          />
-          <q-btn
-            outline
-            label="Đăng ký"
-            color="primary"
-            @click="handleRegisterClick"
-            no-caps
-          />
-        </template>
       </div>
     </div>
 
