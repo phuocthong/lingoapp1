@@ -33,6 +33,7 @@
         <router-link to="/" class="nav-link">Trang chủ</router-link>
         <router-link to="/about" class="nav-link">Giới thiệu</router-link>
         <router-link to="/challenge" class="nav-link">Thử thách</router-link>
+        <router-link to="/profile" class="nav-link" v-if="authStore.isLoggedIn">Profile</router-link>
       </div>
 
       <!-- User Stats & Profile -->
@@ -232,7 +233,7 @@ const handleLogout = () => {
   authStore.logout();
   $q.notify({
     type: "info",
-    message: "Đã đăng xuất thành công!",
+    message: "Đ�� đăng xuất thành công!",
     position: "top",
   });
   router.push("/");
