@@ -1,897 +1,881 @@
 <template>
-  <div class="profile-page">
-    <!-- Header matching existing design -->
-    <div class="profile-header">
-      <div class="header-content">
-        <!-- Left: Logo and Navigation -->
-        <div class="header-left">
-          <div class="logo-section">
-            <div class="logo-icon">
-              <q-icon name="computer" color="white" size="24px" />
-            </div>
-            <div class="logo-text">Logo</div>
-          </div>
-          <div class="navigation">
-            <div class="nav-item" @click="router.push('/')">Trang chủ</div>
-            <div class="nav-item" @click="router.push('/about')">
-              Giới thiệu
-            </div>
-            <div class="nav-item" @click="router.push('/challenge')">
-              Thử thách
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: User Info -->
-        <div class="header-right">
-          <div class="user-stats">
-            <div class="stat-item">
-              <q-icon name="emoji_events" size="16px" color="grey-6" />
-              <span class="stat-text"># 45</span>
-            </div>
-            <div class="stat-correct">
-              <span class="correct-number">523</span>
-              <span class="correct-text">đúng</span>
-            </div>
-            <div class="stat-streak">
-              <span class="streak-label">Streak:</span>
-              <span class="streak-number">7</span>
-            </div>
-          </div>
-
-          <div class="user-info">
-            <div class="user-avatar">ND</div>
-            <div class="user-name">Người dùng</div>
-          </div>
-
-          <div class="logout-btn" @click="handleLogout">
-            <q-icon name="logout" size="16px" />
-            <span>Đăng xuất</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Profile Content -->
-    <div class="profile-main">
+  <q-page class="profile-page">
+    <div class="profile-container">
       <!-- Sidebar Navigation -->
-      <div class="sidebar-nav">
-        <div
-          class="nav-link"
-          :class="{ active: activeTab === 'dashboard' }"
-          @click="activeTab = 'dashboard'"
-        >
-          <q-icon name="home" size="29px" />
-          <span class="nav-label">Dashboard</span>
-        </div>
-        <div
-          class="nav-link"
-          :class="{ active: activeTab === 'friends' }"
-          @click="activeTab = 'friends'"
-        >
-          <q-icon name="people" size="29px" />
-          <span class="nav-label">Bạn bè</span>
-        </div>
-        <div
-          class="nav-link"
-          :class="{ active: activeTab === 'add-friends' }"
-          @click="activeTab = 'add-friends'"
-        >
-          <q-icon name="person_add" size="29px" />
-          <span class="nav-label">Thêm bạn bè</span>
-        </div>
-        <div
-          class="nav-link"
-          :class="{ active: activeTab === 'tasks' }"
-          @click="activeTab = 'tasks'"
-        >
-          <q-icon name="assignment" size="29px" />
-          <span class="nav-label">Nhiệm vụ</span>
-        </div>
-        <div
-          class="nav-link"
-          :class="{ active: activeTab === 'exchange' }"
-          @click="activeTab = 'exchange'"
-        >
-          <q-icon name="credit_card" size="29px" />
-          <span class="nav-label">Đổi điểm</span>
+      <div class="sidebar">
+        <div class="sidebar-nav">
+          <div 
+            class="nav-item" 
+            :class="{ active: activeTab === 'dashboard' }"
+            @click="activeTab = 'dashboard'"
+          >
+            <q-icon name="home" size="28px" />
+            <span>Dashboard</span>
+          </div>
+          
+          <div 
+            class="nav-item"
+            :class="{ active: activeTab === 'friends' }"
+            @click="activeTab = 'friends'"
+          >
+            <q-icon name="people" size="28px" />
+            <span>Bạn bè</span>
+          </div>
+          
+          <div 
+            class="nav-item"
+            :class="{ active: activeTab === 'add-friends' }"
+            @click="activeTab = 'add-friends'"
+          >
+            <q-icon name="person_add" size="28px" />
+            <span>Thêm bạn bè</span>
+          </div>
+          
+          <div 
+            class="nav-item"
+            :class="{ active: activeTab === 'tasks' }"
+            @click="activeTab = 'tasks'"
+          >
+            <q-icon name="assignment" size="28px" />
+            <span>Nhiệm vụ</span>
+          </div>
+          
+          <div 
+            class="nav-item"
+            :class="{ active: activeTab === 'exchange' }"
+            @click="activeTab = 'exchange'"
+          >
+            <q-icon name="redeem" size="28px" />
+            <span>Đổi điểm</span>
+          </div>
         </div>
       </div>
 
       <!-- Main Content Area -->
       <div class="main-content">
-        <!-- User Profile Section -->
-        <div class="profile-card">
-          <div class="user-avatar-section">
-            <div class="user-avatar-large">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fbe605de9df4a4de687c68395dde916e8%2F2eaa38061fbb4810aac7c773423d5a93?format=webp&width=800"
-                alt="User Avatar"
-                class="avatar-image"
-              />
-              <div class="online-indicator">
-                <q-icon name="check_circle" color="green" size="18px" />
+        <!-- Tasks Tab -->
+        <div v-if="activeTab === 'tasks'" class="tasks-content">
+          <div class="tasks-header">
+            <h2 class="tasks-title">Nhiệm vụ của tôi</h2>
+          </div>
+
+          <!-- Tab Switcher -->
+          <div class="task-tabs">
+            <div class="tab-container">
+              <div 
+                class="tab-item" 
+                :class="{ active: taskTab === 'daily' }"
+                @click="taskTab = 'daily'"
+              >
+                Hàng ngày ( 1 )
+              </div>
+              <div 
+                class="tab-item" 
+                :class="{ active: taskTab === 'weekly' }"
+                @click="taskTab = 'weekly'"
+              >
+                Hàng tuần ( 2 )
               </div>
             </div>
           </div>
 
-          <div class="user-name-section">Người dùng</div>
-          <div class="user-username">@nguoidung</div>
-
-          <div class="join-date">
-            <q-icon name="calendar_today" size="23px" />
-            <span>Tham gia từ 1/1/2025</span>
-          </div>
-
-          <div class="profile-badges">
-            <div class="badge-item level">
-              <q-icon name="emoji_events" color="primary" size="17px" />
-              <span class="badge-label">Cấp độ</span>
-              <span class="badge-value primary">Level 10</span>
+          <!-- Task List -->
+          <div class="task-list">
+            <!-- Task 1 -->
+            <div class="task-card">
+              <div class="task-main">
+                <div class="task-info">
+                  <div class="task-header">
+                    <q-icon name="event" size="16px" />
+                    <h3 class="task-name">Thách đấu với 5 bạn bè</h3>
+                  </div>
+                  <p class="task-description">
+                    Tham gia thách đấu với ít nhất 5 người bạn trong tuần
+                  </p>
+                  
+                  <div class="task-progress-section">
+                    <div class="progress-info">
+                      <div class="progress-stats">
+                        <span class="progress-text">Tiến độ: 2/5</span>
+                        <span class="progress-percent">40 %</span>
+                      </div>
+                      <q-linear-progress
+                        :value="0.4"
+                        color="purple"
+                        track-color="grey-3"
+                        size="16px"
+                        rounded
+                        class="progress-bar"
+                      />
+                    </div>
+                    
+                    <div class="task-rewards">
+                      <div class="reward-badge xp">+ 200 XP</div>
+                      <div class="reward-badge points">+ 100 điểm</div>
+                    </div>
+                  </div>
+                  
+                  <div class="task-deadline">
+                    <q-icon name="schedule" size="12px" />
+                    <span>Hạn: 1/8/2025</span>
+                  </div>
+                </div>
+                
+                <div class="task-actions">
+                  <q-btn
+                    flat
+                    dense
+                    class="action-btn"
+                    @click="incrementTask(0)"
+                  >
+                    +1
+                  </q-btn>
+                  <q-btn
+                    flat
+                    dense
+                    class="action-btn complete-btn"
+                    @click="completeTask(0)"
+                  >
+                    Hoàn thành
+                  </q-btn>
+                  <q-btn
+                    flat
+                    dense
+                    class="action-btn delete-btn"
+                    @click="deleteTask(0)"
+                  >
+                    Xóa
+                  </q-btn>
+                </div>
+              </div>
             </div>
 
-            <div class="badge-item xp">
-              <q-icon name="star" color="primary" size="19px" />
-              <span class="badge-label">Điểm kinh nghiệm</span>
-              <span class="badge-value primary">1,000 XP</span>
-            </div>
-
-            <div class="badge-item edit">
-              <q-icon name="edit" color="white" size="17px" />
-              <span class="badge-value white">Chỉnh sửa thông tin</span>
-            </div>
-
-            <div class="badge-item disabled">
-              <q-icon name="lock" size="23px" style="opacity: 0.5" />
-              <span class="badge-value disabled">Đổi mật khẩu</span>
+            <!-- Task 2 -->
+            <div class="task-card">
+              <div class="task-main">
+                <div class="task-info">
+                  <div class="task-header">
+                    <q-icon name="emoji_events" size="16px" />
+                    <h3 class="task-name">Đạt top 10 leaderboard</h3>
+                  </div>
+                  <p class="task-description">
+                    Leo lên top 10 bảng xếp hạng tuần này
+                  </p>
+                  
+                  <div class="task-progress-section">
+                    <div class="progress-info">
+                      <div class="progress-stats">
+                        <span class="progress-text">Tiến độ: 0 / 1</span>
+                        <span class="progress-percent">0 %</span>
+                      </div>
+                      <q-linear-progress
+                        :value="0"
+                        color="purple"
+                        track-color="grey-3"
+                        size="16px"
+                        rounded
+                        class="progress-bar"
+                      />
+                    </div>
+                    
+                    <div class="task-rewards">
+                      <div class="reward-badge xp">+ 300 XP</div>
+                      <div class="reward-badge points">+ 150 điểm</div>
+                    </div>
+                  </div>
+                  
+                  <div class="task-deadline">
+                    <q-icon name="schedule" size="12px" />
+                    <span>Hạn: 1/8/2025</span>
+                  </div>
+                </div>
+                
+                <div class="task-actions">
+                  <q-btn
+                    flat
+                    dense
+                    class="action-btn"
+                    @click="incrementTask(1)"
+                  >
+                    +1
+                  </q-btn>
+                  <q-btn
+                    flat
+                    dense
+                    class="action-btn complete-btn"
+                    @click="completeTask(1)"
+                  >
+                    Hoàn thành
+                  </q-btn>
+                  <q-btn
+                    flat
+                    dense
+                    class="action-btn delete-btn"
+                    @click="deleteTask(1)"
+                  >
+                    Xóa
+                  </q-btn>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Stats Section Row 1 -->
-        <div class="stats-row">
-          <div class="stat-card">
-            <div class="stat-icon blue">
-              <q-icon name="help" color="primary" size="26px" />
+        <!-- Exchange Tab -->
+        <div v-else-if="activeTab === 'exchange'" class="exchange-content">
+          <div class="exchange-header">
+            <h2 class="exchange-title">Cửa hàng thẻ cào</h2>
+            <div class="user-points">
+              <q-icon name="monetization_on" />
+              <span>1,250 điểm</span>
             </div>
-            <div class="stat-number">1,000</div>
-            <div class="stat-label">Tổng câu trả lời</div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-icon green">
-              <q-icon name="check" color="green" size="14px" />
+          <div class="exchange-grid">
+            <!-- Viettel Card -->
+            <div class="exchange-card">
+              <div class="card-header">
+                <div class="card-badge">PHỔ BIẾN</div>
+                <q-icon name="phone" size="24px" class="card-icon" />
+                <div class="card-info">
+                  <h3>Viettel</h3>
+                  <div class="card-value">10,000 đ</div>
+                </div>
+              </div>
+              <div class="card-pricing">
+                <div class="price-row">
+                  <span>Giá gốc:</span>
+                  <span>800 điểm</span>
+                </div>
+                <div class="price-row">
+                  <span>Giá bán:</span>
+                  <span class="price-sale">800 điểm</span>
+                </div>
+              </div>
+              <q-btn class="exchange-btn" color="primary" @click="exchangeCard('viettel')">
+                <q-icon name="shopping_cart" />
+                Đổi ngay
+              </q-btn>
             </div>
-            <div class="stat-number">82%</div>
-            <div class="stat-label">Tỷ lệ chính xác</div>
+
+            <!-- Mobifone Card -->
+            <div class="exchange-card">
+              <div class="card-header">
+                <q-icon name="phone" size="24px" class="card-icon" />
+                <div class="card-info">
+                  <h3>Mobifone</h3>
+                  <div class="card-value">20,000 đ</div>
+                </div>
+              </div>
+              <div class="card-pricing">
+                <div class="price-row">
+                  <span>Giá gốc:</span>
+                  <span>1,600 điểm</span>
+                  <span class="discount">-10%</span>
+                </div>
+                <div class="price-row">
+                  <span>Giá bán:</span>
+                  <span class="price-sale">1,500 điểm</span>
+                </div>
+              </div>
+              <q-btn class="exchange-btn-disabled" disable>
+                Không đủ điểm
+              </q-btn>
+            </div>
+
+            <!-- Vietnamobile Card -->
+            <div class="exchange-card">
+              <div class="card-header">
+                <q-icon name="phone" size="24px" class="card-icon" />
+                <div class="card-info">
+                  <h3>Vietnamobile</h3>
+                  <div class="card-value">30,000 đ</div>
+                </div>
+              </div>
+              <div class="card-pricing">
+                <div class="price-row">
+                  <span>Giá gốc:</span>
+                  <span>2,300 điểm</span>
+                </div>
+                <div class="price-row">
+                  <span>Giá bán:</span>
+                  <span class="price-sale">2,300 điểm</span>
+                </div>
+              </div>
+              <q-btn class="exchange-btn-disabled" disable>
+                Không đủ điểm
+              </q-btn>
+            </div>
           </div>
 
-          <div class="stat-card">
-            <div class="stat-icon purple">
-              <q-icon name="book" color="deep-purple" size="23px" />
-            </div>
-            <div class="stat-number">2,125</div>
-            <div class="stat-label">Từ đã học</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-icon orange">
-              <q-icon name="local_fire_department" color="orange" size="17px" />
-            </div>
-            <div class="stat-number">28</div>
-            <div class="stat-label">Chuỗi dài nhất</div>
+          <div class="exchange-rules">
+            <h4>📋 Cách tích điểm:</h4>
+            <ul>
+              <li>Hoàn thành nhiệm vụ hàng ngày: 25-50 điểm</li>
+              <li>Hoàn thành nhiệm vụ hàng tuần: 100-150 điểm</li>
+              <li>Thách đấu với bạn bè và thắng: 20-30 điểm</li>
+              <li>Duy trì streak liên tục: 10 điểm/ngày</li>
+              <li>Đạt thành tích đặc biệt: 50-200 điểm</li>
+            </ul>
           </div>
         </div>
 
-        <!-- Stats Section Row 2 -->
-        <div class="stats-row">
-          <div class="stat-card-wide streak">
-            <div class="stat-content">
-              <div class="stat-icon blue">
-                <q-icon
-                  name="local_fire_department"
-                  color="primary"
-                  size="20px"
-                />
-              </div>
-              <div class="stat-info">
-                <div class="stat-label">Chuỗi hiện tại</div>
-                <div class="stat-sublabel">Ngày liên tiếp</div>
-              </div>
-            </div>
-            <div class="stat-number primary">15</div>
-          </div>
-
-          <div class="stat-card-wide time">
-            <div class="stat-content">
-              <div class="stat-icon green">
-                <q-icon name="schedule" color="green" size="24px" />
-              </div>
-              <div class="stat-info">
-                <div class="stat-label">Thời gian trung bình</div>
-                <div class="stat-sublabel">Mỗi câu hỏi</div>
-              </div>
-            </div>
-            <div class="stat-number green">2.5s</div>
-          </div>
-
-          <div class="stat-card-wide days">
-            <div class="stat-content">
-              <div class="stat-icon purple">
-                <q-icon name="calendar_month" color="deep-purple" size="20px" />
-              </div>
-              <div class="stat-info">
-                <div class="stat-label">Ngày học tập</div>
-                <div class="stat-sublabel">Tổng số ngày</div>
-              </div>
-            </div>
-            <div class="stat-number purple">45</div>
-          </div>
-        </div>
-
-        <!-- Progress Chart Section -->
-        <div class="chart-section">
-          <div class="chart-title">Biểu đồ tiến bộ</div>
-          <div class="chart-container">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2Fbe605de9df4a4de687c68395dde916e8%2F1aa75d4ca5474067bf1f69799c70ed9b?alt=media&token=6dbe7743-e64e-49fe-8546-741663c59b56&apiKey=be605de9df4a4de687c68395dde916e8"
-              alt="Progress Chart"
-              class="chart-image"
-            />
-          </div>
-        </div>
-
-        <!-- Contact Info Section -->
-        <div class="contact-section">
-          <div class="contact-title">Thông tin liên hệ</div>
-          <div class="contact-item">
-            <q-icon name="email" size="23px" />
-            <span class="contact-text">nguoidung@gmail.com</span>
-          </div>
-          <div class="contact-item">
-            <q-icon name="phone" size="22px" />
-            <span class="contact-text">12345678910</span>
-          </div>
-        </div>
-
-        <!-- Logout Section -->
-        <div class="logout-section">
-          <div class="logout-info">
-            <div class="logout-title">Đăng xuất</div>
-            <div class="logout-subtitle">Thoát khỏi tài khoản hiện tại</div>
-          </div>
-          <div class="logout-button" @click="handleLogout">
-            <q-icon name="logout" color="white" size="40px" />
-            <span class="logout-text">Đăng xuất</span>
+        <!-- Other tabs placeholder -->
+        <div v-else class="placeholder-content">
+          <div class="placeholder-message">
+            <q-icon name="construction" size="48px" color="grey-5" />
+            <h3>Đang phát triển</h3>
+            <p>Chức năng này đang được phát triển và sẽ có sẵn sớm!</p>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import { useAuthStore } from "../stores/auth";
+import { ref } from 'vue';
+import { useQuasar } from 'quasar';
 
-const router = useRouter();
-const authStore = useAuthStore();
-const activeTab = ref("dashboard");
+const $q = useQuasar();
+const activeTab = ref('tasks');
+const taskTab = ref('weekly');
 
-const handleLogout = () => {
-  authStore.logout();
-  router.push("/");
+const incrementTask = (taskId: number) => {
+  $q.notify({
+    type: 'positive',
+    message: 'Tiến độ nhiệm vụ đã được cập nhật!',
+    position: 'top',
+  });
+};
+
+const completeTask = (taskId: number) => {
+  $q.notify({
+    type: 'positive',
+    message: 'Nhiệm vụ đã hoàn thành! Bạn nhận được phần thưởng.',
+    position: 'top',
+  });
+};
+
+const deleteTask = (taskId: number) => {
+  $q.dialog({
+    title: 'Xác nhận',
+    message: 'Bạn có chắc chắn muốn xóa nhiệm vụ này?',
+    cancel: true,
+    persistent: true
+  }).onOk(() => {
+    $q.notify({
+      type: 'negative',
+      message: 'Nhiệm vụ đã được xóa!',
+      position: 'top',
+    });
+  });
+};
+
+const exchangeCard = (cardType: string) => {
+  $q.notify({
+    type: 'positive',
+    message: `Đổi thẻ ${cardType} thành công! Mã thẻ sẽ được gửi qua email.`,
+    position: 'top',
+  });
 };
 </script>
 
 <style scoped>
 .profile-page {
+  background: #FFFFFF;
+  min-height: 100vh;
+}
+
+.profile-container {
   display: flex;
-  width: 100%;
-  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 73px);
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 285px;
+  background: #FFFFFF;
+  border-right: 1px solid #E2E8F0;
+  padding: 24px 0;
+  flex-shrink: 0;
+}
+
+.sidebar-nav {
+  display: flex;
   flex-direction: column;
-  background: #fff;
-}
-
-/* Header Styles */
-.profile-header {
-  display: flex;
-  width: 100%;
-  padding: 16px 24px 17px 24px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  gap: 148px;
-  width: 100%;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 148px;
-}
-
-.logo-section {
-  display: flex;
-  align-items: center;
   gap: 8px;
-}
-
-.logo-icon {
-  display: flex;
-  padding: 8px;
-  border-radius: 8px;
-  background: #6d28d9;
-}
-
-.logo-text {
-  color: #111827;
-  font-family: Inter;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 28px;
-}
-
-.navigation {
-  display: flex;
-  gap: 24px;
 }
 
 .nav-item {
-  color: #374151;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-}
-
-.nav-item:hover {
-  background-color: #f3f4f6;
-}
-
-.header-right {
   display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.user-stats {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.stat-text {
-  color: #4b5563;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-}
-
-.stat-correct {
-  display: flex;
-  gap: 1px;
-}
-
-.correct-number {
-  color: #16a34a;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-}
-
-.correct-text {
-  color: #4b5563;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-}
-
-.stat-streak {
-  display: flex;
-  gap: 3px;
-}
-
-.streak-label {
-  color: #4b5563;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-}
-
-.streak-number {
-  color: #2563eb;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.user-avatar {
-  display: flex;
-  padding: 6px 5px 6px 6px;
-  border-radius: 50%;
-  background: #6d28d9;
-  color: #fff;
-  font-family: Inter;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  min-width: 32px;
-  height: 32px;
-  align-items: center;
-  justify-content: center;
-}
-
-.user-name {
-  color: #111827;
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-}
-
-.logout-btn {
-  display: flex;
-  padding: 10px 12px 10px 13px;
-  align-items: center;
-  gap: 12px;
-  border-radius: 6px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  cursor: pointer;
-  color: #000;
-  font-family: Inter;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
-}
-
-/* Main Profile Content */
-.profile-main {
-  display: flex;
-  height: calc(100vh - 73px);
-  background: #fff;
-}
-
-/* Sidebar Navigation */
-.sidebar-nav {
-  width: 285px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  border: 1px solid rgba(92, 94, 100, 0.7);
-  padding: 15px;
-}
-
-.nav-link {
-  display: flex;
-  padding: 15px 18px;
   align-items: center;
   gap: 18px;
+  padding: 14.5px 17.5px;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s;
-}
-
-.nav-link:hover {
-  background: #f3f4f6;
-}
-
-.nav-link.active {
-  background: #ede9fe;
-  color: #5b21b6;
-}
-
-.nav-label {
-  color: #5c5e64;
-  font-family: Inter;
+  color: #5C5E64;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 29px;
   letter-spacing: -0.4px;
 }
 
-.nav-link.active .nav-label {
-  color: #5b21b6;
+.nav-item:hover {
+  background: #F1F5F9;
 }
 
-/* Main Content Area */
+.nav-item.active {
+  background: #EDE9FE;
+  color: #6D28D9;
+}
+
+/* Main Content Styles */
 .main-content {
   flex: 1;
-  padding: 20px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  overflow-y: auto;
+  padding: 24px 32px;
+  background: #FFFFFF;
 }
 
-/* Profile Card */
-.profile-card {
-  width: 895px;
-  padding: 24px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  border-radius: 11px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+/* Tasks Content */
+.tasks-content {
+  max-width: 720px;
 }
 
-.user-avatar-section {
-  position: relative;
-  width: 81px;
-  height: 88px;
+.tasks-header {
+  margin-bottom: 16px;
 }
 
-.user-avatar-large {
-  position: relative;
-}
-
-.avatar-image {
-  width: 81px;
-  height: 84px;
-  border-radius: 84px;
-  border: 2px solid #858597;
-  object-fit: cover;
-}
-
-.online-indicator {
-  position: absolute;
-  right: 0;
-  bottom: 4px;
-}
-
-.user-name-section {
-  color: #000;
-  font-family: Roboto;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 26px;
-}
-
-.user-username {
-  color: #000;
-  text-align: center;
-  font-family: Roboto;
+.tasks-title {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 20px;
-  font-weight: 300;
-  line-height: 26px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #000000;
+  margin: 0;
 }
 
-.join-date {
+/* Task Tabs */
+.task-tabs {
+  margin-bottom: 24px;
+}
+
+.tab-container {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(0, 0, 0, 0.75);
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 26px;
+  width: 251px;
+  height: 40px;
+  border-radius: 6px;
+  background: #F1F5F9;
+  padding: 4px;
+  position: relative;
 }
 
-.profile-badges {
-  display: flex;
-  justify-content: center;
-  gap: 21px;
-  width: 855px;
-}
-
-.badge-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  border-radius: 7px;
-  min-width: 150px;
-}
-
-.badge-item.level {
-  background: rgba(37, 99, 235, 0.3);
-}
-
-.badge-item.xp {
-  background: rgba(37, 99, 235, 0.3);
-  opacity: 0.5;
-}
-
-.badge-item.edit {
-  background: rgba(37, 99, 235, 0.7);
-  cursor: pointer;
-}
-
-.badge-item.disabled {
-  background: rgba(107, 114, 128, 0.5);
-  opacity: 0.5;
-}
-
-.badge-label {
-  color: #000;
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 400;
-}
-
-.badge-value {
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.badge-value.primary {
-  color: #2563eb;
-}
-
-.badge-value.white {
-  color: #fff;
-}
-
-.badge-value.disabled {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-/* Stats Rows */
-.stats-row {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  width: 895px;
-}
-
-.stat-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px 51px 26px 50px;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+.tab-item {
   flex: 1;
-}
-
-.stat-icon {
-  width: 53px;
-  height: 54px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
-}
-
-.stat-icon.blue {
-  background: #bed0f9;
-}
-
-.stat-icon.green {
-  background: rgba(22, 163, 74, 0.25);
-}
-
-.stat-icon.purple {
-  background: rgba(109, 40, 217, 0.29);
-}
-
-.stat-icon.orange {
-  background: rgba(217, 119, 6, 0.3);
-}
-
-.stat-number {
-  color: #000;
-  text-align: center;
-  font-family: Roboto;
-  font-size: 27px;
-  font-weight: 700;
-  line-height: 25px;
-  margin-bottom: 8px;
-}
-
-.stat-label {
-  color: #000;
-  text-align: center;
-  font-family: Roboto;
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 25px;
-}
-
-/* Wide Stats Cards */
-.stat-card-wide {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 31px 68px 31px 19px;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  flex: 1;
-}
-
-.stat-content {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.stat-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.stat-sublabel {
-  color: #000;
-  font-family: Roboto;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 14px;
-  font-weight: 300;
-  line-height: 25px;
-}
-
-.stat-number.primary {
-  color: #2563eb;
-}
-
-.stat-number.green {
-  color: #16a34a;
-}
-
-.stat-number.purple {
-  color: #6d28d9;
-}
-
-/* Chart Section */
-.chart-section {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding: 23px 33px 22px;
-  width: 895px;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-}
-
-.chart-title {
-  color: #000;
-  text-align: center;
-  font-family: Roboto;
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 25px;
-}
-
-.chart-container {
-  width: 100%;
-  height: 290px;
-}
-
-.chart-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Contact Section */
-.contact-section {
-  width: 877px;
-  padding: 17px 13px;
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-  border-radius: 11px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-}
-
-.contact-title {
-  color: #000;
-  text-align: center;
-  font-family: Roboto;
-  font-size: 24px;
   font-weight: 500;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 0;
-}
-
-.contact-text {
-  color: rgba(0, 0, 0, 0.75);
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 26px;
-}
-
-/* Logout Section */
-.logout-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 23px 130px 23px 15px;
-  width: 877px;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
-  background: #fff;
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-}
-
-.logout-info {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.logout-title {
-  color: #000;
-  font-family: Inter;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 21px;
-}
-
-.logout-subtitle {
-  color: #000;
-  font-family: Inter;
-  font-size: 21px;
-  font-weight: 400;
-  line-height: 21px;
-}
-
-.logout-button {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 13px 17px;
-  border-radius: 8px;
-  background: #fd2c2c;
+  line-height: 20px;
+  color: #64748B;
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.logout-button:hover {
-  background: #dc2626;
+.tab-item.active {
+  background: #FFFFFF;
+  color: #64748B;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.logout-text {
-  color: #fff;
-  font-family: Inter;
-  font-size: 24px;
-  font-weight: 400;
+/* Task List */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.task-card {
+  padding: 16px 24px 25px 24px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.task-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.task-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-name {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
   line-height: 24px;
+  color: #000000;
+  margin: 0;
+}
+
+.task-description {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #4B5563;
+  margin: 0;
+}
+
+.task-progress-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0;
+}
+
+.progress-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 258px;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-text,
+.progress-percent {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #000000;
+}
+
+.progress-bar {
+  margin-top: 4px;
+}
+
+.task-rewards {
+  display: flex;
+  gap: 8px;
+}
+
+.reward-badge {
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid #E2E8F0;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.reward-badge.xp {
+  color: #000000;
+  background: #FFFFFF;
+}
+
+.reward-badge.points {
+  color: #A16207;
+  background: #FEFCE8;
+}
+
+.task-deadline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #6B7280;
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.action-btn {
+  padding: 8px 12px;
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  border-radius: 6px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #000000;
+  min-width: 80px;
+}
+
+.action-btn:hover {
+  background: #F8F9FA;
+}
+
+.complete-btn {
+  min-width: 100px;
+}
+
+.delete-btn {
+  color: #EF4444;
+  border: none;
+  background: transparent;
+}
+
+.delete-btn:hover {
+  background: #FEF2F2;
+}
+
+/* Exchange Content */
+.exchange-content {
+  max-width: 800px;
+}
+
+.exchange-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.exchange-title {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #000000;
+  margin: 0;
+}
+
+.user-points {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #FEF3C7;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #D97706;
+}
+
+.exchange-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.exchange-card {
+  padding: 20px;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.card-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #3B82F6;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.card-icon {
+  margin-bottom: 8px;
+  color: #6B7280;
+}
+
+.card-info {
+  text-align: center;
+}
+
+.card-info h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: #111827;
+}
+
+.card-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #10B981;
+}
+
+.card-pricing {
+  margin-bottom: 16px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.price-sale {
+  font-weight: 600;
+  color: #059669;
+}
+
+.discount {
+  background: #FECACA;
+  color: #DC2626;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.exchange-btn {
+  width: 100%;
+  padding: 12px;
+  font-weight: 600;
+}
+
+.exchange-btn-disabled {
+  width: 100%;
+  padding: 12px;
+  background: #F3F4F6;
+  color: #9CA3AF;
+  border: 1px solid #E5E7EB;
+}
+
+.exchange-rules {
+  background: #F9FAFB;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+}
+
+.exchange-rules h4 {
+  margin: 0 0 12px 0;
+  color: #374151;
+}
+
+.exchange-rules ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.exchange-rules li {
+  margin-bottom: 6px;
+  color: #6B7280;
+  font-size: 14px;
+}
+
+/* Placeholder Content */
+.placeholder-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.placeholder-message {
+  text-align: center;
+  color: #6B7280;
+}
+
+.placeholder-message h3 {
+  margin: 16px 0 8px 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.placeholder-message p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    padding: 16px;
+  }
+  
+  .sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 4px;
+  }
+  
+  .nav-item {
+    flex-shrink: 0;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  .nav-item span {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 16px;
+  }
+  
+  .task-main {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .task-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  
+  .exchange-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
