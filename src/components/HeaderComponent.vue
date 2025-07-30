@@ -233,7 +233,7 @@ const handleLogout = () => {
   authStore.logout();
   $q.notify({
     type: "info",
-    message: "Đ�� đăng xuất thành công!",
+    message: "Đã đăng xuất thành công!",
     position: "top",
   });
   router.push("/");
@@ -242,11 +242,13 @@ const handleLogout = () => {
 
 <style scoped>
 .header-toolbar {
-  background: white;
-  border-bottom: 1px solid #E5E7EB;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.3);
   color: #111827;
   min-height: 73px;
   padding: 16px 24px 17px 24px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header-container {
