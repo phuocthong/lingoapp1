@@ -2,11 +2,34 @@
   <q-toolbar class="header-toolbar">
     <div class="header-container">
       <!-- Logo -->
-      <div class="logo-section">
+      <div
+        class="logo-section"
+        @click="router.push('/')"
+        style="cursor: pointer"
+      >
         <div class="logo-icon">
           <q-icon name="computer" size="24px" color="white" />
         </div>
         <span class="logo-text">Logo</span>
+      </div>
+
+      <!-- Login/Register when not logged in (left side) -->
+      <div class="left-auth-buttons" v-if="!authStore.isLoggedIn">
+        <q-btn
+          flat
+          label="Đăng nhập"
+          color="grey-7"
+          @click="handleLoginClick"
+          class="q-mr-sm"
+          no-caps
+        />
+        <q-btn
+          outline
+          label="Đăng ký"
+          color="primary"
+          @click="handleRegisterClick"
+          no-caps
+        />
       </div>
 
       <!-- Navigation -->
@@ -14,9 +37,9 @@
         <router-link to="/" class="nav-link">Trang chủ</router-link>
         <router-link to="/about" class="nav-link">Giới thiệu</router-link>
         <router-link to="/challenge" class="nav-link">Thử thách</router-link>
-        <router-link to="/friends" class="nav-link">Bạn bè</router-link>
-        <router-link to="/profile" class="nav-link">Profile</router-link>
-        <router-link to="/shop" class="nav-link">Cửa hàng</router-link>
+        <router-link to="/profile" class="nav-link" v-if="authStore.isLoggedIn"
+          >Profile</router-link
+        >
       </div>
 
       <!-- User Stats & Profile -->
@@ -56,27 +79,10 @@
           </div>
 
           <!-- Logout Button -->
-          <q-btn class="logout-btn" @click="handleLogout">
+          <q-btn class="logout-btn" @click="handleLogout" no-caps>
             <q-icon name="logout" size="16px" class="q-mr-sm" />
             Đăng xuất
           </q-btn>
-        </template>
-
-        <template v-else>
-          <!-- Login/Register Buttons -->
-          <q-btn
-            flat
-            label="Đăng nhập"
-            color="grey-7"
-            @click="handleLoginClick"
-            class="q-mr-sm"
-          />
-          <q-btn
-            outline
-            label="Đăng ký"
-            color="primary"
-            @click="handleRegisterClick"
-          />
         </template>
       </div>
     </div>
@@ -92,23 +98,14 @@
         </q-card-section>
 
         <q-card-section>
-          <!-- Test Button -->
-          <div class="q-mb-md">
-            <q-btn
-              color="red"
-              label="TEST CLICK"
-              class="full-width"
-              @click="testClick"
-            />
-          </div>
-
           <!-- Demo Login Button -->
           <div class="q-mb-lg">
             <q-btn
               color="primary"
-              label="🚀 Đăng nhập Demo (Phư��c Thông)"
+              label="🚀 Đăng nhập Demo (Phước Thông)"
               class="full-width q-py-sm"
               @click="doLogin"
+              no-caps
             />
             <div class="text-center q-mt-sm text-caption text-grey-6">
               Click để đăng nhập nhanh
@@ -117,12 +114,13 @@
         </q-card-section>
 
         <q-card-actions align="right">
-          <q-btn flat label="Hủy" @click="showLoginDialog = false" />
+          <q-btn flat label="Hủy" @click="showLoginDialog = false" no-caps />
           <q-btn
             flat
             label="Chuyển sang Đăng ký"
             color="primary"
             @click="switchToRegister"
+            no-caps
           />
         </q-card-actions>
       </q-card>
@@ -146,12 +144,12 @@
               label="✨ Đăng ký Demo (Phước Thông)"
               class="full-width q-py-sm"
               @click="
-                () =>
-                  handleRegister({
-                    name: 'Phước Thông',
-                    email: 'phuocthoang@demo.com',
-                  })
+                handleRegister({
+                  name: 'Phước Thông',
+                  email: 'phuocthoang@demo.com',
+                })
               "
+              no-caps
             />
             <div class="text-center q-mt-sm text-caption text-grey-6">
               Click để tạo tài khoản demo
@@ -160,12 +158,13 @@
         </q-card-section>
 
         <q-card-actions align="right">
-          <q-btn flat label="Hủy" @click="showRegisterDialog = false" />
+          <q-btn flat label="Hủy" @click="showRegisterDialog = false" no-caps />
           <q-btn
             flat
             label="Đã có tài khoản? Đăng nhập"
             color="primary"
             @click="switchToLogin"
+            no-caps
           />
         </q-card-actions>
       </q-card>
@@ -233,11 +232,6 @@ const switchToLogin = () => {
   showLoginDialog.value = true;
 };
 
-const testClick = () => {
-  alert("TEST BUTTON HOẠT ĐỘNG!");
-  console.log("Test button clicked!");
-};
-
 const doLogin = () => {
   console.log("doLogin called!");
   handleLogin({ name: "Phước Thông", email: "phuocthoang@demo.com" });
@@ -245,16 +239,24 @@ const doLogin = () => {
 
 const handleLogout = () => {
   authStore.logout();
+  $q.notify({
+    type: "info",
+    message: "Đã đăng xuất thành công!",
+    position: "top",
+  });
   router.push("/");
 };
 </script>
 
 <style scoped>
 .header-toolbar {
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.3);
   color: #111827;
   min-height: 73px;
+  padding: 16px 24px 17px 24px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header-container {
@@ -264,25 +266,55 @@ const handleLogout = () => {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
-  gap: 148px;
+  gap: 20px;
+}
+
+.left-auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.left-auth-buttons .q-btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.left-auth-buttons .q-btn[outline] {
+  border: 2px solid #667eea;
+  color: #667eea;
+}
+
+.left-auth-buttons .q-btn[outline]:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
 }
 
 .logo-section {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .logo-icon {
   display: flex;
   padding: 8px;
-  border-radius: 8px;
-  background: #6d28d9;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .logo-text {
   color: #111827;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 28px;
@@ -292,10 +324,18 @@ const handleLogout = () => {
   display: flex;
   align-items: center;
   gap: 24px;
+  flex: 1;
+  justify-content: center;
 }
 
 .nav-link {
   color: #374151;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -303,6 +343,7 @@ const handleLogout = () => {
   padding: 8px 12px;
   border-radius: 4px;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -319,6 +360,7 @@ const handleLogout = () => {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-shrink: 0;
 }
 
 .user-stats {
@@ -331,10 +373,17 @@ const handleLogout = () => {
   display: flex;
   align-items: center;
   gap: 4px;
+  white-space: nowrap;
 }
 
 .stat-text {
   color: #4b5563;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -342,6 +391,12 @@ const handleLogout = () => {
 
 .stat-number {
   color: #16a34a;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -349,6 +404,12 @@ const handleLogout = () => {
 
 .stat-label {
   color: #4b5563;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -356,6 +417,12 @@ const handleLogout = () => {
 
 .stat-streak {
   color: #2563eb;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -376,15 +443,28 @@ const handleLogout = () => {
   border-radius: 50%;
   background: #6d28d9;
   color: white;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
 }
 
 .user-name {
   color: #111827;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
+  white-space: nowrap;
 }
 
 .logout-btn {
@@ -393,12 +473,74 @@ const handleLogout = () => {
   background: white;
   border-radius: 6px;
   color: black;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
+  text-transform: none;
 }
 
 .logout-btn:hover {
   background: #f8f9fa;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .header-container {
+    gap: 16px;
+  }
+
+  .navigation {
+    gap: 16px;
+  }
+
+  .user-stats {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-toolbar {
+    padding: 12px 16px;
+  }
+
+  .header-container {
+    gap: 12px;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .user-stats {
+    gap: 8px;
+  }
+
+  .stat-item {
+    gap: 2px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .user-name {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    gap: 8px;
+  }
+
+  .user-stats {
+    display: none;
+  }
 }
 </style>
