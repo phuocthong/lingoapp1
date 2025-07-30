@@ -258,6 +258,13 @@ const handleLogout = () => {
   gap: 20px;
 }
 
+.left-auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
 .logo-section {
   display: flex;
   align-items: center;
