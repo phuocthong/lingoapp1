@@ -9,7 +9,7 @@
               <q-icon name="person" size="32px" color="white" />
             </q-avatar>
             <div class="user-info">
-              <h4>{{ authStore.user?.name || 'Người dùng' }}</h4>
+              <h4>{{ authStore.user?.name || "Người dùng" }}</h4>
               <p>Level 15 • 1,250 điểm</p>
             </div>
           </div>
@@ -18,8 +18,8 @@
         <q-separator />
 
         <q-list class="nav-list">
-          <q-item 
-            clickable 
+          <q-item
+            clickable
             v-ripple
             :class="{ 'active-nav': activeTab === 'dashboard' }"
             @click="setActiveTab('dashboard')"
@@ -32,8 +32,8 @@
             </q-item-section>
           </q-item>
 
-          <q-item 
-            clickable 
+          <q-item
+            clickable
             v-ripple
             :class="{ 'active-nav': activeTab === 'tasks' }"
             @click="setActiveTab('tasks')"
@@ -50,8 +50,8 @@
             </q-item-section>
           </q-item>
 
-          <q-item 
-            clickable 
+          <q-item
+            clickable
             v-ripple
             :class="{ 'active-nav': activeTab === 'friends' }"
             @click="setActiveTab('friends')"
@@ -65,8 +65,8 @@
             </q-item-section>
           </q-item>
 
-          <q-item 
-            clickable 
+          <q-item
+            clickable
             v-ripple
             :class="{ 'active-nav': activeTab === 'exchange' }"
             @click="setActiveTab('exchange')"
@@ -80,8 +80,8 @@
             </q-item-section>
           </q-item>
 
-          <q-item 
-            clickable 
+          <q-item
+            clickable
             v-ripple
             :class="{ 'active-nav': activeTab === 'settings' }"
             @click="setActiveTab('settings')"
@@ -109,7 +109,7 @@
               v-model="taskFilter"
               :options="[
                 { label: 'Hàng ngày (1)', value: 'daily' },
-                { label: 'Hàng tuần (3)', value: 'weekly' }
+                { label: 'Hàng tuần (3)', value: 'weekly' },
               ]"
               color="primary"
               text-color="grey-7"
@@ -132,9 +132,9 @@
                     <h4>Thách đấu với 5 bạn bè</h4>
                     <p>Tham gia thách đấu với ít nhất 5 người bạn trong tuần</p>
                   </div>
-                  <q-chip 
-                    color="orange" 
-                    text-color="white" 
+                  <q-chip
+                    color="orange"
+                    text-color="white"
                     icon="schedule"
                     size="sm"
                   >
@@ -157,38 +157,48 @@
                 </div>
 
                 <div class="rewards-section">
-                  <q-chip color="green" text-color="white" icon="stars" size="sm">
+                  <q-chip
+                    color="green"
+                    text-color="white"
+                    icon="stars"
+                    size="sm"
+                  >
                     +200 XP
                   </q-chip>
-                  <q-chip color="amber" text-color="white" icon="monetization_on" size="sm">
+                  <q-chip
+                    color="amber"
+                    text-color="white"
+                    icon="monetization_on"
+                    size="sm"
+                  >
                     +100 điểm
                   </q-chip>
                 </div>
               </q-card-section>
 
               <q-card-actions class="task-actions">
-                <q-btn 
-                  flat 
-                  dense 
-                  color="primary" 
+                <q-btn
+                  flat
+                  dense
+                  color="primary"
                   icon="add"
                   @click="incrementTask(0)"
                 >
                   +1
                 </q-btn>
-                <q-btn 
-                  flat 
-                  dense 
-                  color="green" 
+                <q-btn
+                  flat
+                  dense
+                  color="green"
                   icon="check"
                   @click="completeTask(0)"
                 >
                   Hoàn thành
                 </q-btn>
-                <q-btn 
-                  flat 
-                  dense 
-                  color="red" 
+                <q-btn
+                  flat
+                  dense
+                  color="red"
                   icon="delete"
                   @click="deleteTask(0)"
                 >
@@ -208,9 +218,9 @@
                     <h4>Đạt top 10 leaderboard</h4>
                     <p>Leo lên top 10 bảng xếp hạng tuần này</p>
                   </div>
-                  <q-chip 
-                    color="red" 
-                    text-color="white" 
+                  <q-chip
+                    color="red"
+                    text-color="white"
                     icon="schedule"
                     size="sm"
                   >
@@ -233,38 +243,48 @@
                 </div>
 
                 <div class="rewards-section">
-                  <q-chip color="green" text-color="white" icon="stars" size="sm">
+                  <q-chip
+                    color="green"
+                    text-color="white"
+                    icon="stars"
+                    size="sm"
+                  >
                     +300 XP
                   </q-chip>
-                  <q-chip color="amber" text-color="white" icon="monetization_on" size="sm">
+                  <q-chip
+                    color="amber"
+                    text-color="white"
+                    icon="monetization_on"
+                    size="sm"
+                  >
                     +150 điểm
                   </q-chip>
                 </div>
               </q-card-section>
 
               <q-card-actions class="task-actions">
-                <q-btn 
-                  flat 
-                  dense 
-                  color="primary" 
+                <q-btn
+                  flat
+                  dense
+                  color="primary"
                   icon="add"
                   @click="incrementTask(1)"
                 >
                   +1
                 </q-btn>
-                <q-btn 
-                  flat 
-                  dense 
-                  color="green" 
+                <q-btn
+                  flat
+                  dense
+                  color="green"
                   icon="check"
                   @click="completeTask(1)"
                 >
                   Hoàn thành
                 </q-btn>
-                <q-btn 
-                  flat 
-                  dense 
-                  color="red" 
+                <q-btn
+                  flat
+                  dense
+                  color="red"
                   icon="delete"
                   @click="deleteTask(1)"
                 >
@@ -278,15 +298,19 @@
               <q-card-section>
                 <div class="task-header">
                   <div class="task-icon">
-                    <q-icon name="local_fire_department" size="20px" color="red" />
+                    <q-icon
+                      name="local_fire_department"
+                      size="20px"
+                      color="red"
+                    />
                   </div>
                   <div class="task-info">
                     <h4>Streak 7 ngày liên tiếp</h4>
                     <p>Duy trì học tập 7 ngày kh��ng nghỉ</p>
                   </div>
-                  <q-chip 
-                    color="green" 
-                    text-color="white" 
+                  <q-chip
+                    color="green"
+                    text-color="white"
                     icon="trending_up"
                     size="sm"
                   >
@@ -309,38 +333,48 @@
                 </div>
 
                 <div class="rewards-section">
-                  <q-chip color="green" text-color="white" icon="stars" size="sm">
+                  <q-chip
+                    color="green"
+                    text-color="white"
+                    icon="stars"
+                    size="sm"
+                  >
                     +500 XP
                   </q-chip>
-                  <q-chip color="amber" text-color="white" icon="monetization_on" size="sm">
+                  <q-chip
+                    color="amber"
+                    text-color="white"
+                    icon="monetization_on"
+                    size="sm"
+                  >
                     +200 điểm
                   </q-chip>
                 </div>
               </q-card-section>
 
               <q-card-actions class="task-actions">
-                <q-btn 
-                  flat 
-                  dense 
-                  color="primary" 
+                <q-btn
+                  flat
+                  dense
+                  color="primary"
                   icon="add"
                   @click="incrementTask(2)"
                 >
                   +1
                 </q-btn>
-                <q-btn 
-                  flat 
-                  dense 
-                  color="green" 
+                <q-btn
+                  flat
+                  dense
+                  color="green"
                   icon="check"
                   @click="completeTask(2)"
                 >
                   Hoàn thành
                 </q-btn>
-                <q-btn 
-                  flat 
-                  dense 
-                  color="red" 
+                <q-btn
+                  flat
+                  dense
+                  color="red"
                   icon="delete"
                   @click="deleteTask(2)"
                 >
@@ -358,9 +392,9 @@
               <h3>🏪 Cửa hàng thẻ cào</h3>
               <p>Đổi điểm lấy thẻ cào và phần quà hấp dẫn</p>
             </div>
-            <q-chip 
-              color="amber" 
-              text-color="white" 
+            <q-chip
+              color="amber"
+              text-color="white"
               icon="account_balance_wallet"
               size="lg"
             >
@@ -371,12 +405,7 @@
           <div class="exchange-grid">
             <!-- Viettel Card -->
             <q-card class="exchange-card">
-              <q-badge 
-                color="blue" 
-                floating 
-                rounded 
-                label="PHỔ BIẾN"
-              />
+              <q-badge color="blue" floating rounded label="PHỔ BIẾN" />
               <q-card-section class="card-header">
                 <q-avatar size="48px" color="red" text-color="white">
                   <q-icon name="sim_card" />
@@ -394,14 +423,16 @@
                   <div class="price-row">
                     <span>Giá bán:</span>
                     <span class="sale-price">800 điểm</span>
-                    <q-chip color="red" text-color="white" size="sm">-11%</q-chip>
+                    <q-chip color="red" text-color="white" size="sm"
+                      >-11%</q-chip
+                    >
                   </div>
                 </div>
               </q-card-section>
 
               <q-card-actions>
-                <q-btn 
-                  color="primary" 
+                <q-btn
+                  color="primary"
                   icon="shopping_cart"
                   label="Đổi ngay"
                   class="full-width"
@@ -430,14 +461,16 @@
                   <div class="price-row">
                     <span>Giá bán:</span>
                     <span class="sale-price">1,500 điểm</span>
-                    <q-chip color="red" text-color="white" size="sm">-12%</q-chip>
+                    <q-chip color="red" text-color="white" size="sm"
+                      >-12%</q-chip
+                    >
                   </div>
                 </div>
               </q-card-section>
 
               <q-card-actions>
-                <q-btn 
-                  color="grey" 
+                <q-btn
+                  color="grey"
                   icon="lock"
                   label="Không đủ điểm"
                   class="full-width"
@@ -465,14 +498,16 @@
                   <div class="price-row">
                     <span>Giá bán:</span>
                     <span class="sale-price">2,300 điểm</span>
-                    <q-chip color="red" text-color="white" size="sm">-8%</q-chip>
+                    <q-chip color="red" text-color="white" size="sm"
+                      >-8%</q-chip
+                    >
                   </div>
                 </div>
               </q-card-section>
 
               <q-card-actions>
-                <q-btn 
-                  color="grey" 
+                <q-btn
+                  color="grey"
                   icon="lock"
                   label="Không đủ điểm"
                   class="full-width"
@@ -492,7 +527,9 @@
                     <q-icon name="task_alt" color="green" />
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label>Hoàn thành nhiệm vụ hàng ngày: 25-50 điểm</q-item-label>
+                    <q-item-label
+                      >Hoàn thành nhiệm vụ hàng ngày: 25-50 điểm</q-item-label
+                    >
                   </q-item-section>
                 </q-item>
                 <q-item>
@@ -500,7 +537,9 @@
                     <q-icon name="event_repeat" color="blue" />
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label>Hoàn thành nhiệm vụ hàng tuần: 100-150 điểm</q-item-label>
+                    <q-item-label
+                      >Hoàn thành nhiệm vụ hàng tuần: 100-150 điểm</q-item-label
+                    >
                   </q-item-section>
                 </q-item>
                 <q-item>
@@ -508,7 +547,9 @@
                     <q-icon name="sports_esports" color="purple" />
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label>Thắng thách đấu với bạn bè: 20-30 điểm</q-item-label>
+                    <q-item-label
+                      >Thắng thách đấu với bạn bè: 20-30 điểm</q-item-label
+                    >
                   </q-item-section>
                 </q-item>
                 <q-item>
@@ -516,7 +557,9 @@
                     <q-icon name="local_fire_department" color="red" />
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label>Duy trì streak liên tục: 10 điểm/ngày</q-item-label>
+                    <q-item-label
+                      >Duy trì streak liên tục: 10 điểm/ngày</q-item-label
+                    >
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -537,7 +580,11 @@
             <q-card class="stat-card">
               <q-card-section>
                 <div class="stat-header">
-                  <q-icon name="local_fire_department" size="32px" color="red" />
+                  <q-icon
+                    name="local_fire_department"
+                    size="32px"
+                    color="red"
+                  />
                   <h4>Streak hiện tại</h4>
                 </div>
                 <div class="stat-number">7 ngày</div>
@@ -588,9 +635,9 @@
             </q-avatar>
             <h3>🚧 Đang phát triển</h3>
             <p>Chức năng này đang được phát triển và sẽ có sẵn sớm!</p>
-            <q-btn 
-              color="primary" 
-              label="Quay lại Nhiệm vụ" 
+            <q-btn
+              color="primary"
+              label="Quay lại Nhiệm vụ"
               @click="setActiveTab('tasks')"
               unelevated
             />
@@ -602,16 +649,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useQuasar } from 'quasar';
-import { useAuthStore } from '../stores/auth';
+import { ref } from "vue";
+import { useQuasar } from "quasar";
+import { useAuthStore } from "../stores/auth";
 
 const $q = useQuasar();
 const authStore = useAuthStore();
 
 // State
-const activeTab = ref('tasks'); // Default to tasks tab
-const taskFilter = ref('weekly');
+const activeTab = ref("tasks"); // Default to tasks tab
+const taskFilter = ref("weekly");
 
 // Methods
 const setActiveTab = (tab: string) => {
@@ -620,54 +667,54 @@ const setActiveTab = (tab: string) => {
 
 const incrementTask = (taskId: number) => {
   $q.notify({
-    type: 'positive',
-    message: '✅ Tiến độ nhiệm vụ đã được cập nhật!',
-    position: 'top',
+    type: "positive",
+    message: "✅ Tiến độ nhiệm vụ đã được cập nhật!",
+    position: "top",
     timeout: 2000,
-    actions: [{ icon: 'close', color: 'white' }]
+    actions: [{ icon: "close", color: "white" }],
   });
 };
 
 const completeTask = (taskId: number) => {
   $q.notify({
-    type: 'positive',
-    message: '🎉 Nhiệm vụ hoàn thành! Bạn nhận được phần thưởng.',
-    position: 'top',
+    type: "positive",
+    message: "🎉 Nhiệm vụ hoàn thành! Bạn nhận được phần thưởng.",
+    position: "top",
     timeout: 3000,
-    actions: [{ icon: 'close', color: 'white' }]
+    actions: [{ icon: "close", color: "white" }],
   });
 };
 
 const deleteTask = (taskId: number) => {
   $q.dialog({
-    title: '⚠️ Xác nhận xóa',
-    message: 'Bạn có chắc chắn muốn xóa nhiệm vụ này không?',
+    title: "⚠️ Xác nhận xóa",
+    message: "Bạn có chắc chắn muốn xóa nhiệm vụ này không?",
     cancel: {
-      label: 'Hủy',
-      color: 'grey'
+      label: "Hủy",
+      color: "grey",
     },
     ok: {
-      label: 'Xóa',
-      color: 'red'
+      label: "Xóa",
+      color: "red",
     },
-    persistent: true
+    persistent: true,
   }).onOk(() => {
     $q.notify({
-      type: 'negative',
-      message: '🗑️ Nhiệm vụ đã được xóa!',
-      position: 'top',
-      timeout: 2000
+      type: "negative",
+      message: "🗑️ Nhiệm vụ đã được xóa!",
+      position: "top",
+      timeout: 2000,
     });
   });
 };
 
 const exchangeCard = (cardType: string) => {
   $q.notify({
-    type: 'positive',
+    type: "positive",
     message: `🎁 Đổi thẻ ${cardType} thành công! Mã thẻ sẽ được gửi qua email.`,
-    position: 'top',
+    position: "top",
     timeout: 3000,
-    actions: [{ icon: 'close', color: 'white' }]
+    actions: [{ icon: "close", color: "white" }],
   });
 };
 </script>
@@ -774,8 +821,14 @@ const exchangeCard = (cardType: string) => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .section-header {
@@ -798,7 +851,7 @@ const exchangeCard = (cardType: string) => {
 
 .header-title p {
   margin: 0;
-  color: #6B7280;
+  color: #6b7280;
   font-size: 16px;
 }
 
@@ -824,7 +877,7 @@ const exchangeCard = (cardType: string) => {
 }
 
 .gradient-border::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -855,12 +908,12 @@ const exchangeCard = (cardType: string) => {
   margin: 0 0 8px 0;
   font-size: 18px;
   font-weight: 600;
-  color: #1F2937;
+  color: #1f2937;
 }
 
 .task-info p {
   margin: 0;
-  color: #6B7280;
+  color: #6b7280;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -879,7 +932,7 @@ const exchangeCard = (cardType: string) => {
 }
 
 .progress-percent {
-  color: #7C3AED;
+  color: #7c3aed;
   font-weight: 600;
 }
 
@@ -932,7 +985,7 @@ const exchangeCard = (cardType: string) => {
   margin: 16px 0 8px 0;
   font-size: 18px;
   font-weight: 600;
-  color: #1F2937;
+  color: #1f2937;
 }
 
 .card-value {
@@ -955,7 +1008,7 @@ const exchangeCard = (cardType: string) => {
 
 .original-price {
   text-decoration: line-through;
-  color: #9CA3AF;
+  color: #9ca3af;
 }
 
 .sale-price {
@@ -994,18 +1047,18 @@ const exchangeCard = (cardType: string) => {
   margin: 0;
   font-size: 16px;
   font-weight: 500;
-  color: #6B7280;
+  color: #6b7280;
 }
 
 .stat-number {
   font-size: 32px;
   font-weight: 700;
-  color: #1F2937;
+  color: #1f2937;
   margin-bottom: 8px;
 }
 
 .stat-subtitle {
-  color: #6B7280;
+  color: #6b7280;
   font-size: 14px;
 }
 
@@ -1039,12 +1092,12 @@ const exchangeCard = (cardType: string) => {
   margin: 0;
   font-size: 24px;
   font-weight: 600;
-  color: #6B7280;
+  color: #6b7280;
 }
 
 .placeholder-content p {
   margin: 0;
-  color: #9CA3AF;
+  color: #9ca3af;
   font-size: 16px;
   max-width: 400px;
 }
@@ -1054,52 +1107,52 @@ const exchangeCard = (cardType: string) => {
   .profile-page {
     padding: 12px;
   }
-  
+
   .profile-layout {
     flex-direction: column;
     gap: 16px;
   }
-  
+
   .sidebar-card {
     width: 100%;
   }
-  
+
   .user-avatar-section {
     flex-direction: row;
     text-align: left;
   }
-  
+
   .nav-list {
     display: flex;
     overflow-x: auto;
     gap: 8px;
     padding: 12px;
   }
-  
+
   .nav-list .q-item {
     flex-shrink: 0;
     margin-bottom: 0;
     margin-right: 8px;
   }
-  
+
   .main-content-area {
     padding: 20px;
   }
-  
+
   .section-header {
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
   }
-  
+
   .tasks-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .exchange-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .dashboard-stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1109,12 +1162,12 @@ const exchangeCard = (cardType: string) => {
   .dashboard-stats {
     grid-template-columns: 1fr;
   }
-  
+
   .task-header {
     flex-direction: column;
     gap: 12px;
   }
-  
+
   .task-actions {
     justify-content: center;
   }

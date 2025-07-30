@@ -2,7 +2,11 @@
   <q-toolbar class="header-toolbar">
     <div class="header-container">
       <!-- Logo -->
-      <div class="logo-section" @click="router.push('/')" style="cursor: pointer">
+      <div
+        class="logo-section"
+        @click="router.push('/')"
+        style="cursor: pointer"
+      >
         <div class="logo-icon">
           <q-icon name="computer" size="24px" color="white" />
         </div>
@@ -33,7 +37,9 @@
         <router-link to="/" class="nav-link">Trang chủ</router-link>
         <router-link to="/about" class="nav-link">Giới thiệu</router-link>
         <router-link to="/challenge" class="nav-link">Thử thách</router-link>
-        <router-link to="/profile" class="nav-link" v-if="authStore.isLoggedIn">Profile</router-link>
+        <router-link to="/profile" class="nav-link" v-if="authStore.isLoggedIn"
+          >Profile</router-link
+        >
       </div>
 
       <!-- User Stats & Profile -->
@@ -137,10 +143,12 @@
               color="primary"
               label="✨ Đăng ký Demo (Phước Thông)"
               class="full-width q-py-sm"
-              @click="handleRegister({
-                name: 'Phước Thông',
-                email: 'phuocthoang@demo.com',
-              })"
+              @click="
+                handleRegister({
+                  name: 'Phước Thông',
+                  email: 'phuocthoang@demo.com',
+                })
+              "
               no-caps
             />
             <div class="text-center q-mt-sm text-caption text-grey-6">
@@ -301,7 +309,12 @@ const handleLogout = () => {
 
 .logo-text {
   color: #111827;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 28px;
@@ -317,7 +330,12 @@ const handleLogout = () => {
 
 .nav-link {
   color: #374151;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -329,12 +347,12 @@ const handleLogout = () => {
 }
 
 .nav-link:hover {
-  background: #F3F4F6;
+  background: #f3f4f6;
   color: #111827;
 }
 
 .nav-link.router-link-active {
-  color: #2563EB;
+  color: #2563eb;
   font-weight: 600;
 }
 
@@ -359,32 +377,52 @@ const handleLogout = () => {
 }
 
 .stat-text {
-  color: #4B5563;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #4b5563;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
 }
 
 .stat-number {
-  color: #16A34A;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #16a34a;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
 }
 
 .stat-label {
-  color: #4B5563;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #4b5563;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
 }
 
 .stat-streak {
-  color: #2563EB;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #2563eb;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -403,16 +441,26 @@ const handleLogout = () => {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #6D28D9;
+  background: #6d28d9;
   color: white;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
 }
 
 .user-name {
   color: #111827;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -421,11 +469,16 @@ const handleLogout = () => {
 
 .logout-btn {
   padding: 10px 12px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #e2e8f0;
   background: white;
   border-radius: 6px;
   color: black;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
@@ -433,7 +486,7 @@ const handleLogout = () => {
 }
 
 .logout-btn:hover {
-  background: #F8F9FA;
+  background: #f8f9fa;
 }
 
 /* Responsive Design */
@@ -441,11 +494,11 @@ const handleLogout = () => {
   .header-container {
     gap: 16px;
   }
-  
+
   .navigation {
     gap: 16px;
   }
-  
+
   .user-stats {
     gap: 12px;
   }
@@ -455,27 +508,27 @@ const handleLogout = () => {
   .header-toolbar {
     padding: 12px 16px;
   }
-  
+
   .header-container {
     gap: 12px;
   }
-  
+
   .navigation {
     display: none;
   }
-  
+
   .user-stats {
     gap: 8px;
   }
-  
+
   .stat-item {
     gap: 2px;
   }
-  
+
   .logo-text {
     font-size: 18px;
   }
-  
+
   .user-name {
     display: none;
   }
@@ -485,7 +538,7 @@ const handleLogout = () => {
   .header-container {
     gap: 8px;
   }
-  
+
   .user-stats {
     display: none;
   }

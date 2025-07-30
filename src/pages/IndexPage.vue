@@ -26,10 +26,10 @@
             Học Tiếng Anh Thông Qua
             <span class="gradient-text">Trò Chuyện AI</span>
           </h1>
-          
+
           <p class="hero-description">
-            🤖 Khám phá cách học tiếng Anh hiệu quả nhất với AI chatbot thông minh, 
-            thách đấu bạn bè và hệ thống phần thưởng hấp dẫn.
+            🤖 Khám phá cách học tiếng Anh hiệu quả nhất với AI chatbot thông
+            minh, thách đấu bạn bè và hệ thống phần thưởng hấp dẫn.
           </p>
 
           <!-- CTA Buttons -->
@@ -121,7 +121,8 @@
             Tại Sao Chọn Lingo?
           </h2>
           <p class="section-subtitle">
-            Những tính năng độc đáo giúp bạn học tiếng Anh hiệu quả và thú vị hơn bao giờ hết
+            Những tính năng độc đáo giúp bạn học tiếng Anh hiệu quả và thú vị
+            hơn bao giờ hết
           </p>
         </div>
 
@@ -136,11 +137,12 @@
               </div>
               <h3 class="feature-title">AI Chatbot Thông Minh</h3>
               <p class="feature-description">
-                Học tiếng Anh qua trò chuyện tự nhiên với AI bot được thiết kế đặc biệt
+                Học tiếng Anh qua trò chuyện tự nhiên với AI bot được thiết kế
+                đặc biệt
               </p>
-              <q-btn 
-                flat 
-                color="blue-6" 
+              <q-btn
+                flat
+                color="blue-6"
                 label="Tìm hiểu thêm"
                 icon-right="arrow_forward"
                 class="feature-btn"
@@ -158,11 +160,12 @@
               </div>
               <h3 class="feature-title">Thách Đấu Bạn Bè</h3>
               <p class="feature-description">
-                Cạnh tranh với bạn bè trong các cuộc thi tiếng Anh thú vị và hấp dẫn
+                Cạnh tranh với bạn bè trong các cuộc thi tiếng Anh thú vị và hấp
+                dẫn
               </p>
-              <q-btn 
-                flat 
-                color="purple-6" 
+              <q-btn
+                flat
+                color="purple-6"
                 label="Tìm hiểu thêm"
                 icon-right="arrow_forward"
                 class="feature-btn"
@@ -182,9 +185,9 @@
               <p class="feature-description">
                 Theo dõi tiến bộ và cạnh tranh với hàng nghìn người học khác
               </p>
-              <q-btn 
-                flat 
-                color="orange-6" 
+              <q-btn
+                flat
+                color="orange-6"
                 label="Tìm hiểu thêm"
                 icon-right="arrow_forward"
                 class="feature-btn"
@@ -204,9 +207,9 @@
               <p class="feature-description">
                 Hoàn thành các nhiệm vụ để duy trì động lực và nhận phần thưởng
               </p>
-              <q-btn 
-                flat 
-                color="green-6" 
+              <q-btn
+                flat
+                color="green-6"
                 label="Tìm hiểu thêm"
                 icon-right="arrow_forward"
                 class="feature-btn"
@@ -226,9 +229,9 @@
               <p class="feature-description">
                 Quy đổi điểm thành thẻ cào điện thoại và nhiều phần quà khác
               </p>
-              <q-btn 
-                flat 
-                color="red-6" 
+              <q-btn
+                flat
+                color="red-6"
                 label="Tìm hiểu thêm"
                 icon-right="arrow_forward"
                 class="feature-btn"
@@ -248,9 +251,9 @@
               <p class="feature-description">
                 Theo dõi chi tiết quá trình học tập với biểu đồ và báo cáo
               </p>
-              <q-btn 
-                flat 
-                color="teal-6" 
+              <q-btn
+                flat
+                color="teal-6"
                 label="Tìm hiểu thêm"
                 icon-right="arrow_forward"
                 class="feature-btn"
@@ -360,7 +363,12 @@
     </section>
 
     <!-- Login Dialog -->
-    <q-dialog v-model="showLoginDialog" persistent transition-show="scale" transition-hide="scale">
+    <q-dialog
+      v-model="showLoginDialog"
+      persistent
+      transition-show="scale"
+      transition-hide="scale"
+    >
       <q-card style="min-width: 400px" class="login-dialog">
         <q-card-section class="dialog-header">
           <div class="dialog-title">
@@ -401,7 +409,12 @@
     </q-dialog>
 
     <!-- Register Dialog -->
-    <q-dialog v-model="showRegisterDialog" persistent transition-show="scale" transition-hide="scale">
+    <q-dialog
+      v-model="showRegisterDialog"
+      persistent
+      transition-show="scale"
+      transition-hide="scale"
+    >
       <q-card style="min-width: 400px" class="register-dialog">
         <q-card-section class="dialog-header">
           <div class="dialog-title">
@@ -422,10 +435,12 @@
             class="full-width q-py-md"
             unelevated
             rounded
-            @click="handleRegister({
-              name: 'Phước Thông',
-              email: 'phuocthoang@demo.com',
-            })"
+            @click="
+              handleRegister({
+                name: 'Phước Thông',
+                email: 'phuocthoang@demo.com',
+              })
+            "
           />
           <div class="text-center q-mt-sm text-caption text-grey-6">
             Click để tạo tài khoản demo và trải nghiệm ngay
@@ -482,7 +497,7 @@ const handleLogin = (userData: { name: string; email: string }) => {
     message: `🎉 Chào mừng ${userData.name}!`,
     position: "top",
     timeout: 3000,
-    actions: [{ icon: 'close', color: 'white' }]
+    actions: [{ icon: "close", color: "white" }],
   });
   router.push("/profile");
 };
@@ -496,7 +511,7 @@ const handleRegister = (userData: { name: string; email: string }) => {
     message: `🚀 Đăng ký thành công! Chào mừng ${userData.name}!`,
     position: "top",
     timeout: 3000,
-    actions: [{ icon: 'close', color: 'white' }]
+    actions: [{ icon: "close", color: "white" }],
   });
   router.push("/profile");
 };
@@ -562,14 +577,35 @@ const doLogin = () => {
   animation: float 6s ease-in-out infinite;
 }
 
-.float-1 { top: 20%; left: 10%; animation-delay: 0s; }
-.float-2 { top: 30%; right: 15%; animation-delay: 2s; }
-.float-3 { bottom: 30%; left: 20%; animation-delay: 4s; }
-.float-4 { bottom: 20%; right: 10%; animation-delay: 1s; }
+.float-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+.float-2 {
+  top: 30%;
+  right: 15%;
+  animation-delay: 2s;
+}
+.float-3 {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+.float-4 {
+  bottom: 20%;
+  right: 10%;
+  animation-delay: 1s;
+}
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(10deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
 }
 
 /* Hero Avatar with Pulse Effect */
@@ -879,7 +915,11 @@ const doLogin = () => {
 .timeline-connector {
   width: 4px;
   height: 40px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3)
+  );
   margin: 0 auto;
   border-radius: 2px;
 }
@@ -947,34 +987,34 @@ const doLogin = () => {
   .works-container {
     padding: 0 20px;
   }
-  
+
   .cta-buttons {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .primary-cta,
   .secondary-cta {
     width: 100%;
     max-width: 300px;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  
+
   .step-item {
     flex-direction: column;
     text-align: center;
     gap: 20px;
   }
-  
+
   .step-card {
     width: 100%;
   }
@@ -984,13 +1024,13 @@ const doLogin = () => {
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .stat-content {
     flex-direction: column;
     text-align: center;
     gap: 12px;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
   }
