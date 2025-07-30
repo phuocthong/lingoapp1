@@ -9,6 +9,25 @@
         <span class="logo-text">Logo</span>
       </div>
 
+      <!-- Login/Register when not logged in (left side) -->
+      <div class="left-auth-buttons" v-if="!authStore.isLoggedIn">
+        <q-btn
+          flat
+          label="Đăng nhập"
+          color="grey-7"
+          @click="handleLoginClick"
+          class="q-mr-sm"
+          no-caps
+        />
+        <q-btn
+          outline
+          label="Đăng ký"
+          color="primary"
+          @click="handleRegisterClick"
+          no-caps
+        />
+      </div>
+
       <!-- Navigation -->
       <div class="navigation">
         <router-link to="/" class="nav-link">Trang chủ</router-link>
