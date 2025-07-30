@@ -153,7 +153,7 @@
           <q-btn flat label="Hủy" @click="showRegisterDialog = false" no-caps />
           <q-btn
             flat
-            label="Đã có tài khoản? Đăng nhập"
+            label="��ã có tài khoản? Đăng nhập"
             color="primary"
             @click="switchToLogin"
             no-caps
@@ -278,8 +278,9 @@ const handleLogout = () => {
 .logo-icon {
   display: flex;
   padding: 8px;
-  border-radius: 8px;
-  background: #6D28D9;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .logo-text {
