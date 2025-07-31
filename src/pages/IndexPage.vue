@@ -267,51 +267,6 @@
       </div>
     </div>
 
-    <!-- Features Section -->
-    <div class="features-section q-mt-xl q-pt-xl text-center">
-      <div class="text-h4 text-weight-bold text-blue-grey-9 q-mb-md">
-        Học Tập Thông Minh<br />Cùng Bạn Bè
-      </div>
-      <div class="text-body1 text-grey-6 q-mb-xl" style="max-width: 600px; margin: 0 auto">
-        Khám phá kiến thức mới mỗi ngày với câu hỏi ngẫu nhiên, thử thách bạn bè và leo lên bảng xếp
-        hạng!
-      </div>
-
-      <div class="row justify-center q-gutter-lg">
-        <!-- Feature 1 -->
-        <q-card class="feature-card q-pa-lg text-center" style="width: 280px; height: 220px">
-          <div class="feature-icon bg-blue-6 q-mx-auto q-mb-md">
-            <q-icon name="school" color="white" size="24px" />
-          </div>
-          <div class="text-h6 text-weight-medium text-blue-grey-9 q-mb-sm">Học ngẫu nhiên</div>
-          <div class="text-body2 text-grey-6">
-            Khám phá kiến thức mới với câu hỏi được chọn ngẫu nhiên từ kho dữ liệu phong phú
-          </div>
-        </q-card>
-
-        <!-- Feature 2 -->
-        <q-card class="feature-card q-pa-lg text-center" style="width: 280px; height: 220px">
-          <div class="feature-icon bg-teal q-mx-auto q-mb-md">
-            <q-icon name="people" color="white" size="24px" />
-          </div>
-          <div class="text-h6 text-weight-medium text-blue-grey-9 q-mb-sm">Thử thách bạn bè</div>
-          <div class="text-body2 text-grey-6">
-            Tạo cuộc thi với bạn bè và xem ai là người giỏi nhất
-          </div>
-        </q-card>
-
-        <!-- Feature 3 -->
-        <q-card class="feature-card q-pa-lg text-center" style="width: 280px; height: 220px">
-          <div class="feature-icon bg-light-blue q-mx-auto q-mb-md">
-            <q-icon name="emoji_events" color="white" size="24px" />
-          </div>
-          <div class="text-h6 text-weight-medium text-blue-grey-9 q-mb-sm">Bảng xếp hạng</div>
-          <div class="text-body2 text-grey-6">
-            Theo dõi tiến trình và so sánh thành tích với người khác
-          </div>
-        </q-card>
-      </div>
-    </div>
   </q-page>
 </template>
 
@@ -319,68 +274,467 @@
 import { ref } from 'vue'
 
 const messageInput = ref('')
+
+const sendMessage = () => {
+  if (messageInput.value.trim()) {
+    // Handle message sending logic
+    console.log('Sending message:', messageInput.value)
+    messageInput.value = ''
+  }
+}
 </script>
 
 <style scoped>
-.chat-card {
-  height: 600px;
+.dashboard-page {
+  background: #f5f3ff;
+  padding: 24px;
+}
+
+.dashboard-container {
   display: flex;
-  flex-direction: column;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Chat Section */
+.chat-section {
+  flex: 1;
+  max-width: 728px;
+}
+
+.chat-card {
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.chat-header {
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 16px 24px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icon {
+  background: #6d28d9;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.header-subtitle {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
 }
 
 .chat-messages {
-  flex: 1;
-  overflow-y: auto;
+  padding: 16px 24px;
   max-height: 400px;
+  overflow-y: auto;
+}
+
+.message-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.bot-avatar {
+  background: #ede9fe;
+  color: #6d28d9;
+  flex-shrink: 0;
 }
 
 .message-bubble {
-  max-width: 70%;
+  background: #f3f4f6;
   border-radius: 8px;
+  padding: 12px 16px;
+  max-width: 400px;
 }
 
-.border-bottom {
-  border-bottom: 1px solid #e0e0e0;
+.bot-message {
+  background: #f3f4f6;
 }
 
-.border-blue-2 {
+.message-text {
+  font-size: 14px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.message-time {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.message-participants {
+  display: flex;
+  gap: -8px;
+  margin-top: 8px;
+}
+
+.participant-avatar {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: -8px;
+}
+
+.participant-avatar:first-child {
+  margin-left: 0;
+}
+
+.answer-display {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 24px;
+}
+
+.correct-answer {
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #166534;
+  font-size: 14px;
+  position: relative;
+}
+
+.answer-time {
+  color: #16a34a;
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: right;
+}
+
+.chat-input {
+  background: #f9fafb;
+  border-top: 1px solid #e2e8f0;
+  padding: 16px 24px;
+}
+
+.input-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.message-input {
+  flex: 1;
+}
+
+.send-btn {
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.status-text {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Sidebar Section */
+.sidebar-section {
+  width: 352px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.history-card,
+.leaderboard-card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 16px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.header-subtitle {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.trend-icon {
+  margin-left: auto;
+}
+
+.leaderboard-tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.tab-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.tab-btn.active {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+/* History Content */
+.history-content {
+  padding: 16px;
+}
+
+.history-item {
+  background: #eff6ff;
   border: 1px solid #dbeafe;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
 }
 
-.history-item:hover {
-  background-color: #f3f4f6 !important;
+.question-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.question-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.answer {
+  font-size: 12px;
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.time {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.question-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.correct-count {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.separator,
+.total-count {
+  color: #4b5563;
+}
+
+.details-link {
+  font-size: 12px;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+/* Leaderboard Content */
+.leaderboard-content {
+  padding: 16px;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
 }
 
 .leaderboard-item:hover {
   background-color: #f9fafb;
 }
 
-.features-section {
-  background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
-  border-radius: 20px;
-  padding: 60px 40px;
-  margin: 0 -24px;
+.rank-avatar {
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
 }
 
-.feature-card {
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+.rank-avatar.gold {
+  background: linear-gradient(135deg, #eab308 0%, #facc15 100%);
 }
 
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+.rank-avatar.silver {
+  background: linear-gradient(135deg, #9ca3af 0%, #d1d5db 100%);
 }
 
-.feature-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+.rank-avatar.bronze {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+}
+
+.rank-avatar.blue {
+  background: #3b82f6;
+}
+
+.player-info {
+  flex: 1;
+}
+
+.player-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.player-streak {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.player-score {
+  text-align: right;
+}
+
+.score-number {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.score-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Current User Rank */
+.current-user-rank {
+  background: #eff6ff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.user-rank-content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  background: #3b82f6;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.user-subtitle {
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.user-stats {
+  text-align: right;
+}
+
+.user-score {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.user-total {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: 16px;
+  }
+
+  .dashboard-container {
+    gap: 16px;
+  }
+
+  .chat-header,
+  .chat-messages,
+  .chat-input {
+    padding: 12px 16px;
+  }
+
+  .sidebar-section {
+    order: -1;
+  }
 }
 </style>
