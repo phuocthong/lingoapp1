@@ -15,6 +15,7 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: 'introduction', component: () => import('pages/IntroductionPage.vue') },
       { path: 'challenges', component: () => import('pages/ChallengesPage.vue') },
+      { path: 'waiting-room', component: () => import('pages/WaitingRoomPage.vue') },
       { path: 'profile', component: () => import('pages/ProfilePage.vue') },
       { path: 'friends', component: () => import('pages/FriendsPage.vue') },
       { path: 'add-friends', component: () => import('pages/AddFriendsPage.vue') },
