@@ -106,7 +106,7 @@
                 <path d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Tối đa 4 người</span>
+              <span>Tối đa {{ maxParticipants }} người</span>
             </div>
           </div>
         </div>
