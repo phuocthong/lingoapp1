@@ -123,7 +123,7 @@
                   <path d="M20.7715 20.05V18.2167C20.7709 17.4043 20.5005 16.6151 20.0027 15.973C19.505 15.3309 18.8081 14.8723 18.0215 14.6692" stroke="#020817" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M15.2715 3.66919C16.0602 3.87113 16.7593 4.32983 17.2585 4.97297C17.7577 5.61612 18.0287 6.40712 18.0287 7.22127C18.0287 8.03543 17.7577 8.82643 17.2585 9.46957C16.7593 10.1127 16.0602 10.5714 15.2715 10.7734" stroke="#020817" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <h3 class="section-title">Người tham gia (1/4)</h3>
+                <h3 class="section-title">Người tham gia ({{ participants }}/{{ maxParticipants }})</h3>
               </div>
               <div class="status-badge waiting">🟡 Chờ</div>
             </div>
