@@ -577,6 +577,7 @@ const startGame = () => {
     'Roboto',
     'Helvetica',
     sans-serif;
+  contain: layout style;
 }
 
 /* Header Navigation */
