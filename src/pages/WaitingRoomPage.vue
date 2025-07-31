@@ -214,10 +214,11 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
+const route = useRoute()
 
 // Room data
 const participants = ref(1)
@@ -226,6 +227,26 @@ const totalQuestions = ref(10)
 const timePerQuestion = ref(20)
 const roomOwner = ref('thong')
 const roomCode = ref('ABC')
+const roomName = ref('Phòng chờ')
+
+// Initialize room data from query params
+onMounted(() => {
+  if (route.query.roomCode) {
+    roomCode.value = route.query.roomCode
+  }
+  if (route.query.roomName) {
+    roomName.value = route.query.roomName
+  }
+  if (route.query.questions) {
+    totalQuestions.value = parseInt(route.query.questions)
+  }
+  if (route.query.timePerQuestion) {
+    timePerQuestion.value = parseInt(route.query.timePerQuestion)
+  }
+  if (route.query.maxPlayers) {
+    maxParticipants.value = parseInt(route.query.maxPlayers)
+  }
+})
 
 // Computed properties
 const canStartGame = computed(() => participants.value >= 2)
