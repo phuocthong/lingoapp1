@@ -71,8 +71,8 @@
       <div class="content-container">
         <!-- Room Header -->
         <div class="room-header">
-          <h1 class="room-title">🏠 Phòng chờ</h1>
-          <h2 class="room-code">ABC</h2>
+          <h1 class="room-title">🏠 {{ roomName }}</h1>
+          <h2 class="room-code">{{ roomCode }}</h2>
           
           <div class="room-stats">
             <div class="room-stat">
