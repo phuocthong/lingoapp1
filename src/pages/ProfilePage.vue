@@ -6,7 +6,7 @@
         <q-icon :name="sidebarCollapsed ? 'menu' : 'close'" />
       </div>
 
-      <div class="sidebar-content" v-if="!sidebarCollapsed">
+      <div class="sidebar-content" v-show="!sidebarCollapsed">
         <nav class="sidebar-nav">
           <div class="nav-item" :class="{ active: activeTab === 'dashboard' }" @click="navigateToTab('dashboard', '/dashboard')">
             <q-icon name="home" />
