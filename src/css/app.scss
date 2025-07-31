@@ -107,8 +107,26 @@ html, body {
 .grid,
 [class*="grid"],
 .participants-section,
-.content-grid {
+.content-grid,
+.stats-grid,
+.stats-row {
   contain: layout;
+}
+
+// Prevent ResizeObserver loops in common patterns
+.q-page-container,
+.q-layout-page,
+.waiting-room-page,
+.profile-page,
+.challenges-page {
+  contain: layout style;
+  will-change: auto;
+}
+
+// Optimize flex and grid layouts
+[class*="flex"],
+[class*="grid"] {
+  will-change: auto;
 }
 
 // Custom scrollbar for chat
