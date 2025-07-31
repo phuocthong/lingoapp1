@@ -14,7 +14,54 @@
         <div class="row items-center q-gutter-lg q-mr-lg">
           <div class="cursor-pointer text-body2 text-grey-7">Trang chủ</div>
           <div class="cursor-pointer text-body2 text-grey-7">Giới thiệu</div>
-          <div class="cursor-pointer text-body2 text-grey-7">Thử thách</div>
+
+          <!-- Thử thách with dropdown -->
+          <q-btn-dropdown
+            flat
+            no-caps
+            dropdown-icon="keyboard_arrow_down"
+            class="text-body2 text-grey-7"
+            style="padding: 4px 8px;"
+          >
+            <template v-slot:label>
+              <span class="text-body2 text-grey-7">Thử thách</span>
+            </template>
+
+            <q-list style="min-width: 200px">
+              <q-item clickable v-close-popup @click="$router.push('/challenges')">
+                <q-item-section avatar>
+                  <q-icon name="emoji_events" color="amber" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>Phòng th��� thách</q-item-label>
+                  <q-item-label caption>Tham gia hoặc tạo phòng</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-separator />
+
+              <q-item clickable v-close-popup>
+                <q-item-section avatar>
+                  <q-icon name="extension" color="purple" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>Thách đấu Bot</q-item-label>
+                  <q-item-label caption>Thử thách với AI</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item clickable v-close-popup>
+                <q-item-section avatar>
+                  <q-icon name="schedule" color="blue" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>Thử thách nhanh</q-item-label>
+                  <q-item-label caption>10 câu trong 5 phút</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+
           <div class="cursor-pointer text-body2 text-grey-7">Bạn bè</div>
         </div>
 
