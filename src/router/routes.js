@@ -18,9 +18,7 @@ const routes = [
   {
     path: '/profile',
     component: () => import('layouts/DashboardLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/ProfilePage.vue') },
-    ],
+    children: [{ path: '', component: () => import('pages/ProfilePage.vue') }],
   },
 
   // Always leave this as last one,
