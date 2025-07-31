@@ -105,156 +105,161 @@
         </q-card>
       </div>
 
-      <!-- Right side - Leaderboard and History -->
-      <div class="col-4">
-        <!-- Leaderboard Section -->
-        <q-card class="q-mb-lg">
-          <q-card-section class="border-bottom q-pa-md">
-            <div class="row items-center justify-between">
-              <div class="row items-center q-gutter-sm">
-                <q-icon name="emoji_events" size="20px" />
-                <div class="text-subtitle1 text-weight-medium">Bảng xếp hạng</div>
-              </div>
-              <q-icon name="trending_up" size="16px" />
+      <!-- Right side - Question History and Leaderboard -->
+      <div class="sidebar-section">
+        <!-- Question History -->
+        <q-card class="history-card">
+          <q-card-section class="card-header">
+            <div class="header-content">
+              <q-icon name="history" size="20px" />
+              <div class="header-title">Lịch sử câu hỏi</div>
             </div>
-
-            <div class="row q-gutter-xs q-mt-sm">
-              <q-chip size="sm" color="purple-2" text-color="purple-8" class="text-weight-medium"
-                >Tổng</q-chip
-              >
-              <q-chip size="sm" color="grey-3" text-color="grey-7">Tuần</q-chip>
-              <q-chip size="sm" color="grey-3" text-color="grey-7">Tháng</q-chip>
-              <q-chip size="sm" color="grey-3" text-color="grey-7">Năm</q-chip>
-            </div>
+            <div class="header-subtitle">20 câu hỏi gần nhất</div>
           </q-card-section>
 
-          <q-card-section class="q-pa-md">
-            <!-- Leaderboard Item 1 -->
-            <div class="leaderboard-item row items-center q-gutter-sm q-mb-md q-pa-sm rounded">
-              <q-icon name="emoji_events" color="amber" size="16px" />
-              <q-avatar size="32px" class="bg-amber text-white text-weight-bold">MA</q-avatar>
-              <div class="col">
-                <div class="text-body2 text-weight-medium">Minh Anh</div>
-                <div class="text-caption text-grey-6">Streak: 15</div>
+          <q-card-section class="history-content">
+            <!-- History Item 1 -->
+            <div class="history-item">
+              <div class="question-title">Dịch từ "Beautiful" sang tiếng Việt</div>
+              <div class="question-meta">
+                <span class="answer">Đáp án: " đẹp "</span>
+                <span class="time">10:30 - 26/07/2024</span>
               </div>
-              <div class="text-right">
-                <div class="text-h6 text-weight-bold">2,456</div>
-                <div class="text-caption text-grey-6">Câu đúng</div>
-              </div>
-            </div>
-
-            <!-- Leaderboard Item 2 -->
-            <div class="leaderboard-item row items-center q-gutter-sm q-mb-md q-pa-sm rounded">
-              <q-icon name="emoji_events" color="grey-5" size="16px" style="opacity: 0.2" />
-              <q-avatar size="32px" class="bg-grey text-white text-weight-bold">TH</q-avatar>
-              <div class="col">
-                <div class="text-body2 text-weight-medium">Thành Hòa</div>
-                <div class="text-caption text-grey-6">Streak: 23</div>
-              </div>
-              <div class="text-right">
-                <div class="text-h6 text-weight-bold">2,195</div>
-                <div class="text-caption text-grey-6">Câu đúng</div>
+              <div class="question-stats">
+                <div class="stats-left">
+                  <q-icon name="people" size="12px" />
+                  <span class="correct-count">15 đúng</span>
+                  <span class="separator">/</span>
+                  <span class="total-count">23 trả lời</span>
+                </div>
+                <div class="details-link">▼ Xem chi tiết</div>
               </div>
             </div>
 
-            <!-- Leaderboard Item 3 -->
-            <div class="leaderboard-item row items-center q-gutter-sm q-mb-md q-pa-sm rounded">
-              <q-icon name="emoji_events" color="orange" size="16px" />
-              <q-avatar size="32px" class="bg-orange text-white text-weight-bold">VN</q-avatar>
-              <div class="col">
-                <div class="text-body2 text-weight-medium">Văn Nam</div>
-                <div class="text-caption text-grey-6">Streak: 12</div>
+            <!-- History Item 2 -->
+            <div class="history-item">
+              <div class="question-title">Dịch từ "Happy" sang tiếng Việt</div>
+              <div class="question-meta">
+                <span class="answer">Đáp án: " hạnh phúc "</span>
+                <span class="time">10:25 - 26/07/2024</span>
               </div>
-              <div class="text-right">
-                <div class="text-h6 text-weight-bold">1,957</div>
-                <div class="text-caption text-grey-6">Câu đúng</div>
+              <div class="question-stats">
+                <div class="stats-left">
+                  <q-icon name="people" size="12px" />
+                  <span class="correct-count">12 đúng</span>
+                  <span class="separator">/</span>
+                  <span class="total-count">18 trả lời</span>
+                </div>
+                <div class="details-link">▼ Xem chi tiết</div>
               </div>
             </div>
 
-            <!-- Leaderboard Item 4 -->
-            <div class="leaderboard-item row items-center q-gutter-sm q-pa-sm rounded">
-              <q-icon name="star" color="blue" size="12px" />
-              <q-avatar size="32px" class="bg-blue text-white text-weight-bold">TT</q-avatar>
-              <div class="col">
-                <div class="text-body2 text-weight-medium">Thu Trang</div>
-                <div class="text-caption text-grey-6">Streak: 8</div>
+            <!-- History Item 3 -->
+            <div class="history-item">
+              <div class="question-title">Dịch từ "Wonderful" sang tiếng Việt</div>
+              <div class="question-meta">
+                <span class="answer">Đáp án: " tuyệt vời "</span>
+                <span class="time">10:20 - 26/07/2024</span>
               </div>
-              <div class="text-right">
-                <div class="text-h6 text-weight-bold">1,834</div>
-                <div class="text-caption text-grey-6">Câu đúng</div>
+              <div class="question-stats">
+                <div class="stats-left">
+                  <q-icon name="people" size="12px" />
+                  <span class="correct-count">18 đúng</span>
+                  <span class="separator">/</span>
+                  <span class="total-count">25 trả lời</span>
+                </div>
+                <div class="details-link">▼ Xem chi tiết</div>
               </div>
             </div>
           </q-card-section>
         </q-card>
 
-        <!-- History Section -->
-        <q-card>
-          <q-card-section class="border-bottom q-pa-md">
-            <div class="row items-center q-gutter-sm">
-              <q-icon name="history" size="20px" />
-              <div class="text-subtitle1 text-weight-medium">Lịch sử câu hỏi</div>
+        <!-- Leaderboard -->
+        <q-card class="leaderboard-card">
+          <q-card-section class="card-header">
+            <div class="header-content">
+              <q-icon name="emoji_events" size="20px" />
+              <div class="header-title">Bảng xếp hạng</div>
+              <q-icon name="trending_up" size="16px" class="trend-icon" />
             </div>
-            <div class="text-caption text-grey-6">20 câu hỏi gần nhất</div>
+
+            <div class="leaderboard-tabs">
+              <q-btn flat size="sm" class="tab-btn active" no-caps>Tổng</q-btn>
+              <q-btn flat size="sm" class="tab-btn" no-caps>Tuần</q-btn>
+              <q-btn flat size="sm" class="tab-btn" no-caps>Tháng</q-btn>
+              <q-btn flat size="sm" class="tab-btn" no-caps>Năm</q-btn>
+            </div>
           </q-card-section>
 
-          <q-card-section class="q-pa-md">
-            <!-- History Item 1 -->
-            <div class="history-item bg-blue-1 q-pa-sm q-mb-sm rounded border-blue-2">
-              <div class="text-body2 text-weight-medium q-mb-xs">
-                Dịch từ "Beautiful" sang tiếng Việt
+          <q-card-section class="leaderboard-content">
+            <!-- Leaderboard Item 1 -->
+            <div class="leaderboard-item first-place">
+              <q-icon name="emoji_events" color="amber" size="16px" />
+              <q-avatar size="32px" class="rank-avatar gold">MA</q-avatar>
+              <div class="player-info">
+                <div class="player-name">Minh Anh</div>
+                <div class="player-streak">Streak: 15</div>
               </div>
-              <div class="row justify-between items-center q-mb-xs">
-                <div class="text-caption text-green-7">Đáp án: "đẹp"</div>
-                <div class="text-caption text-grey-6">10:30 - 26/07/2024</div>
-              </div>
-              <div class="row justify-between items-center">
-                <div class="row items-center q-gutter-xs">
-                  <q-icon name="people" size="12px" />
-                  <span class="text-caption text-green-7">15 đúng</span>
-                  <span class="text-caption text-grey-6">/</span>
-                  <span class="text-caption text-grey-6">23 trả lời</span>
-                </div>
-                <div class="text-caption text-blue-6 cursor-pointer">▼ Xem chi tiết</div>
+              <div class="player-score">
+                <div class="score-number">2,456</div>
+                <div class="score-label">Câu đúng</div>
               </div>
             </div>
 
-            <!-- History Item 2 -->
-            <div class="history-item bg-blue-1 q-pa-sm q-mb-sm rounded border-blue-2">
-              <div class="text-body2 text-weight-medium q-mb-xs">
-                Dịch từ "Happy" sang tiếng Việt
+            <!-- Leaderboard Item 2 -->
+            <div class="leaderboard-item second-place">
+              <q-icon name="emoji_events" color="grey-5" size="16px" style="opacity: 0.2" />
+              <q-avatar size="32px" class="rank-avatar silver">TH</q-avatar>
+              <div class="player-info">
+                <div class="player-name">Thành Hòa</div>
+                <div class="player-streak">Streak: 23</div>
               </div>
-              <div class="row justify-between items-center q-mb-xs">
-                <div class="text-caption text-green-7">Đáp án: "hạnh phúc"</div>
-                <div class="text-caption text-grey-6">10:25 - 26/07/2024</div>
-              </div>
-              <div class="row justify-between items-center">
-                <div class="row items-center q-gutter-xs">
-                  <q-icon name="people" size="12px" />
-                  <span class="text-caption text-green-7">12 đúng</span>
-                  <span class="text-caption text-grey-6">/</span>
-                  <span class="text-caption text-grey-6">18 trả lời</span>
-                </div>
-                <div class="text-caption text-blue-6 cursor-pointer">▼ Xem chi tiết</div>
+              <div class="player-score">
+                <div class="score-number">2,195</div>
+                <div class="score-label">Câu đúng</div>
               </div>
             </div>
 
-            <!-- History Item 3 -->
-            <div class="history-item bg-blue-1 q-pa-sm rounded border-blue-2">
-              <div class="text-body2 text-weight-medium q-mb-xs">
-                Dịch từ "Wonderful" sang tiếng Việt
+            <!-- Leaderboard Item 3 -->
+            <div class="leaderboard-item third-place">
+              <q-icon name="emoji_events" color="orange" size="16px" />
+              <q-avatar size="32px" class="rank-avatar bronze">VN</q-avatar>
+              <div class="player-info">
+                <div class="player-name">Văn Nam</div>
+                <div class="player-streak">Streak: 12</div>
               </div>
-              <div class="row justify-between items-center q-mb-xs">
-                <div class="text-caption text-green-7">Đáp án: "tuyệt vời"</div>
-                <div class="text-caption text-grey-6">10:20 - 26/07/2024</div>
+              <div class="player-score">
+                <div class="score-number">1,957</div>
+                <div class="score-label">Câu đúng</div>
               </div>
-              <div class="row justify-between items-center">
-                <div class="row items-center q-gutter-xs">
-                  <q-icon name="people" size="12px" />
-                  <span class="text-caption text-green-7">18 đúng</span>
-                  <span class="text-caption text-grey-6">/</span>
-                  <span class="text-caption text-grey-6">25 trả lời</span>
+            </div>
+
+            <!-- Leaderboard Item 4 -->
+            <div class="leaderboard-item">
+              <q-icon name="star" color="blue" size="12px" />
+              <q-avatar size="32px" class="rank-avatar blue">TT</q-avatar>
+              <div class="player-info">
+                <div class="player-name">Thu Trang</div>
+                <div class="player-streak">Streak: 8</div>
+              </div>
+              <div class="player-score">
+                <div class="score-number">1,834</div>
+                <div class="score-label">câu đúng</div>
+              </div>
+            </div>
+
+            <!-- Current User -->
+            <div class="current-user-rank">
+              <div class="user-rank-content">
+                <q-avatar size="32px" class="user-avatar">ND</q-avatar>
+                <div class="user-info">
+                  <div class="user-title">Hạng của bạn: # 45</div>
+                  <div class="user-subtitle">523 câu đúng • Top 4 %</div>
                 </div>
-                <div class="text-caption text-blue-6 cursor-pointer">▼ Xem chi tiết</div>
+                <div class="user-stats">
+                  <div class="user-score">523</div>
+                  <div class="user-total">/ 1,250 người chơi</div>
+                </div>
               </div>
             </div>
           </q-card-section>
