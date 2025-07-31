@@ -1,40 +1,7 @@
 <template>
-  <q-page class="bg-white">
-    <!-- User Stats Header -->
-    <div class="row items-center justify-between q-px-lg q-py-md bg-white border-bottom">
-      <div class="row items-center q-gutter-md">
-        <!-- Trophy and Rank -->
-        <div class="row items-center q-gutter-xs">
-          <q-icon name="emoji_events" size="16px" color="grey-6" />
-          <span class="text-body2 text-grey-6"># 45</span>
-        </div>
-
-        <!-- Score -->
-        <div class="row items-center q-gutter-xs">
-          <span class="text-body2 text-green-7 text-weight-medium">523</span>
-          <span class="text-body2 text-grey-6">đúng</span>
-        </div>
-
-        <!-- Streak -->
-        <div class="row items-center q-gutter-xs">
-          <span class="text-body2 text-grey-6">Streak:</span>
-          <span class="text-body2 text-blue-6 text-weight-medium">7</span>
-        </div>
-      </div>
-
-      <!-- User Info and Logout -->
-      <div class="row items-center q-gutter-sm">
-        <q-avatar size="32px" class="bg-purple-7 text-white">ND</q-avatar>
-        <span class="text-subtitle1 text-weight-medium">Người dùng</span>
-        <q-btn outline size="sm" no-caps class="q-ml-sm" @click="logout">
-          <q-icon name="logout" size="16px" class="q-mr-xs" />
-          Đăng xuất
-        </q-btn>
-      </div>
-    </div>
-
+  <q-page class="challenges-page">
     <!-- Main Content -->
-    <div class="q-pa-lg">
+    <div class="challenges-container">
       <!-- Header -->
       <div class="text-center q-mb-xl">
         <div class="text-h3 text-weight-regular text-grey-9 q-mb-md">
@@ -300,7 +267,7 @@ const showResultsModal = ref(false)
 const topPlayers = ref([
   { name: 'Minh Anh', time: '10:31' },
   { name: 'Thành Hòa', time: '10:31' },
-  { name: 'Văn Nam', time: '10:32' },
+  { name: 'V��n Nam', time: '10:32' },
   { name: 'Thu Trang', time: '10:32' },
   { name: 'Đức Minh', time: '10:33' },
   { name: 'Lan Anh', time: '10:33' },
