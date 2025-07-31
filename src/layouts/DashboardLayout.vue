@@ -18,13 +18,6 @@
           <q-btn flat no-caps class="nav-btn" @click="$router.push('/challenges')">
             Thử thách
           </q-btn>
-          <q-btn flat no-caps class="nav-btn"> Bạn bè </q-btn>
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard/tasks')">
-            Nhiệm vụ
-          </q-btn>
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard/rewards')">
-            Đổi điểm
-          </q-btn>
         </div>
 
         <q-space />
