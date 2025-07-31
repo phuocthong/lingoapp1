@@ -11,11 +11,11 @@
 
         <!-- Navigation -->
         <div class="header-nav">
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/')"> Trang chủ </q-btn>
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/introduction')">
+          <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard')"> Trang chủ </q-btn>
+          <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard/introduction')">
             Giới thiệu
           </q-btn>
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/challenges')">
+          <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard/challenges')">
             Thử thách
           </q-btn>
         </div>
