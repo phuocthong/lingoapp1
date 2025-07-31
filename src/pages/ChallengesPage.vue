@@ -64,7 +64,7 @@
                 </div>
 
                 <!-- Room Title -->
-                <h4 class="room-title">�� Cuộc thi từ vựng cơ bản</h4>
+                <h4 class="room-title">🏆 Cuộc thi từ vựng cơ bản</h4>
 
                 <!-- Room Stats -->
                 <div class="room-stats">
@@ -329,6 +329,20 @@ import { ref } from 'vue'
 
 const searchQuery = ref('')
 const showResultsModal = ref(false)
+const showCreateRoomModal = ref(false)
+
+// Room creation settings
+const roomSettings = ref({
+  name: '',
+  maxPlayers: 4,
+  questions: 10,
+  timePerQuestion: 20
+})
+
+// Options for room settings
+const playerOptions = [4, 6, 8, 10]
+const questionOptions = [10, 15, 20, 25]
+const timeOptions = [20, 30, 45, 60]
 
 const topPlayers = ref([
   { name: 'Minh Anh', time: '10:31' },
@@ -342,8 +356,31 @@ const topPlayers = ref([
 ])
 
 function createRoom() {
-  console.log('Creating new room...')
-  // Add create room logic
+  showCreateRoomModal.value = true
+}
+
+function confirmCreateRoom() {
+  console.log('Creating room with settings:', roomSettings.value)
+  // Add actual room creation logic here
+  showCreateRoomModal.value = false
+  // Reset form
+  roomSettings.value = {
+    name: '',
+    maxPlayers: 4,
+    questions: 10,
+    timePerQuestion: 20
+  }
+}
+
+function cancelCreateRoom() {
+  showCreateRoomModal.value = false
+  // Reset form
+  roomSettings.value = {
+    name: '',
+    maxPlayers: 4,
+    questions: 10,
+    timePerQuestion: 20
+  }
 }
 
 function joinRoom(roomId) {
