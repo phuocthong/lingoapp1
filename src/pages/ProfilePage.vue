@@ -217,7 +217,11 @@ const toggleSidebar = () => {
 
 const setActiveTab = (tab) => {
   activeTab.value = tab
-  // Handle tab navigation logic here
+}
+
+const navigateToTab = (tab, route) => {
+  setActiveTab(tab)
+  router.push(route)
 }
 
 const editProfile = () => {
