@@ -1,78 +1,105 @@
 <template>
-  <q-page class="q-pa-lg">
-    <div class="row q-gutter-lg">
+  <q-page class="dashboard-page">
+    <div class="dashboard-container">
       <!-- Left side - Chat Interface -->
-      <div class="col-8">
+      <div class="chat-section">
         <q-card class="chat-card">
           <!-- Chat Header -->
-          <q-card-section class="bg-white border-bottom q-pa-md">
-            <div class="row items-center q-gutter-sm">
-              <q-icon name="extension" size="20px" class="bg-purple-7 text-white q-pa-xs rounded" />
-              <div>
-                <div class="text-subtitle1 text-weight-medium">Thách đấu với Bot</div>
-                <div class="text-caption text-grey-6">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
+          <q-card-section class="chat-header">
+            <div class="header-content">
+              <q-icon name="extension" class="header-icon" />
+              <div class="header-info">
+                <div class="header-title">Thách đấu với Bot</div>
+                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
               </div>
             </div>
           </q-card-section>
 
           <!-- Chat Messages -->
-          <q-card-section class="chat-messages q-pa-md">
+          <q-card-section class="chat-messages">
             <!-- Bot Message 1 -->
-            <div class="row q-gutter-sm q-mb-md">
-              <q-avatar size="32px" class="bg-purple-2">
+            <div class="message-row">
+              <q-avatar size="32px" class="bot-avatar">
                 <q-icon name="extension" size="16px" />
               </q-avatar>
-              <div class="message-bubble bg-grey-3 q-pa-sm rounded">
-                <div class="text-body2">
-                  Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các
-                  bạn trả lời.
+              <div class="message-bubble bot-message">
+                <div class="message-text">
+                  Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các bạn trả lời.
                 </div>
-                <div class="text-caption text-grey-6 q-mt-xs">21:57</div>
+                <div class="message-time">21:23</div>
               </div>
             </div>
 
             <!-- Bot Message 2 -->
-            <div class="row q-gutter-sm">
-              <q-avatar size="32px" class="bg-purple-2">
+            <div class="message-row">
+              <q-avatar size="32px" class="bot-avatar">
                 <q-icon name="extension" size="16px" />
               </q-avatar>
-              <div class="message-bubble bg-grey-3 q-pa-sm rounded">
-                <div class="text-body2">Dịch từ "Wonderful" sang tiếng Việt</div>
-                <div class="text-caption text-grey-6 q-mt-xs">21:57</div>
+              <div class="message-bubble bot-message">
+                <div class="message-text">Dịch từ "Intelligent" sang tiếng Việt</div>
+                <div class="message-time">21:23</div>
+                <div class="message-participants">
+                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=38" alt="User 1" class="participant-avatar" />
+                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=38" alt="User 2" class="participant-avatar" />
+                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=38" alt="User 3" class="participant-avatar" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Correct Answer Display -->
+            <div class="answer-display">
+              <div class="correct-answer">
+                Đáp án đúng là: "thông minh"
+                <div class="answer-time">21:23</div>
+              </div>
+            </div>
+
+            <!-- Bot Message 3 -->
+            <div class="message-row">
+              <q-avatar size="32px" class="bot-avatar">
+                <q-icon name="extension" size="16px" />
+              </q-avatar>
+              <div class="message-bubble bot-message">
+                <div class="message-text">Dịch từ "Amazing" sang tiếng Việt</div>
+                <div class="message-time">21:23</div>
+                <div class="message-participants">
+                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/afd6b1f2255dd111fa11b26060334ab2b8550b68?width=34" alt="User 1" class="participant-avatar" />
+                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/57601513ec477a7832bf1a848cd546ad59d68b24?width=34" alt="User 2" class="participant-avatar" />
+                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/a799c61d39d6c04d560750f802eb88c5ea24ee80?width=34" alt="User 3" class="participant-avatar" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Answer Display 2 -->
+            <div class="answer-display">
+              <div class="correct-answer">
+                Đáp án đúng là: "tuyệt vời"
+                <div class="answer-time">21:24</div>
               </div>
             </div>
           </q-card-section>
 
           <!-- Input Area -->
-          <q-card-section class="bg-grey-2 q-pa-md">
-            <div class="row items-center q-gutter-sm q-mb-sm">
+          <q-card-section class="chat-input">
+            <div class="input-container">
               <q-input
                 v-model="messageInput"
-                placeholder="Đăng nhập để tham gia trả lời..."
+                placeholder="Nhập câu trả lời của bạn..."
                 outlined
-                class="col"
-                disable
-                bg-color="grey-3"
-                style="opacity: 0.5"
+                class="message-input"
+                @keyup.enter="sendMessage"
               />
-              <q-btn icon="lock" color="blue-6" style="opacity: 0.5" disable />
+              <q-btn
+                icon="send"
+                color="primary"
+                class="send-btn"
+                @click="sendMessage"
+              />
             </div>
 
-            <div class="row items-center justify-center q-gutter-xs q-mb-sm">
-              <q-icon name="fiber_manual_record" color="red" size="8px" />
-              <div class="text-caption text-grey-6">
-                Vui lòng đăng nhập để tham gia trả lời câu hỏi
-              </div>
-            </div>
-
-            <div class="row justify-center q-gutter-sm">
-              <q-btn outline color="purple" size="sm" no-caps class="text-purple-8">
-                Đăng ký miễn phí
-              </q-btn>
-              <q-btn color="blue-6" size="sm" no-caps>
-                <q-icon name="login" size="16px" class="q-mr-xs" />
-                Đăng nhập ngay
-              </q-btn>
+            <div class="status-indicator">
+              <q-icon name="fiber_manual_record" color="green" size="8px" />
+              <span class="status-text">Đăng nhập với tên: Người dùng</span>
             </div>
           </q-card-section>
         </q-card>
