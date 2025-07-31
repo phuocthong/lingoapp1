@@ -1,1 +1,143 @@
 // app global css in SCSS form
+
+// Import Quasar's default styles
+@import 'quasar.variables.scss';
+
+// Custom styles
+.q-page {
+  font-family: 'Inter', 'Roboto', sans-serif;
+}
+
+// Purple theme colors
+.bg-purple-1 {
+  background-color: #f5f3ff !important;
+}
+
+.bg-purple-2 {
+  background-color: #ede9fe !important;
+}
+
+.bg-purple-7 {
+  background-color: #6d28d9 !important;
+}
+
+.text-purple-8 {
+  color: #5b21b6 !important;
+}
+
+// Blue theme colors
+.bg-blue-1 {
+  background-color: #eff6ff !important;
+}
+
+.border-blue-2 {
+  border-color: #dbeafe !important;
+}
+
+.text-blue-6 {
+  color: #2563eb !important;
+}
+
+.bg-blue-6 {
+  background-color: #2563eb !important;
+}
+
+// Grey variations
+.bg-grey-2 {
+  background-color: #f9fafb !important;
+}
+
+.bg-grey-3 {
+  background-color: #f3f4f6 !important;
+}
+
+.text-grey-6 {
+  color: #6b7280 !important;
+}
+
+.text-grey-7 {
+  color: #374151 !important;
+}
+
+.text-grey-9 {
+  color: #111827 !important;
+}
+
+// Green colors
+.text-green-7 {
+  color: #16a34a !important;
+}
+
+// Card shadows
+.q-card {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+// Smooth transitions
+.q-btn, .q-card, .q-chip {
+  transition: all 0.2s ease;
+}
+
+// Custom scrollbar for chat
+.chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 2px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+// Responsive design
+@media (max-width: 1024px) {
+  .features-section {
+    padding: 40px 20px;
+  }
+  
+  .feature-card {
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .q-page {
+    padding: 12px !important;
+  }
+  
+  .row.q-gutter-lg {
+    flex-direction: column;
+  }
+  
+  .col-8, .col-4 {
+    max-width: 100%;
+    flex: none;
+  }
+  
+  .chat-card {
+    height: 500px;
+  }
+}
+
+// Custom border utilities
+.border-bottom {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.border-b-1 {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+// Animation for hoverable elements
+.cursor-pointer:hover {
+  color: #2563eb !important;
+  transition: color 0.2s ease;
+}
