@@ -304,8 +304,9 @@ const logout = () => {
   width: 285px;
   background: white;
   border-right: 1px solid rgba(92, 94, 100, 0.7);
-  transition: all 0.3s ease;
+  transition: width 0.3s ease;
   position: relative;
+  will-change: width;
 }
 
 .sidebar-collapsed {
