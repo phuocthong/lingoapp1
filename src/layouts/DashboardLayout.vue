@@ -11,7 +11,9 @@
 
         <!-- Navigation -->
         <div class="header-nav">
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard')"> Trang chủ </q-btn>
+          <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard')">
+            Trang chủ
+          </q-btn>
           <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard/introduction')">
             Giới thiệu
           </q-btn>
