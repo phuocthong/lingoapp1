@@ -3,6 +3,23 @@
 // Import Quasar's default styles
 @import 'quasar.variables.scss';
 
+// Global layout stabilization to prevent ResizeObserver errors
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  contain: layout style;
+}
+
+// Prevent ResizeObserver infinite loops
+.q-page,
+.q-layout,
+.q-page-container {
+  will-change: auto;
+  contain: layout style;
+}
+
 // Custom styles
 .q-page {
   font-family: 'Inter', 'Roboto', sans-serif;
