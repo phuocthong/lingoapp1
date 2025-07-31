@@ -185,7 +185,7 @@
             <div class="start-game-card">
               <h3 class="card-title">Bắt đầu</h3>
               
-              <button class="start-btn" :disabled="!canStartGame">
+              <button class="start-btn" :disabled="!canStartGame" @click="startGame">
                 <svg width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4.7998 2.6001L14.1331 8.6001L4.7998 14.6001V2.6001Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
