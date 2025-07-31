@@ -12,26 +12,33 @@
         </p>
       </div>
 
-      <div class="row q-gutter-lg">
+      <div class="content-grid">
         <!-- Left Side - Create Room -->
-        <div class="col-3">
-          <q-card class="create-room-card text-center q-pa-lg" style="height: 200px">
-            <div class="row items-center justify-center q-gutter-sm q-mb-md">
-              <q-icon name="add" size="20px" color="purple-7" />
-              <div class="text-h6 text-grey-9">Tạo phòng mới</div>
+        <div class="create-room-section">
+          <q-card class="create-room-card">
+            <div class="create-room-content">
+              <div class="create-room-header">
+                <q-icon name="add" class="create-icon" />
+                <h3 class="create-title">Tạo phòng mới</h3>
+              </div>
+              <p class="create-description">
+                Tạo phòng thử thách riêng v���i các cài đặt tùy chỉnh
+              </p>
+              <q-btn
+                color="primary"
+                class="create-btn"
+                no-caps
+                @click="createRoom"
+              >
+                <q-icon name="add" size="16px" class="q-mr-xs" />
+                Tạo phòng thử thách
+              </q-btn>
             </div>
-            <div class="text-body2 text-grey-6 q-mb-lg">
-              Tạo phòng thử thách riêng với các cài đặt tùy chỉnh
-            </div>
-            <q-btn color="blue-6" class="full-width" no-caps @click="createRoom">
-              <q-icon name="add" size="16px" class="q-mr-xs" />
-              Tạo phòng thử thách
-            </q-btn>
           </q-card>
         </div>
 
         <!-- Right Side - Available Rooms -->
-        <div class="col-9">
+        <div class="rooms-section">
           <!-- Header with Search -->
           <div class="row items-center justify-between q-mb-lg">
             <div class="row items-center q-gutter-sm">
