@@ -225,7 +225,7 @@ const participants = ref(1)
 const maxParticipants = ref(4)
 const totalQuestions = ref(10)
 const timePerQuestion = ref(20)
-const roomOwner = ref('thong')
+// const roomOwner = ref('thong') // Currently static, to be implemented with dynamic data
 const roomCode = ref('ABC')
 const roomName = ref('Phòng chờ')
 
