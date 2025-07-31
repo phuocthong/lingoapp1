@@ -102,7 +102,7 @@
             </div>
             <h3 class="feature-title">Thách Đấu Bạn Bè</h3>
             <p class="feature-description">
-              Cạnh tranh với bạn bè trong các cuộc thi tiếng Anh thú vị và hấp dẫn
+              Cạnh tranh v��i bạn bè trong các cuộc thi tiếng Anh thú vị và hấp dẫn
             </p>
           </div>
 
@@ -159,7 +159,7 @@
         <div class="section-header">
           <h2 class="section-title">Cách Thức Hoạt Động</h2>
           <p class="section-description">
-            Chỉ 3 bước đơn giản để b���t đầu hành trình học tiếng Anh
+            Chỉ 3 bước đơn giản để bắt đầu hành trình học tiếng Anh
           </p>
         </div>
 
@@ -207,8 +207,8 @@ const startFree = () => {
 }
 
 const login = () => {
-  // Navigate to login page or home
-  router.push('/')
+  // Navigate to dashboard
+  router.push('/dashboard')
 }
 </script>
 
