@@ -771,4 +771,160 @@ function watchRoom(roomId) {
     justify-content: center;
   }
 }
+
+/* Create Room Modal Styles */
+.create-room-modal {
+  width: 400px;
+  max-width: 90vw;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.create-modal-header {
+  padding: 24px 24px 6px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.create-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #020817;
+  line-height: 24px;
+  letter-spacing: -0.6px;
+}
+
+.plus-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.create-modal-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748b;
+  line-height: 20px;
+}
+
+.create-modal-content {
+  padding: 0 24px 25px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 20px;
+}
+
+.field-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.field-value {
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 20px;
+}
+
+.room-input {
+  height: 40px;
+}
+
+.room-input .q-field__control {
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.room-input .q-field__native {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #999;
+}
+
+.option-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.option-btn {
+  min-width: auto;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #020817;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: none;
+}
+
+.option-btn.selected {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.option-btn:hover {
+  border-color: #2563eb;
+}
+
+.time-btn {
+  padding: 8px 13px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.create-room-btn {
+  flex: 1;
+  height: 40px;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: none;
+}
+
+.cancel-btn {
+  height: 40px;
+  padding: 10px 17px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #020817;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: none;
+}
+
+.cancel-btn:hover {
+  border-color: #2563eb;
+}
 </style>
