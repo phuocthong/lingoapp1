@@ -31,6 +31,7 @@
             flat
             no-caps
             class="nav-btn"
+            @click="$router.push('/challenges')"
           >
             Thử thách
           </q-btn>
