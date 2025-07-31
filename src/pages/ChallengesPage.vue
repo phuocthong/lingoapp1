@@ -408,7 +408,15 @@ function cancelCreateRoom() {
 
 function joinRoom(roomId) {
   console.log('Joining room:', roomId)
-  // Add join room logic
+
+  // Navigate to waiting room for the specific room
+  router.push({
+    path: '/dashboard/waiting-room',
+    query: {
+      roomCode: roomId,
+      mode: 'join'
+    }
+  })
 }
 
 function watchRoom(roomId) {
