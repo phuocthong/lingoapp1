@@ -3,13 +3,13 @@
     <!-- Main Content -->
     <div class="challenges-container">
       <!-- Header -->
-      <div class="text-center q-mb-xl">
-        <div class="text-h3 text-weight-regular text-grey-9 q-mb-md">
+      <div class="page-header">
+        <h1 class="page-title">
           ⚡ Phòng Thử thách EnglishBot
-        </div>
-        <div class="text-h6 text-grey-6" style="max-width: 600px; margin: 0 auto">
+        </h1>
+        <p class="page-description">
           Tham gia hoặc tạo phòng để thử thách kiến thức tiếng Anh với bạn bè và người chơi khác
-        </div>
+        </p>
       </div>
 
       <div class="row q-gutter-lg">
@@ -267,7 +267,7 @@ const showResultsModal = ref(false)
 const topPlayers = ref([
   { name: 'Minh Anh', time: '10:31' },
   { name: 'Thành Hòa', time: '10:31' },
-  { name: 'V��n Nam', time: '10:32' },
+  { name: 'Văn Nam', time: '10:32' },
   { name: 'Thu Trang', time: '10:32' },
   { name: 'Đức Minh', time: '10:33' },
   { name: 'Lan Anh', time: '10:33' },
