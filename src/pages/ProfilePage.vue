@@ -376,8 +376,9 @@ const logout = () => {
   flex: 1;
   padding: 20px 32px;
   margin-left: 0;
-  transition: all 0.3s ease;
+  transition: margin-left 0.3s ease;
   max-width: 915px;
+  will-change: margin-left;
 }
 
 .content-expanded {
