@@ -3,8 +3,5 @@
 </template>
 
 <script setup>
-import { suppressResizeObserverErrors } from './utils/errorSuppression.js'
-
-// Initialize error suppression immediately (before mounting)
-suppressResizeObserverErrors()
+// Error suppression is handled by boot file and index.html
 </script>
