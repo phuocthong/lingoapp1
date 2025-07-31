@@ -11,12 +11,36 @@
 
         <!-- Navigation -->
         <div class="header-nav">
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/')"> Trang chủ </q-btn>
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/introduction')">
+          <q-btn
+            flat
+            no-caps
+            class="nav-btn"
+            @click="$router.push('/')"
+          >
+            Trang chủ
+          </q-btn>
+          <q-btn
+            flat
+            no-caps
+            class="nav-btn"
+            @click="$router.push('/introduction')"
+          >
             Giới thiệu
           </q-btn>
-          <q-btn flat no-caps class="nav-btn"> Thử thách </q-btn>
-          <q-btn flat no-caps class="nav-btn"> Bạn bè </q-btn>
+          <q-btn
+            flat
+            no-caps
+            class="nav-btn"
+          >
+            Thử thách
+          </q-btn>
+          <q-btn
+            flat
+            no-caps
+            class="nav-btn"
+          >
+            Bạn bè
+          </q-btn>
         </div>
 
         <q-space />
@@ -39,10 +63,23 @@
 
         <!-- User Profile -->
         <div class="user-profile">
-          <q-avatar class="user-avatar" size="32px"> ND </q-avatar>
-          <span class="user-name">Người dùng</span>
-
-          <q-btn flat dense class="logout-btn" @click="logout">
+          <q-avatar
+            class="user-avatar clickable"
+            size="32px"
+            @click="$router.push('/dashboard/profile')"
+          >
+            ND
+          </q-avatar>
+          <span class="user-name clickable" @click="$router.push('/dashboard/profile')">
+            Người dùng
+          </span>
+          
+          <q-btn
+            flat
+            dense
+            class="logout-btn"
+            @click="logout"
+          >
             <q-icon name="logout" size="16px" class="q-mr-xs" />
             Đăng xuất
           </q-btn>
@@ -201,7 +238,7 @@ const logout = () => {
     margin-left: 48px;
     gap: 16px;
   }
-
+  
   .user-stats {
     gap: 12px;
   }
@@ -212,21 +249,21 @@ const logout = () => {
     padding: 0 16px;
     min-height: 64px;
   }
-
+  
   .header-nav {
     display: none;
   }
-
+  
   .user-stats {
     flex-direction: column;
     gap: 4px;
     align-items: flex-end;
   }
-
+  
   .stat-item {
     font-size: 12px;
   }
-
+  
   .user-name {
     display: none;
   }
