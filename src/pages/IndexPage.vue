@@ -24,7 +24,8 @@
               </q-avatar>
               <div class="message-bubble bot-message">
                 <div class="message-text">
-                  Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các bạn trả lời.
+                  Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các
+                  bạn trả lời.
                 </div>
                 <div class="message-time">21:23</div>
               </div>
@@ -39,9 +40,21 @@
                 <div class="message-text">Dịch từ "Intelligent" sang tiếng Việt</div>
                 <div class="message-time">21:23</div>
                 <div class="message-participants">
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=38" alt="User 1" class="participant-avatar" />
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=38" alt="User 2" class="participant-avatar" />
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=38" alt="User 3" class="participant-avatar" />
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=38"
+                    alt="User 1"
+                    class="participant-avatar"
+                  />
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=38"
+                    alt="User 2"
+                    class="participant-avatar"
+                  />
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=38"
+                    alt="User 3"
+                    class="participant-avatar"
+                  />
                 </div>
               </div>
             </div>
@@ -63,9 +76,21 @@
                 <div class="message-text">Dịch từ "Amazing" sang tiếng Việt</div>
                 <div class="message-time">21:23</div>
                 <div class="message-participants">
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/afd6b1f2255dd111fa11b26060334ab2b8550b68?width=34" alt="User 1" class="participant-avatar" />
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/57601513ec477a7832bf1a848cd546ad59d68b24?width=34" alt="User 2" class="participant-avatar" />
-                  <img src="https://api.builder.io/api/v1/image/assets/TEMP/a799c61d39d6c04d560750f802eb88c5ea24ee80?width=34" alt="User 3" class="participant-avatar" />
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/afd6b1f2255dd111fa11b26060334ab2b8550b68?width=34"
+                    alt="User 1"
+                    class="participant-avatar"
+                  />
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/57601513ec477a7832bf1a848cd546ad59d68b24?width=34"
+                    alt="User 2"
+                    class="participant-avatar"
+                  />
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/a799c61d39d6c04d560750f802eb88c5ea24ee80?width=34"
+                    alt="User 3"
+                    class="participant-avatar"
+                  />
                 </div>
               </div>
             </div>
@@ -89,12 +114,7 @@
                 class="message-input"
                 @keyup.enter="sendMessage"
               />
-              <q-btn
-                icon="send"
-                color="primary"
-                class="send-btn"
-                @click="sendMessage"
-              />
+              <q-btn icon="send" color="primary" class="send-btn" @click="sendMessage" />
             </div>
 
             <div class="status-indicator">
@@ -266,7 +286,6 @@
         </q-card>
       </div>
     </div>
-
   </q-page>
 </template>
 

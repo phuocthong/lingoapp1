@@ -5,7 +5,7 @@
       <div class="sidebar-toggle" @click="toggleSidebar">
         <q-icon :name="sidebarCollapsed ? 'menu' : 'close'" />
       </div>
-      
+
       <div class="sidebar-content" v-if="!sidebarCollapsed">
         <nav class="sidebar-nav">
           <div class="nav-item active" @click="setActiveTab('dashboard')">
@@ -45,10 +45,10 @@
               <q-icon name="check_circle" color="green" size="18px" />
             </div>
           </div>
-          
+
           <h1 class="user-name">Người dùng</h1>
           <p class="user-handle">@nguoidung</p>
-          
+
           <div class="join-date">
             <q-icon name="calendar_today" />
             <span>Tham gia từ 1/1/2025</span>
@@ -56,43 +56,28 @@
 
           <!-- Action Buttons -->
           <div class="profile-actions">
-            <q-btn
-              class="action-btn level-btn"
-              no-caps
-            >
+            <q-btn class="action-btn level-btn" no-caps>
               <q-icon name="emoji_events" />
               <div class="btn-content">
                 <span class="btn-label">Cấp độ</span>
                 <span class="btn-value">Level 10</span>
               </div>
             </q-btn>
-            
-            <q-btn
-              class="action-btn xp-btn"
-              no-caps
-              disable
-            >
+
+            <q-btn class="action-btn xp-btn" no-caps disable>
               <q-icon name="star" />
               <div class="btn-content">
                 <span class="btn-label">Điểm kinh nghiệm</span>
                 <span class="btn-value">1,000 XP</span>
               </div>
             </q-btn>
-            
-            <q-btn
-              class="action-btn edit-btn"
-              no-caps
-              @click="editProfile"
-            >
+
+            <q-btn class="action-btn edit-btn" no-caps @click="editProfile">
               <q-icon name="edit" />
               <span>Chỉnh sửa thông tin</span>
             </q-btn>
-            
-            <q-btn
-              class="action-btn password-btn"
-              no-caps
-              disable
-            >
+
+            <q-btn class="action-btn password-btn" no-caps disable>
               <q-icon name="lock" />
               <span>Đổi mật khẩu</span>
             </q-btn>
@@ -110,7 +95,7 @@
           <div class="stat-value">1,000</div>
           <div class="stat-label">Tổng câu trả lời</div>
         </div>
-        
+
         <div class="stat-card">
           <div class="stat-icon accuracy">
             <q-icon name="check" />
@@ -118,7 +103,7 @@
           <div class="stat-value">82%</div>
           <div class="stat-label">Tỷ lệ chính xác</div>
         </div>
-        
+
         <div class="stat-card">
           <div class="stat-icon vocabulary">
             <q-icon name="book" />
@@ -126,7 +111,7 @@
           <div class="stat-value">2,125</div>
           <div class="stat-label">Từ đã học</div>
         </div>
-        
+
         <div class="stat-card">
           <div class="stat-icon streak">
             <q-icon name="local_fire_department" />
@@ -148,7 +133,7 @@
           </div>
           <div class="stat-large-value">15</div>
         </div>
-        
+
         <div class="stat-card-large avg-time">
           <div class="stat-large-icon">
             <q-icon name="schedule" />
@@ -159,7 +144,7 @@
           </div>
           <div class="stat-large-value">2.5s</div>
         </div>
-        
+
         <div class="stat-card-large study-days">
           <div class="stat-large-icon">
             <q-icon name="calendar_month" />
@@ -176,7 +161,11 @@
       <div class="progress-chart">
         <h3 class="chart-title">Biểu đồ tiến bộ</h3>
         <div class="chart-container">
-          <img src="https://cdn.builder.io/api/v1/image/assets%2Ff046890c17ca436cab38cffc651fb9cb%2F447e5d8b31224c1187498477057c7f95?format=webp&width=800" alt="Progress Chart" class="chart-image" />
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2Ff046890c17ca436cab38cffc651fb9cb%2F447e5d8b31224c1187498477057c7f95?format=webp&width=800"
+            alt="Progress Chart"
+            class="chart-image"
+          />
         </div>
       </div>
 
@@ -201,12 +190,7 @@
           <h3 class="logout-title">Đăng xuất</h3>
           <p class="logout-description">Thoát khỏi tài khoản hiện tại</p>
         </div>
-        <q-btn
-          color="negative"
-          class="logout-btn"
-          no-caps
-          @click="logout"
-        >
+        <q-btn color="negative" class="logout-btn" no-caps @click="logout">
           <q-icon name="logout" />
           Đăng xuất
         </q-btn>
@@ -223,7 +207,9 @@ const router = useRouter()
 
 const sidebarCollapsed = ref(false)
 const activeTab = ref('dashboard')
-const userAvatar = ref('https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb')
+const userAvatar = ref(
+  'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+)
 
 const toggleSidebar = () => {
   sidebarCollapsed.value = !sidebarCollapsed.value
@@ -721,21 +707,21 @@ const logout = () => {
   .profile-page {
     flex-direction: column;
   }
-  
+
   .profile-sidebar {
     width: 100%;
     height: auto;
   }
-  
+
   .sidebar-collapsed {
     height: 60px;
     overflow: hidden;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .stats-row {
     grid-template-columns: 1fr;
   }
@@ -745,21 +731,21 @@ const logout = () => {
   .profile-content {
     padding: 16px;
   }
-  
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .profile-actions {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .action-btn {
     min-width: auto;
     width: 100%;
   }
-  
+
   .logout-section {
     flex-direction: column;
     gap: 16px;
@@ -771,7 +757,7 @@ const logout = () => {
   .chart-container {
     height: 200px;
   }
-  
+
   .stat-card-large {
     flex-direction: column;
     text-align: center;

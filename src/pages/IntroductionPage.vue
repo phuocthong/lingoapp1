@@ -11,28 +11,23 @@
         <!-- Main Title -->
         <div class="hero-content">
           <h1 class="hero-title">
-            Học Tiếng Anh Thông Qua<br>
+            Học Tiếng Anh Thông Qua<br />
             <span class="hero-title-highlight">Trò Chuyện AI</span>
           </h1>
-          
+
           <p class="hero-description">
-            Khám phá cách học tiếng Anh hiệu quả nhất với AI chatbot thông minh, thách đấu bạn bè và hệ thống phần thưởng hấp dẫn.
+            Khám phá cách học tiếng Anh hiệu quả nhất với AI chatbot thông minh, thách đấu bạn bè và
+            hệ thống phần thưởng hấp dẫn.
           </p>
 
           <!-- Action Buttons -->
           <div class="hero-actions">
-            <q-btn
-              color="primary"
-              size="lg"
-              class="hero-btn-primary"
-              no-caps
-              @click="startFree"
-            >
+            <q-btn color="primary" size="lg" class="hero-btn-primary" no-caps @click="startFree">
               <q-icon name="auto_awesome" class="q-mr-sm" />
               Bắt Đầu Miễn Phí
               <q-icon name="arrow_forward" class="q-ml-sm" />
             </q-btn>
-            
+
             <q-btn
               outline
               color="purple"
@@ -158,9 +153,7 @@
       <div class="section-container">
         <div class="section-header">
           <h2 class="section-title">Cách Thức Hoạt Động</h2>
-          <p class="section-description">
-            Chỉ 3 bước đơn giản để bắt đầu hành trình học tiếng Anh
-          </p>
+          <p class="section-description">Chỉ 3 bước đơn giản để bắt đầu hành trình học tiếng Anh</p>
         </div>
 
         <div class="steps-container">
@@ -186,9 +179,7 @@
           <div class="step-item">
             <div class="step-number">3</div>
             <h3 class="step-title">Nhận Phần Thưởng</h3>
-            <p class="step-description">
-              Tích lũy điểm và đổi lấy thẻ cào, quà tặng hấp dẫn
-            </p>
+            <p class="step-description">Tích lũy điểm và đổi lấy thẻ cào, quà tặng hấp dẫn</p>
           </div>
         </div>
       </div>
@@ -289,7 +280,9 @@ const login = () => {
   font-size: 18px;
   font-weight: 600;
   box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .hero-btn-primary:hover {
@@ -392,7 +385,9 @@ const login = () => {
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .feature-card:hover {
@@ -474,31 +469,31 @@ const login = () => {
   .hero-section {
     padding: 60px 0 80px;
   }
-  
+
   .hero-actions {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .hero-btn-primary,
   .hero-btn-secondary {
     width: 100%;
     max-width: 300px;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .steps-container {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  
+
   .section-container {
     padding: 0 16px;
   }
-  
+
   .hero-container {
     padding: 0 16px;
   }
@@ -509,15 +504,15 @@ const login = () => {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
-  
+
   .stat-number {
     font-size: 24px;
   }
-  
+
   .section-title {
     font-size: 28px;
   }
-  
+
   .section-description {
     font-size: 18px;
   }

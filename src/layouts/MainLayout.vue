@@ -11,27 +11,9 @@
 
         <!-- Navigation -->
         <div class="header-nav" v-if="!$q.screen.lt.md">
-          <q-btn
-            flat
-            no-caps
-            class="nav-btn"
-            @click="$router.push('/')"
-          >
-            Trang chủ
-          </q-btn>
-          <q-btn
-            flat
-            no-caps
-            class="nav-btn"
-          >
-            Giới thiệu
-          </q-btn>
-          <q-btn
-            flat
-            no-caps
-            class="nav-btn"
-            @click="$router.push('/challenges')"
-          >
+          <q-btn flat no-caps class="nav-btn" @click="$router.push('/')"> Trang chủ </q-btn>
+          <q-btn flat no-caps class="nav-btn"> Giới thiệu </q-btn>
+          <q-btn flat no-caps class="nav-btn" @click="$router.push('/challenges')">
             Thử thách
           </q-btn>
         </div>
@@ -55,13 +37,7 @@
           </q-btn>
 
           <!-- Login button -->
-          <q-btn
-            color="purple"
-            class="action-btn login-btn"
-            size="md"
-            no-caps
-            @click="login"
-          >
+          <q-btn color="purple" class="action-btn login-btn" size="md" no-caps @click="login">
             <q-icon name="play_arrow" size="16px" class="q-mr-xs" />
             Đăng Nhập
           </q-btn>
@@ -102,13 +78,13 @@
               <q-item-label>Trang chủ</q-item-label>
             </q-item-section>
           </q-item>
-          
+
           <q-item clickable v-close-popup>
             <q-item-section>
               <q-item-label>Giới thiệu</q-item-label>
             </q-item-section>
           </q-item>
-          
+
           <q-item clickable @click="$router.push('/challenges')" v-close-popup>
             <q-item-section>
               <q-item-label>Thử thách</q-item-label>
@@ -116,13 +92,13 @@
           </q-item>
 
           <q-separator class="q-my-md" />
-          
+
           <q-item clickable @click="register" v-close-popup>
             <q-item-section>
               <q-item-label>Bắt Đầu Miễn Phí</q-item-label>
             </q-item-section>
           </q-item>
-          
+
           <q-item clickable @click="login" v-close-popup>
             <q-item-section>
               <q-item-label>Đăng Nhập</q-item-label>
@@ -217,7 +193,9 @@ const login = () => {
   font-size: 18px;
   font-weight: 600;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .action-btn:hover {
@@ -265,11 +243,11 @@ const login = () => {
     padding: 0 16px;
     min-height: 64px;
   }
-  
+
   .header-nav {
     display: none;
   }
-  
+
   .header-actions {
     display: none;
   }

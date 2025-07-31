@@ -10,9 +10,7 @@ const routes = [
   {
     path: '/dashboard',
     component: () => import('layouts/DashboardLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
-    ],
+    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
   },
 
   // Always leave this as last one,

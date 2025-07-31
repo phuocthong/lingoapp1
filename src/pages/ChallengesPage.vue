@@ -3,9 +3,7 @@
     <div class="challenges-container">
       <!-- Header -->
       <div class="page-header">
-        <h1 class="page-title">
-          ⚡ Phòng Thử thách EnglishBot
-        </h1>
+        <h1 class="page-title">⚡ Phòng Thử thách EnglishBot</h1>
         <p class="page-description">
           Tham gia hoặc tạo phòng để thử thách kiến thức tiếng Anh với bạn bè và người chơi khác
         </p>
@@ -20,15 +18,8 @@
                 <q-icon name="add" class="create-icon" />
                 <h3 class="create-title">Tạo phòng mới</h3>
               </div>
-              <p class="create-description">
-                Tạo phòng thử thách riêng với các cài đặt tùy chỉnh
-              </p>
-              <q-btn 
-                color="primary" 
-                class="create-btn" 
-                no-caps 
-                @click="createRoom"
-              >
+              <p class="create-description">Tạo phòng thử thách riêng với các cài đặt tùy chỉnh</p>
+              <q-btn color="primary" class="create-btn" no-caps @click="createRoom">
                 <q-icon name="add" size="16px" class="q-mr-xs" />
                 Tạo phòng thử thách
               </q-btn>
@@ -101,9 +92,7 @@
                   </div>
 
                   <!-- Join Button -->
-                  <q-btn color="primary" no-caps @click="joinRoom(1)">
-                    Tham gia
-                  </q-btn>
+                  <q-btn color="primary" no-caps @click="joinRoom(1)"> Tham gia </q-btn>
                 </div>
               </q-card-section>
             </q-card>
@@ -149,14 +138,7 @@
                     <q-avatar size="32px" class="user-avatar">KT</q-avatar>
                   </div>
 
-                  <q-btn 
-                    outline 
-                    color="orange" 
-                    no-caps 
-                    @click="watchRoom(2)"
-                  >
-                    Xem
-                  </q-btn>
+                  <q-btn outline color="orange" no-caps @click="watchRoom(2)"> Xem </q-btn>
                 </div>
               </q-card-section>
             </q-card>
@@ -200,9 +182,7 @@
                     <q-avatar size="32px" class="user-avatar">PT</q-avatar>
                   </div>
 
-                  <q-btn color="primary" no-caps @click="joinRoom(3)">
-                    Tham gia
-                  </q-btn>
+                  <q-btn color="primary" no-caps @click="joinRoom(3)"> Tham gia </q-btn>
                 </div>
               </q-card-section>
             </q-card>
@@ -219,18 +199,12 @@
             <q-icon name="emoji_events" color="amber" size="20px" />
             <span>Kết quả cuộc thi</span>
           </div>
-          <div class="modal-subtitle">
-            Danh sách trả lời đúng (Top 8)
-          </div>
+          <div class="modal-subtitle">Danh sách trả lời đúng (Top 8)</div>
         </q-card-section>
 
         <q-card-section class="modal-content">
           <div class="players-list">
-            <div
-              v-for="(player, index) in topPlayers"
-              :key="index"
-              class="player-item"
-            >
+            <div v-for="(player, index) in topPlayers" :key="index" class="player-item">
               <div class="player-info">
                 <span class="player-rank"># {{ index + 1 }}</span>
                 <span class="player-name">{{ player.name }}</span>
@@ -328,7 +302,9 @@ function watchRoom(roomId) {
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   height: fit-content;
 }
 
@@ -426,7 +402,9 @@ function watchRoom(roomId) {
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .room-card:hover {
@@ -586,11 +564,11 @@ function watchRoom(roomId) {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  
+
   .create-room-section {
     order: 1;
   }
-  
+
   .rooms-section {
     order: 0;
   }
@@ -600,32 +578,32 @@ function watchRoom(roomId) {
   .challenges-container {
     padding: 16px;
   }
-  
+
   .page-header {
     margin-bottom: 32px;
   }
-  
+
   .rooms-header {
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
   }
-  
+
   .search-input {
     width: 100%;
   }
-  
+
   .room-stats {
     flex-wrap: wrap;
     gap: 16px;
   }
-  
+
   .room-footer {
     flex-direction: column;
     gap: 16px;
     align-items: stretch;
   }
-  
+
   .room-avatars {
     justify-content: center;
   }
@@ -635,17 +613,17 @@ function watchRoom(roomId) {
   .create-room-content {
     padding: 24px 16px;
   }
-  
+
   .room-content {
     padding: 16px;
   }
-  
+
   .room-header {
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
   }
-  
+
   .room-owner {
     justify-content: center;
   }
