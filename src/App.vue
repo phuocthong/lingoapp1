@@ -3,11 +3,8 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
 import { suppressResizeObserverErrors } from './utils/errorSuppression.js'
 
-// Initialize error suppression
-onMounted(() => {
-  suppressResizeObserverErrors()
-})
+// Initialize error suppression immediately (before mounting)
+suppressResizeObserverErrors()
 </script>
