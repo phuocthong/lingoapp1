@@ -1,6 +1,5 @@
 <template>
   <q-page class="challenges-page">
-    <!-- Main Content -->
     <div class="challenges-container">
       <!-- Header -->
       <div class="page-header">
@@ -22,12 +21,12 @@
                 <h3 class="create-title">Tạo phòng mới</h3>
               </div>
               <p class="create-description">
-                Tạo phòng thử thách riêng v���i các cài đặt tùy chỉnh
+                Tạo phòng thử thách riêng với các cài đặt tùy chỉnh
               </p>
-              <q-btn
-                color="primary"
-                class="create-btn"
-                no-caps
+              <q-btn 
+                color="primary" 
+                class="create-btn" 
+                no-caps 
                 @click="createRoom"
               >
                 <q-icon name="add" size="16px" class="q-mr-xs" />
@@ -39,235 +38,215 @@
 
         <!-- Right Side - Available Rooms -->
         <div class="rooms-section">
-          <!-- Header with Search -->
-          <div class="row items-center justify-between q-mb-lg">
-            <div class="row items-center q-gutter-sm">
-              <q-icon name="search" size="20px" color="blue-6" />
-              <div class="text-h6 text-grey-9">Phòng có sẵn (3)</div>
+          <!-- Search Header -->
+          <div class="rooms-header">
+            <div class="rooms-title">
+              <q-icon name="search" class="search-icon" />
+              <h3>Phòng có sẵn (3)</h3>
             </div>
             <q-input
               v-model="searchQuery"
               placeholder="Tìm kiếm phòng..."
               outlined
               dense
-              style="width: 250px"
-              class="bg-white"
+              class="search-input"
             />
           </div>
 
           <!-- Room Cards -->
-          <div class="column q-gutter-md">
+          <div class="rooms-list">
             <!-- Room 1 -->
             <q-card class="room-card">
-              <q-card-section class="q-pa-md">
+              <q-card-section class="room-content">
                 <!-- Room Header -->
-                <div class="row items-center justify-between q-mb-sm">
-                  <div class="row items-center q-gutter-sm">
+                <div class="room-header">
+                  <div class="room-owner">
                     <q-icon name="emoji_events" color="amber" size="16px" />
-                    <span class="text-subtitle1 text-weight-medium">Minh Anh</span>
-                    <q-chip size="sm" color="purple-1" text-color="purple-8" class="text-caption">
+                    <span class="owner-name">Minh Anh</span>
+                    <q-chip size="sm" color="purple-1" text-color="purple-8" class="owner-badge">
                       Chủ phòng
                     </q-chip>
                   </div>
-                  <q-chip size="sm" color="purple-7" text-color="white" class="text-caption">
+                  <q-chip size="sm" color="green" text-color="white" class="status-badge">
                     🟢 Chờ
                   </q-chip>
                 </div>
 
                 <!-- Room Title -->
-                <div class="text-h6 text-grey-9 q-mb-sm">🏆 Cuộc thi từ vựng cơ bản</div>
+                <h4 class="room-title">🏆 Cuộc thi từ vựng cơ bản</h4>
 
                 <!-- Room Stats -->
-                <div class="row items-center q-gutter-lg q-mb-md">
-                  <div class="row items-center q-gutter-xs">
-                    <q-icon name="people" size="16px" color="grey-6" />
-                    <span class="text-body2 text-grey-6">3/6</span>
+                <div class="room-stats">
+                  <div class="stat-item">
+                    <q-icon name="people" size="16px" />
+                    <span>3/6</span>
                   </div>
-                  <div class="row items-center q-gutter-xs">
-                    <q-icon name="emoji_events" size="16px" color="grey-6" />
-                    <span class="text-body2 text-grey-6">15 câu</span>
+                  <div class="stat-item">
+                    <q-icon name="quiz" size="16px" />
+                    <span>15 câu</span>
                   </div>
-                  <div class="row items-center q-gutter-xs">
-                    <q-icon name="schedule" size="16px" color="grey-6" />
-                    <span class="text-body2 text-grey-6">30s/câu</span>
+                  <div class="stat-item">
+                    <q-icon name="schedule" size="16px" />
+                    <span>30s/câu</span>
                   </div>
                 </div>
 
                 <!-- Bottom Row -->
-                <div class="row items-center justify-between">
+                <div class="room-footer">
                   <!-- User Avatars -->
-                  <div class="row items-center">
-                    <q-avatar
-                      size="32px"
-                      class="bg-gradient-purple text-white text-weight-bold overlap-avatar"
-                      >MA</q-avatar
-                    >
-                    <q-avatar
-                      size="32px"
-                      class="bg-gradient-purple text-white text-weight-bold overlap-avatar"
-                      >TT</q-avatar
-                    >
-                    <q-avatar
-                      size="32px"
-                      class="bg-gradient-purple text-white text-weight-bold overlap-avatar"
-                      >VN</q-avatar
-                    >
+                  <div class="room-avatars">
+                    <q-avatar size="32px" class="user-avatar">MA</q-avatar>
+                    <q-avatar size="32px" class="user-avatar">TT</q-avatar>
+                    <q-avatar size="32px" class="user-avatar">VN</q-avatar>
                   </div>
 
                   <!-- Join Button -->
-                  <q-btn color="blue-6" no-caps @click="joinRoom(1)"> Tham gia </q-btn>
+                  <q-btn color="primary" no-caps @click="joinRoom(1)">
+                    Tham gia
+                  </q-btn>
                 </div>
               </q-card-section>
             </q-card>
 
             <!-- Room 2 -->
             <q-card class="room-card">
-              <q-card-section class="q-pa-md">
-                <!-- Room Header -->
-                <div class="row items-center justify-between q-mb-sm">
-                  <div class="row items-center q-gutter-sm">
-                    <q-icon name="emoji_events" color="amber" size="16px" />
-                    <span class="text-subtitle1 text-weight-medium">Thành Hòa</span>
-                    <q-chip size="sm" color="purple-1" text-color="purple-8" class="text-caption">
+              <q-card-section class="room-content">
+                <div class="room-header">
+                  <div class="room-owner">
+                    <q-icon name="emoji_events" color="silver" size="16px" />
+                    <span class="owner-name">Thành Hòa</span>
+                    <q-chip size="sm" color="purple-1" text-color="purple-8" class="owner-badge">
                       Chủ phòng
                     </q-chip>
                   </div>
-                  <q-chip size="sm" color="purple-7" text-color="white" class="text-caption">
-                    🟢 Chờ
+                  <q-chip size="sm" color="orange" text-color="white" class="status-badge">
+                    🔴 Đang chơi
                   </q-chip>
                 </div>
 
-                <!-- Room Title -->
-                <div class="text-h6 text-grey-9 q-mb-sm">⚡ Thử thách nhanh 10 câu</div>
+                <h4 class="room-title">💯 Challenge Grammar Masters</h4>
 
-                <!-- Room Stats -->
-                <div class="row items-center q-gutter-lg q-mb-md">
-                  <div class="row items-center q-gutter-xs">
-                    <q-icon name="people" size="16px" color="grey-6" />
-                    <span class="text-body2 text-grey-6">2/4</span>
+                <div class="room-stats">
+                  <div class="stat-item">
+                    <q-icon name="people" size="16px" />
+                    <span>4/8</span>
                   </div>
-                  <div class="row items-center q-gutter-xs">
-                    <q-icon name="emoji_events" size="16px" color="grey-6" />
-                    <span class="text-body2 text-grey-6">10 câu</span>
+                  <div class="stat-item">
+                    <q-icon name="quiz" size="16px" />
+                    <span>20 câu</span>
                   </div>
-                  <div class="row items-center q-gutter-xs">
-                    <q-icon name="schedule" size="16px" color="grey-6" />
-                    <span class="text-body2 text-grey-6">20s/câu</span>
+                  <div class="stat-item">
+                    <q-icon name="schedule" size="16px" />
+                    <span>45s/câu</span>
                   </div>
                 </div>
 
-                <!-- Bottom Row -->
-                <div class="row items-center justify-between">
-                  <!-- User Avatars -->
-                  <div class="row items-center">
-                    <q-avatar
-                      size="32px"
-                      class="bg-gradient-purple text-white text-weight-bold overlap-avatar"
-                      >TH</q-avatar
-                    >
-                    <q-avatar
-                      size="32px"
-                      class="bg-gradient-purple text-white text-weight-bold overlap-avatar"
-                      >LA</q-avatar
-                    >
+                <div class="room-footer">
+                  <div class="room-avatars">
+                    <q-avatar size="32px" class="user-avatar">TH</q-avatar>
+                    <q-avatar size="32px" class="user-avatar">LM</q-avatar>
+                    <q-avatar size="32px" class="user-avatar">DN</q-avatar>
+                    <q-avatar size="32px" class="user-avatar">KT</q-avatar>
                   </div>
 
-                  <!-- Join Button -->
-                  <q-btn color="blue-6" no-caps @click="joinRoom(2)"> Tham gia </q-btn>
+                  <q-btn 
+                    outline 
+                    color="orange" 
+                    no-caps 
+                    @click="watchRoom(2)"
+                  >
+                    Xem
+                  </q-btn>
                 </div>
               </q-card-section>
             </q-card>
 
             <!-- Room 3 -->
             <q-card class="room-card">
-              <q-card-section class="q-pa-md">
-                <!-- Room Header -->
-                <div class="row items-center justify-between q-mb-sm">
-                  <div class="row items-center q-gutter-sm">
-                    <q-icon name="emoji_events" color="amber" size="16px" />
-                    <span class="text-subtitle1 text-weight-medium">Hoàng Nam</span>
-                    <q-chip size="sm" color="purple-1" text-color="purple-8" class="text-caption">
+              <q-card-section class="room-content">
+                <div class="room-header">
+                  <div class="room-owner">
+                    <q-icon name="emoji_events" color="orange" size="16px" />
+                    <span class="owner-name">Văn Nam</span>
+                    <q-chip size="sm" color="purple-1" text-color="purple-8" class="owner-badge">
                       Chủ phòng
                     </q-chip>
                   </div>
-                  <q-chip size="sm" color="purple-7" text-color="white" class="text-caption">
+                  <q-chip size="sm" color="green" text-color="white" class="status-badge">
                     🟢 Chờ
                   </q-chip>
                 </div>
 
-                <!-- Room Title -->
-                <div class="text-h6 text-grey-9 q-mb-sm">🎯 Thách đấu chuyên nghiệp</div>
+                <h4 class="room-title">🚀 Speed English Quiz</h4>
 
-                <!-- Room Stats -->
-                <div class="row items-center q-gutter-lg q-mb-md">
-                  <div class="row items-center q-gutter-xs">
-                    <q-icon name="people" size="16px" color="grey-6" />
-                    <span class="text-body2 text-grey-6">1/8</span>
+                <div class="room-stats">
+                  <div class="stat-item">
+                    <q-icon name="people" size="16px" />
+                    <span>2/4</span>
                   </div>
-                  <div class="row items-center q-gutter-xs">
-                    <q-icon name="emoji_events" size="16px" color="grey-6" />
-                    <span class="text-body2 text-grey-6">25 câu</span>
+                  <div class="stat-item">
+                    <q-icon name="quiz" size="16px" />
+                    <span>10 câu</span>
                   </div>
-                  <div class="row items-center q-gutter-xs">
-                    <q-icon name="schedule" size="16px" color="grey-6" />
-                    <span class="text-body2 text-grey-6">45s/câu</span>
+                  <div class="stat-item">
+                    <q-icon name="schedule" size="16px" />
+                    <span>15s/câu</span>
                   </div>
                 </div>
 
-                <!-- Bottom Row -->
-                <div class="row items-center justify-between">
-                  <!-- User Avatars -->
-                  <div class="row items-center">
-                    <q-avatar size="32px" class="bg-gradient-purple text-white text-weight-bold"
-                      >HN</q-avatar
-                    >
+                <div class="room-footer">
+                  <div class="room-avatars">
+                    <q-avatar size="32px" class="user-avatar">VN</q-avatar>
+                    <q-avatar size="32px" class="user-avatar">PT</q-avatar>
                   </div>
 
-                  <!-- Join Button -->
-                  <q-btn color="blue-6" no-caps @click="joinRoom(3)"> Tham gia </q-btn>
+                  <q-btn color="primary" no-caps @click="joinRoom(3)">
+                    Tham gia
+                  </q-btn>
                 </div>
               </q-card-section>
             </q-card>
           </div>
         </div>
       </div>
-
-      <!-- Results Modal (similar to Figma design) -->
-      <q-dialog v-model="showResultsModal">
-        <q-card style="width: 400px">
-          <q-card-section class="border-bottom q-pa-md">
-            <div class="row items-center q-gutter-sm">
-              <q-icon name="emoji_events" size="12px" />
-              <div class="text-caption text-weight-medium text-grey-7">
-                Danh sách trả lời đúng (Top 8)
-              </div>
-            </div>
-          </q-card-section>
-
-          <q-card-section class="q-pa-md">
-            <div class="column q-gutter-xs">
-              <!-- Top players list -->
-              <div
-                v-for="(player, index) in topPlayers"
-                :key="index"
-                class="row justify-between items-center q-pa-xs bg-white rounded"
-              >
-                <div class="row items-center q-gutter-sm">
-                  <span class="text-caption text-grey-6"># {{ index + 1 }}</span>
-                  <span class="text-caption text-weight-medium">{{ player.name }}</span>
-                </div>
-                <span class="text-caption text-grey-6">{{ player.time }}</span>
-              </div>
-            </div>
-          </q-card-section>
-        </q-card>
-      </q-dialog>
     </div>
+
+    <!-- Results Modal -->
+    <q-dialog v-model="showResultsModal" position="bottom">
+      <q-card class="results-modal">
+        <q-card-section class="modal-header">
+          <div class="modal-title">
+            <q-icon name="emoji_events" color="amber" size="20px" />
+            <span>Kết quả cuộc thi</span>
+          </div>
+          <div class="modal-subtitle">
+            Danh sách trả lời đúng (Top 8)
+          </div>
+        </q-card-section>
+
+        <q-card-section class="modal-content">
+          <div class="players-list">
+            <div
+              v-for="(player, index) in topPlayers"
+              :key="index"
+              class="player-item"
+            >
+              <div class="player-info">
+                <span class="player-rank"># {{ index + 1 }}</span>
+                <span class="player-name">{{ player.name }}</span>
+              </div>
+              <span class="player-time">{{ player.time }}</span>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+
 const searchQuery = ref('')
 const showResultsModal = ref(false)
 
@@ -292,76 +271,383 @@ function joinRoom(roomId) {
   // Add join room logic
 }
 
-function logout() {
-  console.log('Logging out...')
-  // Add logout logic
+function watchRoom(roomId) {
+  console.log('Watching room:', roomId)
+  showResultsModal.value = true
 }
 </script>
 
 <style scoped>
-.border-bottom {
-  border-bottom: 1px solid #e0e0e0;
+.challenges-page {
+  background: #f5f3ff;
+  min-height: 100vh;
+}
+
+.challenges-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.page-title {
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: 400;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.page-description {
+  font-size: 20px;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Content Grid */
+.content-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 32px;
+}
+
+/* Create Room Section */
+.create-room-section {
+  display: flex;
+  flex-direction: column;
 }
 
 .create-room-card {
+  background: white;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: fit-content;
 }
 
 .create-room-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.create-room-content {
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.create-room-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.create-icon {
+  font-size: 32px;
+  color: #6d28d9;
+  background: #f5f3ff;
+  padding: 12px;
+  border-radius: 50%;
+}
+
+.create-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.create-description {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.create-btn {
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Rooms Section */
+.rooms-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.rooms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.rooms-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rooms-title h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.search-icon {
+  font-size: 20px;
+  color: #2563eb;
+}
+
+.search-input {
+  width: 250px;
+}
+
+/* Rooms List */
+.rooms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .room-card {
+  background: white;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .room-card:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-.bg-gradient-purple {
-  background: linear-gradient(90deg, #7c3aed 100%, #3b82f6 0%);
+.room-content {
+  padding: 20px;
 }
 
-.overlap-avatar {
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.room-owner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.owner-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.owner-badge {
+  font-size: 12px;
+}
+
+.status-badge {
+  font-size: 12px;
+}
+
+.room-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 16px 0;
+}
+
+.room-stats {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.room-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-avatars {
+  display: flex;
+  gap: -8px;
+}
+
+.user-avatar {
+  background: linear-gradient(135deg, #6d28d9 0%, #3b82f6 100%);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
   margin-left: -8px;
   border: 2px solid white;
 }
 
-.overlap-avatar:first-child {
+.user-avatar:first-child {
   margin-left: 0;
 }
 
-/* Responsive design */
-@media (max-width: 1024px) {
-  .row.q-gutter-lg {
-    flex-direction: column;
-  }
+/* Results Modal */
+.results-modal {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
 
-  .col-3,
-  .col-9 {
-    max-width: 100%;
-    flex: none;
+.modal-header {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.modal-subtitle {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.modal-content {
+  padding: 16px;
+}
+
+.players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.player-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #f3f4f6;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.player-rank {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.player-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.player-time {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .create-room-section {
+    order: 1;
+  }
+  
+  .rooms-section {
+    order: 0;
   }
 }
 
 @media (max-width: 768px) {
-  .q-pa-lg {
-    padding: 12px !important;
+  .challenges-container {
+    padding: 16px;
   }
+  
+  .page-header {
+    margin-bottom: 32px;
+  }
+  
+  .rooms-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  
+  .room-stats {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .room-footer {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .room-avatars {
+    justify-content: center;
+  }
+}
 
-  .create-room-card {
-    height: auto !important;
+@media (max-width: 480px) {
+  .create-room-content {
+    padding: 24px 16px;
+  }
+  
+  .room-content {
+    padding: 16px;
+  }
+  
+  .room-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .room-owner {
+    justify-content: center;
   }
 }
 </style>
