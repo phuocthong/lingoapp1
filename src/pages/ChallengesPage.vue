@@ -64,7 +64,7 @@
                 </div>
 
                 <!-- Room Title -->
-                <h4 class="room-title">🏆 Cuộc thi từ vựng cơ bản</h4>
+                <h4 class="room-title">�� Cuộc thi từ vựng cơ bản</h4>
 
                 <!-- Room Stats -->
                 <div class="room-stats">
@@ -190,6 +190,112 @@
         </div>
       </div>
     </div>
+
+    <!-- Create Room Modal -->
+    <q-dialog v-model="showCreateRoomModal" persistent>
+      <q-card class="create-room-modal">
+        <q-card-section class="create-modal-header">
+          <div class="create-modal-title">
+            <svg class="plus-icon" width="20" height="20" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.66699 10.8H16.3337" stroke="#6D28D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10.5 4.96667V16.6333" stroke="#6D28D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Tạo phòng mới
+          </div>
+          <div class="create-modal-subtitle">Tạo phòng thử thách riêng với các cài đặt tùy chỉnh</div>
+        </q-card-section>
+
+        <q-card-section class="create-modal-content">
+          <!-- Room Name -->
+          <div class="form-field">
+            <label class="field-label">Tên phòng</label>
+            <q-input
+              v-model="roomSettings.name"
+              placeholder="Ví dụ: Thử thách từ vựng cơ bản"
+              outlined
+              class="room-input"
+            />
+          </div>
+
+          <!-- Max Players -->
+          <div class="form-field">
+            <div class="field-header">
+              <span class="field-label">Số người tối đa:</span>
+              <span class="field-value">{{ roomSettings.maxPlayers }}</span>
+            </div>
+            <div class="option-buttons">
+              <q-btn
+                v-for="option in playerOptions"
+                :key="option"
+                :class="{ 'selected': roomSettings.maxPlayers === option }"
+                @click="roomSettings.maxPlayers = option"
+                class="option-btn"
+              >
+                {{ option }}
+              </q-btn>
+            </div>
+          </div>
+
+          <!-- Number of Questions -->
+          <div class="form-field">
+            <div class="field-header">
+              <span class="field-label">Số câu hỏi:</span>
+              <span class="field-value">{{ roomSettings.questions }}</span>
+            </div>
+            <div class="option-buttons">
+              <q-btn
+                v-for="option in questionOptions"
+                :key="option"
+                :class="{ 'selected': roomSettings.questions === option }"
+                @click="roomSettings.questions = option"
+                class="option-btn"
+              >
+                {{ option }}
+              </q-btn>
+            </div>
+          </div>
+
+          <!-- Time per Question -->
+          <div class="form-field">
+            <div class="field-header">
+              <span class="field-label">Thời gian/câu:</span>
+              <span class="field-value">{{ roomSettings.timePerQuestion }}s</span>
+            </div>
+            <div class="option-buttons">
+              <q-btn
+                v-for="option in timeOptions"
+                :key="option"
+                :class="{ 'selected': roomSettings.timePerQuestion === option }"
+                @click="roomSettings.timePerQuestion = option"
+                class="option-btn time-btn"
+              >
+                {{ option }} s
+              </q-btn>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="modal-actions">
+            <q-btn
+              class="create-room-btn"
+              color="primary"
+              @click="confirmCreateRoom"
+              no-caps
+            >
+              Tạo phòng
+            </q-btn>
+            <q-btn
+              class="cancel-btn"
+              outline
+              @click="cancelCreateRoom"
+              no-caps
+            >
+              Hủy
+            </q-btn>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
 
     <!-- Results Modal -->
     <q-dialog v-model="showResultsModal" position="bottom">
