@@ -90,11 +90,25 @@ html, body {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
 }
 
-// Smooth transitions
+// Smooth transitions optimized to prevent ResizeObserver issues
 .q-btn,
 .q-card,
 .q-chip {
   transition: all 0.2s ease;
+  will-change: auto;
+}
+
+// Optimize hover animations
+*:hover {
+  will-change: auto;
+}
+
+// Prevent layout thrashing on dynamic content
+.grid,
+[class*="grid"],
+.participants-section,
+.content-grid {
+  contain: layout;
 }
 
 // Custom scrollbar for chat
