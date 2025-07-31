@@ -1,81 +1,69 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
+  <q-layout view="lHh lpr lFf">
+    <!-- Header -->
+    <q-header class="bg-white text-grey-9 border-b-1" elevated>
+      <q-toolbar class="q-px-lg">
+        <!-- Logo -->
+        <div class="row items-center no-wrap q-gutter-sm">
+          <q-icon name="extension" size="24px" class="bg-purple-7 text-white q-pa-xs rounded" />
+          <div class="text-h6 text-weight-bold text-grey-9">Logo</div>
+        </div>
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
+        <!-- Navigation -->
+        <q-space />
+        <div class="row items-center q-gutter-lg q-mr-lg">
+          <div class="cursor-pointer text-body2 text-grey-7">Trang chủ</div>
+          <div class="cursor-pointer text-body2 text-grey-7">Giới thiệu</div>
+          <div class="cursor-pointer text-body2 text-grey-7">Thử thách</div>
+          <div class="cursor-pointer text-body2 text-grey-7">Bạn bè</div>
+        </div>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <!-- Call to action -->
+        <div class="row items-center q-gutter-sm">
+          <div class="text-body2 text-grey-6 q-mr-sm">
+            Tham gia ngay để trả lời câu hỏi và cạnh tranh!
+          </div>
+          
+          <!-- Register button -->
+          <q-btn 
+            outline 
+            color="purple-2" 
+            text-color="blue-6"
+            class="q-px-sm"
+            size="sm"
+            no-caps
+          >
+            <q-icon name="person_add" size="16px" class="q-mr-xs" />
+            Đăng ký
+          </q-btn>
+
+          <!-- Login button -->
+          <q-btn 
+            color="blue-6" 
+            class="q-px-sm"
+            size="sm"
+            no-caps
+          >
+            <q-icon name="login" size="16px" class="q-mr-xs" />
+            Đăng nhập
+          </q-btn>
+        </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <q-item-label header> Essential Links </q-item-label>
-
-        <EssentialLink v-for="link in linksList" :key="link.title" v-bind="link" />
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
+    <!-- Main content -->
+    <q-page-container class="bg-purple-1">
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev',
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework',
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev',
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev',
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev',
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev',
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev',
-  },
-]
-
-const leftDrawerOpen = ref(false)
-
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
-}
+//
 </script>
+
+<style scoped>
+.border-b-1 {
+  border-bottom: 1px solid #e5e7eb;
+}
+</style>
