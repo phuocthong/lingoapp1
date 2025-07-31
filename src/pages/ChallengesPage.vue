@@ -360,9 +360,32 @@ function createRoom() {
 }
 
 function confirmCreateRoom() {
+  // Validate room name
+  if (!roomSettings.value.name.trim()) {
+    console.error('Room name is required')
+    return
+  }
+
   console.log('Creating room with settings:', roomSettings.value)
-  // Add actual room creation logic here
+
+  // Generate room code
+  const roomCode = Math.random().toString(36).substring(2, 8).toUpperCase()
+
+  // Close modal
   showCreateRoomModal.value = false
+
+  // Navigate to waiting room with room data
+  router.push({
+    path: '/dashboard/waiting-room',
+    query: {
+      roomCode: roomCode,
+      roomName: roomSettings.value.name,
+      questions: roomSettings.value.questions,
+      timePerQuestion: roomSettings.value.timePerQuestion,
+      maxPlayers: roomSettings.value.maxPlayers
+    }
+  })
+
   // Reset form
   roomSettings.value = {
     name: '',
