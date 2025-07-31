@@ -8,23 +8,23 @@
 
       <div class="sidebar-content" v-if="!sidebarCollapsed">
         <nav class="sidebar-nav">
-          <div class="nav-item active" @click="$router.push('/dashboard')">
+          <div class="nav-item" :class="{ active: activeTab === 'dashboard' }" @click="navigateToTab('dashboard', '/dashboard')">
             <q-icon name="home" />
             <span>Dashboard</span>
           </div>
-          <div class="nav-item" @click="$router.push('/dashboard/friends')">
+          <div class="nav-item" :class="{ active: activeTab === 'friends' }" @click="navigateToTab('friends', '/dashboard/friends')">
             <q-icon name="people" />
             <span>Bạn bè</span>
           </div>
-          <div class="nav-item" @click="$router.push('/dashboard/add-friends')">
+          <div class="nav-item" :class="{ active: activeTab === 'add-friends' }" @click="navigateToTab('add-friends', '/dashboard/add-friends')">
             <q-icon name="person_add" />
             <span>Thêm bạn bè</span>
           </div>
-          <div class="nav-item" @click="$router.push('/dashboard/tasks')">
+          <div class="nav-item" :class="{ active: activeTab === 'tasks' }" @click="navigateToTab('tasks', '/dashboard/tasks')">
             <q-icon name="task" />
             <span>Nhiệm vụ</span>
           </div>
-          <div class="nav-item" @click="$router.push('/dashboard/rewards')">
+          <div class="nav-item" :class="{ active: activeTab === 'rewards' }" @click="navigateToTab('rewards', '/dashboard/rewards')">
             <q-icon name="card_giftcard" />
             <span>Đổi điểm</span>
           </div>
