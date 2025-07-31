@@ -164,15 +164,15 @@
               <div class="info-list">
                 <div class="info-item">
                   <span class="info-label">Tổng số câu:</span>
-                  <span class="info-value">10</span>
+                  <span class="info-value">{{ totalQuestions }}</span>
                 </div>
                 <div class="info-item">
                   <span class="info-label">Thời gian/câu:</span>
-                  <span class="info-value">20s</span>
+                  <span class="info-value">{{ timePerQuestion }}s</span>
                 </div>
                 <div class="info-item">
                   <span class="info-label">Người chơi:</span>
-                  <span class="info-value">1/4</span>
+                  <span class="info-value">{{ participants }}/{{ maxParticipants }}</span>
                 </div>
                 <div class="info-item">
                   <span class="info-label">Chủ phòng:</span>
