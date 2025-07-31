@@ -8,27 +8,51 @@
 
       <div class="sidebar-content" v-show="!sidebarCollapsed">
         <nav class="sidebar-nav">
-          <div class="nav-item" :class="{ active: activeTab === 'dashboard' }" @click="navigateToTab('dashboard', '/dashboard')">
+          <div
+            class="nav-item"
+            :class="{ active: activeTab === 'dashboard' }"
+            @click="navigateToTab('dashboard', '/dashboard')"
+          >
             <q-icon name="home" />
             <span>Dashboard</span>
           </div>
-          <div class="nav-item" :class="{ active: activeTab === 'profile' }" @click="navigateToTab('profile', '/dashboard/profile')">
+          <div
+            class="nav-item"
+            :class="{ active: activeTab === 'profile' }"
+            @click="navigateToTab('profile', '/dashboard/profile')"
+          >
             <q-icon name="person" />
             <span>Hồ sơ</span>
           </div>
-          <div class="nav-item" :class="{ active: activeTab === 'friends' }" @click="navigateToTab('friends', '/dashboard/friends')">
+          <div
+            class="nav-item"
+            :class="{ active: activeTab === 'friends' }"
+            @click="navigateToTab('friends', '/dashboard/friends')"
+          >
             <q-icon name="people" />
             <span>Bạn bè</span>
           </div>
-          <div class="nav-item" :class="{ active: activeTab === 'add-friends' }" @click="navigateToTab('add-friends', '/dashboard/add-friends')">
+          <div
+            class="nav-item"
+            :class="{ active: activeTab === 'add-friends' }"
+            @click="navigateToTab('add-friends', '/dashboard/add-friends')"
+          >
             <q-icon name="person_add" />
             <span>Thêm bạn bè</span>
           </div>
-          <div class="nav-item" :class="{ active: activeTab === 'tasks' }" @click="navigateToTab('tasks', '/dashboard/tasks')">
+          <div
+            class="nav-item"
+            :class="{ active: activeTab === 'tasks' }"
+            @click="navigateToTab('tasks', '/dashboard/tasks')"
+          >
             <q-icon name="task" />
             <span>Nhiệm vụ</span>
           </div>
-          <div class="nav-item" :class="{ active: activeTab === 'rewards' }" @click="navigateToTab('rewards', '/dashboard/rewards')">
+          <div
+            class="nav-item"
+            :class="{ active: activeTab === 'rewards' }"
+            @click="navigateToTab('rewards', '/dashboard/rewards')"
+          >
             <q-icon name="card_giftcard" />
             <span>Đổi điểm</span>
           </div>

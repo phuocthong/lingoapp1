@@ -196,13 +196,34 @@
       <q-card class="create-room-modal">
         <q-card-section class="create-modal-header">
           <div class="create-modal-title">
-            <svg class="plus-icon" width="20" height="20" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.66699 10.8H16.3337" stroke="#6D28D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M10.5 4.96667V16.6333" stroke="#6D28D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg
+              class="plus-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 21 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.66699 10.8H16.3337"
+                stroke="#6D28D9"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10.5 4.96667V16.6333"
+                stroke="#6D28D9"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
             Tạo phòng mới
           </div>
-          <div class="create-modal-subtitle">Tạo phòng thử thách riêng với các cài đặt tùy chỉnh</div>
+          <div class="create-modal-subtitle">
+            Tạo phòng thử thách riêng với các cài đặt tùy chỉnh
+          </div>
         </q-card-section>
 
         <q-card-section class="create-modal-content">
@@ -227,7 +248,7 @@
               <q-btn
                 v-for="option in playerOptions"
                 :key="option"
-                :class="{ 'selected': roomSettings.maxPlayers === option }"
+                :class="{ selected: roomSettings.maxPlayers === option }"
                 @click="roomSettings.maxPlayers = option"
                 class="option-btn"
               >
@@ -246,7 +267,7 @@
               <q-btn
                 v-for="option in questionOptions"
                 :key="option"
-                :class="{ 'selected': roomSettings.questions === option }"
+                :class="{ selected: roomSettings.questions === option }"
                 @click="roomSettings.questions = option"
                 class="option-btn"
               >
@@ -265,7 +286,7 @@
               <q-btn
                 v-for="option in timeOptions"
                 :key="option"
-                :class="{ 'selected': roomSettings.timePerQuestion === option }"
+                :class="{ selected: roomSettings.timePerQuestion === option }"
                 @click="roomSettings.timePerQuestion = option"
                 class="option-btn time-btn"
               >
@@ -276,22 +297,10 @@
 
           <!-- Action Buttons -->
           <div class="modal-actions">
-            <q-btn
-              class="create-room-btn"
-              color="primary"
-              @click="confirmCreateRoom"
-              no-caps
-            >
+            <q-btn class="create-room-btn" color="primary" @click="confirmCreateRoom" no-caps>
               Tạo phòng
             </q-btn>
-            <q-btn
-              class="cancel-btn"
-              outline
-              @click="cancelCreateRoom"
-              no-caps
-            >
-              Hủy
-            </q-btn>
+            <q-btn class="cancel-btn" outline @click="cancelCreateRoom" no-caps> Hủy </q-btn>
           </div>
         </q-card-section>
       </q-card>
@@ -339,7 +348,7 @@ const roomSettings = ref({
   name: '',
   maxPlayers: 4,
   questions: 10,
-  timePerQuestion: 20
+  timePerQuestion: 20,
 })
 
 // Options for room settings
@@ -385,8 +394,8 @@ function confirmCreateRoom() {
       roomName: roomSettings.value.name,
       questions: roomSettings.value.questions,
       timePerQuestion: roomSettings.value.timePerQuestion,
-      maxPlayers: roomSettings.value.maxPlayers
-    }
+      maxPlayers: roomSettings.value.maxPlayers,
+    },
   })
 
   // Reset form
@@ -394,7 +403,7 @@ function confirmCreateRoom() {
     name: '',
     maxPlayers: 4,
     questions: 10,
-    timePerQuestion: 20
+    timePerQuestion: 20,
   }
 }
 
@@ -405,7 +414,7 @@ function cancelCreateRoom() {
     name: '',
     maxPlayers: 4,
     questions: 10,
-    timePerQuestion: 20
+    timePerQuestion: 20,
   }
 }
 
@@ -417,8 +426,8 @@ function joinRoom(roomId) {
     path: '/dashboard/waiting-room',
     query: {
       roomCode: roomId,
-      mode: 'join'
-    }
+      mode: 'join',
+    },
   })
 }
 
