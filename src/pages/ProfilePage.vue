@@ -12,6 +12,10 @@
             <q-icon name="home" />
             <span>Dashboard</span>
           </div>
+          <div class="nav-item" :class="{ active: activeTab === 'profile' }" @click="navigateToTab('profile', '/dashboard/profile')">
+            <q-icon name="person" />
+            <span>Hồ sơ</span>
+          </div>
           <div class="nav-item" :class="{ active: activeTab === 'friends' }" @click="navigateToTab('friends', '/dashboard/friends')">
             <q-icon name="people" />
             <span>Bạn bè</span>
@@ -200,13 +204,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
+const route = useRoute()
 
 const sidebarCollapsed = ref(false)
-const activeTab = ref('dashboard')
+const activeTab = ref('profile')
 const userAvatar = ref(
   'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
 )
@@ -219,10 +224,38 @@ const setActiveTab = (tab) => {
   activeTab.value = tab
 }
 
-const navigateToTab = (tab, route) => {
+const navigateToTab = (tab, routePath) => {
   setActiveTab(tab)
-  router.push(route)
+  router.push(routePath)
 }
+
+// Set active tab based on current route
+const updateActiveTabFromRoute = () => {
+  const currentPath = route.path
+  if (currentPath.includes('/dashboard/friends')) {
+    activeTab.value = 'friends'
+  } else if (currentPath.includes('/dashboard/add-friends')) {
+    activeTab.value = 'add-friends'
+  } else if (currentPath.includes('/dashboard/tasks')) {
+    activeTab.value = 'tasks'
+  } else if (currentPath.includes('/dashboard/rewards')) {
+    activeTab.value = 'rewards'
+  } else if (currentPath.includes('/dashboard/profile')) {
+    activeTab.value = 'profile'
+  } else if (currentPath.includes('/dashboard')) {
+    activeTab.value = 'dashboard'
+  }
+}
+
+// Watch for route changes
+watch(route, () => {
+  updateActiveTabFromRoute()
+})
+
+// Set initial active tab on mount
+onMounted(() => {
+  updateActiveTabFromRoute()
+})
 
 const editProfile = () => {
   // Handle edit profile logic
