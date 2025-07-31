@@ -214,6 +214,15 @@ const logout = () => {
   font-weight: 500;
 }
 
+.clickable {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.clickable:hover {
+  opacity: 0.8;
+}
+
 .logout-btn {
   color: #000;
   font-size: 12px;
