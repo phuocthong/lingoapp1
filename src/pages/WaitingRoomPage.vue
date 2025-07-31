@@ -86,7 +86,7 @@
                   <path d="M12.001 1.33325H4.00098V5.99992C4.00098 7.06078 4.4224 8.0782 5.17255 8.82835C5.9227 9.57849 6.94011 9.99992 8.00098 9.99992C9.06184 9.99992 10.0793 9.57849 10.8294 8.82835C11.5795 8.0782 12.001 7.06078 12.001 5.99992V1.33325Z" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </g>
               </svg>
-              <span>10 câu hỏi</span>
+              <span>{{ totalQuestions }} câu hỏi</span>
             </div>
             
             <div class="room-stat">
