@@ -21,7 +21,7 @@
             no-caps
             dropdown-icon="keyboard_arrow_down"
             class="text-body2 text-grey-7"
-            style="padding: 4px 8px;"
+            style="padding: 4px 8px"
           >
             <template v-slot:label>
               <span class="text-body2 text-grey-7">Thử thách</span>
@@ -70,27 +70,15 @@
           <div class="text-body2 text-grey-6 q-mr-sm">
             Tham gia ngay để trả lời câu hỏi và cạnh tranh!
           </div>
-          
+
           <!-- Register button -->
-          <q-btn 
-            outline 
-            color="purple-2" 
-            text-color="blue-6"
-            class="q-px-sm"
-            size="sm"
-            no-caps
-          >
+          <q-btn outline color="purple-2" text-color="blue-6" class="q-px-sm" size="sm" no-caps>
             <q-icon name="person_add" size="16px" class="q-mr-xs" />
             Đăng ký
           </q-btn>
 
           <!-- Login button -->
-          <q-btn 
-            color="blue-6" 
-            class="q-px-sm"
-            size="sm"
-            no-caps
-          >
+          <q-btn color="blue-6" class="q-px-sm" size="sm" no-caps>
             <q-icon name="login" size="16px" class="q-mr-xs" />
             Đăng nhập
           </q-btn>

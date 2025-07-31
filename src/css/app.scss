@@ -74,7 +74,9 @@
 }
 
 // Smooth transitions
-.q-btn, .q-card, .q-chip {
+.q-btn,
+.q-card,
+.q-chip {
   transition: all 0.2s ease;
 }
 
@@ -101,7 +103,7 @@
   .features-section {
     padding: 40px 20px;
   }
-  
+
   .feature-card {
     width: 100% !important;
     margin-bottom: 20px;
@@ -112,16 +114,17 @@
   .q-page {
     padding: 12px !important;
   }
-  
+
   .row.q-gutter-lg {
     flex-direction: column;
   }
-  
-  .col-8, .col-4 {
+
+  .col-8,
+  .col-4 {
     max-width: 100%;
     flex: none;
   }
-  
+
   .chat-card {
     height: 500px;
   }

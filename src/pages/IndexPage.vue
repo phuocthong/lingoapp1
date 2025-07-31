@@ -23,7 +23,10 @@
                 <q-icon name="extension" size="16px" />
               </q-avatar>
               <div class="message-bubble bg-grey-3 q-pa-sm rounded">
-                <div class="text-body2">Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các bạn trả lời.</div>
+                <div class="text-body2">
+                  Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các
+                  bạn trả lời.
+                </div>
                 <div class="text-caption text-grey-6 q-mt-xs">21:57</div>
               </div>
             </div>
@@ -43,7 +46,7 @@
           <!-- Input Area -->
           <q-card-section class="bg-grey-2 q-pa-md">
             <div class="row items-center q-gutter-sm q-mb-sm">
-              <q-input 
+              <q-input
                 v-model="messageInput"
                 placeholder="Đăng nhập để tham gia trả lời..."
                 outlined
@@ -52,34 +55,21 @@
                 bg-color="grey-3"
                 style="opacity: 0.5"
               />
-              <q-btn 
-                icon="lock" 
-                color="blue-6" 
-                style="opacity: 0.5"
-                disable
-              />
+              <q-btn icon="lock" color="blue-6" style="opacity: 0.5" disable />
             </div>
-            
+
             <div class="row items-center justify-center q-gutter-xs q-mb-sm">
               <q-icon name="fiber_manual_record" color="red" size="8px" />
-              <div class="text-caption text-grey-6">Vui lòng đăng nhập để tham gia trả lời câu hỏi</div>
+              <div class="text-caption text-grey-6">
+                Vui lòng đăng nhập để tham gia trả lời câu hỏi
+              </div>
             </div>
 
             <div class="row justify-center q-gutter-sm">
-              <q-btn 
-                outline 
-                color="purple" 
-                size="sm"
-                no-caps
-                class="text-purple-8"
-              >
+              <q-btn outline color="purple" size="sm" no-caps class="text-purple-8">
                 Đăng ký miễn phí
               </q-btn>
-              <q-btn 
-                color="blue-6" 
-                size="sm"
-                no-caps
-              >
+              <q-btn color="blue-6" size="sm" no-caps>
                 <q-icon name="login" size="16px" class="q-mr-xs" />
                 Đăng nhập ngay
               </q-btn>
@@ -102,7 +92,9 @@
             </div>
 
             <div class="row q-gutter-xs q-mt-sm">
-              <q-chip size="sm" color="purple-2" text-color="purple-8" class="text-weight-medium">Tổng</q-chip>
+              <q-chip size="sm" color="purple-2" text-color="purple-8" class="text-weight-medium"
+                >Tổng</q-chip
+              >
               <q-chip size="sm" color="grey-3" text-color="grey-7">Tuần</q-chip>
               <q-chip size="sm" color="grey-3" text-color="grey-7">Tháng</q-chip>
               <q-chip size="sm" color="grey-3" text-color="grey-7">Năm</q-chip>
@@ -181,7 +173,9 @@
           <q-card-section class="q-pa-md">
             <!-- History Item 1 -->
             <div class="history-item bg-blue-1 q-pa-sm q-mb-sm rounded border-blue-2">
-              <div class="text-body2 text-weight-medium q-mb-xs">Dịch từ "Beautiful" sang tiếng Việt</div>
+              <div class="text-body2 text-weight-medium q-mb-xs">
+                Dịch từ "Beautiful" sang tiếng Việt
+              </div>
               <div class="row justify-between items-center q-mb-xs">
                 <div class="text-caption text-green-7">Đáp án: "đẹp"</div>
                 <div class="text-caption text-grey-6">10:30 - 26/07/2024</div>
@@ -199,7 +193,9 @@
 
             <!-- History Item 2 -->
             <div class="history-item bg-blue-1 q-pa-sm q-mb-sm rounded border-blue-2">
-              <div class="text-body2 text-weight-medium q-mb-xs">Dịch từ "Happy" sang tiếng Việt</div>
+              <div class="text-body2 text-weight-medium q-mb-xs">
+                Dịch từ "Happy" sang tiếng Việt
+              </div>
               <div class="row justify-between items-center q-mb-xs">
                 <div class="text-caption text-green-7">Đáp án: "hạnh phúc"</div>
                 <div class="text-caption text-grey-6">10:25 - 26/07/2024</div>
@@ -217,7 +213,9 @@
 
             <!-- History Item 3 -->
             <div class="history-item bg-blue-1 q-pa-sm rounded border-blue-2">
-              <div class="text-body2 text-weight-medium q-mb-xs">Dịch từ "Wonderful" sang tiếng Việt</div>
+              <div class="text-body2 text-weight-medium q-mb-xs">
+                Dịch từ "Wonderful" sang tiếng Việt
+              </div>
               <div class="row justify-between items-center q-mb-xs">
                 <div class="text-caption text-green-7">Đáp án: "tuyệt vời"</div>
                 <div class="text-caption text-grey-6">10:20 - 26/07/2024</div>
@@ -234,18 +232,17 @@
             </div>
           </q-card-section>
         </q-card>
-
-
       </div>
     </div>
 
     <!-- Features Section -->
     <div class="features-section q-mt-xl q-pt-xl text-center">
       <div class="text-h4 text-weight-bold text-blue-grey-9 q-mb-md">
-        Học Tập Thông Minh<br>Cùng Bạn Bè
+        Học Tập Thông Minh<br />Cùng Bạn Bè
       </div>
       <div class="text-body1 text-grey-6 q-mb-xl" style="max-width: 600px; margin: 0 auto">
-        Khám phá kiến thức mới mỗi ngày với câu hỏi ngẫu nhiên, thử thách bạn bè và leo lên bảng xếp hạng!
+        Khám phá kiến thức mới mỗi ngày với câu hỏi ngẫu nhiên, thử thách bạn bè và leo lên bảng xếp
+        hạng!
       </div>
 
       <div class="row justify-center q-gutter-lg">
@@ -336,7 +333,9 @@ const messageInput = ref('')
 .feature-card {
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .feature-card:hover {

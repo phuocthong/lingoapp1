@@ -8,13 +8,13 @@
           <q-icon name="emoji_events" size="16px" color="grey-6" />
           <span class="text-body2 text-grey-6"># 45</span>
         </div>
-        
+
         <!-- Score -->
         <div class="row items-center q-gutter-xs">
           <span class="text-body2 text-green-7 text-weight-medium">523</span>
           <span class="text-body2 text-grey-6">đúng</span>
         </div>
-        
+
         <!-- Streak -->
         <div class="row items-center q-gutter-xs">
           <span class="text-body2 text-grey-6">Streak:</span>
@@ -26,13 +26,7 @@
       <div class="row items-center q-gutter-sm">
         <q-avatar size="32px" class="bg-purple-7 text-white">ND</q-avatar>
         <span class="text-subtitle1 text-weight-medium">Người dùng</span>
-        <q-btn 
-          outline 
-          size="sm" 
-          no-caps
-          class="q-ml-sm"
-          @click="logout"
-        >
+        <q-btn outline size="sm" no-caps class="q-ml-sm" @click="logout">
           <q-icon name="logout" size="16px" class="q-mr-xs" />
           Đăng xuất
         </q-btn>
@@ -62,12 +56,7 @@
             <div class="text-body2 text-grey-6 q-mb-lg">
               Tạo phòng thử thách riêng với các cài đặt tùy chỉnh
             </div>
-            <q-btn 
-              color="blue-6" 
-              class="full-width"
-              no-caps
-              @click="createRoom"
-            >
+            <q-btn color="blue-6" class="full-width" no-caps @click="createRoom">
               <q-icon name="add" size="16px" class="q-mr-xs" />
               Tạo phòng thử thách
             </q-btn>
@@ -82,7 +71,7 @@
               <q-icon name="search" size="20px" color="blue-6" />
               <div class="text-h6 text-grey-9">Phòng có sẵn (3)</div>
             </div>
-            <q-input 
+            <q-input
               v-model="searchQuery"
               placeholder="Tìm kiếm phòng..."
               outlined
@@ -134,15 +123,25 @@
                 <div class="row items-center justify-between">
                   <!-- User Avatars -->
                   <div class="row items-center">
-                    <q-avatar size="32px" class="bg-gradient-purple text-white text-weight-bold overlap-avatar">MA</q-avatar>
-                    <q-avatar size="32px" class="bg-gradient-purple text-white text-weight-bold overlap-avatar">TT</q-avatar>
-                    <q-avatar size="32px" class="bg-gradient-purple text-white text-weight-bold overlap-avatar">VN</q-avatar>
+                    <q-avatar
+                      size="32px"
+                      class="bg-gradient-purple text-white text-weight-bold overlap-avatar"
+                      >MA</q-avatar
+                    >
+                    <q-avatar
+                      size="32px"
+                      class="bg-gradient-purple text-white text-weight-bold overlap-avatar"
+                      >TT</q-avatar
+                    >
+                    <q-avatar
+                      size="32px"
+                      class="bg-gradient-purple text-white text-weight-bold overlap-avatar"
+                      >VN</q-avatar
+                    >
                   </div>
-                  
+
                   <!-- Join Button -->
-                  <q-btn color="blue-6" no-caps @click="joinRoom(1)">
-                    Tham gia
-                  </q-btn>
+                  <q-btn color="blue-6" no-caps @click="joinRoom(1)"> Tham gia </q-btn>
                 </div>
               </q-card-section>
             </q-card>
@@ -187,14 +186,20 @@
                 <div class="row items-center justify-between">
                   <!-- User Avatars -->
                   <div class="row items-center">
-                    <q-avatar size="32px" class="bg-gradient-purple text-white text-weight-bold overlap-avatar">TH</q-avatar>
-                    <q-avatar size="32px" class="bg-gradient-purple text-white text-weight-bold overlap-avatar">LA</q-avatar>
+                    <q-avatar
+                      size="32px"
+                      class="bg-gradient-purple text-white text-weight-bold overlap-avatar"
+                      >TH</q-avatar
+                    >
+                    <q-avatar
+                      size="32px"
+                      class="bg-gradient-purple text-white text-weight-bold overlap-avatar"
+                      >LA</q-avatar
+                    >
                   </div>
-                  
+
                   <!-- Join Button -->
-                  <q-btn color="blue-6" no-caps @click="joinRoom(2)">
-                    Tham gia
-                  </q-btn>
+                  <q-btn color="blue-6" no-caps @click="joinRoom(2)"> Tham gia </q-btn>
                 </div>
               </q-card-section>
             </q-card>
@@ -239,13 +244,13 @@
                 <div class="row items-center justify-between">
                   <!-- User Avatars -->
                   <div class="row items-center">
-                    <q-avatar size="32px" class="bg-gradient-purple text-white text-weight-bold">HN</q-avatar>
+                    <q-avatar size="32px" class="bg-gradient-purple text-white text-weight-bold"
+                      >HN</q-avatar
+                    >
                   </div>
-                  
+
                   <!-- Join Button -->
-                  <q-btn color="blue-6" no-caps @click="joinRoom(3)">
-                    Tham gia
-                  </q-btn>
+                  <q-btn color="blue-6" no-caps @click="joinRoom(3)"> Tham gia </q-btn>
                 </div>
               </q-card-section>
             </q-card>
@@ -268,8 +273,11 @@
           <q-card-section class="q-pa-md">
             <div class="column q-gutter-xs">
               <!-- Top players list -->
-              <div v-for="(player, index) in topPlayers" :key="index" 
-                   class="row justify-between items-center q-pa-xs bg-white rounded">
+              <div
+                v-for="(player, index) in topPlayers"
+                :key="index"
+                class="row justify-between items-center q-pa-xs bg-white rounded"
+              >
                 <div class="row items-center q-gutter-sm">
                   <span class="text-caption text-grey-6"># {{ index + 1 }}</span>
                   <span class="text-caption text-weight-medium">{{ player.name }}</span>
@@ -300,7 +308,7 @@ const topPlayers = ref([
   { name: 'Đức Minh', time: '10:33' },
   { name: 'Lan Anh', time: '10:33' },
   { name: 'Hoàng Nam', time: '10:34' },
-  { name: 'Mai Linh', time: '10:34' }
+  { name: 'Mai Linh', time: '10:34' },
 ])
 
 function createRoom() {
@@ -327,7 +335,9 @@ function logout() {
 .create-room-card {
   border: 1px solid #e2e8f0;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .create-room-card:hover {
@@ -338,7 +348,9 @@ function logout() {
 .room-card {
   border: 1px solid #e5e7eb;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .room-card:hover {
@@ -347,7 +359,7 @@ function logout() {
 }
 
 .bg-gradient-purple {
-  background: linear-gradient(90deg, #7C3AED 100%, #3B82F6 0%);
+  background: linear-gradient(90deg, #7c3aed 100%, #3b82f6 0%);
 }
 
 .overlap-avatar {
@@ -364,8 +376,9 @@ function logout() {
   .row.q-gutter-lg {
     flex-direction: column;
   }
-  
-  .col-3, .col-9 {
+
+  .col-3,
+  .col-9 {
     max-width: 100%;
     flex: none;
   }
@@ -375,7 +388,7 @@ function logout() {
   .q-pa-lg {
     padding: 12px !important;
   }
-  
+
   .create-room-card {
     height: auto !important;
   }
