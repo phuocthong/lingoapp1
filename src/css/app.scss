@@ -10,6 +10,15 @@
 
 html, body {
   contain: layout style;
+  overflow-anchor: none; /* Prevent scroll anchoring issues */
+}
+
+// Prevent ResizeObserver loops in common problematic elements
+iframe,
+.q-layout,
+.q-page-container,
+.q-router-view {
+  contain: size layout style;
 }
 
 // Prevent ResizeObserver infinite loops
