@@ -8,23 +8,23 @@
 
       <div class="sidebar-content" v-if="!sidebarCollapsed">
         <nav class="sidebar-nav">
-          <div class="nav-item active" @click="setActiveTab('dashboard')">
+          <div class="nav-item active" @click="$router.push('/dashboard')">
             <q-icon name="home" />
             <span>Dashboard</span>
           </div>
-          <div class="nav-item" @click="setActiveTab('friends')">
+          <div class="nav-item" @click="$router.push('/dashboard/friends')">
             <q-icon name="people" />
             <span>Bạn bè</span>
           </div>
-          <div class="nav-item" @click="setActiveTab('add-friends')">
+          <div class="nav-item" @click="$router.push('/dashboard/add-friends')">
             <q-icon name="person_add" />
             <span>Thêm bạn bè</span>
           </div>
-          <div class="nav-item" @click="setActiveTab('missions')">
+          <div class="nav-item" @click="$router.push('/dashboard/tasks')">
             <q-icon name="task" />
             <span>Nhiệm vụ</span>
           </div>
-          <div class="nav-item" @click="setActiveTab('rewards')">
+          <div class="nav-item" @click="$router.push('/dashboard/rewards')">
             <q-icon name="card_giftcard" />
             <span>Đổi điểm</span>
           </div>
