@@ -768,6 +768,7 @@ const startGame = () => {
   grid-template-columns: 1fr 280px;
   gap: 32px;
   align-items: start;
+  will-change: auto;
 }
 
 /* Participants Section */
