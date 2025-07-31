@@ -96,7 +96,7 @@
                   <path d="M8 4V8L10.6667 9.33333" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </g>
               </svg>
-              <span>20s mỗi câu</span>
+              <span>{{ timePerQuestion }}s mỗi câu</span>
             </div>
             
             <div class="room-stat">
