@@ -327,41 +327,61 @@ const logout = () => {
 }
 
 .sidebar-content {
-  padding: 20px 0;
+  padding: 24px 0;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   padding: 0 16px;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 15px 18px;
-  border-radius: 12px;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: #5c5e64;
+  color: #6b7280;
+  position: relative;
 }
 
-.nav-item:hover,
+.nav-item:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
 .nav-item.active {
-  background: #f5f3ff;
-  color: #6d28d9;
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #2563eb;
+  border-radius: 0 2px 2px 0;
 }
 
 .nav-item .q-icon {
-  font-size: 24px;
+  font-size: 20px;
+  flex-shrink: 0;
 }
 
 .nav-item span {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
-  letter-spacing: -0.4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Main Content */
