@@ -6,6 +6,9 @@ const routes = [
       { path: '', component: () => import('pages/HomePage.vue') },
       { path: 'introduction', component: () => import('pages/IntroductionPage.vue') },
       { path: 'challenges', component: () => import('pages/ChallengesPage.vue') },
+      { path: 'login', component: () => import('pages/LoginPage.vue') },
+      { path: 'register', component: () => import('pages/RegisterPage.vue') },
+      { path: 'forgot-password', component: () => import('pages/ForgotPasswordPage.vue') },
     ],
   },
   {
