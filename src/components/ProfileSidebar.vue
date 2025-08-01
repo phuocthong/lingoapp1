@@ -119,7 +119,7 @@ const setActiveTab = (tab) => {
 const navigateToTab = (tab, routePath) => {
   // Ensure we can always click on navigation items
   setActiveTab(tab)
-  
+
   // Use router.push with force navigation to prevent caching issues
   router.push(routePath).catch(() => {
     // Handle any navigation errors silently
