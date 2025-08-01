@@ -1,99 +1,7 @@
 <template>
   <div class="profile-page">
-    <!-- Modern Sidebar Navigation -->
-    <div class="profile-sidebar" :class="{ 'sidebar-collapsed': sidebarCollapsed }">
-      <!-- Sidebar Header -->
-      <div class="sidebar-header">
-        <div class="sidebar-logo">
-          <div class="logo-icon">
-            <q-icon name="account_circle" />
-          </div>
-          <span class="logo-text" v-show="!sidebarCollapsed">Menu</span>
-        </div>
-        <button class="sidebar-toggle" @click="toggleSidebar">
-          <q-icon :name="sidebarCollapsed ? 'menu' : 'close'" />
-        </button>
-      </div>
-
-      <!-- Navigation -->
-      <div class="sidebar-content" v-show="!sidebarCollapsed">
-        <nav class="sidebar-nav">
-          <a
-            href="/dashboard/profile"
-            class="nav-item"
-            :class="{ active: activeTab === 'profile' }"
-            @click.prevent="navigateToTab('profile', '/dashboard/profile')"
-          >
-            <div class="nav-icon">
-              <q-icon name="person" />
-            </div>
-            <span class="nav-text">Hồ sơ</span>
-            <div class="nav-indicator"></div>
-          </a>
-          <a
-            href="/dashboard/friends"
-            class="nav-item"
-            :class="{ active: activeTab === 'friends' }"
-            @click.prevent="navigateToTab('friends', '/dashboard/friends')"
-          >
-            <div class="nav-icon">
-              <q-icon name="people" />
-            </div>
-            <span class="nav-text">Bạn bè</span>
-            <div class="nav-indicator"></div>
-          </a>
-          <a
-            href="/dashboard/add-friends"
-            class="nav-item"
-            :class="{ active: activeTab === 'add-friends' }"
-            @click.prevent="navigateToTab('add-friends', '/dashboard/add-friends')"
-          >
-            <div class="nav-icon">
-              <q-icon name="person_add" />
-            </div>
-            <span class="nav-text">Thêm bạn bè</span>
-            <div class="nav-indicator"></div>
-          </a>
-          <a
-            href="/dashboard/tasks"
-            class="nav-item"
-            :class="{ active: activeTab === 'tasks' }"
-            @click.prevent="navigateToTab('tasks', '/dashboard/tasks')"
-          >
-            <div class="nav-icon">
-              <q-icon name="task" />
-            </div>
-            <span class="nav-text">Nhiệm vụ</span>
-            <div class="nav-indicator"></div>
-          </a>
-          <a
-            href="/dashboard/rewards"
-            class="nav-item"
-            :class="{ active: activeTab === 'rewards' }"
-            @click.prevent="navigateToTab('rewards', '/dashboard/rewards')"
-          >
-            <div class="nav-icon">
-              <q-icon name="card_giftcard" />
-            </div>
-            <span class="nav-text">Đổi điểm</span>
-            <div class="nav-indicator"></div>
-          </a>
-        </nav>
-      </div>
-
-      <!-- Sidebar Footer -->
-      <div class="sidebar-footer" v-show="!sidebarCollapsed">
-        <div class="user-mini-card">
-          <q-avatar size="28px" class="user-mini-avatar">
-            <img :src="userAvatar" alt="User" />
-          </q-avatar>
-          <div class="user-mini-info">
-            <div class="user-mini-name">Người dùng</div>
-            <div class="user-mini-status">Online</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Shared Sidebar Navigation -->
+    <ProfileSidebar />
 
     <!-- Main Content -->
     <div class="profile-content" :class="{ 'content-expanded': sidebarCollapsed }">
@@ -255,7 +163,7 @@
         </div>
         <q-btn color="negative" class="logout-btn" no-caps @click="logout">
           <q-icon name="logout" />
-          Đăng xuất
+          ��ăng xuất
         </q-btn>
       </div>
     </div>
