@@ -858,11 +858,11 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const register = () => {
-  router.push('/challenges')
+  router.push('/register')
 }
 
 const login = () => {
-  router.push('/dashboard')
+  router.push('/login')
 }
 </script>
 
