@@ -70,7 +70,6 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
-import { onMounted } from 'vue'
 import { auth } from '../utils/auth.js'
 
 const router = useRouter()

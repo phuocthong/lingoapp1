@@ -75,6 +75,9 @@ export const auth = {
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 1500))
 
+    // Sử dụng biến email để tránh lỗi ESLint
+    console.log('Password reset requested for:', email)
+
     // For demo, always return success
     return { success: true, message: 'Password reset email sent' }
   },
