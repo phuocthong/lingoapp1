@@ -638,8 +638,15 @@ const startGame = () => {
   if (canStartGame.value && isRoomOwner.value) {
     // Handle starting the game
     console.log('Starting game...')
-    // Navigate to game page
-    // router.push('/game')
+    // Navigate to challenge start countdown page
+    router.push({
+      path: '/dashboard/challenge-start',
+      query: {
+        questions: totalQuestions.value,
+        timePerQuestion: timePerQuestion.value,
+        participants: participants.value.length
+      }
+    })
   }
 }
 
