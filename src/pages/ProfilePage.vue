@@ -1,67 +1,10 @@
 <template>
   <div class="profile-page">
-    <!-- Sidebar Navigation -->
-    <div class="profile-sidebar" :class="{ 'sidebar-collapsed': sidebarCollapsed }">
-      <div class="sidebar-toggle" @click="toggleSidebar">
-        <q-icon :name="sidebarCollapsed ? 'menu' : 'close'" />
-      </div>
-
-      <div class="sidebar-content" v-show="!sidebarCollapsed">
-        <nav class="sidebar-nav">
-          <div
-            class="nav-item"
-            :class="{ active: activeTab === 'dashboard' }"
-            @click="navigateToTab('dashboard', '/dashboard')"
-          >
-            <q-icon name="home" />
-            <span>Dashboard</span>
-          </div>
-          <div
-            class="nav-item"
-            :class="{ active: activeTab === 'profile' }"
-            @click="navigateToTab('profile', '/dashboard/profile')"
-          >
-            <q-icon name="person" />
-            <span>Hồ sơ</span>
-          </div>
-          <div
-            class="nav-item"
-            :class="{ active: activeTab === 'friends' }"
-            @click="navigateToTab('friends', '/dashboard/friends')"
-          >
-            <q-icon name="people" />
-            <span>Bạn bè</span>
-          </div>
-          <div
-            class="nav-item"
-            :class="{ active: activeTab === 'add-friends' }"
-            @click="navigateToTab('add-friends', '/dashboard/add-friends')"
-          >
-            <q-icon name="person_add" />
-            <span>Thêm bạn bè</span>
-          </div>
-          <div
-            class="nav-item"
-            :class="{ active: activeTab === 'tasks' }"
-            @click="navigateToTab('tasks', '/dashboard/tasks')"
-          >
-            <q-icon name="task" />
-            <span>Nhiệm vụ</span>
-          </div>
-          <div
-            class="nav-item"
-            :class="{ active: activeTab === 'rewards' }"
-            @click="navigateToTab('rewards', '/dashboard/rewards')"
-          >
-            <q-icon name="card_giftcard" />
-            <span>Đổi điểm</span>
-          </div>
-        </nav>
-      </div>
-    </div>
+    <!-- Shared Sidebar Navigation -->
+    <ProfileSidebar />
 
     <!-- Main Content -->
-    <div class="profile-content" :class="{ 'content-expanded': sidebarCollapsed }">
+    <div class="profile-content">
       <!-- User Profile Header -->
       <div class="profile-header">
         <div class="profile-avatar-section">
@@ -105,7 +48,11 @@
               <span>Chỉnh sửa thông tin</span>
             </q-btn>
 
-            <q-btn class="action-btn password-btn" no-caps disable>
+            <q-btn
+              class="action-btn password-btn"
+              no-caps
+              @click="$router.push('/dashboard/change-password')"
+            >
               <q-icon name="lock" />
               <span>Đổi mật khẩu</span>
             </q-btn>
@@ -220,7 +167,7 @@
         </div>
         <q-btn color="negative" class="logout-btn" no-caps @click="logout">
           <q-icon name="logout" />
-          Đăng xuất
+          ��ăng xuất
         </q-btn>
       </div>
     </div>
@@ -228,58 +175,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import ProfileSidebar from '../components/ProfileSidebar.vue'
 
 const router = useRouter()
-const route = useRoute()
 
-const sidebarCollapsed = ref(false)
-const activeTab = ref('profile')
 const userAvatar = ref(
   'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
 )
-
-const toggleSidebar = () => {
-  sidebarCollapsed.value = !sidebarCollapsed.value
-}
-
-const setActiveTab = (tab) => {
-  activeTab.value = tab
-}
-
-const navigateToTab = (tab, routePath) => {
-  setActiveTab(tab)
-  router.push(routePath)
-}
-
-// Set active tab based on current route
-const updateActiveTabFromRoute = () => {
-  const currentPath = route.path
-  if (currentPath.includes('/dashboard/friends')) {
-    activeTab.value = 'friends'
-  } else if (currentPath.includes('/dashboard/add-friends')) {
-    activeTab.value = 'add-friends'
-  } else if (currentPath.includes('/dashboard/tasks')) {
-    activeTab.value = 'tasks'
-  } else if (currentPath.includes('/dashboard/rewards')) {
-    activeTab.value = 'rewards'
-  } else if (currentPath.includes('/dashboard/profile')) {
-    activeTab.value = 'profile'
-  } else if (currentPath.includes('/dashboard')) {
-    activeTab.value = 'dashboard'
-  }
-}
-
-// Watch for route changes
-watch(route, () => {
-  updateActiveTabFromRoute()
-})
-
-// Set initial active tab on mount
-onMounted(() => {
-  updateActiveTabFromRoute()
-})
 
 const editProfile = () => {
   // Handle edit profile logic
@@ -299,75 +203,196 @@ const logout = () => {
   background: #ffffff;
 }
 
-/* Sidebar */
+/* Modern Sidebar */
 .profile-sidebar {
-  width: 285px;
-  background: white;
-  border-right: 1px solid rgba(92, 94, 100, 0.7);
-  transition: all 0.3s ease;
+  width: 280px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-collapsed {
-  width: 60px;
+  width: 70px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.logo-text {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .sidebar-toggle {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 10;
-  background: #f5f3ff;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  color: white;
 }
 
 .sidebar-toggle:hover {
-  background: #ede9fe;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
 }
 
+/* Navigation */
 .sidebar-content {
-  padding: 20px 0;
+  flex: 1;
+  padding: 24px 16px;
+  overflow-y: auto;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 0 16px;
+  gap: 8px;
 }
 
 .nav-item {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 15px 18px;
+  gap: 16px;
+  padding: 14px 16px;
   border-radius: 12px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  transition: all 0.2s ease;
-  color: #5c5e64;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
-.nav-item:hover,
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateX(4px);
+}
+
 .nav-item.active {
-  background: #f5f3ff;
-  color: #6d28d9;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transform: translateX(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-.nav-item .q-icon {
-  font-size: 24px;
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #fbbf24, #f59e0b);
+  border-radius: 0 4px 4px 0;
 }
 
-.nav-item span {
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   font-size: 20px;
+}
+
+.nav-text {
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: -0.4px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-item.active .nav-indicator {
+  opacity: 1;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+}
+
+.user-mini-avatar {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-mini-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-mini-name {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-mini-status {
+  font-size: 11px;
+  color: #10b981;
+  line-height: 1.2;
 }
 
 /* Main Content */
@@ -375,8 +400,9 @@ const logout = () => {
   flex: 1;
   padding: 20px 32px;
   margin-left: 0;
-  transition: all 0.3s ease;
+  transition: margin-left 0.3s ease;
   max-width: 915px;
+  will-change: margin-left;
 }
 
 .content-expanded {
@@ -441,9 +467,9 @@ const logout = () => {
 }
 
 .profile-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 16px;
-  flex-wrap: wrap;
   justify-content: center;
   margin-top: 16px;
 }
@@ -479,10 +505,15 @@ const logout = () => {
 }
 
 .password-btn {
-  background: rgba(107, 114, 128, 0.5);
-  color: rgba(0, 0, 0, 0.5);
-  opacity: 0.5;
+  background: rgba(107, 114, 128, 0.3);
+  color: #374151;
   min-width: 156px;
+  transition: all 0.3s ease;
+}
+
+.password-btn:hover {
+  background: rgba(107, 114, 128, 0.5);
+  transform: translateY(-1px);
 }
 
 .btn-content {
@@ -505,7 +536,7 @@ const logout = () => {
 /* Statistics Grid */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -577,7 +608,7 @@ const logout = () => {
 /* Statistics Row 2 */
 .stats-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -764,6 +795,13 @@ const logout = () => {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .profile-content {
+    max-width: 100%;
+    padding: 20px 16px;
+  }
+}
+
 @media (max-width: 1024px) {
   .profile-page {
     flex-direction: column;
@@ -772,39 +810,54 @@ const logout = () => {
   .profile-sidebar {
     width: 100%;
     height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(92, 94, 100, 0.7);
   }
 
   .sidebar-collapsed {
     height: 60px;
     overflow: hidden;
+    width: 100%;
+  }
+
+  .profile-content {
+    margin-left: 0;
+    padding: 16px;
   }
 
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 
   .stats-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .profile-content {
-    padding: 16px;
+    padding: 12px;
   }
 
   .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+
+  .stats-row {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .profile-actions {
-    flex-direction: column;
-    align-items: stretch;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .action-btn {
     min-width: auto;
     width: 100%;
+    justify-content: center;
   }
 
   .logout-section {
@@ -812,9 +865,32 @@ const logout = () => {
     gap: 16px;
     text-align: center;
   }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  .nav-item {
+    flex-shrink: 0;
+    min-width: fit-content;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .nav-item span {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 480px) {
+  .profile-content {
+    padding: 8px;
+  }
+
   .chart-container {
     height: 200px;
   }
@@ -822,6 +898,50 @@ const logout = () => {
   .stat-card-large {
     flex-direction: column;
     text-align: center;
+    padding: 16px;
+    min-height: auto;
+  }
+
+  .profile-header {
+    padding: 16px;
+  }
+
+  .user-name {
+    font-size: 24px;
+  }
+
+  .user-handle {
+    font-size: 16px;
+  }
+
+  .join-date {
+    font-size: 14px;
+  }
+
+  .action-btn {
+    padding: 12px 16px;
+    font-size: 14px;
+    height: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .contact-section,
+  .logout-section {
+    padding: 16px;
+  }
+
+  .logout-btn {
+    font-size: 18px;
+    padding: 12px 24px;
+    min-width: auto;
   }
 }
 </style>

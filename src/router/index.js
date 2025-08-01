@@ -6,6 +6,7 @@ import {
   createWebHashHistory,
 } from 'vue-router'
 import routes from './routes'
+import { auth } from '../utils/auth'
 
 /*
  * If not building with SSR mode, you can
@@ -31,6 +32,22 @@ export default defineRouter(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE),
+  })
+
+  // Add navigation guards
+  Router.beforeEach((to, from, next) => {
+    const isAuthenticated = auth.isLoggedIn()
+    const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
+
+    if (requiresAuth && !isAuthenticated) {
+      // Redirect to login page if authentication is required but user is not logged in
+      next('/login')
+    } else if ((to.path === '/login' || to.path === '/register') && isAuthenticated) {
+      // Redirect to dashboard if user is already logged in and trying to access auth pages
+      next('/dashboard')
+    } else {
+      next()
+    }
   })
 
   return Router

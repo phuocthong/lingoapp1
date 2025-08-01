@@ -67,6 +67,10 @@
 
 <script setup>
 import { ref } from 'vue'
+
+import ProfileSidebar from '../components/ProfileSidebar.vue'
+
+// Mock friends data
 const friends = ref([
   { id: 1, name: 'Người dùng', username: '@nguoidung', avatar: 'https://via.placeholder.com/55', streak: '15', status: 'Đang hoạt động' },
   // ...thêm bạn bè khác...

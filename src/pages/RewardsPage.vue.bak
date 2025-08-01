@@ -22,7 +22,7 @@
             <span class="nav-label">Dashboard</span>
           </div>
 
-          <div class="nav-link" @click="$router.push('/dashboard/friends')">
+          <div class="nav-link">
             <svg
               width="29"
               height="29"
@@ -40,7 +40,7 @@
             <span class="nav-label">Bạn bè</span>
           </div>
 
-          <div class="nav-link" @click="$router.push('/dashboard/add-friends')">
+          <div class="nav-link">
             <svg
               width="28"
               height="29"
