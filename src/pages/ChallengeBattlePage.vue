@@ -218,12 +218,13 @@ const players = ref([
 // Sample questions
 const questions = ref([
   {
-    question: "Đâu là thủ đô của Việt Nam?",
+    question: "What does 'intelligent' mean?",
+    word: "intelligent",
     answers: [
-      { text: "Hồ Chí Minh", correct: false },
-      { text: "Hà Nội", correct: true },
-      { text: "Đà Nẵng", correct: false },
-      { text: "Cần Thơ", correct: false }
+      { text: "stupid", correct: false },
+      { text: "smart, clever", correct: true },
+      { text: "lazy", correct: false },
+      { text: "tired", correct: false }
     ]
   },
   {
