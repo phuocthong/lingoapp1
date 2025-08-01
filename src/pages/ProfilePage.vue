@@ -443,9 +443,9 @@ const logout = () => {
 }
 
 .profile-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 16px;
-  flex-wrap: wrap;
   justify-content: center;
   margin-top: 16px;
 }
