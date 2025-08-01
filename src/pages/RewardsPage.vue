@@ -22,7 +22,7 @@
             <span class="nav-label">Dashboard</span>
           </div>
 
-          <div class="nav-link">
+          <div class="nav-link" @click="$router.push('/dashboard/friends')">
             <svg
               width="29"
               height="29"
