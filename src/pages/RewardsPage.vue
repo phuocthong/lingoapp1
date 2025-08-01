@@ -392,8 +392,6 @@
 </template>
 
 <script setup>
-import ProfileSidebar from '../components/ProfileSidebar.vue'
-
 const exchangeCard = (cardType) => {
   // Handle card exchange logic
   console.log('Exchanging card:', cardType)
