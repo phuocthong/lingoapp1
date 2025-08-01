@@ -76,9 +76,7 @@ import { auth } from '../utils/auth.js'
 const router = useRouter()
 
 // Auto-login for demo purposes
-onMounted(() => {
-  auth.autoLogin()
-})
+// Authentication is now handled by router guards
 
 const logout = () => {
   // Handle logout logic
