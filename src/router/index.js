@@ -37,7 +37,7 @@ export default defineRouter(function (/* { store, ssrContext } */) {
   // Add navigation guards
   Router.beforeEach((to, from, next) => {
     const isAuthenticated = auth.isLoggedIn()
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+    const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
 
     if (requiresAuth && !isAuthenticated) {
       // Redirect to login page if authentication is required but user is not logged in

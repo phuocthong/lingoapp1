@@ -48,7 +48,11 @@
               <span>Chỉnh sửa thông tin</span>
             </q-btn>
 
-            <q-btn class="action-btn password-btn" no-caps @click="$router.push('/dashboard/change-password')">
+            <q-btn
+              class="action-btn password-btn"
+              no-caps
+              @click="$router.push('/dashboard/change-password')"
+            >
               <q-icon name="lock" />
               <span>Đổi mật khẩu</span>
             </q-btn>

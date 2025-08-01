@@ -8,10 +8,11 @@ export const auth = {
       username: 'nguoidung',
       email: 'nguoidung@example.com',
       name: 'Người dùng',
-      avatar: 'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+      avatar:
+        'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
       level: 10,
       xp: 1000,
-      streak: 15
+      streak: 15,
     }
 
     if (rememberMe) {
@@ -53,7 +54,7 @@ export const auth = {
   // Simulate registration
   register: async (userData) => {
     // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
     // For demo, just log them in after registration
     return auth.login({
@@ -61,17 +62,18 @@ export const auth = {
       username: userData.username,
       email: userData.email,
       name: userData.username,
-      avatar: 'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+      avatar:
+        'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
       level: 1,
       xp: 0,
-      streak: 0
+      streak: 0,
     })
   },
 
   // Simulate password reset
   forgotPassword: async (email) => {
     // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1500))
 
     // For demo, always return success
     return { success: true, message: 'Password reset email sent' }

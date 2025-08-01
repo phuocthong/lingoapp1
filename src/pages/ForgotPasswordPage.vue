@@ -4,8 +4,8 @@
       <!-- App Logo Section -->
       <div class="app-logo-section">
         <div class="app-logo">
-          <img 
-            src="https://cdn.builder.io/api/v1/image/assets%2Ff046890c17ca436cab38cffc651fb9cb%2F2f58a553e41b49a5aed3a7ab28e72a98?format=webp&width=800" 
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2Ff046890c17ca436cab38cffc651fb9cb%2F2f58a553e41b49a5aed3a7ab28e72a98?format=webp&width=800"
             alt="English Vocabulary App"
             class="logo-image"
           />
@@ -28,19 +28,19 @@
           <div class="form-group">
             <label class="form-label">Địa chỉ email</label>
             <div class="input-wrapper">
-              <input 
+              <input
                 v-model="resetForm.email"
-                type="email" 
+                type="email"
                 placeholder="Nhập địa chỉ email của bạn"
                 class="form-input"
-                :class="{ 'error': errors.email }"
+                :class="{ error: errors.email }"
               />
             </div>
             <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
           </div>
 
           <!-- Reset Button -->
-          <button 
+          <button
             type="submit"
             class="reset-button"
             :disabled="loading"
@@ -52,11 +52,7 @@
 
           <!-- Back to Login -->
           <div class="back-to-login">
-            <button 
-              type="button"
-              class="back-link"
-              @click="$router.push('/login')"
-            >
+            <button type="button" class="back-link" @click="$router.push('/login')">
               ← Quay lại đăng nhập
             </button>
           </div>
@@ -65,21 +61,33 @@
         <!-- Success Message -->
         <div class="success-section" v-else>
           <div class="success-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="24" fill="#10B981"/>
-              <path d="M18 24l6 6 12-12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="24" cy="24" r="24" fill="#10B981" />
+              <path
+                d="M18 24l6 6 12-12"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </div>
           <h2 class="success-title">Email đã được gửi!</h2>
           <p class="success-message">
-            Chúng tôi đã gửi liên kết đặt lại mật khẩu đến địa chỉ email 
+            Chúng tôi đã gửi liên kết đặt lại mật khẩu đến địa chỉ email
             <strong>{{ resetForm.email }}</strong>
           </p>
           <p class="success-note">
             Vui lòng kiểm tra hộp thư đến của bạn và làm theo hướng dẫn để đặt lại mật khẩu.
           </p>
-          
-          <button 
+
+          <button
             type="button"
             class="resend-button"
             @click="handleResendEmail"
@@ -90,11 +98,7 @@
           </button>
 
           <div class="back-to-login">
-            <button 
-              type="button"
-              class="back-link"
-              @click="$router.push('/login')"
-            >
+            <button type="button" class="back-link" @click="$router.push('/login')">
               ← Quay lại đăng nhập
             </button>
           </div>
@@ -112,43 +116,43 @@ const router = useRouter()
 
 // Form state
 const resetForm = reactive({
-  email: ''
+  email: '',
 })
 
 const loading = ref(false)
 const resendLoading = ref(false)
 const emailSent = ref(false)
 const errors = reactive({
-  email: ''
+  email: '',
 })
 
 // Validation
 const validateForm = () => {
   errors.email = ''
-  
+
   if (!resetForm.email.trim()) {
     errors.email = 'Vui lòng nhập địa chỉ email'
     return false
   }
-  
+
   if (!/\S+@\S+\.\S+/.test(resetForm.email)) {
     errors.email = 'Địa chỉ email không hợp lệ'
     return false
   }
-  
+
   return true
 }
 
 // Handle password reset
 const handlePasswordReset = async () => {
   if (!validateForm()) return
-  
+
   loading.value = true
-  
+
   try {
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
     // Show success message
     emailSent.value = true
   } catch (error) {
@@ -162,11 +166,11 @@ const handlePasswordReset = async () => {
 // Handle resend email
 const handleResendEmail = async () => {
   resendLoading.value = true
-  
+
   try {
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+
     // Show confirmation (you could add a toast notification here)
     console.log('Email resent successfully')
   } catch (error) {
@@ -180,7 +184,7 @@ const handleResendEmail = async () => {
 <style scoped>
 .forgot-password-page {
   min-height: 100vh;
-  background: #FFFEFC;
+  background: #fffefc;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,7 +237,7 @@ const handleResendEmail = async () => {
 }
 
 .page-subtitle {
-  color: #5B5B5B;
+  color: #5b5b5b;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -269,9 +273,9 @@ const handleResendEmail = async () => {
   width: 100%;
   height: 54px;
   padding: 0 20px;
-  border: 1px solid #2563EB;
+  border: 1px solid #2563eb;
   border-radius: 40px;
-  background: #FFF;
+  background: #fff;
   font-family: 'Poppins', sans-serif;
   font-size: 15px;
   font-weight: 300;
@@ -281,7 +285,7 @@ const handleResendEmail = async () => {
 }
 
 .form-input::placeholder {
-  color: #ACACAC;
+  color: #acacac;
 }
 
 .form-input:focus {
@@ -303,7 +307,7 @@ const handleResendEmail = async () => {
 .reset-button {
   width: 100%;
   height: 49px;
-  background: #2563EB;
+  background: #2563eb;
   border: none;
   border-radius: 36px;
   color: white;
@@ -332,7 +336,7 @@ const handleResendEmail = async () => {
 }
 
 .back-link {
-  color: #2563EB;
+  color: #2563eb;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -370,7 +374,7 @@ const handleResendEmail = async () => {
 }
 
 .success-message {
-  color: #5B5B5B;
+  color: #5b5b5b;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -379,7 +383,7 @@ const handleResendEmail = async () => {
 }
 
 .success-note {
-  color: #6B7280;
+  color: #6b7280;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -390,7 +394,7 @@ const handleResendEmail = async () => {
 .resend-button {
   width: 100%;
   height: 49px;
-  background: #10B981;
+  background: #10b981;
   border: none;
   border-radius: 36px;
   color: white;
@@ -417,11 +421,11 @@ const handleResendEmail = async () => {
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .app-logo-section {
     max-width: 400px;
   }
-  
+
   .auth-section {
     max-width: 100%;
   }
@@ -431,40 +435,40 @@ const handleResendEmail = async () => {
   .forgot-password-page {
     padding: 10px;
   }
-  
+
   .forgot-password-container {
     min-height: auto;
   }
-  
+
   .logo-image {
     max-width: 300px;
   }
-  
+
   .auth-section {
     padding: 0 10px;
   }
-  
+
   .page-title {
     font-size: 28px;
   }
-  
+
   .page-subtitle {
     font-size: 14px;
   }
-  
+
   .form-label {
     font-size: 14px;
   }
-  
+
   .form-input {
     height: 48px;
     font-size: 14px;
   }
-  
+
   .success-title {
     font-size: 24px;
   }
-  
+
   .success-message {
     font-size: 14px;
   }
@@ -474,15 +478,15 @@ const handleResendEmail = async () => {
   .page-title {
     font-size: 24px;
   }
-  
+
   .page-subtitle {
     font-size: 13px;
   }
-  
+
   .success-title {
     font-size: 20px;
   }
-  
+
   .success-message {
     font-size: 13px;
   }
