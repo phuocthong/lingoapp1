@@ -218,7 +218,7 @@ const timePerQuestion = ref(20)
 const maxParticipants = ref(4)
 const roomCode = ref('ABC')
 const roomName = ref('Phòng chờ')
-const currentUserId = ref('user1') // This would come from auth
+// const currentUserId = ref('user1') // This would come from auth - currently using isCurrentUser flag
 const currentUserReady = ref(false)
 
 // Sample participants data - would come from real-time server
