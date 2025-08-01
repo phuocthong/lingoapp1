@@ -24,5 +24,5 @@ export const auth = {
     if (!auth.isLoggedIn()) {
       auth.login()
     }
-  }
+  },
 }

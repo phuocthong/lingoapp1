@@ -7,12 +7,48 @@
         <div class="question-progress">
           <div class="progress-info">
             <svg class="trophy-icon" viewBox="0 0 16 16">
-              <path d="M4.00065 6.00008H3.00065C2.55862 6.00008 2.1347 5.82449 1.82214 5.51193C1.50958 5.19937 1.33398 4.77544 1.33398 4.33341C1.33398 3.89139 1.50958 3.46746 1.82214 3.1549C2.1347 2.84234 2.55862 2.66675 3.00065 2.66675H4.00065" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M12.001 6.00008H13.001C13.443 6.00008 13.8669 5.82449 14.1795 5.51193C14.492 5.19937 14.6676 4.77544 14.6676 4.33341C14.6676 3.89139 14.492 3.46746 14.1795 3.1549C13.8669 2.84234 13.443 2.66675 13.001 2.66675H12.001" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M2.66797 14.6667H13.3346" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M6.66797 9.77344V11.3334C6.66797 11.7001 6.35464 11.9868 6.0213 12.1401C5.23464 12.5001 4.66797 13.4934 4.66797 14.6668" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M9.33398 9.77344V11.3334C9.33398 11.7001 9.64732 11.9868 9.98065 12.1401C10.7673 12.5001 11.334 13.4934 11.334 14.6668" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M12.001 1.33325H4.00098V5.99992C4.00098 7.06078 4.4224 8.0782 5.17255 8.82835C5.9227 9.57849 6.94011 9.99992 8.00098 9.99992C9.06184 9.99992 10.0793 9.57849 10.8294 8.82835C11.5795 8.0782 12.001 7.06078 12.001 5.99992V1.33325Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M4.00065 6.00008H3.00065C2.55862 6.00008 2.1347 5.82449 1.82214 5.51193C1.50958 5.19937 1.33398 4.77544 1.33398 4.33341C1.33398 3.89139 1.50958 3.46746 1.82214 3.1549C2.1347 2.84234 2.55862 2.66675 3.00065 2.66675H4.00065"
+                stroke="#6B7280"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12.001 6.00008H13.001C13.443 6.00008 13.8669 5.82449 14.1795 5.51193C14.492 5.19937 14.6676 4.77544 14.6676 4.33341C14.6676 3.89139 14.492 3.46746 14.1795 3.1549C13.8669 2.84234 13.443 2.66675 13.001 2.66675H12.001"
+                stroke="#6B7280"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M2.66797 14.6667H13.3346"
+                stroke="#6B7280"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M6.66797 9.77344V11.3334C6.66797 11.7001 6.35464 11.9868 6.0213 12.1401C5.23464 12.5001 4.66797 13.4934 4.66797 14.6668"
+                stroke="#6B7280"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9.33398 9.77344V11.3334C9.33398 11.7001 9.64732 11.9868 9.98065 12.1401C10.7673 12.5001 11.334 13.4934 11.334 14.6668"
+                stroke="#6B7280"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12.001 1.33325H4.00098V5.99992C4.00098 7.06078 4.4224 8.0782 5.17255 8.82835C5.9227 9.57849 6.94011 9.99992 8.00098 9.99992C9.06184 9.99992 10.0793 9.57849 10.8294 8.82835C11.5795 8.0782 12.001 7.06078 12.001 5.99992V1.33325Z"
+                stroke="#6B7280"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
             <span>{{ currentQuestion }}/{{ totalQuestions }}</span>
           </div>
@@ -25,20 +61,13 @@
         <div class="timer-section">
           <div class="timer-circle" :class="{ warning: timeLeft <= 5, critical: timeLeft <= 3 }">
             <svg class="timer-svg" viewBox="0 0 36 36">
-              <circle 
-                cx="18" 
-                cy="18" 
-                r="16" 
-                stroke="#E5E7EB" 
-                stroke-width="2" 
-                fill="none"
-              />
-              <circle 
-                cx="18" 
-                cy="18" 
-                r="16" 
-                stroke="currentColor" 
-                stroke-width="2" 
+              <circle cx="18" cy="18" r="16" stroke="#E5E7EB" stroke-width="2" fill="none" />
+              <circle
+                cx="18"
+                cy="18"
+                r="16"
+                stroke="currentColor"
+                stroke-width="2"
                 fill="none"
                 :stroke-dasharray="circleCircumference"
                 :stroke-dashoffset="timerStrokeDashoffset"
@@ -53,10 +82,34 @@
         <div class="players-section">
           <div class="players-header">
             <svg class="players-icon" viewBox="0 0 16 16">
-              <path d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M5.99967 7.33333C7.47243 7.33333 8.66634 6.13943 8.66634 4.66667C8.66634 3.19391 7.47243 2 5.99967 2C4.52692 2 3.33301 3.19391 3.33301 4.66667C3.33301 6.13943 4.52692 7.33333 5.99967 7.33333Z" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14"
+                stroke="#6B7280"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M5.99967 7.33333C7.47243 7.33333 8.66634 6.13943 8.66634 4.66667C8.66634 3.19391 7.47243 2 5.99967 2C4.52692 2 3.33301 3.19391 3.33301 4.66667C3.33301 6.13943 4.52692 7.33333 5.99967 7.33333Z"
+                stroke="#6B7280"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867"
+                stroke="#6B7280"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334"
+                stroke="#6B7280"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
             <span>{{ players.length }} players</span>
           </div>
@@ -101,7 +154,7 @@
             v-for="player in players"
             :key="player.id"
             class="player-card"
-            :class="{ 'current-player': player.isCurrentUser, 'leader': player.rank === 1 }"
+            :class="{ 'current-player': player.isCurrentUser, leader: player.rank === 1 }"
           >
             <div class="player-rank">{{ player.rank }}</div>
             <div class="player-avatar">{{ player.initials }}</div>
@@ -179,13 +232,13 @@ const gameInterval = ref(null)
 // Current question data
 const currentQuestionData = ref({
   question: "What does 'beautiful' mean?",
-  word: "beautiful",
+  word: 'beautiful',
   answers: [
-    { text: "ugly", correct: false },
-    { text: "pretty, attractive", correct: true },
-    { text: "sad", correct: false },
-    { text: "angry", correct: false }
-  ]
+    { text: 'ugly', correct: false },
+    { text: 'pretty, attractive', correct: true },
+    { text: 'sad', correct: false },
+    { text: 'angry', correct: false },
+  ],
 })
 
 const selectedAnswer = ref(null)
@@ -201,7 +254,7 @@ const players = ref([
     streak: 0,
     rank: 1,
     status: 'thinking', // thinking, answered, waiting
-    isCurrentUser: true
+    isCurrentUser: true,
   },
   {
     id: 'player2',
@@ -211,41 +264,41 @@ const players = ref([
     streak: 0,
     rank: 2,
     status: 'thinking',
-    isCurrentUser: false
-  }
+    isCurrentUser: false,
+  },
 ])
 
 // Sample questions
 const questions = ref([
   {
     question: "What does 'intelligent' mean?",
-    word: "intelligent",
+    word: 'intelligent',
     answers: [
-      { text: "stupid", correct: false },
-      { text: "smart, clever", correct: true },
-      { text: "lazy", correct: false },
-      { text: "tired", correct: false }
-    ]
+      { text: 'stupid', correct: false },
+      { text: 'smart, clever', correct: true },
+      { text: 'lazy', correct: false },
+      { text: 'tired', correct: false },
+    ],
   },
   {
     question: "What does 'courageous' mean?",
-    word: "courageous",
+    word: 'courageous',
     answers: [
-      { text: "afraid, scared", correct: false },
-      { text: "hungry", correct: false },
-      { text: "brave, fearless", correct: true },
-      { text: "sleepy", correct: false }
-    ]
+      { text: 'afraid, scared', correct: false },
+      { text: 'hungry', correct: false },
+      { text: 'brave, fearless', correct: true },
+      { text: 'sleepy', correct: false },
+    ],
   },
   {
-    question: "Hành tinh nào gần Mặt Trời nhất?",
+    question: 'Hành tinh nào gần Mặt Trời nhất?',
     answers: [
-      { text: "Sao Kim", correct: false },
-      { text: "Trái Đ���t", correct: false },
-      { text: "Sao Thủy", correct: true },
-      { text: "Sao Hỏa", correct: false }
-    ]
-  }
+      { text: 'Sao Kim', correct: false },
+      { text: 'Trái Đ���t', correct: false },
+      { text: 'Sao Thủy', correct: true },
+      { text: 'Sao Hỏa', correct: false },
+    ],
+  },
 ])
 
 // Computed properties
@@ -320,37 +373,40 @@ const loadQuestion = () => {
   const questionIndex = (currentQuestion.value - 1) % questions.value.length
   currentQuestionData.value = questions.value[questionIndex]
   selectedAnswer.value = null
-  correctAnswer.value = currentQuestionData.value.answers.findIndex(a => a.correct)
+  correctAnswer.value = currentQuestionData.value.answers.findIndex((a) => a.correct)
   answered.value = false
   timeLeft.value = timePerQuestion.value
-  
+
   // Reset player statuses
-  players.value.forEach(player => {
+  players.value.forEach((player) => {
     if (player.isCurrentUser) {
       player.status = 'thinking'
     } else {
       // Simulate other players
-      setTimeout(() => {
-        if (!answered.value && Math.random() > 0.3) {
-          player.status = 'answered'
-        }
-      }, Math.random() * timePerQuestion.value * 1000)
+      setTimeout(
+        () => {
+          if (!answered.value && Math.random() > 0.3) {
+            player.status = 'answered'
+          }
+        },
+        Math.random() * timePerQuestion.value * 1000,
+      )
     }
   })
 }
 
 const selectAnswer = (answerIndex) => {
   if (answered.value) return
-  
+
   selectedAnswer.value = answerIndex
   answered.value = true
-  
-  const currentPlayer = players.value.find(p => p.isCurrentUser)
+
+  const currentPlayer = players.value.find((p) => p.isCurrentUser)
   currentPlayer.status = 'answered'
-  
+
   // Check if answer is correct
   const isCorrect = currentQuestionData.value.answers[answerIndex].correct
-  
+
   if (isCorrect) {
     // Correct answer: +1 point, increase streak
     currentPlayer.streak++
@@ -361,10 +417,10 @@ const selectAnswer = (answerIndex) => {
     currentPlayer.score = Math.max(0, currentPlayer.score - 1)
     currentPlayer.streak = 0
   }
-  
+
   // Update rankings
   updateRankings()
-  
+
   // Show answer for 2 seconds, then next question
   setTimeout(() => {
     nextQuestion()
@@ -373,17 +429,17 @@ const selectAnswer = (answerIndex) => {
 
 const timeUp = () => {
   if (answered.value) return
-  
+
   answered.value = true
-  const currentPlayer = players.value.find(p => p.isCurrentUser)
+  const currentPlayer = players.value.find((p) => p.isCurrentUser)
   currentPlayer.status = 'answered'
-  
+
   // Time up: -1 point, reset streak
   currentPlayer.score = Math.max(0, currentPlayer.score - 1)
   currentPlayer.streak = 0
-  
+
   updateRankings()
-  
+
   setTimeout(() => {
     nextQuestion()
   }, 2000)
@@ -401,7 +457,7 @@ const nextQuestion = () => {
 const updateRankings = () => {
   const sorted = [...players.value].sort((a, b) => b.score - a.score)
   sorted.forEach((player, index) => {
-    const originalPlayer = players.value.find(p => p.id === player.id)
+    const originalPlayer = players.value.find((p) => p.id === player.id)
     originalPlayer.rank = index + 1
   })
 }
@@ -415,7 +471,7 @@ const endGame = () => {
 
 const getAnswerClass = (index) => {
   if (!answered.value) return ''
-  
+
   if (index === correctAnswer.value) {
     return 'correct'
   } else if (index === selectedAnswer.value) {
@@ -435,15 +491,15 @@ const playAgain = () => {
   answered.value = false
   gameOver.value = false
   selectedAnswer.value = null
-  
+
   // Reset players
-  players.value.forEach(player => {
+  players.value.forEach((player) => {
     player.score = 0
     player.streak = 0
     player.rank = 1
     player.status = 'thinking'
   })
-  
+
   loadQuestion()
   startTimer()
 }
@@ -457,7 +513,12 @@ const exitGame = () => {
 .challenge-battle-page {
   min-height: 100vh;
   background: linear-gradient(90deg, #eff6ff 100%, #f5f3ff 0%);
-  font-family: 'Inter', -apple-system, 'Roboto', 'Helvetica', sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    'Roboto',
+    'Helvetica',
+    sans-serif;
   contain: layout style;
 }
 

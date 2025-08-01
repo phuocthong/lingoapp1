@@ -19,19 +19,12 @@
       <!-- Main Countdown Section -->
       <div class="countdown-section">
         <h1 class="countdown-title">BẮT ĐẦU TRONG...</h1>
-        
+
         <!-- Countdown Timer -->
         <div class="timer-container">
           <div class="timer-circle">
             <svg class="timer-svg" viewBox="0 0 256 256">
-              <circle
-                cx="128"
-                cy="128"
-                r="120"
-                stroke="#F3F4F6"
-                stroke-width="8"
-                fill="none"
-              />
+              <circle cx="128" cy="128" r="120" stroke="#F3F4F6" stroke-width="8" fill="none" />
               <circle
                 cx="128"
                 cy="128"
@@ -61,12 +54,48 @@
         <div class="game-stats">
           <div class="stat-card">
             <svg class="stat-icon" viewBox="0 0 33 32">
-              <path d="M8.59994 12H6.59993C5.71588 12 4.86803 11.6488 4.24291 11.0237C3.61779 10.3985 3.2666 9.5507 3.2666 8.66665C3.2666 7.78259 3.61779 6.93474 4.24291 6.30962C4.86803 5.6845 5.71588 5.33331 6.59993 5.33331H8.59994" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M24.5996 12H26.5996C27.4837 12 28.3315 11.6488 28.9566 11.0237C29.5818 10.3985 29.9329 9.5507 29.9329 8.66665C29.9329 7.78259 29.5818 6.93474 28.9566 6.30962C28.3315 5.6845 27.4837 5.33331 26.5996 5.33331H24.5996" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M5.93262 29.3333H27.266" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M13.9326 19.5467V22.6667C13.9326 23.4 13.306 23.9734 12.6393 24.28C11.066 25 9.93262 26.9867 9.93262 29.3334" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M19.2666 19.5467V22.6667C19.2666 23.4 19.8933 23.9734 20.5599 24.28C22.1333 25 23.2666 26.9867 23.2666 29.3334" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M24.5996 2.66669H8.59961V12C8.59961 14.1218 9.44246 16.1566 10.9428 17.6569C12.443 19.1572 14.4779 20 16.5996 20C18.7213 20 20.7562 19.1572 22.2565 17.6569C23.7568 16.1566 24.5996 14.1218 24.5996 12V2.66669Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M8.59994 12H6.59993C5.71588 12 4.86803 11.6488 4.24291 11.0237C3.61779 10.3985 3.2666 9.5507 3.2666 8.66665C3.2666 7.78259 3.61779 6.93474 4.24291 6.30962C4.86803 5.6845 5.71588 5.33331 6.59993 5.33331H8.59994"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M24.5996 12H26.5996C27.4837 12 28.3315 11.6488 28.9566 11.0237C29.5818 10.3985 29.9329 9.5507 29.9329 8.66665C29.9329 7.78259 29.5818 6.93474 28.9566 6.30962C28.3315 5.6845 27.4837 5.33331 26.5996 5.33331H24.5996"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M5.93262 29.3333H27.266"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M13.9326 19.5467V22.6667C13.9326 23.4 13.306 23.9734 12.6393 24.28C11.066 25 9.93262 26.9867 9.93262 29.3334"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M19.2666 19.5467V22.6667C19.2666 23.4 19.8933 23.9734 20.5599 24.28C22.1333 25 23.2666 26.9867 23.2666 29.3334"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M24.5996 2.66669H8.59961V12C8.59961 14.1218 9.44246 16.1566 10.9428 17.6569C12.443 19.1572 14.4779 20 16.5996 20C18.7213 20 20.7562 19.1572 22.2565 17.6569C23.7568 16.1566 24.5996 14.1218 24.5996 12V2.66669Z"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
             <div class="stat-label">Câu hỏi</div>
             <div class="stat-value">{{ totalQuestions }}</div>
@@ -74,8 +103,20 @@
 
           <div class="stat-card">
             <svg class="stat-icon" viewBox="0 0 33 32">
-              <path d="M16.5999 29.3334C23.9637 29.3334 29.9333 23.3638 29.9333 16C29.9333 8.63622 23.9637 2.66669 16.5999 2.66669C9.23614 2.66669 3.2666 8.63622 3.2666 16C3.2666 23.3638 9.23614 29.3334 16.5999 29.3334Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M16.5996 8V16L21.9329 18.6667" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M16.5999 29.3334C23.9637 29.3334 29.9333 23.3638 29.9333 16C29.9333 8.63622 23.9637 2.66669 16.5999 2.66669C9.23614 2.66669 3.2666 8.63622 3.2666 16C3.2666 23.3638 9.23614 29.3334 16.5999 29.3334Z"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16.5996 8V16L21.9329 18.6667"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
             <div class="stat-label">Thời gian/câu</div>
             <div class="stat-value">{{ timePerQuestion }} s</div>
@@ -83,10 +124,34 @@
 
           <div class="stat-card">
             <svg class="stat-icon" viewBox="0 0 33 32">
-              <path d="M21.9333 28V25.3333C21.9333 23.9188 21.3714 22.5623 20.3712 21.5621C19.371 20.5619 18.0144 20 16.5999 20H8.59993C7.18545 20 5.82889 20.5619 4.8287 21.5621C3.8285 22.5623 3.2666 23.9188 3.2666 25.3333V28" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M12.5999 14.6667C15.5455 14.6667 17.9333 12.2789 17.9333 9.33333C17.9333 6.38781 15.5455 4 12.5999 4C9.65442 4 7.2666 6.38781 7.2666 9.33333C7.2666 12.2789 9.65442 14.6667 12.5999 14.6667Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M29.9326 28V25.3333C29.9317 24.1516 29.5384 23.0037 28.8144 22.0698C28.0905 21.1358 27.0768 20.4688 25.9326 20.1733" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M21.9326 4.17334C23.0798 4.46707 24.0967 5.13427 24.8228 6.06975C25.5489 7.00523 25.9431 8.15578 25.9431 9.34001C25.9431 10.5242 25.9489 11.6748 24.8228 12.6103C24.0967 13.5457 23.0798 14.2129 21.9326 14.5067" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M21.9333 28V25.3333C21.9333 23.9188 21.3714 22.5623 20.3712 21.5621C19.371 20.5619 18.0144 20 16.5999 20H8.59993C7.18545 20 5.82889 20.5619 4.8287 21.5621C3.8285 22.5623 3.2666 23.9188 3.2666 25.3333V28"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12.5999 14.6667C15.5455 14.6667 17.9333 12.2789 17.9333 9.33333C17.9333 6.38781 15.5455 4 12.5999 4C9.65442 4 7.2666 6.38781 7.2666 9.33333C7.2666 12.2789 9.65442 14.6667 12.5999 14.6667Z"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M29.9326 28V25.3333C29.9317 24.1516 29.5384 23.0037 28.8144 22.0698C28.0905 21.1358 27.0768 20.4688 25.9326 20.1733"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M21.9326 4.17334C23.0798 4.46707 24.0967 5.13427 24.8228 6.06975C25.5489 7.00523 25.9431 8.15578 25.9431 9.34001C25.9431 10.5242 25.9489 11.6748 24.8228 12.6103C24.0967 13.5457 23.0798 14.2129 21.9326 14.5067"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
             <div class="stat-label">Thách thủ</div>
             <div class="stat-value">{{ participantCount }}</div>
@@ -97,8 +162,8 @@
       <!-- Progress Indicators -->
       <div class="progress-section">
         <div class="progress-dots">
-          <div 
-            v-for="(step, index) in progressSteps" 
+          <div
+            v-for="(step, index) in progressSteps"
             :key="index"
             class="progress-dot"
             :class="step.status"
@@ -133,7 +198,7 @@ const progressSteps = ref([
   { status: 'completed' },
   { status: 'completed' },
   { status: 'active' },
-  { status: 'pending' }
+  { status: 'pending' },
 ])
 
 // Computed properties
@@ -205,8 +270,8 @@ const startCountdown = () => {
           query: {
             questions: totalQuestions.value,
             timePerQuestion: timePerQuestion.value,
-            participants: participantCount.value
-          }
+            participants: participantCount.value,
+          },
         })
       }, 1000)
     }
@@ -218,7 +283,12 @@ const startCountdown = () => {
 .challenge-start-page {
   min-height: 100vh;
   background: #fff;
-  font-family: 'Inter', -apple-system, 'Roboto', 'Helvetica', sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    'Roboto',
+    'Helvetica',
+    sans-serif;
   display: flex;
   flex-direction: column;
   contain: layout style;

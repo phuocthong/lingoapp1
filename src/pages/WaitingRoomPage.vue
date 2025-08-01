@@ -662,8 +662,8 @@ const startGame = () => {
       query: {
         questions: totalQuestions.value,
         timePerQuestion: timePerQuestion.value,
-        participants: participants.value.length
-      }
+        participants: participants.value.length,
+      },
     })
   }
 }
