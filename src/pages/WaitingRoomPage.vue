@@ -589,8 +589,26 @@ const roomStatusText = computed(() => {
   return '🟡 Chờ'
 })
 
+// Authentication check
+const checkAuthentication = () => {
+  // Simple auth check - in real app this would check actual login status
+  const isLoggedIn = localStorage.getItem('user_token') || sessionStorage.getItem('user_session')
+
+  if (!isLoggedIn) {
+    // Redirect to challenges page with message
+    router.push('/dashboard/challenges')
+    return false
+  }
+  return true
+}
+
 // Initialize room data from query params
 onMounted(() => {
+  // Check authentication first
+  if (!checkAuthentication()) {
+    return
+  }
+
   if (route.query.roomCode) {
     roomCode.value = route.query.roomCode
   }
