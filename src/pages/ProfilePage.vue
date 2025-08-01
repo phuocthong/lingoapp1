@@ -258,8 +258,9 @@ const updateActiveTabFromRoute = () => {
     activeTab.value = 'rewards'
   } else if (currentPath.includes('/dashboard/profile')) {
     activeTab.value = 'profile'
-  } else if (currentPath.includes('/dashboard')) {
-    activeTab.value = 'dashboard'
+  } else {
+    // Default to profile for any other dashboard route
+    activeTab.value = 'profile'
   }
 }
 
