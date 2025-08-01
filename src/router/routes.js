@@ -27,6 +27,7 @@ const routes = [
       { path: 'add-friends', component: () => import('pages/AddFriendsPage.vue') },
       { path: 'tasks', component: () => import('pages/TasksPage.vue') },
       { path: 'rewards', component: () => import('pages/RewardsPage.vue') },
+      { path: 'change-password', component: () => import('pages/ChangePasswordPage.vue') },
     ],
   },
   {
