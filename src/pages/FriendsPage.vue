@@ -205,6 +205,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import ProfileSidebar from '../components/ProfileSidebar.vue'
 
 // Mock friends data
 const friends = ref([
