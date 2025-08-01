@@ -10,14 +10,6 @@
         <nav class="sidebar-nav">
           <div
             class="nav-item"
-            :class="{ active: activeTab === 'dashboard' }"
-            @click="navigateToTab('dashboard', '/dashboard')"
-          >
-            <q-icon name="home" />
-            <span>Dashboard</span>
-          </div>
-          <div
-            class="nav-item"
             :class="{ active: activeTab === 'profile' }"
             @click="navigateToTab('profile', '/dashboard/profile')"
           >
