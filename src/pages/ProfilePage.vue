@@ -501,10 +501,15 @@ const logout = () => {
 }
 
 .password-btn {
-  background: rgba(107, 114, 128, 0.5);
-  color: rgba(0, 0, 0, 0.5);
-  opacity: 0.5;
+  background: rgba(107, 114, 128, 0.3);
+  color: #374151;
   min-width: 156px;
+  transition: all 0.3s ease;
+}
+
+.password-btn:hover {
+  background: rgba(107, 114, 128, 0.5);
+  transform: translateY(-1px);
 }
 
 .btn-content {
