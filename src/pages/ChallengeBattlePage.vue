@@ -58,7 +58,7 @@
               <path d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>{{ players.length }} người chơi</span>
+            <span>{{ players.length }} players</span>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
       <!-- Question Section -->
       <div class="question-section">
         <div class="question-card">
-          <div class="question-number">Câu {{ currentQuestion }}</div>
+          <div class="question-number">Question {{ currentQuestion }}</div>
           <h1 class="question-text">{{ currentQuestionData.question }}</h1>
         </div>
       </div>
@@ -94,7 +94,7 @@
       <!-- Players Scoreboard -->
       <div class="scoreboard-section">
         <div class="scoreboard-header">
-          <h2 class="scoreboard-title">Bảng điểm</h2>
+          <h2 class="scoreboard-title">Scoreboard</h2>
         </div>
         <div class="players-grid">
           <div
@@ -108,8 +108,8 @@
             <div class="player-info">
               <div class="player-name">{{ player.name }}</div>
               <div class="player-stats">
-                <div class="score">{{ player.score }} điểm</div>
-                <div v-if="player.streak > 1" class="streak">{{ player.streak }} liên tiếp</div>
+                <div class="score">{{ player.score }} points</div>
+                <div v-if="player.streak > 1" class="streak">{{ player.streak }} streak</div>
               </div>
             </div>
             <div class="player-status" :class="player.status">
@@ -127,16 +127,16 @@
       <div class="modal-backdrop" @click="closeGameOver"></div>
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title">🎉 Trò chơi kết thúc!</h2>
+          <h2 class="modal-title">🎉 Game Over!</h2>
         </div>
         <div class="modal-body">
           <div class="winner-section">
             <div class="trophy-icon-large">🏆</div>
             <h3 class="winner-name">{{ winner.name }}</h3>
-            <p class="winner-score">{{ winner.score }} điểm</p>
+            <p class="winner-score">{{ winner.score }} points</p>
           </div>
           <div class="final-standings">
-            <h4>Kết quả cuối cùng:</h4>
+            <h4>Final Results:</h4>
             <div class="standings-list">
               <div
                 v-for="player in sortedPlayers"
@@ -146,14 +146,14 @@
               >
                 <div class="standing-rank">{{ player.rank }}</div>
                 <div class="standing-name">{{ player.name }}</div>
-                <div class="standing-score">{{ player.score }} điểm</div>
+                <div class="standing-score">{{ player.score }} points</div>
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button class="play-again-btn" @click="playAgain">Chơi lại</button>
-          <button class="exit-btn" @click="exitGame">Thoát</button>
+          <button class="play-again-btn" @click="playAgain">Play Again</button>
+          <button class="exit-btn" @click="exitGame">Exit</button>
         </div>
       </div>
     </div>
