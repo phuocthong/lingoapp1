@@ -178,12 +178,13 @@ const gameInterval = ref(null)
 
 // Current question data
 const currentQuestionData = ref({
-  question: "Đâu là thủ đô của Việt Nam?",
+  question: "What does 'beautiful' mean?",
+  word: "beautiful",
   answers: [
-    { text: "Hồ Chí Minh", correct: false },
-    { text: "Hà Nội", correct: true },
-    { text: "Đà Nẵng", correct: false },
-    { text: "Cần Thơ", correct: false }
+    { text: "ugly", correct: false },
+    { text: "pretty, attractive", correct: true },
+    { text: "sad", correct: false },
+    { text: "angry", correct: false }
   ]
 })
 
