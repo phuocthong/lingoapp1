@@ -858,6 +858,10 @@ const logout = () => {
 }
 
 @media (max-width: 480px) {
+  .profile-content {
+    padding: 8px;
+  }
+
   .chart-container {
     height: 200px;
   }
@@ -865,6 +869,50 @@ const logout = () => {
   .stat-card-large {
     flex-direction: column;
     text-align: center;
+    padding: 16px;
+    min-height: auto;
+  }
+
+  .profile-header {
+    padding: 16px;
+  }
+
+  .user-name {
+    font-size: 24px;
+  }
+
+  .user-handle {
+    font-size: 16px;
+  }
+
+  .join-date {
+    font-size: 14px;
+  }
+
+  .action-btn {
+    padding: 12px 16px;
+    font-size: 14px;
+    height: auto;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .contact-section,
+  .logout-section {
+    padding: 16px;
+  }
+
+  .logout-btn {
+    font-size: 18px;
+    padding: 12px 24px;
+    min-width: auto;
   }
 }
 </style>
