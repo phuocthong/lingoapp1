@@ -266,8 +266,26 @@ const winner = computed(() => {
   return sortedPlayers.value[0]
 })
 
+// Authentication check
+const checkAuthentication = () => {
+  // Simple auth check - in real app this would check actual login status
+  const isLoggedIn = localStorage.getItem('user_token') || sessionStorage.getItem('user_session')
+
+  if (!isLoggedIn) {
+    // Redirect to login or home page
+    router.push('/dashboard/challenges')
+    return false
+  }
+  return true
+}
+
 // Initialize game
 onMounted(() => {
+  // Check authentication first
+  if (!checkAuthentication()) {
+    return
+  }
+
   if (route.query.questions) {
     totalQuestions.value = parseInt(route.query.questions)
   }
