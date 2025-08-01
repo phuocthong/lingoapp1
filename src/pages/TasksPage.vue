@@ -1,7 +1,6 @@
 <template>
   <q-page class="tasks-page">
     <div class="tasks-container">
-      <!-- Sidebar Navigation -->
       <div class="sidebar">
         <div class="nav-links">
           <div class="nav-link" @click="$router.push('/dashboard')">
@@ -22,7 +21,7 @@
             <span class="nav-label">Dashboard</span>
           </div>
 
-          <div class="nav-link">
+          <div class="nav-link" @click="$router.push('/dashboard/friends')">
             <svg
               width="29"
               height="29"
@@ -40,7 +39,7 @@
             <span class="nav-label">Bạn bè</span>
           </div>
 
-          <div class="nav-link">
+          <div class="nav-link" @click="$router.push('/dashboard/add-friends')">
             <svg
               width="28"
               height="29"
@@ -103,463 +102,461 @@
           </div>
         </div>
       </div>
-
-      <!-- Main Content -->
-      <div class="tasks-content">
-        <div class="tasks-header">
-          <h1 class="tasks-title">Nhiệm vụ của tôi</h1>
+      <div class="main-content">
+        <div class="page-header">
+          <h1 class="page-title">Nhiệm vụ của tôi</h1>
         </div>
+        <div class="card">
+          <!-- Task Tabs -->
+          <div class="task-tabs">
+            <q-btn
+              flat
+              class="tab-btn"
+              :class="{ active: activeTab === 'daily' }"
+              @click="activeTab = 'daily'"
+            >
+              Hàng ngày ( 1 )
+            </q-btn>
+            <q-btn
+              flat
+              class="tab-btn"
+              :class="{ active: activeTab === 'weekly' }"
+              @click="activeTab = 'weekly'"
+            >
+              Hàng tuần ( 2 )
+            </q-btn>
+          </div>
+          <!-- Task List -->
+          <div class="task-list">
+            <!-- Task Item 1 -->
+            <div class="task-item">
+              <div class="task-main">
+                <div class="task-info">
+                  <div class="task-header">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 17 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_380_2262)">
+                        <path
+                          d="M5.93359 1.7334V4.40007"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M11.2666 1.7334V4.40007"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M13.2668 3.06689H3.93343C3.19705 3.06689 2.6001 3.66385 2.6001 4.40023V13.7336C2.6001 14.4699 3.19705 15.0669 3.93343 15.0669H13.2668C14.0031 15.0669 14.6001 14.4699 14.6001 13.7336V4.40023C14.6001 3.66385 14.0031 3.06689 13.2668 3.06689Z"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M2.6001 7.06689H14.6001"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </svg>
+                    <span class="task-name">Thách đấu với 5 bạn bè</span>
+                  </div>
+                  <p class="task-description">
+                    Tham gia thách đấu với ít nhất 5 người bạn trong tuần
+                  </p>
 
-        <!-- Task Tabs -->
-        <div class="task-tabs">
-          <q-btn
-            flat
-            class="tab-btn"
-            :class="{ active: activeTab === 'daily' }"
-            @click="activeTab = 'daily'"
-          >
-            Hàng ngày ( 1 )
-          </q-btn>
-          <q-btn
-            flat
-            class="tab-btn"
-            :class="{ active: activeTab === 'weekly' }"
-            @click="activeTab = 'weekly'"
-          >
-            Hàng tuần ( 2 )
-          </q-btn>
-        </div>
-
-        <!-- Task List -->
-        <div class="task-list">
-          <!-- Task Item 1 -->
-          <div class="task-item">
-            <div class="task-main">
-              <div class="task-info">
-                <div class="task-header">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 17 17"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_380_2262)">
-                      <path
-                        d="M5.93359 1.7334V4.40007"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M11.2666 1.7334V4.40007"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M13.2668 3.06689H3.93343C3.19705 3.06689 2.6001 3.66385 2.6001 4.40023V13.7336C2.6001 14.4699 3.19705 15.0669 3.93343 15.0669H13.2668C14.0031 15.0669 14.6001 14.4699 14.6001 13.7336V4.40023C14.6001 3.66385 14.0031 3.06689 13.2668 3.06689Z"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M2.6001 7.06689H14.6001"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <span class="task-name">Thách đấu với 5 bạn bè</span>
-                </div>
-                <p class="task-description">
-                  Tham gia thách đấu với ít nhất 5 người bạn trong tuần
-                </p>
-
-                <div class="task-progress">
-                  <div class="progress-info">
-                    <div class="progress-text">
-                      <span>Tiến độ: 2/5</span>
-                      <span>40 %</span>
+                  <div class="task-progress">
+                    <div class="progress-info">
+                      <div class="progress-text">
+                        <span>Tiến độ: 2/5</span>
+                        <span>40 %</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%"></div>
+                      </div>
                     </div>
-                    <div class="progress-bar">
-                      <div class="progress-fill" style="width: 40%"></div>
+                    <div class="task-rewards">
+                      <span class="reward-xp">+ 200 XP</span>
+                      <span class="reward-points">+ 100 điểm</span>
                     </div>
                   </div>
-                  <div class="task-rewards">
-                    <span class="reward-xp">+ 200 XP</span>
-                    <span class="reward-points">+ 100 điểm</span>
+
+                  <div class="task-meta">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 13 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_380_2281)">
+                        <path
+                          d="M6.6001 11.0002C9.36152 11.0002 11.6001 8.76167 11.6001 6.00024C11.6001 3.23882 9.36152 1.00024 6.6001 1.00024C3.83867 1.00024 1.6001 3.23882 1.6001 6.00024C1.6001 8.76167 3.83867 11.0002 6.6001 11.0002Z"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M6.6001 3.00024V6.00024L8.6001 7.00024"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </svg>
+                    <span class="task-deadline">Hạn: 1/8/2025</span>
                   </div>
                 </div>
 
-                <div class="task-meta">
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 13 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_380_2281)">
-                      <path
-                        d="M6.6001 11.0002C9.36152 11.0002 11.6001 8.76167 11.6001 6.00024C11.6001 3.23882 9.36152 1.00024 6.6001 1.00024C3.83867 1.00024 1.6001 3.23882 1.6001 6.00024C1.6001 8.76167 3.83867 11.0002 6.6001 11.0002Z"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M6.6001 3.00024V6.00024L8.6001 7.00024"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <span class="task-deadline">Hạn: 1/8/2025</span>
+                <div class="task-actions">
+                  <q-btn flat class="action-btn">+1</q-btn>
+                  <q-btn flat class="action-btn primary">Hoàn thành</q-btn>
+                  <q-btn flat class="action-btn danger">Xóa</q-btn>
                 </div>
-              </div>
-
-              <div class="task-actions">
-                <q-btn flat class="action-btn">+1</q-btn>
-                <q-btn flat class="action-btn primary">Hoàn thành</q-btn>
-                <q-btn flat class="action-btn danger">Xóa</q-btn>
               </div>
             </div>
-          </div>
 
-          <!-- Task Item 2 -->
-          <div class="task-item">
-            <div class="task-main">
-              <div class="task-info">
-                <div class="task-header">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 17 17"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_380_2297)">
-                      <path
-                        d="M4.60026 6.20003H3.60026C3.15823 6.20003 2.73431 6.02444 2.42175 5.71188C2.10919 5.39932 1.93359 4.97539 1.93359 4.53337C1.93359 4.09134 2.10919 3.66742 2.42175 3.35485C2.73431 3.04229 3.15823 2.8667 3.60026 2.8667H4.60026"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M12.6001 6.20003H13.6001C14.0421 6.20003 14.466 6.02444 14.7786 5.71188C15.0912 5.39932 15.2668 4.97539 15.2668 4.53337C15.2668 4.09134 15.0912 3.66742 14.7786 3.35485C14.466 3.04229 14.0421 2.8667 13.6001 2.8667H12.6001"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M3.2666 14.8667H13.9333"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M7.2666 9.97339V11.5334C7.2666 11.9001 6.95327 12.1867 6.61993 12.3401C5.83327 12.7001 5.2666 13.6934 5.2666 14.8667"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.93359 9.97339V11.5334C9.93359 11.9001 10.2469 12.1867 10.5803 12.3401C11.3669 12.7001 11.9336 13.6934 11.9336 14.8667"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M12.6001 1.5332H4.6001V6.19987C4.6001 7.26074 5.02153 8.27815 5.77167 9.0283C6.52182 9.77844 7.53923 10.1999 8.6001 10.1999C9.66096 10.1999 10.6784 9.77844 11.4285 9.0283C12.1787 8.27815 12.6001 7.26074 12.6001 6.19987V1.5332Z"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <span class="task-name">Đạt top 10 leaderboard</span>
-                </div>
-                <p class="task-description">Leo lên top 10 bảng xếp hạng tuần này</p>
+            <!-- Task Item 2 -->
+            <div class="task-item">
+              <div class="task-main">
+                <div class="task-info">
+                  <div class="task-header">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 17 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_380_2297)">
+                        <path
+                          d="M4.60026 6.20003H3.60026C3.15823 6.20003 2.73431 6.02444 2.42175 5.71188C2.10919 5.39932 1.93359 4.97539 1.93359 4.53337C1.93359 4.09134 2.10919 3.66742 2.42175 3.35485C2.73431 3.04229 3.15823 2.8667 3.60026 2.8667H4.60026"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M12.6001 6.20003H13.6001C14.0421 6.20003 14.466 6.02444 14.7786 5.71188C15.0912 5.39932 15.2668 4.97539 15.2668 4.53337C15.2668 4.09134 15.0912 3.66742 14.7786 3.35485C14.466 3.04229 14.0421 2.8667 13.6001 2.8667H12.6001"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M3.2666 14.8667H13.9333"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M7.2666 9.97339V11.5334C7.2666 11.9001 6.95327 12.1867 6.61993 12.3401C5.83327 12.7001 5.2666 13.6934 5.2666 14.8667"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M9.93359 9.97339V11.5334C9.93359 11.9001 10.2469 12.1867 10.5803 12.3401C11.3669 12.7001 11.9336 13.6934 11.9336 14.8667"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M12.6001 1.5332H4.6001V6.19987C4.6001 7.26074 5.02153 8.27815 5.77167 9.0283C6.52182 9.77844 7.53923 10.1999 8.6001 10.1999C9.66096 10.1999 10.6784 9.77844 11.4285 9.0283C12.1787 8.27815 12.6001 7.26074 12.6001 6.19987V1.5332Z"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </svg>
+                    <span class="task-name">Đạt top 10 leaderboard</span>
+                  </div>
+                  <p class="task-description">Leo lên top 10 bảng xếp hạng tuần này</p>
 
-                <div class="task-progress">
-                  <div class="progress-info">
-                    <div class="progress-text">
-                      <span>Tiến độ: 0 / 1</span>
-                      <span>0 %</span>
+                  <div class="task-progress">
+                    <div class="progress-info">
+                      <div class="progress-text">
+                        <span>Tiến độ: 0 / 1</span>
+                        <span>0 %</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                      </div>
                     </div>
-                    <div class="progress-bar">
-                      <div class="progress-fill" style="width: 0%"></div>
+                    <div class="task-rewards">
+                      <span class="reward-xp">+ 300 XP</span>
+                      <span class="reward-points">+ 150 điểm</span>
                     </div>
                   </div>
-                  <div class="task-rewards">
-                    <span class="reward-xp">+ 300 XP</span>
-                    <span class="reward-points">+ 150 điểm</span>
-                  </div>
-                </div>
 
-                <div class="task-meta">
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_380_2319)">
-                      <path
-                        d="M6.6001 11.3999C9.36152 11.3999 11.6001 9.16133 11.6001 6.3999C11.6001 3.63848 9.36152 1.3999 6.6001 1.3999C3.83867 1.3999 1.6001 3.63848 1.6001 6.3999C1.6001 9.16133 3.83867 11.3999 6.6001 11.3999Z"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M6.6001 3.3999V6.3999L8.6001 7.3999"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <span class="task-deadline">Hạn: 1/8/2025</span>
-                </div>
-              </div>
-
-              <div class="task-actions">
-                <q-btn flat class="action-btn">+1</q-btn>
-                <q-btn flat class="action-btn primary">Hoàn thành</q-btn>
-                <q-btn flat class="action-btn danger">Xóa</q-btn>
-              </div>
-            </div>
-          </div>
-
-          <!-- Task Item 3 -->
-          <div class="task-item">
-            <div class="task-main">
-              <div class="task-info">
-                <div class="task-header">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 17 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_380_2462)">
-                      <path
-                        d="M5.93359 1.3335V4.00016"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M11.2666 1.3335V4.00016"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M13.2668 2.66699H3.93343C3.19705 2.66699 2.6001 3.26395 2.6001 4.00033V13.3337C2.6001 14.07 3.19705 14.667 3.93343 14.667H13.2668C14.0031 14.667 14.6001 14.07 14.6001 13.3337V4.00033C14.6001 3.26395 14.0031 2.66699 13.2668 2.66699Z"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M2.6001 6.66699H14.6001"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <span class="task-name">Thách đấu với 5 bạn bè</span>
-                </div>
-                <p class="task-description">
-                  Tham gia thách đấu với ít nhất 5 người bạn trong tuần
-                </p>
-
-                <div class="task-progress">
-                  <div class="progress-info">
-                    <div class="progress-text">
-                      <span>Tiến độ: 2/5</span>
-                      <span>40 %</span>
-                    </div>
-                    <div class="progress-bar">
-                      <div class="progress-fill" style="width: 40%"></div>
-                    </div>
-                  </div>
-                  <div class="task-rewards">
-                    <span class="reward-xp">+ 200 XP</span>
-                    <span class="reward-points">+ 100 điểm</span>
+                  <div class="task-meta">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 13 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_380_2319)">
+                        <path
+                          d="M6.6001 11.3999C9.36152 11.3999 11.6001 9.16133 11.6001 6.3999C11.6001 3.63848 9.36152 1.3999 6.6001 1.3999C3.83867 1.3999 1.6001 3.63848 1.6001 6.3999C1.6001 9.16133 3.83867 11.3999 6.6001 11.3999Z"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M6.6001 3.3999V6.3999L8.6001 7.3999"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </svg>
+                    <span class="task-deadline">Hạn: 1/8/2025</span>
                   </div>
                 </div>
 
-                <div class="task-meta">
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 13 13"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_380_2481)">
-                      <path
-                        d="M6.6001 11.6003C9.36152 11.6003 11.6001 9.36177 11.6001 6.60034C11.6001 3.83892 9.36152 1.60034 6.6001 1.60034C3.83867 1.60034 1.6001 3.83892 1.6001 6.60034C1.6001 9.36177 3.83867 11.6003 6.6001 11.6003Z"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M6.6001 3.60034V6.60034L8.6001 7.60034"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <span class="task-deadline">Hạn: 1/8/2025</span>
+                <div class="task-actions">
+                  <q-btn flat class="action-btn">+1</q-btn>
+                  <q-btn flat class="action-btn primary">Hoàn thành</q-btn>
+                  <q-btn flat class="action-btn danger">Xóa</q-btn>
                 </div>
-              </div>
-
-              <div class="task-actions">
-                <q-btn flat class="action-btn">+1</q-btn>
-                <q-btn flat class="action-btn primary">Hoàn thành</q-btn>
-                <q-btn flat class="action-btn danger">Xóa</q-btn>
               </div>
             </div>
-          </div>
 
-          <!-- Task Item 4 -->
-          <div class="task-item">
-            <div class="task-main">
-              <div class="task-info">
-                <div class="task-header">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 17 17"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_380_2497)">
-                      <path
-                        d="M4.60026 6.80037H3.60026C3.15823 6.80037 2.73431 6.62478 2.42175 6.31222C2.10919 5.99966 1.93359 5.57574 1.93359 5.13371C1.93359 4.69168 2.10919 4.26776 2.42175 3.9552C2.73431 3.64264 3.15823 3.46704 3.60026 3.46704H4.60026"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M12.6001 6.80037H13.6001C14.0421 6.80037 14.466 6.62478 14.7786 6.31222C15.0912 5.99966 15.2668 5.57574 15.2668 5.13371C15.2668 4.69168 15.0912 4.26776 14.7786 3.9552C14.466 3.64264 14.0421 3.46704 13.6001 3.46704H12.6001"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M3.2666 15.467H13.9333"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M7.2666 10.5737V12.1337C7.2666 12.5004 6.95327 12.7871 6.61993 12.9404C5.83327 13.3004 5.2666 14.2937 5.2666 15.4671"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M9.93359 10.5737V12.1337C9.93359 12.5004 10.2469 12.7871 10.5803 12.9404C11.3669 13.3004 11.9336 14.2937 11.9336 15.4671"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M12.6001 2.13354H4.6001V6.80021C4.6001 7.86108 5.02153 8.87849 5.77167 9.62864C6.52182 10.3788 7.53923 10.8002 8.6001 10.8002C9.66096 10.8002 10.6784 10.3788 11.4285 9.62864C12.1787 8.87849 12.6001 7.86108 12.6001 6.80021V2.13354Z"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <span class="task-name">Đạt top 10 leaderboard</span>
-                </div>
-                <p class="task-description">Leo lên top 10 bảng xếp hạng tuần này</p>
+            <!-- Task Item 3 -->
+            <div class="task-item">
+              <div class="task-main">
+                <div class="task-info">
+                  <div class="task-header">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 17 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_380_2462)">
+                        <path
+                          d="M5.93359 1.3335V4.00016"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M11.2666 1.3335V4.00016"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M13.2668 2.66699H3.93343C3.19705 2.66699 2.6001 3.26395 2.6001 4.00033V13.3337C2.6001 14.07 3.19705 14.667 3.93343 14.667H13.2668C14.0031 14.667 14.6001 14.07 14.6001 13.3337V4.00033C14.6001 3.26395 14.0031 2.66699 13.2668 2.66699Z"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M2.6001 6.66699H14.6001"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </svg>
+                    <span class="task-name">Thách đấu với 5 bạn bè</span>
+                  </div>
+                  <p class="task-description">
+                    Tham gia thách đấu với ít nhất 5 người bạn trong tuần
+                  </p>
 
-                <div class="task-progress">
-                  <div class="progress-info">
-                    <div class="progress-text">
-                      <span>Tiến độ: 0 / 1</span>
-                      <span>0 %</span>
+                  <div class="task-progress">
+                    <div class="progress-info">
+                      <div class="progress-text">
+                        <span>Tiến độ: 2/5</span>
+                        <span>40 %</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%"></div>
+                      </div>
                     </div>
-                    <div class="progress-bar">
-                      <div class="progress-fill" style="width: 0%"></div>
+                    <div class="task-rewards">
+                      <span class="reward-xp">+ 200 XP</span>
+                      <span class="reward-points">+ 100 điểm</span>
                     </div>
                   </div>
-                  <div class="task-rewards">
-                    <span class="reward-xp">+ 300 XP</span>
-                    <span class="reward-points">+ 150 điểm</span>
+
+                  <div class="task-meta">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 13 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_380_2481)">
+                        <path
+                          d="M6.6001 11.6003C9.36152 11.6003 11.6001 9.36177 11.6001 6.60034C11.6001 3.83892 9.36152 1.60034 6.6001 1.60034C3.83867 1.60034 1.6001 3.83892 1.6001 6.60034C1.6001 9.36177 3.83867 11.6003 6.6001 11.6003Z"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M6.6001 3.60034V6.60034L8.6001 7.60034"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </svg>
+                    <span class="task-deadline">Hạn: 1/8/2025</span>
                   </div>
                 </div>
 
-                <div class="task-meta">
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 13 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_380_2519)">
-                      <path
-                        d="M6.6001 11.0002C9.36152 11.0002 11.6001 8.76167 11.6001 6.00024C11.6001 3.23882 9.36152 1.00024 6.6001 1.00024C3.83867 1.00024 1.6001 3.23882 1.6001 6.00024C1.6001 8.76167 3.83867 11.0002 6.6001 11.0002Z"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M6.6001 3.00024V6.00024L8.6001 7.00024"
-                        stroke="black"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                  </svg>
-                  <span class="task-deadline">Hạn: 1/8/2025</span>
+                <div class="task-actions">
+                  <q-btn flat class="action-btn">+1</q-btn>
+                  <q-btn flat class="action-btn primary">Hoàn thành</q-btn>
+                  <q-btn flat class="action-btn danger">Xóa</q-btn>
                 </div>
               </div>
+            </div>
 
-              <div class="task-actions">
-                <q-btn flat class="action-btn">+1</q-btn>
-                <q-btn flat class="action-btn primary">Hoàn thành</q-btn>
-                <q-btn flat class="action-btn danger">Xóa</q-btn>
+            <!-- Task Item 4 -->
+            <div class="task-item">
+              <div class="task-main">
+                <div class="task-info">
+                  <div class="task-header">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 17 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_380_2497)">
+                        <path
+                          d="M4.60026 6.80037H3.60026C3.15823 6.80037 2.73431 6.62478 2.42175 6.31222C2.10919 5.99966 1.93359 5.57574 1.93359 5.13371C1.93359 4.69168 2.10919 4.26776 2.42175 3.9552C2.73431 3.64264 3.15823 3.46704 3.60026 3.46704H4.60026"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M12.6001 6.80037H13.6001C14.0421 6.80037 14.466 6.62478 14.7786 6.31222C15.0912 5.99966 15.2668 5.57574 15.2668 5.13371C15.2668 4.69168 15.0912 4.26776 14.7786 3.9552C14.466 3.64264 14.0421 3.46704 13.6001 3.46704H12.6001"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M3.2666 15.467H13.9333"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M7.2666 10.5737V12.1337C7.2666 12.5004 6.95327 12.7871 6.61993 12.9404C5.83327 13.3004 5.2666 14.2937 5.2666 15.4671"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M9.93359 10.5737V12.1337C9.93359 12.5004 10.2469 12.7871 10.5803 12.9404C11.3669 13.3004 11.9336 14.2937 11.9336 15.4671"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M12.6001 2.13354H4.6001V6.80021C4.6001 7.86108 5.02153 8.87849 5.77167 9.62864C6.52182 10.3788 7.53923 10.8002 8.6001 10.8002C9.66096 10.8002 10.6784 10.3788 11.4285 9.62864C12.1787 8.87849 12.6001 7.86108 12.6001 6.80021V2.13354Z"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </svg>
+                    <span class="task-name">Đạt top 10 leaderboard</span>
+                  </div>
+                  <p class="task-description">Leo lên top 10 bảng xếp hạng tuần này</p>
+
+                  <div class="task-progress">
+                    <div class="progress-info">
+                      <div class="progress-text">
+                        <span>Tiến độ: 0 / 1</span>
+                        <span>0 %</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                      </div>
+                    </div>
+                    <div class="task-rewards">
+                      <span class="reward-xp">+ 300 XP</span>
+                      <span class="reward-points">+ 150 điểm</span>
+                    </div>
+                  </div>
+
+                  <div class="task-meta">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 13 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_380_2519)">
+                        <path
+                          d="M6.6001 11.0002C9.36152 11.0002 11.6001 8.76167 11.6001 6.00024C11.6001 3.23882 9.36152 1.00024 6.6001 1.00024C3.83867 1.00024 1.6001 3.23882 1.6001 6.00024C1.6001 8.76167 3.83867 11.0002 6.6001 11.0002Z"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M6.6001 3.00024V6.00024L8.6001 7.00024"
+                          stroke="black"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                    </svg>
+                    <span class="task-deadline">Hạn: 1/8/2025</span>
+                  </div>
+                </div>
+
+                <div class="task-actions">
+                  <q-btn flat class="action-btn">+1</q-btn>
+                  <q-btn flat class="action-btn primary">Hoàn thành</q-btn>
+                  <q-btn flat class="action-btn danger">Xóa</q-btn>
+                </div>
               </div>
             </div>
           </div>
@@ -571,13 +568,12 @@
 
 <script setup>
 import { ref } from 'vue'
-
 const activeTab = ref('weekly')
 </script>
 
 <style scoped>
 .tasks-page {
-  background: white;
+  background: #f8fafc;
   min-height: 100vh;
 }
 
@@ -642,46 +638,47 @@ const activeTab = ref('weekly')
 }
 
 /* Main Content */
-.tasks-content {
+.main-content {
   flex: 1;
-  padding: 24px 32px;
+  padding: 32px;
 }
 
-.tasks-header {
+.page-header {
   margin-bottom: 24px;
 }
 
-.tasks-title {
-  color: #000;
-  font-family: Inter;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 28px;
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0ea5e9;
   margin: 0;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  padding: 24px;
 }
 
 /* Task Tabs */
 .task-tabs {
-  background: #f1f5f9;
-  border-radius: 6px;
-  padding: 4px;
-  display: inline-flex;
+  display: flex;
+  gap: 12px;
   margin-bottom: 24px;
 }
 
 .tab-btn {
-  padding: 6px 12px;
-  border-radius: 4px;
-  color: #64748b;
-  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 16px;
   font-weight: 500;
-  min-height: auto;
+  color: #64748b;
 }
 
 .tab-btn.active {
-  background: white;
-  color: #64748b;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: #0ea5e9;
+  color: white;
 }
 
 /* Task List */
@@ -871,7 +868,7 @@ const activeTab = ref('weekly')
     min-width: 140px;
   }
 
-  .tasks-content {
+  .main-content {
     padding: 16px;
   }
 
