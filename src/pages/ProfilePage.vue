@@ -4,7 +4,7 @@
     <ProfileSidebar />
 
     <!-- Main Content -->
-    <div class="profile-content" :class="{ 'content-expanded': sidebarCollapsed }">
+    <div class="profile-content">
       <!-- User Profile Header -->
       <div class="profile-header">
         <div class="profile-avatar-section">
@@ -171,65 +171,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import ProfileSidebar from '../components/ProfileSidebar.vue'
 
 const router = useRouter()
-const route = useRoute()
 
-const sidebarCollapsed = ref(false)
-const activeTab = ref('profile')
 const userAvatar = ref(
   'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
 )
 
-const toggleSidebar = () => {
-  sidebarCollapsed.value = !sidebarCollapsed.value
-}
 
-const setActiveTab = (tab) => {
-  activeTab.value = tab
-}
-
-const navigateToTab = (tab, routePath) => {
-  // Ensure we can always click on navigation items
-  setActiveTab(tab)
-
-  // Use router.push with force navigation to prevent caching issues
-  router.push(routePath).catch(() => {
-    // Handle any navigation errors silently
-  })
-}
-
-// Set active tab based on current route
-const updateActiveTabFromRoute = () => {
-  const currentPath = route.path
-  if (currentPath.includes('/dashboard/friends')) {
-    activeTab.value = 'friends'
-  } else if (currentPath.includes('/dashboard/add-friends')) {
-    activeTab.value = 'add-friends'
-  } else if (currentPath.includes('/dashboard/tasks')) {
-    activeTab.value = 'tasks'
-  } else if (currentPath.includes('/dashboard/rewards')) {
-    activeTab.value = 'rewards'
-  } else if (currentPath.includes('/dashboard/profile')) {
-    activeTab.value = 'profile'
-  } else {
-    // Default to profile for any other dashboard route
-    activeTab.value = 'profile'
-  }
-}
-
-// Watch for route changes
-watch(route, () => {
-  updateActiveTabFromRoute()
-})
-
-// Set initial active tab on mount
-onMounted(() => {
-  updateActiveTabFromRoute()
-})
 
 const editProfile = () => {
   // Handle edit profile logic
