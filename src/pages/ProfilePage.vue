@@ -335,72 +335,112 @@ const logout = () => {
   background: #ffffff;
 }
 
-/* Sidebar */
+/* Modern Sidebar */
 .profile-sidebar {
-  width: 285px;
-  background: white;
-  border-right: 1px solid rgba(92, 94, 100, 0.7);
-  transition: width 0.3s ease;
+  width: 280px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  will-change: width;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-collapsed {
-  width: 60px;
+  width: 70px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.logo-text {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .sidebar-toggle {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 10;
-  background: #f5f3ff;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  color: white;
 }
 
 .sidebar-toggle:hover {
-  background: #ede9fe;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
 }
 
+/* Navigation */
 .sidebar-content {
-  padding: 24px 0;
+  flex: 1;
+  padding: 24px 16px;
+  overflow-y: auto;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 0 16px;
 }
 
 .nav-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 12px 16px;
-  border-radius: 10px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  transition: all 0.2s ease;
-  color: #6b7280;
-  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
 .nav-item:hover {
-  background: #f3f4f6;
-  color: #374151;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateX(4px);
 }
 
 .nav-item.active {
-  background: #eff6ff;
-  color: #2563eb;
-  font-weight: 600;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  transform: translateX(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .nav-item.active::before {
@@ -409,22 +449,82 @@ const logout = () => {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 3px;
-  background: #2563eb;
-  border-radius: 0 2px 2px 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #fbbf24, #f59e0b);
+  border-radius: 0 4px 4px 0;
 }
 
-.nav-item .q-icon {
-  font-size: 20px;
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  font-size: 20px;
 }
 
-.nav-item span {
-  font-size: 16px;
+.nav-text {
+  font-size: 14px;
   font-weight: 500;
+  flex: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.nav-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-item.active .nav-indicator {
+  opacity: 1;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+}
+
+.user-mini-avatar {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-mini-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-mini-name {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-mini-status {
+  font-size: 11px;
+  color: #10b981;
+  line-height: 1.2;
 }
 
 /* Main Content */
