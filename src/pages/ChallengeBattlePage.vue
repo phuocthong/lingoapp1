@@ -228,12 +228,13 @@ const questions = ref([
     ]
   },
   {
-    question: "Ai là người sáng lập ra Microsoft?",
+    question: "What does 'courageous' mean?",
+    word: "courageous",
     answers: [
-      { text: "Bill Gates", correct: true },
-      { text: "Steve Jobs", correct: false },
-      { text: "Mark Zuckerberg", correct: false },
-      { text: "Elon Musk", correct: false }
+      { text: "afraid, scared", correct: false },
+      { text: "hungry", correct: false },
+      { text: "brave, fearless", correct: true },
+      { text: "sleepy", correct: false }
     ]
   },
   {
