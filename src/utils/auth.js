@@ -75,7 +75,12 @@ export const auth = {
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 1500))
 
-    // For demo, always return success
+    // Validate email parameter
+    if (!email || !email.includes('@')) {
+      return { success: false, message: 'Invalid email address' }
+    }
+
+    // For demo, always return success for valid email
     return { success: true, message: 'Password reset email sent' }
   },
 
