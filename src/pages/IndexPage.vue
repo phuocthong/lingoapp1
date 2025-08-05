@@ -315,19 +315,17 @@ const sendMessage = () => {
   width: 100%;
   max-width: none;
   margin: 0;
-}: 0;
-}gin: 0;
-}gin: 0;
-} none;
-  margin: 0;
 }
 
 /* Chat Section */
 .chat-section {
   flex: 1;
   min-width: 0;
-} 0;
-}} 0;
+}1;
+  min-width: 0;
+}width: 0;
+};
+}in-width: 0;
 }
 
 .chat-card {
