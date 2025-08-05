@@ -175,11 +175,23 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import ProfileSidebar from '../components/ProfileSidebar.vue'
 
 const router = useRouter()
+const route = useRoute()
+
+// Check for success messages from URL params
+onMounted(() => {
+  if (route.query.passwordChanged === 'true') {
+    setTimeout(() => {
+      alert('Mật khẩu đã được thay đổi thành công!')
+      // Remove the query parameter
+      router.replace({ path: route.path })
+    }, 100)
+  }
+})
 
 const userAvatar = ref(
   'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
