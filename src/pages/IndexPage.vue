@@ -24,8 +24,8 @@
               </q-avatar>
               <div class="message-bubble bot-message">
                 <div class="message-text">
-                  Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ đ��� các
-                  bạn trả lời.
+                  Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các
+                  bạn trả lời.lời.trả lời.
                 </div>
                 <div class="message-time">21:23</div>
               </div>
