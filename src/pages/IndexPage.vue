@@ -176,7 +176,7 @@
 
             <!-- History Item 3 -->
             <div class="history-item">
-              <div class="question-title">Dịch từ "Wonderful" sang tiếng Vi���t</div>
+              <div class="question-title">Dịch từ "Wonderful" sang tiếng Việt</div>
               <div class="question-meta">
                 <span class="answer">Đáp án: " tuyệt vời "</span>
                 <span class="time">10:20 - 26/07/2024</span>
