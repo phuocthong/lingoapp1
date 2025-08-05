@@ -4,11 +4,7 @@
       <!-- App Logo Section -->
       <div class="app-logo-section">
         <div class="app-logo">
-          <img
-            src="../assets/thumbnail.png"
-            alt="English Vocabulary App"
-            class="logo-image"
-          />
+          <img src="../assets/thumbnail.png" alt="English Vocabulary App" class="logo-image" />
         </div>
       </div>
 
