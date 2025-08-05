@@ -25,7 +25,7 @@
               <div class="message-bubble bot-message">
                 <div class="message-text">
                   Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các
-                  bạn trả lời.lời.trả lời.
+                  bạn trả lời.
                 </div>
                 <div class="message-time">21:23</div>
               </div>
@@ -296,7 +296,6 @@ const messageInput = ref('')
 
 const sendMessage = () => {
   if (messageInput.value.trim()) {
-    // Handle message sending logic
     console.log('Sending message:', messageInput.value)
     messageInput.value = ''
   }
@@ -317,15 +316,9 @@ const sendMessage = () => {
   margin: 0;
 }
 
-/* Chat Section */
 .chat-section {
   flex: 1;
   min-width: 0;
-}1;
-  min-width: 0;
-}width: 0;
-};
-}in-width: 0;
 }
 
 .chat-card {
@@ -482,7 +475,6 @@ const sendMessage = () => {
   color: #6b7280;
 }
 
-/* Sidebar Section */
 .sidebar-section {
   width: 352px;
   display: flex;
@@ -543,7 +535,6 @@ const sendMessage = () => {
   color: #5b21b6;
 }
 
-/* History Content */
 .history-content {
   padding: 16px;
 }
@@ -609,7 +600,6 @@ const sendMessage = () => {
   cursor: pointer;
 }
 
-/* Leaderboard Content */
 .leaderboard-content {
   padding: 16px;
 }
@@ -680,7 +670,6 @@ const sendMessage = () => {
   color: #6b7280;
 }
 
-/* Current User Rank */
 .current-user-rank {
   background: #eff6ff;
   border: 1px solid #e2e8f0;
@@ -732,7 +721,6 @@ const sendMessage = () => {
   color: #6b7280;
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
   .dashboard-container {
     flex-direction: column;
@@ -742,8 +730,6 @@ const sendMessage = () => {
 
   .sidebar-section {
     width: 100%;
-  }
-}
   }
 }
 
