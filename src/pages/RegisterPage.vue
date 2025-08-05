@@ -5,7 +5,7 @@
       <div class="app-logo-section">
         <div class="app-logo">
           <img
-            src=""
+            src="https://images.pexels.com/photos/9310202/pexels-photo-9310202.jpeg"
             alt="English Vocabulary App"
             class="logo-image"
           />
