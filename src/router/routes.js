@@ -23,6 +23,7 @@ const routes = [
       { path: 'challenge-start', component: () => import('pages/ChallengeStartPage.vue') },
       { path: 'challenge-battle', component: () => import('pages/ChallengeBattlePage.vue') },
       { path: 'profile', component: () => import('pages/ProfilePage.vue') },
+      { path: 'edit-profile', component: () => import('pages/EditProfilePage.vue') },
       { path: 'friends', component: () => import('pages/FriendsPage.vue') },
       { path: 'add-friends', component: () => import('pages/AddFriendsPage.vue') },
       { path: 'tasks', component: () => import('pages/TasksPage.vue') },
