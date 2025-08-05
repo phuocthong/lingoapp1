@@ -312,8 +312,14 @@ const sendMessage = () => {
 .dashboard-container {
   display: flex;
   gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}: 0;
+}gin: 0;
+}gin: 0;
+} none;
+  margin: 0;
 }
 
 /* Chat Section */
