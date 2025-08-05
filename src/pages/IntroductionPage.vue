@@ -20,27 +20,6 @@
             hệ thống phần thưởng hấp dẫn.
           </p>
 
-          <!-- Action Buttons -->
-          <div class="hero-actions">
-            <q-btn color="primary" size="lg" class="hero-btn-primary" no-caps @click="startFree">
-              <q-icon name="auto_awesome" class="q-mr-sm" />
-              Bắt Đầu Miễn Phí
-              <q-icon name="arrow_forward" class="q-ml-sm" />
-            </q-btn>
-
-            <q-btn
-              outline
-              color="purple"
-              size="lg"
-              class="hero-btn-secondary"
-              no-caps
-              @click="login"
-            >
-              <q-icon name="play_arrow" class="q-mr-sm" />
-              Đăng Nhập
-            </q-btn>
-          </div>
-
           <!-- Stats -->
           <div class="hero-stats">
             <div class="stat-item">
@@ -188,19 +167,7 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
 
-const router = useRouter()
-
-const startFree = () => {
-  // Navigate to registration or challenges page
-  router.push('/challenges')
-}
-
-const login = () => {
-  // Navigate to dashboard
-  router.push('/dashboard')
-}
 </script>
 
 <style scoped>

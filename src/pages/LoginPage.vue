@@ -5,7 +5,7 @@
       <div class="app-logo-section">
         <div class="app-logo">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Ff046890c17ca436cab38cffc651fb9cb%2F2f58a553e41b49a5aed3a7ab28e72a98?format=webp&width=800"
+            src="../assets/thumbnail.png"
             alt="English Vocabulary App"
             class="logo-image"
           />
@@ -17,7 +17,7 @@
         <!-- Lingo Challenge Brand -->
         <div class="brand-header">
           <img
-            src="https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fe58ecc89c116450db70e65318c82b89d?alt=media&token=a4091b44-ab16-4937-956a-505cb03c063e&apiKey=f046890c17ca436cab38cffc651fb9cb"
+            src="../assets/logo.png"
             alt="Lingo Challenge"
             class="brand-image"
           />

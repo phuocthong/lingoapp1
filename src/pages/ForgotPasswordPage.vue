@@ -5,7 +5,7 @@
       <div class="app-logo-section">
         <div class="app-logo">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Ff046890c17ca436cab38cffc651fb9cb%2F2f58a553e41b49a5aed3a7ab28e72a98?format=webp&width=800"
+            src="../assets/thumbnail.png"
             alt="English Vocabulary App"
             class="logo-image"
           />
@@ -110,9 +110,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
-import { useRouter } from 'vue-router'
 
-const router = useRouter()
 
 // Form state
 const resetForm = reactive({

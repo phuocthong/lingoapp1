@@ -5,7 +5,11 @@
       <div class="app-logo-section">
         <div class="app-logo">
           <img
+<<<<<<< HEAD
             src="https://images.pexels.com/photos/9310202/pexels-photo-9310202.jpeg"
+=======
+            src="../assets/thumbnail.png"
+>>>>>>> cb3cf4f630410804205d57b800127ed49ffb5caf
             alt="English Vocabulary App"
             class="logo-image"
           />
