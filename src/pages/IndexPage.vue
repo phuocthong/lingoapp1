@@ -24,7 +24,7 @@
               </q-avatar>
               <div class="message-bubble bot-message">
                 <div class="message-text">
-                  Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các
+                  Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ đ��� các
                   bạn trả lời.
                 </div>
                 <div class="message-time">21:23</div>
@@ -176,7 +176,7 @@
 
             <!-- History Item 3 -->
             <div class="history-item">
-              <div class="question-title">Dịch từ "Wonderful" sang tiếng Việt</div>
+              <div class="question-title">Dịch từ "Wonderful" sang tiếng Vi���t</div>
               <div class="question-meta">
                 <span class="answer">Đáp án: " tuyệt vời "</span>
                 <span class="time">10:20 - 26/07/2024</span>
@@ -738,10 +738,16 @@ const sendMessage = () => {
 @media (max-width: 1024px) {
   .dashboard-container {
     flex-direction: column;
+    max-width: 1024px;
+    margin: 0 auto;
   }
 
   .sidebar-section {
     width: 100%;
+  }
+}0%;
+  }
+}dth: 100%;
   }
 }
 
