@@ -29,11 +29,11 @@
                 <q-icon name="camera_alt" size="24px" />
                 <span>Đổi ảnh</span>
               </div>
-              <input 
-                ref="fileInput" 
-                type="file" 
-                accept="image/*" 
-                @change="handleAvatarChange" 
+              <input
+                ref="fileInput"
+                type="file"
+                accept="image/*"
+                @change="handleAvatarChange"
                 style="display: none"
               />
             </div>
@@ -122,17 +122,17 @@
               <label class="form-label">Cài đặt riêng tư</label>
               <div class="privacy-options">
                 <label class="privacy-option">
-                  <input 
-                    v-model="editForm.isPublicProfile" 
-                    type="checkbox" 
+                  <input
+                    v-model="editForm.isPublicProfile"
+                    type="checkbox"
                     class="privacy-checkbox"
                   />
                   <span class="privacy-text">Cho phép người khác xem hồ sơ của tôi</span>
                 </label>
                 <label class="privacy-option">
-                  <input 
-                    v-model="editForm.allowFriendRequests" 
-                    type="checkbox" 
+                  <input
+                    v-model="editForm.allowFriendRequests"
+                    type="checkbox"
                     class="privacy-checkbox"
                   />
                   <span class="privacy-text">Cho phép nhận lời mời kết bạn</span>
@@ -143,9 +143,7 @@
 
           <!-- Action Buttons -->
           <div class="form-actions">
-            <button type="button" class="cancel-btn" @click="cancelEdit">
-              Hủy bỏ
-            </button>
+            <button type="button" class="cancel-btn" @click="cancelEdit">Hủy bỏ</button>
             <button type="submit" class="save-btn" :disabled="loading" @click="handleSave">
               <span v-if="loading">Đang lưu...</span>
               <span v-else>Lưu thay đổi</span>
@@ -265,11 +263,12 @@ const triggerFileUpload = () => {
 const handleAvatarChange = (event) => {
   const file = event.target.files[0]
   if (file) {
-    if (file.size > 5 * 1024 * 1024) { // 5MB limit
+    if (file.size > 5 * 1024 * 1024) {
+      // 5MB limit
       alert('Kích thước file không được vượt quá 5MB')
       return
     }
-    
+
     if (!file.type.startsWith('image/')) {
       alert('Vui lòng chọn file hình ảnh')
       return
@@ -468,7 +467,8 @@ const cancelEdit = () => {
 }
 
 .form-group:nth-child(5), /* Bio field spans both columns */
-.form-group:nth-child(6) { /* Privacy settings span both columns */
+.form-group:nth-child(6) {
+  /* Privacy settings span both columns */
   grid-column: 1 / -1;
 }
 
