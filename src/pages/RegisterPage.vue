@@ -255,7 +255,7 @@ const handleRegister = async () => {
 
 .logo-image {
   width: 100%;
-  max-width: 680px;
+  max-width: 548px;
   height: auto;
   border-radius: 29px;
   object-fit: cover;
