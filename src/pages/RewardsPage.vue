@@ -47,29 +47,29 @@
                 <span>Hết hàng</span>
               </div>
             </div>
-            
+
             <div class="reward-info">
               <h3 class="reward-name">{{ reward.name }}</h3>
               <p class="reward-description">{{ reward.description }}</p>
-              
+
               <div class="reward-details">
                 <div class="reward-cost">
                   <q-icon name="stars" class="cost-icon" />
                   <span class="cost-amount">{{ reward.cost }}</span>
                   <span class="cost-label">điểm</span>
                 </div>
-                
+
                 <div class="reward-stock">
                   <span class="stock-label">Còn lại:</span>
                   <span class="stock-amount">{{ reward.stock }}</span>
                 </div>
               </div>
-              
+
               <q-btn
                 class="redeem-btn"
                 :class="{
                   'can-afford': userPoints >= reward.cost && reward.stock > 0,
-                  'cannot-afford': userPoints < reward.cost || reward.stock === 0
+                  'cannot-afford': userPoints < reward.cost || reward.stock === 0,
                 }"
                 :disable="userPoints < reward.cost || reward.stock === 0"
                 @click="redeemReward(reward)"
@@ -94,16 +94,16 @@
               <div class="transaction-image">
                 <img :src="transaction.image" :alt="transaction.name" />
               </div>
-              
+
               <div class="transaction-info">
                 <div class="transaction-name">{{ transaction.name }}</div>
                 <div class="transaction-date">{{ transaction.date }}</div>
               </div>
-              
+
               <div class="transaction-cost">
                 <span class="cost">-{{ transaction.cost }} điểm</span>
               </div>
-              
+
               <div class="transaction-status">
                 <span class="status" :class="transaction.status">
                   {{ getStatusText(transaction.status) }}
@@ -226,7 +226,7 @@ const filteredRewards = computed(() => {
   if (activeCategory.value === 'all') {
     return rewards.value
   }
-  return rewards.value.filter(reward => reward.category === activeCategory.value)
+  return rewards.value.filter((reward) => reward.category === activeCategory.value)
 })
 
 // Methods
@@ -234,7 +234,7 @@ const redeemReward = (reward) => {
   if (userPoints.value >= reward.cost && reward.stock > 0) {
     userPoints.value -= reward.cost
     reward.stock -= 1
-    
+
     // Add to recent transactions
     recentTransactions.value.unshift({
       id: Date.now(),
@@ -244,7 +244,7 @@ const redeemReward = (reward) => {
       status: 'processing',
       image: reward.image.replace('200x150', '40x40'),
     })
-    
+
     console.log(`Redeemed: ${reward.name} for ${reward.cost} points`)
   }
 }

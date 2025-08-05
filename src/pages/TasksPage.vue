@@ -31,27 +31,13 @@
               </div>
               <div class="task-reward">
                 <div class="reward-amount">+{{ task.reward }} XP</div>
-                <q-btn
-                  v-if="task.completed"
-                  class="claim-btn completed"
-                  disable
-                >
+                <q-btn v-if="task.completed" class="claim-btn completed" disable>
                   Đã hoàn thành
                 </q-btn>
-                <q-btn
-                  v-else-if="task.canClaim"
-                  class="claim-btn"
-                  @click="claimReward(task.id)"
-                >
+                <q-btn v-else-if="task.canClaim" class="claim-btn" @click="claimReward(task.id)">
                   Nhận thưởng
                 </q-btn>
-                <q-btn
-                  v-else
-                  class="claim-btn disabled"
-                  disable
-                >
-                  Chưa hoàn thành
-                </q-btn>
+                <q-btn v-else class="claim-btn disabled" disable> Chưa hoàn thành </q-btn>
               </div>
             </div>
           </div>
@@ -77,27 +63,13 @@
               </div>
               <div class="task-reward">
                 <div class="reward-amount">+{{ task.reward }} XP</div>
-                <q-btn
-                  v-if="task.completed"
-                  class="claim-btn completed"
-                  disable
-                >
+                <q-btn v-if="task.completed" class="claim-btn completed" disable>
                   Đã hoàn thành
                 </q-btn>
-                <q-btn
-                  v-else-if="task.canClaim"
-                  class="claim-btn"
-                  @click="claimReward(task.id)"
-                >
+                <q-btn v-else-if="task.canClaim" class="claim-btn" @click="claimReward(task.id)">
                   Nhận thưởng
                 </q-btn>
-                <q-btn
-                  v-else
-                  class="claim-btn disabled"
-                  disable
-                >
-                  Chưa hoàn thành
-                </q-btn>
+                <q-btn v-else class="claim-btn disabled" disable> Chưa hoàn thành </q-btn>
               </div>
             </div>
           </div>
@@ -123,27 +95,13 @@
               </div>
               <div class="task-reward">
                 <div class="reward-amount">+{{ task.reward }} XP</div>
-                <q-btn
-                  v-if="task.completed"
-                  class="claim-btn completed"
-                  disable
-                >
+                <q-btn v-if="task.completed" class="claim-btn completed" disable>
                   Đã hoàn thành
                 </q-btn>
-                <q-btn
-                  v-else-if="task.canClaim"
-                  class="claim-btn"
-                  @click="claimReward(task.id)"
-                >
+                <q-btn v-else-if="task.canClaim" class="claim-btn" @click="claimReward(task.id)">
                   Nhận thưởng
                 </q-btn>
-                <q-btn
-                  v-else
-                  class="claim-btn disabled"
-                  disable
-                >
-                  Chưa hoàn thành
-                </q-btn>
+                <q-btn v-else class="claim-btn disabled" disable> Chưa hoàn thành </q-btn>
               </div>
             </div>
           </div>
@@ -261,8 +219,8 @@ const achievementTasks = ref([
 const claimReward = (taskId) => {
   // Find task in all arrays
   const allTasks = [...dailyTasks.value, ...weeklyTasks.value, ...achievementTasks.value]
-  const task = allTasks.find(t => t.id === taskId)
-  
+  const task = allTasks.find((t) => t.id === taskId)
+
   if (task && task.canClaim) {
     task.completed = true
     task.canClaim = false
