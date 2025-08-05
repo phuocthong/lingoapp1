@@ -325,7 +325,9 @@ const sendMessage = () => {
 /* Chat Section */
 .chat-section {
   flex: 1;
-  max-width: 728px;
+  min-width: 0;
+} 0;
+}} 0;
 }
 
 .chat-card {
