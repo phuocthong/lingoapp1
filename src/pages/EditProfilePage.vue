@@ -308,7 +308,6 @@ const handleSave = async () => {
       }
 
       // Update in storage
-      const token = auth.getToken()
       if (localStorage.getItem('user_token')) {
         localStorage.setItem('user_data', JSON.stringify(updatedUser))
       } else {
