@@ -743,9 +743,7 @@ const sendMessage = () => {
   .sidebar-section {
     width: 100%;
   }
-}0%;
-  }
-}dth: 100%;
+}
   }
 }
 
