@@ -8,7 +8,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   contain: layout style;
   overflow-anchor: none; /* Prevent scroll anchoring issues */
 }
@@ -114,7 +115,7 @@ iframe,
 
 // Prevent layout thrashing on dynamic content
 .grid,
-[class*="grid"],
+[class*='grid'],
 .participants-section,
 .content-grid,
 .stats-grid,
@@ -133,8 +134,8 @@ iframe,
 }
 
 // Optimize flex and grid layouts
-[class*="flex"],
-[class*="grid"] {
+[class*='flex'],
+[class*='grid'] {
   will-change: auto;
 }
 
