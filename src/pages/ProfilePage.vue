@@ -186,8 +186,8 @@ const userAvatar = ref(
 )
 
 const editProfile = () => {
-  // Handle edit profile logic
-  console.log('Edit profile clicked')
+  // Navigate to edit profile page
+  router.push('/dashboard/edit-profile')
 }
 
 const logout = () => {
