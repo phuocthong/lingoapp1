@@ -76,7 +76,7 @@
             </div>
             <h3 class="feature-title">Thách Đấu Bạn Bè</h3>
             <p class="feature-description">
-              Cạnh tranh v��i bạn bè trong các cuộc thi tiếng Anh thú vị và hấp dẫn
+              Cạnh tranh với bạn bè trong các cuộc thi tiếng Anh thú vị và hấp dẫn
             </p>
           </div>
 

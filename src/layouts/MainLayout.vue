@@ -12,8 +12,8 @@
         <!-- Navigation -->
         <div class="header-nav" v-if="!$q.screen.lt.md">
           <q-btn flat no-caps class="nav-btn" @click="$router.push('/')"> Trang chủ </q-btn>
-          <q-btn flat no-caps class="nav-btn"> Giới thiệu </q-btn>
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/challenges')">
+          <q-btn flat no-caps class="nav-btn"  @click="$router.push('/introduction')"> Giới thiệu </q-btn>
+          <q-btn flat no-caps class="nav-btn" >
             Thử thách
           </q-btn>
         </div>
@@ -79,13 +79,13 @@
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-close-popup>
+          <q-item clickable @click="$router.push('/introduction')" v-close-popup>
             <q-item-section>
               <q-item-label>Giới thiệu</q-item-label>
             </q-item-section>
           </q-item>
 
-          <q-item clickable @click="$router.push('/challenges')" v-close-popup>
+          <q-item clickable v-close-popup>
             <q-item-section>
               <q-item-label>Thử thách</q-item-label>
             </q-item-section>
@@ -123,7 +123,7 @@ const toggleMobileMenu = () => {
 
 const register = () => {
   // Navigate to registration or challenges page
-  router.push('/challenges')
+  router.push('/register')
 }
 
 const login = () => {

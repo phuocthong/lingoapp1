@@ -173,7 +173,7 @@ const validateForm = () => {
 
   // Username validation
   if (!registerForm.username.trim()) {
-    errors.username = 'Vui lòng nh���p tên người dùng'
+    errors.username = 'Vui lòng nhập tên người dùng'
     isValid = false
   } else if (registerForm.username.length < 3) {
     errors.username = 'Tên người dùng phải có ít nhất 3 ký tự'

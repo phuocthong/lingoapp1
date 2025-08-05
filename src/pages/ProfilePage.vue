@@ -10,7 +10,7 @@
         <div class="profile-avatar-section">
           <div class="avatar-container">
             <q-avatar size="81px" class="profile-avatar">
-              <img :src="userAvatar" alt="User Avatar" />
+              <img :src="userAvatar" alt="" />
             </q-avatar>
             <div class="verified-badge">
               <q-icon name="check_circle" color="green" size="18px" />
@@ -137,7 +137,7 @@
         <h3 class="chart-title">Biểu đồ tiến bộ</h3>
         <div class="chart-container">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Ff046890c17ca436cab38cffc651fb9cb%2F447e5d8b31224c1187498477057c7f95?format=webp&width=800"
+            src=""
             alt="Progress Chart"
             class="chart-image"
           />
@@ -167,7 +167,7 @@
         </div>
         <q-btn color="negative" class="logout-btn" no-caps @click="logout">
           <q-icon name="logout" />
-          ��ăng xuất
+          Đăng xuất
         </q-btn>
       </div>
     </div>
@@ -413,7 +413,7 @@ const logout = () => {
   padding: 20px 32px;
   margin-left: 0;
   transition: margin-left 0.3s ease;
-  max-width: 915px;
+  max-width: 2024px;
   will-change: margin-left;
 }
 

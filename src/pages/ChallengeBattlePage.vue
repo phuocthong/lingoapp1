@@ -290,15 +290,7 @@ const questions = ref([
       { text: 'sleepy', correct: false },
     ],
   },
-  {
-    question: 'Hành tinh nào gần Mặt Trời nhất?',
-    answers: [
-      { text: 'Sao Kim', correct: false },
-      { text: 'Trái Đ���t', correct: false },
-      { text: 'Sao Thủy', correct: true },
-      { text: 'Sao Hỏa', correct: false },
-    ],
-  },
+ 
 ])
 
 // Computed properties
