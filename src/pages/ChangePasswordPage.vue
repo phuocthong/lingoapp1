@@ -326,7 +326,7 @@ const validateForm = () => {
 
   // New password validation
   if (!passwordForm.newPassword.trim()) {
-    errors.newPassword = 'Vui lòng nhập mật khẩu m���i'
+    errors.newPassword = 'Vui lòng nhập mật khẩu mới'
     isValid = false
   } else if (!passwordRequirements.value.length) {
     errors.newPassword = 'Mật khẩu phải có ít nhất 6 ký tự'
@@ -378,6 +378,8 @@ const handleChangePassword = async () => {
   display: flex;
   min-height: 100vh;
   background: #ffffff;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 .change-password-container {
@@ -390,7 +392,7 @@ const handleChangePassword = async () => {
 .change-password-content {
   flex: 1;
   padding: 32px;
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
