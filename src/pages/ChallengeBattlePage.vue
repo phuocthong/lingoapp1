@@ -587,15 +587,65 @@ const getPlayerGradient = (playerId) => {
 <style scoped>
 .challenge-battle-page {
   min-height: 100vh;
-  background: linear-gradient(90deg, #eff6ff 100%, #f5f3ff 0%);
-  font-family:
-    'Inter',
-    -apple-system,
-    'Roboto',
-    'Helvetica',
-    sans-serif;
-  contain: layout style;
+  background: radial-gradient(ellipse at top, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  font-family: 'Inter', -apple-system, 'Roboto', 'Helvetica', sans-serif;
+  position: relative;
+  overflow-x: hidden;
 }
+
+/* Floating Particles Background */
+.particles-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: float 8s infinite ease-in-out;
+}
+
+.particle:nth-child(odd) {
+  animation-delay: -2s;
+  animation-duration: 6s;
+}
+
+.particle:nth-child(3n) {
+  animation-delay: -4s;
+  animation-duration: 10s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+.particle:nth-child(1) { left: 10%; }
+.particle:nth-child(2) { left: 20%; }
+.particle:nth-child(3) { left: 30%; }
+.particle:nth-child(4) { left: 40%; }
+.particle:nth-child(5) { left: 50%; }
+.particle:nth-child(6) { left: 60%; }
+.particle:nth-child(7) { left: 70%; }
+.particle:nth-child(8) { left: 80%; }
+.particle:nth-child(9) { left: 90%; }
+.particle:nth-child(10) { left: 5%; }
+.particle:nth-child(11) { left: 15%; }
+.particle:nth-child(12) { left: 25%; }
+.particle:nth-child(13) { left: 35%; }
+.particle:nth-child(14) { left: 65%; }
+.particle:nth-child(15) { left: 85%; }
 
 /* Game Header */
 .game-header {
