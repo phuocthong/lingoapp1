@@ -234,7 +234,7 @@
           </div>
           <div class="warning-message">
             <div class="warning-dot"></div>
-            <div class="warning-text">Vui lòng đăng nhập để tham gia tr�� lời câu hỏi</div>
+            <div class="warning-text">Vui lòng đăng nhập để tham gia trả lời câu hỏi</div>
           </div>
           <div class="auth-buttons">
             <q-btn flat class="register-btn-small" @click="register">Đăng ký miễn phí</q-btn>
@@ -917,7 +917,7 @@ const login = () => {
 }
 
 .chat-title {
-  color: #111827;
+  color: #0f172a;
   font-family: Inter;
   font-size: 16px;
   font-weight: 600;
@@ -965,7 +965,7 @@ const login = () => {
 }
 
 .message-text {
-  color: #111827;
+  color: #0f172a;
   font-family: Inter;
   font-size: 14px;
   font-weight: 400;
@@ -1097,7 +1097,7 @@ const login = () => {
 }
 
 .section-title {
-  color: #111827;
+  color: #0f172a;
   font-family: Inter;
   font-size: 16px;
   font-weight: 600;
@@ -1130,7 +1130,7 @@ const login = () => {
 }
 
 .question-title {
-  color: #111827;
+  color: #0f172a;
   font-family: Inter;
   font-size: 14px;
   font-weight: 600;
@@ -1304,7 +1304,7 @@ const login = () => {
 }
 
 .user-name {
-  color: #111827;
+  color: #0f172a;
   font-family: Inter;
   font-size: 14px;
   font-weight: 500;
@@ -1324,7 +1324,7 @@ const login = () => {
 }
 
 .score-number {
-  color: #111827;
+  color: #0f172a;
   font-family: Inter;
   font-size: 18px;
   font-weight: 700;
