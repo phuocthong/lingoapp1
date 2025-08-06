@@ -949,85 +949,167 @@ const getPlayerGradient = (playerId) => {
   margin-top: 8px;
 }
 
-/* Answers Section */
-.answers-section {
-  margin-top: 24px;
+/* Battle Grid */
+.battle-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Answers Arena */
+.answers-arena {
+  position: relative;
 }
 
 .answers-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
 
-.answer-button {
-  background: #fff;
-  border: 2px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
+.answer-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: left;
+  min-height: 100px;
   display: flex;
   align-items: center;
   gap: 16px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: left;
-  min-height: 80px;
+  overflow: hidden;
 }
 
-.answer-button:hover:not(:disabled) {
-  border-color: #3b82f6;
-  background: #f8fafc;
+.answer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.answer-button:disabled {
+.answer-card:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.answer-card:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: #667eea;
+}
+
+.answer-card:disabled {
   cursor: not-allowed;
 }
 
-.answer-button.correct {
-  border-color: #16a34a;
-  background: #f0fdf4;
-  color: #16a34a;
+.answer-card.correct {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  transform: scale(1.02);
 }
 
-.answer-button.incorrect {
-  border-color: #dc2626;
-  background: #fef2f2;
-  color: #dc2626;
+.answer-card.incorrect {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  transform: scale(0.98);
 }
 
-.answer-button.disabled {
+.answer-card.disabled {
   opacity: 0.6;
+  transform: scale(0.95);
 }
 
-.answer-letter {
-  width: 32px;
-  height: 32px;
+.answer-indicator {
+  position: relative;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: #f3f4f6;
-  color: #374151;
+  background: linear-gradient(135deg, #f7fafc, #edf2f7);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  font-weight: 700;
   flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-.answer-button.correct .answer-letter {
-  background: #16a34a;
+.answer-letter {
+  font-size: 18px;
+  font-weight: 700;
+  color: #4a5568;
+  transition: all 0.3s ease;
+}
+
+.answer-card.correct .answer-indicator {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.answer-card.correct .answer-letter {
   color: white;
 }
 
-.answer-button.incorrect .answer-letter {
-  background: #dc2626;
+.answer-card.incorrect .answer-indicator {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.answer-card.incorrect .answer-letter {
   color: white;
+}
+
+.answer-check,
+.answer-x {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.answer-content {
+  flex: 1;
 }
 
 .answer-text {
-  flex: 1;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #2d3748;
+  transition: color 0.3s ease;
+}
+
+.answer-card.correct .answer-text {
+  color: #065f46;
+}
+
+.answer-card.incorrect .answer-text {
+  color: #991b1b;
+}
+
+.answer-glow {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.answer-card:hover:not(:disabled) .answer-glow {
+  opacity: 0.3;
 }
 
 /* Scoreboard */
