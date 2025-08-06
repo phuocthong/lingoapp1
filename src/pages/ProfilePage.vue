@@ -136,11 +136,7 @@
       <div class="progress-chart">
         <h3 class="chart-title">Biểu đồ tiến bộ</h3>
         <div class="chart-container">
-          <img
-            src=""
-            alt="Progress Chart"
-            class="chart-image"
-          />
+          <img src="" alt="Progress Chart" class="chart-image" />
         </div>
       </div>
 
