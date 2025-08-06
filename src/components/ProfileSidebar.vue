@@ -179,27 +179,11 @@ onMounted(() => {
 }
 
 .sidebar-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   color: white;
-}
-
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.logo-text {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.5px;
+  line-height: 24px;
 }
 
 .sidebar-toggle {
