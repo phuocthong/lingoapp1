@@ -234,6 +234,8 @@ const claimReward = (taskId) => {
   display: flex;
   min-height: 100vh;
   background: #ffffff;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 .tasks-container {
@@ -245,7 +247,8 @@ const claimReward = (taskId) => {
 .tasks-content {
   flex: 1;
   padding: 20px 32px;
-  max-width: 915px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .page-header {
