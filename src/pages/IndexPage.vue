@@ -429,24 +429,24 @@ const sendMessage = () => {
 }
 
 .correct-answer {
-  background: #dcfce7;
-  border: 1px solid #bbf7d0;
+  background: rgba(204, 251, 241, 0.8);
+  border: 1px solid rgba(20, 184, 166, 0.3);
   border-radius: 8px;
   padding: 12px 16px;
-  color: #166534;
+  color: #0f766e;
   font-size: 14px;
   position: relative;
 }
 
 .answer-time {
-  color: #16a34a;
+  color: #10b981;
   font-size: 12px;
   margin-top: 4px;
   text-align: right;
 }
 
 .chat-input {
-  background: #f9fafb;
+  background: linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%);
   border-top: 1px solid #e2e8f0;
   padding: 16px 24px;
 }
@@ -490,7 +490,8 @@ const sendMessage = () => {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .card-header {
