@@ -555,8 +555,8 @@ const cancelEdit = () => {
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 16px;
-  padding-top: 24px;
+  gap: 24px;
+  padding-top: 32px;
   border-top: 1px solid #e2e8f0;
 }
 
