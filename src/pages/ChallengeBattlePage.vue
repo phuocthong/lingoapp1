@@ -1935,4 +1935,56 @@ const getPlayerGradient = (playerId) => {
     left: calc(var(--i) * 2%);
   }
 }
+
+/* Confetti positioning */
+.confetti:nth-child(1) { left: 2%; }
+.confetti:nth-child(2) { left: 6%; }
+.confetti:nth-child(3) { left: 10%; }
+.confetti:nth-child(4) { left: 14%; }
+.confetti:nth-child(5) { left: 18%; }
+.confetti:nth-child(6) { left: 22%; }
+.confetti:nth-child(7) { left: 26%; }
+.confetti:nth-child(8) { left: 30%; }
+.confetti:nth-child(9) { left: 34%; }
+.confetti:nth-child(10) { left: 38%; }
+.confetti:nth-child(11) { left: 42%; }
+.confetti:nth-child(12) { left: 46%; }
+.confetti:nth-child(13) { left: 50%; }
+.confetti:nth-child(14) { left: 54%; }
+.confetti:nth-child(15) { left: 58%; }
+.confetti:nth-child(16) { left: 62%; }
+.confetti:nth-child(17) { left: 66%; }
+.confetti:nth-child(18) { left: 70%; }
+.confetti:nth-child(19) { left: 74%; }
+.confetti:nth-child(20) { left: 78%; }
+.confetti:nth-child(21) { left: 82%; }
+.confetti:nth-child(22) { left: 86%; }
+.confetti:nth-child(23) { left: 90%; }
+.confetti:nth-child(24) { left: 94%; }
+.confetti:nth-child(25) { left: 98%; }
+.confetti:nth-child(26) { left: 4%; }
+.confetti:nth-child(27) { left: 8%; }
+.confetti:nth-child(28) { left: 12%; }
+.confetti:nth-child(29) { left: 16%; }
+.confetti:nth-child(30) { left: 20%; }
+.confetti:nth-child(31) { left: 24%; }
+.confetti:nth-child(32) { left: 28%; }
+.confetti:nth-child(33) { left: 32%; }
+.confetti:nth-child(34) { left: 36%; }
+.confetti:nth-child(35) { left: 40%; }
+.confetti:nth-child(36) { left: 44%; }
+.confetti:nth-child(37) { left: 48%; }
+.confetti:nth-child(38) { left: 52%; }
+.confetti:nth-child(39) { left: 56%; }
+.confetti:nth-child(40) { left: 60%; }
+.confetti:nth-child(41) { left: 64%; }
+.confetti:nth-child(42) { left: 68%; }
+.confetti:nth-child(43) { left: 72%; }
+.confetti:nth-child(44) { left: 76%; }
+.confetti:nth-child(45) { left: 80%; }
+.confetti:nth-child(46) { left: 84%; }
+.confetti:nth-child(47) { left: 88%; }
+.confetti:nth-child(48) { left: 92%; }
+.confetti:nth-child(49) { left: 96%; }
+.confetti:nth-child(50) { left: 1%; }
 </style>
