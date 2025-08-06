@@ -925,7 +925,7 @@ const login = () => {
 }
 
 .chat-subtitle {
-  color: #6b7280;
+  color: #475569;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -973,7 +973,7 @@ const login = () => {
 }
 
 .message-time {
-  color: #6b7280;
+  color: #475569;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1038,7 +1038,7 @@ const login = () => {
 }
 
 .warning-text {
-  color: #6b7280;
+  color: #475569;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1107,7 +1107,7 @@ const login = () => {
 
 .section-subtitle {
   padding: 0 16px 16px;
-  color: #6b7280;
+  color: #475569;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1154,7 +1154,7 @@ const login = () => {
 }
 
 .question-date {
-  color: #6b7280;
+  color: #475569;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1312,7 +1312,7 @@ const login = () => {
 }
 
 .user-streak {
-  color: #6b7280;
+  color: #475569;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1332,7 +1332,7 @@ const login = () => {
 }
 
 .score-label {
-  color: #6b7280;
+  color: #475569;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
