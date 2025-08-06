@@ -10,7 +10,7 @@
               <q-icon name="extension" class="header-icon" />
               <div class="header-info">
                 <div class="header-title">Thách đấu với Bot</div>
-                <div class="header-subtitle">Bot sẽ ��ưa ra câu hỏi mỗi 30-60 giây</div>
+                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
               </div>
             </div>
           </q-card-section>
@@ -304,7 +304,7 @@ const sendMessage = () => {
 
 <style scoped>
 .dashboard-page {
-  background: #f5f3ff;
+  background: linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%);
   padding: 24px;
 }
 
@@ -324,13 +324,14 @@ const sendMessage = () => {
 .chat-card {
   border-radius: 24px;
   border: 1px solid #e2e8f0;
-  background: white;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.1);
+  backdrop-filter: blur(10px);
   overflow: hidden;
 }
 
 .chat-header {
-  background: white;
+  background: linear-gradient(135deg, #f0f9ff 0%, #f0fdfa 100%);
   border-bottom: 1px solid #e2e8f0;
   padding: 16px 24px;
 }
@@ -342,11 +343,12 @@ const sendMessage = () => {
 }
 
 .header-icon {
-  background: #6d28d9;
+  background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
   color: white;
   padding: 8px;
   border-radius: 8px;
   font-size: 20px;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
 
 .header-title {
@@ -357,7 +359,7 @@ const sendMessage = () => {
 
 .header-subtitle {
   font-size: 12px;
-  color: #6b7280;
+  color: #475569;
   margin-top: 4px;
 }
 
@@ -374,20 +376,21 @@ const sendMessage = () => {
 }
 
 .bot-avatar {
-  background: #ede9fe;
-  color: #6d28d9;
+  background: linear-gradient(135deg, #ccfbf1 0%, #e0f2fe 100%);
+  color: #0ea5e9;
   flex-shrink: 0;
 }
 
 .message-bubble {
-  background: #f3f4f6;
+  background: rgba(240, 249, 255, 0.8);
   border-radius: 8px;
   padding: 12px 16px;
   max-width: 400px;
+  border: 1px solid rgba(226, 232, 240, 0.5);
 }
 
 .bot-message {
-  background: #f3f4f6;
+  background: rgba(240, 249, 255, 0.8);
 }
 
 .message-text {
@@ -398,7 +401,7 @@ const sendMessage = () => {
 
 .message-time {
   font-size: 12px;
-  color: #6b7280;
+  color: #475569;
 }
 
 .message-participants {
@@ -472,7 +475,7 @@ const sendMessage = () => {
 
 .status-text {
   font-size: 12px;
-  color: #6b7280;
+  color: #475569;
 }
 
 .sidebar-section {
@@ -510,7 +513,7 @@ const sendMessage = () => {
 
 .header-subtitle {
   font-size: 12px;
-  color: #6b7280;
+  color: #475569;
 }
 
 .trend-icon {
@@ -568,7 +571,7 @@ const sendMessage = () => {
 
 .time {
   font-size: 12px;
-  color: #6b7280;
+  color: #475569;
 }
 
 .question-stats {
@@ -652,7 +655,7 @@ const sendMessage = () => {
 
 .player-streak {
   font-size: 12px;
-  color: #6b7280;
+  color: #475569;
 }
 
 .player-score {
@@ -667,7 +670,7 @@ const sendMessage = () => {
 
 .score-label {
   font-size: 12px;
-  color: #6b7280;
+  color: #475569;
 }
 
 .current-user-rank {
@@ -718,7 +721,7 @@ const sendMessage = () => {
 
 .user-total {
   font-size: 12px;
-  color: #6b7280;
+  color: #475569;
 }
 
 @media (max-width: 1024px) {
