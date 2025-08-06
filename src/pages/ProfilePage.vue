@@ -409,7 +409,8 @@ const logout = () => {
   padding: 20px 32px;
   margin-left: 0;
   transition: margin-left 0.3s ease;
-  max-width: 2024px;
+  max-width: 1600px;
+  margin: 0 auto;
   will-change: margin-left;
 }
 
