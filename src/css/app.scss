@@ -39,69 +39,111 @@ iframe,
   // Font family now applied globally
 }
 
-// Purple theme colors
-.bg-purple-1 {
-  background-color: #f5f3ff !important;
+// Cool mint and sky blue theme colors
+.bg-sky-1 {
+  background-color: #f0f9ff !important; // Very light sky blue
 }
 
-.bg-purple-2 {
-  background-color: #ede9fe !important;
+.bg-sky-2 {
+  background-color: #e0f2fe !important; // Light sky blue
 }
 
-.bg-purple-7 {
-  background-color: #6d28d9 !important;
+.bg-sky-6 {
+  background-color: #0ea5e9 !important; // Main sky blue
 }
 
-.text-purple-8 {
-  color: #5b21b6 !important;
+.bg-sky-7 {
+  background-color: #0284c7 !important; // Darker sky blue
 }
 
-// Blue theme colors
-.bg-blue-1 {
-  background-color: #eff6ff !important;
+.text-sky-6 {
+  color: #0ea5e9 !important;
 }
 
-.border-blue-2 {
-  border-color: #dbeafe !important;
+.text-sky-7 {
+  color: #0284c7 !important;
 }
 
-.text-blue-6 {
-  color: #2563eb !important;
+// Teal/Mint colors
+.bg-teal-1 {
+  background-color: #f0fdfa !important; // Very light teal
 }
 
-.bg-blue-6 {
-  background-color: #2563eb !important;
+.bg-teal-2 {
+  background-color: #ccfbf1 !important; // Light teal
 }
 
-// Grey variations
-.bg-grey-2 {
-  background-color: #f9fafb !important;
+.bg-teal-6 {
+  background-color: #14b8a6 !important; // Main teal
 }
 
-.bg-grey-3 {
-  background-color: #f3f4f6 !important;
+.bg-teal-7 {
+  background-color: #0f766e !important; // Darker teal
 }
 
-.text-grey-6 {
-  color: #6b7280 !important;
+.text-teal-6 {
+  color: #14b8a6 !important;
 }
 
-.text-grey-7 {
-  color: #374151 !important;
+.text-teal-7 {
+  color: #0f766e !important;
 }
 
-.text-grey-9 {
-  color: #111827 !important;
+.border-teal-2 {
+  border-color: #ccfbf1 !important;
 }
 
-// Green colors
-.text-green-7 {
-  color: #16a34a !important;
+// Soft indigo for accents
+.bg-indigo-1 {
+  background-color: #f8fafc !important;
 }
 
-// Card shadows
+.bg-indigo-6 {
+  background-color: #6366f1 !important;
+}
+
+.text-indigo-6 {
+  color: #6366f1 !important;
+}
+
+// Cool grey variations
+.bg-slate-1 {
+  background-color: #f8fafc !important;
+}
+
+.bg-slate-2 {
+  background-color: #f1f5f9 !important;
+}
+
+.bg-slate-3 {
+  background-color: #e2e8f0 !important;
+}
+
+.text-slate-6 {
+  color: #475569 !important;
+}
+
+.text-slate-7 {
+  color: #334155 !important;
+}
+
+.text-slate-9 {
+  color: #0f172a !important;
+}
+
+// Emerald for positive states
+.text-emerald-6 {
+  color: #10b981 !important;
+}
+
+.text-emerald-7 {
+  color: #047857 !important;
+}
+
+// Card shadows with cool colors
 .q-card {
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 1px 3px 0 rgba(14, 165, 233, 0.1), 0 1px 2px 0 rgba(20, 184, 166, 0.06) !important;
+  border: 1px solid rgba(226, 232, 240, 0.5);
 }
 
 // Smooth transitions optimized to prevent ResizeObserver issues
@@ -143,22 +185,22 @@ iframe,
   will-change: auto;
 }
 
-// Custom scrollbar for chat
+// Custom scrollbar for chat with cool colors
 .chat-messages::-webkit-scrollbar {
   width: 4px;
 }
 
 .chat-messages::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f0f9ff;
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #94a3b8;
   border-radius: 2px;
 }
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: #64748b;
 }
 
 // Responsive design
@@ -193,17 +235,36 @@ iframe,
   }
 }
 
-// Custom border utilities
+// Custom border utilities with cool colors
 .border-bottom {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .border-b-1 {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-// Animation for hoverable elements
+// Animation for hoverable elements with cool colors
 .cursor-pointer:hover {
-  color: #2563eb !important;
+  color: #0ea5e9 !important;
   transition: color 0.2s ease;
+}
+
+// Additional cool color utilities
+.glass-effect {
+  background: rgba(240, 249, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.2);
+}
+
+.cool-gradient {
+  background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
+}
+
+.cool-shadow {
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.1);
+}
+
+.cool-shadow-lg {
+  box-shadow: 0 10px 40px rgba(14, 165, 233, 0.15);
 }
