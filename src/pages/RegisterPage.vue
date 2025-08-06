@@ -260,7 +260,7 @@ const handleRegister = async () => {
 /* Auth Section */
 .auth-section {
   width: 100%;
-  max-width: 435px;
+  max-width: 454px;
   padding: 0 20px;
 }
 
@@ -465,6 +465,10 @@ const handleRegister = async () => {
 
   .auth-section {
     max-width: 100%;
+  }
+
+  .logo-image {
+    display: none;
   }
 }
 

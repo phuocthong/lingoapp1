@@ -4,23 +4,14 @@
       <!-- App Logo Section -->
       <div class="app-logo-section">
         <div class="app-logo">
-          <img
-            src="../assets/thumbnail.png"
-            alt="English Vocabulary App"
-            class="logo-image"
-          />
+          <img src="../assets/thumbnail.png" alt="English Vocabulary App" class="logo-image" />
         </div>
       </div>
 
       <!-- Auth Form Section -->
       <div class="auth-section">
-        <!-- Lingo Challenge Brand -->
-        <div class="brand-header">
-          <img
-            src="../assets/logo.png"
-            alt="Lingo Challenge"
-            class="brand-image"
-          />
+        <div class="page-header">
+          <h1 class="page-title">Đăng nhập</h1>
         </div>
 
         <!-- Tab Navigation -->
@@ -240,9 +231,17 @@ const handleLogin = async () => {
   text-align: center;
 }
 
-.brand-image {
-  max-width: 320px;
-  height: auto;
+.page-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-title {
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  margin: 0;
 }
 
 /* Tab Navigation */
@@ -448,6 +447,10 @@ const handleLogin = async () => {
 
   .auth-section {
     max-width: 100%;
+  }
+
+  .logo-image {
+    display: none;
   }
 }
 

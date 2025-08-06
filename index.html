@@ -12,43 +12,50 @@
       content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>"
     />
 
-    <link rel="icon" type="image/png" sizes="128x128" href="icons/favicon-128x128.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
-    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
   </head>
   <body>
     <!-- ResizeObserver error suppression - must be first script -->
     <script>
-      (function() {
+      ;(function () {
         // Immediate ResizeObserver error suppression
-        const originalError = console.error;
-        console.error = function(...args) {
-          if (args[0] && typeof args[0] === 'string' &&
-              args[0].includes('ResizeObserver loop completed with undelivered notifications')) {
-            return; // Suppress this specific error
+        const originalError = console.error
+        console.error = function (...args) {
+          if (
+            args[0] &&
+            typeof args[0] === 'string' &&
+            args[0].includes('ResizeObserver loop completed with undelivered notifications')
+          ) {
+            return // Suppress this specific error
           }
-          originalError.apply(console, args);
-        };
+          originalError.apply(console, args)
+        }
 
         // Suppress error events
-        window.addEventListener('error', function(e) {
-          if (e.message && e.message.includes('ResizeObserver loop completed')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-          }
-        }, true);
+        window.addEventListener(
+          'error',
+          function (e) {
+            if (e.message && e.message.includes('ResizeObserver loop completed')) {
+              e.preventDefault()
+              e.stopPropagation()
+              return false
+            }
+          },
+          true,
+        )
 
         // Prevent unhandled rejections
-        window.addEventListener('unhandledrejection', function(e) {
-          if (e.reason && e.reason.message && e.reason.message.includes('ResizeObserver')) {
-            e.preventDefault();
-            return false;
-          }
-        }, true);
-      })();
+        window.addEventListener(
+          'unhandledrejection',
+          function (e) {
+            if (e.reason && e.reason.message && e.reason.message.includes('ResizeObserver')) {
+              e.preventDefault()
+              return false
+            }
+          },
+          true,
+        )
+      })()
     </script>
     <!-- quasar:entry-point -->
   </body>
