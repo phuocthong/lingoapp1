@@ -248,7 +248,7 @@
                     <div class="player-name-summary">{{ player.name }}</div>
                     <div class="player-performance">
                       <span class="final-score">{{ player.score }} pts</span>
-                      <span v-if="player.streak > 1" class="final-streak">🔥{{ player.streak }}</span>
+                      <span v-if="player.streak > 1" class="final-streak">���{{ player.streak }}</span>
                     </div>
                   </div>
                 </div>
@@ -746,9 +746,10 @@ const getPlayerGradient = (playerId) => {
 
 .timer-circle {
   position: relative;
-  width: 48px;
-  height: 48px;
-  color: #3b82f6;
+  width: 64px;
+  height: 64px;
+  color: #667eea;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 .timer-circle.warning {
@@ -759,44 +760,78 @@ const getPlayerGradient = (playerId) => {
   color: #ef4444;
 }
 
+.timer-circle.pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 .timer-svg {
   width: 100%;
   height: 100%;
   transform: rotate(-90deg);
 }
 
-.timer-progress {
-  transition: stroke-dashoffset 1s linear;
+.timer-track {
+  opacity: 0.2;
 }
 
-.timer-value {
+.timer-progress {
+  transition: stroke-dashoffset 1s linear;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.timer-content {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 16px;
-  font-weight: 700;
-  color: currentColor;
+  text-align: center;
 }
 
-/* Players Section */
-.players-section {
+.timer-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: currentColor;
+  line-height: 1;
+}
+
+.timer-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: currentColor;
+  opacity: 0.7;
+}
+
+/* Players Info */
+.players-info {
   display: flex;
   justify-content: flex-end;
 }
 
-.players-header {
+.players-badge {
   display: flex;
   align-items: center;
-  gap: 4px;
-  color: #6b7280;
-  font-size: 14px;
-  font-weight: 500;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .players-icon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
+  color: #667eea;
+}
+
+.players-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
 }
 
 /* Main Content */
