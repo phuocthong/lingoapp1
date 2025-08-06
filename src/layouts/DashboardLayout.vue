@@ -6,7 +6,7 @@
         <!-- Logo -->
         <div class="header-logo">
           <q-icon name="extension" class="logo-icon" />
-          <div class="logo-text">Logo</div>
+          <div class="logo-text">Lingo</div>
         </div>
 
         <!-- Navigation -->
