@@ -65,7 +65,6 @@ export default defineConfig((/* ctx */) => {
               useFlatConfig: true,
             },
           },
-          { server: false },
         ],
       ],
     },
