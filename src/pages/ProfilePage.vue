@@ -480,7 +480,7 @@ const logout = () => {
 
 .profile-actions {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
   justify-content: center;
   margin-top: 16px;
