@@ -878,4 +878,146 @@ const topAnswerers = ref([
     order: -1;
   }
 }
+
+/* Dropdown styles */
+.details-dropdown {
+  color: #2563eb;
+  font-size: 12px;
+  padding: 0;
+  min-height: auto;
+}
+
+.details-dropdown .q-btn__content {
+  font-size: 12px;
+}
+
+/* Modal styles */
+.modal-card {
+  width: 500px;
+  max-width: 90vw;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.modal-content {
+  padding: 24px;
+}
+
+.question-detail h4 {
+  margin: 0 0 16px 0;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.question-detail p {
+  margin: 8px 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Top answerers list */
+.top-answerers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.answerer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f9fafb;
+  transition: background-color 0.2s;
+}
+
+.answerer-item:hover {
+  background: #f3f4f6;
+}
+
+.answerer-item.current-user {
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+}
+
+.rank-number {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #6b7280;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.answerer-item:nth-child(1) .rank-number {
+  background: #f59e0b;
+}
+
+.answerer-item:nth-child(2) .rank-number {
+  background: #9ca3af;
+}
+
+.answerer-item:nth-child(3) .rank-number {
+  background: #d97706;
+}
+
+.answerer-avatar {
+  background: #6d28d9;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.answerer-info {
+  flex: 1;
+}
+
+.answerer-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.answerer-time {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.answerer-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.answerer-status span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.answerer-status .correct {
+  color: #16a34a;
+}
+
+.answerer-status .incorrect {
+  color: #dc2626;
+}
 </style>
