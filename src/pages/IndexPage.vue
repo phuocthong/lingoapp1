@@ -487,7 +487,7 @@ const sendMessage = () => {
 
 .history-card,
 .leaderboard-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
