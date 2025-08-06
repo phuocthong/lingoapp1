@@ -649,59 +649,93 @@ const getPlayerGradient = (playerId) => {
 
 /* Game Header */
 .game-header {
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 16px 24px;
+  padding: 20px 32px;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
-/* Question Progress */
-.question-progress {
+/* Progress Section */
+.progress-section {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  min-width: 0;
 }
 
 .progress-info {
   display: flex;
   align-items: center;
-  gap: 4px;
-  color: #6b7280;
-  font-size: 14px;
-  font-weight: 500;
+  gap: 8px;
   white-space: nowrap;
 }
 
+.progress-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
 .trophy-icon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
+}
+
+.progress-text {
+  color: #4a5568;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.progress-bar-container {
+  flex: 1;
+  min-width: 120px;
 }
 
 .progress-bar {
-  flex: 1;
+  position: relative;
   height: 8px;
-  background: #e5e7eb;
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #3b82f6, #2563eb);
-  border-radius: 4px;
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 12px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.progress-glow {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  height: 12px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 12px;
+  filter: blur(4px);
+  opacity: 0.4;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Timer */
