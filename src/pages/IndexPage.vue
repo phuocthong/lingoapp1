@@ -152,7 +152,20 @@
                   <span class="separator">/</span>
                   <span class="total-count">23 trả lời</span>
                 </div>
-                <div class="details-link">▼ Xem chi tiết</div>
+                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Xem chi tiết">
+                  <q-list>
+                    <q-item clickable v-close-popup @click="showQuestionDetails(1)">
+                      <q-item-section>
+                        <q-item-label>Chi tiết câu hỏi</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                    <q-item clickable v-close-popup @click="showTopAnswerers(1)">
+                      <q-item-section>
+                        <q-item-label>Top người trả lời nhanh & đúng nhất</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                  </q-list>
+                </q-btn-dropdown>
               </div>
             </div>
 
@@ -170,7 +183,20 @@
                   <span class="separator">/</span>
                   <span class="total-count">18 trả lời</span>
                 </div>
-                <div class="details-link">▼ Xem chi tiết</div>
+                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Xem chi tiết">
+                  <q-list>
+                    <q-item clickable v-close-popup @click="showQuestionDetails(1)">
+                      <q-item-section>
+                        <q-item-label>Chi tiết câu hỏi</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                    <q-item clickable v-close-popup @click="showTopAnswerers(1)">
+                      <q-item-section>
+                        <q-item-label>Top người trả lời nhanh & đúng nhất</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                  </q-list>
+                </q-btn-dropdown>
               </div>
             </div>
 
@@ -188,7 +214,20 @@
                   <span class="separator">/</span>
                   <span class="total-count">25 trả lời</span>
                 </div>
-                <div class="details-link">▼ Xem chi tiết</div>
+                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Xem chi tiết">
+                  <q-list>
+                    <q-item clickable v-close-popup @click="showQuestionDetails(1)">
+                      <q-item-section>
+                        <q-item-label>Chi tiết câu hỏi</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                    <q-item clickable v-close-popup @click="showTopAnswerers(1)">
+                      <q-item-section>
+                        <q-item-label>Top người trả lời nhanh & đúng nhất</q-item-label>
+                      </q-item-section>
+                    </q-item>
+                  </q-list>
+                </q-btn-dropdown>
               </div>
             </div>
           </q-card-section>
