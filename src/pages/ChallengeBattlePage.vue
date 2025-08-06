@@ -1708,47 +1708,70 @@ const getPlayerGradient = (playerId) => {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .battle-grid {
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+  }
+}
+
 @media (max-width: 1024px) {
-  .main-content {
+  .battle-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 32px;
   }
 
-  .scoreboard-section {
+  .live-scoreboard {
     position: static;
     order: -1;
   }
 
   .header-container {
     grid-template-columns: 1fr auto 1fr;
-    gap: 16px;
+    gap: 24px;
+    padding: 16px 24px;
+  }
+
+  .battle-arena {
+    padding: 32px 24px;
   }
 }
 
 @media (max-width: 768px) {
-  .main-content {
-    padding: 16px;
+  .battle-arena {
+    padding: 24px 16px;
   }
 
   .question-card {
-    padding: 24px;
+    padding: 32px 24px;
   }
 
   .question-text {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .answers-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .answer-card {
+    padding: 20px;
+    min-height: 80px;
+  }
+
+  .answer-text {
+    font-size: 16px;
   }
 
   .header-container {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 16px;
     text-align: center;
+    padding: 16px;
   }
 
-  .question-progress {
+  .progress-section {
     order: 2;
   }
 
@@ -1756,9 +1779,42 @@ const getPlayerGradient = (playerId) => {
     order: 1;
   }
 
-  .players-section {
+  .players-info {
     order: 3;
     justify-content: center;
+  }
+
+  .live-scoreboard {
+    padding: 20px;
+  }
+
+  .player-row {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .player-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .results-modal {
+    max-width: 90vw;
+    margin: 20px;
+  }
+
+  .modal-decoration {
+    padding: 32px 24px 60px;
+  }
+
+  .results-content {
+    padding: 32px 24px;
+  }
+
+  .results-actions {
+    padding: 24px;
+    flex-direction: column;
   }
 }
 
@@ -1768,25 +1824,115 @@ const getPlayerGradient = (playerId) => {
   }
 
   .question-card {
-    padding: 20px;
+    padding: 24px 16px;
   }
 
   .question-text {
+    font-size: 24px;
+  }
+
+  .word-highlight {
+    font-size: 16px;
+  }
+
+  .answer-card {
+    padding: 16px;
+    min-height: 70px;
+  }
+
+  .answer-indicator {
+    width: 36px;
+    height: 36px;
+  }
+
+  .answer-letter {
+    font-size: 16px;
+  }
+
+  .answer-text {
+    font-size: 15px;
+  }
+
+  .live-scoreboard {
+    padding: 16px;
+  }
+
+  .player-row {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .player-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .player-name {
+    font-size: 14px;
+  }
+
+  .score-value {
+    font-size: 16px;
+  }
+
+  .results-modal {
+    border-radius: 24px;
+  }
+
+  .modal-decoration {
+    padding: 24px 16px 40px;
+  }
+
+  .results-title {
+    font-size: 24px;
+  }
+
+  .trophy-icon-main {
+    font-size: 48px;
+  }
+
+  .champion-avatar {
+    width: 60px;
+    height: 60px;
     font-size: 20px;
   }
 
-  .answer-button {
+  .champion-name {
+    font-size: 20px;
+  }
+
+  .score-number {
+    font-size: 24px;
+  }
+
+  .results-content {
+    padding: 24px 16px;
+  }
+
+  .leaderboard-item {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .player-mini-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .results-actions {
     padding: 16px;
-    min-height: 60px;
   }
 
-  .modal-content {
-    padding: 24px;
-    margin: 16px;
+  .action-btn {
+    padding: 14px 20px;
+    font-size: 14px;
   }
 
-  .modal-footer {
-    flex-direction: column;
+  /* Confetti positioning for mobile */
+  .confetti:nth-child(n) {
+    left: calc(var(--i) * 2%);
   }
 }
 </style>
