@@ -1020,4 +1020,32 @@ const topAnswerers = ref([
 .answerer-status .incorrect {
   color: #dc2626;
 }
+
+/* Responsive modal styles */
+@media (max-width: 768px) {
+  .modal-card {
+    width: 95vw;
+    max-height: 80vh;
+  }
+
+  .modal-header {
+    padding: 12px 16px;
+  }
+
+  .modal-content {
+    padding: 16px;
+  }
+
+  .modal-title {
+    font-size: 16px;
+  }
+
+  .answerer-item {
+    padding: 8px;
+  }
+
+  .details-dropdown .q-btn__content {
+    font-size: 11px;
+  }
+}
 </style>
