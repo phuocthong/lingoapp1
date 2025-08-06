@@ -1055,7 +1055,7 @@ const login = () => {
   padding: 9px 12px;
   border: 1px solid #e9d5ff;
   border-radius: 6px;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   color: #5b21b6;
   font-size: 12px;
   font-weight: 500;
@@ -1082,7 +1082,7 @@ const login = () => {
 
 .history-section,
 .leaderboard-section {
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1343,7 +1343,7 @@ const login = () => {
 .features-section {
   margin-top: 48px;
   padding: 48px 0;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .features-container {
@@ -1383,7 +1383,7 @@ const login = () => {
 }
 
 .feature-item {
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   padding: 32px 24px;
   text-align: center;
