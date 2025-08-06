@@ -159,7 +159,7 @@
       <div class="logout-section">
         <div class="logout-info">
           <h3 class="logout-title">Đăng xuất</h3>
-          <p class="logout-description">Thoát khỏi tài kho���n hiện tại</p>
+          <p class="logout-description">Thoát khỏi tài khoản hiện tại</p>
         </div>
         <q-btn color="negative" class="logout-btn" no-caps @click="logout">
           <q-icon name="logout" />
@@ -209,6 +209,8 @@ const logout = () => {
   display: flex;
   min-height: 100vh;
   background: #ffffff;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 /* Modern Sidebar */
@@ -409,7 +411,7 @@ const logout = () => {
   padding: 20px 32px;
   margin-left: 0;
   transition: margin-left 0.3s ease;
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
   will-change: margin-left;
 }
