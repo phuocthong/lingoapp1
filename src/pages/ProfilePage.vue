@@ -477,9 +477,9 @@ const logout = () => {
 .profile-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 32px;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 .action-btn {
