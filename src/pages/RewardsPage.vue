@@ -268,6 +268,8 @@ const getStatusText = (status) => {
   display: flex;
   min-height: 100vh;
   background: #ffffff;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 .rewards-container {
@@ -279,7 +281,8 @@ const getStatusText = (status) => {
 .rewards-content {
   flex: 1;
   padding: 20px 32px;
-  max-width: 915px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .page-header {

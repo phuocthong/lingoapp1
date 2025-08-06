@@ -209,6 +209,8 @@ const logout = () => {
   display: flex;
   min-height: 100vh;
   background: #ffffff;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 /* Modern Sidebar */
@@ -409,7 +411,8 @@ const logout = () => {
   padding: 20px 32px;
   margin-left: 0;
   transition: margin-left 0.3s ease;
-  max-width: 2024px;
+  max-width: 1400px;
+  margin: 0 auto;
   will-change: margin-left;
 }
 
@@ -477,9 +480,9 @@ const logout = () => {
 .profile-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 32px;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 .action-btn {
@@ -545,8 +548,8 @@ const logout = () => {
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 24px;
+  margin-bottom: 32px;
 }
 
 .stat-card {
@@ -617,8 +620,8 @@ const logout = () => {
 .stats-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 24px;
+  margin-bottom: 32px;
 }
 
 .stat-card-large {

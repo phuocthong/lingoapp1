@@ -378,6 +378,8 @@ const handleChangePassword = async () => {
   display: flex;
   min-height: 100vh;
   background: #ffffff;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 .change-password-container {
@@ -390,7 +392,7 @@ const handleChangePassword = async () => {
 .change-password-content {
   flex: 1;
   padding: 32px;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -526,8 +528,8 @@ const handleChangePassword = async () => {
 /* Form Actions */
 .form-actions {
   display: flex;
-  gap: 16px;
-  margin-top: 20px;
+  gap: 24px;
+  margin-top: 32px;
 }
 
 .cancel-button {

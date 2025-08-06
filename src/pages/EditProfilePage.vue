@@ -337,12 +337,15 @@ const cancelEdit = () => {
   display: flex;
   min-height: 100vh;
   background: #ffffff;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 .edit-profile-content {
   flex: 1;
   padding: 20px 32px;
-  max-width: 915px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 /* Page Header */
@@ -455,8 +458,8 @@ const cancelEdit = () => {
 .form-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 32px;
+  gap: 32px;
+  margin-bottom: 40px;
 }
 
 .form-group {
@@ -554,8 +557,8 @@ const cancelEdit = () => {
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 16px;
-  padding-top: 24px;
+  gap: 24px;
+  padding-top: 32px;
   border-top: 1px solid #e2e8f0;
 }
 
