@@ -326,7 +326,7 @@ const validateForm = () => {
 
   // New password validation
   if (!passwordForm.newPassword.trim()) {
-    errors.newPassword = 'Vui lòng nhập mật khẩu mới'
+    errors.newPassword = 'Vui lòng nhập mật khẩu m���i'
     isValid = false
   } else if (!passwordRequirements.value.length) {
     errors.newPassword = 'Mật khẩu phải có ít nhất 6 ký tự'
@@ -526,8 +526,8 @@ const handleChangePassword = async () => {
 /* Form Actions */
 .form-actions {
   display: flex;
-  gap: 16px;
-  margin-top: 20px;
+  gap: 24px;
+  margin-top: 32px;
 }
 
 .cancel-button {
