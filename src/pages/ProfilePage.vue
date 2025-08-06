@@ -159,7 +159,7 @@
       <div class="logout-section">
         <div class="logout-info">
           <h3 class="logout-title">Đăng xuất</h3>
-          <p class="logout-description">Thoát khỏi tài khoản hiện tại</p>
+          <p class="logout-description">Thoát khỏi tài kho���n hiện tại</p>
         </div>
         <q-btn color="negative" class="logout-btn" no-caps @click="logout">
           <q-icon name="logout" />
@@ -618,8 +618,8 @@ const logout = () => {
 .stats-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 24px;
+  margin-bottom: 32px;
 }
 
 .stat-card-large {
