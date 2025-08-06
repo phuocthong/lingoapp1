@@ -868,7 +868,7 @@ const login = () => {
 
 <style scoped>
 .home-page {
-  background: linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%);
+  background: #f5f3ff;
   min-height: 100vh;
 }
 
@@ -885,11 +885,10 @@ const login = () => {
 
 /* Chat section */
 .chat-section {
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.1);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
@@ -899,17 +898,16 @@ const login = () => {
   align-items: center;
   gap: 12px;
   border-bottom: 1px solid #e2e8f0;
-  background: linear-gradient(135deg, #f0f9ff 0%, #f0fdfa 100%);
+  background: white;
 }
 
 .bot-icon {
   display: flex;
   padding: 8px;
-  background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
+  background: #6d28d9;
   border-radius: 8px;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
 
 .chat-header-info {
@@ -917,7 +915,7 @@ const login = () => {
 }
 
 .chat-title {
-  color: #0f172a;
+  color: #111827;
   font-family: Inter;
   font-size: 16px;
   font-weight: 600;
@@ -925,7 +923,7 @@ const login = () => {
 }
 
 .chat-subtitle {
-  color: #475569;
+  color: #6b7280;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -965,7 +963,7 @@ const login = () => {
 }
 
 .message-text {
-  color: #0f172a;
+  color: #111827;
   font-family: Inter;
   font-size: 14px;
   font-weight: 400;
@@ -973,7 +971,7 @@ const login = () => {
 }
 
 .message-time {
-  color: #475569;
+  color: #6b7280;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1038,7 +1036,7 @@ const login = () => {
 }
 
 .warning-text {
-  color: #475569;
+  color: #6b7280;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1055,7 +1053,7 @@ const login = () => {
   padding: 9px 12px;
   border: 1px solid #e9d5ff;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
   color: #5b21b6;
   font-size: 12px;
   font-weight: 500;
@@ -1082,7 +1080,7 @@ const login = () => {
 
 .history-section,
 .leaderboard-section {
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -1097,7 +1095,7 @@ const login = () => {
 }
 
 .section-title {
-  color: #0f172a;
+  color: #111827;
   font-family: Inter;
   font-size: 16px;
   font-weight: 600;
@@ -1107,7 +1105,7 @@ const login = () => {
 
 .section-subtitle {
   padding: 0 16px 16px;
-  color: #475569;
+  color: #6b7280;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1130,7 +1128,7 @@ const login = () => {
 }
 
 .question-title {
-  color: #0f172a;
+  color: #111827;
   font-family: Inter;
   font-size: 14px;
   font-weight: 600;
@@ -1154,7 +1152,7 @@ const login = () => {
 }
 
 .question-date {
-  color: #475569;
+  color: #6b7280;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1304,7 +1302,7 @@ const login = () => {
 }
 
 .user-name {
-  color: #0f172a;
+  color: #111827;
   font-family: Inter;
   font-size: 14px;
   font-weight: 500;
@@ -1312,7 +1310,7 @@ const login = () => {
 }
 
 .user-streak {
-  color: #475569;
+  color: #6b7280;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1324,7 +1322,7 @@ const login = () => {
 }
 
 .score-number {
-  color: #0f172a;
+  color: #111827;
   font-family: Inter;
   font-size: 18px;
   font-weight: 700;
@@ -1332,7 +1330,7 @@ const login = () => {
 }
 
 .score-label {
-  color: #475569;
+  color: #6b7280;
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
@@ -1343,7 +1341,7 @@ const login = () => {
 .features-section {
   margin-top: 48px;
   padding: 48px 0;
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
 }
 
 .features-container {
@@ -1383,7 +1381,7 @@ const login = () => {
 }
 
 .feature-item {
-  background: rgba(255, 255, 255, 0.9);
+  background: white;
   border-radius: 20px;
   padding: 32px 24px;
   text-align: center;

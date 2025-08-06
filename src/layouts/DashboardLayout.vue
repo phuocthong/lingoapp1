@@ -86,10 +86,9 @@ const logout = () => {
 
 <style scoped>
 .dashboard-header {
-  background: linear-gradient(135deg, #f0f9ff 0%, #f0fdfa 100%);
-  border-bottom: 1px solid #e2e8f0;
-  color: #0f172a;
-  backdrop-filter: blur(10px);
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
 }
 
 .dashboard-toolbar {
@@ -104,18 +103,17 @@ const logout = () => {
 }
 
 .logo-icon {
-  background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
+  background: #6d28d9;
   color: white;
   padding: 8px;
   border-radius: 8px;
   font-size: 24px;
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
 
 .logo-text {
   font-size: 20px;
   font-weight: 700;
-  color: #0f172a;
+  color: #111827;
 }
 
 .header-nav {
@@ -125,17 +123,14 @@ const logout = () => {
 }
 
 .nav-btn {
-  color: #475569;
+  color: #374151;
   font-size: 14px;
   font-weight: 500;
   padding: 4px 8px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
 }
 
 .nav-btn:hover {
-  color: #0ea5e9;
-  background: rgba(14, 165, 233, 0.1);
+  color: #2563eb;
 }
 
 .user-stats {
@@ -151,12 +146,12 @@ const logout = () => {
 }
 
 .stat-icon {
-  color: #14b8a6;
+  color: #6b7280;
   font-size: 16px;
 }
 
 .stat-text {
-  color: #334155;
+  color: #4b5563;
   font-size: 14px;
 }
 
@@ -166,15 +161,15 @@ const logout = () => {
 }
 
 .stat-number.correct {
-  color: #10b981;
+  color: #16a34a;
 }
 
 .stat-number.streak {
-  color: #0ea5e9;
+  color: #2563eb;
 }
 
 .stat-label {
-  color: #334155;
+  color: #4b5563;
   font-size: 14px;
 }
 
@@ -186,15 +181,14 @@ const logout = () => {
 }
 
 .user-avatar {
-  background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
+  background: #6d28d9;
   color: white;
   font-size: 14px;
   font-weight: 500;
-  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
 }
 
 .user-name {
-  color: #0f172a;
+  color: #111827;
   font-size: 16px;
   font-weight: 500;
 }
@@ -209,24 +203,21 @@ const logout = () => {
 }
 
 .logout-btn {
-  color: #475569;
+  color: #000;
   font-size: 12px;
   font-weight: 500;
   padding: 10px 12px;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   margin-left: 8px;
-  transition: all 0.2s ease;
 }
 
 .logout-btn:hover {
-  background: rgba(240, 249, 255, 0.5);
-  border-color: #ccfbf1;
-  color: #0ea5e9;
+  background: #f9fafb;
 }
 
 .dashboard-container {
-  background: linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%);
+  background: #f5f3ff;
 }
 
 /* Responsive Design */
