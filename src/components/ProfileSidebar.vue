@@ -2,9 +2,7 @@
   <div class="profile-sidebar" :class="{ 'sidebar-collapsed': sidebarCollapsed }">
     <!-- Sidebar Header -->
     <div class="sidebar-header">
-      <div class="sidebar-logo" v-show="!sidebarCollapsed">
-        Menu
-      </div>
+      <div class="sidebar-logo" v-show="!sidebarCollapsed">Menu</div>
       <button class="sidebar-toggle" @click="toggleSidebar">
         <q-icon :name="sidebarCollapsed ? 'menu' : 'close'" />
       </button>
