@@ -248,7 +248,7 @@
                     <div class="player-name-summary">{{ player.name }}</div>
                     <div class="player-performance">
                       <span class="final-score">{{ player.score }} pts</span>
-                      <span v-if="player.streak > 1" class="final-streak">���{{ player.streak }}</span>
+                      <span v-if="player.streak > 1" class="final-streak">🔥{{ player.streak }}</span>
                     </div>
                   </div>
                 </div>
@@ -834,46 +834,119 @@ const getPlayerGradient = (playerId) => {
   color: #4a5568;
 }
 
-/* Main Content */
-.main-content {
-  max-width: 1200px;
+/* Battle Arena */
+.battle-arena {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 32px 24px;
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 32px;
-  align-items: start;
+  padding: 40px 32px;
+  position: relative;
+  z-index: 10;
 }
 
-/* Question Section */
-.question-section {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+/* Question Zone */
+.question-zone {
+  margin-bottom: 40px;
 }
 
 .question-card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 32px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 40px;
   text-align: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.question-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+.question-card.answered::before {
+  left: 100%;
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.question-badge {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .question-number {
-  color: #6b7280;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.question-total {
+  opacity: 0.8;
+}
+
+.difficulty-indicator {
+  display: flex;
+  gap: 4px;
+}
+
+.difficulty-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  width: 12px;
+  height: 12px;
+  background: #e5e7eb;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.star.filled {
+  background: #fbbf24;
+}
+
+.question-content {
+  position: relative;
+  z-index: 1;
 }
 
 .question-text {
-  color: #111827;
-  font-size: 28px;
+  color: #1a202c;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 16px 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.word-highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 1.4;
-  margin: 0;
+  margin-top: 8px;
 }
 
 /* Answers Section */
