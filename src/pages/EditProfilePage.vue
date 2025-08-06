@@ -456,8 +456,8 @@ const cancelEdit = () => {
 .form-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 32px;
+  gap: 32px;
+  margin-bottom: 40px;
 }
 
 .form-group {
