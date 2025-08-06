@@ -13,8 +13,20 @@
           <div class="progress-info">
             <div class="progress-icon">
               <svg class="trophy-icon" viewBox="0 0 24 24" fill="none">
-                <path d="M18 8h1a4 4 0 010 8h-1M2 8h1a4 4 0 010 8H2M7 13h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v2a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M8 21l4-7 4 7M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M18 8h1a4 4 0 010 8h-1M2 8h1a4 4 0 010 8H2M7 13h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v2a2 2 0 002 2z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M8 21l4-7 4 7M8 21h8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </div>
             <span class="progress-text">{{ currentQuestion }}/{{ totalQuestions }}</span>
@@ -29,9 +41,20 @@
 
         <!-- Timer -->
         <div class="timer-section">
-          <div class="timer-circle" :class="{ warning: timeLeft <= 5, critical: timeLeft <= 3, pulse: timeLeft <= 3 }">
+          <div
+            class="timer-circle"
+            :class="{ warning: timeLeft <= 5, critical: timeLeft <= 3, pulse: timeLeft <= 3 }"
+          >
             <svg class="timer-svg" viewBox="0 0 44 44">
-              <circle cx="22" cy="22" r="20" stroke="#E5E7EB" stroke-width="2" fill="none" class="timer-track"/>
+              <circle
+                cx="22"
+                cy="22"
+                r="20"
+                stroke="#E5E7EB"
+                stroke-width="2"
+                fill="none"
+                class="timer-track"
+              />
               <circle
                 cx="22"
                 cy="22"
@@ -56,10 +79,28 @@
           <div class="players-badge">
             <div class="players-icon">
               <svg viewBox="0 0 24 24" fill="none">
-                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
-                <path d="M23 21v-2a4 4 0 00-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" />
+                <path
+                  d="M23 21v-2a4 4 0 00-3-3.87"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16 3.13a4 4 0 010 7.75"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </div>
             <span class="players-count">{{ players.length }}</span>
@@ -72,7 +113,7 @@
     <main class="battle-arena">
       <!-- Question Section -->
       <div class="question-zone">
-        <div class="question-card" :class="{ 'answered': answered }">
+        <div class="question-card" :class="{ answered: answered }">
           <div class="question-header">
             <div class="question-badge">
               <span class="question-number">{{ currentQuestion }}</span>
@@ -112,13 +153,34 @@
                 <div class="answer-letter">{{ String.fromCharCode(65 + index) }}</div>
                 <div class="answer-check" v-if="answered && index === correctAnswer">
                   <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path
+                      d="M20 6L9 17l-5-5"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
                   </svg>
                 </div>
-                <div class="answer-x" v-if="answered && index === selectedAnswer && index !== correctAnswer">
+                <div
+                  class="answer-x"
+                  v-if="answered && index === selectedAnswer && index !== correctAnswer"
+                >
                   <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path
+                      d="M18 6L6 18"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M6 6l12 12"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
                   </svg>
                 </div>
               </div>
@@ -135,7 +197,13 @@
           <div class="scoreboard-header">
             <div class="scoreboard-title">
               <svg class="leaderboard-icon" viewBox="0 0 24 24" fill="none">
-                <path d="M3 13h4l3-8 4 8h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M3 13h4l3-8 4 8h7"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
               Live Rankings
             </div>
@@ -147,8 +215,8 @@
               class="player-row"
               :class="{
                 'current-player': player.isCurrentUser,
-                'leader': player.rank === 1,
-                'animated': answered
+                leader: player.rank === 1,
+                animated: answered,
               }"
             >
               <div class="player-position">
@@ -174,9 +242,7 @@
                     <span class="score-value">{{ player.score }}</span>
                     <span class="score-label">pts</span>
                   </div>
-                  <div v-if="player.streak > 1" class="streak-indicator">
-                    🔥{{ player.streak }}
-                  </div>
+                  <div v-if="player.streak > 1" class="streak-indicator">🔥{{ player.streak }}</div>
                 </div>
               </div>
             </div>
@@ -226,10 +292,10 @@
                 :key="player.id"
                 class="leaderboard-item"
                 :class="{
-                  'champion': index === 0,
+                  champion: index === 0,
                   'runner-up': index === 1,
                   'third-place': index === 2,
-                  'current-player': player.isCurrentUser
+                  'current-player': player.isCurrentUser,
                 }"
               >
                 <div class="position-indicator">
@@ -241,14 +307,19 @@
                   <div class="position-number" v-else>{{ index + 1 }}</div>
                 </div>
                 <div class="player-summary">
-                  <div class="player-mini-avatar" :style="{ background: getPlayerGradient(player.id) }">
+                  <div
+                    class="player-mini-avatar"
+                    :style="{ background: getPlayerGradient(player.id) }"
+                  >
                     {{ player.initials || player.name.charAt(0) }}
                   </div>
                   <div class="player-info-summary">
                     <div class="player-name-summary">{{ player.name }}</div>
                     <div class="player-performance">
                       <span class="final-score">{{ player.score }} pts</span>
-                      <span v-if="player.streak > 1" class="final-streak">🔥{{ player.streak }}</span>
+                      <span v-if="player.streak > 1" class="final-streak"
+                        >🔥{{ player.streak }}</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -260,16 +331,49 @@
         <div class="results-actions">
           <button class="action-btn primary-action" @click="playAgain">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-              <path d="M1 4v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M3.51 15a9 9 0 1015.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M1 4v6h6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M3.51 15a9 9 0 1015.8-5"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
             Play Again
           </button>
           <button class="action-btn secondary-action" @click="exitGame">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-              <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <polyline points="16,17 21,12 16,7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <polyline
+                points="16,17 21,12 16,7"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <line
+                x1="21"
+                y1="12"
+                x2="9"
+                y2="12"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
             Exit to Menu
           </button>
@@ -356,7 +460,6 @@ const questions = ref([
       { text: 'sleepy', correct: false },
     ],
   },
- 
 ])
 
 // Computed properties
@@ -575,7 +678,7 @@ const getPlayerGradient = (playerId) => {
     'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
     'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
     'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-    'linear-gradient(135deg, #ff8a80 0%, #ea6100 100%)'
+    'linear-gradient(135deg, #ff8a80 0%, #ea6100 100%)',
   ]
 
   // Use player ID to consistently assign the same gradient
@@ -589,7 +692,12 @@ const getPlayerGradient = (playerId) => {
   min-height: 100vh;
   background: radial-gradient(ellipse at top, #667eea 0%, #764ba2 100%);
   background-attachment: fixed;
-  font-family: 'Inter', -apple-system, 'Roboto', 'Helvetica', sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    'Roboto',
+    'Helvetica',
+    sans-serif;
   position: relative;
   overflow-x: hidden;
 }
@@ -625,27 +733,68 @@ const getPlayerGradient = (playerId) => {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+  0%,
+  100% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
 }
 
-.particle:nth-child(1) { left: 10%; }
-.particle:nth-child(2) { left: 20%; }
-.particle:nth-child(3) { left: 30%; }
-.particle:nth-child(4) { left: 40%; }
-.particle:nth-child(5) { left: 50%; }
-.particle:nth-child(6) { left: 60%; }
-.particle:nth-child(7) { left: 70%; }
-.particle:nth-child(8) { left: 80%; }
-.particle:nth-child(9) { left: 90%; }
-.particle:nth-child(10) { left: 5%; }
-.particle:nth-child(11) { left: 15%; }
-.particle:nth-child(12) { left: 25%; }
-.particle:nth-child(13) { left: 35%; }
-.particle:nth-child(14) { left: 65%; }
-.particle:nth-child(15) { left: 85%; }
+.particle:nth-child(1) {
+  left: 10%;
+}
+.particle:nth-child(2) {
+  left: 20%;
+}
+.particle:nth-child(3) {
+  left: 30%;
+}
+.particle:nth-child(4) {
+  left: 40%;
+}
+.particle:nth-child(5) {
+  left: 50%;
+}
+.particle:nth-child(6) {
+  left: 60%;
+}
+.particle:nth-child(7) {
+  left: 70%;
+}
+.particle:nth-child(8) {
+  left: 80%;
+}
+.particle:nth-child(9) {
+  left: 90%;
+}
+.particle:nth-child(10) {
+  left: 5%;
+}
+.particle:nth-child(11) {
+  left: 15%;
+}
+.particle:nth-child(12) {
+  left: 25%;
+}
+.particle:nth-child(13) {
+  left: 35%;
+}
+.particle:nth-child(14) {
+  left: 65%;
+}
+.particle:nth-child(15) {
+  left: 85%;
+}
 
 /* Game Header */
 .game-header {
@@ -765,8 +914,13 @@ const getPlayerGradient = (playerId) => {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .timer-svg {
@@ -914,7 +1068,18 @@ const getPlayerGradient = (playerId) => {
   width: 12px;
   height: 12px;
   background: #e5e7eb;
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
 }
 
 .star.filled {
@@ -1169,9 +1334,15 @@ const getPlayerGradient = (playerId) => {
 }
 
 @keyframes scoreUpdate {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .player-row.current-player {
@@ -1260,13 +1431,23 @@ const getPlayerGradient = (playerId) => {
 }
 
 @keyframes pulse-green {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-  50% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0); }
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
+  }
 }
 
 @keyframes pulse-yellow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
-  50% { box-shadow: 0 0 0 4px rgba(245, 158, 11, 0); }
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0);
+  }
 }
 
 .player-details {
@@ -1424,8 +1605,12 @@ const getPlayerGradient = (playerId) => {
 }
 
 @keyframes trophy-bounce {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-8px); }
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-8px);
+  }
 }
 
 .victory-rays {
@@ -1441,8 +1626,15 @@ const getPlayerGradient = (playerId) => {
 }
 
 @keyframes rays-pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.6;
+  }
 }
 
 .results-header {
@@ -1482,8 +1674,12 @@ const getPlayerGradient = (playerId) => {
 }
 
 @keyframes crown-glow {
-  0% { filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.5)); }
-  100% { filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8)); }
+  0% {
+    filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8));
+  }
 }
 
 .champion-avatar {
@@ -1937,54 +2133,154 @@ const getPlayerGradient = (playerId) => {
 }
 
 /* Confetti positioning */
-.confetti:nth-child(1) { left: 2%; }
-.confetti:nth-child(2) { left: 6%; }
-.confetti:nth-child(3) { left: 10%; }
-.confetti:nth-child(4) { left: 14%; }
-.confetti:nth-child(5) { left: 18%; }
-.confetti:nth-child(6) { left: 22%; }
-.confetti:nth-child(7) { left: 26%; }
-.confetti:nth-child(8) { left: 30%; }
-.confetti:nth-child(9) { left: 34%; }
-.confetti:nth-child(10) { left: 38%; }
-.confetti:nth-child(11) { left: 42%; }
-.confetti:nth-child(12) { left: 46%; }
-.confetti:nth-child(13) { left: 50%; }
-.confetti:nth-child(14) { left: 54%; }
-.confetti:nth-child(15) { left: 58%; }
-.confetti:nth-child(16) { left: 62%; }
-.confetti:nth-child(17) { left: 66%; }
-.confetti:nth-child(18) { left: 70%; }
-.confetti:nth-child(19) { left: 74%; }
-.confetti:nth-child(20) { left: 78%; }
-.confetti:nth-child(21) { left: 82%; }
-.confetti:nth-child(22) { left: 86%; }
-.confetti:nth-child(23) { left: 90%; }
-.confetti:nth-child(24) { left: 94%; }
-.confetti:nth-child(25) { left: 98%; }
-.confetti:nth-child(26) { left: 4%; }
-.confetti:nth-child(27) { left: 8%; }
-.confetti:nth-child(28) { left: 12%; }
-.confetti:nth-child(29) { left: 16%; }
-.confetti:nth-child(30) { left: 20%; }
-.confetti:nth-child(31) { left: 24%; }
-.confetti:nth-child(32) { left: 28%; }
-.confetti:nth-child(33) { left: 32%; }
-.confetti:nth-child(34) { left: 36%; }
-.confetti:nth-child(35) { left: 40%; }
-.confetti:nth-child(36) { left: 44%; }
-.confetti:nth-child(37) { left: 48%; }
-.confetti:nth-child(38) { left: 52%; }
-.confetti:nth-child(39) { left: 56%; }
-.confetti:nth-child(40) { left: 60%; }
-.confetti:nth-child(41) { left: 64%; }
-.confetti:nth-child(42) { left: 68%; }
-.confetti:nth-child(43) { left: 72%; }
-.confetti:nth-child(44) { left: 76%; }
-.confetti:nth-child(45) { left: 80%; }
-.confetti:nth-child(46) { left: 84%; }
-.confetti:nth-child(47) { left: 88%; }
-.confetti:nth-child(48) { left: 92%; }
-.confetti:nth-child(49) { left: 96%; }
-.confetti:nth-child(50) { left: 1%; }
+.confetti:nth-child(1) {
+  left: 2%;
+}
+.confetti:nth-child(2) {
+  left: 6%;
+}
+.confetti:nth-child(3) {
+  left: 10%;
+}
+.confetti:nth-child(4) {
+  left: 14%;
+}
+.confetti:nth-child(5) {
+  left: 18%;
+}
+.confetti:nth-child(6) {
+  left: 22%;
+}
+.confetti:nth-child(7) {
+  left: 26%;
+}
+.confetti:nth-child(8) {
+  left: 30%;
+}
+.confetti:nth-child(9) {
+  left: 34%;
+}
+.confetti:nth-child(10) {
+  left: 38%;
+}
+.confetti:nth-child(11) {
+  left: 42%;
+}
+.confetti:nth-child(12) {
+  left: 46%;
+}
+.confetti:nth-child(13) {
+  left: 50%;
+}
+.confetti:nth-child(14) {
+  left: 54%;
+}
+.confetti:nth-child(15) {
+  left: 58%;
+}
+.confetti:nth-child(16) {
+  left: 62%;
+}
+.confetti:nth-child(17) {
+  left: 66%;
+}
+.confetti:nth-child(18) {
+  left: 70%;
+}
+.confetti:nth-child(19) {
+  left: 74%;
+}
+.confetti:nth-child(20) {
+  left: 78%;
+}
+.confetti:nth-child(21) {
+  left: 82%;
+}
+.confetti:nth-child(22) {
+  left: 86%;
+}
+.confetti:nth-child(23) {
+  left: 90%;
+}
+.confetti:nth-child(24) {
+  left: 94%;
+}
+.confetti:nth-child(25) {
+  left: 98%;
+}
+.confetti:nth-child(26) {
+  left: 4%;
+}
+.confetti:nth-child(27) {
+  left: 8%;
+}
+.confetti:nth-child(28) {
+  left: 12%;
+}
+.confetti:nth-child(29) {
+  left: 16%;
+}
+.confetti:nth-child(30) {
+  left: 20%;
+}
+.confetti:nth-child(31) {
+  left: 24%;
+}
+.confetti:nth-child(32) {
+  left: 28%;
+}
+.confetti:nth-child(33) {
+  left: 32%;
+}
+.confetti:nth-child(34) {
+  left: 36%;
+}
+.confetti:nth-child(35) {
+  left: 40%;
+}
+.confetti:nth-child(36) {
+  left: 44%;
+}
+.confetti:nth-child(37) {
+  left: 48%;
+}
+.confetti:nth-child(38) {
+  left: 52%;
+}
+.confetti:nth-child(39) {
+  left: 56%;
+}
+.confetti:nth-child(40) {
+  left: 60%;
+}
+.confetti:nth-child(41) {
+  left: 64%;
+}
+.confetti:nth-child(42) {
+  left: 68%;
+}
+.confetti:nth-child(43) {
+  left: 72%;
+}
+.confetti:nth-child(44) {
+  left: 76%;
+}
+.confetti:nth-child(45) {
+  left: 80%;
+}
+.confetti:nth-child(46) {
+  left: 84%;
+}
+.confetti:nth-child(47) {
+  left: 88%;
+}
+.confetti:nth-child(48) {
+  left: 92%;
+}
+.confetti:nth-child(49) {
+  left: 96%;
+}
+.confetti:nth-child(50) {
+  left: 1%;
+}
 </style>
