@@ -155,8 +155,8 @@ onMounted(() => {
 /* Modern Sidebar */
 .profile-sidebar {
   width: 280px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
+  box-shadow: 4px 0 20px rgba(14, 165, 233, 0.15);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: flex;
@@ -251,7 +251,7 @@ onMounted(() => {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(to bottom, #fbbf24, #f59e0b);
+  background: linear-gradient(to bottom, #22d3ee, #06b6d4);
   border-radius: 0 4px 4px 0;
 }
 
@@ -324,7 +324,7 @@ onMounted(() => {
 
 .user-mini-status {
   font-size: 11px;
-  color: #10b981;
+  color: #22d3ee;
   line-height: 1.2;
 }
 
