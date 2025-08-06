@@ -169,7 +169,7 @@ const friends = ref([
 
 .friends-content {
   flex: 1;
-  padding: 20px 10px;
+  padding: 20px 32px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -350,7 +350,7 @@ const friends = ref([
   }
 
   .page-title {
-    font-size: 24px;
+    font-size: 32px;
   }
 
   .friend-item {
