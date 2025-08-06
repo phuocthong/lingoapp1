@@ -159,6 +159,8 @@ const friends = ref([
   display: flex;
   min-height: 100vh;
   background: #ffffff;
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 .friends-container {
@@ -173,6 +175,8 @@ const friends = ref([
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .page-header {
