@@ -1,212 +1,278 @@
 <template>
   <div class="challenge-battle-page">
+    <!-- Floating Particles Background -->
+    <div class="particles-background">
+      <div class="particle" v-for="n in 15" :key="n"></div>
+    </div>
+
     <!-- Game Header -->
     <header class="game-header">
       <div class="header-container">
         <!-- Question Progress -->
-        <div class="question-progress">
+        <div class="progress-section">
           <div class="progress-info">
-            <svg class="trophy-icon" viewBox="0 0 16 16">
-              <path
-                d="M4.00065 6.00008H3.00065C2.55862 6.00008 2.1347 5.82449 1.82214 5.51193C1.50958 5.19937 1.33398 4.77544 1.33398 4.33341C1.33398 3.89139 1.50958 3.46746 1.82214 3.1549C2.1347 2.84234 2.55862 2.66675 3.00065 2.66675H4.00065"
-                stroke="#6B7280"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M12.001 6.00008H13.001C13.443 6.00008 13.8669 5.82449 14.1795 5.51193C14.492 5.19937 14.6676 4.77544 14.6676 4.33341C14.6676 3.89139 14.492 3.46746 14.1795 3.1549C13.8669 2.84234 13.443 2.66675 13.001 2.66675H12.001"
-                stroke="#6B7280"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M2.66797 14.6667H13.3346"
-                stroke="#6B7280"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M6.66797 9.77344V11.3334C6.66797 11.7001 6.35464 11.9868 6.0213 12.1401C5.23464 12.5001 4.66797 13.4934 4.66797 14.6668"
-                stroke="#6B7280"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M9.33398 9.77344V11.3334C9.33398 11.7001 9.64732 11.9868 9.98065 12.1401C10.7673 12.5001 11.334 13.4934 11.334 14.6668"
-                stroke="#6B7280"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M12.001 1.33325H4.00098V5.99992C4.00098 7.06078 4.4224 8.0782 5.17255 8.82835C5.9227 9.57849 6.94011 9.99992 8.00098 9.99992C9.06184 9.99992 10.0793 9.57849 10.8294 8.82835C11.5795 8.0782 12.001 7.06078 12.001 5.99992V1.33325Z"
-                stroke="#6B7280"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <span>{{ currentQuestion }}/{{ totalQuestions }}</span>
+            <div class="progress-icon">
+              <svg class="trophy-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M18 8h1a4 4 0 010 8h-1M2 8h1a4 4 0 010 8H2M7 13h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v2a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 21l4-7 4 7M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="progress-text">{{ currentQuestion }}/{{ totalQuestions }}</span>
           </div>
-          <div class="progress-bar">
-            <div class="progress-fill" :style="{ width: questionProgress + '%' }"></div>
+          <div class="progress-bar-container">
+            <div class="progress-bar">
+              <div class="progress-fill" :style="{ width: questionProgress + '%' }"></div>
+              <div class="progress-glow" :style="{ width: questionProgress + '%' }"></div>
+            </div>
           </div>
         </div>
 
         <!-- Timer -->
         <div class="timer-section">
-          <div class="timer-circle" :class="{ warning: timeLeft <= 5, critical: timeLeft <= 3 }">
-            <svg class="timer-svg" viewBox="0 0 36 36">
-              <circle cx="18" cy="18" r="16" stroke="#E5E7EB" stroke-width="2" fill="none" />
+          <div class="timer-circle" :class="{ warning: timeLeft <= 5, critical: timeLeft <= 3, pulse: timeLeft <= 3 }">
+            <svg class="timer-svg" viewBox="0 0 44 44">
+              <circle cx="22" cy="22" r="20" stroke="#E5E7EB" stroke-width="2" fill="none" class="timer-track"/>
               <circle
-                cx="18"
-                cy="18"
-                r="16"
+                cx="22"
+                cy="22"
+                r="20"
                 stroke="currentColor"
-                stroke-width="2"
+                stroke-width="3"
                 fill="none"
                 :stroke-dasharray="circleCircumference"
                 :stroke-dashoffset="timerStrokeDashoffset"
                 class="timer-progress"
               />
             </svg>
-            <div class="timer-value">{{ timeLeft }}</div>
+            <div class="timer-content">
+              <div class="timer-value">{{ timeLeft }}</div>
+              <div class="timer-label">s</div>
+            </div>
           </div>
         </div>
 
         <!-- Players Section -->
-        <div class="players-section">
-          <div class="players-header">
-            <svg class="players-icon" viewBox="0 0 16 16">
-              <path
-                d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14"
-                stroke="#6B7280"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M5.99967 7.33333C7.47243 7.33333 8.66634 6.13943 8.66634 4.66667C8.66634 3.19391 7.47243 2 5.99967 2C4.52692 2 3.33301 3.19391 3.33301 4.66667C3.33301 6.13943 4.52692 7.33333 5.99967 7.33333Z"
-                stroke="#6B7280"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867"
-                stroke="#6B7280"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334"
-                stroke="#6B7280"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <span>{{ players.length }} players</span>
+        <div class="players-info">
+          <div class="players-badge">
+            <div class="players-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="players-count">{{ players.length }}</span>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
+    <!-- Main Battle Area -->
+    <main class="battle-arena">
       <!-- Question Section -->
-      <div class="question-section">
-        <div class="question-card">
-          <div class="question-number">Question {{ currentQuestion }}</div>
-          <h1 class="question-text">{{ currentQuestionData.question }}</h1>
-        </div>
-      </div>
-
-      <!-- Answers Section -->
-      <div class="answers-section">
-        <div class="answers-grid">
-          <button
-            v-for="(answer, index) in currentQuestionData.answers"
-            :key="index"
-            class="answer-button"
-            :class="getAnswerClass(index)"
-            :disabled="answered"
-            @click="selectAnswer(index)"
-          >
-            <div class="answer-letter">{{ String.fromCharCode(65 + index) }}</div>
-            <div class="answer-text">{{ answer.text }}</div>
-          </button>
-        </div>
-      </div>
-
-      <!-- Players Scoreboard -->
-      <div class="scoreboard-section">
-        <div class="scoreboard-header">
-          <h2 class="scoreboard-title">Scoreboard</h2>
-        </div>
-        <div class="players-grid">
-          <div
-            v-for="player in players"
-            :key="player.id"
-            class="player-card"
-            :class="{ 'current-player': player.isCurrentUser, leader: player.rank === 1 }"
-          >
-            <div class="player-rank">{{ player.rank }}</div>
-            <div class="player-avatar">{{ player.initials }}</div>
-            <div class="player-info">
-              <div class="player-name">{{ player.name }}</div>
-              <div class="player-stats">
-                <div class="score">{{ player.score }} points</div>
-                <div v-if="player.streak > 1" class="streak">{{ player.streak }} streak</div>
+      <div class="question-zone">
+        <div class="question-card" :class="{ 'answered': answered }">
+          <div class="question-header">
+            <div class="question-badge">
+              <span class="question-number">{{ currentQuestion }}</span>
+              <span class="question-total">/{{ totalQuestions }}</span>
+            </div>
+            <div class="difficulty-indicator">
+              <div class="difficulty-stars">
+                <div class="star filled"></div>
+                <div class="star filled"></div>
+                <div class="star"></div>
               </div>
             </div>
-            <div class="player-status" :class="player.status">
-              <div v-if="player.status === 'answered'" class="status-icon">✓</div>
-              <div v-else-if="player.status === 'thinking'" class="status-icon">💭</div>
-              <div v-else class="status-icon">⏱️</div>
+          </div>
+          <div class="question-content">
+            <h1 class="question-text">{{ currentQuestionData.question }}</h1>
+            <div class="word-highlight" v-if="currentQuestionData.word">
+              "{{ currentQuestionData.word }}"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Battle Grid -->
+      <div class="battle-grid">
+        <!-- Answers Grid -->
+        <div class="answers-arena">
+          <div class="answers-grid">
+            <button
+              v-for="(answer, index) in currentQuestionData.answers"
+              :key="index"
+              class="answer-card"
+              :class="getAnswerClass(index)"
+              :disabled="answered"
+              @click="selectAnswer(index)"
+            >
+              <div class="answer-indicator">
+                <div class="answer-letter">{{ String.fromCharCode(65 + index) }}</div>
+                <div class="answer-check" v-if="answered && index === correctAnswer">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="answer-x" v-if="answered && index === selectedAnswer && index !== correctAnswer">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="answer-content">
+                <div class="answer-text">{{ answer.text }}</div>
+              </div>
+              <div class="answer-glow"></div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Scoreboard -->
+        <div class="live-scoreboard">
+          <div class="scoreboard-header">
+            <div class="scoreboard-title">
+              <svg class="leaderboard-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M3 13h4l3-8 4 8h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Live Rankings
+            </div>
+          </div>
+          <div class="players-list">
+            <div
+              v-for="player in players"
+              :key="player.id"
+              class="player-row"
+              :class="{
+                'current-player': player.isCurrentUser,
+                'leader': player.rank === 1,
+                'animated': answered
+              }"
+            >
+              <div class="player-position">
+                <div class="rank-badge" :class="'rank-' + player.rank">
+                  <span v-if="player.rank === 1">👑</span>
+                  <span v-else>{{ player.rank }}</span>
+                </div>
+              </div>
+              <div class="player-avatar-container">
+                <div class="player-avatar" :style="{ background: getPlayerGradient(player.id) }">
+                  {{ player.initials }}
+                </div>
+                <div class="player-status-indicator" :class="player.status">
+                  <div v-if="player.status === 'answered'" class="status-dot answered"></div>
+                  <div v-else-if="player.status === 'thinking'" class="status-dot thinking"></div>
+                  <div v-else class="status-dot waiting"></div>
+                </div>
+              </div>
+              <div class="player-details">
+                <div class="player-name">{{ player.name }}</div>
+                <div class="player-stats">
+                  <div class="score-display">
+                    <span class="score-value">{{ player.score }}</span>
+                    <span class="score-label">pts</span>
+                  </div>
+                  <div v-if="player.streak > 1" class="streak-indicator">
+                    🔥{{ player.streak }}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- Game Over Modal -->
-    <div v-if="gameOver" class="game-over-modal">
+    <!-- Enhanced Game Over Modal -->
+    <div v-if="gameOver" class="game-over-overlay">
+      <div class="celebration-confetti">
+        <div class="confetti" v-for="n in 50" :key="n"></div>
+      </div>
       <div class="modal-backdrop" @click="closeGameOver"></div>
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title">🎉 Game Over!</h2>
-        </div>
-        <div class="modal-body">
-          <div class="winner-section">
-            <div class="trophy-icon-large">🏆</div>
-            <h3 class="winner-name">{{ winner.name }}</h3>
-            <p class="winner-score">{{ winner.score }} points</p>
+      <div class="results-modal">
+        <div class="modal-decoration">
+          <div class="trophy-burst">
+            <div class="trophy-icon-main">🏆</div>
+            <div class="victory-rays"></div>
           </div>
-          <div class="final-standings">
-            <h4>Final Results:</h4>
-            <div class="standings-list">
+        </div>
+
+        <div class="results-header">
+          <h2 class="results-title">🎉 Battle Complete!</h2>
+          <p class="results-subtitle">Amazing performance everyone!</p>
+        </div>
+
+        <div class="results-content">
+          <div class="champion-spotlight">
+            <div class="champion-crown">👑</div>
+            <div class="champion-avatar" :style="{ background: getPlayerGradient(winner.id) }">
+              {{ winner.initials || winner.name.charAt(0) }}
+            </div>
+            <h3 class="champion-name">{{ winner.name }}</h3>
+            <div class="champion-score">
+              <span class="score-number">{{ winner.score }}</span>
+              <span class="score-text">points</span>
+            </div>
+            <div class="victory-badge">🥇 CHAMPION</div>
+          </div>
+
+          <div class="final-leaderboard">
+            <h4 class="leaderboard-title">Final Leaderboard</h4>
+            <div class="leaderboard-list">
               <div
-                v-for="player in sortedPlayers"
+                v-for="(player, index) in sortedPlayers"
                 :key="player.id"
-                class="standing-item"
-                :class="{ 'current-player': player.isCurrentUser }"
+                class="leaderboard-item"
+                :class="{
+                  'champion': index === 0,
+                  'runner-up': index === 1,
+                  'third-place': index === 2,
+                  'current-player': player.isCurrentUser
+                }"
               >
-                <div class="standing-rank">{{ player.rank }}</div>
-                <div class="standing-name">{{ player.name }}</div>
-                <div class="standing-score">{{ player.score }} points</div>
+                <div class="position-indicator">
+                  <div class="position-medal" v-if="index < 3">
+                    <span v-if="index === 0">🥇</span>
+                    <span v-else-if="index === 1">🥈</span>
+                    <span v-else>🥉</span>
+                  </div>
+                  <div class="position-number" v-else>{{ index + 1 }}</div>
+                </div>
+                <div class="player-summary">
+                  <div class="player-mini-avatar" :style="{ background: getPlayerGradient(player.id) }">
+                    {{ player.initials || player.name.charAt(0) }}
+                  </div>
+                  <div class="player-info-summary">
+                    <div class="player-name-summary">{{ player.name }}</div>
+                    <div class="player-performance">
+                      <span class="final-score">{{ player.score }} pts</span>
+                      <span v-if="player.streak > 1" class="final-streak">🔥{{ player.streak }}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button class="play-again-btn" @click="playAgain">Play Again</button>
-          <button class="exit-btn" @click="exitGame">Exit</button>
+
+        <div class="results-actions">
+          <button class="action-btn primary-action" @click="playAgain">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M1 4v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3.51 15a9 9 0 1015.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Play Again
+          </button>
+          <button class="action-btn secondary-action" @click="exitGame">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="16,17 21,12 16,7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Exit to Menu
+          </button>
         </div>
       </div>
     </div>
