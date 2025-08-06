@@ -342,7 +342,8 @@ const cancelEdit = () => {
 .edit-profile-content {
   flex: 1;
   padding: 20px 32px;
-  max-width: 915px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Page Header */
