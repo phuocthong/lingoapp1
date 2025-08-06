@@ -10,7 +10,7 @@
               <q-icon name="extension" class="header-icon" />
               <div class="header-info">
                 <div class="header-title">Thách đấu với Bot</div>
-                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
+                <div class="header-subtitle">Bot sẽ ��ưa ra câu hỏi mỗi 30-60 giây</div>
               </div>
             </div>
           </q-card-section>
@@ -352,7 +352,7 @@ const sendMessage = () => {
 .header-title {
   font-size: 16px;
   font-weight: 600;
-  color: #111827;
+  color: #0f172a;
 }
 
 .header-subtitle {
@@ -392,7 +392,7 @@ const sendMessage = () => {
 
 .message-text {
   font-size: 14px;
-  color: #111827;
+  color: #0f172a;
   margin-bottom: 8px;
 }
 
@@ -505,7 +505,7 @@ const sendMessage = () => {
 .header-title {
   font-size: 16px;
   font-weight: 600;
-  color: #111827;
+  color: #0f172a;
 }
 
 .header-subtitle {
@@ -550,7 +550,7 @@ const sendMessage = () => {
 .question-title {
   font-size: 14px;
   font-weight: 600;
-  color: #111827;
+  color: #0f172a;
   margin-bottom: 8px;
 }
 
@@ -647,7 +647,7 @@ const sendMessage = () => {
 .player-name {
   font-size: 14px;
   font-weight: 500;
-  color: #111827;
+  color: #0f172a;
 }
 
 .player-streak {
@@ -662,7 +662,7 @@ const sendMessage = () => {
 .score-number {
   font-size: 18px;
   font-weight: 700;
-  color: #111827;
+  color: #0f172a;
 }
 
 .score-label {
@@ -698,7 +698,7 @@ const sendMessage = () => {
 .user-title {
   font-size: 14px;
   font-weight: 500;
-  color: #111827;
+  color: #0f172a;
 }
 
 .user-subtitle {
