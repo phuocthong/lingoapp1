@@ -234,7 +234,7 @@
           </div>
           <div class="warning-message">
             <div class="warning-dot"></div>
-            <div class="warning-text">Vui lòng đăng nhập để tham gia trả lời câu hỏi</div>
+            <div class="warning-text">Vui lòng đăng nhập để tham gia tr�� lời câu hỏi</div>
           </div>
           <div class="auth-buttons">
             <q-btn flat class="register-btn-small" @click="register">Đăng ký miễn phí</q-btn>
@@ -868,7 +868,7 @@ const login = () => {
 
 <style scoped>
 .home-page {
-  background: #f5f3ff;
+  background: linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%);
   min-height: 100vh;
 }
 
@@ -885,10 +885,11 @@ const login = () => {
 
 /* Chat section */
 .chat-section {
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.1);
+  backdrop-filter: blur(10px);
   overflow: hidden;
 }
 
@@ -898,16 +899,17 @@ const login = () => {
   align-items: center;
   gap: 12px;
   border-bottom: 1px solid #e2e8f0;
-  background: white;
+  background: linear-gradient(135deg, #f0f9ff 0%, #f0fdfa 100%);
 }
 
 .bot-icon {
   display: flex;
   padding: 8px;
-  background: #6d28d9;
+  background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
   border-radius: 8px;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
 
 .chat-header-info {
