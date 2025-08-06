@@ -325,6 +325,64 @@
         </q-card>
       </div>
     </div>
+
+    <!-- Question Details Modal -->
+    <q-dialog v-model="showDetailModal" class="detail-modal">
+      <q-card class="modal-card">
+        <q-card-section class="modal-header">
+          <div class="modal-title">Chi tiết câu hỏi</div>
+          <q-btn flat round dense icon="close" v-close-popup />
+        </q-card-section>
+
+        <q-card-section class="modal-content">
+          <div class="question-detail">
+            <h4>Dịch từ "Beautiful" sang tiếng Việt</h4>
+            <p><strong>Đáp án:</strong> đẹp</p>
+            <p><strong>Thời gian:</strong> 10:30 - 26/07/2024</p>
+            <p><strong>Số người tham gia:</strong> 23 người</p>
+            <p><strong>Số người trả lời đúng:</strong> 15 người (65%)</p>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
+    <!-- Top Answerers Modal -->
+    <q-dialog v-model="showTopAnswerersModal" class="top-answerers-modal">
+      <q-card class="modal-card">
+        <q-card-section class="modal-header">
+          <div class="modal-title">Top người trả lời nhanh & đúng nhất</div>
+          <q-btn flat round dense icon="close" v-close-popup />
+        </q-card-section>
+
+        <q-card-section class="modal-content">
+          <div class="top-answerers-list">
+            <div
+              v-for="(answerer, index) in topAnswerers"
+              :key="answerer.id"
+              class="answerer-item"
+              :class="{ 'current-user': answerer.name === 'Người dùng' }"
+            >
+              <div class="rank-number">{{ index + 1 }}</div>
+              <q-avatar size="32px" class="answerer-avatar">{{ answerer.avatar }}</q-avatar>
+              <div class="answerer-info">
+                <div class="answerer-name">{{ answerer.name }}</div>
+                <div class="answerer-time">Thời gian: {{ answerer.time }}</div>
+              </div>
+              <div class="answerer-status">
+                <q-icon
+                  :name="answerer.correct ? 'check_circle' : 'cancel'"
+                  :color="answerer.correct ? 'green' : 'red'"
+                  size="16px"
+                />
+                <span :class="answerer.correct ? 'correct' : 'incorrect'">
+                  {{ answerer.correct ? 'Đúng' : 'Sai' }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
