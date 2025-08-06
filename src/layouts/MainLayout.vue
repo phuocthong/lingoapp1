@@ -134,9 +134,10 @@ const login = () => {
 
 <style scoped>
 .main-header {
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-  color: #111827;
+  background: linear-gradient(135deg, #f0f9ff 0%, #f0fdfa 100%);
+  border-bottom: 1px solid #e2e8f0;
+  color: #0f172a;
+  backdrop-filter: blur(10px);
 }
 
 .main-toolbar {
@@ -152,17 +153,18 @@ const login = () => {
 }
 
 .logo-icon {
-  background: #6d28d9;
+  background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
   color: white;
   padding: 8px;
   border-radius: 8px;
   font-size: 24px;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
 
 .logo-text {
   font-size: 20px;
   font-weight: 700;
-  color: #111827;
+  color: #0f172a;
 }
 
 .header-nav {
@@ -172,14 +174,17 @@ const login = () => {
 }
 
 .nav-btn {
-  color: #374151;
+  color: #475569;
   font-size: 14px;
   font-weight: 500;
   padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
 .nav-btn:hover {
-  color: #2563eb;
+  color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.1);
 }
 
 .header-actions {
@@ -204,26 +209,27 @@ const login = () => {
 }
 
 .register-btn {
-  border: 2px solid #e9d5ff;
-  background: white;
-  color: #5b21b6;
+  border: 2px solid #ccfbf1;
+  background: rgba(240, 253, 250, 0.8);
+  color: #0f766e;
+  backdrop-filter: blur(10px);
 }
 
 .login-btn {
-  background: linear-gradient(135deg, #2563eb 0%, #6d28d9 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
   color: white;
 }
 
 .mobile-menu-btn {
-  color: #374151;
+  color: #475569;
 }
 
 .main-container {
-  background: #ffffff;
+  background: linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%);
 }
 
 .mobile-drawer {
-  background: white;
+  background: linear-gradient(135deg, #f0f9ff 0%, #f0fdfa 100%);
 }
 
 .mobile-menu {
