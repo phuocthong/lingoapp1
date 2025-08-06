@@ -243,10 +243,10 @@
             </div>
 
             <div class="leaderboard-tabs">
-              <q-btn flat size="sm" class="tab-btn active" no-caps>Tổng</q-btn>
-              <q-btn flat size="sm" class="tab-btn" no-caps>Tuần</q-btn>
-              <q-btn flat size="sm" class="tab-btn" no-caps>Tháng</q-btn>
-              <q-btn flat size="sm" class="tab-btn" no-caps>Năm</q-btn>
+              <q-btn flat size="sm" :class="['tab-btn', { active: activeTab === 'total' }]" no-caps @click="switchTab('total')">Tổng</q-btn>
+              <q-btn flat size="sm" :class="['tab-btn', { active: activeTab === 'week' }]" no-caps @click="switchTab('week')">Tuần</q-btn>
+              <q-btn flat size="sm" :class="['tab-btn', { active: activeTab === 'month' }]" no-caps @click="switchTab('month')">Tháng</q-btn>
+              <q-btn flat size="sm" :class="['tab-btn', { active: activeTab === 'year' }]" no-caps @click="switchTab('year')">Năm</q-btn>
             </div>
           </q-card-section>
 
@@ -332,6 +332,10 @@
 import { ref } from 'vue'
 
 const messageInput = ref('')
+const activeTab = ref('total')
+const showDetailModal = ref(false)
+const showTopAnswerersModal = ref(false)
+const selectedQuestion = ref(null)
 
 const sendMessage = () => {
   if (messageInput.value.trim()) {
@@ -339,6 +343,31 @@ const sendMessage = () => {
     messageInput.value = ''
   }
 }
+
+const showQuestionDetails = (questionId) => {
+  selectedQuestion.value = questionId
+  showDetailModal.value = true
+}
+
+const showTopAnswerers = (questionId) => {
+  selectedQuestion.value = questionId
+  showTopAnswerersModal.value = true
+}
+
+const switchTab = (tab) => {
+  activeTab.value = tab
+  // Here you would typically fetch data for the selected period
+  console.log('Switched to tab:', tab)
+}
+
+// Sample data for top answerers
+const topAnswerers = ref([
+  { id: 1, name: 'Minh Anh', avatar: 'MA', time: '1.2s', correct: true },
+  { id: 2, name: 'Thành Hòa', avatar: 'TH', time: '1.8s', correct: true },
+  { id: 3, name: 'Văn Nam', avatar: 'VN', time: '2.1s', correct: true },
+  { id: 4, name: 'Thu Trang', avatar: 'TT', time: '2.5s', correct: false },
+  { id: 5, name: 'Người dùng', avatar: 'ND', time: '3.2s', correct: true }
+])
 </script>
 
 <style scoped>
