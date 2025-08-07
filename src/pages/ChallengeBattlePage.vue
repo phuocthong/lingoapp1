@@ -275,7 +275,7 @@
             <div class="trophy-icon-main">🏆</div>
             <div class="victory-rays"></div>
             <div class="sparkles">
-              <span v-for="n in 6" :key="n" class="sparkle">��</span>
+              <span v-for="n in 6" :key="n" class="sparkle">✨</span>
             </div>
           </div>
         </div>
@@ -694,7 +694,7 @@ const getMotivationIcon = () => {
   const accuracy = (currentPlayerData.score / totalQuestions.value) * 100
   if (accuracy >= 90) return '🌟'
   if (accuracy >= 70) return '🎯'
-  if (accuracy >= 50) return '💪'
+  if (accuracy >= 50) return '��'
   return '📚'
 }
 
@@ -1755,10 +1755,10 @@ const getPlayerGradient = (playerId) => {
 }
 
 .trophy-icon-main {
-  font-size: 48px;
+  font-size: 36px;
   position: relative;
   z-index: 2;
-  animation: trophy-bounce 1.5s ease-in-out infinite alternate;
+  animation: trophy-bounce 2s ease-in-out infinite alternate;
 }
 
 @keyframes trophy-bounce {
@@ -1766,7 +1766,7 @@ const getPlayerGradient = (playerId) => {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
   }
 }
 
@@ -1774,8 +1774,8 @@ const getPlayerGradient = (playerId) => {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
   border-radius: 50%;
@@ -1795,20 +1795,20 @@ const getPlayerGradient = (playerId) => {
 }
 
 .results-header {
-  padding: 0 24px 20px;
+  padding: 0 24px 12px;
   text-align: center;
   color: white;
 }
 
 .results-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
-  margin: 12px 0 6px;
+  margin: 8px 0 4px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .results-subtitle {
-  font-size: 14px;
+  font-size: 13px;
   opacity: 0.9;
   margin: 0;
 }
