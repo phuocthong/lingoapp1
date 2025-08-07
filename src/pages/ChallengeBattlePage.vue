@@ -1718,18 +1718,17 @@ const getPlayerGradient = (playerId) => {
 
 .results-modal {
   position: relative;
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   border-radius: 24px;
   padding: 0;
-  max-width: 480px;
+  max-width: 700px;
   width: 100%;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
   overflow: hidden;
   animation: modal-appear 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 85vh;
-  overflow-y: auto;
+  max-height: 90vh;
 }
 
 @keyframes modal-appear {
