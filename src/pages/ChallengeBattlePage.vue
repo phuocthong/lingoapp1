@@ -282,7 +282,7 @@
 
         <div class="results-header">
           <h2 class="results-title">🎉 Trận Đấu Hoàn Thành!</h2>
-          <p class="results-subtitle">Thật tuyệt v��i! Hãy xem kết quả nào!</p>
+          <p class="results-subtitle">Thật tuyệt vời! Hãy xem kết quả nào!</p>
         </div>
 
         <div class="results-content">
@@ -1912,6 +1912,13 @@ const getPlayerGradient = (playerId) => {
   }
 }
 
+.champion-avatar-container {
+  position: relative;
+  margin: 0 auto 16px;
+  width: 80px;
+  height: 80px;
+}
+
 .champion-avatar {
   width: 80px;
   height: 80px;
@@ -1922,9 +1929,80 @@ const getPlayerGradient = (playerId) => {
   justify-content: center;
   font-size: 28px;
   font-weight: 700;
-  margin: 0 auto 16px;
   border: 4px solid rgba(245, 158, 11, 0.3);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.champion-glow {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 70%);
+  animation: champion-glow-pulse 2s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes champion-glow-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.battle-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  font-size: 24px;
+}
+
+.stat-info {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 2px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #718096;
+  font-weight: 500;
 }
 
 .champion-name {
