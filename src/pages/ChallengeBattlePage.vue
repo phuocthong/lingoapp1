@@ -343,7 +343,7 @@
                     <div class="player-name-large">{{ player.name }}</div>
                     <div class="player-stats-large">
                       <span class="score-points">{{ player.score }} điểm</span>
-                      <span class="accuracy-percent">{{ Math.round((player.score / totalQuestions) * 100) || 0 }}% chính xác</span>
+                      <span class="accuracy-percent">{{ getAccuracyRate(player) }}% chính xác</span>
                       <span v-if="player.streak > 1" class="streak-display">🔥 {{ player.streak }} streak</span>
                     </div>
                   </div>
