@@ -719,9 +719,6 @@ const getAnswerClass = (index) => {
   return 'disabled'
 }
 
-const closeGameOver = () => {
-  // Allow closing by clicking backdrop
-}
 
 const playAgain = () => {
   // Reset game state
