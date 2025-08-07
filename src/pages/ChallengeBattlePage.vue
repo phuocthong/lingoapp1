@@ -694,7 +694,7 @@ const getMotivationIcon = () => {
   const accuracy = (currentPlayerData.score / totalQuestions.value) * 100
   if (accuracy >= 90) return '🌟'
   if (accuracy >= 70) return '🎯'
-  if (accuracy >= 50) return '��'
+  if (accuracy >= 50) return '💪'
   return '📚'
 }
 
@@ -2260,7 +2260,7 @@ const getPlayerGradient = (playerId) => {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
-  padding: 20px 24px;
+  padding: 16px 24px;
   background: rgba(255, 255, 255, 0.95);
 }
 
