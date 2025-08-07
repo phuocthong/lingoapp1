@@ -415,15 +415,6 @@ const sendMessage = () => {
   }
 }
 
-const showQuestionDetails = (questionId) => {
-  selectedQuestion.value = questionId
-  showDetailModal.value = true
-}
-
-const showTopAnswerers = (questionId) => {
-  selectedQuestion.value = questionId
-  showTopAnswerersModal.value = true
-}
 
 const switchTab = (tab) => {
   activeTab.value = tab
