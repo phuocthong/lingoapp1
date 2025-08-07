@@ -700,7 +700,7 @@ const getMotivationTitle = () => {
   const accuracy = (currentPlayerData.score / totalQuestions.value) * 100
   if (accuracy >= 90) return 'Xuất sắc!'
   if (accuracy >= 70) return 'Rất tốt!'
-  if (accuracy >= 50) return 'Khá ổn!'
+  if (accuracy >= 50) return 'Khá ��n!'
   return 'Cố gắng hơn nữa!'
 }
 
@@ -2051,15 +2051,70 @@ const getPlayerGradient = (playerId) => {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes modal-appear {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+/* Fullscreen Actions */
+.fullscreen-actions {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 40px 40px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.action-btn-large {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  min-width: 160px;
+  justify-content: center;
+}
+
+.btn-icon-large {
+  width: 24px;
+  height: 24px;
+}
+
+.primary-large {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+
+.primary-large:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
+}
+
+.secondary-large {
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+  color: white;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+}
+
+.secondary-large:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.5);
+}
+
+.tertiary-large {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.tertiary-large:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
 }
 
 .modal-decoration {
