@@ -2064,8 +2064,8 @@ const getPlayerGradient = (playerId) => {
 .fullscreen-actions {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  padding: 32px 40px 40px;
+  gap: 20px;
+  padding: 20px 24px 24px;
   background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 }
