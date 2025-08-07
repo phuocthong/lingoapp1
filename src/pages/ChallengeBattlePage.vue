@@ -1662,7 +1662,7 @@ const getPlayerGradient = (playerId) => {
 }
 
 .trophy-icon-large {
-  font-size: 72px;
+  font-size: 56px;
   position: relative;
   z-index: 2;
   animation: trophy-bounce 2s ease-in-out infinite alternate;
