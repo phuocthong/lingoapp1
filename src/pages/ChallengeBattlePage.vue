@@ -2284,90 +2284,82 @@ const getPlayerGradient = (playerId) => {
   letter-spacing: 0.5px;
 }
 
-.results-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  padding: 16px 24px;
-  background: rgba(255, 255, 255, 0.95);
-}
+@media (max-width: 480px) {
+  .fullscreen-header {
+    padding: 20px 0 12px;
+  }
 
-.action-btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 20px;
-  border-radius: 16px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: none;
-  overflow: hidden;
-}
+  .victory-title {
+    font-size: 24px;
+  }
 
-.btn-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  z-index: 2;
-}
+  .victory-subtitle {
+    font-size: 14px;
+  }
 
-.btn-icon {
-  width: 18px;
-  height: 18px;
-}
+  .trophy-icon-large {
+    font-size: 40px;
+  }
 
-.primary-action {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
-}
+  .champion-avatar-large {
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+  }
 
-.primary-action:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
-}
+  .champion-title {
+    font-size: 20px;
+  }
 
-.btn-shimmer {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s ease;
-  z-index: 1;
-}
+  .score-massive {
+    font-size: 32px;
+  }
 
-.primary-action:hover .btn-shimmer {
-  left: 100%;
-}
+  .champion-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
 
-.secondary-action {
-  background: rgba(245, 158, 11, 0.1);
-  color: #d97706;
-  border: 1px solid rgba(245, 158, 11, 0.3);
-}
+  .stat-card {
+    padding: 12px;
+  }
 
-.secondary-action:hover {
-  background: rgba(245, 158, 11, 0.2);
-  transform: translateY(-1px);
-  border-color: rgba(245, 158, 11, 0.5);
-}
+  .stat-icon-large {
+    font-size: 20px;
+  }
 
-.tertiary-action {
-  background: rgba(255, 255, 255, 0.9);
-  color: #4a5568;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
+  .stat-value-large {
+    font-size: 18px;
+  }
 
-.tertiary-action:hover {
-  background: rgba(255, 255, 255, 1);
-  transform: translateY(-1px);
-  border-color: rgba(0, 0, 0, 0.2);
+  .ranking-card {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .player-avatar-medium {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .player-name-large {
+    font-size: 14px;
+  }
+
+  .player-stats-large {
+    gap: 8px;
+  }
+
+  .score-points, .accuracy-percent, .streak-display {
+    font-size: 11px;
+    padding: 1px 6px;
+  }
+
+  .action-btn-large {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
 }
 
 /* Responsive Design */
