@@ -271,7 +271,7 @@
           <q-card-section class="card-header">
             <div class="header-content">
               <q-icon name="emoji_events" size="20px" />
-              <div class="header-title">Bảng x��p hạng</div>
+              <div class="header-title">Bảng xếp hạng</div>
               <q-icon name="trending_up" size="16px" class="trend-icon" />
             </div>
 
