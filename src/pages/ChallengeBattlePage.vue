@@ -282,7 +282,7 @@
 
         <div class="results-header">
           <h2 class="results-title">🎉 Trận Đấu Hoàn Thành!</h2>
-          <p class="results-subtitle">Thật tuyệt vời! Hãy xem kết qu��� nào!</p>
+          <p class="results-subtitle">Thật tuyệt vời! Hãy xem kết quả nào!</p>
         </div>
 
         <div class="results-content">
@@ -1894,143 +1894,87 @@ const getPlayerGradient = (playerId) => {
   font-weight: 500;
 }
 
-.performance-analysis {
-  margin-bottom: 32px;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+.compact-leaderboard {
+  margin-bottom: 20px;
 }
 
-.analysis-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #2d3748;
-  margin: 0 0 16px;
-  text-align: center;
-}
-
-.performance-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.performance-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px 12px;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.performance-card:hover {
-  transform: translateY(-2px);
-}
-
-.performance-card.correct {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
-  border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-.performance-card.incorrect {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
-  border: 1px solid rgba(239, 68, 68, 0.2);
-}
-
-.performance-card.time {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1));
-  border: 1px solid rgba(245, 158, 11, 0.2);
-}
-
-.performance-card.bonus {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  border: 1px solid rgba(102, 126, 234, 0.2);
-}
-
-.performance-icon {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.performance-data {
-  text-align: center;
-}
-
-.performance-value {
-  font-size: 18px;
-  font-weight: 700;
-  color: #2d3748;
-  margin-bottom: 2px;
-}
-
-.performance-label {
-  font-size: 11px;
-  color: #718096;
-  font-weight: 500;
-}
-
-.motivation-section {
-  margin-bottom: 32px;
-}
-
-.motivation-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 20px;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  border-radius: 16px;
-  border: 1px solid rgba(102, 126, 234, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.motivation-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  animation: motivation-shimmer 3s ease-in-out infinite;
-}
-
-@keyframes motivation-shimmer {
-  0% { left: -100%; }
-  50% { left: 100%; }
-  100% { left: 100%; }
-}
-
-.motivation-icon {
-  font-size: 32px;
-  flex-shrink: 0;
-}
-
-.motivation-text {
-  flex: 1;
-}
-
-.motivation-title {
+.section-title {
   font-size: 16px;
   font-weight: 700;
   color: #2d3748;
-  margin: 0 0 4px;
+  margin: 0 0 12px;
+  text-align: center;
 }
 
-.motivation-message {
+.players-result {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.player-result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.player-result.is-current {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+.result-rank {
+  font-size: 18px;
+  font-weight: 700;
+  width: 24px;
+  text-align: center;
+}
+
+.result-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.result-name {
   font-size: 14px;
-  color: #4a5568;
-  margin: 0;
-  line-height: 1.4;
+  font-weight: 600;
+  color: #2d3748;
 }
 
-.final-leaderboard {
-  margin-bottom: 32px;
+.result-score {
+  font-size: 14px;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.motivation-brief {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-radius: 12px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  margin-bottom: 16px;
+}
+
+.motivation-brief .motivation-icon {
+  font-size: 20px;
+}
+
+.motivation-brief .motivation-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2d3748;
 }
 
 .leaderboard-title {
