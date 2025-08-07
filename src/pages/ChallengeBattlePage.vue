@@ -2583,7 +2583,6 @@ const getPlayerGradient = (playerId) => {
   .leaderboard-title {
     font-size: 18px;
   }
-  }
 
   .modal-decoration {
     padding: 32px 24px 60px;
