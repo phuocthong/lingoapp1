@@ -1669,10 +1669,10 @@ const getPlayerGradient = (playerId) => {
 }
 
 .victory-title {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 800;
   color: white;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
