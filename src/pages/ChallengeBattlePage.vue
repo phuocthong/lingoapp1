@@ -707,6 +707,11 @@ const resetToGame = () => {
 }
 
 const exitGame = () => {
+  // Clear any running timer
+  if (gameInterval.value) {
+    clearInterval(gameInterval.value)
+  }
+  // Navigate back to challenges
   router.push('/dashboard/challenges')
 }
 
