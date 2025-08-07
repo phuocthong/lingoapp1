@@ -1727,7 +1727,7 @@ const getPlayerGradient = (playerId) => {
 .results-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 40px;
   max-width: 1400px;
   width: 100%;
   align-items: start;
