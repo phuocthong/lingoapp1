@@ -1,0 +1,39 @@
+{
+  "name": "lingo-challenge-backend",
+  "version": "1.0.0",
+  "description": "Backend API cho ứng dụng LingoChallenge sử dụng Elysia",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "seed": "tsx src/seed.ts"
+  },
+  "dependencies": {
+    "elysia": "^1.1.22",
+    "@elysiajs/cors": "^1.1.1",
+    "@elysiajs/swagger": "^1.1.4",
+    "@elysiajs/jwt": "^1.1.1",
+    "@elysiajs/cookie": "^0.8.0",
+    "@elysiajs/static": "^1.1.1",
+    "better-sqlite3": "^11.3.0",
+    "bcryptjs": "^2.4.3",
+    "nanoid": "^5.0.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "tsx": "^4.19.2",
+    "@types/node": "^22.10.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/better-sqlite3": "^7.6.11"
+  },
+  "keywords": [
+    "elysia",
+    "typescript",
+    "api",
+    "language-learning"
+  ],
+  "author": "",
+  "license": "MIT"
+}

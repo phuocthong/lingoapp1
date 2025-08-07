@@ -5,321 +5,247 @@
       <div class="particle" v-for="n in 15" :key="n"></div>
     </div>
 
-    <!-- Game Header -->
-    <header class="game-header">
-      <div class="header-container">
-        <!-- Question Progress -->
-        <div class="progress-section">
-          <div class="progress-info">
-            <div class="progress-icon">
-              <svg class="trophy-icon" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M18 8h1a4 4 0 010 8h-1M2 8h1a4 4 0 010 8H2M7 13h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v2a2 2 0 002 2z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M8 21l4-7 4 7M8 21h8"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+    <!-- Game Battle Interface - chỉ hiện khi KHÔNG game over -->
+    <template v-if="!gameOver">
+      <!-- Game Header -->
+      <header class="game-header">
+        <div class="header-container">
+          <!-- Question Progress -->
+          <div class="progress-section">
+            <div class="progress-info">
+              <div class="progress-icon">
+                <svg class="trophy-icon" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M18 8h1a4 4 0 010 8h-1M2 8h1a4 4 0 010 8H2M7 13h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v2a2 2 0 002 2z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8 21l4-7 4 7M8 21h8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="progress-text">{{ currentQuestion }}/{{ totalQuestions }}</span>
             </div>
-            <span class="progress-text">{{ currentQuestion }}/{{ totalQuestions }}</span>
-          </div>
-          <div class="progress-bar-container">
-            <div class="progress-bar">
-              <div class="progress-fill" :style="{ width: questionProgress + '%' }"></div>
-              <div class="progress-glow" :style="{ width: questionProgress + '%' }"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Timer -->
-        <div class="timer-section">
-          <div
-            class="timer-circle"
-            :class="{ warning: timeLeft <= 5, critical: timeLeft <= 3, pulse: timeLeft <= 3 }"
-          >
-            <svg class="timer-svg" viewBox="0 0 44 44">
-              <circle
-                cx="22"
-                cy="22"
-                r="20"
-                stroke="#E5E7EB"
-                stroke-width="2"
-                fill="none"
-                class="timer-track"
-              />
-              <circle
-                cx="22"
-                cy="22"
-                r="20"
-                stroke="currentColor"
-                stroke-width="3"
-                fill="none"
-                :stroke-dasharray="circleCircumference"
-                :stroke-dashoffset="timerStrokeDashoffset"
-                class="timer-progress"
-              />
-            </svg>
-            <div class="timer-content">
-              <div class="timer-value">{{ timeLeft }}</div>
-              <div class="timer-label">s</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Players Section -->
-        <div class="players-info">
-          <div class="players-badge">
-            <div class="players-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" />
-                <path
-                  d="M23 21v-2a4 4 0 00-3-3.87"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M16 3.13a4 4 0 010 7.75"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-            <span class="players-count">{{ players.length }}</span>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Main Battle Area -->
-    <main class="battle-arena">
-      <!-- Question Section -->
-      <div class="question-zone">
-        <div class="question-card" :class="{ answered: answered }">
-          <div class="question-header">
-            <div class="question-badge">
-              <span class="question-number">{{ currentQuestion }}</span>
-              <span class="question-total">/{{ totalQuestions }}</span>
-            </div>
-            <div class="difficulty-indicator">
-              <div class="difficulty-stars">
-                <div class="star filled"></div>
-                <div class="star filled"></div>
-                <div class="star"></div>
+            <div class="progress-bar-container">
+              <div class="progress-bar">
+                <div class="progress-fill" :style="{ width: questionProgress + '%' }"></div>
+                <div class="progress-glow" :style="{ width: questionProgress + '%' }"></div>
               </div>
             </div>
           </div>
-          <div class="question-content">
-            <h1 class="question-text">{{ currentQuestionData.question }}</h1>
-            <div class="word-highlight" v-if="currentQuestionData.word">
-              "{{ currentQuestionData.word }}"
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Battle Grid -->
-      <div class="battle-grid">
-        <!-- Answers Grid -->
-        <div class="answers-arena">
-          <div class="answers-grid">
-            <button
-              v-for="(answer, index) in currentQuestionData.answers"
-              :key="index"
-              class="answer-card"
-              :class="getAnswerClass(index)"
-              :disabled="answered"
-              @click="selectAnswer(index)"
-            >
-              <div class="answer-indicator">
-                <div class="answer-letter">{{ String.fromCharCode(65 + index) }}</div>
-                <div class="answer-check" v-if="answered && index === correctAnswer">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M20 6L9 17l-5-5"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div
-                  class="answer-x"
-                  v-if="answered && index === selectedAnswer && index !== correctAnswer"
-                >
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M18 6L6 18"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M6 6l12 12"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div class="answer-content">
-                <div class="answer-text">{{ answer.text }}</div>
-              </div>
-              <div class="answer-glow"></div>
-            </button>
-          </div>
-        </div>
-
-        <!-- Live Scoreboard -->
-        <div class="live-scoreboard">
-          <div class="scoreboard-header">
-            <div class="scoreboard-title">
-              <svg class="leaderboard-icon" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M3 13h4l3-8 4 8h7"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Live Rankings
-            </div>
-          </div>
-          <div class="players-list">
+          <!-- Timer -->
+          <div class="timer-section">
             <div
-              v-for="player in players"
-              :key="player.id"
-              class="player-row"
-              :class="{
-                'current-player': player.isCurrentUser,
-                leader: player.rank === 1,
-                animated: answered,
-              }"
+              class="timer-circle"
+              :class="{ warning: timeLeft <= 5, critical: timeLeft <= 3, pulse: timeLeft <= 3 }"
             >
-              <div class="player-position">
-                <div class="rank-badge" :class="'rank-' + player.rank">
-                  <span v-if="player.rank === 1">👑</span>
-                  <span v-else>{{ player.rank }}</span>
+              <svg class="timer-svg" viewBox="0 0 44 44">
+                <circle
+                  cx="22"
+                  cy="22"
+                  r="20"
+                  stroke="#E5E7EB"
+                  stroke-width="2"
+                  fill="none"
+                  class="timer-track"
+                />
+                <circle
+                  cx="22"
+                  cy="22"
+                  r="20"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  fill="none"
+                  :stroke-dasharray="circleCircumference"
+                  :stroke-dashoffset="timerStrokeDashoffset"
+                  class="timer-progress"
+                />
+              </svg>
+              <div class="timer-content">
+                <div class="timer-value">{{ timeLeft }}</div>
+                <div class="timer-label">s</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Players Section -->
+          <div class="players-info">
+            <div class="players-badge">
+              <div class="players-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" />
+                  <path
+                    d="M23 21v-2a4 4 0 00-3-3.87"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16 3.13a4 4 0 010 7.75"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <span class="players-count">{{ players.length }}</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Battle Area -->
+      <main class="battle-arena">
+        <!-- Question Section -->
+        <div class="question-zone">
+          <div class="question-card" :class="{ answered: answered }">
+            <div class="question-header">
+              <div class="question-badge">
+                <span class="question-number">{{ currentQuestion }}</span>
+                <span class="question-total">/{{ totalQuestions }}</span>
+              </div>
+              <div class="difficulty-indicator">
+                <div class="difficulty-stars">
+                  <div class="star filled"></div>
+                  <div class="star filled"></div>
+                  <div class="star"></div>
                 </div>
               </div>
-              <div class="player-avatar-container">
-                <div class="player-avatar" :style="{ background: getPlayerGradient(player.id) }">
-                  {{ player.initials }}
-                </div>
-                <div class="player-status-indicator" :class="player.status">
-                  <div v-if="player.status === 'answered'" class="status-dot answered"></div>
-                  <div v-else-if="player.status === 'thinking'" class="status-dot thinking"></div>
-                  <div v-else class="status-dot waiting"></div>
-                </div>
+            </div>
+            <div class="question-content">
+              <h1 class="question-text">{{ currentQuestionData.question }}</h1>
+              <div class="word-highlight" v-if="currentQuestionData.word">
+                "{{ currentQuestionData.word }}"
               </div>
-              <div class="player-details">
-                <div class="player-name">{{ player.name }}</div>
-                <div class="player-stats">
-                  <div class="score-display">
-                    <span class="score-value">{{ player.score }}</span>
-                    <span class="score-label">pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Battle Grid -->
+        <div class="battle-grid">
+          <!-- Answers Grid -->
+          <div class="answers-arena">
+            <div class="answers-grid">
+              <button
+                v-for="(answer, index) in currentQuestionData.answers"
+                :key="index"
+                class="answer-card"
+                :class="getAnswerClass(index)"
+                :disabled="answered"
+                @click="selectAnswer(index)"
+              >
+                <div class="answer-indicator">
+                  <div class="answer-letter">{{ String.fromCharCode(65 + index) }}</div>
+                  <div class="answer-check" v-if="answered && index === correctAnswer">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M20 6L9 17l-5-5"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
                   </div>
-                  <div v-if="player.streak > 1" class="streak-indicator">🔥{{ player.streak }}</div>
+                  <div
+                    class="answer-x"
+                    v-if="answered && index === selectedAnswer && index !== correctAnswer"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M18 6L6 18"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M6 6l12 12"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
                 </div>
+                <div class="answer-content">
+                  <div class="answer-text">{{ answer.text }}</div>
+                </div>
+                <div class="answer-glow"></div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Scoreboard -->
+          <div class="live-scoreboard">
+            <div class="scoreboard-header">
+              <div class="scoreboard-title">
+                <svg class="leaderboard-icon" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M3 13h4l3-8 4 8h7"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Live Rankings
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- Enhanced Game Over Modal -->
-    <div v-if="gameOver" class="game-over-overlay">
-      <div class="celebration-confetti">
-        <div class="confetti" v-for="n in 50" :key="n"></div>
-      </div>
-      <div class="modal-backdrop" @click="closeGameOver"></div>
-      <div class="results-modal">
-        <div class="modal-decoration">
-          <div class="trophy-burst">
-            <div class="trophy-icon-main">🏆</div>
-            <div class="victory-rays"></div>
-          </div>
-        </div>
-
-        <div class="results-header">
-          <h2 class="results-title">🎉 Battle Complete!</h2>
-          <p class="results-subtitle">Amazing performance everyone!</p>
-        </div>
-
-        <div class="results-content">
-          <div class="champion-spotlight">
-            <div class="champion-crown">👑</div>
-            <div class="champion-avatar" :style="{ background: getPlayerGradient(winner.id) }">
-              {{ winner.initials || winner.name.charAt(0) }}
-            </div>
-            <h3 class="champion-name">{{ winner.name }}</h3>
-            <div class="champion-score">
-              <span class="score-number">{{ winner.score }}</span>
-              <span class="score-text">points</span>
-            </div>
-            <div class="victory-badge">🥇 CHAMPION</div>
-          </div>
-
-          <div class="final-leaderboard">
-            <h4 class="leaderboard-title">Final Leaderboard</h4>
-            <div class="leaderboard-list">
+            <div class="players-list">
               <div
-                v-for="(player, index) in sortedPlayers"
+                v-for="player in players"
                 :key="player.id"
-                class="leaderboard-item"
+                class="player-row"
                 :class="{
-                  champion: index === 0,
-                  'runner-up': index === 1,
-                  'third-place': index === 2,
                   'current-player': player.isCurrentUser,
+                  leader: player.rank === 1,
+                  animated: answered,
                 }"
               >
-                <div class="position-indicator">
-                  <div class="position-medal" v-if="index < 3">
-                    <span v-if="index === 0">🥇</span>
-                    <span v-else-if="index === 1">🥈</span>
-                    <span v-else>🥉</span>
+                <div class="player-position">
+                  <div class="rank-badge" :class="'rank-' + player.rank">
+                    <span v-if="player.rank === 1">👑</span>
+                    <span v-else>{{ player.rank }}</span>
                   </div>
-                  <div class="position-number" v-else>{{ index + 1 }}</div>
                 </div>
-                <div class="player-summary">
-                  <div
-                    class="player-mini-avatar"
-                    :style="{ background: getPlayerGradient(player.id) }"
-                  >
-                    {{ player.initials || player.name.charAt(0) }}
+                <div class="player-avatar-container">
+                  <div class="player-avatar" :style="{ background: getPlayerGradient(player.id) }">
+                    {{ player.initials }}
                   </div>
-                  <div class="player-info-summary">
-                    <div class="player-name-summary">{{ player.name }}</div>
-                    <div class="player-performance">
-                      <span class="final-score">{{ player.score }} pts</span>
-                      <span v-if="player.streak > 1" class="final-streak"
-                        >🔥{{ player.streak }}</span
-                      >
+                  <div class="player-status-indicator" :class="player.status">
+                    <div v-if="player.status === 'answered'" class="status-dot answered"></div>
+                    <div v-else-if="player.status === 'thinking'" class="status-dot thinking"></div>
+                    <div v-else class="status-dot waiting"></div>
+                  </div>
+                </div>
+                <div class="player-details">
+                  <div class="player-name">{{ player.name }}</div>
+                  <div class="player-stats">
+                    <div class="score-display">
+                      <span class="score-value">{{ player.score }}</span>
+                      <span class="score-label">pts</span>
+                    </div>
+                    <div v-if="player.streak > 1" class="streak-indicator">
+                      🔥{{ player.streak }}
                     </div>
                   </div>
                 </div>
@@ -327,57 +253,191 @@
             </div>
           </div>
         </div>
+      </main>
+    </template>
 
-        <div class="results-actions">
-          <button class="action-btn primary-action" @click="playAgain">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M1 4v6h6"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M3.51 15a9 9 0 1015.8-5"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            Play Again
-          </button>
-          <button class="action-btn secondary-action" @click="exitGame">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <polyline
-                points="16,17 21,12 16,7"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <line
-                x1="21"
-                y1="12"
-                x2="9"
-                y2="12"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            Exit to Menu
-          </button>
+    <!-- Full Screen Game Results -->
+    <div v-if="gameOver" class="fullscreen-results">
+      <!-- Background Effects -->
+      <div class="celebration-confetti">
+        <div class="confetti" v-for="n in 50" :key="n"></div>
+      </div>
+      <div class="fireworks">
+        <div class="firework" v-for="n in 5" :key="n"></div>
+      </div>
+
+      <!-- Victory Header Full Width -->
+      <div class="fullscreen-header">
+        <div class="trophy-celebration">
+          <div class="trophy-icon-large">🏆</div>
+          <div class="victory-rays"></div>
+          <div class="sparkles">
+            <span v-for="n in 8" :key="n" class="sparkle">✨</span>
+          </div>
         </div>
+        <h1 class="victory-title">🎉 Trận Đấu Hoàn Thành!</h1>
+        <p class="victory-subtitle">Thật tuyệt vời! Hãy xem kết quả nào!</p>
+      </div>
+
+      <!-- Main Results Section -->
+      <div class="fullscreen-content">
+        <div class="results-container">
+          <!-- Winner Spotlight - Larger -->
+          <div class="champion-showcase">
+            <div class="champion-crown-large">👑</div>
+            <div
+              class="champion-avatar-large"
+              :style="{ background: getPlayerGradient(winner.id) }"
+            >
+              {{ winner.initials || winner.name.charAt(0) }}
+              <div class="champion-glow"></div>
+            </div>
+            <h2 class="champion-title">{{ winner.name }}</h2>
+            <div class="champion-score-large">
+              <span class="score-massive">{{ winner.score }}</span>
+              <span class="score-label-large">điểm</span>
+            </div>
+            <div class="champion-badge-large">🥇 CHAMPION</div>
+
+            <!-- Extended Stats -->
+            <div class="champion-stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon-large">🎯</div>
+                <div class="stat-value-large">{{ getAccuracyRate(winner) }}%</div>
+                <div class="stat-label-large">Độ chính xác</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-large">🔥</div>
+                <div class="stat-value-large">{{ winner.streak }}</div>
+                <div class="stat-label-large">Streak tối đa</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-large">⚡</div>
+                <div class="stat-value-large">{{ totalQuestions }}</div>
+                <div class="stat-label-large">Tổng câu hỏi</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-large">🎁</div>
+                <div class="stat-value-large">+{{ Math.floor(winner.score * 0.2) || 0 }}</div>
+                <div class="stat-label-large">Bonus XP</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Leaderboard Section - Expanded -->
+          <div class="leaderboard-expanded">
+            <h3 class="leaderboard-title-large">🏆 Bảng Xếp Hạng Cuối</h3>
+            <div class="rankings-list">
+              <div
+                v-for="(player, index) in sortedPlayers"
+                :key="player.id"
+                class="ranking-card"
+                :class="{
+                  'is-winner': index === 0,
+                  'is-current': player.isCurrentUser,
+                }"
+              >
+                <div class="rank-position-large">
+                  <span v-if="index === 0" class="gold-medal-large">🥇</span>
+                  <span v-else-if="index === 1" class="silver-medal-large">🥈</span>
+                  <span v-else-if="index === 2" class="bronze-medal-large">🥉</span>
+                  <span v-else class="position-num-large">{{ index + 1 }}</span>
+                </div>
+                <div class="player-info-large">
+                  <div
+                    class="player-avatar-medium"
+                    :style="{ background: getPlayerGradient(player.id) }"
+                  >
+                    {{ player.initials || player.name.charAt(0) }}
+                  </div>
+                  <div class="player-data">
+                    <div class="player-name-large">{{ player.name }}</div>
+                    <div class="player-stats-large">
+                      <span class="score-points">{{ player.score }} điểm</span>
+                      <span class="accuracy-percent">{{ getAccuracyRate(player) }}% chính xác</span>
+                      <span v-if="player.streak > 1" class="streak-display"
+                        >🔥 {{ player.streak }} streak</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div v-if="player.isCurrentUser" class="current-player-tag">BẠN</div>
+              </div>
+            </div>
+
+            <!-- Motivation Message -->
+            <div class="motivation-card-large">
+              <span class="motivation-icon-large">{{ getMotivationIcon() }}</span>
+              <span class="motivation-text-large">{{ getMotivationTitle() }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons - Full Width -->
+      <div class="fullscreen-actions">
+        <button class="action-btn-large primary-large" @click="playAgain">
+          <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M1 4v6h6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3.51 15a9 9 0 1015.8-5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Chơi Lại</span>
+        </button>
+
+        <button class="action-btn-large secondary-large" @click="viewLeaderboard">
+          <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M3 13h4l3-8 4 8h7"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Bảng Xếp Hạng</span>
+        </button>
+
+        <button class="action-btn-large tertiary-large" @click="exitGame">
+          <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <polyline
+              points="16,17 21,12 16,7"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <line
+              x1="21"
+              y1="12"
+              x2="9"
+              y2="12"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Thoát Game</span>
+        </button>
       </div>
     </div>
   </div>
@@ -480,6 +540,10 @@ const winner = computed(() => {
   return sortedPlayers.value[0]
 })
 
+const currentPlayer = computed(() => {
+  return players.value.find((p) => p.isCurrentUser)
+})
+
 // Authentication check
 const checkAuthentication = () => {
   // Simple auth check - in real app this would check actual login status
@@ -507,6 +571,13 @@ onMounted(() => {
     timePerQuestion.value = parseInt(route.query.timePerQuestion)
     timeLeft.value = timePerQuestion.value
   }
+
+  // Debug log
+  console.log('Game initialized:', {
+    gameOver: gameOver.value,
+    currentQuestion: currentQuestion.value,
+    totalQuestions: totalQuestions.value,
+  })
 
   startTimer()
   loadQuestion()
@@ -641,10 +712,6 @@ const getAnswerClass = (index) => {
   return 'disabled'
 }
 
-const closeGameOver = () => {
-  // Allow closing by clicking backdrop
-}
-
 const playAgain = () => {
   // Reset game state
   currentQuestion.value = 1
@@ -652,6 +719,7 @@ const playAgain = () => {
   answered.value = false
   gameOver.value = false
   selectedAnswer.value = null
+  correctAnswer.value = null
 
   // Reset players
   players.value.forEach((player) => {
@@ -665,8 +733,68 @@ const playAgain = () => {
   startTimer()
 }
 
+// Debug function - force reset to game state
+const resetToGame = () => {
+  gameOver.value = false
+  currentQuestion.value = 1
+  answered.value = false
+  selectedAnswer.value = null
+  correctAnswer.value = null
+  timeLeft.value = timePerQuestion.value
+
+  // Reset all players
+  players.value.forEach((player) => {
+    player.score = 0
+    player.streak = 0
+    player.rank = 1
+    player.status = 'thinking'
+  })
+
+  loadQuestion()
+  startTimer()
+}
+
 const exitGame = () => {
+  // Clear any running timer
+  if (gameInterval.value) {
+    clearInterval(gameInterval.value)
+  }
+  // Navigate back to challenges
   router.push('/dashboard/challenges')
+}
+
+const viewLeaderboard = () => {
+  router.push('/dashboard/leaderboard')
+}
+
+const getMotivationIcon = () => {
+  const currentPlayerData = currentPlayer.value
+  if (!currentPlayerData) return '🎯'
+
+  const accuracy = getAccuracyRate(currentPlayerData)
+  if (accuracy >= 90) return '🌟'
+  if (accuracy >= 70) return '🎯'
+  if (accuracy >= 50) return '💪'
+  return '📚'
+}
+
+const getAccuracyRate = (player) => {
+  if (!player || !totalQuestions.value) return 0
+  // Giả sử mỗi câu đúng được 1 điểm, có thể có bonus
+  // Để tính chính xác, ta giới hạn tối đa là số câu hỏi
+  const correctAnswers = Math.min(player.score, totalQuestions.value)
+  return Math.round((correctAnswers / totalQuestions.value) * 100)
+}
+
+const getMotivationTitle = () => {
+  const currentPlayerData = currentPlayer.value
+  if (!currentPlayerData) return 'Cố gắng lên!'
+
+  const accuracy = getAccuracyRate(currentPlayerData)
+  if (accuracy >= 90) return 'Xuất sắc!'
+  if (accuracy >= 70) return 'Rất tốt!'
+  if (accuracy >= 50) return 'Khá ổn!'
+  return 'Cố gắng hơn nữa!'
 }
 
 const getPlayerGradient = (playerId) => {
@@ -986,6 +1114,28 @@ const getPlayerGradient = (playerId) => {
   font-size: 14px;
   font-weight: 600;
   color: #4a5568;
+}
+
+.debug-reset-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.debug-reset-btn:hover {
+  background: rgba(239, 68, 68, 1);
+  transform: scale(1.1);
 }
 
 /* Battle Arena */
@@ -1497,18 +1647,19 @@ const getPlayerGradient = (playerId) => {
   border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
-/* Enhanced Game Over Modal */
-.game-over-overlay {
+/* Full Screen Results Layout */
+.fullscreen-results {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 1000;
+  background: radial-gradient(ellipse at center, #667eea 0%, #764ba2 100%);
+  overflow-y: auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .celebration-confetti {
@@ -1550,192 +1701,612 @@ const getPlayerGradient = (playerId) => {
   }
 }
 
-.modal-backdrop {
+.fireworks {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-}
-
-.results-modal {
-  position: relative;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  border-radius: 32px;
-  padding: 0;
-  max-width: 600px;
-  width: 100%;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
   overflow: hidden;
-  animation: modal-appear 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes modal-appear {
+.firework {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #fff 0%, transparent 70%);
+  border-radius: 50%;
+  animation: firework-burst 2s ease-out infinite;
+}
+
+.firework:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+.firework:nth-child(2) {
+  top: 30%;
+  left: 80%;
+  animation-delay: 0.5s;
+}
+.firework:nth-child(3) {
+  top: 60%;
+  left: 15%;
+  animation-delay: 1s;
+}
+.firework:nth-child(4) {
+  top: 70%;
+  left: 70%;
+  animation-delay: 1.5s;
+}
+.firework:nth-child(5) {
+  top: 40%;
+  left: 50%;
+  animation-delay: 0.8s;
+}
+
+@keyframes firework-burst {
   0% {
-    opacity: 0;
-    transform: scale(0.8) translateY(40px);
+    transform: scale(0);
+    opacity: 1;
+    box-shadow:
+      0 0 0 0px #fff,
+      0 0 0 0px #f59e0b,
+      0 0 0 0px #10b981,
+      0 0 0 0px #ef4444;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.8;
+    box-shadow:
+      0 0 20px 8px #fff,
+      10px 10px 20px 6px #f59e0b,
+      -10px 10px 20px 6px #10b981,
+      10px -10px 20px 6px #ef4444,
+      -10px -10px 20px 6px #667eea;
   }
   100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: scale(1.5);
+    opacity: 0;
+    box-shadow:
+      0 0 50px 20px transparent,
+      20px 20px 50px 15px transparent,
+      -20px 20px 50px 15px transparent,
+      20px -20px 50px 15px transparent,
+      -20px -20px 50px 15px transparent;
   }
 }
 
-.modal-decoration {
-  position: relative;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  padding: 40px 40px 80px;
+/* Fullscreen Header */
+.fullscreen-header {
   text-align: center;
+  padding: 24px 0 16px;
+  position: relative;
 }
 
-.trophy-burst {
+.trophy-celebration {
   position: relative;
   display: inline-block;
+  margin-bottom: 20px;
 }
 
-.trophy-icon-main {
-  font-size: 64px;
+.trophy-icon-large {
+  font-size: 56px;
   position: relative;
   z-index: 2;
-  animation: trophy-bounce 1s ease-in-out infinite alternate;
+  animation: trophy-bounce 2s ease-in-out infinite alternate;
 }
 
-@keyframes trophy-bounce {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-8px);
-  }
+.victory-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 6px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.victory-rays {
+.victory-subtitle {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-weight: 500;
+}
+
+.sparkles {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100px;
-  height: 100px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
-  border-radius: 50%;
-  animation: rays-pulse 2s ease-in-out infinite;
+  width: 120px;
+  height: 120px;
 }
 
-@keyframes rays-pulse {
+.sparkle {
+  position: absolute;
+  font-size: 16px;
+  animation: sparkle-twinkle 1.5s ease-in-out infinite;
+}
+
+.sparkle:nth-child(1) {
+  top: 0;
+  left: 50%;
+  animation-delay: 0s;
+}
+.sparkle:nth-child(2) {
+  top: 20%;
+  right: 0;
+  animation-delay: 0.2s;
+}
+.sparkle:nth-child(3) {
+  bottom: 20%;
+  right: 0;
+  animation-delay: 0.4s;
+}
+.sparkle:nth-child(4) {
+  bottom: 0;
+  left: 50%;
+  animation-delay: 0.6s;
+}
+.sparkle:nth-child(5) {
+  bottom: 20%;
+  left: 0;
+  animation-delay: 0.8s;
+}
+.sparkle:nth-child(6) {
+  top: 20%;
+  left: 0;
+  animation-delay: 1s;
+}
+
+@keyframes sparkle-twinkle {
   0%,
   100% {
-    transform: translate(-50%, -50%) scale(1);
     opacity: 0.3;
+    transform: scale(0.8);
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 0.6;
+    opacity: 1;
+    transform: scale(1.2);
   }
 }
 
-.results-header {
-  padding: 0 40px 32px;
+/* Fullscreen Content */
+.fullscreen-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 24px 16px;
+}
+
+.results-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1400px;
+  width: 100%;
+  align-items: start;
+}
+
+/* Champion Showcase - Left Side */
+.champion-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  color: white;
-}
-
-.results-title {
-  font-size: 32px;
-  font-weight: 700;
-  margin: 16px 0 8px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.results-subtitle {
-  font-size: 16px;
-  opacity: 0.9;
-  margin: 0;
-}
-
-.results-content {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 32px;
   padding: 40px;
-  background: rgba(255, 255, 255, 0.95);
-}
-
-.champion-spotlight {
-  text-align: center;
-  margin-bottom: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
+  overflow: hidden;
 }
 
-.champion-crown {
-  font-size: 24px;
-  margin-bottom: 8px;
-  animation: crown-glow 2s ease-in-out infinite alternate;
+.champion-showcase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(249, 115, 22, 0.05));
+  border-radius: 32px;
 }
 
-@keyframes crown-glow {
-  0% {
-    filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.5));
-  }
-  100% {
-    filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8));
-  }
+.champion-crown-large {
+  font-size: 36px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+  animation: crown-float 3s ease-in-out infinite alternate;
 }
 
-.champion-avatar {
-  width: 80px;
-  height: 80px;
+.champion-avatar-large {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 700;
-  margin: 0 auto 16px;
-  border: 4px solid rgba(245, 158, 11, 0.3);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 6px solid rgba(245, 158, 11, 0.4);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.2),
+    inset 0 4px 0 rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 
-.champion-name {
-  font-size: 24px;
-  font-weight: 700;
-  color: #2d3748;
-  margin: 0 0 8px;
+.champion-glow {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #f59e0b, #f97316, #ea580c, #f59e0b);
+  opacity: 0.7;
+  animation: winner-spin 4s linear infinite;
+  z-index: -1;
 }
 
-.champion-score {
+.champion-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 12px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.champion-score-large {
   display: flex;
   align-items: baseline;
-  justify-content: center;
-  gap: 4px;
-  margin-bottom: 12px;
+  gap: 8px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
 }
 
-.score-number {
-  font-size: 32px;
-  font-weight: 700;
-  color: #667eea;
+.score-massive {
+  font-size: 56px;
+  font-weight: 900;
+  color: #f59e0b;
+  text-shadow: 0 4px 8px rgba(245, 158, 11, 0.4);
 }
 
-.score-text {
-  font-size: 16px;
-  color: #718096;
+.score-label-large {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
 }
 
-.victory-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+.champion-badge-large {
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
   color: white;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-size: 14px;
+  padding: 12px 32px;
+  border-radius: 24px;
+  font-size: 16px;
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 2;
 }
 
-.final-leaderboard {
-  margin-bottom: 32px;
+.champion-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-icon-large {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.stat-value-large {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.stat-label-large {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Leaderboard Expanded - Right Side */
+.leaderboard-expanded {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 32px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.leaderboard-title-large {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 24px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.rankings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.ranking-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.ranking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.ranking-card.is-winner {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+}
+
+.ranking-card.is-current {
+  background: rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.rank-position-large {
+  width: 40px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.gold-medal-large,
+.silver-medal-large,
+.bronze-medal-large {
+  font-size: 24px;
+}
+
+.position-num-large {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+}
+
+.player-info-large {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.player-avatar-medium {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.player-data {
+  flex: 1;
+}
+
+.player-name-large {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.player-stats-large {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.score-points {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.2);
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+.accuracy-percent {
+  font-size: 12px;
+  font-weight: 500;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.2);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.streak-display {
+  font-size: 12px;
+  font-weight: 500;
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.2);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.current-player-tag {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.motivation-card-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: rgba(16, 185, 129, 0.2);
+  border-radius: 16px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.motivation-icon-large {
+  font-size: 24px;
+}
+
+.motivation-text-large {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Fullscreen Actions */
+.fullscreen-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 24px 24px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.action-btn-large {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  min-width: 160px;
+  justify-content: center;
+}
+
+.btn-icon-large {
+  width: 24px;
+  height: 24px;
+}
+
+.primary-large {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+
+.primary-large:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
+}
+
+.secondary-large {
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+  color: white;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+}
+
+.secondary-large:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.5);
+}
+
+.tertiary-large {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.tertiary-large:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Responsive Design for Fullscreen */
+@media (max-width: 1024px) {
+  .results-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 600px;
+  }
+
+  .fullscreen-content {
+    padding: 0 24px 20px;
+  }
+
+  .victory-title {
+    font-size: 36px;
+  }
+
+  .champion-showcase {
+    padding: 32px 24px;
+  }
+
+  .champion-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
 }
 
 .leaderboard-title {
@@ -1761,6 +2332,7 @@ const getPlayerGradient = (playerId) => {
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .leaderboard-item.champion {
@@ -1840,6 +2412,7 @@ const getPlayerGradient = (playerId) => {
   display: flex;
   gap: 8px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .final-score {
@@ -1854,53 +2427,107 @@ const getPlayerGradient = (playerId) => {
   color: #f59e0b;
 }
 
-.results-actions {
-  display: flex;
-  gap: 16px;
-  padding: 32px 40px;
-  background: rgba(255, 255, 255, 0.95);
-}
-
-.action-btn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 16px 24px;
-  border-radius: 16px;
-  font-size: 16px;
+.accuracy-rate {
+  font-size: 12px;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: none;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
 }
 
-.btn-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.primary-action {
+.you-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.primary-action:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
-}
+@media (max-width: 480px) {
+  .fullscreen-header {
+    padding: 20px 0 12px;
+  }
 
-.secondary-action {
-  background: rgba(255, 255, 255, 0.9);
-  color: #4a5568;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
+  .victory-title {
+    font-size: 24px;
+  }
 
-.secondary-action:hover {
-  background: rgba(255, 255, 255, 1);
-  transform: translateY(-1px);
+  .victory-subtitle {
+    font-size: 14px;
+  }
+
+  .trophy-icon-large {
+    font-size: 40px;
+  }
+
+  .champion-avatar-large {
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+  }
+
+  .champion-title {
+    font-size: 20px;
+  }
+
+  .score-massive {
+    font-size: 32px;
+  }
+
+  .champion-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .stat-card {
+    padding: 12px;
+  }
+
+  .stat-icon-large {
+    font-size: 20px;
+  }
+
+  .stat-value-large {
+    font-size: 18px;
+  }
+
+  .ranking-card {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .player-avatar-medium {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .player-name-large {
+    font-size: 14px;
+  }
+
+  .player-stats-large {
+    gap: 8px;
+  }
+
+  .score-points,
+  .accuracy-percent,
+  .streak-display {
+    font-size: 11px;
+    padding: 1px 6px;
+  }
+
+  .action-btn-large {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
 }
 
 /* Responsive Design */
@@ -1998,6 +2625,101 @@ const getPlayerGradient = (playerId) => {
   .results-modal {
     max-width: 90vw;
     margin: 20px;
+  }
+
+  .fullscreen-header {
+    padding: 24px 0 16px;
+  }
+
+  .victory-title {
+    font-size: 28px;
+  }
+
+  .victory-subtitle {
+    font-size: 16px;
+  }
+
+  .trophy-icon-large {
+    font-size: 48px;
+  }
+
+  .fullscreen-content {
+    padding: 0 16px 16px;
+  }
+
+  .champion-showcase {
+    padding: 24px 20px;
+  }
+
+  .champion-avatar-large {
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
+  }
+
+  .champion-title {
+    font-size: 24px;
+  }
+
+  .score-massive {
+    font-size: 40px;
+  }
+
+  .score-label-large {
+    font-size: 16px;
+  }
+
+  .champion-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-value-large {
+    font-size: 20px;
+  }
+
+  .leaderboard-expanded {
+    padding: 24px 20px;
+  }
+
+  .leaderboard-title-large {
+    font-size: 20px;
+  }
+
+  .ranking-card {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .player-avatar-medium {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .player-name-large {
+    font-size: 16px;
+  }
+
+  .fullscreen-actions {
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 16px;
+  }
+
+  .action-btn-large {
+    padding: 14px 24px;
+    font-size: 14px;
+    min-width: auto;
+  }
+
+  .btn-icon-large {
+    width: 20px;
+    height: 20px;
   }
 
   .modal-decoration {
