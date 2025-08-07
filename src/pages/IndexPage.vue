@@ -10,7 +10,7 @@
               <q-icon name="extension" class="header-icon" />
               <div class="header-info">
                 <div class="header-title">Thách đấu với Bot</div>
-                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi m��i 30-60 giây</div>
+                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
               </div>
             </div>
           </q-card-section>
@@ -284,59 +284,39 @@
           </q-card-section>
 
           <q-card-section class="leaderboard-content">
-            <!-- Leaderboard Item 1 -->
-            <div class="leaderboard-item first-place">
-              <q-icon name="emoji_events" color="amber" size="16px" />
-              <q-avatar size="32px" class="rank-avatar gold">MA</q-avatar>
+            <!-- Dynamic Leaderboard Items -->
+            <div
+              v-for="(player, index) in getCurrentLeaderboard()"
+              :key="player.id"
+              class="leaderboard-item"
+              :class="{
+                'first-place': index === 0,
+                'second-place': index === 1,
+                'third-place': index === 2
+              }"
+            >
+              <q-icon
+                :name="index < 3 ? 'emoji_events' : 'star'"
+                :color="index === 0 ? 'amber' : index === 1 ? 'grey-5' : index === 2 ? 'orange' : 'blue'"
+                :size="index < 3 ? '16px' : '12px'"
+                :style="index === 1 ? 'opacity: 0.2' : ''"
+              />
+              <q-avatar
+                size="32px"
+                :class="[
+                  'rank-avatar',
+                  index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? 'bronze' : 'blue'
+                ]"
+              >
+                {{ player.avatar }}
+              </q-avatar>
               <div class="player-info">
-                <div class="player-name">Minh Anh</div>
-                <div class="player-streak">Streak: 15</div>
+                <div class="player-name">{{ player.name }}</div>
+                <div class="player-streak">Streak: {{ player.streak }}</div>
               </div>
               <div class="player-score">
-                <div class="score-number">2,456</div>
+                <div class="score-number">{{ player.score.toLocaleString() }}</div>
                 <div class="score-label">Câu đúng</div>
-              </div>
-            </div>
-
-            <!-- Leaderboard Item 2 -->
-            <div class="leaderboard-item second-place">
-              <q-icon name="emoji_events" color="grey-5" size="16px" style="opacity: 0.2" />
-              <q-avatar size="32px" class="rank-avatar silver">TH</q-avatar>
-              <div class="player-info">
-                <div class="player-name">Thành Hòa</div>
-                <div class="player-streak">Streak: 23</div>
-              </div>
-              <div class="player-score">
-                <div class="score-number">2,195</div>
-                <div class="score-label">Câu đúng</div>
-              </div>
-            </div>
-
-            <!-- Leaderboard Item 3 -->
-            <div class="leaderboard-item third-place">
-              <q-icon name="emoji_events" color="orange" size="16px" />
-              <q-avatar size="32px" class="rank-avatar bronze">VN</q-avatar>
-              <div class="player-info">
-                <div class="player-name">Văn Nam</div>
-                <div class="player-streak">Streak: 12</div>
-              </div>
-              <div class="player-score">
-                <div class="score-number">1,957</div>
-                <div class="score-label">Câu đúng</div>
-              </div>
-            </div>
-
-            <!-- Leaderboard Item 4 -->
-            <div class="leaderboard-item">
-              <q-icon name="star" color="blue" size="12px" />
-              <q-avatar size="32px" class="rank-avatar blue">TT</q-avatar>
-              <div class="player-info">
-                <div class="player-name">Thu Trang</div>
-                <div class="player-streak">Streak: 8</div>
-              </div>
-              <div class="player-score">
-                <div class="score-number">1,834</div>
-                <div class="score-label">câu đúng</div>
               </div>
             </div>
 
