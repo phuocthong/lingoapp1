@@ -382,7 +382,7 @@
                   <div class="position-medal" v-if="index < 3">
                     <span v-if="index === 0">🥇</span>
                     <span v-else-if="index === 1">🥈</span>
-                    <span v-else>����</span>
+                    <span v-else>🥉</span>
                   </div>
                   <div class="position-number" v-else>{{ index + 1 }}</div>
                 </div>
@@ -427,7 +427,7 @@
                 <path d="M1 4v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M3.51 15a9 9 0 1015.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Chơi Lại</span>
+              <span>Chơi L��i</span>
             </div>
             <div class="btn-shimmer"></div>
           </button>
@@ -2323,30 +2323,39 @@ const getPlayerGradient = (playerId) => {
 }
 
 .results-actions {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
   padding: 32px 40px;
   background: rgba(255, 255, 255, 0.95);
 }
 
 .action-btn {
-  flex: 1;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 16px 24px;
+  padding: 16px 20px;
   border-radius: 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
+  overflow: hidden;
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
 }
 
 .btn-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .primary-action {
@@ -2360,15 +2369,43 @@ const getPlayerGradient = (playerId) => {
   box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
 }
 
+.btn-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.primary-action:hover .btn-shimmer {
+  left: 100%;
+}
+
 .secondary-action {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.secondary-action:hover {
+  background: rgba(245, 158, 11, 0.2);
+  transform: translateY(-1px);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.tertiary-action {
   background: rgba(255, 255, 255, 0.9);
   color: #4a5568;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.secondary-action:hover {
+.tertiary-action:hover {
   background: rgba(255, 255, 255, 1);
   transform: translateY(-1px);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design */
