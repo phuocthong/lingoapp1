@@ -382,7 +382,7 @@
                   <div class="position-medal" v-if="index < 3">
                     <span v-if="index === 0">🥇</span>
                     <span v-else-if="index === 1">🥈</span>
-                    <span v-else>🥉</span>
+                    <span v-else>����</span>
                   </div>
                   <div class="position-number" v-else>{{ index + 1 }}</div>
                 </div>
@@ -2284,6 +2284,7 @@ const getPlayerGradient = (playerId) => {
   display: flex;
   gap: 8px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .final-score {
@@ -2296,6 +2297,29 @@ const getPlayerGradient = (playerId) => {
   font-size: 12px;
   font-weight: 600;
   color: #f59e0b;
+}
+
+.accuracy-rate {
+  font-size: 12px;
+  font-weight: 600;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.you-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .results-actions {
