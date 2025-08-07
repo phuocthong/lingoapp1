@@ -1639,6 +1639,41 @@ const getPlayerGradient = (playerId) => {
   }
 }
 
+/* Fullscreen Header */
+.fullscreen-header {
+  text-align: center;
+  padding: 40px 0 20px;
+  position: relative;
+}
+
+.trophy-celebration {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.trophy-icon-large {
+  font-size: 72px;
+  position: relative;
+  z-index: 2;
+  animation: trophy-bounce 2s ease-in-out infinite alternate;
+}
+
+.victory-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 8px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.victory-subtitle {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-weight: 500;
+}
+
 .sparkles {
   position: absolute;
   top: 50%;
