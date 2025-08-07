@@ -271,7 +271,7 @@
           <q-card-section class="card-header">
             <div class="header-content">
               <q-icon name="emoji_events" size="20px" />
-              <div class="header-title">Bảng xếp hạng</div>
+              <div class="header-title">Bảng x��p hạng</div>
               <q-icon name="trending_up" size="16px" class="trend-icon" />
             </div>
 
@@ -990,27 +990,6 @@ const getCurrentLeaderboard = () => {
 
 /* Responsive modal styles */
 @media (max-width: 768px) {
-  .modal-card {
-    width: 95vw;
-    max-height: 80vh;
-  }
-
-  .modal-header {
-    padding: 12px 16px;
-  }
-
-  .modal-content {
-    padding: 16px;
-  }
-
-  .modal-title {
-    font-size: 16px;
-  }
-
-  .answerer-item {
-    padding: 8px;
-  }
-
   .details-dropdown .q-btn__content {
     font-size: 11px;
   }
