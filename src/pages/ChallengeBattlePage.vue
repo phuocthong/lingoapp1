@@ -251,146 +251,141 @@
       </div>
     </main>
 
-    <!-- Enhanced Game Over Modal -->
-    <div v-if="gameOver" class="game-over-overlay">
-      <!-- Close Button -->
-      <button class="modal-close-btn" @click="exitGame" aria-label="Đóng">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-
+    <!-- Full Screen Game Results -->
+    <div v-if="gameOver" class="fullscreen-results">
+      <!-- Background Effects -->
       <div class="celebration-confetti">
         <div class="confetti" v-for="n in 50" :key="n"></div>
       </div>
       <div class="fireworks">
         <div class="firework" v-for="n in 5" :key="n"></div>
       </div>
-      <div class="modal-backdrop" @click="exitGame"></div>
 
-      <div class="results-modal">
-        <!-- Victory Header -->
-        <div class="modal-decoration">
-          <div class="trophy-burst">
-            <div class="trophy-icon-main">🏆</div>
-            <div class="victory-rays"></div>
-            <div class="sparkles">
-              <span v-for="n in 6" :key="n" class="sparkle">✨</span>
-            </div>
+      <!-- Victory Header Full Width -->
+      <div class="fullscreen-header">
+        <div class="trophy-celebration">
+          <div class="trophy-icon-large">🏆</div>
+          <div class="victory-rays"></div>
+          <div class="sparkles">
+            <span v-for="n in 8" :key="n" class="sparkle">✨</span>
           </div>
         </div>
+        <h1 class="victory-title">🎉 Trận Đấu Hoàn Thành!</h1>
+        <p class="victory-subtitle">Thật tuyệt vời! Hãy xem kết quả nào!</p>
+      </div>
 
-        <div class="results-header">
-          <h2 class="results-title">🎉 Trận Đấu Hoàn Thành!</h2>
-          <p class="results-subtitle">Thật tuyệt vời! Hãy xem kết quả nào!</p>
-        </div>
-
-        <div class="results-content">
-          <!-- Main Results Layout - 2 cột -->
-          <div class="results-main">
-            <!-- Left: Winner Section -->
-            <div class="winner-section">
-              <div class="winner-crown">👑</div>
-              <div class="winner-avatar-container">
-                <div class="winner-avatar" :style="{ background: getPlayerGradient(winner.id) }">
-                  {{ winner.initials || winner.name.charAt(0) }}
-                </div>
-                <div class="winner-shine"></div>
-              </div>
-              <h3 class="winner-name">{{ winner.name }}</h3>
-              <div class="winner-score">
-                <span class="score-big">{{ winner.score }}</span>
-                <span class="score-unit">điểm</span>
-              </div>
-              <div class="winner-badge">🥇 CHAMPION</div>
-
-              <!-- Winner Stats Row -->
-              <div class="winner-stats">
-                <div class="mini-stat">
-                  <div class="mini-stat-value">{{ Math.round((winner.score / totalQuestions) * 100) || 0 }}%</div>
-                  <div class="mini-stat-label">Chính xác</div>
-                </div>
-                <div class="mini-stat">
-                  <div class="mini-stat-value">{{ winner.streak }}</div>
-                  <div class="mini-stat-label">🔥 Streak</div>
-                </div>
-              </div>
+      <!-- Main Results Section -->
+      <div class="fullscreen-content">
+        <div class="results-container">
+          <!-- Winner Spotlight - Larger -->
+          <div class="champion-showcase">
+            <div class="champion-crown-large">👑</div>
+            <div class="champion-avatar-large" :style="{ background: getPlayerGradient(winner.id) }">
+              {{ winner.initials || winner.name.charAt(0) }}
+              <div class="champion-glow"></div>
             </div>
+            <h2 class="champion-title">{{ winner.name }}</h2>
+            <div class="champion-score-large">
+              <span class="score-massive">{{ winner.score }}</span>
+              <span class="score-label-large">điểm</span>
+            </div>
+            <div class="champion-badge-large">🥇 CHAMPION</div>
 
-            <!-- Right: Leaderboard -->
-            <div class="leaderboard-section">
-              <h4 class="leaderboard-title">🏆 Bảng Xếp Hạng</h4>
-              <div class="final-rankings">
-                <div
-                  v-for="(player, index) in sortedPlayers"
-                  :key="player.id"
-                  class="ranking-item"
-                  :class="{
-                    'is-winner': index === 0,
-                    'is-current': player.isCurrentUser
-                  }"
-                >
-                  <div class="ranking-position">
-                    <span v-if="index === 0" class="gold-medal">🥇</span>
-                    <span v-else-if="index === 1" class="silver-medal">🥈</span>
-                    <span v-else-if="index === 2" class="bronze-medal">🥉</span>
-                    <span v-else class="position-number">{{ index + 1 }}</span>
-                  </div>
-                  <div class="ranking-player">
-                    <div class="player-avatar-small" :style="{ background: getPlayerGradient(player.id) }">
-                      {{ player.initials || player.name.charAt(0) }}
-                    </div>
-                    <div class="player-details">
-                      <div class="player-name-small">{{ player.name }}</div>
-                      <div class="player-score-small">{{ player.score }} điểm</div>
-                    </div>
-                  </div>
-                  <div v-if="player.isCurrentUser" class="current-badge">BẠN</div>
-                </div>
+            <!-- Extended Stats -->
+            <div class="champion-stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon-large">🎯</div>
+                <div class="stat-value-large">{{ Math.round((winner.score / totalQuestions) * 100) || 0 }}%</div>
+                <div class="stat-label-large">Độ chính xác</div>
               </div>
-
-              <!-- Performance Summary -->
-              <div class="performance-summary">
-                <span class="performance-icon">{{ getMotivationIcon() }}</span>
-                <span class="performance-text">{{ getMotivationTitle() }}</span>
+              <div class="stat-card">
+                <div class="stat-icon-large">🔥</div>
+                <div class="stat-value-large">{{ winner.streak }}</div>
+                <div class="stat-label-large">Streak tối đa</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-large">⚡</div>
+                <div class="stat-value-large">{{ totalQuestions }}</div>
+                <div class="stat-label-large">Tổng câu hỏi</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-large">🎁</div>
+                <div class="stat-value-large">+{{ Math.floor(currentPlayer?.score * 0.2) || 0 }}</div>
+                <div class="stat-label-large">Bonus XP</div>
               </div>
             </div>
           </div>
+
+          <!-- Leaderboard Section - Expanded -->
+          <div class="leaderboard-expanded">
+            <h3 class="leaderboard-title-large">🏆 Bảng Xếp Hạng Cuối</h3>
+            <div class="rankings-list">
+              <div
+                v-for="(player, index) in sortedPlayers"
+                :key="player.id"
+                class="ranking-card"
+                :class="{
+                  'is-winner': index === 0,
+                  'is-current': player.isCurrentUser
+                }"
+              >
+                <div class="rank-position-large">
+                  <span v-if="index === 0" class="gold-medal-large">🥇</span>
+                  <span v-else-if="index === 1" class="silver-medal-large">🥈</span>
+                  <span v-else-if="index === 2" class="bronze-medal-large">🥉</span>
+                  <span v-else class="position-num-large">{{ index + 1 }}</span>
+                </div>
+                <div class="player-info-large">
+                  <div class="player-avatar-medium" :style="{ background: getPlayerGradient(player.id) }">
+                    {{ player.initials || player.name.charAt(0) }}
+                  </div>
+                  <div class="player-data">
+                    <div class="player-name-large">{{ player.name }}</div>
+                    <div class="player-stats-large">
+                      <span class="score-points">{{ player.score }} điểm</span>
+                      <span class="accuracy-percent">{{ Math.round((player.score / totalQuestions) * 100) || 0 }}% chính xác</span>
+                      <span v-if="player.streak > 1" class="streak-display">🔥 {{ player.streak }} streak</span>
+                    </div>
+                  </div>
+                </div>
+                <div v-if="player.isCurrentUser" class="current-player-tag">BẠN</div>
+              </div>
+            </div>
+
+            <!-- Motivation Message -->
+            <div class="motivation-card-large">
+              <span class="motivation-icon-large">{{ getMotivationIcon() }}</span>
+              <span class="motivation-text-large">{{ getMotivationTitle() }}</span>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Enhanced Action Buttons -->
-        <div class="results-actions">
-          <button class="action-btn primary-action" @click="playAgain">
-            <div class="btn-content">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                <path d="M1 4v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M3.51 15a9 9 0 1015.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span>Chơi Lại</span>
-            </div>
-            <div class="btn-shimmer"></div>
-          </button>
+      <!-- Action Buttons - Full Width -->
+      <div class="fullscreen-actions">
+        <button class="action-btn-large primary-large" @click="playAgain">
+          <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
+            <path d="M1 4v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3.51 15a9 9 0 1015.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Chơi Lại</span>
+        </button>
 
-          <button class="action-btn secondary-action" @click="viewLeaderboard">
-            <div class="btn-content">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                <path d="M3 13h4l3-8 4 8h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span>Bảng X��p Hạng</span>
-            </div>
-          </button>
+        <button class="action-btn-large secondary-large" @click="viewLeaderboard">
+          <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
+            <path d="M3 13h4l3-8 4 8h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Bảng Xếp Hạng</span>
+        </button>
 
-          <button class="action-btn tertiary-action" @click="exitGame">
-            <div class="btn-content">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <polyline points="16,17 21,12 16,7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span>Thoát</span>
-            </div>
-          </button>
-        </div>
+        <button class="action-btn-large tertiary-large" @click="exitGame">
+          <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
+            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="16,17 21,12 16,7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Thoát Game</span>
+        </button>
       </div>
     </div>
   </div>
