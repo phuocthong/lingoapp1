@@ -295,7 +295,7 @@
             <div class="champion-stats-grid">
               <div class="stat-card">
                 <div class="stat-icon-large">🎯</div>
-                <div class="stat-value-large">{{ Math.round((winner.score / totalQuestions) * 100) || 0 }}%</div>
+                <div class="stat-value-large">{{ getAccuracyRate(winner) }}%</div>
                 <div class="stat-label-large">Độ chính xác</div>
               </div>
               <div class="stat-card">
@@ -310,7 +310,7 @@
               </div>
               <div class="stat-card">
                 <div class="stat-icon-large">🎁</div>
-                <div class="stat-value-large">+{{ Math.floor(currentPlayer?.score * 0.2) || 0 }}</div>
+                <div class="stat-value-large">+{{ Math.floor(winner.score * 0.2) || 0 }}</div>
                 <div class="stat-label-large">Bonus XP</div>
               </div>
             </div>
