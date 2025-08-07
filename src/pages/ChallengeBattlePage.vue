@@ -694,16 +694,6 @@ const getMotivationTitle = () => {
   return 'Cố gắng hơn nữa!'
 }
 
-const getMotivationMessage = () => {
-  const currentPlayerData = currentPlayer.value
-  if (!currentPlayerData) return 'Tiếp tục luyện tập để cải thiện kỹ năng nhé!'
-
-  const accuracy = (currentPlayerData.score / totalQuestions.value) * 100
-  if (accuracy >= 90) return 'Bạn đã thể hiện sự hiểu biết tuyệt vời! Hãy tiếp tục duy trì phong độ này!'
-  if (accuracy >= 70) return 'Kết quả khá ấn tượng! Bạn đang trên đường phát triển tốt!'
-  if (accuracy >= 50) return 'Không tệ! Hãy ôn tập thêm để đạt kết quả cao hơn!'
-  return 'Đừng nản lòng! Mọi chuyên gia đều bắt đầu từ những bước đầu. Hãy tiếp tục luyện tập!'
-}
 
 const getPlayerGradient = (playerId) => {
   const gradients = [
