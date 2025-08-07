@@ -286,60 +286,75 @@
         </div>
 
         <div class="results-content">
-          <!-- Champion và Stats gộp lại -->
-          <div class="champion-section">
-            <div class="champion-info">
-              <div class="champion-crown">👑</div>
-              <div class="champion-avatar" :style="{ background: getPlayerGradient(winner.id) }">
-                {{ winner.initials || winner.name.charAt(0) }}
-              </div>
-              <h3 class="champion-name">{{ winner.name }}</h3>
-              <div class="champion-score">{{ winner.score }} điểm</div>
-            </div>
-
-            <div class="quick-stats">
-              <div class="quick-stat">
-                <span class="stat-value">{{ Math.round((winner.score / totalQuestions) * 100) || 0 }}%</span>
-                <span class="stat-label">Chính xác</span>
-              </div>
-              <div class="quick-stat">
-                <span class="stat-value">{{ winner.streak }}</span>
-                <span class="stat-label">🔥 Streak</span>
-              </div>
-              <div class="quick-stat">
-                <span class="stat-value">+{{ Math.floor(currentPlayer?.score * 0.1) || 0 }}</span>
-                <span class="stat-label">XP</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Leaderboard ngắn gọn -->
-          <div class="compact-leaderboard">
-            <h4 class="section-title">Kết Quả</h4>
-            <div class="players-result">
-              <div
-                v-for="(player, index) in sortedPlayers"
-                :key="player.id"
-                class="player-result"
-                :class="{ 'is-current': player.isCurrentUser }"
-              >
-                <div class="result-rank">
-                  <span v-if="index === 0">🥇</span>
-                  <span v-else-if="index === 1">🥈</span>
-                  <span v-else>{{ index + 1 }}</span>
+          <!-- Main Results Layout - 2 cột -->
+          <div class="results-main">
+            <!-- Left: Winner Section -->
+            <div class="winner-section">
+              <div class="winner-crown">👑</div>
+              <div class="winner-avatar-container">
+                <div class="winner-avatar" :style="{ background: getPlayerGradient(winner.id) }">
+                  {{ winner.initials || winner.name.charAt(0) }}
                 </div>
-                <div class="result-info">
-                  <span class="result-name">{{ player.name }}</span>
-                  <span class="result-score">{{ player.score }} điểm</span>
+                <div class="winner-shine"></div>
+              </div>
+              <h3 class="winner-name">{{ winner.name }}</h3>
+              <div class="winner-score">
+                <span class="score-big">{{ winner.score }}</span>
+                <span class="score-unit">điểm</span>
+              </div>
+              <div class="winner-badge">🥇 CHAMPION</div>
+
+              <!-- Winner Stats Row -->
+              <div class="winner-stats">
+                <div class="mini-stat">
+                  <div class="mini-stat-value">{{ Math.round((winner.score / totalQuestions) * 100) || 0 }}%</div>
+                  <div class="mini-stat-label">Chính xác</div>
+                </div>
+                <div class="mini-stat">
+                  <div class="mini-stat-value">{{ winner.streak }}</div>
+                  <div class="mini-stat-label">🔥 Streak</div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Motivation ngắn -->
-          <div class="motivation-brief">
-            <span class="motivation-icon">{{ getMotivationIcon() }}</span>
-            <span class="motivation-text">{{ getMotivationTitle() }}</span>
+            <!-- Right: Leaderboard -->
+            <div class="leaderboard-section">
+              <h4 class="leaderboard-title">🏆 Bảng Xếp Hạng</h4>
+              <div class="final-rankings">
+                <div
+                  v-for="(player, index) in sortedPlayers"
+                  :key="player.id"
+                  class="ranking-item"
+                  :class="{
+                    'is-winner': index === 0,
+                    'is-current': player.isCurrentUser
+                  }"
+                >
+                  <div class="ranking-position">
+                    <span v-if="index === 0" class="gold-medal">🥇</span>
+                    <span v-else-if="index === 1" class="silver-medal">🥈</span>
+                    <span v-else-if="index === 2" class="bronze-medal">🥉</span>
+                    <span v-else class="position-number">{{ index + 1 }}</span>
+                  </div>
+                  <div class="ranking-player">
+                    <div class="player-avatar-small" :style="{ background: getPlayerGradient(player.id) }">
+                      {{ player.initials || player.name.charAt(0) }}
+                    </div>
+                    <div class="player-details">
+                      <div class="player-name-small">{{ player.name }}</div>
+                      <div class="player-score-small">{{ player.score }} điểm</div>
+                    </div>
+                  </div>
+                  <div v-if="player.isCurrentUser" class="current-badge">BẠN</div>
+                </div>
+              </div>
+
+              <!-- Performance Summary -->
+              <div class="performance-summary">
+                <span class="performance-icon">{{ getMotivationIcon() }}</span>
+                <span class="performance-text">{{ getMotivationTitle() }}</span>
+              </div>
+            </div>
           </div>
         </div>
 
