@@ -376,7 +376,7 @@
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
                 <path d="M3 13h4l3-8 4 8h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Bảng Xếp Hạng</span>
+              <span>Bảng X��p Hạng</span>
             </div>
           </button>
 
@@ -2439,32 +2439,74 @@ const getPlayerGradient = (playerId) => {
     margin: 20px;
   }
 
-  .champion-section {
-    flex-direction: column;
+  .results-main {
+    grid-template-columns: 1fr;
     gap: 16px;
     padding: 16px;
+    min-height: auto;
   }
 
-  .quick-stats {
-    gap: 8px;
+  .winner-section {
+    padding: 20px;
   }
 
-  .quick-stat {
-    padding: 8px;
+  .winner-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
   }
 
-  .quick-stat .stat-value {
+  .winner-name {
+    font-size: 18px;
+  }
+
+  .score-big {
+    font-size: 28px;
+  }
+
+  .score-unit {
+    font-size: 14px;
+  }
+
+  .mini-stat-value {
     font-size: 16px;
   }
 
-  .quick-stat .stat-label {
+  .mini-stat-label {
+    font-size: 10px;
+  }
+
+  .leaderboard-section {
+    padding: 16px;
+  }
+
+  .leaderboard-title {
+    font-size: 14px;
+  }
+
+  .ranking-item {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .player-avatar-small {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .player-name-small {
+    font-size: 12px;
+  }
+
+  .player-score-small {
     font-size: 11px;
   }
 
   .results-actions {
     grid-template-columns: 1fr;
     gap: 8px;
-    padding: 16px;
+    padding: 12px 16px;
   }
 
   .action-btn {
@@ -2477,47 +2519,16 @@ const getPlayerGradient = (playerId) => {
     height: 16px;
   }
 
-  .champion-avatar {
-    width: 50px;
-    height: 50px;
-    font-size: 18px;
+  .performance-summary {
+    padding: 8px 12px;
   }
 
-  .champion-name {
-    font-size: 16px;
-  }
-
-  .champion-score {
-    font-size: 18px;
-  }
-
-  .section-title {
+  .performance-icon {
     font-size: 14px;
   }
 
-  .player-result {
-    padding: 10px 12px;
-    gap: 10px;
-  }
-
-  .result-rank {
-    font-size: 16px;
-  }
-
-  .result-name, .result-score {
-    font-size: 13px;
-  }
-
-  .motivation-brief {
-    padding: 10px 12px;
-  }
-
-  .motivation-brief .motivation-icon {
-    font-size: 18px;
-  }
-
-  .motivation-brief .motivation-text {
-    font-size: 13px;
+  .performance-text {
+    font-size: 12px;
   }
 
   .modal-decoration {
