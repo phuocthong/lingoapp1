@@ -1,8 +1,8 @@
-import Database from 'better-sqlite3';
-import { nanoid } from 'nanoid';
+import Database from 'better-sqlite3'
+import { nanoid } from 'nanoid'
 
 // Khởi tạo database
-export const db = new Database('lingo_challenge.db');
+export const db = new Database('lingo_challenge.db')
 
 // Tạo tables
 db.exec(`
@@ -117,7 +117,7 @@ db.exec(`
     FOREIGN KEY (challenge_id) REFERENCES daily_challenges (id),
     UNIQUE(user_id, challenge_id)
   );
-`);
+`)
 
 // Tạo indexes để tối ưu performance
 db.exec(`
@@ -131,10 +131,10 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS idx_battles_status ON battles (status);
   CREATE INDEX IF NOT EXISTS idx_friendships_user_id ON friendships (user_id);
   CREATE INDEX IF NOT EXISTS idx_friendships_friend_id ON friendships (friend_id);
-`);
+`)
 
 // Helper functions
-export const generateId = () => nanoid();
+export const generateId = () => nanoid()
 
 // Prepared statements
 export const statements = {
@@ -159,8 +159,12 @@ export const statements = {
 
   // Questions
   getQuestionById: db.prepare('SELECT * FROM questions WHERE id = ?'),
-  getQuestionsByCategory: db.prepare('SELECT * FROM questions WHERE category = ? ORDER BY RANDOM() LIMIT ?'),
-  getQuestionsByDifficulty: db.prepare('SELECT * FROM questions WHERE difficulty_level = ? ORDER BY RANDOM() LIMIT ?'),
+  getQuestionsByCategory: db.prepare(
+    'SELECT * FROM questions WHERE category = ? ORDER BY RANDOM() LIMIT ?',
+  ),
+  getQuestionsByDifficulty: db.prepare(
+    'SELECT * FROM questions WHERE difficulty_level = ? ORDER BY RANDOM() LIMIT ?',
+  ),
   getRandomQuestions: db.prepare('SELECT * FROM questions ORDER BY RANDOM() LIMIT ?'),
   createQuestion: db.prepare(`
     INSERT INTO questions (id, question_text, question_type, difficulty_level, category, 
@@ -193,7 +197,9 @@ export const statements = {
     WHERE (player1_id = ? OR player2_id = ?) AND status IN ('waiting', 'active')
     ORDER BY created_at DESC
   `),
-  updateBattleStatus: db.prepare('UPDATE battles SET status = ?, started_at = CURRENT_TIMESTAMP WHERE id = ?'),
+  updateBattleStatus: db.prepare(
+    'UPDATE battles SET status = ?, started_at = CURRENT_TIMESTAMP WHERE id = ?',
+  ),
   updateBattleAnswers: db.prepare(`
     UPDATE battles SET player1_answers = ?, player2_answers = ?, 
                       winner_id = ?, completed_at = CURRENT_TIMESTAMP, status = 'completed'
@@ -235,7 +241,7 @@ export const statements = {
     SELECT COUNT(*) + 1 as rank
     FROM users
     WHERE xp > (SELECT xp FROM users WHERE id = ?)
-  `)
-};
+  `),
+}
 
-console.log('✅ Database initialized successfully');
+console.log('✅ Database initialized successfully')

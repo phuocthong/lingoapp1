@@ -244,7 +244,9 @@
                       <span class="score-value">{{ player.score }}</span>
                       <span class="score-label">pts</span>
                     </div>
-                    <div v-if="player.streak > 1" class="streak-indicator">🔥{{ player.streak }}</div>
+                    <div v-if="player.streak > 1" class="streak-indicator">
+                      🔥{{ player.streak }}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -283,7 +285,10 @@
           <!-- Winner Spotlight - Larger -->
           <div class="champion-showcase">
             <div class="champion-crown-large">👑</div>
-            <div class="champion-avatar-large" :style="{ background: getPlayerGradient(winner.id) }">
+            <div
+              class="champion-avatar-large"
+              :style="{ background: getPlayerGradient(winner.id) }"
+            >
               {{ winner.initials || winner.name.charAt(0) }}
               <div class="champion-glow"></div>
             </div>
@@ -329,7 +334,7 @@
                 class="ranking-card"
                 :class="{
                   'is-winner': index === 0,
-                  'is-current': player.isCurrentUser
+                  'is-current': player.isCurrentUser,
                 }"
               >
                 <div class="rank-position-large">
@@ -339,7 +344,10 @@
                   <span v-else class="position-num-large">{{ index + 1 }}</span>
                 </div>
                 <div class="player-info-large">
-                  <div class="player-avatar-medium" :style="{ background: getPlayerGradient(player.id) }">
+                  <div
+                    class="player-avatar-medium"
+                    :style="{ background: getPlayerGradient(player.id) }"
+                  >
                     {{ player.initials || player.name.charAt(0) }}
                   </div>
                   <div class="player-data">
@@ -347,7 +355,9 @@
                     <div class="player-stats-large">
                       <span class="score-points">{{ player.score }} điểm</span>
                       <span class="accuracy-percent">{{ getAccuracyRate(player) }}% chính xác</span>
-                      <span v-if="player.streak > 1" class="streak-display">🔥 {{ player.streak }} streak</span>
+                      <span v-if="player.streak > 1" class="streak-display"
+                        >🔥 {{ player.streak }} streak</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -368,24 +378,63 @@
       <div class="fullscreen-actions">
         <button class="action-btn-large primary-large" @click="playAgain">
           <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
-            <path d="M1 4v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M3.51 15a9 9 0 1015.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+              d="M1 4v6h6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3.51 15a9 9 0 1015.8-5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
           <span>Chơi Lại</span>
         </button>
 
         <button class="action-btn-large secondary-large" @click="viewLeaderboard">
           <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
-            <path d="M3 13h4l3-8 4 8h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+              d="M3 13h4l3-8 4 8h7"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
           <span>Bảng Xếp Hạng</span>
         </button>
 
         <button class="action-btn-large tertiary-large" @click="exitGame">
           <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
-            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <polyline points="16,17 21,12 16,7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+              d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <polyline
+              points="16,17 21,12 16,7"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <line
+              x1="21"
+              y1="12"
+              x2="9"
+              y2="12"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
           <span>Thoát Game</span>
         </button>
@@ -492,7 +541,7 @@ const winner = computed(() => {
 })
 
 const currentPlayer = computed(() => {
-  return players.value.find(p => p.isCurrentUser)
+  return players.value.find((p) => p.isCurrentUser)
 })
 
 // Authentication check
@@ -527,7 +576,7 @@ onMounted(() => {
   console.log('Game initialized:', {
     gameOver: gameOver.value,
     currentQuestion: currentQuestion.value,
-    totalQuestions: totalQuestions.value
+    totalQuestions: totalQuestions.value,
   })
 
   startTimer()
@@ -663,7 +712,6 @@ const getAnswerClass = (index) => {
   return 'disabled'
 }
 
-
 const playAgain = () => {
   // Reset game state
   currentQuestion.value = 1
@@ -748,7 +796,6 @@ const getMotivationTitle = () => {
   if (accuracy >= 50) return 'Khá ổn!'
   return 'Cố gắng hơn nữa!'
 }
-
 
 const getPlayerGradient = (playerId) => {
   const gradients = [
@@ -1673,17 +1720,41 @@ const getPlayerGradient = (playerId) => {
   animation: firework-burst 2s ease-out infinite;
 }
 
-.firework:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
-.firework:nth-child(2) { top: 30%; left: 80%; animation-delay: 0.5s; }
-.firework:nth-child(3) { top: 60%; left: 15%; animation-delay: 1s; }
-.firework:nth-child(4) { top: 70%; left: 70%; animation-delay: 1.5s; }
-.firework:nth-child(5) { top: 40%; left: 50%; animation-delay: 0.8s; }
+.firework:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+.firework:nth-child(2) {
+  top: 30%;
+  left: 80%;
+  animation-delay: 0.5s;
+}
+.firework:nth-child(3) {
+  top: 60%;
+  left: 15%;
+  animation-delay: 1s;
+}
+.firework:nth-child(4) {
+  top: 70%;
+  left: 70%;
+  animation-delay: 1.5s;
+}
+.firework:nth-child(5) {
+  top: 40%;
+  left: 50%;
+  animation-delay: 0.8s;
+}
 
 @keyframes firework-burst {
   0% {
     transform: scale(0);
     opacity: 1;
-    box-shadow: 0 0 0 0px #fff, 0 0 0 0px #f59e0b, 0 0 0 0px #10b981, 0 0 0 0px #ef4444;
+    box-shadow:
+      0 0 0 0px #fff,
+      0 0 0 0px #f59e0b,
+      0 0 0 0px #10b981,
+      0 0 0 0px #ef4444;
   }
   50% {
     transform: scale(1);
@@ -1757,15 +1828,40 @@ const getPlayerGradient = (playerId) => {
   animation: sparkle-twinkle 1.5s ease-in-out infinite;
 }
 
-.sparkle:nth-child(1) { top: 0; left: 50%; animation-delay: 0s; }
-.sparkle:nth-child(2) { top: 20%; right: 0; animation-delay: 0.2s; }
-.sparkle:nth-child(3) { bottom: 20%; right: 0; animation-delay: 0.4s; }
-.sparkle:nth-child(4) { bottom: 0; left: 50%; animation-delay: 0.6s; }
-.sparkle:nth-child(5) { bottom: 20%; left: 0; animation-delay: 0.8s; }
-.sparkle:nth-child(6) { top: 20%; left: 0; animation-delay: 1s; }
+.sparkle:nth-child(1) {
+  top: 0;
+  left: 50%;
+  animation-delay: 0s;
+}
+.sparkle:nth-child(2) {
+  top: 20%;
+  right: 0;
+  animation-delay: 0.2s;
+}
+.sparkle:nth-child(3) {
+  bottom: 20%;
+  right: 0;
+  animation-delay: 0.4s;
+}
+.sparkle:nth-child(4) {
+  bottom: 0;
+  left: 50%;
+  animation-delay: 0.6s;
+}
+.sparkle:nth-child(5) {
+  bottom: 20%;
+  left: 0;
+  animation-delay: 0.8s;
+}
+.sparkle:nth-child(6) {
+  top: 20%;
+  left: 0;
+  animation-delay: 1s;
+}
 
 @keyframes sparkle-twinkle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(0.8);
   }
@@ -2010,7 +2106,9 @@ const getPlayerGradient = (playerId) => {
   font-weight: 700;
 }
 
-.gold-medal-large, .silver-medal-large, .bronze-medal-large {
+.gold-medal-large,
+.silver-medal-large,
+.bronze-medal-large {
   font-size: 24px;
 }
 
@@ -2419,7 +2517,9 @@ const getPlayerGradient = (playerId) => {
     gap: 8px;
   }
 
-  .score-points, .accuracy-percent, .streak-display {
+  .score-points,
+  .accuracy-percent,
+  .streak-display {
     font-size: 11px;
     padding: 1px 6px;
   }
