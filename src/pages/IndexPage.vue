@@ -958,6 +958,104 @@ const getCurrentLeaderboard = () => {
   font-size: 12px;
 }
 
+/* Top Answerers Dropdown */
+.top-answerers-dropdown {
+  min-width: 280px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.answerer-item-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  transition: background-color 0.2s;
+}
+
+.answerer-item-dropdown:hover {
+  background: #f9fafb;
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+
+.answerer-item-dropdown.current-user {
+  background: #eff6ff;
+  border-radius: 4px;
+  padding: 6px 8px;
+  border: 1px solid #dbeafe;
+}
+
+.rank-badge {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #6b7280;
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.answerer-item-dropdown:nth-child(2) .rank-badge {
+  background: #f59e0b;
+}
+
+.answerer-item-dropdown:nth-child(3) .rank-badge {
+  background: #9ca3af;
+}
+
+.answerer-item-dropdown:nth-child(4) .rank-badge {
+  background: #d97706;
+}
+
+.answerer-mini-avatar {
+  background: #6d28d9;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.answerer-mini-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.answerer-mini-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.answerer-mini-time {
+  font-size: 11px;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+.answerer-mini-status {
+  flex-shrink: 0;
+}
+
 /* Modal styles */
 .modal-card {
   width: 500px;
@@ -1113,6 +1211,22 @@ const getCurrentLeaderboard = () => {
 
   .details-dropdown .q-btn__content {
     font-size: 11px;
+  }
+
+  .top-answerers-dropdown {
+    min-width: 250px;
+  }
+
+  .dropdown-title {
+    font-size: 13px;
+  }
+
+  .answerer-mini-name {
+    font-size: 12px;
+  }
+
+  .answerer-mini-time {
+    font-size: 10px;
   }
 }
 </style>
