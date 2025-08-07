@@ -686,7 +686,7 @@ const getMotivationIcon = () => {
   const currentPlayerData = currentPlayer.value
   if (!currentPlayerData) return '🎯'
 
-  const accuracy = (currentPlayerData.score / totalQuestions.value) * 100
+  const accuracy = getAccuracyRate(currentPlayerData)
   if (accuracy >= 90) return '🌟'
   if (accuracy >= 70) return '🎯'
   if (accuracy >= 50) return '💪'
