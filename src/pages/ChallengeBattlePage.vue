@@ -286,136 +286,60 @@
         </div>
 
         <div class="results-content">
-          <!-- Champion Spotlight với thống kê chi tiết -->
-          <div class="champion-spotlight">
-            <div class="champion-crown">👑</div>
-            <div class="champion-avatar-container">
+          <!-- Champion và Stats gộp lại -->
+          <div class="champion-section">
+            <div class="champion-info">
+              <div class="champion-crown">👑</div>
               <div class="champion-avatar" :style="{ background: getPlayerGradient(winner.id) }">
                 {{ winner.initials || winner.name.charAt(0) }}
               </div>
-              <div class="champion-glow"></div>
+              <h3 class="champion-name">{{ winner.name }}</h3>
+              <div class="champion-score">{{ winner.score }} điểm</div>
             </div>
-            <h3 class="champion-name">{{ winner.name }}</h3>
-            <div class="champion-score">
-              <span class="score-number">{{ winner.score }}</span>
-              <span class="score-text">điểm</span>
-            </div>
-            <div class="victory-badge">🥇 NHẤT BẢNG</div>
 
-            <!-- Battle Statistics -->
-            <div class="battle-stats">
-              <div class="stat-item">
-                <div class="stat-icon">📊</div>
-                <div class="stat-info">
-                  <div class="stat-value">{{ Math.round((winner.score / totalQuestions.value) * 100) }}%</div>
-                  <div class="stat-label">Độ chính xác</div>
-                </div>
+            <div class="quick-stats">
+              <div class="quick-stat">
+                <span class="stat-value">{{ Math.round((winner.score / totalQuestions) * 100) || 0 }}%</span>
+                <span class="stat-label">Chính xác</span>
               </div>
-              <div class="stat-item">
-                <div class="stat-icon">🔥</div>
-                <div class="stat-info">
-                  <div class="stat-value">{{ winner.streak }}</div>
-                  <div class="stat-label">Streak tối đa</div>
-                </div>
+              <div class="quick-stat">
+                <span class="stat-value">{{ winner.streak }}</span>
+                <span class="stat-label">🔥 Streak</span>
               </div>
-              <div class="stat-item">
-                <div class="stat-icon">⚡</div>
-                <div class="stat-info">
-                  <div class="stat-value">{{ totalQuestions }}</div>
-                  <div class="stat-label">Câu hỏi</div>
-                </div>
+              <div class="quick-stat">
+                <span class="stat-value">+{{ Math.floor(currentPlayer?.score * 0.1) || 0 }}</span>
+                <span class="stat-label">XP</span>
               </div>
             </div>
           </div>
 
-          <!-- Performance Analysis -->
-          <div class="performance-analysis">
-            <h4 class="analysis-title">🎯 Phân Tích Hiệu Suất</h4>
-            <div class="performance-grid">
-              <div class="performance-card correct">
-                <div class="performance-icon">✅</div>
-                <div class="performance-data">
-                  <div class="performance-value">{{ currentPlayer.score > 0 ? currentPlayer.score : 0 }}</div>
-                  <div class="performance-label">Đúng</div>
-                </div>
-              </div>
-              <div class="performance-card incorrect">
-                <div class="performance-icon">❌</div>
-                <div class="performance-data">
-                  <div class="performance-value">{{ totalQuestions - (currentPlayer.score > 0 ? currentPlayer.score : 0) }}</div>
-                  <div class="performance-label">Sai</div>
-                </div>
-              </div>
-              <div class="performance-card time">
-                <div class="performance-icon">⏱️</div>
-                <div class="performance-data">
-                  <div class="performance-value">{{ Math.round(timePerQuestion * 0.7) }}s</div>
-                  <div class="performance-label">TB/câu</div>
-                </div>
-              </div>
-              <div class="performance-card bonus">
-                <div class="performance-icon">🎁</div>
-                <div class="performance-data">
-                  <div class="performance-value">+{{ Math.floor(currentPlayer.score * 0.1) }}</div>
-                  <div class="performance-label">Bonus XP</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Final Leaderboard -->
-          <div class="final-leaderboard">
-            <h4 class="leaderboard-title">🏆 Bảng Xếp Hạng Cuối</h4>
-            <div class="leaderboard-list">
+          <!-- Leaderboard ngắn gọn -->
+          <div class="compact-leaderboard">
+            <h4 class="section-title">Kết Quả</h4>
+            <div class="players-result">
               <div
                 v-for="(player, index) in sortedPlayers"
                 :key="player.id"
-                class="leaderboard-item"
-                :class="{
-                  champion: index === 0,
-                  'runner-up': index === 1,
-                  'third-place': index === 2,
-                  'current-player': player.isCurrentUser,
-                }"
+                class="player-result"
+                :class="{ 'is-current': player.isCurrentUser }"
               >
-                <div class="position-indicator">
-                  <div class="position-medal" v-if="index < 3">
-                    <span v-if="index === 0">🥇</span>
-                    <span v-else-if="index === 1">🥈</span>
-                    <span v-else>🥉</span>
-                  </div>
-                  <div class="position-number" v-else>{{ index + 1 }}</div>
+                <div class="result-rank">
+                  <span v-if="index === 0">🥇</span>
+                  <span v-else-if="index === 1">🥈</span>
+                  <span v-else>{{ index + 1 }}</span>
                 </div>
-                <div class="player-summary">
-                  <div
-                    class="player-mini-avatar"
-                    :style="{ background: getPlayerGradient(player.id) }"
-                  >
-                    {{ player.initials || player.name.charAt(0) }}
-                  </div>
-                  <div class="player-info-summary">
-                    <div class="player-name-summary">{{ player.name }}</div>
-                    <div class="player-performance">
-                      <span class="final-score">{{ player.score }} điểm</span>
-                      <span v-if="player.streak > 1" class="final-streak">🔥{{ player.streak }}</span>
-                      <span class="accuracy-rate">{{ Math.round((player.score / totalQuestions) * 100) }}%</span>
-                    </div>
-                  </div>
+                <div class="result-info">
+                  <span class="result-name">{{ player.name }}</span>
+                  <span class="result-score">{{ player.score }} điểm</span>
                 </div>
-                <div v-if="player.isCurrentUser" class="you-badge">Bạn</div>
               </div>
             </div>
           </div>
 
-          <!-- Motivation Message -->
-          <div class="motivation-section">
-            <div class="motivation-card">
-              <div class="motivation-icon">{{ getMotivationIcon() }}</div>
-              <div class="motivation-text">
-                <h5 class="motivation-title">{{ getMotivationTitle() }}</h5>
-                <p class="motivation-message">{{ getMotivationMessage() }}</p>
-              </div>
-            </div>
+          <!-- Motivation ngắn -->
+          <div class="motivation-brief">
+            <span class="motivation-icon">{{ getMotivationIcon() }}</span>
+            <span class="motivation-text">{{ getMotivationTitle() }}</span>
           </div>
         </div>
 
