@@ -282,7 +282,7 @@
 
         <div class="results-header">
           <h2 class="results-title">🎉 Trận Đấu Hoàn Thành!</h2>
-          <p class="results-subtitle">Thật tuyệt vời! Hãy xem kết quả nào!</p>
+          <p class="results-subtitle">Thật tuyệt v��i! Hãy xem kết quả nào!</p>
         </div>
 
         <div class="results-content">
@@ -1691,6 +1691,92 @@ const getPlayerGradient = (playerId) => {
   100% {
     transform: translateY(100vh) rotate(360deg);
     opacity: 0;
+  }
+}
+
+.fireworks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.firework {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #fff 0%, transparent 70%);
+  border-radius: 50%;
+  animation: firework-burst 2s ease-out infinite;
+}
+
+.firework:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+.firework:nth-child(2) { top: 30%; left: 80%; animation-delay: 0.5s; }
+.firework:nth-child(3) { top: 60%; left: 15%; animation-delay: 1s; }
+.firework:nth-child(4) { top: 70%; left: 70%; animation-delay: 1.5s; }
+.firework:nth-child(5) { top: 40%; left: 50%; animation-delay: 0.8s; }
+
+@keyframes firework-burst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    box-shadow: 0 0 0 0px #fff, 0 0 0 0px #f59e0b, 0 0 0 0px #10b981, 0 0 0 0px #ef4444;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.8;
+    box-shadow:
+      0 0 20px 8px #fff,
+      10px 10px 20px 6px #f59e0b,
+      -10px 10px 20px 6px #10b981,
+      10px -10px 20px 6px #ef4444,
+      -10px -10px 20px 6px #667eea;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+    box-shadow:
+      0 0 50px 20px transparent,
+      20px 20px 50px 15px transparent,
+      -20px 20px 50px 15px transparent,
+      20px -20px 50px 15px transparent,
+      -20px -20px 50px 15px transparent;
+  }
+}
+
+.sparkles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 16px;
+  animation: sparkle-twinkle 1.5s ease-in-out infinite;
+}
+
+.sparkle:nth-child(1) { top: 0; left: 50%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 20%; right: 0; animation-delay: 0.2s; }
+.sparkle:nth-child(3) { bottom: 20%; right: 0; animation-delay: 0.4s; }
+.sparkle:nth-child(4) { bottom: 0; left: 50%; animation-delay: 0.6s; }
+.sparkle:nth-child(5) { bottom: 20%; left: 0; animation-delay: 0.8s; }
+.sparkle:nth-child(6) { top: 20%; left: 0; animation-delay: 1s; }
+
+@keyframes sparkle-twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
   }
 }
 
