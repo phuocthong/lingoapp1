@@ -1626,6 +1626,35 @@ const getPlayerGradient = (playerId) => {
   padding: 20px;
 }
 
+.modal-close-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+.modal-close-btn svg {
+  width: 24px;
+  height: 24px;
+  color: #4a5568;
+}
+
 .celebration-confetti {
   position: absolute;
   top: 0;
