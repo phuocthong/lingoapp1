@@ -152,19 +152,30 @@
                   <span class="separator">/</span>
                   <span class="total-count">23 trả lời</span>
                 </div>
-                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Xem chi tiết">
-                  <q-list>
-                    <q-item clickable v-close-popup @click="showQuestionDetails(1)">
-                      <q-item-section>
-                        <q-item-label>Chi tiết câu hỏi</q-item-label>
-                      </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup @click="showTopAnswerers(1)">
-                      <q-item-section>
-                        <q-item-label>Top người trả lời nhanh & đúng nhất</q-item-label>
-                      </q-item-section>
-                    </q-item>
-                  </q-list>
+                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Top 5 nhanh nhất">
+                  <div class="top-answerers-dropdown">
+                    <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
+                    <div
+                      v-for="(answerer, index) in getTopAnswerers(1)"
+                      :key="answerer.id"
+                      class="answerer-item-dropdown"
+                      :class="{ 'current-user': answerer.name === 'Người dùng' }"
+                    >
+                      <div class="rank-badge">{{ index + 1 }}</div>
+                      <q-avatar size="24px" class="answerer-mini-avatar">{{ answerer.avatar }}</q-avatar>
+                      <div class="answerer-mini-info">
+                        <div class="answerer-mini-name">{{ answerer.name }}</div>
+                        <div class="answerer-mini-time">{{ answerer.time }}</div>
+                      </div>
+                      <div class="answerer-mini-status">
+                        <q-icon
+                          :name="answerer.correct ? 'check_circle' : 'cancel'"
+                          :color="answerer.correct ? 'green' : 'red'"
+                          size="12px"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </q-btn-dropdown>
               </div>
             </div>
@@ -183,19 +194,30 @@
                   <span class="separator">/</span>
                   <span class="total-count">18 trả lời</span>
                 </div>
-                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Xem chi tiết">
-                  <q-list>
-                    <q-item clickable v-close-popup @click="showQuestionDetails(1)">
-                      <q-item-section>
-                        <q-item-label>Chi tiết câu hỏi</q-item-label>
-                      </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup @click="showTopAnswerers(1)">
-                      <q-item-section>
-                        <q-item-label>Top người trả lời nhanh & đúng nhất</q-item-label>
-                      </q-item-section>
-                    </q-item>
-                  </q-list>
+                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Top 5 nhanh nhất">
+                  <div class="top-answerers-dropdown">
+                    <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
+                    <div
+                      v-for="(answerer, index) in getTopAnswerers(1)"
+                      :key="answerer.id"
+                      class="answerer-item-dropdown"
+                      :class="{ 'current-user': answerer.name === 'Người dùng' }"
+                    >
+                      <div class="rank-badge">{{ index + 1 }}</div>
+                      <q-avatar size="24px" class="answerer-mini-avatar">{{ answerer.avatar }}</q-avatar>
+                      <div class="answerer-mini-info">
+                        <div class="answerer-mini-name">{{ answerer.name }}</div>
+                        <div class="answerer-mini-time">{{ answerer.time }}</div>
+                      </div>
+                      <div class="answerer-mini-status">
+                        <q-icon
+                          :name="answerer.correct ? 'check_circle' : 'cancel'"
+                          :color="answerer.correct ? 'green' : 'red'"
+                          size="12px"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </q-btn-dropdown>
               </div>
             </div>
@@ -214,19 +236,30 @@
                   <span class="separator">/</span>
                   <span class="total-count">25 trả lời</span>
                 </div>
-                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Xem chi tiết">
-                  <q-list>
-                    <q-item clickable v-close-popup @click="showQuestionDetails(1)">
-                      <q-item-section>
-                        <q-item-label>Chi tiết câu hỏi</q-item-label>
-                      </q-item-section>
-                    </q-item>
-                    <q-item clickable v-close-popup @click="showTopAnswerers(1)">
-                      <q-item-section>
-                        <q-item-label>Top người trả lời nhanh & đúng nhất</q-item-label>
-                      </q-item-section>
-                    </q-item>
-                  </q-list>
+                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Top 5 nhanh nhất">
+                  <div class="top-answerers-dropdown">
+                    <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
+                    <div
+                      v-for="(answerer, index) in getTopAnswerers(1)"
+                      :key="answerer.id"
+                      class="answerer-item-dropdown"
+                      :class="{ 'current-user': answerer.name === 'Người dùng' }"
+                    >
+                      <div class="rank-badge">{{ index + 1 }}</div>
+                      <q-avatar size="24px" class="answerer-mini-avatar">{{ answerer.avatar }}</q-avatar>
+                      <div class="answerer-mini-info">
+                        <div class="answerer-mini-name">{{ answerer.name }}</div>
+                        <div class="answerer-mini-time">{{ answerer.time }}</div>
+                      </div>
+                      <div class="answerer-mini-status">
+                        <q-icon
+                          :name="answerer.correct ? 'check_circle' : 'cancel'"
+                          :color="answerer.correct ? 'green' : 'red'"
+                          size="12px"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </q-btn-dropdown>
               </div>
             </div>
