@@ -1533,47 +1533,18 @@ const getPlayerGradient = (playerId) => {
   border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
-/* Enhanced Game Over Modal */
-.game-over-overlay {
+/* Full Screen Results Layout */
+.fullscreen-results {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 1000;
+  background: radial-gradient(ellipse at center, #667eea 0%, #764ba2 100%);
+  overflow-y: auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.modal-close-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1001;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.modal-close-btn:hover {
-  background: rgba(255, 255, 255, 1);
-  transform: scale(1.1);
-}
-
-.modal-close-btn svg {
-  width: 24px;
-  height: 24px;
-  color: #4a5568;
+  flex-direction: column;
 }
 
 .celebration-confetti {
