@@ -152,7 +152,39 @@
                   <span class="separator">/</span>
                   <span class="total-count">23 trả lời</span>
                 </div>
-                <div class="details-link">▼ Xem chi tiết</div>
+                <q-btn-dropdown
+                  class="details-dropdown"
+                  flat
+                  no-caps
+                  size="sm"
+                  label="▼ Top 5 nhanh nhất"
+                >
+                  <div class="top-answerers-dropdown">
+                    <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
+                    <div
+                      v-for="(answerer, index) in getTopAnswerers(1)"
+                      :key="answerer.id"
+                      class="answerer-item-dropdown"
+                      :class="{ 'current-user': answerer.name === 'Người dùng' }"
+                    >
+                      <div class="rank-badge">{{ index + 1 }}</div>
+                      <q-avatar size="24px" class="answerer-mini-avatar">{{
+                        answerer.avatar
+                      }}</q-avatar>
+                      <div class="answerer-mini-info">
+                        <div class="answerer-mini-name">{{ answerer.name }}</div>
+                        <div class="answerer-mini-time">{{ answerer.time }}</div>
+                      </div>
+                      <div class="answerer-mini-status">
+                        <q-icon
+                          :name="answerer.correct ? 'check_circle' : 'cancel'"
+                          :color="answerer.correct ? 'green' : 'red'"
+                          size="12px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </q-btn-dropdown>
               </div>
             </div>
 
@@ -170,7 +202,39 @@
                   <span class="separator">/</span>
                   <span class="total-count">18 trả lời</span>
                 </div>
-                <div class="details-link">▼ Xem chi tiết</div>
+                <q-btn-dropdown
+                  class="details-dropdown"
+                  flat
+                  no-caps
+                  size="sm"
+                  label="▼ Top 5 nhanh nhất"
+                >
+                  <div class="top-answerers-dropdown">
+                    <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
+                    <div
+                      v-for="(answerer, index) in getTopAnswerers(1)"
+                      :key="answerer.id"
+                      class="answerer-item-dropdown"
+                      :class="{ 'current-user': answerer.name === 'Người dùng' }"
+                    >
+                      <div class="rank-badge">{{ index + 1 }}</div>
+                      <q-avatar size="24px" class="answerer-mini-avatar">{{
+                        answerer.avatar
+                      }}</q-avatar>
+                      <div class="answerer-mini-info">
+                        <div class="answerer-mini-name">{{ answerer.name }}</div>
+                        <div class="answerer-mini-time">{{ answerer.time }}</div>
+                      </div>
+                      <div class="answerer-mini-status">
+                        <q-icon
+                          :name="answerer.correct ? 'check_circle' : 'cancel'"
+                          :color="answerer.correct ? 'green' : 'red'"
+                          size="12px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </q-btn-dropdown>
               </div>
             </div>
 
@@ -188,7 +252,39 @@
                   <span class="separator">/</span>
                   <span class="total-count">25 trả lời</span>
                 </div>
-                <div class="details-link">▼ Xem chi tiết</div>
+                <q-btn-dropdown
+                  class="details-dropdown"
+                  flat
+                  no-caps
+                  size="sm"
+                  label="▼ Top 5 nhanh nhất"
+                >
+                  <div class="top-answerers-dropdown">
+                    <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
+                    <div
+                      v-for="(answerer, index) in getTopAnswerers(1)"
+                      :key="answerer.id"
+                      class="answerer-item-dropdown"
+                      :class="{ 'current-user': answerer.name === 'Người dùng' }"
+                    >
+                      <div class="rank-badge">{{ index + 1 }}</div>
+                      <q-avatar size="24px" class="answerer-mini-avatar">{{
+                        answerer.avatar
+                      }}</q-avatar>
+                      <div class="answerer-mini-info">
+                        <div class="answerer-mini-name">{{ answerer.name }}</div>
+                        <div class="answerer-mini-time">{{ answerer.time }}</div>
+                      </div>
+                      <div class="answerer-mini-status">
+                        <q-icon
+                          :name="answerer.correct ? 'check_circle' : 'cancel'"
+                          :color="answerer.correct ? 'green' : 'red'"
+                          size="12px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </q-btn-dropdown>
               </div>
             </div>
           </q-card-section>
@@ -204,67 +300,77 @@
             </div>
 
             <div class="leaderboard-tabs">
-              <q-btn flat size="sm" class="tab-btn active" no-caps>Tổng</q-btn>
-              <q-btn flat size="sm" class="tab-btn" no-caps>Tuần</q-btn>
-              <q-btn flat size="sm" class="tab-btn" no-caps>Tháng</q-btn>
-              <q-btn flat size="sm" class="tab-btn" no-caps>Năm</q-btn>
+              <q-btn
+                flat
+                size="sm"
+                :class="['tab-btn', { active: activeTab === 'total' }]"
+                no-caps
+                @click="switchTab('total')"
+                >Tổng</q-btn
+              >
+              <q-btn
+                flat
+                size="sm"
+                :class="['tab-btn', { active: activeTab === 'week' }]"
+                no-caps
+                @click="switchTab('week')"
+                >Tuần</q-btn
+              >
+              <q-btn
+                flat
+                size="sm"
+                :class="['tab-btn', { active: activeTab === 'month' }]"
+                no-caps
+                @click="switchTab('month')"
+                >Tháng</q-btn
+              >
+              <q-btn
+                flat
+                size="sm"
+                :class="['tab-btn', { active: activeTab === 'year' }]"
+                no-caps
+                @click="switchTab('year')"
+                >Năm</q-btn
+              >
             </div>
           </q-card-section>
 
           <q-card-section class="leaderboard-content">
-            <!-- Leaderboard Item 1 -->
-            <div class="leaderboard-item first-place">
-              <q-icon name="emoji_events" color="amber" size="16px" />
-              <q-avatar size="32px" class="rank-avatar gold">MA</q-avatar>
+            <!-- Dynamic Leaderboard Items -->
+            <div
+              v-for="(player, index) in getCurrentLeaderboard()"
+              :key="player.id"
+              class="leaderboard-item"
+              :class="{
+                'first-place': index === 0,
+                'second-place': index === 1,
+                'third-place': index === 2,
+              }"
+            >
+              <q-icon
+                :name="index < 3 ? 'emoji_events' : 'star'"
+                :color="
+                  index === 0 ? 'amber' : index === 1 ? 'grey-5' : index === 2 ? 'orange' : 'blue'
+                "
+                :size="index < 3 ? '16px' : '12px'"
+                :style="index === 1 ? 'opacity: 0.2' : ''"
+              />
+              <q-avatar
+                size="32px"
+                :class="[
+                  'rank-avatar',
+                  index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? 'bronze' : 'blue',
+                ]"
+              >
+                {{ player.avatar }}
+              </q-avatar>
               <div class="player-info">
-                <div class="player-name">Minh Anh</div>
-                <div class="player-streak">Streak: 15</div>
+                <div class="player-name">{{ player.name }}</div>
+                <div class="player-streak">Streak: {{ player.streak }}</div>
               </div>
               <div class="player-score">
-                <div class="score-number">2,456</div>
+                <div class="score-number">{{ player.score.toLocaleString() }}</div>
                 <div class="score-label">Câu đúng</div>
-              </div>
-            </div>
-
-            <!-- Leaderboard Item 2 -->
-            <div class="leaderboard-item second-place">
-              <q-icon name="emoji_events" color="grey-5" size="16px" style="opacity: 0.2" />
-              <q-avatar size="32px" class="rank-avatar silver">TH</q-avatar>
-              <div class="player-info">
-                <div class="player-name">Thành Hòa</div>
-                <div class="player-streak">Streak: 23</div>
-              </div>
-              <div class="player-score">
-                <div class="score-number">2,195</div>
-                <div class="score-label">Câu đúng</div>
-              </div>
-            </div>
-
-            <!-- Leaderboard Item 3 -->
-            <div class="leaderboard-item third-place">
-              <q-icon name="emoji_events" color="orange" size="16px" />
-              <q-avatar size="32px" class="rank-avatar bronze">VN</q-avatar>
-              <div class="player-info">
-                <div class="player-name">Văn Nam</div>
-                <div class="player-streak">Streak: 12</div>
-              </div>
-              <div class="player-score">
-                <div class="score-number">1,957</div>
-                <div class="score-label">Câu đúng</div>
-              </div>
-            </div>
-
-            <!-- Leaderboard Item 4 -->
-            <div class="leaderboard-item">
-              <q-icon name="star" color="blue" size="12px" />
-              <q-avatar size="32px" class="rank-avatar blue">TT</q-avatar>
-              <div class="player-info">
-                <div class="player-name">Thu Trang</div>
-                <div class="player-streak">Streak: 8</div>
-              </div>
-              <div class="player-score">
-                <div class="score-number">1,834</div>
-                <div class="score-label">câu đúng</div>
               </div>
             </div>
 
@@ -293,12 +399,82 @@
 import { ref } from 'vue'
 
 const messageInput = ref('')
+const activeTab = ref('total')
 
 const sendMessage = () => {
   if (messageInput.value.trim()) {
     console.log('Sending message:', messageInput.value)
     messageInput.value = ''
   }
+}
+
+const switchTab = (tab) => {
+  activeTab.value = tab
+  console.log('Switched to tab:', tab)
+  // In a real app, you would fetch new data here
+}
+
+// Sample data for top answerers by question
+const questionTopAnswerers = ref({
+  1: [
+    { id: 1, name: 'Minh Anh', avatar: 'MA', time: '1.2s', correct: true },
+    { id: 2, name: 'Thành Hòa', avatar: 'TH', time: '1.8s', correct: true },
+    { id: 3, name: 'Văn Nam', avatar: 'VN', time: '2.1s', correct: true },
+    { id: 4, name: 'Thu Trang', avatar: 'TT', time: '2.5s', correct: false },
+    { id: 5, name: 'Người dùng', avatar: 'ND', time: '3.2s', correct: true },
+  ],
+  2: [
+    { id: 1, name: 'Thu Trang', avatar: 'TT', time: '0.9s', correct: true },
+    { id: 2, name: 'Minh Anh', avatar: 'MA', time: '1.5s', correct: true },
+    { id: 3, name: 'Người dùng', avatar: 'ND', time: '2.1s', correct: true },
+    { id: 4, name: 'Văn Nam', avatar: 'VN', time: '2.8s', correct: true },
+    { id: 5, name: 'Thành Hòa', avatar: 'TH', time: '3.1s', correct: false },
+  ],
+  3: [
+    { id: 1, name: 'Văn Nam', avatar: 'VN', time: '1.1s', correct: true },
+    { id: 2, name: 'Người dùng', avatar: 'ND', time: '1.4s', correct: true },
+    { id: 3, name: 'Minh Anh', avatar: 'MA', time: '1.9s', correct: true },
+    { id: 4, name: 'Thu Trang', avatar: 'TT', time: '2.3s', correct: true },
+    { id: 5, name: 'Thành Hòa', avatar: 'TH', time: '2.7s', correct: true },
+  ],
+})
+
+// Get top answerers for specific question
+const getTopAnswerers = (questionId) => {
+  return questionTopAnswerers.value[questionId] || []
+}
+
+// Sample leaderboard data by time period
+const leaderboardData = ref({
+  total: [
+    { id: 1, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 2456, rank: 1 },
+    { id: 2, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 2195, rank: 2 },
+    { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 1957, rank: 3 },
+    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 1834, rank: 4 },
+  ],
+  week: [
+    { id: 1, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 156, rank: 1 },
+    { id: 2, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 142, rank: 2 },
+    { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 138, rank: 3 },
+    { id: 4, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 125, rank: 4 },
+  ],
+  month: [
+    { id: 1, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 487, rank: 1 },
+    { id: 2, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 445, rank: 2 },
+    { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 398, rank: 3 },
+    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 367, rank: 4 },
+  ],
+  year: [
+    { id: 1, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 2456, rank: 1 },
+    { id: 2, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 2195, rank: 2 },
+    { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 1957, rank: 3 },
+    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 1834, rank: 4 },
+  ],
+})
+
+// Get current leaderboard data
+const getCurrentLeaderboard = () => {
+  return leaderboardData.value[activeTab.value] || leaderboardData.value.total
 }
 </script>
 
@@ -750,6 +926,139 @@ const sendMessage = () => {
 
   .sidebar-section {
     order: -1;
+  }
+}
+
+/* Dropdown styles */
+.details-dropdown {
+  color: #2563eb;
+  font-size: 12px;
+  padding: 0;
+  min-height: auto;
+}
+
+.details-dropdown .q-btn__content {
+  font-size: 12px;
+}
+
+/* Top Answerers Dropdown */
+.top-answerers-dropdown {
+  min-width: 280px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.answerer-item-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  transition: background-color 0.2s;
+}
+
+.answerer-item-dropdown:hover {
+  background: #f9fafb;
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+
+.answerer-item-dropdown.current-user {
+  background: #eff6ff;
+  border-radius: 4px;
+  padding: 6px 8px;
+  border: 1px solid #dbeafe;
+}
+
+.rank-badge {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #6b7280;
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.answerer-item-dropdown:nth-child(2) .rank-badge {
+  background: #f59e0b;
+}
+
+.answerer-item-dropdown:nth-child(3) .rank-badge {
+  background: #9ca3af;
+}
+
+.answerer-item-dropdown:nth-child(4) .rank-badge {
+  background: #d97706;
+}
+
+.answerer-mini-avatar {
+  background: #6d28d9;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.answerer-mini-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.answerer-mini-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.answerer-mini-time {
+  font-size: 11px;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+.answerer-mini-status {
+  flex-shrink: 0;
+}
+
+/* Responsive modal styles */
+@media (max-width: 768px) {
+  .details-dropdown .q-btn__content {
+    font-size: 11px;
+  }
+
+  .top-answerers-dropdown {
+    min-width: 250px;
+  }
+
+  .dropdown-title {
+    font-size: 13px;
+  }
+
+  .answerer-mini-name {
+    font-size: 12px;
+  }
+
+  .answerer-mini-time {
+    font-size: 10px;
   }
 }
 </style>
