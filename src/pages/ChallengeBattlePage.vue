@@ -530,6 +530,13 @@ onMounted(() => {
     timeLeft.value = timePerQuestion.value
   }
 
+  // Debug log
+  console.log('Game initialized:', {
+    gameOver: gameOver.value,
+    currentQuestion: currentQuestion.value,
+    totalQuestions: totalQuestions.value
+  })
+
   startTimer()
   loadQuestion()
 })
