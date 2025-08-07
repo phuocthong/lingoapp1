@@ -2303,68 +2303,36 @@ const getPlayerGradient = (playerId) => {
     margin: 20px;
   }
 
-  .battle-stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+  .champion-section {
+    flex-direction: column;
+    gap: 16px;
     padding: 16px;
   }
 
-  .stat-item {
+  .quick-stats {
+    gap: 8px;
+  }
+
+  .quick-stat {
     padding: 8px;
   }
 
-  .stat-value {
+  .quick-stat .stat-value {
     font-size: 16px;
   }
 
-  .stat-label {
+  .quick-stat .stat-label {
     font-size: 11px;
-  }
-
-  .performance-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-
-  .performance-card {
-    padding: 12px 8px;
-  }
-
-  .performance-value {
-    font-size: 16px;
-  }
-
-  .performance-label {
-    font-size: 10px;
-  }
-
-  .motivation-card {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-    padding: 16px;
-  }
-
-  .motivation-icon {
-    font-size: 28px;
-  }
-
-  .motivation-title {
-    font-size: 14px;
-  }
-
-  .motivation-message {
-    font-size: 13px;
   }
 
   .results-actions {
     grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 24px 20px;
+    gap: 8px;
+    padding: 16px;
   }
 
   .action-btn {
-    padding: 14px 16px;
+    padding: 12px 16px;
     font-size: 13px;
   }
 
@@ -2373,16 +2341,47 @@ const getPlayerGradient = (playerId) => {
     height: 16px;
   }
 
-  .champion-score .score-number {
-    font-size: 28px;
+  .champion-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
   }
 
-  .analysis-title {
+  .champion-name {
     font-size: 16px;
   }
 
-  .leaderboard-title {
+  .champion-score {
     font-size: 18px;
+  }
+
+  .section-title {
+    font-size: 14px;
+  }
+
+  .player-result {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .result-rank {
+    font-size: 16px;
+  }
+
+  .result-name, .result-score {
+    font-size: 13px;
+  }
+
+  .motivation-brief {
+    padding: 10px 12px;
+  }
+
+  .motivation-brief .motivation-icon {
+    font-size: 18px;
+  }
+
+  .motivation-brief .motivation-text {
+    font-size: 13px;
   }
 
   .modal-decoration {
