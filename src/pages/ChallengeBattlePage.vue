@@ -2467,96 +2467,99 @@ const getPlayerGradient = (playerId) => {
     margin: 20px;
   }
 
-  .results-main {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 16px;
-    min-height: auto;
+  .fullscreen-header {
+    padding: 24px 0 16px;
   }
 
-  .winner-section {
-    padding: 20px;
-  }
-
-  .winner-avatar {
-    width: 60px;
-    height: 60px;
-    font-size: 22px;
-  }
-
-  .winner-name {
-    font-size: 18px;
-  }
-
-  .score-big {
+  .victory-title {
     font-size: 28px;
   }
 
-  .score-unit {
-    font-size: 14px;
-  }
-
-  .mini-stat-value {
+  .victory-subtitle {
     font-size: 16px;
   }
 
-  .mini-stat-label {
-    font-size: 10px;
+  .trophy-icon-large {
+    font-size: 48px;
   }
 
-  .leaderboard-section {
+  .fullscreen-content {
+    padding: 0 16px 16px;
+  }
+
+  .champion-showcase {
+    padding: 24px 20px;
+  }
+
+  .champion-avatar-large {
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
+  }
+
+  .champion-title {
+    font-size: 24px;
+  }
+
+  .score-massive {
+    font-size: 40px;
+  }
+
+  .score-label-large {
+    font-size: 16px;
+  }
+
+  .champion-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .stat-card {
     padding: 16px;
   }
 
-  .leaderboard-title {
-    font-size: 14px;
+  .stat-value-large {
+    font-size: 20px;
   }
 
-  .ranking-item {
-    padding: 8px 10px;
-    gap: 8px;
+  .leaderboard-expanded {
+    padding: 24px 20px;
   }
 
-  .player-avatar-small {
-    width: 28px;
-    height: 28px;
-    font-size: 11px;
+  .leaderboard-title-large {
+    font-size: 20px;
   }
 
-  .player-name-small {
-    font-size: 12px;
-  }
-
-  .player-score-small {
-    font-size: 11px;
-  }
-
-  .results-actions {
-    grid-template-columns: 1fr;
-    gap: 8px;
+  .ranking-card {
     padding: 12px 16px;
+    gap: 12px;
   }
 
-  .action-btn {
-    padding: 12px 16px;
-    font-size: 13px;
+  .player-avatar-medium {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 
-  .btn-icon {
-    width: 16px;
-    height: 16px;
+  .player-name-large {
+    font-size: 16px;
   }
 
-  .performance-summary {
-    padding: 8px 12px;
+  .fullscreen-actions {
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 16px;
   }
 
-  .performance-icon {
+  .action-btn-large {
+    padding: 14px 24px;
     font-size: 14px;
+    min-width: auto;
   }
 
-  .performance-text {
-    font-size: 12px;
+  .btn-icon-large {
+    width: 20px;
+    height: 20px;
   }
 
   .modal-decoration {
