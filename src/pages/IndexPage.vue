@@ -10,7 +10,7 @@
               <q-icon name="extension" class="header-icon" />
               <div class="header-info">
                 <div class="header-title">Thách đấu với Bot</div>
-                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
+                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi m��i 30-60 giây</div>
               </div>
             </div>
           </q-card-section>
@@ -447,18 +447,72 @@ const showTopAnswerers = (questionId) => {
 
 const switchTab = (tab) => {
   activeTab.value = tab
-  // Here you would typically fetch data for the selected period
   console.log('Switched to tab:', tab)
+  // In a real app, you would fetch new data here
 }
 
-// Sample data for top answerers
-const topAnswerers = ref([
-  { id: 1, name: 'Minh Anh', avatar: 'MA', time: '1.2s', correct: true },
-  { id: 2, name: 'Thành Hòa', avatar: 'TH', time: '1.8s', correct: true },
-  { id: 3, name: 'Văn Nam', avatar: 'VN', time: '2.1s', correct: true },
-  { id: 4, name: 'Thu Trang', avatar: 'TT', time: '2.5s', correct: false },
-  { id: 5, name: 'Người dùng', avatar: 'ND', time: '3.2s', correct: true }
-])
+// Sample data for top answerers by question
+const questionTopAnswerers = ref({
+  1: [
+    { id: 1, name: 'Minh Anh', avatar: 'MA', time: '1.2s', correct: true },
+    { id: 2, name: 'Thành Hòa', avatar: 'TH', time: '1.8s', correct: true },
+    { id: 3, name: 'Văn Nam', avatar: 'VN', time: '2.1s', correct: true },
+    { id: 4, name: 'Thu Trang', avatar: 'TT', time: '2.5s', correct: false },
+    { id: 5, name: 'Người dùng', avatar: 'ND', time: '3.2s', correct: true }
+  ],
+  2: [
+    { id: 1, name: 'Thu Trang', avatar: 'TT', time: '0.9s', correct: true },
+    { id: 2, name: 'Minh Anh', avatar: 'MA', time: '1.5s', correct: true },
+    { id: 3, name: 'Người dùng', avatar: 'ND', time: '2.1s', correct: true },
+    { id: 4, name: 'Văn Nam', avatar: 'VN', time: '2.8s', correct: true },
+    { id: 5, name: 'Thành Hòa', avatar: 'TH', time: '3.1s', correct: false }
+  ],
+  3: [
+    { id: 1, name: 'Văn Nam', avatar: 'VN', time: '1.1s', correct: true },
+    { id: 2, name: 'Người dùng', avatar: 'ND', time: '1.4s', correct: true },
+    { id: 3, name: 'Minh Anh', avatar: 'MA', time: '1.9s', correct: true },
+    { id: 4, name: 'Thu Trang', avatar: 'TT', time: '2.3s', correct: true },
+    { id: 5, name: 'Thành Hòa', avatar: 'TH', time: '2.7s', correct: true }
+  ]
+})
+
+// Get top answerers for specific question
+const getTopAnswerers = (questionId) => {
+  return questionTopAnswerers.value[questionId] || []
+}
+
+// Sample leaderboard data by time period
+const leaderboardData = ref({
+  total: [
+    { id: 1, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 2456, rank: 1 },
+    { id: 2, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 2195, rank: 2 },
+    { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 1957, rank: 3 },
+    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 1834, rank: 4 }
+  ],
+  week: [
+    { id: 1, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 156, rank: 1 },
+    { id: 2, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 142, rank: 2 },
+    { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 138, rank: 3 },
+    { id: 4, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 125, rank: 4 }
+  ],
+  month: [
+    { id: 1, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 487, rank: 1 },
+    { id: 2, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 445, rank: 2 },
+    { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 398, rank: 3 },
+    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 367, rank: 4 }
+  ],
+  year: [
+    { id: 1, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 2456, rank: 1 },
+    { id: 2, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 2195, rank: 2 },
+    { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 1957, rank: 3 },
+    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 1834, rank: 4 }
+  ]
+})
+
+// Get current leaderboard data
+const getCurrentLeaderboard = () => {
+  return leaderboardData.value[activeTab.value] || leaderboardData.value.total
+}
 </script>
 
 <style scoped>
