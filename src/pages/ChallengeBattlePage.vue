@@ -253,39 +253,119 @@
 
     <!-- Enhanced Game Over Modal -->
     <div v-if="gameOver" class="game-over-overlay">
+      <!-- Close Button -->
+      <button class="modal-close-btn" @click="exitGame" aria-label="Đóng">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
       <div class="celebration-confetti">
         <div class="confetti" v-for="n in 50" :key="n"></div>
       </div>
-      <div class="modal-backdrop" @click="closeGameOver"></div>
+      <div class="fireworks">
+        <div class="firework" v-for="n in 5" :key="n"></div>
+      </div>
+      <div class="modal-backdrop" @click="exitGame"></div>
+
       <div class="results-modal">
+        <!-- Victory Header -->
         <div class="modal-decoration">
           <div class="trophy-burst">
             <div class="trophy-icon-main">🏆</div>
             <div class="victory-rays"></div>
+            <div class="sparkles">
+              <span v-for="n in 6" :key="n" class="sparkle">✨</span>
+            </div>
           </div>
         </div>
 
         <div class="results-header">
-          <h2 class="results-title">🎉 Battle Complete!</h2>
-          <p class="results-subtitle">Amazing performance everyone!</p>
+          <h2 class="results-title">🎉 Trận Đấu Hoàn Thành!</h2>
+          <p class="results-subtitle">Thật tuyệt vời! Hãy xem kết quả nào!</p>
         </div>
 
         <div class="results-content">
+          <!-- Champion Spotlight với thống kê chi tiết -->
           <div class="champion-spotlight">
             <div class="champion-crown">👑</div>
-            <div class="champion-avatar" :style="{ background: getPlayerGradient(winner.id) }">
-              {{ winner.initials || winner.name.charAt(0) }}
+            <div class="champion-avatar-container">
+              <div class="champion-avatar" :style="{ background: getPlayerGradient(winner.id) }">
+                {{ winner.initials || winner.name.charAt(0) }}
+              </div>
+              <div class="champion-glow"></div>
             </div>
             <h3 class="champion-name">{{ winner.name }}</h3>
             <div class="champion-score">
               <span class="score-number">{{ winner.score }}</span>
-              <span class="score-text">points</span>
+              <span class="score-text">điểm</span>
             </div>
-            <div class="victory-badge">🥇 CHAMPION</div>
+            <div class="victory-badge">🥇 NHẤT BẢNG</div>
+
+            <!-- Battle Statistics -->
+            <div class="battle-stats">
+              <div class="stat-item">
+                <div class="stat-icon">📊</div>
+                <div class="stat-info">
+                  <div class="stat-value">{{ Math.round((winner.score / totalQuestions.value) * 100) }}%</div>
+                  <div class="stat-label">Độ chính xác</div>
+                </div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-info">
+                  <div class="stat-value">{{ winner.streak }}</div>
+                  <div class="stat-label">Streak tối đa</div>
+                </div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-info">
+                  <div class="stat-value">{{ totalQuestions }}</div>
+                  <div class="stat-label">Câu hỏi</div>
+                </div>
+              </div>
+            </div>
           </div>
 
+          <!-- Performance Analysis -->
+          <div class="performance-analysis">
+            <h4 class="analysis-title">🎯 Phân Tích Hiệu Suất</h4>
+            <div class="performance-grid">
+              <div class="performance-card correct">
+                <div class="performance-icon">✅</div>
+                <div class="performance-data">
+                  <div class="performance-value">{{ currentPlayer.score > 0 ? currentPlayer.score : 0 }}</div>
+                  <div class="performance-label">Đúng</div>
+                </div>
+              </div>
+              <div class="performance-card incorrect">
+                <div class="performance-icon">❌</div>
+                <div class="performance-data">
+                  <div class="performance-value">{{ totalQuestions - (currentPlayer.score > 0 ? currentPlayer.score : 0) }}</div>
+                  <div class="performance-label">Sai</div>
+                </div>
+              </div>
+              <div class="performance-card time">
+                <div class="performance-icon">⏱️</div>
+                <div class="performance-data">
+                  <div class="performance-value">{{ Math.round(timePerQuestion * 0.7) }}s</div>
+                  <div class="performance-label">TB/câu</div>
+                </div>
+              </div>
+              <div class="performance-card bonus">
+                <div class="performance-icon">🎁</div>
+                <div class="performance-data">
+                  <div class="performance-value">+{{ Math.floor(currentPlayer.score * 0.1) }}</div>
+                  <div class="performance-label">Bonus XP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Final Leaderboard -->
           <div class="final-leaderboard">
-            <h4 class="leaderboard-title">Final Leaderboard</h4>
+            <h4 class="leaderboard-title">🏆 Bảng Xếp Hạng Cuối</h4>
             <div class="leaderboard-list">
               <div
                 v-for="(player, index) in sortedPlayers"
@@ -316,66 +396,60 @@
                   <div class="player-info-summary">
                     <div class="player-name-summary">{{ player.name }}</div>
                     <div class="player-performance">
-                      <span class="final-score">{{ player.score }} pts</span>
-                      <span v-if="player.streak > 1" class="final-streak"
-                        >🔥{{ player.streak }}</span
-                      >
+                      <span class="final-score">{{ player.score }} điểm</span>
+                      <span v-if="player.streak > 1" class="final-streak">🔥{{ player.streak }}</span>
+                      <span class="accuracy-rate">{{ Math.round((player.score / totalQuestions) * 100) }}%</span>
                     </div>
                   </div>
                 </div>
+                <div v-if="player.isCurrentUser" class="you-badge">Bạn</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Motivation Message -->
+          <div class="motivation-section">
+            <div class="motivation-card">
+              <div class="motivation-icon">{{ getMotivationIcon() }}</div>
+              <div class="motivation-text">
+                <h5 class="motivation-title">{{ getMotivationTitle() }}</h5>
+                <p class="motivation-message">{{ getMotivationMessage() }}</p>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Enhanced Action Buttons -->
         <div class="results-actions">
           <button class="action-btn primary-action" @click="playAgain">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M1 4v6h6"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M3.51 15a9 9 0 1015.8-5"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            Play Again
+            <div class="btn-content">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M1 4v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3.51 15a9 9 0 1015.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Chơi Lại</span>
+            </div>
+            <div class="btn-shimmer"></div>
           </button>
-          <button class="action-btn secondary-action" @click="exitGame">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <polyline
-                points="16,17 21,12 16,7"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <line
-                x1="21"
-                y1="12"
-                x2="9"
-                y2="12"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            Exit to Menu
+
+          <button class="action-btn secondary-action" @click="viewLeaderboard">
+            <div class="btn-content">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M3 13h4l3-8 4 8h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Bảng Xếp Hạng</span>
+            </div>
+          </button>
+
+          <button class="action-btn tertiary-action" @click="exitGame">
+            <div class="btn-content">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="16,17 21,12 16,7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Thoát</span>
+            </div>
           </button>
         </div>
       </div>
