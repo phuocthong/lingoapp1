@@ -105,6 +105,16 @@
             </div>
             <span class="players-count">{{ players.length }}</span>
           </div>
+
+          <!-- Debug Reset Button (Development only) -->
+          <button
+            v-if="gameOver"
+            class="debug-reset-btn"
+            @click="resetToGame"
+            title="Reset to Game"
+          >
+            🔄
+          </button>
         </div>
       </div>
     </header>
@@ -331,7 +341,7 @@
               >
                 <div class="rank-position-large">
                   <span v-if="index === 0" class="gold-medal-large">🥇</span>
-                  <span v-else-if="index === 1" class="silver-medal-large">��</span>
+                  <span v-else-if="index === 1" class="silver-medal-large">🥈</span>
                   <span v-else-if="index === 2" class="bronze-medal-large">🥉</span>
                   <span v-else class="position-num-large">{{ index + 1 }}</span>
                 </div>
@@ -706,7 +716,7 @@ const viewLeaderboard = () => {
 
 const getMotivationIcon = () => {
   const currentPlayerData = currentPlayer.value
-  if (!currentPlayerData) return '��'
+  if (!currentPlayerData) return '🎯'
 
   const accuracy = getAccuracyRate(currentPlayerData)
   if (accuracy >= 90) return '🌟'
