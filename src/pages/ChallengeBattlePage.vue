@@ -554,6 +554,10 @@ const winner = computed(() => {
   return sortedPlayers.value[0]
 })
 
+const currentPlayer = computed(() => {
+  return players.value.find(p => p.isCurrentUser)
+})
+
 // Authentication check
 const checkAuthentication = () => {
   // Simple auth check - in real app this would check actual login status
