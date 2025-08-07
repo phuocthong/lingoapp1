@@ -275,7 +275,7 @@
             <div class="trophy-icon-main">🏆</div>
             <div class="victory-rays"></div>
             <div class="sparkles">
-              <span v-for="n in 6" :key="n" class="sparkle">✨</span>
+              <span v-for="n in 6" :key="n" class="sparkle">��</span>
             </div>
           </div>
         </div>
@@ -1745,7 +1745,7 @@ const getPlayerGradient = (playerId) => {
 .modal-decoration {
   position: relative;
   background: linear-gradient(135deg, #667eea, #764ba2);
-  padding: 24px 24px 40px;
+  padding: 16px 24px 24px;
   text-align: center;
 }
 
