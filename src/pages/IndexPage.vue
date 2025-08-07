@@ -404,9 +404,6 @@ import { ref } from 'vue'
 
 const messageInput = ref('')
 const activeTab = ref('total')
-const showDetailModal = ref(false)
-const showTopAnswerersModal = ref(false)
-const selectedQuestion = ref(null)
 
 const sendMessage = () => {
   if (messageInput.value.trim()) {
