@@ -485,11 +485,13 @@ const getCurrentLeaderboard = () => {
 }
 
 .dashboard-container {
-  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 352px;
   gap: 24px;
-  width: 100%;
-  max-width: none;
-  margin: 0;
+  align-items: start;
 }
 
 .chat-section {

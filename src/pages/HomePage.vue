@@ -2,274 +2,223 @@
   <q-page class="home-page">
     <!-- Main content area -->
     <div class="main-content">
-      <!-- Chat section -->
-      <div class="chat-section">
-        <!-- Chat header -->
-        <div class="chat-header">
-          <div class="bot-icon">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 21 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_48_1041)">
-                <path
-                  d="M10.8001 7.46666V4.13333H7.4668"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M15.8 7.46667H5.79997C4.87949 7.46667 4.1333 8.21287 4.1333 9.13334V15.8C4.1333 16.7205 4.87949 17.4667 5.79997 17.4667H15.8C16.7204 17.4667 17.4666 16.7205 17.4666 15.8V9.13334C17.4666 8.21287 16.7204 7.46667 15.8 7.46667Z"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M2.4668 12.4667H4.13346"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M17.4668 12.4667H19.1335"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M13.3 11.6333V13.3"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M8.30005 11.6333V13.3"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </g>
-            </svg>
-          </div>
-          <div class="chat-header-info">
-            <div class="chat-title">Thách đấu với Bot</div>
-            <div class="chat-subtitle">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
-          </div>
-        </div>
-
-        <!-- Chat messages -->
-        <div class="chat-messages">
-          <!-- Bot message 1 -->
-          <div class="message-item">
-            <div class="bot-avatar">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 17 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clip-path="url(#clip0_48_511)">
-                  <path
-                    d="M8.79997 5.33332V2.66666H6.1333"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M12.8001 5.33334H4.80013C4.06375 5.33334 3.4668 5.9303 3.4668 6.66668V12C3.4668 12.7364 4.06375 13.3333 4.80013 13.3333H12.8001C13.5365 13.3333 14.1335 12.7364 14.1335 12V6.66668C14.1335 5.9303 13.5365 5.33334 12.8001 5.33334Z"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M2.1333 9.33334H3.46663"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M14.1333 9.33334H15.4666"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M10.8 8.66666V9.99999"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M6.80005 8.66666V9.99999"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </g>
-              </svg>
+      <div class="left-section">
+        <!-- Chat section -->
+        <div class="chat-section">
+          <!-- Chat header -->
+          <div class="chat-header">
+            <q-icon name="extension" class="header-icon" />
+            <div class="chat-header-info">
+              <div class="chat-title">Thách đấu với Bot</div>
+              <div class="chat-subtitle">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
             </div>
-            <div class="message-bubble">
-              <div class="message-text">
-                Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các bạn
-                trả lời.
+          </div>
+
+          <!-- Chat messages -->
+          <div class="chat-messages">
+            <!-- Bot message 1 -->
+            <div class="message-item">
+              <div class="bot-avatar">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 17 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_48_511)">
+                    <path
+                      d="M8.79997 5.33332V2.66666H6.1333"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12.8001 5.33334H4.80013C4.06375 5.33334 3.4668 5.9303 3.4668 6.66668V12C3.4668 12.7364 4.06375 13.3333 4.80013 13.3333H12.8001C13.5365 13.3333 14.1335 12.7364 14.1335 12V6.66668C14.1335 5.9303 13.5365 5.33334 12.8001 5.33334Z"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M2.1333 9.33334H3.46663"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.1333 9.33334H15.4666"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10.8 8.66666V9.99999"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M6.80005 8.66666V9.99999"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                </svg>
               </div>
-              <div class="message-time">21:57</div>
+              <div class="message-bubble">
+                <div class="message-text">
+                  Xin chào! Tôi là EnglishBot. Tôi sẽ đưa ra các câu hỏi tiếng Anh định kỳ để các
+                  bạn trả lời.
+                </div>
+                <div class="message-time">21:57</div>
+              </div>
+            </div>
+
+            <!-- Bot message 2 -->
+            <div class="message-item">
+              <div class="bot-avatar">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 17 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_48_523)">
+                    <path
+                      d="M8.79997 5.73332V3.06665H6.1333"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12.8001 5.73334H4.80013C4.06375 5.73334 3.4668 6.33029 3.4668 7.06667V12.4C3.4668 13.1364 4.06375 13.7333 4.80013 13.7333H12.8001C13.5365 13.7333 14.1335 13.1364 14.1335 12.4V7.06667C14.1335 6.33029 13.5365 5.73334 12.8001 5.73334Z"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M2.1333 9.73334H3.46663"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.1333 9.73334H15.4666"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10.8 9.06665V10.4"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M6.80005 9.06665V10.4"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div class="message-bubble">
+                <div class="message-text">Dịch từ "Wonderful" sang tiếng Việt</div>
+                <div class="message-time">21:57</div>
+              </div>
             </div>
           </div>
 
-          <!-- Bot message 2 -->
-          <div class="message-item">
-            <div class="bot-avatar">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 17 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clip-path="url(#clip0_48_523)">
-                  <path
-                    d="M8.79997 5.73332V3.06665H6.1333"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M12.8001 5.73334H4.80013C4.06375 5.73334 3.4668 6.33029 3.4668 7.06667V12.4C3.4668 13.1364 4.06375 13.7333 4.80013 13.7333H12.8001C13.5365 13.7333 14.1335 13.1364 14.1335 12.4V7.06667C14.1335 6.33029 13.5365 5.73334 12.8001 5.73334Z"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M2.1333 9.73334H3.46663"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M14.1333 9.73334H15.4666"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M10.8 9.06665V10.4"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M6.80005 9.06665V10.4"
-                    stroke="black"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </g>
-              </svg>
+          <!-- Chat input (disabled) -->
+          <div class="chat-input-section">
+            <div class="input-container">
+              <input
+                type="text"
+                placeholder="Đăng nhập để tham gia trả lời..."
+                disabled
+                class="chat-input"
+              />
+              <q-btn class="send-btn" disabled>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_48_1055)">
+                    <path
+                      d="M12.6667 7.83331H3.33333C2.59695 7.83331 2 8.43027 2 9.16665V13.8333C2 14.5697 2.59695 15.1666 3.33333 15.1666H12.6667C13.403 15.1666 14 14.5697 14 13.8333V9.16665C14 8.43027 13.403 7.83331 12.6667 7.83331Z"
+                      stroke="white"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M4.66675 7.83331V5.16665C4.66675 4.28259 5.01794 3.43475 5.64306 2.80962C6.26818 2.1845 7.11603 1.83331 8.00008 1.83331C8.88414 1.83331 9.73198 2.1845 10.3571 2.80962C10.9822 3.43475 11.3334 4.28259 11.3334 5.16665V7.83331"
+                      stroke="white"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                </svg>
+              </q-btn>
             </div>
-            <div class="message-bubble">
-              <div class="message-text">Dịch từ "Wonderful" sang tiếng Việt</div>
-              <div class="message-time">21:57</div>
+            <div class="warning-message">
+              <div class="warning-dot"></div>
+              <div class="warning-text">Vui lòng đăng nhập để tham gia trả lời câu hỏi</div>
             </div>
-          </div>
-        </div>
-
-        <!-- Chat input (disabled) -->
-        <div class="chat-input-section">
-          <div class="input-container">
-            <input
-              type="text"
-              placeholder="Đăng nhập để tham gia trả lời..."
-              disabled
-              class="chat-input"
-            />
-            <q-btn class="send-btn" disabled>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clip-path="url(#clip0_48_1055)">
+            <div class="auth-buttons">
+              <q-btn flat class="register-btn-small" @click="register">Đăng ký miễn phí</q-btn>
+              <q-btn class="login-btn-small" @click="login">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
-                    d="M12.6667 7.83331H3.33333C2.59695 7.83331 2 8.43027 2 9.16665V13.8333C2 14.5697 2.59695 15.1666 3.33333 15.1666H12.6667C13.403 15.1666 14 14.5697 14 13.8333V9.16665C14 8.43027 13.403 7.83331 12.6667 7.83331Z"
+                    d="M10 2.10004H12.6667C13.0203 2.10004 13.3594 2.24051 13.6095 2.49056C13.8595 2.74061 14 3.07975 14 3.43337V12.7667C14 13.1203 13.8595 13.4595 13.6095 13.7095C13.3594 13.9596 13.0203 14.1 12.6667 14.1H10"
                     stroke="white"
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
                   <path
-                    d="M4.66675 7.83331V5.16665C4.66675 4.28259 5.01794 3.43475 5.64306 2.80962C6.26818 2.1845 7.11603 1.83331 8.00008 1.83331C8.88414 1.83331 9.73198 2.1845 10.3571 2.80962C10.9822 3.43475 11.3334 4.28259 11.3334 5.16665V7.83331"
+                    d="M6.66675 11.4334L10.0001 8.10006L6.66675 4.76672"
                     stroke="white"
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
-                </g>
-              </svg>
-            </q-btn>
-          </div>
-          <div class="warning-message">
-            <div class="warning-dot"></div>
-            <div class="warning-text">Vui lòng đăng nhập để tham gia trả lời câu hỏi</div>
-          </div>
-          <div class="auth-buttons">
-            <q-btn flat class="register-btn-small" @click="register">Đăng ký miễn phí</q-btn>
-            <q-btn class="login-btn-small" @click="login">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 17"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M10 2.10004H12.6667C13.0203 2.10004 13.3594 2.24051 13.6095 2.49056C13.8595 2.74061 14 3.07975 14 3.43337V12.7667C14 13.1203 13.8595 13.4595 13.6095 13.7095C13.3594 13.9596 13.0203 14.1 12.6667 14.1H10"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M6.66675 11.4334L10.0001 8.10006L6.66675 4.76672"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M10 8.10004H2"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Đăng nhập ngay
-            </q-btn>
+                  <path
+                    d="M10 8.10004H2"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Đăng nhập ngay
+              </q-btn>
+            </div>
           </div>
         </div>
       </div>
@@ -901,13 +850,12 @@ const login = () => {
   background: white;
 }
 
-.bot-icon {
-  display: flex;
-  padding: 8px;
+.header-icon {
   background: #6d28d9;
+  color: white;
+  padding: 8px;
   border-radius: 8px;
-  align-items: center;
-  justify-content: center;
+  font-size: 20px;
 }
 
 .chat-header-info {
