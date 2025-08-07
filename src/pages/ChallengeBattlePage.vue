@@ -2204,6 +2204,7 @@ const getPlayerGradient = (playerId) => {
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .leaderboard-item.champion {
