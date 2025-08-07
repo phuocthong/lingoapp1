@@ -152,7 +152,13 @@
                   <span class="separator">/</span>
                   <span class="total-count">23 trả lời</span>
                 </div>
-                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Top 5 nhanh nhất">
+                <q-btn-dropdown
+                  class="details-dropdown"
+                  flat
+                  no-caps
+                  size="sm"
+                  label="▼ Top 5 nhanh nhất"
+                >
                   <div class="top-answerers-dropdown">
                     <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
                     <div
@@ -162,7 +168,9 @@
                       :class="{ 'current-user': answerer.name === 'Người dùng' }"
                     >
                       <div class="rank-badge">{{ index + 1 }}</div>
-                      <q-avatar size="24px" class="answerer-mini-avatar">{{ answerer.avatar }}</q-avatar>
+                      <q-avatar size="24px" class="answerer-mini-avatar">{{
+                        answerer.avatar
+                      }}</q-avatar>
                       <div class="answerer-mini-info">
                         <div class="answerer-mini-name">{{ answerer.name }}</div>
                         <div class="answerer-mini-time">{{ answerer.time }}</div>
@@ -194,7 +202,13 @@
                   <span class="separator">/</span>
                   <span class="total-count">18 trả lời</span>
                 </div>
-                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Top 5 nhanh nhất">
+                <q-btn-dropdown
+                  class="details-dropdown"
+                  flat
+                  no-caps
+                  size="sm"
+                  label="▼ Top 5 nhanh nhất"
+                >
                   <div class="top-answerers-dropdown">
                     <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
                     <div
@@ -204,7 +218,9 @@
                       :class="{ 'current-user': answerer.name === 'Người dùng' }"
                     >
                       <div class="rank-badge">{{ index + 1 }}</div>
-                      <q-avatar size="24px" class="answerer-mini-avatar">{{ answerer.avatar }}</q-avatar>
+                      <q-avatar size="24px" class="answerer-mini-avatar">{{
+                        answerer.avatar
+                      }}</q-avatar>
                       <div class="answerer-mini-info">
                         <div class="answerer-mini-name">{{ answerer.name }}</div>
                         <div class="answerer-mini-time">{{ answerer.time }}</div>
@@ -236,7 +252,13 @@
                   <span class="separator">/</span>
                   <span class="total-count">25 trả lời</span>
                 </div>
-                <q-btn-dropdown class="details-dropdown" flat no-caps size="sm" label="▼ Top 5 nhanh nhất">
+                <q-btn-dropdown
+                  class="details-dropdown"
+                  flat
+                  no-caps
+                  size="sm"
+                  label="▼ Top 5 nhanh nhất"
+                >
                   <div class="top-answerers-dropdown">
                     <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
                     <div
@@ -246,7 +268,9 @@
                       :class="{ 'current-user': answerer.name === 'Người dùng' }"
                     >
                       <div class="rank-badge">{{ index + 1 }}</div>
-                      <q-avatar size="24px" class="answerer-mini-avatar">{{ answerer.avatar }}</q-avatar>
+                      <q-avatar size="24px" class="answerer-mini-avatar">{{
+                        answerer.avatar
+                      }}</q-avatar>
                       <div class="answerer-mini-info">
                         <div class="answerer-mini-name">{{ answerer.name }}</div>
                         <div class="answerer-mini-time">{{ answerer.time }}</div>
@@ -276,10 +300,38 @@
             </div>
 
             <div class="leaderboard-tabs">
-              <q-btn flat size="sm" :class="['tab-btn', { active: activeTab === 'total' }]" no-caps @click="switchTab('total')">Tổng</q-btn>
-              <q-btn flat size="sm" :class="['tab-btn', { active: activeTab === 'week' }]" no-caps @click="switchTab('week')">Tuần</q-btn>
-              <q-btn flat size="sm" :class="['tab-btn', { active: activeTab === 'month' }]" no-caps @click="switchTab('month')">Tháng</q-btn>
-              <q-btn flat size="sm" :class="['tab-btn', { active: activeTab === 'year' }]" no-caps @click="switchTab('year')">Năm</q-btn>
+              <q-btn
+                flat
+                size="sm"
+                :class="['tab-btn', { active: activeTab === 'total' }]"
+                no-caps
+                @click="switchTab('total')"
+                >Tổng</q-btn
+              >
+              <q-btn
+                flat
+                size="sm"
+                :class="['tab-btn', { active: activeTab === 'week' }]"
+                no-caps
+                @click="switchTab('week')"
+                >Tuần</q-btn
+              >
+              <q-btn
+                flat
+                size="sm"
+                :class="['tab-btn', { active: activeTab === 'month' }]"
+                no-caps
+                @click="switchTab('month')"
+                >Tháng</q-btn
+              >
+              <q-btn
+                flat
+                size="sm"
+                :class="['tab-btn', { active: activeTab === 'year' }]"
+                no-caps
+                @click="switchTab('year')"
+                >Năm</q-btn
+              >
             </div>
           </q-card-section>
 
@@ -292,12 +344,14 @@
               :class="{
                 'first-place': index === 0,
                 'second-place': index === 1,
-                'third-place': index === 2
+                'third-place': index === 2,
               }"
             >
               <q-icon
                 :name="index < 3 ? 'emoji_events' : 'star'"
-                :color="index === 0 ? 'amber' : index === 1 ? 'grey-5' : index === 2 ? 'orange' : 'blue'"
+                :color="
+                  index === 0 ? 'amber' : index === 1 ? 'grey-5' : index === 2 ? 'orange' : 'blue'
+                "
                 :size="index < 3 ? '16px' : '12px'"
                 :style="index === 1 ? 'opacity: 0.2' : ''"
               />
@@ -305,7 +359,7 @@
                 size="32px"
                 :class="[
                   'rank-avatar',
-                  index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? 'bronze' : 'blue'
+                  index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? 'bronze' : 'blue',
                 ]"
               >
                 {{ player.avatar }}
@@ -338,7 +392,6 @@
         </q-card>
       </div>
     </div>
-
   </q-page>
 </template>
 
@@ -355,7 +408,6 @@ const sendMessage = () => {
   }
 }
 
-
 const switchTab = (tab) => {
   activeTab.value = tab
   console.log('Switched to tab:', tab)
@@ -369,22 +421,22 @@ const questionTopAnswerers = ref({
     { id: 2, name: 'Thành Hòa', avatar: 'TH', time: '1.8s', correct: true },
     { id: 3, name: 'Văn Nam', avatar: 'VN', time: '2.1s', correct: true },
     { id: 4, name: 'Thu Trang', avatar: 'TT', time: '2.5s', correct: false },
-    { id: 5, name: 'Người dùng', avatar: 'ND', time: '3.2s', correct: true }
+    { id: 5, name: 'Người dùng', avatar: 'ND', time: '3.2s', correct: true },
   ],
   2: [
     { id: 1, name: 'Thu Trang', avatar: 'TT', time: '0.9s', correct: true },
     { id: 2, name: 'Minh Anh', avatar: 'MA', time: '1.5s', correct: true },
     { id: 3, name: 'Người dùng', avatar: 'ND', time: '2.1s', correct: true },
     { id: 4, name: 'Văn Nam', avatar: 'VN', time: '2.8s', correct: true },
-    { id: 5, name: 'Thành Hòa', avatar: 'TH', time: '3.1s', correct: false }
+    { id: 5, name: 'Thành Hòa', avatar: 'TH', time: '3.1s', correct: false },
   ],
   3: [
     { id: 1, name: 'Văn Nam', avatar: 'VN', time: '1.1s', correct: true },
     { id: 2, name: 'Người dùng', avatar: 'ND', time: '1.4s', correct: true },
     { id: 3, name: 'Minh Anh', avatar: 'MA', time: '1.9s', correct: true },
     { id: 4, name: 'Thu Trang', avatar: 'TT', time: '2.3s', correct: true },
-    { id: 5, name: 'Thành Hòa', avatar: 'TH', time: '2.7s', correct: true }
-  ]
+    { id: 5, name: 'Thành Hòa', avatar: 'TH', time: '2.7s', correct: true },
+  ],
 })
 
 // Get top answerers for specific question
@@ -398,26 +450,26 @@ const leaderboardData = ref({
     { id: 1, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 2456, rank: 1 },
     { id: 2, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 2195, rank: 2 },
     { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 1957, rank: 3 },
-    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 1834, rank: 4 }
+    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 1834, rank: 4 },
   ],
   week: [
     { id: 1, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 156, rank: 1 },
     { id: 2, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 142, rank: 2 },
     { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 138, rank: 3 },
-    { id: 4, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 125, rank: 4 }
+    { id: 4, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 125, rank: 4 },
   ],
   month: [
     { id: 1, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 487, rank: 1 },
     { id: 2, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 445, rank: 2 },
     { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 398, rank: 3 },
-    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 367, rank: 4 }
+    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 367, rank: 4 },
   ],
   year: [
     { id: 1, name: 'Minh Anh', avatar: 'MA', streak: 15, score: 2456, rank: 1 },
     { id: 2, name: 'Thành Hòa', avatar: 'TH', streak: 23, score: 2195, rank: 2 },
     { id: 3, name: 'Văn Nam', avatar: 'VN', streak: 12, score: 1957, rank: 3 },
-    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 1834, rank: 4 }
-  ]
+    { id: 4, name: 'Thu Trang', avatar: 'TT', streak: 8, score: 1834, rank: 4 },
+  ],
 })
 
 // Get current leaderboard data
@@ -986,7 +1038,6 @@ const getCurrentLeaderboard = () => {
 .answerer-mini-status {
   flex-shrink: 0;
 }
-
 
 /* Responsive modal styles */
 @media (max-width: 768px) {
