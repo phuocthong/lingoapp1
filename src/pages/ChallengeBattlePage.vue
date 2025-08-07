@@ -1651,7 +1651,7 @@ const getPlayerGradient = (playerId) => {
 /* Fullscreen Header */
 .fullscreen-header {
   text-align: center;
-  padding: 40px 0 20px;
+  padding: 24px 0 16px;
   position: relative;
 }
 
