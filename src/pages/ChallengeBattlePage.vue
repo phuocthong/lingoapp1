@@ -1741,7 +1741,7 @@ const getPlayerGradient = (playerId) => {
 .modal-decoration {
   position: relative;
   background: linear-gradient(135deg, #667eea, #764ba2);
-  padding: 40px 40px 80px;
+  padding: 24px 24px 40px;
   text-align: center;
 }
 
@@ -1751,10 +1751,10 @@ const getPlayerGradient = (playerId) => {
 }
 
 .trophy-icon-main {
-  font-size: 64px;
+  font-size: 48px;
   position: relative;
   z-index: 2;
-  animation: trophy-bounce 1s ease-in-out infinite alternate;
+  animation: trophy-bounce 1.5s ease-in-out infinite alternate;
 }
 
 @keyframes trophy-bounce {
@@ -1762,7 +1762,7 @@ const getPlayerGradient = (playerId) => {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
   }
 }
 
@@ -1770,8 +1770,8 @@ const getPlayerGradient = (playerId) => {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
   border-radius: 50%;
@@ -1785,26 +1785,26 @@ const getPlayerGradient = (playerId) => {
     opacity: 0.3;
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.5;
   }
 }
 
 .results-header {
-  padding: 0 40px 32px;
+  padding: 0 24px 20px;
   text-align: center;
   color: white;
 }
 
 .results-title {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 700;
-  margin: 16px 0 8px;
+  margin: 12px 0 6px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .results-subtitle {
-  font-size: 16px;
+  font-size: 14px;
   opacity: 0.9;
   margin: 0;
 }
