@@ -427,7 +427,7 @@
                 <path d="M1 4v6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M3.51 15a9 9 0 1015.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span>Chơi L��i</span>
+              <span>Chơi Lại</span>
             </div>
             <div class="btn-shimmer"></div>
           </button>
@@ -2503,6 +2503,89 @@ const getPlayerGradient = (playerId) => {
   .results-modal {
     max-width: 90vw;
     margin: 20px;
+  }
+
+  .battle-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .stat-item {
+    padding: 8px;
+  }
+
+  .stat-value {
+    font-size: 16px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  .performance-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .performance-card {
+    padding: 12px 8px;
+  }
+
+  .performance-value {
+    font-size: 16px;
+  }
+
+  .performance-label {
+    font-size: 10px;
+  }
+
+  .motivation-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .motivation-icon {
+    font-size: 28px;
+  }
+
+  .motivation-title {
+    font-size: 14px;
+  }
+
+  .motivation-message {
+    font-size: 13px;
+  }
+
+  .results-actions {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px 20px;
+  }
+
+  .action-btn {
+    padding: 14px 16px;
+    font-size: 13px;
+  }
+
+  .btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .champion-score .score-number {
+    font-size: 28px;
+  }
+
+  .analysis-title {
+    font-size: 16px;
+  }
+
+  .leaderboard-title {
+    font-size: 18px;
+  }
   }
 
   .modal-decoration {
