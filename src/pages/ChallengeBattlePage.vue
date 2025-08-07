@@ -2123,8 +2123,8 @@ const getPlayerGradient = (playerId) => {
 .results-actions {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-  padding: 32px 40px;
+  gap: 8px;
+  padding: 20px 24px;
   background: rgba(255, 255, 255, 0.95);
 }
 
