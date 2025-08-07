@@ -1064,6 +1064,28 @@ const getPlayerGradient = (playerId) => {
   color: #4a5568;
 }
 
+.debug-reset-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.debug-reset-btn:hover {
+  background: rgba(239, 68, 68, 1);
+  transform: scale(1.1);
+}
+
 /* Battle Arena */
 .battle-arena {
   max-width: 1400px;
