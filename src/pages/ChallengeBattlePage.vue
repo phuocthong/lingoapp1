@@ -693,11 +693,19 @@ const getMotivationIcon = () => {
   return '📚'
 }
 
+const getAccuracyRate = (player) => {
+  if (!player || !totalQuestions.value) return 0
+  // Giả sử mỗi câu đúng được 1 điểm, có thể có bonus
+  // Để tính chính xác, ta giới hạn tối đa là số câu hỏi
+  const correctAnswers = Math.min(player.score, totalQuestions.value)
+  return Math.round((correctAnswers / totalQuestions.value) * 100)
+}
+
 const getMotivationTitle = () => {
   const currentPlayerData = currentPlayer.value
   if (!currentPlayerData) return 'Cố gắng lên!'
 
-  const accuracy = (currentPlayerData.score / totalQuestions.value) * 100
+  const accuracy = getAccuracyRate(currentPlayerData)
   if (accuracy >= 90) return 'Xuất sắc!'
   if (accuracy >= 70) return 'Rất tốt!'
   if (accuracy >= 50) return 'Khá ổn!'
