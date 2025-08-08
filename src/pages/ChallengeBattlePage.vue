@@ -2726,12 +2726,30 @@ const getPlayerGradient = (playerId) => {
 .primary-large {
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.primary-large::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.primary-large:hover::before {
+  opacity: 1;
 }
 
 .primary-large:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(102, 126, 234, 0.6);
+  border-color: rgba(102, 126, 234, 0.5);
 }
 
 .secondary-large {
