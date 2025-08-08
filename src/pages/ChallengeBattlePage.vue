@@ -1795,24 +1795,24 @@ const getPlayerGradient = (playerId) => {
 .floating-trophy {
   position: relative;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .trophy-glow {
   position: absolute;
-  top: -15px;
-  left: -15px;
-  right: -15px;
-  bottom: -15px;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
   background: conic-gradient(from 0deg, #FFD700, #FFA500, #FFD700, #FFA500);
   border-radius: 50%;
-  opacity: 0.7;
+  opacity: 0.6;
   animation: trophy-spin 3s linear infinite;
-  filter: blur(10px);
+  filter: blur(8px);
 }
 
 .trophy-icon {
-  font-size: 64px;
+  font-size: 48px;
   position: relative;
   z-index: 2;
   animation: trophy-float 2s ease-in-out infinite alternate;
