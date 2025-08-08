@@ -69,6 +69,7 @@ export class ChatService {
 
       if (response.success && response.questions.length > 0) {
         this.currentQuestion = response.questions[0]
+        this.currentQuestion.startTime = new Date()
         this.answersReceived.clear()
 
         // Send question to chat
