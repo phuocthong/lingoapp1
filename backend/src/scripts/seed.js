@@ -253,7 +253,7 @@ try {
       // Từ vựng khó
       {
         word: 'phenomenal',
-        meaning: 'phi thường, tuyệt vời',
+        meaning: 'phi thường, tuyệt v���i',
         pronunciation: '/fəˈnɒmɪnl/',
         example: 'His performance was phenomenal.',
         difficulty: 'hard',
@@ -294,6 +294,189 @@ try {
         example: 'Sustainability is crucial for our future.',
         difficulty: 'hard',
         category: 'environment',
+        createdAt: new Date(),
+      },
+      // Thêm từ vựng Easy mới
+      {
+        word: 'book',
+        meaning: 'cuốn sách',
+        pronunciation: '/bʊk/',
+        example: 'I love reading this book.',
+        difficulty: 'easy',
+        category: 'basic',
+        createdAt: new Date(),
+      },
+      {
+        word: 'friend',
+        meaning: 'bạn bè',
+        pronunciation: '/frend/',
+        example: 'She is my best friend.',
+        difficulty: 'easy',
+        category: 'social',
+        createdAt: new Date(),
+      },
+      {
+        word: 'school',
+        meaning: 'trường học',
+        pronunciation: '/skuːl/',
+        example: 'I go to school every day.',
+        difficulty: 'easy',
+        category: 'education',
+        createdAt: new Date(),
+      },
+      {
+        word: 'family',
+        meaning: 'gia đình',
+        pronunciation: '/ˈfæməli/',
+        example: 'My family is very important to me.',
+        difficulty: 'easy',
+        category: 'social',
+        createdAt: new Date(),
+      },
+      {
+        word: 'music',
+        meaning: 'âm nhạc',
+        pronunciation: '/ˈmjuːzɪk/',
+        example: 'I enjoy listening to music.',
+        difficulty: 'easy',
+        category: 'arts',
+        createdAt: new Date(),
+      },
+      {
+        word: 'travel',
+        meaning: 'du lịch',
+        pronunciation: '/ˈtrævəl/',
+        example: 'I like to travel around the world.',
+        difficulty: 'easy',
+        category: 'activity',
+        createdAt: new Date(),
+      },
+      // Thêm từ vựng Medium mới
+      {
+        word: 'creative',
+        meaning: 'sáng tạo',
+        pronunciation: '/kriˈeɪtɪv/',
+        example: 'She has a very creative mind.',
+        difficulty: 'medium',
+        category: 'personality',
+        createdAt: new Date(),
+      },
+      {
+        word: 'responsible',
+        meaning: 'có trách nhiệm',
+        pronunciation: '/rɪˈspɒnsəbəl/',
+        example: 'He is responsible for this project.',
+        difficulty: 'medium',
+        category: 'personality',
+        createdAt: new Date(),
+      },
+      {
+        word: 'comfortable',
+        meaning: 'thoải mái',
+        pronunciation: '/ˈkʌmftəbəl/',
+        example: 'This chair is very comfortable.',
+        difficulty: 'medium',
+        category: 'feelings',
+        createdAt: new Date(),
+      },
+      {
+        word: 'successful',
+        meaning: 'thành công',
+        pronunciation: '/səkˈsesfəl/',
+        example: 'She is a successful businesswoman.',
+        difficulty: 'medium',
+        category: 'achievement',
+        createdAt: new Date(),
+      },
+      {
+        word: 'professional',
+        meaning: 'chuyên nghiệp',
+        pronunciation: '/prəˈfeʃənəl/',
+        example: 'He has a professional attitude.',
+        difficulty: 'medium',
+        category: 'work',
+        createdAt: new Date(),
+      },
+      {
+        word: 'knowledge',
+        meaning: 'kiến thức',
+        pronunciation: '/ˈnɒlɪdʒ/',
+        example: 'Knowledge is power.',
+        difficulty: 'medium',
+        category: 'education',
+        createdAt: new Date(),
+      },
+      // Thêm từ vựng Hard mới
+      {
+        word: 'magnificent',
+        meaning: 'tráng lệ, hùng vĩ',
+        pronunciation: '/mæɡˈnɪfɪsənt/',
+        example: 'The view was absolutely magnificent.',
+        difficulty: 'hard',
+        category: 'advanced',
+        createdAt: new Date(),
+      },
+      {
+        word: 'courageous',
+        meaning: 'can đảm, dũng cảm',
+        pronunciation: '/kəˈreɪdʒəs/',
+        example: 'She made a courageous decision.',
+        difficulty: 'hard',
+        category: 'personality',
+        createdAt: new Date(),
+      },
+      {
+        word: 'intellectual',
+        meaning: 'trí thức, thuộc về trí tuệ',
+        pronunciation: '/ˌɪntəˈlektʃuəl/',
+        example: 'He enjoys intellectual conversations.',
+        difficulty: 'hard',
+        category: 'academic',
+        createdAt: new Date(),
+      },
+      {
+        word: 'innovative',
+        meaning: 'đổi mới, sáng tạo',
+        pronunciation: '/ˈɪnəveɪtɪv/',
+        example: 'The company has an innovative approach.',
+        difficulty: 'hard',
+        category: 'business',
+        createdAt: new Date(),
+      },
+      {
+        word: 'collaboration',
+        meaning: 'sự hợp tác',
+        pronunciation: '/kəˌlæbəˈreɪʃən/',
+        example: 'Collaboration is key to success.',
+        difficulty: 'hard',
+        category: 'work',
+        createdAt: new Date(),
+      },
+      {
+        word: 'fundamental',
+        meaning: 'cơ bản, căn cơ',
+        pronunciation: '/ˌfʌndəˈmentəl/',
+        example: 'This is a fundamental principle.',
+        difficulty: 'hard',
+        category: 'academic',
+        createdAt: new Date(),
+      },
+      {
+        word: 'comprehensive',
+        meaning: 'toàn diện, bao quát',
+        pronunciation: '/ˌkɒmprɪˈhensɪv/',
+        example: 'We need a comprehensive solution.',
+        difficulty: 'hard',
+        category: 'academic',
+        createdAt: new Date(),
+      },
+      {
+        word: 'demonstrate',
+        meaning: 'chứng minh, biểu diễn',
+        pronunciation: '/ˈdemənstreɪt/',
+        example: 'Can you demonstrate how it works?',
+        difficulty: 'hard',
+        category: 'academic',
         createdAt: new Date(),
       },
     ])
@@ -407,6 +590,108 @@ try {
       question: "What does 'phenomenal' mean?",
       correctAnswer: 'phi thường, tuyệt vời',
       wrongAnswers: JSON.stringify(['bình thường', 'tệ hại', 'nhỏ bé']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho từ vựng mới - Easy
+    {
+      vocabularyId: seedVocabulary[21].id, // book
+      question: "What does 'book' mean?",
+      correctAnswer: 'cuốn sách',
+      wrongAnswers: JSON.stringify(['cái bàn', 'cái ghế', 'cái cửa']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[22].id, // friend
+      question: "What does 'friend' mean?",
+      correctAnswer: 'bạn bè',
+      wrongAnswers: JSON.stringify(['thù địch', 'người lạ', 'giáo viên']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[23].id, // school
+      question: "What does 'school' mean?",
+      correctAnswer: 'trường học',
+      wrongAnswers: JSON.stringify(['bệnh viện', 'chợ', 'công viên']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[24].id, // family
+      question: "What does 'family' mean?",
+      correctAnswer: 'gia đình',
+      wrongAnswers: JSON.stringify(['bạn bè', 'công việc', 'sở thích']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho từ vựng Medium mới
+    {
+      vocabularyId: seedVocabulary[27].id, // creative
+      question: "What does 'creative' mean?",
+      correctAnswer: 'sáng tạo',
+      wrongAnswers: JSON.stringify(['nhàm chán', 'thụ động', 'bình thường']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[28].id, // responsible
+      question: "What does 'responsible' mean?",
+      correctAnswer: 'có trách nhiệm',
+      wrongAnswers: JSON.stringify(['vô trách nhiệm', 'bất cẩn', 'lười biếng']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[30].id, // successful
+      question: "What does 'successful' mean?",
+      correctAnswer: 'thành công',
+      wrongAnswers: JSON.stringify(['thất bại', 'gặp khó khăn', 'bỏ cuộc']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho từ vựng Hard mới
+    {
+      vocabularyId: seedVocabulary[34].id, // courageous
+      question: "What does 'courageous' mean?",
+      correctAnswer: 'can đảm, dũng cảm',
+      wrongAnswers: JSON.stringify(['nhút nhát', 'sợ hãi', 'yếu đuối']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[35].id, // intellectual
+      question: "What does 'intellectual' mean?",
+      correctAnswer: 'trí thức, thuộc về trí tuệ',
+      wrongAnswers: JSON.stringify(['thể chất', 'cảm xúc', 'bản năng']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[36].id, // innovative
+      question: "What does 'innovative' mean?",
+      correctAnswer: 'đổi mới, sáng tạo',
+      wrongAnswers: JSON.stringify(['cũ kỹ', 'lạc hậu', 'truyền thống']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[39].id, // comprehensive
+      question: "What does 'comprehensive' mean?",
+      correctAnswer: 'toàn diện, bao quát',
+      wrongAnswers: JSON.stringify(['hạn chế', 'một phần', 'thiếu sót']),
       type: 'multiple_choice',
       difficulty: 'hard',
       createdAt: new Date(),
@@ -656,7 +941,7 @@ try {
   console.log('Database seeded successfully!')
   console.log(`Created ${seedUsers.length} users`)
   console.log(`Created ${seedVocabulary.length} vocabulary words`)
-  console.log(`Created 12 questions`)
+  console.log(`Created 25 questions`)
   console.log(`Created ${seedTasks.length} tasks`)
   console.log(`Created 4 rewards`)
   console.log(`Created 6 friend relationships`)

@@ -10,7 +10,7 @@
               <q-icon name="extension" class="header-icon" />
               <div class="header-info">
                 <div class="header-title">Thách đấu với Bot</div>
-                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
+                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi mỗi 20 giây</div>
               </div>
               <div class="header-actions">
                 <q-btn v-if="!isBotActive" @click="startBot" color="primary" size="sm" no-caps>
@@ -308,7 +308,14 @@ const chatMessages_ref = ref(null)
 const isDemoMode = ref(false)
 
 // Computed properties
-const chatMessagesElement = computed(() => chatMessages_ref.value)
+const chatMessagesElement = computed(() => {
+  try {
+    return chatMessages_ref.value
+  } catch (error) {
+    // Fallback if ref is not available
+    return null
+  }
+})
 
 // Initialize component
 onMounted(async () => {
@@ -349,12 +356,14 @@ const setupChatEventListeners = () => {
   window.addEventListener('botMessage', handleBotMessage)
   window.addEventListener('answerDisplay', handleAnswerDisplay)
   window.addEventListener('answerFeedback', handleAnswerFeedback)
+  window.addEventListener('historyUpdated', handleHistoryUpdate)
 }
 
 const removeChatEventListeners = () => {
   window.removeEventListener('botMessage', handleBotMessage)
   window.removeEventListener('answerDisplay', handleAnswerDisplay)
   window.removeEventListener('answerFeedback', handleAnswerFeedback)
+  window.removeEventListener('historyUpdated', handleHistoryUpdate)
 }
 
 // Event handlers
@@ -366,16 +375,23 @@ const handleBotMessage = (event) => {
 const handleAnswerDisplay = (event) => {
   const { message, timestamp } = event.detail
   addAnswerMessage(message, timestamp)
+
+  // Update history immediately when answer is displayed
+  setTimeout(() => {
+    updateQuestionHistory()
+  }, 100)
 }
 
 const handleAnswerFeedback = (event) => {
   const { userName, answer, timestamp } = event.detail
   addUserAnswerMessage(userName, answer, timestamp)
+}
 
-  // Update question history when answer is received
-  setTimeout(() => {
-    updateQuestionHistory()
-  }, 1000)
+const handleHistoryUpdate = (event) => {
+  console.log('History update received:', event.detail)
+  console.log('Current questionHistory length before update:', questionHistory.value.length)
+  updateQuestionHistory()
+  console.log('Current questionHistory length after update:', questionHistory.value.length)
 }
 
 // Chat functions
@@ -387,7 +403,12 @@ const startBot = async () => {
 
   isBotActive.value = true
   await chatService.startBot()
-  addBotMessage('Chat bot đã bắt đầu! Tôi sẽ đưa ra câu hỏi mỗi 30-60 giây.')
+  addBotMessage('Chat bot đã bắt đầu! Tôi sẽ đưa ra câu hỏi mỗi 20 giây.')
+
+  // Force history update after starting
+  setTimeout(() => {
+    updateQuestionHistory()
+  }, 1000)
 }
 
 const stopBot = () => {
@@ -459,23 +480,57 @@ const addUserAnswerMessage = (userName, answer, timestamp) => {
 
 const scrollToBottom = () => {
   nextTick(() => {
-    const element = chatMessagesElement.value
-    if (element) {
-      element.scrollTop = element.scrollHeight
+    try {
+      const element = chatMessagesElement.value
+      if (element && element.scrollHeight > element.clientHeight) {
+        const targetScrollTop = element.scrollHeight - element.clientHeight
+
+        // Only scroll if we actually need to
+        if (Math.abs(element.scrollTop - targetScrollTop) > 1) {
+          element.scrollTop = targetScrollTop
+        }
+      }
+    } catch (error) {
+      // Silently handle any scrolling errors
+      console.debug('Scroll error (suppressed):', error.message)
     }
   })
 }
 
-// Question history
-const updateQuestionHistory = () => {
-  const history = chatService.getHistory()
-  questionHistory.value = history
-
-  // Also trigger a re-render if needed
-  if (history.length > 0) {
-    console.log(`Updated question history: ${history.length} questions`)
+// Debounce function to prevent excessive updates
+const debounce = (func, wait) => {
+  let timeout
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout)
+      func(...args)
+    }
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
   }
 }
+
+// Question history
+const updateQuestionHistory = debounce(() => {
+  try {
+    const history = chatService.getHistory()
+    console.log('Retrieved history from chatService:', history)
+
+    if (Array.isArray(history)) {
+      questionHistory.value = [...history] // Force reactivity
+      console.log(`Updated question history: ${history.length} questions`)
+
+      // Force Vue to recognize the change
+      nextTick(() => {
+        console.log('Question history after nextTick:', questionHistory.value.length)
+      })
+    } else {
+      console.warn('History is not an array:', history)
+    }
+  } catch (error) {
+    console.error('History update error:', error)
+  }
+}, 100) // Debounce for 100ms
 
 // Leaderboard functions
 const switchTab = async (tab) => {
@@ -987,12 +1042,20 @@ const showNotification = (message, type = 'info') => {
 
 .correct-count {
   color: #16a34a;
-  font-weight: 500;
+  font-weight: 600;
+  background: rgba(22, 163, 74, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
 }
 
-.separator,
+.separator {
+  color: #6b7280;
+  margin: 0 4px;
+}
+
 .total-count {
-  color: #4b5563;
+  color: #2563eb;
+  font-weight: 500;
 }
 
 .loading-container,
@@ -1133,8 +1196,11 @@ const showNotification = (message, type = 'info') => {
 .details-dropdown {
   color: #2563eb;
   font-size: 12px;
-  padding: 0;
+  padding: 4px 8px;
   min-height: auto;
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
 .details-dropdown .q-btn__content {

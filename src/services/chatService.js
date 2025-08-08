@@ -51,8 +51,8 @@ export class ChatService {
   scheduleNextQuestion() {
     if (!this.isActive) return
 
-    // Random interval between 30-60 seconds
-    const interval = Math.random() * 30000 + 30000
+    // Fixed interval of 20 seconds
+    const interval = 20000
 
     this.botInterval = setTimeout(() => {
       if (this.isActive) {
@@ -69,18 +69,28 @@ export class ChatService {
 
       if (response.success && response.questions.length > 0) {
         this.currentQuestion = response.questions[0]
+        this.currentQuestion.startTime = new Date()
         this.answersReceived.clear()
+
+        // Add to history first
+        this.addToHistory(this.currentQuestion)
 
         // Send question to chat
         this.sendBotMessage(this.currentQuestion.question, true)
+
+        // Trigger immediate history update
+        setTimeout(() => {
+          const event = new CustomEvent('historyUpdated', {
+            detail: { history: this.questionHistory },
+          })
+          window.dispatchEvent(event)
+          console.log('Immediate history update triggered after question')
+        }, 100)
 
         // Set timer for showing answer (20 seconds)
         this.answerTimer = setTimeout(() => {
           this.showCorrectAnswer()
         }, 20000)
-
-        // Add to history
-        this.addToHistory(this.currentQuestion)
       } else {
         // Use fallback question if no questions returned
         this.askFallbackQuestion()
@@ -120,15 +130,26 @@ export class ChatService {
     ]
 
     this.currentQuestion = fallbackQuestions[Math.floor(Math.random() * fallbackQuestions.length)]
+    this.currentQuestion.startTime = new Date()
     this.answersReceived.clear()
 
+    // Add to history first
+    this.addToHistory(this.currentQuestion)
+
     this.sendBotMessage(this.currentQuestion.question, true)
+
+    // Trigger immediate history update
+    setTimeout(() => {
+      const event = new CustomEvent('historyUpdated', {
+        detail: { history: this.questionHistory },
+      })
+      window.dispatchEvent(event)
+      console.log('Immediate history update triggered after fallback question')
+    }, 100)
 
     this.answerTimer = setTimeout(() => {
       this.showCorrectAnswer()
     }, 20000)
-
-    this.addToHistory(this.currentQuestion)
   }
 
   // Handle user answer
@@ -148,6 +169,7 @@ export class ChatService {
           ?.split(' ')
           .map((n) => n[0])
           .join('') || 'ND',
+      questionStartTime: this.currentQuestion.startTime || new Date(),
     })
 
     // Try to submit to API if user is logged in
@@ -186,6 +208,26 @@ export class ChatService {
     // Update question history with results
     this.updateHistoryWithResults()
 
+    // Add some mock participants for better demo experience
+    if (this.answersReceived.size === 0) {
+      this.addMockParticipants()
+    }
+
+    // Update history with current results
+    this.updateHistoryWithResults()
+
+    // Trigger history update in UI immediately and with delay
+    const triggerHistoryUpdate = () => {
+      const event = new CustomEvent('historyUpdated', {
+        detail: { history: this.questionHistory },
+      })
+      window.dispatchEvent(event)
+      console.log('Triggered history update, total questions:', this.questionHistory.length)
+    }
+
+    triggerHistoryUpdate()
+    setTimeout(triggerHistoryUpdate, 500)
+
     // Schedule next question
     this.scheduleNextQuestion()
 
@@ -208,6 +250,12 @@ export class ChatService {
     }
 
     this.questionHistory.unshift(historyItem)
+    console.log(
+      'Added question to history:',
+      historyItem.question,
+      'Total history:',
+      this.questionHistory.length,
+    )
 
     // Keep only last 20 questions
     if (this.questionHistory.length > 20) {
@@ -217,23 +265,39 @@ export class ChatService {
 
   // Update history with answer results
   updateHistoryWithResults() {
-    if (this.questionHistory.length === 0) return
+    if (this.questionHistory.length === 0) {
+      console.log('No history to update')
+      return
+    }
 
     const currentItem = this.questionHistory[0]
     const participants = Array.from(this.answersReceived.values())
+
+    // Sort participants by response time (fastest first)
+    participants.sort((a, b) => a.timestamp - b.timestamp)
 
     currentItem.participants = participants.map((p, index) => ({
       id: index + 1,
       name: p.user,
       avatar: p.avatar,
-      time: this.formatResponseTime(p.timestamp),
+      time: this.formatResponseTimeFromStart(p.timestamp, p.questionStartTime),
       correct: this.isAnswerCorrect(p.answer),
+      responseTime: p.timestamp - (p.questionStartTime || currentItem.timestamp),
     }))
 
     currentItem.stats = {
       totalAnswers: participants.length,
       correctAnswers: participants.filter((p) => this.isAnswerCorrect(p.answer)).length,
     }
+
+    console.log(
+      'Updated history item with results:',
+      currentItem.question,
+      'Total:',
+      currentItem.stats.totalAnswers,
+      'Correct:',
+      currentItem.stats.correctAnswers,
+    )
   }
 
   // Check if answer is correct
@@ -247,11 +311,29 @@ export class ChatService {
     return answer.toLowerCase().trim() === correctAnswer?.toLowerCase().trim()
   }
 
-  // Format response time
+  // Format response time (legacy method)
   formatResponseTime(timestamp) {
     const now = new Date()
     const diff = Math.floor((now - timestamp) / 1000)
     return `${Math.max(1, 20 - diff)}.${Math.floor(Math.random() * 10)}s`
+  }
+
+  // Format response time from question start
+  formatResponseTimeFromStart(answerTime, questionStartTime) {
+    if (!questionStartTime) {
+      return this.formatResponseTime(answerTime)
+    }
+
+    const responseTimeMs = answerTime - questionStartTime
+    const responseTimeSec = Math.max(0.1, responseTimeMs / 1000)
+
+    if (responseTimeSec < 1) {
+      return `${(responseTimeSec * 1000).toFixed(0)}ms`
+    } else if (responseTimeSec < 10) {
+      return `${responseTimeSec.toFixed(1)}s`
+    } else {
+      return `${Math.floor(responseTimeSec)}s`
+    }
   }
 
   // Update user progress
@@ -334,9 +416,65 @@ export class ChatService {
     return mockUsers.slice(0, count)
   }
 
+  // Add mock participants for demo purposes
+  addMockParticipants() {
+    if (!this.currentQuestion) return
+
+    const mockUsers = [
+      { name: 'Minh Anh', avatar: 'MA' },
+      { name: 'Thu Trang', avatar: 'TT' },
+      { name: 'Văn Nam', avatar: 'VN' },
+      { name: 'Thành Hòa', avatar: 'TH' },
+    ]
+
+    const participantCount = Math.floor(Math.random() * 3) + 2 // 2-4 participants
+    const questionStartTime = this.currentQuestion.startTime || new Date()
+
+    for (let i = 0; i < participantCount; i++) {
+      const user = mockUsers[i]
+      if (!user) break
+
+      // Simulate different response times
+      const responseDelay = Math.random() * 15 + 2 // 2-17 seconds
+      const answerTime = new Date(questionStartTime.getTime() + responseDelay * 1000)
+
+      // Simulate correct/incorrect answers (80% correct rate)
+      const isCorrect = Math.random() > 0.2
+      const correctAnswer =
+        this.currentQuestion.correctAnswer ||
+        this.currentQuestion.answers?.find((a) => a.correct)?.text ||
+        'correct'
+
+      const answers = [
+        'đẹp',
+        'xấu',
+        'cao',
+        'thấp',
+        'thông minh',
+        'ngu ngốc',
+        'sáng tạo',
+        'phi thường',
+      ]
+      const answer = isCorrect ? correctAnswer : answers[Math.floor(Math.random() * answers.length)]
+
+      this.answersReceived.set(user.name, {
+        answer,
+        timestamp: answerTime,
+        user: user.name,
+        avatar: user.avatar,
+        questionStartTime,
+      })
+    }
+
+    console.log(
+      `Added ${participantCount} mock participants for question: ${this.currentQuestion.question}`,
+    )
+  }
+
   // Get question history
   getHistory() {
-    return this.questionHistory
+    console.log('getHistory called, returning:', this.questionHistory.length, 'questions')
+    return Array.isArray(this.questionHistory) ? this.questionHistory : []
   }
 
   // Get current question
