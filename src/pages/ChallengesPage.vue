@@ -19,59 +19,127 @@
                 <h3 class="create-title">Tạo phòng mới</h3>
               </div>
               <p class="create-description">Tạo phòng thử thách riêng với các cài đặt tùy chỉnh</p>
-              <div class="create-btn-container" ref="createBtnContainer">
-                <q-btn
-                  color="primary"
-                  class="create-btn"
-                  no-caps
-                  @click="toggleChallengeTypeDropdown"
-                  :class="{ 'dropdown-open': showChallengeTypeDropdown }"
-                >
+              <!-- Room Creation Form -->
+              <div v-if="!showCreateForm" class="create-btn-container">
+                <q-btn color="primary" class="create-btn" no-caps @click="showCreateForm = true">
                   <q-icon name="add" size="16px" class="q-mr-xs" />
                   Tạo phòng thử thách
-                  <q-icon
-                    name="expand_more"
-                    size="20px"
-                    class="dropdown-arrow"
-                    :class="{ 'rotated': showChallengeTypeDropdown }"
-                  />
                 </q-btn>
+              </div>
 
-                <!-- Mobile Backdrop -->
-                <div
-                  v-if="showChallengeTypeDropdown"
-                  class="mobile-backdrop"
-                  @click="showChallengeTypeDropdown = false"
-                ></div>
+              <!-- Create Room Form (Figma Design) -->
+              <div v-if="showCreateForm" class="create-room-form">
+                <!-- Form Header -->
+                <div class="form-header">
+                  <div class="form-title">
+                    <svg
+                      class="plus-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 21 21"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4.66699 10.8H16.3337"
+                        stroke="#6D28D9"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M10.5 4.96667V16.6333"
+                        stroke="#6D28D9"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    Tạo phòng mới
+                  </div>
+                  <div class="form-subtitle">
+                    Tạo phòng thử thách riêng với các cài đặt tùy chỉnh
+                  </div>
+                </div>
 
-                <!-- Challenge Type Dropdown -->
-                <div v-if="showChallengeTypeDropdown" class="challenge-type-dropdown">
-                  <div
-                    v-for="challengeType in challengeTypes"
-                    :key="challengeType.id"
-                    class="challenge-type-item"
-                    :class="{ 'custom-type': challengeType.isCustom }"
-                    @click="createRoomWithType(challengeType)"
-                  >
-                    <div class="challenge-type-icon">{{ challengeType.emoji }}</div>
-                    <div class="challenge-type-info">
-                      <div class="challenge-type-title">{{ challengeType.title }}</div>
-                      <div class="challenge-type-description">{{ challengeType.description }}</div>
-                      <div class="challenge-type-stats">
-                        <div class="challenge-stat">
-                          <q-icon name="people" size="14px" />
-                          <span>{{ challengeType.maxPlayers }} người</span>
-                        </div>
-                        <div class="challenge-stat">
-                          <q-icon name="quiz" size="14px" />
-                          <span>{{ challengeType.questions }} câu</span>
-                        </div>
-                        <div class="challenge-stat">
-                          <q-icon name="schedule" size="14px" />
-                          <span>{{ challengeType.timePerQuestion }}s/câu</span>
-                        </div>
-                      </div>
+                <!-- Form Content -->
+                <div class="form-content">
+                  <!-- Room Name -->
+                  <div class="form-field">
+                    <label class="field-label">Tên phòng</label>
+                    <q-input
+                      v-model="roomSettings.name"
+                      placeholder="Ví dụ: Thử thách từ vựng cơ bản"
+                      outlined
+                      class="room-input"
+                    />
+                  </div>
+
+                  <!-- Max Players -->
+                  <div class="form-field">
+                    <div class="field-header">
+                      <span class="field-label">Số người tối đa:</span>
+                      <span class="field-value">{{ roomSettings.maxPlayers }}</span>
                     </div>
+                    <div class="option-buttons">
+                      <q-btn
+                        v-for="option in playerOptions"
+                        :key="option"
+                        :class="{ selected: roomSettings.maxPlayers === option }"
+                        @click="roomSettings.maxPlayers = option"
+                        class="option-btn"
+                      >
+                        {{ option }}
+                      </q-btn>
+                    </div>
+                  </div>
+
+                  <!-- Number of Questions -->
+                  <div class="form-field">
+                    <div class="field-header">
+                      <span class="field-label">Số câu hỏi:</span>
+                      <span class="field-value">{{ roomSettings.questions }}</span>
+                    </div>
+                    <div class="option-buttons">
+                      <q-btn
+                        v-for="option in questionOptions"
+                        :key="option"
+                        :class="{ selected: roomSettings.questions === option }"
+                        @click="roomSettings.questions = option"
+                        class="option-btn"
+                      >
+                        {{ option }}
+                      </q-btn>
+                    </div>
+                  </div>
+
+                  <!-- Time per Question -->
+                  <div class="form-field">
+                    <div class="field-header">
+                      <span class="field-label">Thời gian/câu:</span>
+                      <span class="field-value">{{ roomSettings.timePerQuestion }}s</span>
+                    </div>
+                    <div class="option-buttons">
+                      <q-btn
+                        v-for="option in timeOptions"
+                        :key="option"
+                        :class="{ selected: roomSettings.timePerQuestion === option }"
+                        @click="roomSettings.timePerQuestion = option"
+                        class="option-btn time-btn"
+                      >
+                        {{ option }} s
+                      </q-btn>
+                    </div>
+                  </div>
+
+                  <!-- Action Buttons -->
+                  <div class="form-actions">
+                    <q-btn class="create-room-btn" color="primary" @click="confirmCreateRoom" no-caps>
+                      Tạo phòng
+                    </q-btn>
+                    <q-btn class="cancel-btn" outline @click="cancelCreateForm" no-caps>
+                      Hủy
+                    </q-btn>
                   </div>
                 </div>
               </div>
@@ -444,7 +512,7 @@ const challengeTypes = [
   {
     id: 'custom',
     emoji: '⚙️',
-    title: 'T��y chỉnh',
+    title: 'Tùy chỉnh',
     description: 'Tạo phòng với cài đặt tùy chỉnh',
     maxPlayers: 4,
     questions: 10,
