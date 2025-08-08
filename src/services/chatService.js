@@ -271,7 +271,7 @@ export class ChatService {
 
         // Update task progress
         await apiService.updateTaskProgress(1) // Complete questions task
-      } catch (apiError) {
+      } catch {
         console.log('API not available, updating locally only')
       }
 
