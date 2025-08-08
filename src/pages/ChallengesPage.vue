@@ -134,7 +134,12 @@
 
                   <!-- Action Buttons -->
                   <div class="form-actions">
-                    <q-btn class="create-room-btn" color="primary" @click="confirmCreateRoom" no-caps>
+                    <q-btn
+                      class="create-room-btn"
+                      color="primary"
+                      @click="confirmCreateRoom"
+                      no-caps
+                    >
                       Tạo phòng
                     </q-btn>
                     <q-btn class="cancel-btn" outline @click="cancelCreateForm" no-caps>
@@ -477,7 +482,6 @@ const playerOptions = [4, 6, 8, 10]
 const questionOptions = [10, 15, 20, 25]
 const timeOptions = [20, 30, 45, 60]
 
-
 const topPlayers = ref([
   { name: 'Minh Anh', time: '10:31' },
   { name: 'Thành Hòa', time: '10:31' },
@@ -524,7 +528,7 @@ function confirmCreateRoom() {
       questions: roomSettings.value.questions,
       timePerQuestion: roomSettings.value.timePerQuestion,
       maxPlayers: roomSettings.value.maxPlayers,
-      isOwner: 'true'
+      isOwner: 'true',
     },
   })
 
@@ -565,7 +569,6 @@ function watchRoom(roomId) {
   console.log('Watching room:', roomId)
   showResultsModal.value = true
 }
-
 </script>
 
 <style scoped>
