@@ -340,7 +340,7 @@
                 <div class="rank-position-large">
                   <span v-if="index === 0" class="gold-medal-large">🥇</span>
                   <span v-else-if="index === 1" class="silver-medal-large">🥈</span>
-                  <span v-else-if="index === 2" class="bronze-medal-large">��</span>
+                  <span v-else-if="index === 2" class="bronze-medal-large">🥉</span>
                   <span v-else class="position-num-large">{{ index + 1 }}</span>
                 </div>
                 <div class="player-info-large">
@@ -699,6 +699,10 @@ const endGame = () => {
     clearInterval(gameInterval.value)
   }
   gameOver.value = true
+
+  // Prevent body scroll when showing fullscreen results
+  document.body.style.overflow = 'hidden'
+  document.documentElement.style.overflow = 'hidden'
 }
 
 const getAnswerClass = (index) => {
