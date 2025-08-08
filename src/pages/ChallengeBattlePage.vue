@@ -254,6 +254,7 @@
           </div>
         </div>
       </main>
+    </template>
 
     <!-- Full Screen Game Results -->
     <div v-if="gameOver" class="fullscreen-results">
@@ -296,7 +297,7 @@
               <span class="score-massive">{{ winner.score }}</span>
               <span class="score-label-large">điểm</span>
             </div>
-            <div class="champion-badge-large">🥇 CHAMPION</div>
+            <div class="champion-badge-large">���� CHAMPION</div>
 
             <!-- Extended Stats -->
             <div class="champion-stats-grid">
