@@ -209,7 +209,7 @@
           <q-card-section class="leaderboard-content">
             <div v-if="loadingLeaderboard" class="loading-container">
               <q-spinner color="primary" size="2em" />
-              <p>Đang t����i bảng xếp hạng...</p>
+              <p>Đang t��i bảng xếp hạng...</p>
             </div>
 
             <div v-else-if="leaderboardError" class="error-container">
@@ -1174,8 +1174,11 @@ const showNotification = (message, type = 'info') => {
 .details-dropdown {
   color: #2563eb;
   font-size: 12px;
-  padding: 0;
+  padding: 4px 8px;
   min-height: auto;
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
 .details-dropdown .q-btn__content {
