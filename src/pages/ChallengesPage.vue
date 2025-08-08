@@ -457,11 +457,6 @@ function toggleChallengeTypeDropdown() {
   showChallengeTypeDropdown.value = !showChallengeTypeDropdown.value
 }
 
-function createRoom() {
-  showCreateRoomModal.value = true
-  showChallengeTypeDropdown.value = false
-}
-
 function createRoomWithType(challengeType) {
   // Set room settings based on challenge type
   roomSettings.value = {
