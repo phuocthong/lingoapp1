@@ -147,11 +147,11 @@ const loadFriends = async () => {
 
     const response = await apiService.getFriends()
 
-    if (response.success) {
+    if (response.success && response.friends && Array.isArray(response.friends)) {
       friends.value = response.friends.map(friend => ({
         id: friend.id,
         name: friend.name,
-        username: `@${friend.username}`,
+        username: friend.username.startsWith('@') ? friend.username : `@${friend.username}`,
         avatar: friend.avatar || 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
         streak: friend.streak || 0,
         status: friend.level >= 5 ? 'Người chơi có kinh nghiệm' : 'Người chơi mới',
@@ -159,6 +159,7 @@ const loadFriends = async () => {
         xp: friend.xp || 0
       }))
     } else {
+      console.log('API response:', response)
       // Fallback friends data if API fails
       loadFallbackFriends()
     }
