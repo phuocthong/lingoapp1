@@ -409,6 +409,11 @@ const sendMessage = async () => {
 
 // Message management
 const addBotMessage = (text, participants = null) => {
+  // Ensure chatMessages.value is always an array
+  if (!Array.isArray(chatMessages.value)) {
+    chatMessages.value = []
+  }
+
   chatMessages.value.push({
     type: 'bot',
     text,
