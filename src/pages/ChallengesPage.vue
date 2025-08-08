@@ -378,10 +378,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+
+// Click outside to close dropdown
+const createBtnContainer = ref(null)
 
 const searchQuery = ref('')
 const showResultsModal = ref(false)
