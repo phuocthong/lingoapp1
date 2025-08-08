@@ -266,17 +266,16 @@
         <div class="firework" v-for="n in 5" :key="n"></div>
       </div>
 
-      <!-- Victory Header Full Width -->
-      <div class="fullscreen-header">
-        <div class="trophy-celebration">
-          <div class="trophy-icon-large">🏆</div>
-          <div class="victory-rays"></div>
-          <div class="sparkles">
-            <span v-for="n in 8" :key="n" class="sparkle">✨</span>
-          </div>
+      <!-- Modern Victory Header -->
+      <div class="victory-header-modern">
+        <div class="floating-trophy">
+          <div class="trophy-glow"></div>
+          <div class="trophy-icon">🏆</div>
         </div>
-        <h1 class="victory-title">🎉 Trận Đấu Hoàn Thành!</h1>
-        <p class="victory-subtitle">Thật tuyệt vời! Hãy xem kết quả nào!</p>
+        <div class="victory-text">
+          <h1 class="victory-title-new">Trận Đấu Hoàn Thành!</h1>
+          <p class="victory-subtitle-new">Chúc mừng các chiến binh!</p>
+        </div>
       </div>
 
       <!-- Main Results Section -->
