@@ -102,7 +102,7 @@ const app = new Elysia()
     }
   })
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3000
 
 app.listen(port, () => {
   console.log(`🚀 Lingo Challenge API server running on http://localhost:${port}`)
