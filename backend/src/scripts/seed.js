@@ -356,6 +356,61 @@ try {
       difficulty: 'hard',
       createdAt: new Date(),
     },
+    // Câu hỏi cho từ vựng mới
+    {
+      vocabularyId: seedVocabulary[6].id, // cat
+      question: "What does 'cat' mean?",
+      correctAnswer: 'con mèo',
+      wrongAnswers: JSON.stringify(['con chó', 'con gà', 'con heo']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[7].id, // dog
+      question: "What does 'dog' mean?",
+      correctAnswer: 'con chó',
+      wrongAnswers: JSON.stringify(['con mèo', 'con ngựa', 'con bò']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[8].id, // house
+      question: "What does 'house' mean?",
+      correctAnswer: 'ngôi nhà',
+      wrongAnswers: JSON.stringify(['cái cây', 'con đường', 'chiếc xe']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[11].id, // environment
+      question: "What does 'environment' mean?",
+      correctAnswer: 'môi trường',
+      wrongAnswers: JSON.stringify(['thời tiết', 'khí hậu', 'vũ trụ']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[12].id, // technology
+      question: "What does 'technology' mean?",
+      correctAnswer: 'công nghệ',
+      wrongAnswers: JSON.stringify(['khoa học', 'toán học', 'vật lý']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[16].id, // phenomenal
+      question: "What does 'phenomenal' mean?",
+      correctAnswer: 'phi thường, tuyệt vời',
+      wrongAnswers: JSON.stringify(['bình thường', 'tệ hại', 'nhỏ bé']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
   ])
 
   // Seed tasks
@@ -384,7 +439,7 @@ try {
         createdAt: new Date(),
       },
       {
-        title: 'Duy trì chuỗi ngày h��c',
+        title: 'Duy trì chuỗi ngày học',
         description: 'Học liên tục trong 7 ngày',
         target: 7,
         reward: 200,
