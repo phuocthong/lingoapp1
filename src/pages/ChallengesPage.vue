@@ -18,7 +18,7 @@
                 <q-icon name="add" class="create-icon" />
                 <h3 class="create-title">Tạo phòng mới</h3>
               </div>
-              <p class="create-description">Tạo phòng thử thách riêng với các cài đặt t��y chỉnh</p>
+              <p class="create-description">Tạo phòng thử thách riêng với các cài đặt tùy chỉnh</p>
               <!-- Room Creation Form -->
               <div v-if="!showCreateForm" class="create-btn-container">
                 <q-btn color="primary" class="create-btn" no-caps @click="showCreateForm = true">
@@ -489,32 +489,15 @@ const topPlayers = ref([
   { name: 'Mai Linh', time: '10:34' },
 ])
 
-function toggleChallengeTypeDropdown() {
-  showChallengeTypeDropdown.value = !showChallengeTypeDropdown.value
-}
-
-function createRoomWithType(challengeType) {
-  showChallengeTypeDropdown.value = false
-
-  if (challengeType.isCustom) {
-    // Open modal with default settings for custom room
-    roomSettings.value = {
-      name: '',
-      maxPlayers: 4,
-      questions: 10,
-      timePerQuestion: 20
-    }
-  } else {
-    // Set room settings based on challenge type
-    roomSettings.value = {
-      name: challengeType.title,
-      maxPlayers: challengeType.maxPlayers,
-      questions: challengeType.questions,
-      timePerQuestion: challengeType.timePerQuestion
-    }
+function cancelCreateForm() {
+  showCreateForm.value = false
+  // Reset form
+  roomSettings.value = {
+    name: '',
+    maxPlayers: 4,
+    questions: 10,
+    timePerQuestion: 20,
   }
-
-  showCreateRoomModal.value = true
 }
 
 function confirmCreateRoom() {
