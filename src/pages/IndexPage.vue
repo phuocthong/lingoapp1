@@ -90,7 +90,7 @@
                 size="8px"
               />
               <span class="status-text">
-                {{ currentUser ? `Đăng nh���p với tên: ${currentUser.name}` : 'Chưa đăng nhập' }}
+                {{ currentUser ? `Đăng nhập với tên: ${currentUser.name}` : 'Chưa đăng nhập' }}
               </span>
             </div>
           </q-card-section>
@@ -509,14 +509,21 @@ const debounce = (func, wait) => {
 const updateQuestionHistory = debounce(() => {
   try {
     const history = chatService.getHistory()
-    questionHistory.value = history
+    console.log('Retrieved history from chatService:', history)
 
-    // Also trigger a re-render if needed
-    if (history.length > 0) {
+    if (Array.isArray(history)) {
+      questionHistory.value = [...history] // Force reactivity
       console.log(`Updated question history: ${history.length} questions`)
+
+      // Force Vue to recognize the change
+      nextTick(() => {
+        console.log('Question history after nextTick:', questionHistory.value.length)
+      })
+    } else {
+      console.warn('History is not an array:', history)
     }
   } catch (error) {
-    console.debug('History update error (suppressed):', error.message)
+    console.error('History update error:', error)
   }
 }, 100) // Debounce for 100ms
 
