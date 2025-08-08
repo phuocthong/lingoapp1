@@ -745,8 +745,10 @@ const showNotification = (message, type = 'info') => {
 
 .feedback-time {
   font-size: 11px;
-  color: #3730a3;
-  margin-top: 2px;
+  color: #1e40af;
+  margin-top: 4px;
+  text-align: right;
+  opacity: 0.8;
 }
 
 .chat-input {
