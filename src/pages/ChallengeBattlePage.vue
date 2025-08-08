@@ -2499,6 +2499,29 @@ const getPlayerGradient = (playerId) => {
     font-size: 18px;
   }
 
+  .fullscreen-actions {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 20px 20px;
+  }
+
+  .action-btn-large {
+    width: 100%;
+    min-width: auto;
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+
+  .fullscreen-content {
+    padding: 0 16px 12px;
+  }
+
+  .champion-showcase,
+  .leaderboard-expanded {
+    padding: 24px 16px;
+  }
+}
+
   .ranking-card {
     padding: 10px 12px;
     gap: 10px;
