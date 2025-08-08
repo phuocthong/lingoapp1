@@ -371,6 +371,11 @@ const handleAnswerDisplay = (event) => {
 const handleAnswerFeedback = (event) => {
   const { userName, answer, timestamp } = event.detail
   addUserAnswerMessage(userName, answer, timestamp)
+
+  // Update question history when answer is received
+  setTimeout(() => {
+    updateQuestionHistory()
+  }, 1000)
 }
 
 // Chat functions
