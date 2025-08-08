@@ -643,11 +643,16 @@ onMounted(() => {
     if (currentUser) {
       currentUser.isOwner = false
     }
-  } else {
+  } else if (route.query.isOwner === 'true') {
     // Created own room - user is owner
     const currentUser = participants.value.find((p) => p.isCurrentUser)
     if (currentUser) {
       currentUser.isOwner = true
+      // Update room owner name to current user
+      const owner = participants.value.find((p) => p.isOwner && !p.isCurrentUser)
+      if (owner) {
+        owner.isOwner = false
+      }
     }
   }
 })
