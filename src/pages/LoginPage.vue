@@ -163,19 +163,11 @@ import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { auth } from '../utils/auth.js'
 import { apiService } from '../services/api.js'
+import { createNotification } from '../utils/notifications.js'
+
 // Simple notification fallback
 const showSimpleNotification = (message, type = 'info') => {
-  console.log(`${type.toUpperCase()}: ${message}`)
-
-  // Try to use Quasar's notify if available
-  if (window.$q && window.$q.notify) {
-    window.$q.notify({
-      message,
-      type: type === 'success' ? 'positive' : type === 'error' ? 'negative' : 'info',
-      position: 'top',
-      timeout: 3000
-    })
-  }
+  createNotification(message, type)
 }
 
 const router = useRouter()
