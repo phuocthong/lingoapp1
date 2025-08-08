@@ -594,6 +594,108 @@ try {
       difficulty: 'hard',
       createdAt: new Date(),
     },
+    // Câu hỏi cho từ vựng mới - Easy
+    {
+      vocabularyId: seedVocabulary[21].id, // book
+      question: "What does 'book' mean?",
+      correctAnswer: 'cuốn sách',
+      wrongAnswers: JSON.stringify(['cái bàn', 'cái ghế', 'cái cửa']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[22].id, // friend
+      question: "What does 'friend' mean?",
+      correctAnswer: 'bạn bè',
+      wrongAnswers: JSON.stringify(['thù địch', 'người lạ', 'giáo viên']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[23].id, // school
+      question: "What does 'school' mean?",
+      correctAnswer: 'trường học',
+      wrongAnswers: JSON.stringify(['bệnh viện', 'chợ', 'công viên']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[24].id, // family
+      question: "What does 'family' mean?",
+      correctAnswer: 'gia đình',
+      wrongAnswers: JSON.stringify(['bạn bè', 'công việc', 'sở thích']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho từ vựng Medium mới
+    {
+      vocabularyId: seedVocabulary[27].id, // creative
+      question: "What does 'creative' mean?",
+      correctAnswer: 'sáng tạo',
+      wrongAnswers: JSON.stringify(['nhàm chán', 'thụ động', 'bình thường']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[28].id, // responsible
+      question: "What does 'responsible' mean?",
+      correctAnswer: 'có trách nhiệm',
+      wrongAnswers: JSON.stringify(['vô trách nhiệm', 'bất cẩn', 'lười biếng']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[30].id, // successful
+      question: "What does 'successful' mean?",
+      correctAnswer: 'thành công',
+      wrongAnswers: JSON.stringify(['thất bại', 'gặp khó khăn', 'bỏ cuộc']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho từ vựng Hard mới
+    {
+      vocabularyId: seedVocabulary[34].id, // courageous
+      question: "What does 'courageous' mean?",
+      correctAnswer: 'can đảm, dũng cảm',
+      wrongAnswers: JSON.stringify(['nhút nhát', 'sợ hãi', 'yếu đuối']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[35].id, // intellectual
+      question: "What does 'intellectual' mean?",
+      correctAnswer: 'trí thức, thuộc về trí tuệ',
+      wrongAnswers: JSON.stringify(['thể chất', 'cảm xúc', 'bản năng']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[36].id, // innovative
+      question: "What does 'innovative' mean?",
+      correctAnswer: 'đổi mới, sáng tạo',
+      wrongAnswers: JSON.stringify(['cũ kỹ', 'lạc hậu', 'truyền thống']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[39].id, // comprehensive
+      question: "What does 'comprehensive' mean?",
+      correctAnswer: 'toàn diện, bao quát',
+      wrongAnswers: JSON.stringify(['hạn chế', 'một phần', 'thiếu sót']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
   ])
 
   // Seed tasks
