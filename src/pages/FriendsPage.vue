@@ -87,7 +87,11 @@
             </div>
 
             <div class="friend-actions">
-              <q-btn class="challenge-btn" color="primary">
+              <q-btn
+                class="challenge-btn"
+                color="primary"
+                @click="challengeFriend(friend)"
+              >
                 <svg
                   class="sword-icon"
                   width="22"
