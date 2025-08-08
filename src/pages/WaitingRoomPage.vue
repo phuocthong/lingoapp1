@@ -622,6 +622,9 @@ onMounted(() => {
 
   if (route.query.roomCode) {
     roomCode.value = route.query.roomCode
+  } else {
+    // Generate a fallback room code if none provided
+    roomCode.value = Math.random().toString(36).substring(2, 8).toUpperCase()
   }
   if (route.query.roomName) {
     roomName.value = route.query.roomName
