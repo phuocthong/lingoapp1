@@ -2702,17 +2702,20 @@ const getPlayerGradient = (playerId) => {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 16px 32px;
-  border-radius: 20px;
+  padding: 18px 36px;
+  border-radius: 25px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(255,255,255,0.2);
   position: relative;
   overflow: hidden;
-  min-width: 160px;
+  min-width: 180px;
   justify-content: center;
+  backdrop-filter: blur(15px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .btn-icon-large {
