@@ -1655,9 +1655,11 @@ const getPlayerGradient = (playerId) => {
   height: 100vh;
   z-index: 1000;
   background: radial-gradient(ellipse at center, #667eea 0%, #764ba2 100%);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .celebration-confetti {
