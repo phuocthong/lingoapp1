@@ -349,6 +349,7 @@ const setupChatEventListeners = () => {
   window.addEventListener('botMessage', handleBotMessage)
   window.addEventListener('answerDisplay', handleAnswerDisplay)
   window.addEventListener('answerFeedback', handleAnswerFeedback)
+  window.addEventListener('historyUpdated', handleHistoryUpdate)
 }
 
 const removeChatEventListeners = () => {
