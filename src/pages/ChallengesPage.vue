@@ -37,6 +37,13 @@
                   />
                 </q-btn>
 
+                <!-- Mobile Backdrop -->
+                <div
+                  v-if="showChallengeTypeDropdown"
+                  class="mobile-backdrop"
+                  @click="showChallengeTypeDropdown = false"
+                ></div>
+
                 <!-- Challenge Type Dropdown -->
                 <div v-if="showChallengeTypeDropdown" class="challenge-type-dropdown">
                   <div
