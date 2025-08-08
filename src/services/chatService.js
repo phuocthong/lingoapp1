@@ -186,6 +186,14 @@ export class ChatService {
     // Update question history with results
     this.updateHistoryWithResults()
 
+    // Trigger history update in UI
+    setTimeout(() => {
+      const event = new CustomEvent('historyUpdated', {
+        detail: { history: this.questionHistory }
+      })
+      window.dispatchEvent(event)
+    }, 500)
+
     // Schedule next question
     this.scheduleNextQuestion()
 
