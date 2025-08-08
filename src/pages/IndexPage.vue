@@ -660,13 +660,15 @@ const showNotification = (message, type = 'info') => {
 
 .message-bubble {
   background: #f3f4f6;
-  border-radius: 8px;
+  border-radius: 18px 18px 18px 4px;
   padding: 12px 16px;
-  max-width: 400px;
+  max-width: 70%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .bot-message {
-  background: #f3f4f6;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
 }
 
 .message-text {
