@@ -19,135 +19,135 @@
                 <h3 class="create-title">Tạo phòng mới</h3>
               </div>
               <p class="create-description">Tạo phòng thử thách riêng với các cài đặt tùy chỉnh</p>
-              <q-btn
-                color="primary"
-                class="create-btn"
-                no-caps
-                ref="createRoomBtn"
-              >
-                <q-icon name="add" size="16px" class="q-mr-xs" />
-                Tạo phòng thử thách
-                <q-menu
-                  anchor="bottom middle"
-                  self="top middle"
-                  fit
-                  :offset="[0, 8]"
-                  transition-show="jump-down"
-                  transition-hide="jump-up"
-                >
-                  <q-card class="create-room-modal" style="min-width:320px;max-width:400px;">
-                    <q-card-section class="create-modal-header">
-                      <div class="create-modal-title">
-                        <svg
-                          class="plus-icon"
-                          width="20"
-                          height="20"
-                          viewBox="0 0 21 21"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M4.66699 10.8H16.3337"
-                            stroke="#6D28D9"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                          <path
-                            d="M10.5 4.96667V16.6333"
-                            stroke="#6D28D9"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </svg>
-                        Tạo phòng mới
-                      </div>
-                      <div class="create-modal-subtitle">
-                        Tạo phòng thử thách riêng với các cài đặt tùy chỉnh
-                      </div>
-                    </q-card-section>
+              <!-- Room Creation Form -->
+              <div v-if="!showCreateForm" class="create-btn-container">
+                <q-btn color="primary" class="create-btn" no-caps @click="showCreateForm = true">
+                  <q-icon name="add" size="16px" class="q-mr-xs" />
+                  Tạo phòng thử thách
+                </q-btn>
+              </div>
 
-                    <q-card-section class="create-modal-content">
-                      <!-- Room Name -->
-                      <div class="form-field">
-                        <label class="field-label">Tên phòng</label>
-                        <q-input
-                          v-model="roomSettings.name"
-                          placeholder="Ví dụ: Thử thách từ vựng cơ bản"
-                          outlined
-                          class="room-input"
-                        />
-                      </div>
+              <!-- Create Room Form (Figma Design) -->
+              <div v-if="showCreateForm" class="create-room-form">
+                <!-- Form Header -->
+                <div class="form-header">
+                  <div class="form-title">
+                    <svg
+                      class="plus-icon"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 21 21"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4.66699 10.8H16.3337"
+                        stroke="#6D28D9"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M10.5 4.96667V16.6333"
+                        stroke="#6D28D9"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    Tạo phòng mới
+                  </div>
+                  <div class="form-subtitle">
+                    Tạo phòng thử thách riêng với các cài đặt tùy chỉnh
+                  </div>
+                </div>
 
-                      <!-- Max Players -->
-                      <div class="form-field">
-                        <div class="field-header">
-                          <span class="field-label">Số người tối đa:</span>
-                          <span class="field-value">{{ roomSettings.maxPlayers }}</span>
-                        </div>
-                        <div class="option-buttons">
-                          <q-btn
-                            v-for="option in playerOptions"
-                            :key="option"
-                            :class="{ selected: roomSettings.maxPlayers === option }"
-                            @click="roomSettings.maxPlayers = option"
-                            class="option-btn"
-                          >
-                            {{ option }}
-                          </q-btn>
-                        </div>
-                      </div>
+                <!-- Form Content -->
+                <div class="form-content">
+                  <!-- Room Name -->
+                  <div class="form-field">
+                    <label class="field-label">Tên phòng</label>
+                    <q-input
+                      v-model="roomSettings.name"
+                      placeholder="Ví dụ: Thử thách từ vựng cơ bản"
+                      outlined
+                      class="room-input"
+                    />
+                  </div>
 
-                      <!-- Number of Questions -->
-                      <div class="form-field">
-                        <div class="field-header">
-                          <span class="field-label">Số câu hỏi:</span>
-                          <span class="field-value">{{ roomSettings.questions }}</span>
-                        </div>
-                        <div class="option-buttons">
-                          <q-btn
-                            v-for="option in questionOptions"
-                            :key="option"
-                            :class="{ selected: roomSettings.questions === option }"
-                            @click="roomSettings.questions = option"
-                            class="option-btn"
-                          >
-                            {{ option }}
-                          </q-btn>
-                        </div>
-                      </div>
+                  <!-- Max Players -->
+                  <div class="form-field">
+                    <div class="field-header">
+                      <span class="field-label">Số người tối đa:</span>
+                      <span class="field-value">{{ roomSettings.maxPlayers }}</span>
+                    </div>
+                    <div class="option-buttons">
+                      <q-btn
+                        v-for="option in playerOptions"
+                        :key="option"
+                        :class="{ selected: roomSettings.maxPlayers === option }"
+                        @click="roomSettings.maxPlayers = option"
+                        class="option-btn"
+                      >
+                        {{ option }}
+                      </q-btn>
+                    </div>
+                  </div>
 
-                      <!-- Time per Question -->
-                      <div class="form-field">
-                        <div class="field-header">
-                          <span class="field-label">Thời gian/câu:</span>
-                          <span class="field-value">{{ roomSettings.timePerQuestion }}s</span>
-                        </div>
-                        <div class="option-buttons">
-                          <q-btn
-                            v-for="option in timeOptions"
-                            :key="option"
-                            :class="{ selected: roomSettings.timePerQuestion === option }"
-                            @click="roomSettings.timePerQuestion = option"
-                            class="option-btn time-btn"
-                          >
-                            {{ option }} s
-                          </q-btn>
-                        </div>
-                      </div>
+                  <!-- Number of Questions -->
+                  <div class="form-field">
+                    <div class="field-header">
+                      <span class="field-label">Số câu hỏi:</span>
+                      <span class="field-value">{{ roomSettings.questions }}</span>
+                    </div>
+                    <div class="option-buttons">
+                      <q-btn
+                        v-for="option in questionOptions"
+                        :key="option"
+                        :class="{ selected: roomSettings.questions === option }"
+                        @click="roomSettings.questions = option"
+                        class="option-btn"
+                      >
+                        {{ option }}
+                      </q-btn>
+                    </div>
+                  </div>
 
-                      <!-- Action Buttons -->
-                      <div class="modal-actions">
-                        <q-btn class="create-room-btn" color="primary" @click="confirmCreateRoom" no-caps v-close-popup>
-                          Tạo phòng
-                        </q-btn>
-                        <q-btn class="cancel-btn" outline no-caps v-close-popup> Hủy </q-btn>
-                      </div>
-                    </q-card-section>
-                  </q-card>
-                </q-menu>
-              </q-btn>
+                  <!-- Time per Question -->
+                  <div class="form-field">
+                    <div class="field-header">
+                      <span class="field-label">Thời gian/câu:</span>
+                      <span class="field-value">{{ roomSettings.timePerQuestion }}s</span>
+                    </div>
+                    <div class="option-buttons">
+                      <q-btn
+                        v-for="option in timeOptions"
+                        :key="option"
+                        :class="{ selected: roomSettings.timePerQuestion === option }"
+                        @click="roomSettings.timePerQuestion = option"
+                        class="option-btn time-btn"
+                      >
+                        {{ option }} s
+                      </q-btn>
+                    </div>
+                  </div>
+
+                  <!-- Action Buttons -->
+                  <div class="form-actions">
+                    <q-btn
+                      class="create-room-btn"
+                      color="primary"
+                      @click="confirmCreateRoom"
+                      no-caps
+                    >
+                      Tạo phòng
+                    </q-btn>
+                    <q-btn class="cancel-btn" outline @click="cancelCreateForm" no-caps>
+                      Hủy
+                    </q-btn>
+                  </div>
+                </div>
+              </div>
             </div>
           </q-card>
         </div>
@@ -317,8 +317,8 @@
     </div>
 
     <!-- Create Room Modal -->
-    <q-dialog v-model="showCreateRoomModal" persistent position="standard">
-  <q-card class="create-room-modal">
+    <q-dialog v-model="showCreateRoomModal" persistent>
+      <q-card class="create-room-modal">
         <q-card-section class="create-modal-header">
           <div class="create-modal-title">
             <svg
@@ -459,7 +459,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -467,6 +467,7 @@ const router = useRouter()
 const searchQuery = ref('')
 const showResultsModal = ref(false)
 const showCreateRoomModal = ref(false)
+const showCreateForm = ref(false)
 
 // Room creation settings
 const roomSettings = ref({
@@ -492,15 +493,22 @@ const topPlayers = ref([
   { name: 'Mai Linh', time: '10:34' },
 ])
 
-function createRoom() {
-  showCreateRoomModal.value = true
+function cancelCreateForm() {
+  showCreateForm.value = false
+  // Reset form
+  roomSettings.value = {
+    name: '',
+    maxPlayers: 4,
+    questions: 10,
+    timePerQuestion: 20,
+  }
 }
 
 function confirmCreateRoom() {
-  // Validate room name
-  if (!roomSettings.value.name.trim()) {
-    console.error('Room name is required')
-    return
+  // Use default room name if empty
+  let roomName = roomSettings.value.name.trim()
+  if (!roomName) {
+    roomName = `Thử thách ${roomSettings.value.questions} câu`
   }
 
   console.log('Creating room with settings:', roomSettings.value)
@@ -508,18 +516,19 @@ function confirmCreateRoom() {
   // Generate room code
   const roomCode = Math.random().toString(36).substring(2, 8).toUpperCase()
 
-  // Close modal
-  showCreateRoomModal.value = false
+  // Close form
+  showCreateForm.value = false
 
   // Navigate to waiting room with room data
   router.push({
     path: '/dashboard/waiting-room',
     query: {
       roomCode: roomCode,
-      roomName: roomSettings.value.name,
+      roomName: roomName,
       questions: roomSettings.value.questions,
       timePerQuestion: roomSettings.value.timePerQuestion,
       maxPlayers: roomSettings.value.maxPlayers,
+      isOwner: 'true',
     },
   })
 
@@ -560,14 +569,6 @@ function watchRoom(roomId) {
   console.log('Watching room:', roomId)
   showResultsModal.value = true
 }
-
-watch(showCreateRoomModal, (val) => {
-  if (val) {
-    document.body.style.overflow = 'hidden'
-  } else {
-    document.body.style.overflow = ''
-  }
-})
 </script>
 
 <style scoped>
@@ -667,11 +668,182 @@ watch(showCreateRoomModal, (val) => {
   margin-bottom: 24px;
 }
 
+.create-btn-container {
+  width: 100%;
+}
+
 .create-btn {
   width: 100%;
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
+}
+
+/* Create Room Form Styles */
+.create-room-form {
+  width: 100%;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-header {
+  padding: 24px 24px 6px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #020817;
+  line-height: 24px;
+  letter-spacing: -0.6px;
+}
+
+.plus-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748b;
+  line-height: 20px;
+}
+
+.form-content {
+  padding: 0 24px 25px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 20px;
+}
+
+.field-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.field-value {
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 20px;
+}
+
+.room-input {
+  height: 40px;
+}
+
+.room-input .q-field__control {
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.room-input .q-field__native {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #999;
+}
+
+.option-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.option-btn {
+  min-width: auto;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #020817;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: none;
+}
+
+.option-btn.selected {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.option-btn:hover {
+  border-color: #2563eb;
+}
+
+.time-btn {
+  padding: 8px 13px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.create-room-btn {
+  flex: 1;
+  height: 40px;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: none;
+}
+
+.cancel-btn {
+  height: 40px;
+  padding: 10px 17px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #020817;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: none;
+}
+
+.cancel-btn:hover {
+  border-color: #2563eb;
 }
 
 /* Rooms Section */
@@ -928,6 +1100,25 @@ watch(showCreateRoomModal, (val) => {
   }
 }
 
+@media (max-width: 768px) {
+  .form-header {
+    padding: 20px 16px 6px 16px;
+  }
+
+  .form-content {
+    padding: 0 16px 20px 16px;
+  }
+
+  .option-buttons {
+    gap: 6px;
+  }
+
+  .option-btn {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
+
 @media (max-width: 480px) {
   .create-room-content {
     padding: 24px 16px;
@@ -946,6 +1137,15 @@ watch(showCreateRoomModal, (val) => {
   .room-owner {
     justify-content: center;
   }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cancel-btn {
+    width: 100%;
+  }
 }
 
 /* Create Room Modal Styles */
@@ -956,8 +1156,6 @@ watch(showCreateRoomModal, (val) => {
   border: 1px solid #e2e8f0;
   background: #fff;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  max-height: 90vh;
-  overflow-y: auto; /* Thêm dòng này để modal có scroll riêng nếu nội dung dài */
 }
 
 .create-modal-header {
