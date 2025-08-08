@@ -443,7 +443,7 @@ const challengeTypes = [
   {
     id: 'custom',
     emoji: '⚙️',
-    title: 'Tùy chỉnh',
+    title: 'Tùy ch��nh',
     description: 'Tạo phòng với cài đặt tùy chỉnh',
     maxPlayers: 4,
     questions: 10,
@@ -468,15 +468,26 @@ function toggleChallengeTypeDropdown() {
 }
 
 function createRoomWithType(challengeType) {
-  // Set room settings based on challenge type
-  roomSettings.value = {
-    name: challengeType.title,
-    maxPlayers: challengeType.maxPlayers,
-    questions: challengeType.questions,
-    timePerQuestion: challengeType.timePerQuestion
+  showChallengeTypeDropdown.value = false
+
+  if (challengeType.isCustom) {
+    // Open modal with default settings for custom room
+    roomSettings.value = {
+      name: '',
+      maxPlayers: 4,
+      questions: 10,
+      timePerQuestion: 20
+    }
+  } else {
+    // Set room settings based on challenge type
+    roomSettings.value = {
+      name: challengeType.title,
+      maxPlayers: challengeType.maxPlayers,
+      questions: challengeType.questions,
+      timePerQuestion: challengeType.timePerQuestion
+    }
   }
 
-  showChallengeTypeDropdown.value = false
   showCreateRoomModal.value = true
 }
 
