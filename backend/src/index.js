@@ -17,42 +17,46 @@ import progressRoutes from './routes/progress.js'
 import { authMiddleware } from './middleware/auth.js'
 
 const app = new Elysia()
-  .use(cors({
-    origin: true, // Allow all origins in development
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-  }))
-  .use(swagger({
-    documentation: {
-      info: {
-        title: 'Lingo Challenge API',
-        version: '1.0.0',
-        description: 'REST API for Lingo Challenge vocabulary app'
+  .use(
+    cors({
+      origin: true, // Allow all origins in development
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+    }),
+  )
+  .use(
+    swagger({
+      documentation: {
+        info: {
+          title: 'Lingo Challenge API',
+          version: '1.0.0',
+          description: 'REST API for Lingo Challenge vocabulary app',
+        },
+        tags: [
+          { name: 'auth', description: 'Authentication endpoints' },
+          { name: 'users', description: 'User management' },
+          { name: 'vocabulary', description: 'Vocabulary and questions' },
+          { name: 'rooms', description: 'Challenge rooms' },
+          { name: 'tasks', description: 'User tasks and progress' },
+          { name: 'friends', description: 'Friend management' },
+          { name: 'rewards', description: 'Rewards and transactions' },
+          { name: 'progress', description: 'User progress tracking' },
+        ],
       },
-      tags: [
-        { name: 'auth', description: 'Authentication endpoints' },
-        { name: 'users', description: 'User management' },
-        { name: 'vocabulary', description: 'Vocabulary and questions' },
-        { name: 'rooms', description: 'Challenge rooms' },
-        { name: 'tasks', description: 'User tasks and progress' },
-        { name: 'friends', description: 'Friend management' },
-        { name: 'rewards', description: 'Rewards and transactions' },
-        { name: 'progress', description: 'User progress tracking' }
-      ]
-    }
-  }))
+    }),
+  )
   .use(staticPlugin())
-  
+
   // Health check endpoint
-  .get('/', () => ({ 
+  .get('/', () => ({
     message: 'Lingo Challenge API is running!',
     version: '1.0.0',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   }))
-  
+
   // Mount route modules
-  .group('/api', (app) => 
+  .group('/api', (app) =>
     app
       .use(authRoutes)
       .use(authMiddleware)
@@ -62,35 +66,35 @@ const app = new Elysia()
       .use(taskRoutes)
       .use(friendRoutes)
       .use(rewardRoutes)
-      .use(progressRoutes)
+      .use(progressRoutes),
   )
-  
+
   // Error handling
   .onError(({ code, error, set }) => {
     console.error('API Error:', error)
-    
+
     if (code === 'VALIDATION') {
       set.status = 400
-      return { 
-        success: false, 
-        message: 'Validation error', 
-        errors: error.message 
+      return {
+        success: false,
+        message: 'Validation error',
+        errors: error.message,
       }
     }
-    
+
     if (code === 'NOT_FOUND') {
       set.status = 404
-      return { 
-        success: false, 
-        message: 'Endpoint not found' 
+      return {
+        success: false,
+        message: 'Endpoint not found',
       }
     }
-    
+
     set.status = 500
-    return { 
-      success: false, 
+    return {
+      success: false,
       message: 'Internal server error',
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined,
     }
   })
 

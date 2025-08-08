@@ -6,10 +6,10 @@ export const auth = {
   login: async (username, password, rememberMe = false) => {
     try {
       const response = await apiService.login(username, password)
-      
+
       if (response.success) {
         const { user, token } = response
-        
+
         // Store token and user data
         if (rememberMe) {
           localStorage.setItem('user_token', token)
@@ -18,7 +18,7 @@ export const auth = {
           sessionStorage.setItem('user_session', token)
           sessionStorage.setItem('user_data', JSON.stringify(user))
         }
-        
+
         return { success: true, user, token }
       } else {
         return { success: false, message: response.message || 'Login failed' }
@@ -33,14 +33,14 @@ export const auth = {
   register: async (userData) => {
     try {
       const response = await apiService.register(userData)
-      
+
       if (response.success) {
         const { user, token } = response
-        
+
         // Auto-login after registration
         sessionStorage.setItem('user_session', token)
         sessionStorage.setItem('user_data', JSON.stringify(user))
-        
+
         return { success: true, user, token }
       } else {
         return { success: false, message: response.message || 'Registration failed' }
@@ -59,13 +59,13 @@ export const auth = {
       console.error('Logout API error:', error)
       // Continue with local logout even if API fails
     }
-    
+
     // Clear local storage
     localStorage.removeItem('user_token')
     localStorage.removeItem('user_data')
     sessionStorage.removeItem('user_session')
     sessionStorage.removeItem('user_data')
-    
+
     return { success: true }
   },
 
@@ -102,22 +102,22 @@ export const auth = {
       if (!auth.isLoggedIn()) {
         return { success: false, message: 'Not logged in' }
       }
-      
+
       const response = await apiService.getUserProfile()
-      
+
       if (response.success) {
         const { user } = response
-        
+
         // Update stored user data
         if (localStorage.getItem('user_token')) {
           localStorage.setItem('user_data', JSON.stringify(user))
         } else {
           sessionStorage.setItem('user_data', JSON.stringify(user))
         }
-        
+
         return { success: true, user }
       }
-      
+
       return response
     } catch (error) {
       console.error('Refresh user error:', error)
@@ -134,12 +134,13 @@ export const auth = {
         username: 'nguoidung',
         email: 'nguoidung@example.com',
         name: 'Người dùng',
-        avatar: 'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+        avatar:
+          'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
         level: 10,
         xp: 1000,
         streak: 15,
       }
-      
+
       sessionStorage.setItem('user_session', 'demo_token_' + Date.now())
       sessionStorage.setItem('user_data', JSON.stringify(demoUser))
     }
@@ -158,7 +159,7 @@ export const auth = {
       console.error('Update local user error:', error)
       return { success: false, message: 'Failed to update local user data' }
     }
-  }
+  },
 }
 
 // Export individual functions for backward compatibility

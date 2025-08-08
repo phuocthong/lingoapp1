@@ -26,7 +26,7 @@ export class NotificationService {
         position: 'top',
         timeout: 3000,
         icon: 'check_circle',
-        ...options
+        ...options,
       })
     } else {
       // Fallback to custom notification
@@ -44,7 +44,7 @@ export class NotificationService {
         position: 'top',
         timeout: 5000,
         icon: 'error',
-        ...options
+        ...options,
       })
     } else {
       this.createCustomNotification(message, 'error', options.timeout || 5000)
@@ -61,7 +61,7 @@ export class NotificationService {
         position: 'top',
         timeout: 4000,
         icon: 'warning',
-        ...options
+        ...options,
       })
     } else {
       this.createCustomNotification(message, 'warning', options.timeout || 4000)
@@ -78,7 +78,7 @@ export class NotificationService {
         position: 'top',
         timeout: 3000,
         icon: 'info',
-        ...options
+        ...options,
       })
     } else {
       this.createCustomNotification(message, 'info', options.timeout || 3000)
@@ -93,7 +93,7 @@ export class NotificationService {
       position: 'top',
       spinner: true,
       timeout: 0, // Don't auto-dismiss
-      ...options
+      ...options,
     })
   }
 
@@ -107,19 +107,19 @@ export class NotificationService {
           color: 'white',
           handler: () => {
             window.location.reload()
-          }
-        }
-      ]
+          },
+        },
+      ],
     })
   }
 
   // API error
   static apiError(error, customMessage = null) {
     const message = customMessage || error.message || 'Đã xảy ra lỗi không mong muốn'
-    
+
     this.error(message, {
       timeout: 5000,
-      caption: error.code ? `Mã lỗi: ${error.code}` : undefined
+      caption: error.code ? `Mã lỗi: ${error.code}` : undefined,
     })
   }
 
@@ -134,9 +134,9 @@ export class NotificationService {
           handler: () => {
             // Navigate to login page
             window.location.href = '/login'
-          }
-        }
-      ]
+          },
+        },
+      ],
     })
   }
 
@@ -144,7 +144,7 @@ export class NotificationService {
   static comingSoon(feature = 'Tính năng này') {
     this.info(`${feature} sẽ sớm ra mắt!`, {
       icon: 'schedule',
-      timeout: 3000
+      timeout: 3000,
     })
   }
 
@@ -154,7 +154,7 @@ export class NotificationService {
       caption: description,
       timeout: 5000,
       icon: 'emoji_events',
-      color: 'amber'
+      color: 'amber',
     })
   }
 
@@ -163,7 +163,7 @@ export class NotificationService {
     this.success(`+${amount} XP`, {
       icon: 'star',
       timeout: 2000,
-      position: 'center'
+      position: 'center',
     })
   }
 
@@ -171,7 +171,7 @@ export class NotificationService {
   static correctAnswer() {
     this.success('Chính xác! 🎉', {
       timeout: 2000,
-      position: 'center'
+      position: 'center',
     })
   }
 
@@ -179,7 +179,7 @@ export class NotificationService {
     this.error('Sai rồi! 😔', {
       caption: `Đáp án đúng: ${correctAnswer}`,
       timeout: 3000,
-      position: 'center'
+      position: 'center',
     })
   }
 
@@ -198,9 +198,9 @@ export class NotificationService {
           handler: () => {
             // Navigate to friends page
             window.location.href = '/dashboard/friends'
-          }
-        }
-      ]
+          },
+        },
+      ],
     })
   }
 
@@ -221,7 +221,7 @@ export class NotificationService {
   static rewardRedeemed(rewardName, pointsUsed) {
     this.success(`Đã đổi thành công "${rewardName}"`, {
       caption: `Sử dụng ${pointsUsed} điểm`,
-      timeout: 5000
+      timeout: 5000,
     })
   }
 
@@ -233,14 +233,14 @@ export class NotificationService {
   static offline() {
     this.warning('Mất kết nối mạng. Một số tính năng có thể bị hạn chế.', {
       timeout: 0,
-      icon: 'wifi_off'
+      icon: 'wifi_off',
     })
   }
 
   static online() {
     this.success('Đã kết nối lại mạng', {
       timeout: 2000,
-      icon: 'wifi'
+      icon: 'wifi',
     })
   }
 
@@ -249,12 +249,14 @@ export class NotificationService {
     if (typeof window === 'undefined') return
 
     // Import and use the custom notification utility
-    import('../utils/notifications.js').then(({ createNotification }) => {
-      createNotification(message, type, duration)
-    }).catch(() => {
-      // Final fallback to console
-      console.log(`${type.toUpperCase()}: ${message}`)
-    })
+    import('../utils/notifications.js')
+      .then(({ createNotification }) => {
+        createNotification(message, type, duration)
+      })
+      .catch(() => {
+        // Final fallback to console
+        console.log(`${type.toUpperCase()}: ${message}`)
+      })
   }
 }
 

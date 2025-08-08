@@ -131,20 +131,21 @@
 
           <!-- Backend Status -->
           <div class="backend-status">
-            <div class="status-indicator" :class="{ online: backendOnline, offline: !backendOnline }">
-              <q-icon 
-                :name="backendOnline ? 'cloud_done' : 'cloud_off'" 
-                :color="backendOnline ? 'green' : 'orange'" 
-                size="16px" 
+            <div
+              class="status-indicator"
+              :class="{ online: backendOnline, offline: !backendOnline }"
+            >
+              <q-icon
+                :name="backendOnline ? 'cloud_done' : 'cloud_off'"
+                :color="backendOnline ? 'green' : 'orange'"
+                size="16px"
               />
-              <span>
-                Backend: {{ backendOnline ? 'Đã kết nối' : 'Chưa kết nối' }}
-              </span>
-              <q-btn 
-                v-if="!backendOnline" 
-                @click="checkBackendStatus" 
-                size="xs" 
-                flat 
+              <span> Backend: {{ backendOnline ? 'Đã kết nối' : 'Chưa kết nối' }} </span>
+              <q-btn
+                v-if="!backendOnline"
+                @click="checkBackendStatus"
+                size="xs"
+                flat
                 no-caps
                 color="primary"
               >
@@ -193,7 +194,7 @@ onMounted(async () => {
     router.push('/dashboard')
     return
   }
-  
+
   // Check backend status
   await checkBackendStatus()
 })
@@ -203,7 +204,8 @@ const checkBackendStatus = async () => {
   try {
     // In cloud environment, backend won't be available at localhost
     // So we'll skip the check and default to demo mode
-    const isCloudEnvironment = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    const isCloudEnvironment =
+      window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
 
     if (isCloudEnvironment) {
       backendOnline.value = false
@@ -217,7 +219,7 @@ const checkBackendStatus = async () => {
 
     const response = await fetch('http://localhost:3001/', {
       method: 'GET',
-      signal: controller.signal
+      signal: controller.signal,
     })
 
     clearTimeout(timeoutId)
@@ -268,11 +270,7 @@ const handleLogin = async () => {
 
     if (backendOnline.value) {
       // Try real API login
-      result = await auth.login(
-        loginForm.username, 
-        loginForm.password, 
-        loginForm.rememberMe
-      )
+      result = await auth.login(loginForm.username, loginForm.password, loginForm.rememberMe)
     } else {
       // Demo mode login
       result = await simulateLogin()
@@ -280,7 +278,7 @@ const handleLogin = async () => {
 
     if (result.success) {
       showSimpleNotification(`Chào mừng ${result.user.name}! 🎉`, 'success')
-      
+
       // Small delay for better UX
       setTimeout(() => {
         router.push('/dashboard')
@@ -291,11 +289,11 @@ const handleLogin = async () => {
     }
   } catch (error) {
     console.error('Login error:', error)
-    
+
     if (error.message.includes('fetch')) {
       showSimpleNotification('Không thể kết nối đến server. Đang sử dụng chế độ demo.', 'error')
       backendOnline.value = false
-      
+
       // Try demo login as fallback
       const result = await simulateLogin()
       if (result.success) {
@@ -314,17 +312,17 @@ const handleLogin = async () => {
 const simulateLogin = async () => {
   // Check demo credentials
   const demoAccounts = {
-    'admin': { name: 'Admin', level: 10, xp: 2500, streak: 15 },
-    'minhanh': { name: 'Minh Anh', level: 8, xp: 1800, streak: 12 },
-    'thanhhoa': { name: 'Thành Hòa', level: 6, xp: 1200, streak: 8 },
-    'nguoidung': { name: 'Người dùng', level: 5, xp: 1000, streak: 10 }
+    admin: { name: 'Admin', level: 10, xp: 2500, streak: 15 },
+    minhanh: { name: 'Minh Anh', level: 8, xp: 1800, streak: 12 },
+    thanhhoa: { name: 'Thành Hòa', level: 6, xp: 1200, streak: 8 },
+    nguoidung: { name: 'Người dùng', level: 5, xp: 1000, streak: 10 },
   }
 
   // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 1000))
+  await new Promise((resolve) => setTimeout(resolve, 1000))
 
   const account = demoAccounts[loginForm.username.toLowerCase()]
-  
+
   if (account && loginForm.password === 'password123') {
     // Simulate successful login
     const user = {
@@ -332,7 +330,8 @@ const simulateLogin = async () => {
       username: loginForm.username,
       email: `${loginForm.username}@example.com`,
       name: account.name,
-      avatar: 'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+      avatar:
+        'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
       level: account.level,
       xp: account.xp,
       streak: account.streak,
@@ -351,9 +350,9 @@ const simulateLogin = async () => {
 
     return { success: true, user, token }
   } else {
-    return { 
-      success: false, 
-      message: 'Tên đăng nhập hoặc mật khẩu không đúng' 
+    return {
+      success: false,
+      message: 'Tên đăng nhập hoặc mật khẩu không đúng',
     }
   }
 }
@@ -363,7 +362,7 @@ const fillDemoAccount = (accountType) => {
   loginForm.username = accountType
   loginForm.password = 'password123'
   loginForm.rememberMe = false
-  
+
   showSimpleNotification(`Đã điền thông tin tài khoản ${accountType}`, 'info')
 }
 </script>

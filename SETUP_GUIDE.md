@@ -64,39 +64,46 @@ npm run dev
 Truy cập `http://localhost:9000` và đăng nhập bằng:
 
 **Tài khoản demo:**
+
 - **Admin**: `admin` / `password123`
-- **Minh Anh**: `minhanh` / `password123`  
+- **Minh Anh**: `minhanh` / `password123`
 - **Thành Hòa**: `thanhhoa` / `password123`
 
 ### 2. Tính Năng Chính
 
 #### 🤖 Chat Bot Thời Gian Thực
+
 - Nhấn **"Bắt đầu"** để chat bot bắt đầu đưa ra câu hỏi
 - Bot sẽ tự động hỏi mỗi 30-60 giây
 - Trả lời câu hỏi và xem kết quả ngay lập tức
 - Theo dõi lịch sử câu hỏi và thống kê
 
 #### 🏆 Bảng Xếp Hạng
+
 - Xem top players theo tuần/tháng/năm
 - So sánh điểm XP và độ chính xác
 - Theo dõi hạng của bạn
 
 #### 👥 Quản Lý Bạn Bè
+
 - Tìm kiếm và kết bạn
 - Thách đấu với bạn bè
 - Xem hoạt động của bạn bè
 
 #### 🎯 Thử Thách Multiplayer
+
 - Tạo phòng thách đấu
 - Tham gia phòng của người khác
 - Thi đấu real-time
 
 #### 🏅 Hệ Thống Nhiệm Vụ
+
 - Hoàn thành task hàng ngày
 - Nhận XP và phần thưởng
 - Mở khóa achievement
 
 #### 🎁 Cửa Hàng Phần Thưởng
+
 - Đổi XP lấy voucher
 - Mua premium features
 - Unlock nội dung đặc biệt
@@ -124,12 +131,14 @@ const API_BASE = 'http://localhost:YOUR_PORT/api'
 ## 📊 Database Management
 
 ### Xem Database
+
 ```bash
 cd backend
 npm run db:studio
 ```
 
 ### Reset Database
+
 ```bash
 cd backend
 rm lingo-challenge.db
@@ -138,6 +147,7 @@ npm run db:seed
 ```
 
 ### Backup Database
+
 ```bash
 cd backend
 cp lingo-challenge.db lingo-challenge-backup.db
@@ -148,18 +158,21 @@ cp lingo-challenge.db lingo-challenge-backup.db
 ### Backend Deployment
 
 **Railway/Render:**
+
 1. Push code lên GitHub
 2. Connect repository tại Railway/Render
 3. Set environment variables
 4. Deploy tự động
 
 **Vercel:**
+
 ```bash
 cd backend
 vercel --prod
 ```
 
 **Docker:**
+
 ```bash
 cd backend
 docker build -t lingo-backend .
@@ -169,12 +182,14 @@ docker run -p 3001:3001 lingo-backend
 ### Frontend Deployment
 
 **Netlify/Vercel:**
+
 ```bash
 npm run build
 # Upload dist/ folder
 ```
 
 **GitHub Pages:**
+
 ```bash
 npm run build
 # Push dist/ to gh-pages branch
@@ -210,6 +225,7 @@ npm run db:seed
 ### Thêm Vocabulary Mới
 
 Chỉnh sửa `backend/src/scripts/seed.js` và chạy:
+
 ```bash
 npm run db:seed
 ```
@@ -229,6 +245,7 @@ npm run db:seed
 ## 🎉 Features Hoàn Thành
 
 ### ✅ Backend API
+
 - JWT Authentication
 - User Management
 - Vocabulary & Questions
@@ -240,6 +257,7 @@ npm run db:seed
 - Auto-generated API docs
 
 ### ✅ Frontend
+
 - Modern Vue 3 + Quasar UI
 - Real-time Chat Interface
 - Dynamic Leaderboard
@@ -249,6 +267,7 @@ npm run db:seed
 - Demo Mode (works without backend)
 
 ### ✅ Database
+
 - SQLite với Drizzle ORM
 - Auto-migrations
 - Seed data

@@ -9,18 +9,18 @@ export const authMiddleware = (app) => {
   return app.derive(async ({ headers, set }) => {
     // Skip auth for non-protected routes
     const authHeader = headers.authorization
-    
+
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       set.status = 401
       throw new Error('Authorization header required')
     }
 
     const token = authHeader.split(' ')[1]
-    
+
     try {
       const decoded = jwt.verify(token, JWT_SECRET)
       const user = await db.select().from(users).where(eq(users.id, decoded.userId)).get()
-      
+
       if (!user) {
         set.status = 401
         throw new Error('User not found')
@@ -35,8 +35,8 @@ export const authMiddleware = (app) => {
           avatar: user.avatar,
           level: user.level,
           xp: user.xp,
-          streak: user.streak
-        }
+          streak: user.streak,
+        },
       }
     } catch (error) {
       set.status = 401

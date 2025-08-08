@@ -1,5 +1,6 @@
 // API Base URL - adjust for your backend
-const isCloudEnvironment = typeof window !== 'undefined' &&
+const isCloudEnvironment =
+  typeof window !== 'undefined' &&
   window.location.hostname !== 'localhost' &&
   window.location.hostname !== '127.0.0.1'
 
@@ -14,7 +15,9 @@ class ApiService {
 
   // Mock response handler for demo mode
   async getMockResponse(endpoint, options = {}) {
-    const { getMockLeaderboard, getMockQuestions, getMockTasks, mockSubmitAnswer } = await import('./mockData.js')
+    const { getMockLeaderboard, getMockQuestions, getMockTasks, mockSubmitAnswer } = await import(
+      './mockData.js'
+    )
 
     // Parse endpoint and return appropriate mock data
     if (endpoint.includes('/progress/leaderboard')) {
@@ -29,7 +32,7 @@ class ApiService {
       return getMockQuestions({
         count: params.get('count') || 1,
         difficulty: params.get('difficulty'),
-        type: params.get('type')
+        type: params.get('type'),
       })
     }
 
@@ -47,7 +50,7 @@ class ApiService {
     return {
       success: true,
       message: 'Demo mode - feature not implemented',
-      data: null
+      data: null,
     }
   }
 

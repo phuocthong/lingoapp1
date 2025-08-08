@@ -3,10 +3,12 @@
 // Detect if running in hosted environment
 export const isHosted = () => {
   if (typeof window === 'undefined') return false
-  
-  return window.location.hostname !== 'localhost' && 
-         window.location.hostname !== '127.0.0.1' &&
-         window.location.hostname !== '0.0.0.0'
+
+  return (
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1' &&
+    window.location.hostname !== '0.0.0.0'
+  )
 }
 
 // Safe WebSocket wrapper
@@ -18,10 +20,10 @@ export const createSafeWebSocket = (url, protocols) => {
       send: () => {},
       close: () => {},
       addEventListener: () => {},
-      removeEventListener: () => {}
+      removeEventListener: () => {},
     }
   }
-  
+
   try {
     return new WebSocket(url, protocols)
   } catch (error) {
@@ -31,7 +33,7 @@ export const createSafeWebSocket = (url, protocols) => {
       send: () => {},
       close: () => {},
       addEventListener: () => {},
-      removeEventListener: () => {}
+      removeEventListener: () => {},
     }
   }
 }
@@ -43,13 +45,21 @@ if (typeof window !== 'undefined' && isHosted()) {
     constructor(url, protocols) {
       return createSafeWebSocket(url, protocols)
     }
-    
-    static get CONNECTING() { return 0 }
-    static get OPEN() { return 1 }
-    static get CLOSING() { return 2 }
-    static get CLOSED() { return 3 }
+
+    static get CONNECTING() {
+      return 0
+    }
+    static get OPEN() {
+      return 1
+    }
+    static get CLOSING() {
+      return 2
+    }
+    static get CLOSED() {
+      return 3
+    }
   }
-  
+
   // Preserve static properties
   Object.assign(window.WebSocket, originalWebSocket)
 }
@@ -68,7 +78,7 @@ export const safeHMR = {
       }
     }
   },
-  
+
   on: (event, callback) => {
     if (!isHosted()) {
       try {
@@ -79,11 +89,11 @@ export const safeHMR = {
         console.log('HMR event listener failed safely:', error.message)
       }
     }
-  }
+  },
 }
 
 export default {
   isHosted,
   createSafeWebSocket,
-  safeHMR
+  safeHMR,
 }

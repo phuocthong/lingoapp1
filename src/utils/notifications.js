@@ -6,18 +6,18 @@ export const createNotification = (message, type = 'info', duration = 3000) => {
       success: 'positive',
       error: 'negative',
       warning: 'warning',
-      info: 'info'
+      info: 'info',
     }
-    
+
     window.$q.notify({
       message,
       type: typeMap[type] || 'info',
       position: 'top',
-      timeout: duration
+      timeout: duration,
     })
     return
   }
-  
+
   // Fallback to custom notification
   createCustomNotification(message, type, duration)
 }
@@ -25,26 +25,26 @@ export const createNotification = (message, type = 'info', duration = 3000) => {
 const createCustomNotification = (message, type, duration) => {
   // Remove existing notifications
   const existing = document.querySelectorAll('.custom-notification')
-  existing.forEach(el => el.remove())
-  
+  existing.forEach((el) => el.remove())
+
   // Create notification element
   const notification = document.createElement('div')
   notification.className = `custom-notification notification-${type}`
-  
+
   const colors = {
     success: '#10b981',
     error: '#ef4444',
     warning: '#f59e0b',
-    info: '#3b82f6'
+    info: '#3b82f6',
   }
-  
+
   const icons = {
     success: '✅',
     error: '❌',
     warning: '⚠️',
-    info: 'ℹ️'
+    info: 'ℹ️',
   }
-  
+
   notification.innerHTML = `
     <div style="
       position: fixed;
@@ -67,7 +67,7 @@ const createCustomNotification = (message, type, duration) => {
       </div>
     </div>
   `
-  
+
   // Add CSS animation if not exists
   if (!document.querySelector('#notification-styles')) {
     const style = document.createElement('style')
@@ -99,9 +99,9 @@ const createCustomNotification = (message, type, duration) => {
     `
     document.head.appendChild(style)
   }
-  
+
   document.body.appendChild(notification)
-  
+
   // Auto remove
   setTimeout(() => {
     notification.classList.add('fade-out')
@@ -111,7 +111,7 @@ const createCustomNotification = (message, type, duration) => {
       }
     }, 300)
   }, duration)
-  
+
   // Click to dismiss
   notification.addEventListener('click', () => {
     notification.classList.add('fade-out')
@@ -134,5 +134,5 @@ export default {
   error: notifyError,
   warning: notifyWarning,
   info: notifyInfo,
-  create: createNotification
+  create: createNotification,
 }

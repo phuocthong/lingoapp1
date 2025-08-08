@@ -5,8 +5,8 @@ export default defineConfig({
   out: './drizzle',
   dialect: 'sqlite',
   dbCredentials: {
-    url: './lingo-challenge.db'
+    url: './lingo-challenge.db',
   },
   verbose: true,
-  strict: true
+  strict: true,
 })

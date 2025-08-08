@@ -15,23 +15,27 @@ A high-performance REST API backend for the Lingo Challenge vocabulary learning 
 ## 📋 API Endpoints
 
 ### Authentication
+
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - User login
 - `POST /api/auth/logout` - User logout
 - `POST /api/auth/forgot-password` - Request password reset
 
 ### User Management
+
 - `GET /api/user/profile` - Get user profile
 - `PUT /api/user/profile` - Update user profile
 - `PUT /api/user/password` - Change password
 - `GET /api/user/stats` - Get user statistics
 
 ### Vocabulary & Questions
+
 - `GET /api/vocabulary` - Get vocabulary list
 - `GET /api/vocabulary/questions` - Get quiz questions
 - `POST /api/vocabulary/questions/:id/answer` - Submit answer
 
 ### Challenge Rooms
+
 - `GET /api/rooms` - Get available rooms
 - `POST /api/rooms` - Create new room
 - `GET /api/rooms/:id` - Get room details
@@ -39,11 +43,13 @@ A high-performance REST API backend for the Lingo Challenge vocabulary learning 
 - `DELETE /api/rooms/:id/leave` - Leave room
 
 ### Tasks & Progress
+
 - `GET /api/tasks` - Get user tasks
 - `POST /api/tasks/:id/claim` - Claim task reward
 - `POST /api/tasks/:id/progress` - Update task progress
 
 ### Friends & Social
+
 - `GET /api/friends` - Get friends list
 - `GET /api/friends/requests` - Get friend requests
 - `POST /api/friends/search` - Search users
@@ -52,11 +58,13 @@ A high-performance REST API backend for the Lingo Challenge vocabulary learning 
 - `DELETE /api/friends/:id` - Remove friend
 
 ### Rewards & Transactions
+
 - `GET /api/rewards` - Get available rewards
 - `POST /api/rewards/:id/redeem` - Redeem reward
 - `GET /api/rewards/transactions` - Get transaction history
 
 ### Progress Tracking
+
 - `GET /api/progress` - Get user progress
 - `POST /api/progress/record` - Record daily progress
 - `GET /api/progress/leaderboard` - Get leaderboard
@@ -71,32 +79,38 @@ A high-performance REST API backend for the Lingo Challenge vocabulary learning 
 ### Quick Start
 
 1. **Clone and navigate to backend directory**
+
    ```bash
    cd backend
    ```
 
 2. **Install dependencies**
+
    ```bash
    bun install
    ```
 
 3. **Set up environment variables**
+
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
    ```
 
 4. **Generate database schema**
+
    ```bash
    bun run db:generate
    ```
 
 5. **Run database migrations**
+
    ```bash
    bun run db:migrate
    ```
 
 6. **Seed database with sample data**
+
    ```bash
    bun run db:seed
    ```
@@ -158,6 +172,7 @@ ALLOWED_ORIGINS=http://localhost:9000  # CORS origins
 The app uses SQLite for easy development and deployment. For production, you can switch to PostgreSQL by:
 
 1. Install PostgreSQL dependencies:
+
    ```bash
    bun add pg drizzle-orm/pg-core
    ```
@@ -171,7 +186,7 @@ The app uses SQLite for easy development and deployment. For production, you can
 Test accounts are created during seeding:
 
 - **Username**: `admin`, **Password**: `password123`
-- **Username**: `minhanh`, **Password**: `password123`  
+- **Username**: `minhanh`, **Password**: `password123`
 - **Username**: `thanhhoa`, **Password**: `password123`
 
 ### API Testing
@@ -181,6 +196,7 @@ Use the auto-generated Swagger documentation at `http://localhost:3001/swagger` 
 ## 📚 API Documentation
 
 Interactive API documentation is available at:
+
 - **Swagger UI**: `http://localhost:3001/swagger`
 - **JSON Schema**: `http://localhost:3001/swagger/json`
 
@@ -205,28 +221,30 @@ export const auth = {
     const response = await fetch(`${API_BASE}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password }),
     })
     const data = await response.json()
-    
+
     if (data.success) {
       localStorage.setItem('token', data.token)
       localStorage.setItem('user', JSON.stringify(data.user))
     }
-    
+
     return data
-  }
+  },
 }
 ```
 
 ## 🚀 Deployment
 
 ### Development
+
 ```bash
 bun run dev    # Watch mode with auto-reload
 ```
 
 ### Production
+
 ```bash
 bun run start  # Production mode
 ```
@@ -234,6 +252,7 @@ bun run start  # Production mode
 ### Docker Deployment
 
 Create `Dockerfile`:
+
 ```dockerfile
 FROM oven/bun:latest
 
@@ -250,6 +269,7 @@ CMD ["bun", "run", "start"]
 ```
 
 Build and run:
+
 ```bash
 docker build -t lingo-backend .
 docker run -p 3001:3001 lingo-backend
@@ -258,19 +278,23 @@ docker run -p 3001:3001 lingo-backend
 ### Platform Deployment
 
 #### Railway
+
 1. Connect your GitHub repository to Railway
 2. Set environment variables in Railway dashboard
 3. Deploy automatically on push
 
 #### Render
+
 1. Create new Web Service on Render
 2. Connect GitHub repository
 3. Set build command: `bun install && bun run db:migrate`
 4. Set start command: `bun run start`
 
 #### Vercel (Serverless)
+
 1. Install Vercel CLI: `npm i -g vercel`
 2. Create `vercel.json`:
+
 ```json
 {
   "functions": {
@@ -286,6 +310,7 @@ docker run -p 3001:3001 lingo-backend
   ]
 }
 ```
+
 3. Deploy: `vercel --prod`
 
 ## 🔧 Development

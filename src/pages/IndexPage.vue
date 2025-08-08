@@ -13,24 +13,10 @@
                 <div class="header-subtitle">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
               </div>
               <div class="header-actions">
-                <q-btn 
-                  v-if="!isBotActive" 
-                  @click="startBot" 
-                  color="primary" 
-                  size="sm" 
-                  no-caps
-                >
+                <q-btn v-if="!isBotActive" @click="startBot" color="primary" size="sm" no-caps>
                   Bắt đầu
                 </q-btn>
-                <q-btn 
-                  v-else 
-                  @click="stopBot" 
-                  color="red" 
-                  size="sm" 
-                  no-caps
-                >
-                  Dừng
-                </q-btn>
+                <q-btn v-else @click="stopBot" color="red" size="sm" no-caps> Dừng </q-btn>
               </div>
             </div>
           </q-card-section>
@@ -88,20 +74,20 @@
                 @keyup.enter="sendMessage"
                 :disable="!currentUser || !isBotActive"
               />
-              <q-btn 
-                icon="send" 
-                color="primary" 
-                class="send-btn" 
+              <q-btn
+                icon="send"
+                color="primary"
+                class="send-btn"
                 @click="sendMessage"
                 :disable="!currentUser || !isBotActive || !messageInput.trim()"
               />
             </div>
 
             <div class="status-indicator">
-              <q-icon 
-                name="fiber_manual_record" 
-                :color="currentUser ? 'green' : 'orange'" 
-                size="8px" 
+              <q-icon
+                name="fiber_manual_record"
+                :color="currentUser ? 'green' : 'orange'"
+                size="8px"
               />
               <span class="status-text">
                 {{ currentUser ? `Đăng nhập với tên: ${currentUser.name}` : 'Chưa đăng nhập' }}
@@ -266,7 +252,9 @@
                   <div class="player-streak">Accuracy: {{ player.stats?.accuracy || 0 }}%</div>
                 </div>
                 <div class="player-score">
-                  <div class="score-number">{{ (player.stats?.totalXp || 0).toLocaleString() }}</div>
+                  <div class="score-number">
+                    {{ (player.stats?.totalXp || 0).toLocaleString() }}
+                  </div>
                   <div class="score-label">XP</div>
                 </div>
               </div>
@@ -274,10 +262,14 @@
               <!-- Current User Rank -->
               <div v-if="currentUser && userRank" class="current-user-rank">
                 <div class="user-rank-content">
-                  <q-avatar size="32px" class="user-avatar">{{ getAvatarText(currentUser.name) }}</q-avatar>
+                  <q-avatar size="32px" class="user-avatar">{{
+                    getAvatarText(currentUser.name)
+                  }}</q-avatar>
                   <div class="user-info">
                     <div class="user-title">Hạng của bạn: #{{ userRank.rank }}</div>
-                    <div class="user-subtitle">{{ userRank.xp }} XP • Top {{ userRank.percentage }}%</div>
+                    <div class="user-subtitle">
+                      {{ userRank.xp }} XP • Top {{ userRank.percentage }}%
+                    </div>
                   </div>
                   <div class="user-stats">
                     <div class="user-score">{{ userRank.xp }}</div>
@@ -321,7 +313,8 @@ const chatMessagesElement = computed(() => chatMessages_ref.value)
 // Initialize component
 onMounted(async () => {
   // Check if in demo mode
-  isDemoMode.value = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+  isDemoMode.value =
+    window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
 
   // Get current user
   currentUser.value = auth.getCurrentUser()
@@ -386,7 +379,7 @@ const startBot = async () => {
     showNotification('Vui lòng đăng nhập để sử dụng chat bot', 'warning')
     return
   }
-  
+
   isBotActive.value = true
   await chatService.startBot()
   addBotMessage('Chat bot đã bắt đầu! Tôi sẽ đưa ra câu hỏi mỗi 30-60 giây.')
@@ -400,16 +393,16 @@ const stopBot = () => {
 
 const sendMessage = async () => {
   if (!messageInput.value.trim() || !currentUser.value) return
-  
+
   const answer = messageInput.value.trim()
   const userName = currentUser.value.name
-  
+
   // Handle answer through chat service
   await chatService.handleAnswer(answer, userName)
-  
+
   // Clear input
   messageInput.value = ''
-  
+
   // Update question history
   updateQuestionHistory()
 }
@@ -420,7 +413,7 @@ const addBotMessage = (text, participants = null) => {
     type: 'bot',
     text,
     timestamp: new Date(),
-    participants
+    participants,
   })
   scrollToBottom()
 }
@@ -429,7 +422,7 @@ const addAnswerMessage = (text, timestamp) => {
   chatMessages.value.push({
     type: 'answer',
     text,
-    timestamp
+    timestamp,
   })
   scrollToBottom()
 }
@@ -439,7 +432,7 @@ const addUserAnswerMessage = (userName, answer, timestamp) => {
     type: 'userAnswer',
     userName,
     answer,
-    timestamp
+    timestamp,
   })
   scrollToBottom()
 }
@@ -467,13 +460,13 @@ const switchTab = async (tab) => {
 const loadLeaderboard = async () => {
   loadingLeaderboard.value = true
   leaderboardError.value = ''
-  
+
   try {
     const response = await apiService.getLeaderboard(activeTab.value, 10)
-    
+
     if (response.success) {
       currentLeaderboard.value = response.leaderboard || []
-      
+
       // Calculate user rank
       if (currentUser.value) {
         calculateUserRank()
@@ -510,26 +503,26 @@ const loadFallbackLeaderboard = () => {
       { user: { name: 'Thành Hòa', id: 4 }, stats: { totalXp: 2195, accuracy: 90 } },
       { user: { name: 'Văn Nam', id: 3 }, stats: { totalXp: 1957, accuracy: 85 } },
       { user: { name: 'Thu Trang', id: 1 }, stats: { totalXp: 1834, accuracy: 92 } },
-    ]
+    ],
   }
-  
+
   currentLeaderboard.value = fallbackData[activeTab.value] || fallbackData.week
 }
 
 const calculateUserRank = () => {
   if (!currentUser.value) return
-  
+
   const userXp = currentUser.value.xp || 1000
   totalPlayers.value = 1250 // Mock total players
-  
+
   // Simple rank calculation based on XP
   const rank = Math.max(1, Math.floor(Math.random() * 50) + 1)
   const percentage = Math.floor((rank / totalPlayers.value) * 100)
-  
+
   userRank.value = {
     rank,
     xp: userXp,
-    percentage
+    percentage,
   }
 }
 
@@ -537,7 +530,7 @@ const calculateUserRank = () => {
 const formatTime = (timestamp) => {
   return new Date(timestamp).toLocaleTimeString('vi-VN', {
     hour: '2-digit',
-    minute: '2-digit'
+    minute: '2-digit',
   })
 }
 
@@ -547,12 +540,16 @@ const formatDateTime = (timestamp) => {
     minute: '2-digit',
     day: '2-digit',
     month: '2-digit',
-    year: 'numeric'
+    year: 'numeric',
   })
 }
 
 const getAvatarText = (name) => {
-  return name.split(' ').map(n => n[0]).join('').toUpperCase()
+  return name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()
 }
 
 const showNotification = (message, type = 'info') => {
@@ -904,7 +901,7 @@ const showNotification = (message, type = 'info') => {
   color: #4b5563;
 }
 
-.loading-container, 
+.loading-container,
 .error-container {
   text-align: center;
   padding: 40px 20px;
