@@ -390,6 +390,48 @@ export class ChatService {
     return mockUsers.slice(0, count)
   }
 
+  // Add mock participants for demo purposes
+  addMockParticipants() {
+    if (!this.currentQuestion) return
+
+    const mockUsers = [
+      { name: 'Minh Anh', avatar: 'MA' },
+      { name: 'Thu Trang', avatar: 'TT' },
+      { name: 'Văn Nam', avatar: 'VN' },
+      { name: 'Thành Hòa', avatar: 'TH' },
+    ]
+
+    const participantCount = Math.floor(Math.random() * 3) + 2 // 2-4 participants
+    const questionStartTime = this.currentQuestion.startTime || new Date()
+
+    for (let i = 0; i < participantCount; i++) {
+      const user = mockUsers[i]
+      if (!user) break
+
+      // Simulate different response times
+      const responseDelay = Math.random() * 15 + 2 // 2-17 seconds
+      const answerTime = new Date(questionStartTime.getTime() + responseDelay * 1000)
+
+      // Simulate correct/incorrect answers (80% correct rate)
+      const isCorrect = Math.random() > 0.2
+      const correctAnswer = this.currentQuestion.correctAnswer ||
+        this.currentQuestion.answers?.find(a => a.correct)?.text || 'correct'
+
+      const answers = ['đẹp', 'xấu', 'cao', 'thấp', 'thông minh', 'ngu ngốc', 'sáng tạo', 'phi thường']
+      const answer = isCorrect ? correctAnswer : answers[Math.floor(Math.random() * answers.length)]
+
+      this.answersReceived.set(user.name, {
+        answer,
+        timestamp: answerTime,
+        user: user.name,
+        avatar: user.avatar,
+        questionStartTime,
+      })
+    }
+
+    console.log(`Added ${participantCount} mock participants for question: ${this.currentQuestion.question}`)
+  }
+
   // Get question history
   getHistory() {
     return this.questionHistory
