@@ -146,6 +146,7 @@ const loadFriends = async () => {
     }
 
     const response = await apiService.getFriends()
+    console.log('Friends API response:', response)
 
     if (response.success && response.friends && Array.isArray(response.friends)) {
       friends.value = response.friends.map(friend => ({
