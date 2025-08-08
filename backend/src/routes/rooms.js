@@ -1,7 +1,7 @@
 import { Elysia, t } from 'elysia'
 import { db } from '../db/index.js'
-import { rooms, roomParticipants, users } from '../db/schema.js'
-import { eq, and, desc } from 'drizzle-orm'
+import { rooms, roomParticipants, users, userAnswers } from '../db/schema.js'
+import { eq, and, desc, sql } from 'drizzle-orm'
 
 const roomRoutes = new Elysia({ prefix: '/rooms' })
   .get('/', async ({ query }) => {

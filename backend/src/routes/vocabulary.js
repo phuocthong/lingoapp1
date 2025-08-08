@@ -1,6 +1,6 @@
 import { Elysia, t } from 'elysia'
 import { db } from '../db/index.js'
-import { vocabulary, questions } from '../db/schema.js'
+import { vocabulary, questions, userAnswers } from '../db/schema.js'
 import { eq, inArray, sql } from 'drizzle-orm'
 
 const vocabularyRoutes = new Elysia({ prefix: '/vocabulary' })
