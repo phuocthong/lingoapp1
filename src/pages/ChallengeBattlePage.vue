@@ -2991,6 +2991,98 @@ const getPlayerGradient = (playerId) => {
   }
 }
 
+/* Mobile Responsive for Modern Layout */
+@media (max-width: 768px) {
+  .victory-title-new {
+    font-size: 36px;
+  }
+
+  .victory-subtitle-new {
+    font-size: 18px;
+  }
+
+  .champion-circle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .champion-initial {
+    font-size: 36px;
+  }
+
+  .score-number {
+    font-size: 42px;
+  }
+
+  .stats-showcase {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .stat-item {
+    padding: 20px 15px;
+  }
+
+  .stat-number {
+    font-size: 28px;
+  }
+
+  .player-rank-card {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .player-avatar-new {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .victory-header-modern {
+    margin: 15px;
+    padding: 25px 15px;
+  }
+
+  .modern-results-container {
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .podium-base {
+    padding: 30px 20px;
+  }
+
+  .trophy-icon {
+    font-size: 48px;
+  }
+
+  .victory-title-new {
+    font-size: 28px;
+  }
+
+  .champion-name {
+    font-size: 24px;
+  }
+
+  .stats-showcase {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .player-achievements {
+    gap: 8px;
+  }
+
+  .achievement-score,
+  .achievement-accuracy,
+  .achievement-streak {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+}
+
 @media (max-width: 600px) {
   .ranking-card {
     padding: 10px 12px;
