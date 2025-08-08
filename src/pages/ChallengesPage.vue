@@ -19,10 +19,54 @@
                 <h3 class="create-title">Tạo phòng mới</h3>
               </div>
               <p class="create-description">Tạo phòng thử thách riêng với các cài đặt tùy chỉnh</p>
-              <q-btn color="primary" class="create-btn" no-caps @click="createRoom">
-                <q-icon name="add" size="16px" class="q-mr-xs" />
-                Tạo phòng thử thách
-              </q-btn>
+              <div class="create-btn-container">
+                <q-btn
+                  color="primary"
+                  class="create-btn"
+                  no-caps
+                  @click="toggleChallengeTypeDropdown"
+                  :class="{ 'dropdown-open': showChallengeTypeDropdown }"
+                >
+                  <q-icon name="add" size="16px" class="q-mr-xs" />
+                  Tạo phòng thử thách
+                  <q-icon
+                    name="expand_more"
+                    size="20px"
+                    class="dropdown-arrow"
+                    :class="{ 'rotated': showChallengeTypeDropdown }"
+                  />
+                </q-btn>
+
+                <!-- Challenge Type Dropdown -->
+                <div v-if="showChallengeTypeDropdown" class="challenge-type-dropdown">
+                  <div
+                    v-for="challengeType in challengeTypes"
+                    :key="challengeType.id"
+                    class="challenge-type-item"
+                    @click="createRoomWithType(challengeType)"
+                  >
+                    <div class="challenge-type-icon">{{ challengeType.emoji }}</div>
+                    <div class="challenge-type-info">
+                      <div class="challenge-type-title">{{ challengeType.title }}</div>
+                      <div class="challenge-type-description">{{ challengeType.description }}</div>
+                      <div class="challenge-type-stats">
+                        <div class="challenge-stat">
+                          <q-icon name="people" size="14px" />
+                          <span>{{ challengeType.maxPlayers }} người</span>
+                        </div>
+                        <div class="challenge-stat">
+                          <q-icon name="quiz" size="14px" />
+                          <span>{{ challengeType.questions }} câu</span>
+                        </div>
+                        <div class="challenge-stat">
+                          <q-icon name="schedule" size="14px" />
+                          <span>{{ challengeType.timePerQuestion }}s/câu</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </q-card>
         </div>
@@ -342,6 +386,7 @@ const router = useRouter()
 const searchQuery = ref('')
 const showResultsModal = ref(false)
 const showCreateRoomModal = ref(false)
+const showChallengeTypeDropdown = ref(false)
 
 // Room creation settings
 const roomSettings = ref({
@@ -356,6 +401,37 @@ const playerOptions = [4, 6, 8, 10]
 const questionOptions = [10, 15, 20, 25]
 const timeOptions = [20, 30, 45, 60]
 
+// Challenge types for dropdown
+const challengeTypes = [
+  {
+    id: 'vocabulary',
+    emoji: '🏆',
+    title: 'Cuộc thi từ vựng cơ bản',
+    description: 'Thử thách kiến thức từ vựng cơ bản',
+    maxPlayers: 6,
+    questions: 15,
+    timePerQuestion: 30
+  },
+  {
+    id: 'quick',
+    emoji: '⚡',
+    title: 'Thử thách nhanh 10 câu',
+    description: 'Trả lời nhanh các câu hỏi ngắn',
+    maxPlayers: 4,
+    questions: 10,
+    timePerQuestion: 20
+  },
+  {
+    id: 'professional',
+    emoji: '🎯',
+    title: 'Thách đấu chuyên nghiệp',
+    description: 'Dành cho người chơi có kinh nghiệm',
+    maxPlayers: 8,
+    questions: 25,
+    timePerQuestion: 45
+  }
+]
+
 const topPlayers = ref([
   { name: 'Minh Anh', time: '10:31' },
   { name: 'Thành Hòa', time: '10:31' },
@@ -367,7 +443,25 @@ const topPlayers = ref([
   { name: 'Mai Linh', time: '10:34' },
 ])
 
+function toggleChallengeTypeDropdown() {
+  showChallengeTypeDropdown.value = !showChallengeTypeDropdown.value
+}
+
 function createRoom() {
+  showCreateRoomModal.value = true
+  showChallengeTypeDropdown.value = false
+}
+
+function createRoomWithType(challengeType) {
+  // Set room settings based on challenge type
+  roomSettings.value = {
+    name: challengeType.title,
+    maxPlayers: challengeType.maxPlayers,
+    questions: challengeType.questions,
+    timePerQuestion: challengeType.timePerQuestion
+  }
+
+  showChallengeTypeDropdown.value = false
   showCreateRoomModal.value = true
 }
 
