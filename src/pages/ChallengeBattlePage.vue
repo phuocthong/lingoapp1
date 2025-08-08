@@ -3021,49 +3021,75 @@ const getPlayerGradient = (playerId) => {
 
 /* Mobile Responsive for Modern Layout */
 @media (max-width: 768px) {
+  .victory-header-modern {
+    margin: 10px;
+    padding: 15px;
+  }
+
   .victory-title-new {
-    font-size: 36px;
+    font-size: 28px;
   }
 
   .victory-subtitle-new {
-    font-size: 18px;
+    font-size: 16px;
   }
 
-  .champion-circle {
-    width: 90px;
-    height: 90px;
-  }
-
-  .champion-initial {
+  .trophy-icon {
     font-size: 36px;
   }
 
+  .podium-base {
+    padding: 20px 25px;
+  }
+
+  .champion-circle {
+    width: 75px;
+    height: 75px;
+  }
+
+  .champion-initial {
+    font-size: 28px;
+  }
+
+  .champion-name {
+    font-size: 22px;
+  }
+
   .score-number {
-    font-size: 42px;
+    font-size: 32px;
   }
 
   .stats-showcase {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 12px;
   }
 
   .stat-item {
-    padding: 20px 15px;
+    padding: 15px 12px;
   }
 
   .stat-number {
-    font-size: 28px;
+    font-size: 24px;
+  }
+
+  .stat-icon {
+    font-size: 24px;
   }
 
   .player-rank-card {
     padding: 15px;
-    gap: 15px;
+    gap: 12px;
   }
 
   .player-avatar-new {
-    width: 45px;
-    height: 45px;
-    font-size: 18px;
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+
+  .fullscreen-actions {
+    gap: 12px;
+    padding: 15px;
   }
 }
 
