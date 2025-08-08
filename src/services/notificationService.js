@@ -36,38 +36,53 @@ export class NotificationService {
 
   // Error notifications
   static error(message, options = {}) {
-    Notify.create({
-      type: 'negative',
-      message,
-      position: 'top',
-      timeout: 5000,
-      icon: 'error',
-      ...options
-    })
+    const notify = getNotify()
+    if (notify && notify.create) {
+      notify.create({
+        type: 'negative',
+        message,
+        position: 'top',
+        timeout: 5000,
+        icon: 'error',
+        ...options
+      })
+    } else {
+      this.createCustomNotification(message, 'error', options.timeout || 5000)
+    }
   }
 
   // Warning notifications
   static warning(message, options = {}) {
-    Notify.create({
-      type: 'warning',
-      message,
-      position: 'top',
-      timeout: 4000,
-      icon: 'warning',
-      ...options
-    })
+    const notify = getNotify()
+    if (notify && notify.create) {
+      notify.create({
+        type: 'warning',
+        message,
+        position: 'top',
+        timeout: 4000,
+        icon: 'warning',
+        ...options
+      })
+    } else {
+      this.createCustomNotification(message, 'warning', options.timeout || 4000)
+    }
   }
 
   // Info notifications
   static info(message, options = {}) {
-    Notify.create({
-      type: 'info',
-      message,
-      position: 'top',
-      timeout: 3000,
-      icon: 'info',
-      ...options
-    })
+    const notify = getNotify()
+    if (notify && notify.create) {
+      notify.create({
+        type: 'info',
+        message,
+        position: 'top',
+        timeout: 3000,
+        icon: 'info',
+        ...options
+      })
+    } else {
+      this.createCustomNotification(message, 'info', options.timeout || 3000)
+    }
   }
 
   // Loading notification
