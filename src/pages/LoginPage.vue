@@ -163,7 +163,7 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { auth } from '../utils/auth.js'
-import { apiService } from '../services/api.js'
+// import { apiService } from '../services/api.js' // Temporarily unused
 import { createNotification } from '../utils/notifications.js'
 
 // Simple notification fallback
@@ -230,7 +230,7 @@ const checkBackendStatus = async () => {
     } else {
       backendOnline.value = false
     }
-  } catch (error) {
+  } catch {
     backendOnline.value = false
     console.log('Backend not available, using demo mode')
   }
