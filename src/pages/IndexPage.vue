@@ -356,6 +356,7 @@ const removeChatEventListeners = () => {
   window.removeEventListener('botMessage', handleBotMessage)
   window.removeEventListener('answerDisplay', handleAnswerDisplay)
   window.removeEventListener('answerFeedback', handleAnswerFeedback)
+  window.removeEventListener('historyUpdated', handleHistoryUpdate)
 }
 
 // Event handlers
