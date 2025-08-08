@@ -463,7 +463,13 @@ const scrollToBottom = () => {
 
 // Question history
 const updateQuestionHistory = () => {
-  questionHistory.value = chatService.getHistory()
+  const history = chatService.getHistory()
+  questionHistory.value = history
+
+  // Also trigger a re-render if needed
+  if (history.length > 0) {
+    console.log(`Updated question history: ${history.length} questions`)
+  }
 }
 
 // Leaderboard functions
