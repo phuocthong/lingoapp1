@@ -116,7 +116,7 @@
             </div>
 
             <!-- Dynamic History Items -->
-            <div v-for="(item, index) in questionHistory" :key="item.id" class="history-item">
+            <div v-for="item in questionHistory" :key="item.id" class="history-item">
               <div class="question-title">{{ item.question }}</div>
               <div class="question-meta">
                 <span class="answer">Đáp án: "{{ item.correctAnswer }}"</span>
@@ -359,7 +359,7 @@ const removeChatEventListeners = () => {
 
 // Event handlers
 const handleBotMessage = (event) => {
-  const { message, isQuestion, timestamp, participants } = event.detail
+  const { message, participants } = event.detail
   addBotMessage(message, participants)
 }
 
