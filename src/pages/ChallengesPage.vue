@@ -1099,24 +1099,21 @@ function watchRoom(roomId) {
 }
 
 @media (max-width: 768px) {
-  .challenge-type-dropdown {
-    position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 16px 16px 0 0;
-    border: none;
-    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+  .form-header {
+    padding: 20px 16px 6px 16px;
   }
 
-  .challenge-type-item {
-    padding: 20px 16px;
+  .form-content {
+    padding: 0 16px 20px 16px;
   }
 
-  .challenge-type-stats {
-    flex-wrap: wrap;
-    gap: 12px;
+  .option-buttons {
+    gap: 6px;
+  }
+
+  .option-btn {
+    font-size: 13px;
+    padding: 6px 10px;
   }
 }
 
@@ -1139,18 +1136,13 @@ function watchRoom(roomId) {
     justify-content: center;
   }
 
-  .challenge-type-item {
+  .form-actions {
     flex-direction: column;
-    gap: 8px;
-    text-align: center;
+    gap: 12px;
   }
 
-  .challenge-type-info {
-    align-items: center;
-  }
-
-  .challenge-type-stats {
-    justify-content: center;
+  .cancel-btn {
+    width: 100%;
   }
 }
 
