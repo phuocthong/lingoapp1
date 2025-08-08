@@ -295,7 +295,7 @@
             <h2 class="champion-title">{{ winner.name }}</h2>
             <div class="champion-score-large">
               <span class="score-massive">{{ winner.score }}</span>
-              <span class="score-label-large">điểm</span>
+              <span class="score-label-large">đi���m</span>
             </div>
             <div class="champion-badge-large">🥇 CHAMPION</div>
 
@@ -584,6 +584,10 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  // Restore body scroll
+  document.body.style.overflow = ''
+  document.documentElement.style.overflow = ''
+
   if (gameInterval.value) {
     clearInterval(gameInterval.value)
   }
@@ -796,7 +800,7 @@ const getMotivationIcon = () => {
 
 const getAccuracyRate = (player) => {
   if (!player || !totalQuestions.value) return 0
-  // Giả sử mỗi câu đúng được 1 điểm, có thể có bonus
+  // Giả sử mỗi câu đúng được 1 điểm, có th��� có bonus
   // Để tính chính xác, ta giới hạn tối đa là số câu hỏi
   const correctAnswers = Math.min(player.score, totalQuestions.value)
   return Math.round((correctAnswers / totalQuestions.value) * 100)
