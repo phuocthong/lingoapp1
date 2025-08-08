@@ -61,6 +61,32 @@ try {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        username: 'thutrang',
+        email: 'thutrang@example.com',
+        password: hashedPassword,
+        name: 'Thu Trang',
+        avatar:
+          'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+        level: 12,
+        xp: 3200,
+        streak: 20,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        username: 'vannam',
+        email: 'vannam@example.com',
+        password: hashedPassword,
+        name: 'Văn Nam',
+        avatar:
+          'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+        level: 9,
+        xp: 2100,
+        streak: 14,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ])
     .returning()
 
@@ -132,7 +158,7 @@ try {
     {
       vocabularyId: seedVocabulary[0].id,
       question: "What does 'beautiful' mean?",
-      correctAnswer: 'đẹp, xinh đẹp',
+      correctAnswer: '��ẹp, xinh đẹp',
       wrongAnswers: JSON.stringify(['xấu xí', 'buồn bã', 'tức giận']),
       type: 'multiple_choice',
       difficulty: 'easy',
