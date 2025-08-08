@@ -9,7 +9,7 @@ const getNotify = () => {
   try {
     const { Notify } = require('quasar')
     return Notify
-  } catch (e) {
+  } catch {
     // Fallback to custom notifications
     return null
   }
@@ -87,14 +87,18 @@ export class NotificationService {
 
   // Loading notification
   static loading(message = 'Đang xử lý...', options = {}) {
-    return Notify.create({
-      type: 'ongoing',
-      message,
-      position: 'top',
-      spinner: true,
-      timeout: 0, // Don't auto-dismiss
-      ...options,
-    })
+    const notify = getNotify()
+    if (notify && notify.create) {
+      return notify.create({
+        type: 'ongoing',
+        message,
+        position: 'top',
+        spinner: true,
+        timeout: 0, // Don't auto-dismiss
+        ...options,
+      })
+    }
+    return null
   }
 
   // Connection error
