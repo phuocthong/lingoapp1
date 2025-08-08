@@ -121,6 +121,7 @@ export class ChatService {
     ]
 
     this.currentQuestion = fallbackQuestions[Math.floor(Math.random() * fallbackQuestions.length)]
+    this.currentQuestion.startTime = new Date()
     this.answersReceived.clear()
 
     this.sendBotMessage(this.currentQuestion.question, true)
