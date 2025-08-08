@@ -792,7 +792,7 @@ const getMotivationTitle = () => {
   const accuracy = getAccuracyRate(currentPlayerData)
   if (accuracy >= 90) return 'Xuất sắc!'
   if (accuracy >= 70) return 'Rất tốt!'
-  if (accuracy >= 50) return 'Kh�� ổn!'
+  if (accuracy >= 50) return 'Khá ổn!'
   return 'Cố gắng hơn nữa!'
 }
 
@@ -2695,11 +2695,13 @@ const getPlayerGradient = (playerId) => {
 .fullscreen-actions {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  padding: 25px;
+  gap: 16px;
+  padding: 20px 15px 25px;
   background: linear-gradient(135deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1));
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 .action-btn-large {
