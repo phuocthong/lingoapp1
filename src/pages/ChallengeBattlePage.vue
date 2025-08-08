@@ -717,6 +717,10 @@ const getAnswerClass = (index) => {
 }
 
 const playAgain = () => {
+  // Restore body scroll
+  document.body.style.overflow = ''
+  document.documentElement.style.overflow = ''
+
   // Reset game state
   currentQuestion.value = 1
   timeLeft.value = timePerQuestion.value
