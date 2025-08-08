@@ -16,7 +16,7 @@ try {
 
   // Seed users
   console.log('Seeding users...')
-  const hashedPassword = await bcrypt.hash('password123', 10)
+  const hashedPassword = await bcrypt.hash('123456', 10)
   const seedUsers = await db
     .insert(users)
     .values([
