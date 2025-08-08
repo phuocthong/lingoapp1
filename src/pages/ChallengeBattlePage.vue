@@ -340,7 +340,7 @@
                 <div class="rank-position-large">
                   <span v-if="index === 0" class="gold-medal-large">🥇</span>
                   <span v-else-if="index === 1" class="silver-medal-large">🥈</span>
-                  <span v-else-if="index === 2" class="bronze-medal-large">🥉</span>
+                  <span v-else-if="index === 2" class="bronze-medal-large">��</span>
                   <span v-else class="position-num-large">{{ index + 1 }}</span>
                 </div>
                 <div class="player-info-large">
@@ -828,6 +828,11 @@ const getPlayerGradient = (playerId) => {
     sans-serif;
   position: relative;
   overflow-x: hidden;
+}
+
+.challenge-battle-page:has(.fullscreen-results) {
+  overflow: hidden;
+  height: 100vh;
 }
 
 /* Floating Particles Background */
