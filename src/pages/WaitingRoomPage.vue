@@ -7,6 +7,10 @@
         <div class="room-header">
           <h1 class="room-title">🏠 Phòng chờ</h1>
           <h2 class="room-subtitle">{{ roomDisplayName }}</h2>
+          <div class="room-code-display">
+            <span class="room-code-label">Mã phòng:</span>
+            <span class="room-code">{{ roomCode }}</span>
+          </div>
 
           <div class="room-stats">
             <div class="room-stat">
@@ -586,7 +590,7 @@ const roomStatusText = computed(() => {
   if (canStartGame.value) {
     return '🟢 Sẵn sàng'
   }
-  return '�� Chờ'
+  return '🟡 Chờ'
 })
 
 const roomDisplayName = computed(() => {
