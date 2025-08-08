@@ -255,7 +255,6 @@
           </div>
         </div>
       </main>
-    </template>
 
     <!-- Full Screen Game Results -->
     <div v-if="gameOver" class="fullscreen-results">
