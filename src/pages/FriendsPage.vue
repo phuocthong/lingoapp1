@@ -98,60 +98,99 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import ProfileSidebar from '../components/ProfileSidebar.vue'
+import { apiService } from '../services/api.js'
+import { auth } from '../utils/auth.js'
+import { createNotification } from '../utils/notifications.js'
 
-// Mock friends data
-const friends = ref([
-  {
-    id: 1,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-  {
-    id: 2,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-  {
-    id: 3,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-  {
-    id: 4,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-  {
-    id: 5,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-  {
-    id: 6,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-])
+// Friends data
+const friends = ref([])
+const loading = ref(false)
+const searchQuery = ref('')
+
+// Load friends on mount
+onMounted(async () => {
+  await loadFriends()
+})
+
+// Load friends from backend
+const loadFriends = async () => {
+  loading.value = true
+
+  try {
+    const user = auth.getCurrentUser()
+    if (!user) {
+      createNotification('Vui lòng đăng nhập để xem bạn bè', 'warning')
+      return
+    }
+
+    const response = await apiService.getFriends()
+
+    if (response.success) {
+      friends.value = response.friends.map(friend => ({
+        id: friend.id,
+        name: friend.name,
+        username: `@${friend.username}`,
+        avatar: friend.avatar || 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+        streak: friend.streak || 0,
+        status: friend.level >= 5 ? 'Người chơi có kinh nghiệm' : 'Người chơi mới',
+        level: friend.level || 1,
+        xp: friend.xp || 0
+      }))
+    } else {
+      // Fallback friends data if API fails
+      loadFallbackFriends()
+    }
+  } catch (error) {
+    console.error('Failed to load friends:', error)
+    loadFallbackFriends()
+  } finally {
+    loading.value = false
+  }
+}
+
+// Fallback friends data when API is not available
+const loadFallbackFriends = () => {
+  friends.value = [
+    {
+      id: 2,
+      name: 'Minh Anh',
+      username: '@minhanh',
+      avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+      streak: 12,
+      status: 'Người chơi có kinh nghiệm',
+      level: 8,
+      xp: 1800
+    },
+    {
+      id: 3,
+      name: 'Thành Hòa',
+      username: '@thanhhoa',
+      avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=55',
+      streak: 8,
+      status: 'Người chơi mới',
+      level: 6,
+      xp: 1200
+    },
+    {
+      id: 4,
+      name: 'Thu Trang',
+      username: '@thutrang',
+      avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=55',
+      streak: 20,
+      status: 'Chuyên gia',
+      level: 12,
+      xp: 3200
+    }
+  ]
+}
+
+// Challenge friend function
+const challengeFriend = (friend) => {
+  createNotification(`Đã gửi lời thách đấu tới ${friend.name}!`, 'success')
+  // TODO: Implement challenge logic
+}
 </script>
 
 <style scoped>
