@@ -547,8 +547,17 @@ const getAvatarText = (name) => {
 }
 
 const showNotification = (message, type = 'info') => {
-  // Using Quasar's notify (would need to be imported)
   console.log(`${type.toUpperCase()}: ${message}`)
+
+  // Try to use Quasar's notify if available
+  if (window.$q && window.$q.notify) {
+    window.$q.notify({
+      message,
+      type: type === 'success' ? 'positive' : type === 'error' ? 'negative' : type === 'warning' ? 'warning' : 'info',
+      position: 'top',
+      timeout: 3000
+    })
+  }
 }
 </script>
 
