@@ -26,7 +26,7 @@ export const createSafeWebSocket = (url, protocols) => {
 
   try {
     return new WebSocket(url, protocols)
-  } catch (error) {
+  } catch {
     console.log('WebSocket creation failed, using mock')
     return {
       readyState: 3,
