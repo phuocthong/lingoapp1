@@ -46,9 +46,20 @@
           </div>
         </div>
 
+        <!-- Loading State -->
+        <div v-if="loading" class="loading-container">
+          <q-spinner color="primary" size="2em" />
+          <p>Đang tải danh sách bạn bè...</p>
+        </div>
+
         <!-- Friends List -->
-        <div class="friends-list">
-          <div v-for="friend in friends" :key="friend.id" class="friend-item">
+        <div v-else class="friends-list">
+          <div v-if="filteredFriends.length === 0" class="no-friends">
+            <q-icon name="people" size="48px" color="grey-4" />
+            <p>{{ searchQuery ? 'Không tìm thấy bạn bè nào' : 'Chưa có bạn bè nào' }}</p>
+          </div>
+
+          <div v-for="friend in filteredFriends" :key="friend.id" class="friend-item">
             <div class="friend-avatar">
               <img :src="friend.avatar" :alt="friend.name" />
               <div class="online-indicator"></div>
