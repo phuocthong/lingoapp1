@@ -256,187 +256,185 @@
       </main>
     </template>
 
-    <!-- Full Screen Game Results -->
-    <div v-if="gameOver" class="fullscreen-results">
-      <!-- Background Effects -->
-      <div class="celebration-confetti">
-        <div class="confetti" v-for="n in 50" :key="n"></div>
-      </div>
-      <div class="fireworks">
-        <div class="firework" v-for="n in 5" :key="n"></div>
-      </div>
-
-      <!-- Modern Victory Header -->
-      <div class="victory-header-modern">
-        <div class="floating-trophy">
-          <div class="trophy-glow"></div>
-          <div class="trophy-icon">🏆</div>
+    <!-- Full Screen Game Results - New Figma Design -->
+    <div v-if="gameOver" class="figma-results-page">
+      <!-- Background with gradient -->
+      <div class="figma-background">
+        <!-- Header Section -->
+        <div class="figma-header">
+          <!-- Decorative icons -->
+          <div class="header-decorations">
+            <svg class="decoration-left" width="65" height="64" viewBox="0 0 65 64" fill="none">
+              <path d="M15.6665 30.1333L5.5332 58.6667L34.0665 48.56" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10.8672 8H10.8939" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M58.8672 21.3333H58.8939" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M40.2002 5.33333H40.2269" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M58.8672 53.3333H58.8939" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="decoration-right" width="65" height="64" viewBox="0 0 65 64" fill="none">
+              <path d="M26.6984 41.3333L32.201 32L37.701 41.3333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M53.5332 8V18.6667" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M58.8669 13.3333H48.2002" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10.8672 45.3333V50.6667" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.5335 48H8.2002" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          
+          <h1 class="figma-title">🏆 KẾT QUẢ THÁCH ĐẤU</h1>
+          
+          <!-- Game info stats -->
+          <div class="game-info">
+            <span class="info-item">📝 {{ totalQuestions }} câu hỏi</span>
+            <span class="info-item">👥 {{ players.length }} ngư���i chơi</span>
+            <span class="info-item">⏱️ 30 s mỗi câu</span>
+          </div>
         </div>
-        <div class="victory-text">
-          <h1 class="victory-title-new">Trận Đấu Hoàn Thành!</h1>
-          <p class="victory-subtitle-new">Chúc mừng các chiến binh!</p>
-        </div>
-      </div>
 
-      <!-- Main Results Section -->
-      <div class="fullscreen-content">
-        <div class="results-container">
-          <!-- Winner Spotlight - Larger -->
-          <div class="champion-showcase">
-            <div class="champion-crown-large">👑</div>
-            <div
-              class="champion-avatar-large"
-              :style="{ background: getPlayerGradient(winner.id) }"
-            >
-              {{ winner.initials || winner.name.charAt(0) }}
-              <div class="champion-glow"></div>
+        <!-- Main Content Grid -->
+        <div class="figma-content">
+          <!-- Left Column - Personal Results -->
+          <div class="personal-results-card">
+            <div class="card-header">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+                <circle cx="12" cy="12" r="6" stroke="white" stroke-width="2"/>
+                <circle cx="12" cy="12" r="2" stroke="white" stroke-width="2"/>
+              </svg>
+              <h3>Kết quả của bạn</h3>
             </div>
-            <h2 class="champion-title">{{ winner.name }}</h2>
-            <div class="champion-score-large">
-              <span class="score-massive">{{ winner.score }}</span>
-              <span class="score-label-large">điểm</span>
+            
+            <div class="champion-section">
+              <svg class="crown-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M15.578 4.65464L20.682 12.1266C20.7759 12.2997 21.6002 12.7998 21.6002 12.7998L28.406 7.6333L25.6914 21.9866H7.90869L2.85536 8.32664L9.62069 12.52L15.578 4.65464Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.8291 28.3H25.4958" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="champion-badge">🥇 CHAMPION</div>
+              <div class="champion-score">{{ currentPlayer.score }} / {{ totalQuestions }} điểm</div>
+              <div class="champion-accuracy">{{ getAccuracyRate(currentPlayer) }} % chính xác</div>
             </div>
-            <div class="champion-badge-large">���� CHAMPION</div>
+            
+            <div class="achievement-message">
+              🎉 CHAMPION! Bạn đã giành chiến thắng!
+            </div>
+            
+            <div class="personal-stats">
+              <div class="stat-box high-score">
+                <div class="stat-number">{{ currentPlayer.score }}</div>
+                <div class="stat-label">Điểm cao nhất</div>
+              </div>
+              <div class="stat-box avg-score">
+                <div class="stat-number">{{ (currentPlayer.score / totalQuestions * 10).toFixed(1) }}</div>
+                <div class="stat-label">Điểm TB</div>
+              </div>
+            </div>
+            
+            <div class="action-buttons">
+              <button class="btn-primary" @click="playAgain">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M10.7627 14.9V9.56663H6.7627V14.9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2.7627 7.56663L8.7627 2.23364L14.7627 7.56663V13.5666C14.7627 13.9203 14.6222 14.2594 14.3722 14.5094C14.1221 14.7595 13.783 14.9 13.4294 14.9H4.09603C3.74241 14.9 3.40327 14.7595 3.15322 14.5094C2.90317 14.2594 2.7627 13.9203 2.7627 13.5666V7.56663Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Quay về sảnh
+              </button>
+              <button class="btn-secondary" @click="exitGame">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M12.7627 6.23328C13.8673 6.23328 14.7627 5.33785 14.7627 4.23328C14.7627 3.12871 13.8673 2.23328 12.7627 2.23328C11.6581 2.23328 10.7627 3.12871 10.7627 4.23328C10.7627 5.33785 11.6581 6.23328 12.7627 6.23328Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6.48926 9.90662L11.0426 12.5599" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M11.0359 5.23999L6.48926 7.89332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Chia sẻ kết quả
+              </button>
+            </div>
+          </div>
 
-            <!-- Extended Stats -->
-            <div class="champion-stats-grid">
-              <div class="stat-card">
-                <div class="stat-icon-large">🎯</div>
-                <div class="stat-value-large">{{ getAccuracyRate(winner) }}%</div>
-                <div class="stat-label-large">Độ chính xác</div>
+          <!-- Center Column - Trophy Podium -->
+          <div class="trophy-podium">
+            <h2 class="podium-title">🏆 LINGO VINH DANH</h2>
+            
+            <div class="podium-container">
+              <!-- Winner on top -->
+              <div class="podium-winner">
+                <svg class="trophy-large" width="70" height="70" viewBox="0 0 70 70" fill="none">
+                  <path d="M34.2227 9.82586L45.3877 26.1709C45.593 26.5493 47.3961 27.6434 47.3961 27.6434L62.2839 16.3417L56.3456 47.7396H17.446L6.39185 17.8584L21.191 27.0313L34.2227 9.82586Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M15.083 61.55H55.9163" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="winner-avatar" :style="{ background: getPlayerGradient(winner.id) }">
+                  {{ winner.initials || winner.name.charAt(0) }}
+                </div>
+                <div class="winner-name">{{ winner.name }}</div>
+                <div class="winner-score">{{ winner.score }}</div>
+                <div class="winner-podium-base">
+                  <div class="podium-rank">1</div>
+                </div>
               </div>
-              <div class="stat-card">
-                <div class="stat-icon-large">🔥</div>
-                <div class="stat-value-large">{{ winner.streak }}</div>
-                <div class="stat-label-large">Streak tối đa</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-icon-large">⚡</div>
-                <div class="stat-value-large">{{ totalQuestions }}</div>
-                <div class="stat-label-large">Tổng câu hỏi</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-icon-large">🎁</div>
-                <div class="stat-value-large">+{{ Math.floor(winner.score * 0.2) || 0 }}</div>
-                <div class="stat-label-large">Bonus XP</div>
+
+              <!-- Second place -->
+              <div class="podium-second" v-if="sortedPlayers[1]">
+                <svg class="trophy-medium" width="62" height="62" viewBox="0 0 62 62" fill="none">
+                  <path d="M18.9731 39.25L7.21893 18.945C6.71208 18.0689 11.7139 7.73335 11.7139 7.73335L50.9806 7.73335L55.1139 13.2617L43.7214 39.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="31.3473" cy="44.4167" r="12.9167" stroke="white" stroke-width="2"/>
+                  <path d="M31.3473 47V41.8334H30.0557" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="second-avatar" :style="{ background: getPlayerGradient(sortedPlayers[1].id) }">
+                  {{ sortedPlayers[1].initials || sortedPlayers[1].name.charAt(0) }}
+                </div>
+                <div class="second-name">{{ sortedPlayers[1].name }}</div>
+                <div class="second-score">{{ sortedPlayers[1].score }}</div>
+                <div class="second-podium-base">
+                  <div class="podium-rank">2</div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Leaderboard Section - Expanded -->
-          <div class="leaderboard-expanded">
-            <h3 class="leaderboard-title-large">🏆 Bảng Xếp Hạng Cuối</h3>
-            <div class="rankings-list">
-              <div
-                v-for="(player, index) in sortedPlayers"
+          <!-- Right Column - Full Leaderboard -->
+          <div class="full-leaderboard">
+            <div class="leaderboard-header">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M22.2373 7.30002L13.7373 15.8L8.7373 10.8L2.2373 17.3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.2373 7.30002H22.2373V13.3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3>Bảng xếp hạng đầy đủ</h3>
+            </div>
+            
+            <div class="leaderboard-list">
+              <div 
+                v-for="(player, index) in sortedPlayers" 
                 :key="player.id"
-                class="ranking-card"
-                :class="{
-                  'is-winner': index === 0,
-                  'is-current': player.isCurrentUser,
-                }"
+                class="leaderboard-item"
+                :class="{ 'is-current-user': player.isCurrentUser }"
               >
-                <div class="rank-position-large">
-                  <span v-if="index === 0" class="gold-medal-large">🥇</span>
-                  <span v-else-if="index === 1" class="silver-medal-large">🥈</span>
-                  <span v-else-if="index === 2" class="bronze-medal-large">🥉</span>
-                  <span v-else class="position-num-large">{{ index + 1 }}</span>
+                <div class="player-rank">
+                  <svg v-if="index === 0" class="rank-crown" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M15.6532 4.45468L20.7572 11.9267L28.4812 7.43335L25.7665 21.7867H7.98389L2.93055 8.12668L9.69588 12.32L15.6532 4.45468Z" stroke="white" stroke-width="2"/>
+                    <path d="M6.9043 28.1H25.571" stroke="white" stroke-width="2"/>
+                  </svg>
+                  <svg v-else-if="index === 1" class="rank-trophy" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M9.8509 20.7L3.78424 10.22L8.23757 3.3667H24.2376L28.6909 10.22L22.6242 20.7" stroke="white" stroke-width="2"/>
+                    <circle cx="16.237" cy="23.3667" r="6.6667" stroke="white" stroke-width="2"/>
+                  </svg>
                 </div>
-                <div class="player-info-large">
-                  <div
-                    class="player-avatar-medium"
-                    :style="{ background: getPlayerGradient(player.id) }"
-                  >
-                    {{ player.initials || player.name.charAt(0) }}
-                  </div>
-                  <div class="player-data">
-                    <div class="player-name-large">{{ player.name }}</div>
-                    <div class="player-stats-large">
-                      <span class="score-points">{{ player.score }} điểm</span>
-                      <span class="accuracy-percent">{{ getAccuracyRate(player) }}% chính xác</span>
-                      <span v-if="player.streak > 1" class="streak-display"
-                        >🔥 {{ player.streak }} streak</span
-                      >
-                    </div>
-                  </div>
+                
+                <div class="player-avatar-small" :style="{ background: getPlayerGradient(player.id) }">
+                  {{ player.initials || player.name.charAt(0) }}
                 </div>
-                <div v-if="player.isCurrentUser" class="current-player-tag">BẠN</div>
+                
+                <div class="player-info">
+                  <div class="player-name">
+                    {{ player.name }}
+                    <span v-if="player.isCurrentUser" class="you-badge">Bạn</span>
+                  </div>
+                  <div class="player-accuracy">{{ getAccuracyRate(player) }} % chính xác</div>
+                </div>
+                
+                <div class="player-score">
+                  <div class="score-value">{{ player.score }}</div>
+                  <div class="score-unit">điểm</div>
+                </div>
               </div>
-            </div>
-
-            <!-- Motivation Message -->
-            <div class="motivation-card-large">
-              <span class="motivation-icon-large">{{ getMotivationIcon() }}</span>
-              <span class="motivation-text-large">{{ getMotivationTitle() }}</span>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Action Buttons - Full Width -->
-      <div class="fullscreen-actions">
-        <button class="action-btn-large primary-large" @click="playAgain">
-          <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M1 4v6h6"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M3.51 15a9 9 0 1015.8-5"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span>Chơi Lại</span>
-        </button>
-
-        <button class="action-btn-large secondary-large" @click="viewLeaderboard">
-          <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M3 13h4l3-8 4 8h7"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span>Bảng Xếp Hạng</span>
-        </button>
-
-        <button class="action-btn-large tertiary-large" @click="exitGame">
-          <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <polyline
-              points="16,17 21,12 16,7"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <line
-              x1="21"
-              y1="12"
-              x2="9"
-              y2="12"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span>Thoát Game</span>
-        </button>
       </div>
     </div>
   </div>
@@ -586,7 +584,7 @@ onUnmounted(() => {
   // Restore body scroll
   document.body.style.overflow = ''
   document.documentElement.style.overflow = ''
-
+  
   if (gameInterval.value) {
     clearInterval(gameInterval.value)
   }
@@ -702,7 +700,7 @@ const endGame = () => {
     clearInterval(gameInterval.value)
   }
   gameOver.value = true
-
+  
   // Prevent body scroll when showing fullscreen results
   document.body.style.overflow = 'hidden'
   document.documentElement.style.overflow = 'hidden'
@@ -723,7 +721,7 @@ const playAgain = () => {
   // Restore body scroll
   document.body.style.overflow = ''
   document.documentElement.style.overflow = ''
-
+  
   // Reset game state
   currentQuestion.value = 1
   timeLeft.value = timePerQuestion.value
@@ -744,12 +742,11 @@ const playAgain = () => {
   startTimer()
 }
 
-
 const exitGame = () => {
   // Restore body scroll
   document.body.style.overflow = ''
   document.documentElement.style.overflow = ''
-
+  
   // Clear any running timer
   if (gameInterval.value) {
     clearInterval(gameInterval.value)
@@ -762,7 +759,7 @@ const viewLeaderboard = () => {
   // Restore body scroll
   document.body.style.overflow = ''
   document.documentElement.style.overflow = ''
-
+  
   router.push('/dashboard/leaderboard')
 }
 
@@ -829,2847 +826,625 @@ const getPlayerGradient = (playerId) => {
   overflow-x: hidden;
 }
 
-/* Floating Particles Background */
-.particles-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  animation: float 8s infinite ease-in-out;
-}
-
-.particle:nth-child(odd) {
-  animation-delay: -2s;
-  animation-duration: 6s;
-}
-
-.particle:nth-child(3n) {
-  animation-delay: -4s;
-  animation-duration: 10s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(100vh) scale(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-10vh) scale(1);
-    opacity: 0;
-  }
-}
-
-.particle:nth-child(1) {
-  left: 10%;
-}
-.particle:nth-child(2) {
-  left: 20%;
-}
-.particle:nth-child(3) {
-  left: 30%;
-}
-.particle:nth-child(4) {
-  left: 40%;
-}
-.particle:nth-child(5) {
-  left: 50%;
-}
-.particle:nth-child(6) {
-  left: 60%;
-}
-.particle:nth-child(7) {
-  left: 70%;
-}
-.particle:nth-child(8) {
-  left: 80%;
-}
-.particle:nth-child(9) {
-  left: 90%;
-}
-.particle:nth-child(10) {
-  left: 5%;
-}
-.particle:nth-child(11) {
-  left: 15%;
-}
-.particle:nth-child(12) {
-  left: 25%;
-}
-.particle:nth-child(13) {
-  left: 35%;
-}
-.particle:nth-child(14) {
-  left: 65%;
-}
-.particle:nth-child(15) {
-  left: 85%;
-}
-
-/* Game Header */
-.game-header {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px 32px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 32px;
-}
-
-/* Progress Section */
-.progress-section {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  min-width: 0;
-}
-
-.progress-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-}
-
-.progress-icon {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.trophy-icon {
-  width: 18px;
-  height: 18px;
-}
-
-.progress-text {
-  color: #4a5568;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.progress-bar-container {
-  flex: 1;
-  min-width: 120px;
-}
-
-.progress-bar {
-  position: relative;
-  height: 8px;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #667eea, #764ba2);
-  border-radius: 12px;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.progress-glow {
-  position: absolute;
-  top: -2px;
-  left: 0;
-  height: 12px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
-  border-radius: 12px;
-  filter: blur(4px);
-  opacity: 0.4;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Timer */
-.timer-section {
-  display: flex;
-  justify-content: center;
-}
-
-.timer-circle {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  color: #667eea;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-}
-
-.timer-circle.warning {
-  color: #f59e0b;
-}
-
-.timer-circle.critical {
-  color: #ef4444;
-}
-
-.timer-circle.pulse {
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-.timer-svg {
-  width: 100%;
-  height: 100%;
-  transform: rotate(-90deg);
-}
-
-.timer-track {
-  opacity: 0.2;
-}
-
-.timer-progress {
-  transition: stroke-dashoffset 1s linear;
-  filter: drop-shadow(0 0 4px currentColor);
-}
-
-.timer-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.timer-value {
-  font-size: 18px;
-  font-weight: 700;
-  color: currentColor;
-  line-height: 1;
-}
-
-.timer-label {
-  font-size: 10px;
-  font-weight: 500;
-  color: currentColor;
-  opacity: 0.7;
-}
-
-/* Players Info */
-.players-info {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.players-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 8px 16px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.players-icon {
-  width: 18px;
-  height: 18px;
-  color: #667eea;
-}
-
-.players-count {
-  font-size: 14px;
-  font-weight: 600;
-  color: #4a5568;
-}
-
-.debug-reset-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(239, 68, 68, 0.9);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  margin-left: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.debug-reset-btn:hover {
-  background: rgba(239, 68, 68, 1);
-  transform: scale(1.1);
-}
-
-/* Battle Arena */
-.battle-arena {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 40px 32px;
-  position: relative;
-  z-index: 10;
-}
-
-/* Question Zone */
-.question-zone {
-  margin-bottom: 40px;
-}
-
-.question-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
-  padding: 40px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.question-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transition: left 0.5s;
-}
-
-.question-card.answered::before {
-  left: 100%;
-}
-
-.question-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.question-badge {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.question-number {
-  font-size: 16px;
-}
-
-.question-total {
-  opacity: 0.8;
-}
-
-.difficulty-indicator {
-  display: flex;
-  gap: 4px;
-}
-
-.difficulty-stars {
-  display: flex;
-  gap: 2px;
-}
-
-.star {
-  width: 12px;
-  height: 12px;
-  background: #e5e7eb;
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
-}
-
-.star.filled {
-  background: #fbbf24;
-}
-
-.question-content {
-  position: relative;
-  z-index: 1;
-}
-
-.question-text {
-  color: #1a202c;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.3;
-  margin: 0 0 16px 0;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.word-highlight {
-  display: inline-block;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 8px;
-}
-
-/* Battle Grid */
-.battle-grid {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 40px;
-  align-items: start;
-}
-
-/* Answers Arena */
-.answers-arena {
-  position: relative;
-}
-
-.answers-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.answer-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  padding: 24px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  text-align: left;
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  overflow: hidden;
-}
-
-.answer-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.answer-card:hover:not(:disabled)::before {
-  opacity: 1;
-}
-
-.answer-card:hover:not(:disabled) {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border-color: #667eea;
-}
-
-.answer-card:disabled {
-  cursor: not-allowed;
-}
-
-.answer-card.correct {
-  border-color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
-  transform: scale(1.02);
-}
-
-.answer-card.incorrect {
-  border-color: #ef4444;
-  background: rgba(239, 68, 68, 0.1);
-  transform: scale(0.98);
-}
-
-.answer-card.disabled {
-  opacity: 0.6;
-  transform: scale(0.95);
-}
-
-.answer-indicator {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #f7fafc, #edf2f7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-}
-
-.answer-letter {
-  font-size: 18px;
-  font-weight: 700;
-  color: #4a5568;
-  transition: all 0.3s ease;
-}
-
-.answer-card.correct .answer-indicator {
-  background: linear-gradient(135deg, #10b981, #059669);
-}
-
-.answer-card.correct .answer-letter {
-  color: white;
-}
-
-.answer-card.incorrect .answer-indicator {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-}
-
-.answer-card.incorrect .answer-letter {
-  color: white;
-}
-
-.answer-check,
-.answer-x {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  color: white;
-}
-
-.answer-content {
-  flex: 1;
-}
-
-.answer-text {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #2d3748;
-  transition: color 0.3s ease;
-}
-
-.answer-card.correct .answer-text {
-  color: #065f46;
-}
-
-.answer-card.incorrect .answer-text {
-  color: #991b1b;
-}
-
-.answer-glow {
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.3s ease;
-}
-
-.answer-card:hover:not(:disabled) .answer-glow {
-  opacity: 0.3;
-}
-
-/* Live Scoreboard */
-.live-scoreboard {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
-  padding: 28px;
-  height: fit-content;
-  position: sticky;
-  top: 140px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.scoreboard-header {
-  margin-bottom: 24px;
-}
-
-.scoreboard-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #2d3748;
-  margin: 0;
-}
-
-.leaderboard-icon {
-  width: 20px;
-  height: 20px;
-  color: #667eea;
-}
-
-.players-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.player-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.player-row.animated {
-  animation: scoreUpdate 0.6s ease;
-}
-
-@keyframes scoreUpdate {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.player-row.current-player {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  border-color: #667eea;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
-}
-
-.player-row.leader {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1));
-  border-color: #f59e0b;
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.2);
-}
-
-.player-position {
-  flex-shrink: 0;
-}
-
-.rank-badge {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #6b7280;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 700;
-  transition: all 0.3s ease;
-}
-
-.rank-badge.rank-1 {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-  font-size: 16px;
-}
-
-.player-avatar-container {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.player-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 600;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.player-status-indicator {
-  position: absolute;
-  bottom: -2px;
-  right: -2px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-
-.status-dot {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-
-.status-dot.answered {
-  background: #10b981;
-  animation: pulse-green 2s infinite;
-}
-
-.status-dot.thinking {
-  background: #f59e0b;
-  animation: pulse-yellow 2s infinite;
-}
-
-.status-dot.waiting {
-  background: #6b7280;
-}
-
-@keyframes pulse-green {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
-  }
-}
-
-@keyframes pulse-yellow {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0);
-  }
-}
-
-.player-details {
-  flex: 1;
-  min-width: 0;
-}
-
-.player-name {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2d3748;
-  margin-bottom: 4px;
-  truncate: true;
-}
-
-.player-stats {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.score-display {
-  display: flex;
-  align-items: baseline;
-  gap: 2px;
-}
-
-.score-value {
-  font-size: 18px;
-  font-weight: 700;
-  color: #667eea;
-}
-
-.score-label {
-  font-size: 12px;
-  font-weight: 500;
-  color: #718096;
-}
-
-.streak-indicator {
-  font-size: 12px;
-  font-weight: 600;
-  color: #f59e0b;
-  background: rgba(245, 158, 11, 0.1);
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(245, 158, 11, 0.2);
-}
-
-/* Full Screen Results Layout */
-.fullscreen-results {
+/* Existing CSS for game interface... */
+/* (keeping all the original CSS for the game interface) */
+
+/* NEW FIGMA DESIGN CSS */
+.figma-results-page {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   z-index: 1000;
-  background: radial-gradient(ellipse at center, #667eea 0%, #764ba2 100%);
   overflow-y: auto;
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
+}
+
+.figma-background {
   min-height: 100vh;
-}
-
-.celebration-confetti {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.confetti {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: linear-gradient(45deg, #667eea, #764ba2, #f59e0b, #10b981, #ef4444);
-  animation: confetti-fall 3s linear infinite;
-}
-
-.confetti:nth-child(odd) {
-  animation-delay: -1s;
-  animation-duration: 2.5s;
-}
-
-.confetti:nth-child(3n) {
-  animation-delay: -2s;
-  animation-duration: 3.5s;
-}
-
-@keyframes confetti-fall {
-  0% {
-    transform: translateY(-100vh) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-.fireworks {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.firework {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, #fff 0%, transparent 70%);
-  border-radius: 50%;
-  animation: firework-burst 2s ease-out infinite;
-}
-
-.firework:nth-child(1) {
-  top: 20%;
-  left: 20%;
-  animation-delay: 0s;
-}
-.firework:nth-child(2) {
-  top: 30%;
-  left: 80%;
-  animation-delay: 0.5s;
-}
-.firework:nth-child(3) {
-  top: 60%;
-  left: 15%;
-  animation-delay: 1s;
-}
-.firework:nth-child(4) {
-  top: 70%;
-  left: 70%;
-  animation-delay: 1.5s;
-}
-.firework:nth-child(5) {
-  top: 40%;
-  left: 50%;
-  animation-delay: 0.8s;
-}
-
-@keyframes firework-burst {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-    box-shadow:
-      0 0 0 0px #fff,
-      0 0 0 0px #f59e0b,
-      0 0 0 0px #10b981,
-      0 0 0 0px #ef4444;
-  }
-  50% {
-    transform: scale(1);
-    opacity: 0.8;
-    box-shadow:
-      0 0 20px 8px #fff,
-      10px 10px 20px 6px #f59e0b,
-      -10px 10px 20px 6px #10b981,
-      10px -10px 20px 6px #ef4444,
-      -10px -10px 20px 6px #667eea;
-  }
-  100% {
-    transform: scale(1.5);
-    opacity: 0;
-    box-shadow:
-      0 0 50px 20px transparent,
-      20px 20px 50px 15px transparent,
-      -20px 20px 50px 15px transparent,
-      20px -20px 50px 15px transparent,
-      -20px -20px 50px 15px transparent;
-  }
-}
-
-/* Modern Victory Header */
-.victory-header-modern {
-  text-align: center;
-  padding: 20px 20px 15px;
+  background: linear-gradient(90deg, #831843 0%, #581C87 33%, #312E81 100%);
   position: relative;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
-  backdrop-filter: blur(20px);
-  border-radius: 25px;
-  margin: 15px 15px 0;
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-  flex-shrink: 0;
-}
-
-.floating-trophy {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
-.trophy-glow {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  background: conic-gradient(from 0deg, #FFD700, #FFA500, #FFD700, #FFA500);
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: trophy-spin 3s linear infinite;
-  filter: blur(8px);
-}
-
-.trophy-icon {
-  font-size: 48px;
-  position: relative;
-  z-index: 2;
-  animation: trophy-float 2s ease-in-out infinite alternate;
-}
-
-@keyframes trophy-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes trophy-float {
-  from { transform: translateY(0px); }
-  to { transform: translateY(-10px); }
-}
-
-.victory-title-new {
-  font-size: 36px;
-  font-weight: 900;
-  background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0 0 8px;
-  text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  line-height: 1.1;
-}
-
-.victory-subtitle-new {
-  font-size: 18px;
-  color: rgba(255,255,255,0.9);
-  margin: 0;
-  font-weight: 600;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-/* Modern Results Container */
-.modern-results-container {
-  flex: 1;
-  padding: 15px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  overflow: visible;
-  min-height: 0;
+  gap: 48px;
 }
 
-/* Winner Podium */
-.winner-podium {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-
-.podium-base {
-  position: relative;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
-  backdrop-filter: blur(20px);
-  border-radius: 25px;
-  padding: 25px 30px;
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-.champion-spotlight {
-  text-align: center;
-  position: relative;
-}
-
-.floating-crown {
-  font-size: 32px;
-  margin-bottom: 10px;
-  animation: crown-bounce 2s ease-in-out infinite;
-}
-
-@keyframes crown-bounce {
-  0%, 100% { transform: translateY(0px) rotate(-3deg); }
-  50% { transform: translateY(-8px) rotate(3deg); }
-}
-
-.champion-circle {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 15px;
-  position: relative;
-  border: 4px solid rgba(255,255,255,0.4);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-}
-
-.champion-initial {
-  font-size: 36px;
-  font-weight: 900;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  position: relative;
-  z-index: 2;
-}
-
-.winner-pulse {
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #FFD700, #FFA500);
-  opacity: 0.6;
-  animation: winner-pulse 2s ease-in-out infinite;
-}
-
-@keyframes winner-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.1); opacity: 0.8; }
-}
-
-.champion-name {
-  font-size: 26px;
-  font-weight: 800;
-  color: white;
-  margin: 0 0 12px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-}
-
-.champion-score {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 15px;
-}
-
-.score-number {
-  font-size: 42px;
-  font-weight: 900;
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 3px 6px rgba(255,215,0,0.5);
-}
-
-.score-label {
-  font-size: 20px;
-  color: rgba(255,255,255,0.8);
-  font-weight: 600;
-}
-
-.winner-badge {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  color: #1a1a1a;
-  padding: 12px 30px;
-  border-radius: 25px;
-  font-size: 18px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: inline-block;
-  box-shadow: 0 8px 20px rgba(255,215,0,0.4);
-  border: 2px solid rgba(255,255,255,0.3);
-}
-
-/* Stats Showcase */
-.stats-showcase {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.stat-item {
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
-  backdrop-filter: blur(15px);
-  border-radius: 18px;
-  padding: 18px 15px;
-  text-align: center;
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-
-.stat-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-}
-
-.stat-item.special {
-  background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,165,0,0.1));
-  border-color: rgba(255,215,0,0.4);
-}
-
-.stat-icon {
-  font-size: 28px;
-  margin-bottom: 8px;
-  display: block;
-}
-
-.stat-number {
-  font-size: 28px;
-  font-weight: 900;
-  color: white;
-  margin-bottom: 6px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.stat-title {
-  font-size: 14px;
-  color: rgba(255,255,255,0.8);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Modern Leaderboard */
-.modern-leaderboard {
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
-  backdrop-filter: blur(20px);
-  border-radius: 25px;
-  padding: 30px;
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-
-.leaderboard-heading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  font-size: 28px;
-  font-weight: 800;
-  color: white;
-  margin: 0 0 25px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.heading-icon {
-  font-size: 32px;
-}
-
-.players-ranking {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 25px;
-}
-
-.player-rank-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-  backdrop-filter: blur(10px);
-  border-radius: 18px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid rgba(255,255,255,0.15);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.player-rank-card::before {
+.figma-background::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.05));
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.20) 0%, rgba(0, 0, 0, 0.00) 33%, rgba(124, 58, 237, 0.20) 100%);
+  pointer-events: none;
 }
 
-.player-rank-card:hover::before {
-  opacity: 1;
-}
-
-.player-rank-card.rank-first {
-  background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,165,0,0.1));
-  border-color: rgba(255,215,0,0.3);
-  box-shadow: 0 10px 25px rgba(255,215,0,0.2);
-}
-
-.player-rank-card.rank-second {
-  background: linear-gradient(135deg, rgba(192,192,192,0.2), rgba(169,169,169,0.1));
-  border-color: rgba(192,192,192,0.3);
-}
-
-.player-rank-card.rank-third {
-  background: linear-gradient(135deg, rgba(205,127,50,0.2), rgba(184,115,51,0.1));
-  border-color: rgba(205,127,50,0.3);
-}
-
-.player-rank-card.is-you {
-  background: linear-gradient(135deg, rgba(102,126,234,0.25), rgba(118,75,162,0.15));
-  border-color: rgba(102,126,234,0.4);
-  box-shadow: 0 15px 30px rgba(102,126,234,0.2);
-}
-
-.rank-indicator {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.medal {
-  font-size: 28px;
-  animation: medal-shine 3s ease-in-out infinite;
-}
-
-@keyframes medal-shine {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-.rank-number {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 700;
-  border: 2px solid rgba(255,255,255,0.3);
-}
-
-.player-info-modern {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  flex: 1;
-}
-
-.player-avatar-new {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 700;
-  color: white;
-  border: 3px solid rgba(255,255,255,0.3);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.player-details-new {
-  flex: 1;
-}
-
-.player-name-new {
-  font-size: 18px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 5px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-}
-
-.player-achievements {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.achievement-score,
-.achievement-accuracy,
-.achievement-streak {
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 12px;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-.achievement-score {
-  background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.2));
-  color: #E0E7FF;
-}
-
-.achievement-accuracy {
-  background: linear-gradient(135deg, rgba(16,185,129,0.3), rgba(5,150,105,0.2));
-  color: #D1FAE5;
-}
-
-.achievement-streak {
-  background: linear-gradient(135deg, rgba(245,158,11,0.3), rgba(217,119,6,0.2));
-  color: #FEF3C7;
-}
-
-.you-indicator {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 12px rgba(102,126,234,0.3);
-}
-
-/* Motivation Section */
-.motivation-modern {
+.figma-header {
   text-align: center;
-  padding: 20px;
-  background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(5,150,105,0.1));
-  border-radius: 20px;
-  border: 1px solid rgba(16,185,129,0.3);
-}
-
-.motivation-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.motivation-emoji {
-  font-size: 24px;
-}
-
-.motivation-message {
-  font-size: 18px;
-  font-weight: 600;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-}
-
-/* Fullscreen Header (Legacy) */
-.fullscreen-header {
-  text-align: center;
-  padding: 24px 0 16px;
-  position: relative;
-}
-
-.trophy-celebration {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 20px;
-}
-
-.trophy-icon-large {
-  font-size: 56px;
   position: relative;
   z-index: 2;
-  animation: trophy-bounce 2s ease-in-out infinite alternate;
 }
 
-.victory-title {
-  font-size: 36px;
-  font-weight: 800;
-  color: white;
-  margin: 0 0 6px;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.victory-subtitle {
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0;
-  font-weight: 500;
-}
-
-.sparkles {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-}
-
-.sparkle {
-  position: absolute;
-  font-size: 16px;
-  animation: sparkle-twinkle 1.5s ease-in-out infinite;
-}
-
-.sparkle:nth-child(1) {
-  top: 0;
-  left: 50%;
-  animation-delay: 0s;
-}
-.sparkle:nth-child(2) {
-  top: 20%;
-  right: 0;
-  animation-delay: 0.2s;
-}
-.sparkle:nth-child(3) {
-  bottom: 20%;
-  right: 0;
-  animation-delay: 0.4s;
-}
-.sparkle:nth-child(4) {
-  bottom: 0;
-  left: 50%;
-  animation-delay: 0.6s;
-}
-.sparkle:nth-child(5) {
-  bottom: 20%;
-  left: 0;
-  animation-delay: 0.8s;
-}
-.sparkle:nth-child(6) {
-  top: 20%;
-  left: 0;
-  animation-delay: 1s;
-}
-
-@keyframes sparkle-twinkle {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-/* Fullscreen Content */
-.fullscreen-content {
-  flex: 1;
+.header-decorations {
   display: flex;
   justify-content: center;
-  padding: 0 24px 16px;
-  overflow-y: auto;
-  min-height: 0;
-}
-
-.results-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 1400px;
-  width: 100%;
-  align-items: start;
-}
-
-/* Champion Showcase - Left Side */
-.champion-showcase {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  border-radius: 32px;
-  padding: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.champion-showcase::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(249, 115, 22, 0.05));
-  border-radius: 32px;
-}
-
-.champion-crown-large {
-  font-size: 36px;
-  margin-bottom: 16px;
-  position: relative;
-  z-index: 2;
-  animation: crown-float 3s ease-in-out infinite alternate;
-}
-
-.champion-avatar-large {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  font-weight: 700;
-  border: 6px solid rgba(245, 158, 11, 0.4);
-  box-shadow:
-    0 12px 32px rgba(0, 0, 0, 0.2),
-    inset 0 4px 0 rgba(255, 255, 255, 0.3);
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.champion-glow {
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, #f59e0b, #f97316, #ea580c, #f59e0b);
-  opacity: 0.7;
-  animation: winner-spin 4s linear infinite;
-  z-index: -1;
-}
-
-.champion-title {
-  font-size: 32px;
-  font-weight: 800;
-  color: white;
-  margin: 0 0 12px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 2;
-}
-
-.champion-score-large {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 16px;
-  position: relative;
-  z-index: 2;
-}
-
-.score-massive {
-  font-size: 56px;
-  font-weight: 900;
-  color: #f59e0b;
-  text-shadow: 0 4px 8px rgba(245, 158, 11, 0.4);
-}
-
-.score-label-large {
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 600;
-}
-
-.champion-badge-large {
-  background: linear-gradient(135deg, #f59e0b, #ea580c);
-  color: white;
-  padding: 12px 32px;
-  border-radius: 24px;
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
-  margin-bottom: 32px;
-  position: relative;
-  z-index: 2;
-}
-
-.champion-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  width: 100%;
+  margin-bottom: 16px;
+}
+
+.decoration-left,
+.decoration-right {
+  width: 64px;
+  height: 64px;
+  stroke: white;
+  opacity: 0.8;
+}
+
+.figma-title {
+  font-size: 48px;
+  font-weight: 400;
+  color: white;
+  margin: 0 0 16px;
+  line-height: 1;
+}
+
+.game-info {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 16px;
+}
+
+.info-item {
+  color: #D8B4FE;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.figma-content {
+  display: grid;
+  grid-template-columns: 324px 357px 400px;
+  gap: 32px;
+  justify-content: center;
+  align-items: start;
   position: relative;
   z-index: 2;
 }
 
-.stat-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease;
+/* Left Column - Personal Results */
+.personal-results-card {
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-.stat-card:hover {
-  transform: translateY(-4px);
-}
-
-.stat-icon-large {
-  font-size: 28px;
-  margin-bottom: 8px;
-}
-
-.stat-value-large {
-  font-size: 24px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 4px;
-}
-
-.stat-label-large {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Leaderboard Expanded - Right Side */
-.leaderboard-expanded {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  border-radius: 32px;
-  padding: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.leaderboard-title-large {
-  font-size: 24px;
-  font-weight: 700;
-  color: white;
-  margin: 0 0 24px;
-  text-align: center;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.rankings-list {
+.card-header {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 13px;
   margin-bottom: 24px;
 }
 
-.ranking-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.ranking-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.ranking-card.is-winner {
-  background: rgba(245, 158, 11, 0.2);
-  border-color: rgba(245, 158, 11, 0.4);
-  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
-}
-
-.ranking-card.is-current {
-  background: rgba(102, 126, 234, 0.2);
-  border-color: rgba(102, 126, 234, 0.4);
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
-}
-
-.rank-position-large {
-  width: 40px;
-  text-align: center;
+.card-header h3 {
+  color: white;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  margin: 0;
 }
 
-.gold-medal-large,
-.silver-medal-large,
-.bronze-medal-large {
-  font-size: 24px;
-}
-
-.position-num-large {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 18px;
-}
-
-.player-info-large {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-}
-
-.player-avatar-medium {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 600;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.player-data {
-  flex: 1;
-}
-
-.player-name-large {
-  font-size: 18px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 4px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.player-stats-large {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.score-points {
-  font-size: 14px;
-  font-weight: 600;
-  color: #f59e0b;
-  background: rgba(245, 158, 11, 0.2);
-  padding: 2px 8px;
-  border-radius: 8px;
-}
-
-.accuracy-percent {
-  font-size: 12px;
-  font-weight: 500;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.2);
-  padding: 2px 6px;
-  border-radius: 6px;
-}
-
-.streak-display {
-  font-size: 12px;
-  font-weight: 500;
-  color: #f97316;
-  background: rgba(249, 115, 22, 0.2);
-  padding: 2px 6px;
-  border-radius: 6px;
-}
-
-.current-player-tag {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 4px 12px;
+.champion-section {
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.20) 0%, rgba(124, 58, 237, 0.20) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: 12px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.motivation-card-large {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 16px 24px;
-  background: rgba(16, 185, 129, 0.2);
-  border-radius: 16px;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.motivation-icon-large {
-  font-size: 24px;
-}
-
-.motivation-text-large {
-  font-size: 16px;
-  font-weight: 600;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Modern Action Buttons */
-.fullscreen-actions {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  padding: 20px 15px 25px;
-  background: linear-gradient(135deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1));
-  backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255,255,255,0.1);
-  flex-shrink: 0;
-  margin-top: auto;
-}
-
-.action-btn-large {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 18px 36px;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid rgba(255,255,255,0.2);
-  position: relative;
-  overflow: hidden;
-  min-width: 180px;
-  justify-content: center;
-  backdrop-filter: blur(15px);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.btn-icon-large {
-  width: 24px;
-  height: 24px;
-}
-
-.primary-large {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
-  border-color: rgba(102, 126, 234, 0.3);
-}
-
-.primary-large::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.primary-large:hover::before {
-  opacity: 1;
-}
-
-.primary-large:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 18px 40px rgba(102, 126, 234, 0.6);
-  border-color: rgba(102, 126, 234, 0.5);
-}
-
-.secondary-large {
-  background: linear-gradient(135deg, #f59e0b, #ea580c);
-  color: white;
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
-}
-
-.secondary-large:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.5);
-}
-
-.tertiary-large {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-}
-
-.tertiary-large:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-3px);
-}
-
-/* Responsive Design for Fullscreen */
-@media (max-width: 1024px) {
-  .results-container {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    max-width: 600px;
-  }
-
-  .fullscreen-content {
-    padding: 0 24px 20px;
-  }
-
-  .victory-title {
-    font-size: 36px;
-  }
-
-  .champion-showcase {
-    padding: 32px 24px;
-  }
-
-  .champion-stats-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
-}
-
-.leaderboard-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2d3748;
-  margin: 0 0 20px;
+  padding: 24px 45px 26px;
   text-align: center;
+  margin-bottom: 24px;
+}
+
+.champion-badge {
+  color: white;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 36px;
+  margin: 8px 0;
+}
+
+.champion-score {
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  margin: 8px 0;
+}
+
+.champion-accuracy {
+  color: #E9D5FF;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 8px 0;
+}
+
+.achievement-message {
+  background: rgba(59, 130, 246, 0.20);
+  border: 1px solid rgba(96, 165, 250, 0.30);
+  border-radius: 8px;
+  padding: 18px;
+  text-align: center;
+  color: #BFDBFE;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 24px;
+}
+
+.personal-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-box {
+  flex: 1;
+  border-radius: 8px;
+  padding: 7px 0 13px;
+  text-align: center;
+}
+
+.stat-box.high-score {
+  background: rgba(234, 179, 8, 0.20);
+  border: 1px solid rgba(250, 204, 21, 0.30);
+}
+
+.stat-box.avg-score {
+  background: rgba(34, 197, 94, 0.20);
+  border: 1px solid rgba(74, 222, 128, 0.30);
+}
+
+.stat-number {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  margin-bottom: 6px;
+}
+
+.stat-box.high-score .stat-number {
+  color: #FEF08A;
+}
+
+.stat-box.avg-score .stat-number {
+  color: #BBF7D0;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.stat-box.high-score .stat-label {
+  color: #FDE047;
+}
+
+.stat-box.avg-score .stat-label {
+  color: #86EFAC;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #2563EB 0%, #6D28D9 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 54px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 6px;
+  padding: 14px 55px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Center Column - Trophy Podium */
+.trophy-podium {
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.podium-title {
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: -0.6px;
+  margin: 0 0 24px;
+}
+
+.podium-container {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 4px;
+}
+
+.podium-winner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.trophy-large {
+  width: 70px;
+  height: 70px;
+  stroke: white;
+  margin-bottom: 8px;
+}
+
+.winner-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #EAB308 0%, #FACC15 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.50);
+}
+
+.winner-name {
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.winner-score {
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.winner-podium-base {
+  background: linear-gradient(90deg, #EAB308 0%, #FACC15 100%);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  border-radius: 8px 8px 0 0;
+  padding: 55px 46px 50px 45px;
+  width: 136px;
+}
+
+.podium-rank {
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.podium-second {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+}
+
+.trophy-medium {
+  width: 62px;
+  height: 62px;
+  stroke: white;
+}
+
+.second-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #9CA3AF 0%, #D1D5DB 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.second-name {
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.second-score {
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.second-podium-base {
+  background: linear-gradient(90deg, #9CA3AF 0%, #D1D5DB 100%);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  border-radius: 8px 8px 0 0;
+  padding: 36px 45px 34px 46px;
+  width: 136px;
+}
+
+/* Right Column - Full Leaderboard */
+.full-leaderboard {
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.leaderboard-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.leaderboard-header h3 {
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.6px;
+  margin: 0;
 }
 
 .leaderboard-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 11px;
 }
 
 .leaderboard-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.leaderboard-item.champion {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1));
-  border-color: #f59e0b;
-}
-
-.leaderboard-item.runner-up {
-  background: linear-gradient(135deg, rgba(156, 163, 175, 0.1), rgba(107, 114, 128, 0.1));
-  border-color: #9ca3af;
-}
-
-.leaderboard-item.third-place {
-  background: linear-gradient(135deg, rgba(205, 127, 50, 0.1), rgba(180, 83, 9, 0.1));
-  border-color: #cd7f32;
-}
-
-.leaderboard-item.current-player {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  border-color: #667eea;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-}
-
-.position-indicator {
-  flex-shrink: 0;
-}
-
-.position-medal {
-  font-size: 20px;
-}
-
-.position-number {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #e2e8f0;
-  color: #4a5568;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-}
-
-.player-summary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 8px;
+  padding: 13px;
   display: flex;
   align-items: center;
   gap: 12px;
-  flex: 1;
 }
 
-.player-mini-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: white;
+.leaderboard-item.is-current-user {
+  background: rgba(124, 58, 237, 0.20);
+  border: 1px solid #C084FC;
+  box-shadow: 0 0 0 0 #C084FC;
+}
+
+.player-rank {
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  font-weight: 600;
-  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.player-info-summary {
-  flex: 1;
-  text-align: left;
+.rank-crown,
+.rank-trophy {
+  width: 32px;
+  height: 32px;
+  stroke: white;
 }
 
-.player-name-summary {
-  font-size: 16px;
-  font-weight: 600;
-  color: #2d3748;
-  margin-bottom: 2px;
-}
-
-.player-performance {
+.player-avatar-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
-  gap: 8px;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 
-.final-score {
-  font-size: 14px;
-  font-weight: 600;
-  color: #667eea;
+.player-info {
+  flex: 1;
 }
 
-.final-streak {
-  font-size: 12px;
-  font-weight: 600;
-  color: #f59e0b;
-}
-
-.accuracy-rate {
-  font-size: 12px;
-  font-weight: 600;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
-  padding: 2px 6px;
-  border-radius: 6px;
+.player-name {
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
 }
 
 .you-badge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: #6D28D9;
   color: white;
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  padding: 2px 11px 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.00);
 }
 
-@media (max-width: 480px) {
-  .fullscreen-header {
-    padding: 20px 0 12px;
-  }
-
-  .victory-title {
-    font-size: 24px;
-  }
-
-  .victory-subtitle {
-    font-size: 14px;
-  }
-
-  .trophy-icon-large {
-    font-size: 40px;
-  }
-
-  .champion-avatar-large {
-    width: 60px;
-    height: 60px;
-    font-size: 22px;
-  }
-
-  .champion-title {
-    font-size: 20px;
-  }
-
-  .score-massive {
-    font-size: 32px;
-  }
-
-  .champion-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-
-  .stat-card {
-    padding: 12px;
-  }
-
-  .stat-icon-large {
-    font-size: 20px;
-  }
-
-  .stat-value-large {
-    font-size: 18px;
-  }
-
-  .fullscreen-actions {
-    flex-direction: column;
-    gap: 12px;
-    padding: 16px 20px 20px;
-  }
-
-  .action-btn-large {
-    width: 100%;
-    min-width: auto;
-    padding: 14px 24px;
-    font-size: 14px;
-  }
-
-  .fullscreen-content {
-    padding: 0 16px 12px;
-  }
-
-  .champion-showcase,
-  .leaderboard-expanded {
-    padding: 24px 16px;
-  }
+.player-accuracy {
+  color: #E9D5FF;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
 }
 
-/* Mobile Responsive for Modern Layout */
-@media (max-width: 768px) {
-  .victory-header-modern {
-    margin: 10px;
-    padding: 15px;
-  }
-
-  .victory-title-new {
-    font-size: 28px;
-  }
-
-  .victory-subtitle-new {
-    font-size: 16px;
-  }
-
-  .trophy-icon {
-    font-size: 36px;
-  }
-
-  .podium-base {
-    padding: 20px 25px;
-  }
-
-  .champion-circle {
-    width: 75px;
-    height: 75px;
-  }
-
-  .champion-initial {
-    font-size: 28px;
-  }
-
-  .champion-name {
-    font-size: 22px;
-  }
-
-  .score-number {
-    font-size: 32px;
-  }
-
-  .stats-showcase {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .stat-item {
-    padding: 15px 12px;
-  }
-
-  .stat-number {
-    font-size: 24px;
-  }
-
-  .stat-icon {
-    font-size: 24px;
-  }
-
-  .player-rank-card {
-    padding: 15px;
-    gap: 12px;
-  }
-
-  .player-avatar-new {
-    width: 42px;
-    height: 42px;
-    font-size: 16px;
-  }
-
-  .fullscreen-actions {
-    gap: 12px;
-    padding: 15px;
-  }
+.player-score {
+  text-align: right;
 }
 
-@media (max-width: 480px) {
-  .victory-header-modern {
-    margin: 8px;
-    padding: 15px 12px;
-  }
-
-  .modern-results-container {
-    padding: 12px;
-    gap: 15px;
-  }
-
-  .podium-base {
-    padding: 18px 15px;
-  }
-
-  .trophy-icon {
-    font-size: 32px;
-  }
-
-  .victory-title-new {
-    font-size: 24px;
-  }
-
-  .champion-name {
-    font-size: 20px;
-  }
-
-  .champion-circle {
-    width: 65px;
-    height: 65px;
-  }
-
-  .champion-initial {
-    font-size: 24px;
-  }
-
-  .score-number {
-    font-size: 28px;
-  }
-
-  .stats-showcase {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .stat-item {
-    padding: 12px 10px;
-  }
-
-  .stat-number {
-    font-size: 20px;
-  }
-
-  .player-achievements {
-    gap: 6px;
-  }
-
-  .achievement-score,
-  .achievement-accuracy,
-  .achievement-streak {
-    font-size: 10px;
-    padding: 2px 5px;
-  }
-
-  .action-btn-large {
-    padding: 14px 20px;
-    font-size: 14px;
-    min-width: 140px;
-  }
+.score-value {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  margin-bottom: 4px;
 }
 
-@media (max-width: 600px) {
-  .ranking-card {
-    padding: 10px 12px;
-    gap: 10px;
-  }
+.leaderboard-item.is-current-user .score-value {
+  color: #FACC15;
+}
 
-  .player-avatar-medium {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
-  }
+.leaderboard-item:not(.is-current-user) .score-value {
+  color: #D1D5DB;
+}
 
-  .player-name-large {
-    font-size: 14px;
-  }
-
-  .player-stats-large {
-    gap: 8px;
-  }
-
-  .score-points,
-  .accuracy-percent,
-  .streak-display {
-    font-size: 11px;
-    padding: 1px 6px;
-  }
-
-  .action-btn-large {
-    padding: 12px 20px;
-    font-size: 13px;
-  }
+.score-unit {
+  color: #E9D5FF;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .battle-grid {
-    grid-template-columns: 1fr 320px;
-    gap: 32px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .battle-grid {
+  .figma-content {
     grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .live-scoreboard {
-    position: static;
-    order: -1;
-  }
-
-  .header-container {
-    grid-template-columns: 1fr auto 1fr;
     gap: 24px;
-    padding: 16px 24px;
+    max-width: 600px;
+    margin: 0 auto;
   }
-
-  .battle-arena {
-    padding: 32px 24px;
+  
+  .figma-title {
+    font-size: 36px;
+  }
+  
+  .game-info {
+    flex-direction: column;
+    gap: 8px;
   }
 }
 
 @media (max-width: 768px) {
-  .battle-arena {
-    padding: 24px 16px;
+  .figma-background {
+    padding: 20px 16px;
+    gap: 32px;
   }
-
-  .question-card {
-    padding: 32px 24px;
-  }
-
-  .question-text {
+  
+  .figma-title {
     font-size: 28px;
   }
-
-  .answers-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  
+  .header-decorations {
+    gap: 8px;
   }
-
-  .answer-card {
-    padding: 20px;
-    min-height: 80px;
+  
+  .decoration-left,
+  .decoration-right {
+    width: 48px;
+    height: 48px;
   }
-
-  .answer-text {
-    font-size: 16px;
-  }
-
-  .header-container {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    text-align: center;
-    padding: 16px;
-  }
-
-  .progress-section {
-    order: 2;
-  }
-
-  .timer-section {
-    order: 1;
-  }
-
-  .players-info {
-    order: 3;
-    justify-content: center;
-  }
-
-  .live-scoreboard {
-    padding: 20px;
-  }
-
-  .player-row {
-    padding: 12px;
-    gap: 12px;
-  }
-
-  .player-avatar {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
-  }
-
-  .results-modal {
-    max-width: 90vw;
-    margin: 20px;
-  }
-
-  .fullscreen-header {
-    padding: 24px 0 16px;
-  }
-
-  .victory-title {
-    font-size: 28px;
-  }
-
-  .victory-subtitle {
-    font-size: 16px;
-  }
-
-  .trophy-icon-large {
-    font-size: 48px;
-  }
-
-  .fullscreen-content {
-    padding: 0 16px 16px;
-  }
-
-  .champion-showcase {
-    padding: 24px 20px;
-  }
-
-  .champion-avatar-large {
-    width: 80px;
-    height: 80px;
-    font-size: 28px;
-  }
-
-  .champion-title {
-    font-size: 24px;
-  }
-
-  .score-massive {
-    font-size: 40px;
-  }
-
-  .score-label-large {
-    font-size: 16px;
-  }
-
-  .champion-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .stat-card {
-    padding: 16px;
-  }
-
-  .stat-value-large {
-    font-size: 20px;
-  }
-
-  .leaderboard-expanded {
-    padding: 24px 20px;
-  }
-
-  .leaderboard-title-large {
-    font-size: 20px;
-  }
-
-  .ranking-card {
-    padding: 12px 16px;
-    gap: 12px;
-  }
-
-  .player-avatar-medium {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-  }
-
-  .player-name-large {
-    font-size: 16px;
-  }
-
-  .fullscreen-actions {
+  
+  .personal-stats {
     flex-direction: column;
     gap: 12px;
-    padding: 24px 16px;
   }
-
-  .action-btn-large {
-    padding: 14px 24px;
-    font-size: 14px;
-    min-width: auto;
-  }
-
-  .btn-icon-large {
-    width: 20px;
-    height: 20px;
-  }
-
-  .modal-decoration {
-    padding: 32px 24px 60px;
-  }
-
-  .results-content {
-    padding: 32px 24px;
-  }
-
-  .results-actions {
-    padding: 24px;
+  
+  .podium-container {
     flex-direction: column;
+    gap: 16px;
+  }
+  
+  .winner-avatar {
+    width: 70px;
+    height: 70px;
+    font-size: 16px;
+  }
+  
+  .second-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
-  .header-container {
-    padding: 12px 16px;
+  .figma-background {
+    padding: 16px 12px;
+    gap: 24px;
   }
-
-  .question-card {
-    padding: 24px 16px;
-  }
-
-  .question-text {
+  
+  .figma-title {
     font-size: 24px;
   }
-
-  .word-highlight {
-    font-size: 16px;
-  }
-
-  .answer-card {
-    padding: 16px;
-    min-height: 70px;
-  }
-
-  .answer-indicator {
-    width: 36px;
-    height: 36px;
-  }
-
-  .answer-letter {
-    font-size: 16px;
-  }
-
-  .answer-text {
-    font-size: 15px;
-  }
-
-  .live-scoreboard {
+  
+  .personal-results-card,
+  .trophy-podium,
+  .full-leaderboard {
     padding: 16px;
   }
-
-  .player-row {
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .player-avatar {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
-  }
-
-  .player-name {
-    font-size: 14px;
-  }
-
-  .score-value {
-    font-size: 16px;
-  }
-
-  .results-modal {
-    border-radius: 24px;
-  }
-
-  .modal-decoration {
-    padding: 24px 16px 40px;
-  }
-
-  .results-title {
-    font-size: 24px;
-  }
-
-  .trophy-icon-main {
-    font-size: 48px;
-  }
-
-  .champion-avatar {
-    width: 60px;
-    height: 60px;
-    font-size: 20px;
-  }
-
-  .champion-name {
-    font-size: 20px;
-  }
-
-  .score-number {
-    font-size: 24px;
-  }
-
-  .results-content {
-    padding: 24px 16px;
-  }
-
-  .leaderboard-item {
-    padding: 12px;
+  
+  .action-buttons {
     gap: 12px;
   }
-
-  .player-mini-avatar {
-    width: 32px;
-    height: 32px;
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 24px;
     font-size: 14px;
   }
-
-  .results-actions {
-    padding: 16px;
-  }
-
-  .action-btn {
-    padding: 14px 20px;
-    font-size: 14px;
-  }
-
-  /* Confetti positioning for mobile */
-  .confetti:nth-child(n) {
-    left: calc(var(--i) * 2%);
-  }
-}
-
-/* Confetti positioning */
-.confetti:nth-child(1) {
-  left: 2%;
-}
-.confetti:nth-child(2) {
-  left: 6%;
-}
-.confetti:nth-child(3) {
-  left: 10%;
-}
-.confetti:nth-child(4) {
-  left: 14%;
-}
-.confetti:nth-child(5) {
-  left: 18%;
-}
-.confetti:nth-child(6) {
-  left: 22%;
-}
-.confetti:nth-child(7) {
-  left: 26%;
-}
-.confetti:nth-child(8) {
-  left: 30%;
-}
-.confetti:nth-child(9) {
-  left: 34%;
-}
-.confetti:nth-child(10) {
-  left: 38%;
-}
-.confetti:nth-child(11) {
-  left: 42%;
-}
-.confetti:nth-child(12) {
-  left: 46%;
-}
-.confetti:nth-child(13) {
-  left: 50%;
-}
-.confetti:nth-child(14) {
-  left: 54%;
-}
-.confetti:nth-child(15) {
-  left: 58%;
-}
-.confetti:nth-child(16) {
-  left: 62%;
-}
-.confetti:nth-child(17) {
-  left: 66%;
-}
-.confetti:nth-child(18) {
-  left: 70%;
-}
-.confetti:nth-child(19) {
-  left: 74%;
-}
-.confetti:nth-child(20) {
-  left: 78%;
-}
-.confetti:nth-child(21) {
-  left: 82%;
-}
-.confetti:nth-child(22) {
-  left: 86%;
-}
-.confetti:nth-child(23) {
-  left: 90%;
-}
-.confetti:nth-child(24) {
-  left: 94%;
-}
-.confetti:nth-child(25) {
-  left: 98%;
-}
-.confetti:nth-child(26) {
-  left: 4%;
-}
-.confetti:nth-child(27) {
-  left: 8%;
-}
-.confetti:nth-child(28) {
-  left: 12%;
-}
-.confetti:nth-child(29) {
-  left: 16%;
-}
-.confetti:nth-child(30) {
-  left: 20%;
-}
-.confetti:nth-child(31) {
-  left: 24%;
-}
-.confetti:nth-child(32) {
-  left: 28%;
-}
-.confetti:nth-child(33) {
-  left: 32%;
-}
-.confetti:nth-child(34) {
-  left: 36%;
-}
-.confetti:nth-child(35) {
-  left: 40%;
-}
-.confetti:nth-child(36) {
-  left: 44%;
-}
-.confetti:nth-child(37) {
-  left: 48%;
-}
-.confetti:nth-child(38) {
-  left: 52%;
-}
-.confetti:nth-child(39) {
-  left: 56%;
-}
-.confetti:nth-child(40) {
-  left: 60%;
-}
-.confetti:nth-child(41) {
-  left: 64%;
-}
-.confetti:nth-child(42) {
-  left: 68%;
-}
-.confetti:nth-child(43) {
-  left: 72%;
-}
-.confetti:nth-child(44) {
-  left: 76%;
-}
-.confetti:nth-child(45) {
-  left: 80%;
-}
-.confetti:nth-child(46) {
-  left: 84%;
-}
-.confetti:nth-child(47) {
-  left: 88%;
-}
-.confetti:nth-child(48) {
-  left: 92%;
-}
-.confetti:nth-child(49) {
-  left: 96%;
-}
-.confetti:nth-child(50) {
-  left: 1%;
 }
 </style>
