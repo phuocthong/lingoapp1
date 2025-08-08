@@ -308,7 +308,14 @@ const chatMessages_ref = ref(null)
 const isDemoMode = ref(false)
 
 // Computed properties
-const chatMessagesElement = computed(() => chatMessages_ref.value)
+const chatMessagesElement = computed(() => {
+  try {
+    return chatMessages_ref.value
+  } catch (error) {
+    // Fallback if ref is not available
+    return null
+  }
+})
 
 // Initialize component
 onMounted(async () => {
@@ -383,7 +390,7 @@ const handleHistoryUpdate = (event) => {
 // Chat functions
 const startBot = async () => {
   if (!currentUser.value) {
-    showNotification('Vui lòng đăng nhập để s��� dụng chat bot', 'warning')
+    showNotification('Vui lòng đăng nhập để sử dụng chat bot', 'warning')
     return
   }
 
