@@ -1,5 +1,14 @@
 import { db } from '../db/index.js'
-import { users, vocabulary, questions, tasks, rewards, userTaskProgress } from '../db/schema.js'
+import {
+  users,
+  vocabulary,
+  questions,
+  tasks,
+  rewards,
+  userTaskProgress,
+  friends,
+  userProgress,
+} from '../db/schema.js'
 import bcrypt from 'bcryptjs'
 
 console.log('Seeding database...')
@@ -7,6 +16,8 @@ console.log('Seeding database...')
 try {
   // Clear existing data (in development)
   console.log('Clearing existing data...')
+  await db.delete(friends)
+  await db.delete(userProgress)
   await db.delete(rewards)
   await db.delete(userTaskProgress)
   await db.delete(tasks)
@@ -56,6 +67,32 @@ try {
         level: 6,
         xp: 1200,
         streak: 8,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        username: 'thutrang',
+        email: 'thutrang@example.com',
+        password: hashedPassword,
+        name: 'Thu Trang',
+        avatar:
+          'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+        level: 12,
+        xp: 3200,
+        streak: 20,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        username: 'vannam',
+        email: 'vannam@example.com',
+        password: hashedPassword,
+        name: 'Văn Nam',
+        avatar:
+          'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+        level: 9,
+        xp: 2100,
+        streak: 14,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -121,6 +158,144 @@ try {
         category: 'advanced',
         createdAt: new Date(),
       },
+      // Thêm từ vựng cơ bản
+      {
+        word: 'cat',
+        meaning: 'con mèo',
+        pronunciation: '/kæt/',
+        example: 'The cat is sleeping.',
+        difficulty: 'easy',
+        category: 'animals',
+        createdAt: new Date(),
+      },
+      {
+        word: 'dog',
+        meaning: 'con chó',
+        pronunciation: '/dɔːɡ/',
+        example: 'My dog is very friendly.',
+        difficulty: 'easy',
+        category: 'animals',
+        createdAt: new Date(),
+      },
+      {
+        word: 'house',
+        meaning: 'ngôi nhà',
+        pronunciation: '/haʊs/',
+        example: 'This is my house.',
+        difficulty: 'easy',
+        category: 'basic',
+        createdAt: new Date(),
+      },
+      {
+        word: 'water',
+        meaning: 'nước',
+        pronunciation: '/ˈwɔːtər/',
+        example: 'I drink water every day.',
+        difficulty: 'easy',
+        category: 'basic',
+        createdAt: new Date(),
+      },
+      {
+        word: 'food',
+        meaning: 'thức ăn',
+        pronunciation: '/fuːd/',
+        example: 'This food is delicious.',
+        difficulty: 'easy',
+        category: 'basic',
+        createdAt: new Date(),
+      },
+      // Từ vựng trung bình
+      {
+        word: 'environment',
+        meaning: 'môi trường',
+        pronunciation: '/ɪnˈvaɪrənmənt/',
+        example: 'We must protect the environment.',
+        difficulty: 'medium',
+        category: 'nature',
+        createdAt: new Date(),
+      },
+      {
+        word: 'technology',
+        meaning: 'công nghệ',
+        pronunciation: '/tekˈnɒlədʒi/',
+        example: 'Technology changes our lives.',
+        difficulty: 'medium',
+        category: 'science',
+        createdAt: new Date(),
+      },
+      {
+        word: 'education',
+        meaning: 'giáo dục',
+        pronunciation: '/ˌedʒuˈkeɪʃn/',
+        example: 'Education is very important.',
+        difficulty: 'medium',
+        category: 'society',
+        createdAt: new Date(),
+      },
+      {
+        word: 'communication',
+        meaning: 'giao tiếp',
+        pronunciation: '/kəˌmjuːnɪˈkeɪʃn/',
+        example: 'Good communication is essential.',
+        difficulty: 'medium',
+        category: 'social',
+        createdAt: new Date(),
+      },
+      {
+        word: 'opportunity',
+        meaning: 'cơ hội',
+        pronunciation: '/ˌɒpəˈtjuːnəti/',
+        example: 'This is a great opportunity.',
+        difficulty: 'medium',
+        category: 'business',
+        createdAt: new Date(),
+      },
+      // Từ vựng khó
+      {
+        word: 'phenomenal',
+        meaning: 'phi thường, tuyệt vời',
+        pronunciation: '/fəˈnɒmɪnl/',
+        example: 'His performance was phenomenal.',
+        difficulty: 'hard',
+        category: 'advanced',
+        createdAt: new Date(),
+      },
+      {
+        word: 'sophisticated',
+        meaning: 'tinh vi, phức tạp',
+        pronunciation: '/səˈfɪstɪkeɪtɪd/',
+        example: "It's a sophisticated system.",
+        difficulty: 'hard',
+        category: 'advanced',
+        createdAt: new Date(),
+      },
+      {
+        word: 'unprecedented',
+        meaning: 'chưa từng có',
+        pronunciation: '/ʌnˈpresɪdentɪd/',
+        example: 'This is an unprecedented situation.',
+        difficulty: 'hard',
+        category: 'advanced',
+        createdAt: new Date(),
+      },
+      {
+        word: 'entrepreneurship',
+        meaning: 'tinh thần khởi nghiệp',
+        pronunciation: '/ˌɒntrəprəˈnɜːʃɪp/',
+        example: 'Entrepreneurship requires courage.',
+        difficulty: 'hard',
+        category: 'business',
+        createdAt: new Date(),
+      },
+      {
+        word: 'sustainability',
+        meaning: 'tính bền vững',
+        pronunciation: '/səˌsteɪnəˈbɪləti/',
+        example: 'Sustainability is crucial for our future.',
+        difficulty: 'hard',
+        category: 'environment',
+        createdAt: new Date(),
+      },
     ])
     .returning()
 
@@ -167,7 +342,7 @@ try {
       vocabularyId: seedVocabulary[4].id,
       question: "What does 'difficult' mean?",
       correctAnswer: 'khó khăn',
-      wrongAnswers: JSON.stringify(['d��� dàng', 'đơn giản', 'nhanh chóng']),
+      wrongAnswers: JSON.stringify(['dễ dàng', 'đơn giản', 'nhanh chóng']),
       type: 'multiple_choice',
       difficulty: 'medium',
       createdAt: new Date(),
@@ -177,6 +352,61 @@ try {
       question: "What does 'extraordinary' mean?",
       correctAnswer: 'phi thường, đặc biệt',
       wrongAnswers: JSON.stringify(['bình thường', 'tệ hại', 'yếu ớt']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho từ vựng mới
+    {
+      vocabularyId: seedVocabulary[6].id, // cat
+      question: "What does 'cat' mean?",
+      correctAnswer: 'con mèo',
+      wrongAnswers: JSON.stringify(['con chó', 'con gà', 'con heo']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[7].id, // dog
+      question: "What does 'dog' mean?",
+      correctAnswer: 'con chó',
+      wrongAnswers: JSON.stringify(['con mèo', 'con ngựa', 'con bò']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[8].id, // house
+      question: "What does 'house' mean?",
+      correctAnswer: 'ngôi nhà',
+      wrongAnswers: JSON.stringify(['cái cây', 'con đường', 'chiếc xe']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[11].id, // environment
+      question: "What does 'environment' mean?",
+      correctAnswer: 'môi trường',
+      wrongAnswers: JSON.stringify(['thời tiết', 'khí hậu', 'vũ trụ']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[12].id, // technology
+      question: "What does 'technology' mean?",
+      correctAnswer: 'công nghệ',
+      wrongAnswers: JSON.stringify(['khoa học', 'toán học', 'vật lý']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[16].id, // phenomenal
+      question: "What does 'phenomenal' mean?",
+      correctAnswer: 'phi thường, tuyệt vời',
+      wrongAnswers: JSON.stringify(['bình thường', 'tệ hại', 'nhỏ bé']),
       type: 'multiple_choice',
       difficulty: 'hard',
       createdAt: new Date(),
@@ -296,17 +526,148 @@ try {
     },
   ])
 
+  // Seed friends relationships
+  console.log('Seeding friends...')
+  await db.insert(friends).values([
+    // Admin có các bạn bè
+    {
+      userId: seedUsers[0].id, // admin
+      friendId: seedUsers[1].id, // minhanh
+      status: 'accepted',
+      createdAt: new Date(),
+      acceptedAt: new Date(),
+    },
+    {
+      userId: seedUsers[0].id, // admin
+      friendId: seedUsers[2].id, // thanhhoa
+      status: 'accepted',
+      createdAt: new Date(),
+      acceptedAt: new Date(),
+    },
+    {
+      userId: seedUsers[0].id, // admin
+      friendId: seedUsers[3].id, // thutrang
+      status: 'accepted',
+      createdAt: new Date(),
+      acceptedAt: new Date(),
+    },
+    // Các mối quan hệ bạn bè khác
+    {
+      userId: seedUsers[1].id, // minhanh
+      friendId: seedUsers[2].id, // thanhhoa
+      status: 'accepted',
+      createdAt: new Date(),
+      acceptedAt: new Date(),
+    },
+    {
+      userId: seedUsers[1].id, // minhanh
+      friendId: seedUsers[4].id, // vannam
+      status: 'accepted',
+      createdAt: new Date(),
+      acceptedAt: new Date(),
+    },
+    {
+      userId: seedUsers[2].id, // thanhhoa
+      friendId: seedUsers[3].id, // thutrang
+      status: 'pending',
+      createdAt: new Date(),
+    },
+  ])
+
+  // Seed user progress for leaderboard
+  console.log('Seeding user progress...')
+  const today = new Date().toISOString().split('T')[0]
+  const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+
+  await db.insert(userProgress).values([
+    // Admin progress
+    {
+      userId: seedUsers[0].id,
+      date: today,
+      questionsAnswered: 25,
+      correctAnswers: 22,
+      wrongAnswers: 3,
+      xpEarned: 220,
+      timeSpent: 45,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+    {
+      userId: seedUsers[0].id,
+      date: yesterday,
+      questionsAnswered: 18,
+      correctAnswers: 16,
+      wrongAnswers: 2,
+      xpEarned: 160,
+      timeSpent: 30,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+    // Thu Trang progress (top performer)
+    {
+      userId: seedUsers[3].id,
+      date: today,
+      questionsAnswered: 35,
+      correctAnswers: 33,
+      wrongAnswers: 2,
+      xpEarned: 330,
+      timeSpent: 60,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+    // Minh Anh progress
+    {
+      userId: seedUsers[1].id,
+      date: today,
+      questionsAnswered: 28,
+      correctAnswers: 24,
+      wrongAnswers: 4,
+      xpEarned: 240,
+      timeSpent: 50,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+    // Thành Hòa progress
+    {
+      userId: seedUsers[2].id,
+      date: today,
+      questionsAnswered: 20,
+      correctAnswers: 18,
+      wrongAnswers: 2,
+      xpEarned: 180,
+      timeSpent: 35,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+    // Văn Nam progress
+    {
+      userId: seedUsers[4].id,
+      date: today,
+      questionsAnswered: 22,
+      correctAnswers: 19,
+      wrongAnswers: 3,
+      xpEarned: 190,
+      timeSpent: 40,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+  ])
+
   console.log('Database seeded successfully!')
   console.log(`Created ${seedUsers.length} users`)
   console.log(`Created ${seedVocabulary.length} vocabulary words`)
-  console.log(`Created 6 questions`)
+  console.log(`Created 12 questions`)
   console.log(`Created ${seedTasks.length} tasks`)
   console.log(`Created 4 rewards`)
+  console.log(`Created 6 friend relationships`)
+  console.log(`Created user progress entries`)
 
   console.log('\nTest accounts:')
   console.log('Username: admin, Password: 123456')
   console.log('Username: minhanh, Password: 123456')
   console.log('Username: thanhhoa, Password: 123456')
+  console.log('Username: thutrang, Password: 123456')
+  console.log('Username: vannam, Password: 123456')
 } catch (error) {
   console.error('Seeding failed:', error)
 } finally {

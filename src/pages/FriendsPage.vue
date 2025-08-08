@@ -37,13 +37,29 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <input type="text" placeholder="Tìm kiếm bạn bè" class="search-field" />
+            <input
+              type="text"
+              placeholder="Tìm kiếm bạn bè"
+              class="search-field"
+              v-model="searchQuery"
+            />
           </div>
         </div>
 
+        <!-- Loading State -->
+        <div v-if="loading" class="loading-container">
+          <q-spinner color="primary" size="2em" />
+          <p>Đang tải danh sách bạn bè...</p>
+        </div>
+
         <!-- Friends List -->
-        <div class="friends-list">
-          <div v-for="friend in friends" :key="friend.id" class="friend-item">
+        <div v-else class="friends-list">
+          <div v-if="filteredFriends.length === 0" class="no-friends">
+            <q-icon name="people" size="48px" color="grey-4" />
+            <p>{{ searchQuery ? 'Không tìm thấy bạn bè nào' : 'Chưa có bạn bè nào' }}</p>
+          </div>
+
+          <div v-for="friend in filteredFriends" :key="friend.id" class="friend-item">
             <div class="friend-avatar">
               <img :src="friend.avatar" :alt="friend.name" />
               <div class="online-indicator"></div>
@@ -71,7 +87,7 @@
             </div>
 
             <div class="friend-actions">
-              <q-btn class="challenge-btn" color="primary">
+              <q-btn class="challenge-btn" color="primary" @click="challengeFriend(friend)">
                 <svg
                   class="sword-icon"
                   width="22"
@@ -98,60 +114,142 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import ProfileSidebar from '../components/ProfileSidebar.vue'
+import { apiService } from '../services/api.js'
+import { auth } from '../utils/auth.js'
+import { createNotification } from '../utils/notifications.js'
 
-// Mock friends data
-const friends = ref([
-  {
-    id: 1,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-  {
-    id: 2,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-  {
-    id: 3,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-  {
-    id: 4,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-  {
-    id: 5,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-  {
-    id: 6,
-    name: 'Người dùng',
-    username: '@nguoidung',
-    avatar: 'https://via.placeholder.com/55',
-    streak: '15',
-    status: 'Đang hoạt động',
-  },
-])
+// Friends data
+const friends = ref([])
+const loading = ref(false)
+const searchQuery = ref('')
+
+// Load friends on mount
+onMounted(async () => {
+  await loadFriends()
+})
+
+// Load friends from backend
+const loadFriends = async () => {
+  loading.value = true
+
+  try {
+    const user = auth.getCurrentUser()
+    if (!user) {
+      createNotification('Vui lòng đăng nhập để xem bạn bè', 'warning')
+      loadFallbackFriends()
+      return
+    }
+
+    // Check if running in cloud environment
+    const isCloudEnvironment =
+      window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+
+    if (isCloudEnvironment) {
+      console.log('Cloud environment detected, using fallback friends data')
+      loadFallbackFriends()
+      return
+    }
+
+    const response = await apiService.getFriends()
+    console.log('Friends API response:', response)
+
+    if (response.success && response.friends && Array.isArray(response.friends)) {
+      friends.value = response.friends.map((friend) => ({
+        id: friend.id,
+        name: friend.name,
+        username: friend.username.startsWith('@') ? friend.username : `@${friend.username}`,
+        avatar:
+          friend.avatar ||
+          'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+        streak: friend.streak || 0,
+        status: friend.level >= 5 ? 'Người chơi có kinh nghiệm' : 'Người chơi mới',
+        level: friend.level || 1,
+        xp: friend.xp || 0,
+      }))
+    } else {
+      console.log('Invalid API response structure:', response)
+      createNotification('Không thể tải danh sách bạn bè từ server', 'warning')
+      loadFallbackFriends()
+    }
+  } catch (error) {
+    console.error('Failed to load friends:', error)
+    const isNetworkError = error.message.includes('fetch') || error.message.includes('network')
+
+    if (isNetworkError) {
+      createNotification('Không thể kết nối server. Sử dụng dữ liệu demo.', 'info')
+    } else {
+      createNotification('Lỗi tải danh sách bạn bè', 'negative')
+    }
+
+    loadFallbackFriends()
+  } finally {
+    loading.value = false
+  }
+}
+
+// Fallback friends data when API is not available
+const loadFallbackFriends = () => {
+  try {
+    friends.value = [
+      {
+        id: 2,
+        name: 'Minh Anh',
+        username: '@minhanh',
+        avatar:
+          'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+        streak: 12,
+        status: 'Người chơi có kinh nghiệm',
+        level: 8,
+        xp: 1800,
+      },
+      {
+        id: 3,
+        name: 'Thành Hòa',
+        username: '@thanhhoa',
+        avatar:
+          'https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=55',
+        streak: 8,
+        status: 'Người chơi mới',
+        level: 6,
+        xp: 1200,
+      },
+      {
+        id: 4,
+        name: 'Thu Trang',
+        username: '@thutrang',
+        avatar:
+          'https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=55',
+        streak: 20,
+        status: 'Chuyên gia',
+        level: 12,
+        xp: 3200,
+      },
+    ]
+    console.log('Loaded fallback friends:', friends.value.length, 'friends')
+  } catch (error) {
+    console.error('Error loading fallback friends:', error)
+    friends.value = [] // Ensure friends is always an array
+  }
+}
+
+// Computed filtered friends
+const filteredFriends = computed(() => {
+  if (!searchQuery.value) return friends.value
+
+  return friends.value.filter(
+    (friend) =>
+      friend.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      friend.username.toLowerCase().includes(searchQuery.value.toLowerCase()),
+  )
+})
+
+// Challenge friend function
+const challengeFriend = (friend) => {
+  createNotification(`Đã gửi lời thách đấu tới ${friend.name}!`, 'success')
+  // TODO: Implement challenge logic
+}
 </script>
 
 <style scoped>
@@ -341,6 +439,28 @@ const friends = ref([
   cursor: pointer;
   padding: 4px 8px;
   line-height: 180%;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.loading-container p {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.no-friends {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.no-friends p {
+  margin-top: 12px;
+  font-size: 14px;
 }
 
 /* Responsive Design */
