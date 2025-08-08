@@ -383,13 +383,13 @@ const handleHistoryUpdate = (event) => {
 // Chat functions
 const startBot = async () => {
   if (!currentUser.value) {
-    showNotification('Vui lòng đăng nhập để sử dụng chat bot', 'warning')
+    showNotification('Vui lòng đăng nhập để s��� dụng chat bot', 'warning')
     return
   }
 
   isBotActive.value = true
   await chatService.startBot()
-  addBotMessage('Chat bot đ�� bắt đầu! Tôi sẽ đưa ra câu hỏi mỗi 30-60 giây.')
+  addBotMessage('Chat bot đã bắt đầu! Tôi sẽ đưa ra câu hỏi mỗi 30-60 giây.')
 }
 
 const stopBot = () => {
@@ -478,16 +478,33 @@ const scrollToBottom = () => {
   })
 }
 
-// Question history
-const updateQuestionHistory = () => {
-  const history = chatService.getHistory()
-  questionHistory.value = history
-
-  // Also trigger a re-render if needed
-  if (history.length > 0) {
-    console.log(`Updated question history: ${history.length} questions`)
+// Debounce function to prevent excessive updates
+const debounce = (func, wait) => {
+  let timeout
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout)
+      func(...args)
+    }
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
   }
 }
+
+// Question history
+const updateQuestionHistory = debounce(() => {
+  try {
+    const history = chatService.getHistory()
+    questionHistory.value = history
+
+    // Also trigger a re-render if needed
+    if (history.length > 0) {
+      console.log(`Updated question history: ${history.length} questions`)
+    }
+  } catch (error) {
+    console.debug('History update error (suppressed):', error.message)
+  }
+}, 100) // Debounce for 100ms
 
 // Leaderboard functions
 const switchTab = async (tab) => {
