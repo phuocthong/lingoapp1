@@ -194,13 +194,20 @@ export class ChatService {
       this.addMockParticipants()
     }
 
-    // Trigger history update in UI
-    setTimeout(() => {
+    // Update history with current results
+    this.updateHistoryWithResults()
+
+    // Trigger history update in UI immediately and with delay
+    const triggerHistoryUpdate = () => {
       const event = new CustomEvent('historyUpdated', {
         detail: { history: this.questionHistory },
       })
       window.dispatchEvent(event)
-    }, 500)
+      console.log('Triggered history update, total questions:', this.questionHistory.length)
+    }
+
+    triggerHistoryUpdate()
+    setTimeout(triggerHistoryUpdate, 500)
 
     // Schedule next question
     this.scheduleNextQuestion()
