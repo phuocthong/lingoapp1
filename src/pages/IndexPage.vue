@@ -297,6 +297,7 @@ import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue'
 import { chatService } from '../services/chatService.js'
 import { apiService } from '../services/api.js'
 import { auth } from '../utils/auth.js'
+import { createNotification } from '../utils/notifications.js'
 
 // Reactive data
 const messageInput = ref('')
@@ -547,17 +548,7 @@ const getAvatarText = (name) => {
 }
 
 const showNotification = (message, type = 'info') => {
-  console.log(`${type.toUpperCase()}: ${message}`)
-
-  // Try to use Quasar's notify if available
-  if (window.$q && window.$q.notify) {
-    window.$q.notify({
-      message,
-      type: type === 'success' ? 'positive' : type === 'error' ? 'negative' : type === 'warning' ? 'warning' : 'info',
-      position: 'top',
-      timeout: 3000
-    })
-  }
+  createNotification(message, type)
 }
 </script>
 
