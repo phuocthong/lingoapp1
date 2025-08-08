@@ -31,6 +31,12 @@ class ApiService {
     }
 
     try {
+      // In cloud environment, simulate API responses for demo
+      if (isCloudEnvironment) {
+        console.log(`Demo mode: API call to ${endpoint}`)
+        throw new Error('Backend not available in demo environment')
+      }
+
       const response = await fetch(url, config)
       const data = await response.json()
 
