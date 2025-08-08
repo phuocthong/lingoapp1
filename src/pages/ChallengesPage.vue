@@ -567,30 +567,6 @@ function watchRoom(roomId) {
   showResultsModal.value = true
 }
 
-// Handle click outside to close dropdown
-function handleClickOutside(event) {
-  if (createBtnContainer.value && !createBtnContainer.value.contains(event.target)) {
-    showChallengeTypeDropdown.value = false
-  }
-}
-
-// Handle escape key to close dropdown
-function handleEscapeKey(event) {
-  if (event.key === 'Escape') {
-    showChallengeTypeDropdown.value = false
-  }
-}
-
-// Mount/unmount event listeners
-onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
-  document.addEventListener('keydown', handleEscapeKey)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutside)
-  document.removeEventListener('keydown', handleEscapeKey)
-})
 </script>
 
 <style scoped>
