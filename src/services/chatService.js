@@ -244,7 +244,7 @@ export class ChatService {
 
     currentItem.stats = {
       totalAnswers: participants.length,
-      correctAnswers: participants.filter((p) => this.isAnswerCorreived(p.answer)).length,
+      correctAnswers: participants.filter((p) => this.isAnswerCorrect(p.answer)).length,
     }
 
     console.log('Updated history item with results:', currentItem.question, 'Participants:', participants.length)
