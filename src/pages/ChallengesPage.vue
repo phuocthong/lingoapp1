@@ -89,7 +89,7 @@
             </div>
             <q-input
               v-model="searchQuery"
-              placeholder="Tìm kiếm phòng..."
+              placeholder="Tìm ki���m phòng..."
               outlined
               dense
               class="search-input"
@@ -739,6 +739,23 @@ onUnmounted(() => {
 
 .challenge-type-item:hover {
   background: #f8fafc;
+}
+
+.challenge-type-item.custom-type {
+  border-top: 1px solid #e2e8f0;
+  background: #fafafa;
+}
+
+.challenge-type-item.custom-type:hover {
+  background: #f0f0f0;
+}
+
+.challenge-type-item.custom-type .challenge-type-title {
+  color: #6d28d9;
+}
+
+.challenge-type-item.custom-type .challenge-type-icon {
+  filter: grayscale(0.3);
 }
 
 .challenge-type-icon {
