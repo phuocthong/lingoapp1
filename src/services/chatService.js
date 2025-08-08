@@ -440,10 +440,21 @@ export class ChatService {
 
       // Simulate correct/incorrect answers (80% correct rate)
       const isCorrect = Math.random() > 0.2
-      const correctAnswer = this.currentQuestion.correctAnswer ||
-        this.currentQuestion.answers?.find(a => a.correct)?.text || 'correct'
+      const correctAnswer =
+        this.currentQuestion.correctAnswer ||
+        this.currentQuestion.answers?.find((a) => a.correct)?.text ||
+        'correct'
 
-      const answers = ['đẹp', 'xấu', 'cao', 'thấp', 'thông minh', 'ngu ngốc', 'sáng tạo', 'phi thường']
+      const answers = [
+        'đẹp',
+        'xấu',
+        'cao',
+        'thấp',
+        'thông minh',
+        'ngu ngốc',
+        'sáng tạo',
+        'phi thường',
+      ]
       const answer = isCorrect ? correctAnswer : answers[Math.floor(Math.random() * answers.length)]
 
       this.answersReceived.set(user.name, {
@@ -455,7 +466,9 @@ export class ChatService {
       })
     }
 
-    console.log(`Added ${participantCount} mock participants for question: ${this.currentQuestion.question}`)
+    console.log(
+      `Added ${participantCount} mock participants for question: ${this.currentQuestion.question}`,
+    )
   }
 
   // Get question history
