@@ -439,6 +439,16 @@ const challengeTypes = [
     maxPlayers: 8,
     questions: 25,
     timePerQuestion: 45
+  },
+  {
+    id: 'custom',
+    emoji: '⚙️',
+    title: 'Tùy chỉnh',
+    description: 'Tạo phòng với cài đặt tùy chỉnh',
+    maxPlayers: 4,
+    questions: 10,
+    timePerQuestion: 20,
+    isCustom: true
   }
 ]
 
