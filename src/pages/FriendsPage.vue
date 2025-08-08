@@ -37,7 +37,12 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <input type="text" placeholder="Tìm kiếm bạn bè" class="search-field" />
+            <input
+              type="text"
+              placeholder="Tìm kiếm bạn bè"
+              class="search-field"
+              v-model="searchQuery"
+            />
           </div>
         </div>
 
