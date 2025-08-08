@@ -148,6 +148,7 @@ export class ChatService {
           ?.split(' ')
           .map((n) => n[0])
           .join('') || 'ND',
+      questionStartTime: this.currentQuestion.startTime || new Date(),
     })
 
     // Try to submit to API if user is logged in
