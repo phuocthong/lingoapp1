@@ -1781,14 +1781,15 @@ const getPlayerGradient = (playerId) => {
 /* Modern Victory Header */
 .victory-header-modern {
   text-align: center;
-  padding: 30px 20px;
+  padding: 20px 20px 15px;
   position: relative;
   background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
   backdrop-filter: blur(20px);
-  border-radius: 30px;
-  margin: 20px;
+  border-radius: 25px;
+  margin: 15px 15px 0;
   border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  flex-shrink: 0;
 }
 
 .floating-trophy {
