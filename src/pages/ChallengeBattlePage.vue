@@ -2687,14 +2687,15 @@ const getPlayerGradient = (playerId) => {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Fullscreen Actions */
+/* Modern Action Buttons */
 .fullscreen-actions {
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding: 20px 24px 24px;
-  background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  padding: 25px;
+  background: linear-gradient(135deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .action-btn-large {
