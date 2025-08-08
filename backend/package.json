@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "bun run src/index.js",
     "start": "bun run src/index.js",
-    "db:generate": "bun x drizzle-kit generate",
+    "db:generate": "bun x drizzle-kit generate:sqlite",
     "db:migrate": "bun run src/scripts/migrate.js",
     "db:seed": "bun run src/scripts/seed.js",
     "db:studio": "bun x drizzle-kit studio",
