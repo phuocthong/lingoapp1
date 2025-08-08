@@ -87,11 +87,7 @@
             </div>
 
             <div class="friend-actions">
-              <q-btn
-                class="challenge-btn"
-                color="primary"
-                @click="challengeFriend(friend)"
-              >
+              <q-btn class="challenge-btn" color="primary" @click="challengeFriend(friend)">
                 <svg
                   class="sword-icon"
                   width="22"
@@ -160,15 +156,17 @@ const loadFriends = async () => {
     console.log('Friends API response:', response)
 
     if (response.success && response.friends && Array.isArray(response.friends)) {
-      friends.value = response.friends.map(friend => ({
+      friends.value = response.friends.map((friend) => ({
         id: friend.id,
         name: friend.name,
         username: friend.username.startsWith('@') ? friend.username : `@${friend.username}`,
-        avatar: friend.avatar || 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+        avatar:
+          friend.avatar ||
+          'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
         streak: friend.streak || 0,
         status: friend.level >= 5 ? 'Người chơi có kinh nghiệm' : 'Người chơi mới',
         level: friend.level || 1,
-        xp: friend.xp || 0
+        xp: friend.xp || 0,
       }))
     } else {
       console.log('Invalid API response structure:', response)
@@ -199,32 +197,35 @@ const loadFallbackFriends = () => {
         id: 2,
         name: 'Minh Anh',
         username: '@minhanh',
-        avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+        avatar:
+          'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
         streak: 12,
         status: 'Người chơi có kinh nghiệm',
         level: 8,
-        xp: 1800
+        xp: 1800,
       },
       {
         id: 3,
         name: 'Thành Hòa',
         username: '@thanhhoa',
-        avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=55',
+        avatar:
+          'https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=55',
         streak: 8,
         status: 'Người chơi mới',
         level: 6,
-        xp: 1200
+        xp: 1200,
       },
       {
         id: 4,
         name: 'Thu Trang',
         username: '@thutrang',
-        avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=55',
+        avatar:
+          'https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=55',
         streak: 20,
         status: 'Chuyên gia',
         level: 12,
-        xp: 3200
-      }
+        xp: 3200,
+      },
     ]
     console.log('Loaded fallback friends:', friends.value.length, 'friends')
   } catch (error) {
@@ -237,9 +238,10 @@ const loadFallbackFriends = () => {
 const filteredFriends = computed(() => {
   if (!searchQuery.value) return friends.value
 
-  return friends.value.filter(friend =>
-    friend.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-    friend.username.toLowerCase().includes(searchQuery.value.toLowerCase())
+  return friends.value.filter(
+    (friend) =>
+      friend.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      friend.username.toLowerCase().includes(searchQuery.value.toLowerCase()),
   )
 })
 

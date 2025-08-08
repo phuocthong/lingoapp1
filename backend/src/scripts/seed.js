@@ -264,7 +264,7 @@ try {
         word: 'sophisticated',
         meaning: 'tinh vi, phức tạp',
         pronunciation: '/səˈfɪstɪkeɪtɪd/',
-        example: 'It\'s a sophisticated system.',
+        example: "It's a sophisticated system.",
         difficulty: 'hard',
         category: 'advanced',
         createdAt: new Date(),
