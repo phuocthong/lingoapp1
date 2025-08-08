@@ -273,7 +273,7 @@
                   </div>
                   <div class="user-stats">
                     <div class="user-score">{{ userRank.xp }}</div>
-                    <div class="user-total">/ {{ totalPlayers }} người chơi</div>
+                    <div class="user-total">/ {{ totalPlayers }} ngư��i chơi</div>
                   </div>
                 </div>
               </div>
@@ -1028,12 +1028,20 @@ const showNotification = (message, type = 'info') => {
 
 .correct-count {
   color: #16a34a;
-  font-weight: 500;
+  font-weight: 600;
+  background: rgba(22, 163, 74, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
 }
 
-.separator,
+.separator {
+  color: #6b7280;
+  margin: 0 4px;
+}
+
 .total-count {
-  color: #4b5563;
+  color: #2563eb;
+  font-weight: 500;
 }
 
 .loading-container,
