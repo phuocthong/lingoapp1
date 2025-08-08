@@ -3095,45 +3095,72 @@ const getPlayerGradient = (playerId) => {
 
 @media (max-width: 480px) {
   .victory-header-modern {
-    margin: 15px;
-    padding: 25px 15px;
+    margin: 8px;
+    padding: 15px 12px;
   }
 
   .modern-results-container {
-    padding: 15px;
-    gap: 20px;
+    padding: 12px;
+    gap: 15px;
   }
 
   .podium-base {
-    padding: 30px 20px;
+    padding: 18px 15px;
   }
 
   .trophy-icon {
-    font-size: 48px;
+    font-size: 32px;
   }
 
   .victory-title-new {
-    font-size: 28px;
-  }
-
-  .champion-name {
     font-size: 24px;
   }
 
+  .champion-name {
+    font-size: 20px;
+  }
+
+  .champion-circle {
+    width: 65px;
+    height: 65px;
+  }
+
+  .champion-initial {
+    font-size: 24px;
+  }
+
+  .score-number {
+    font-size: 28px;
+  }
+
   .stats-showcase {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .stat-item {
+    padding: 12px 10px;
+  }
+
+  .stat-number {
+    font-size: 20px;
   }
 
   .player-achievements {
-    gap: 8px;
+    gap: 6px;
   }
 
   .achievement-score,
   .achievement-accuracy,
   .achievement-streak {
-    font-size: 11px;
-    padding: 3px 6px;
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+
+  .action-btn-large {
+    padding: 14px 20px;
+    font-size: 14px;
+    min-width: 140px;
   }
 }
 
