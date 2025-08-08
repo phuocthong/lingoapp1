@@ -72,16 +72,25 @@ export class ChatService {
         this.currentQuestion.startTime = new Date()
         this.answersReceived.clear()
 
+        // Add to history first
+        this.addToHistory(this.currentQuestion)
+
         // Send question to chat
         this.sendBotMessage(this.currentQuestion.question, true)
+
+        // Trigger immediate history update
+        setTimeout(() => {
+          const event = new CustomEvent('historyUpdated', {
+            detail: { history: this.questionHistory },
+          })
+          window.dispatchEvent(event)
+          console.log('Immediate history update triggered after question')
+        }, 100)
 
         // Set timer for showing answer (20 seconds)
         this.answerTimer = setTimeout(() => {
           this.showCorrectAnswer()
         }, 20000)
-
-        // Add to history
-        this.addToHistory(this.currentQuestion)
       } else {
         // Use fallback question if no questions returned
         this.askFallbackQuestion()
