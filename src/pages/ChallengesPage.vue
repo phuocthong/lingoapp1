@@ -19,7 +19,7 @@
                 <h3 class="create-title">Tạo phòng mới</h3>
               </div>
               <p class="create-description">Tạo phòng thử thách riêng với các cài đặt tùy chỉnh</p>
-              <div class="create-btn-container">
+              <div class="create-btn-container" ref="createBtnContainer">
                 <q-btn
                   color="primary"
                   class="create-btn"
