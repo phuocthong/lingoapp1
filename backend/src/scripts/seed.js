@@ -1,5 +1,5 @@
 import { db } from '../db/index.js'
-import { users, vocabulary, questions, tasks, rewards, userTaskProgress } from '../db/schema.js'
+import { users, vocabulary, questions, tasks, rewards, userTaskProgress, friends, userProgress } from '../db/schema.js'
 import bcrypt from 'bcryptjs'
 
 console.log('Seeding database...')
@@ -167,7 +167,7 @@ try {
       vocabularyId: seedVocabulary[4].id,
       question: "What does 'difficult' mean?",
       correctAnswer: 'khó khăn',
-      wrongAnswers: JSON.stringify(['d��� dàng', 'đơn giản', 'nhanh chóng']),
+      wrongAnswers: JSON.stringify(['dễ dàng', 'đơn giản', 'nhanh chóng']),
       type: 'multiple_choice',
       difficulty: 'medium',
       createdAt: new Date(),
