@@ -1,4 +1,26 @@
-import { Notify } from 'quasar'
+// Import Quasar's Notify or use fallback
+let Notify;
+try {
+  const quasar = await import('quasar');
+  Notify = quasar.Notify;
+} catch (e) {
+  // Fallback notification system
+  Notify = {
+    create: (options) => {
+      console.log(`${options.type?.toUpperCase() || 'INFO'}: ${options.message}`);
+      // Simple browser notification as fallback
+      if (typeof alert !== 'undefined') {
+        if (options.type === 'negative') {
+          alert('❌ ' + options.message);
+        } else if (options.type === 'positive') {
+          alert('✅ ' + options.message);
+        } else {
+          alert('ℹ️ ' + options.message);
+        }
+      }
+    }
+  };
+}
 
 export class NotificationService {
   // Success notifications

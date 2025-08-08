@@ -163,7 +163,20 @@ import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { auth } from '../utils/auth.js'
 import { apiService } from '../services/api.js'
-import { notify } from '../services/notificationService.js'
+// Simple notification fallback
+const showSimpleNotification = (message, type = 'info') => {
+  console.log(`${type.toUpperCase()}: ${message}`)
+
+  // Try to use Quasar's notify if available
+  if (window.$q && window.$q.notify) {
+    window.$q.notify({
+      message,
+      type: type === 'success' ? 'positive' : type === 'error' ? 'negative' : 'info',
+      position: 'top',
+      timeout: 3000
+    })
+  }
+}
 
 const router = useRouter()
 
@@ -196,20 +209,36 @@ onMounted(async () => {
 // Check backend connectivity
 const checkBackendStatus = async () => {
   try {
-    const response = await fetch('http://localhost:3001/', { 
+    // In cloud environment, backend won't be available at localhost
+    // So we'll skip the check and default to demo mode
+    const isCloudEnvironment = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+
+    if (isCloudEnvironment) {
+      backendOnline.value = false
+      console.log('Cloud environment detected, using demo mode')
+      return
+    }
+
+    // Only check localhost backend when running locally
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 3000)
+
+    const response = await fetch('http://localhost:3001/', {
       method: 'GET',
-      timeout: 5000 
+      signal: controller.signal
     })
-    
+
+    clearTimeout(timeoutId)
+
     if (response.ok) {
       backendOnline.value = true
-      notify.success('Backend đã kết nối thành công!', { timeout: 2000 })
+      showSimpleNotification('Backend đã kết nối thành công! ✅', 'success')
     } else {
       backendOnline.value = false
     }
   } catch (error) {
     backendOnline.value = false
-    console.log('Backend not available, will use demo mode')
+    console.log('Backend not available, using demo mode')
   }
 }
 
@@ -258,31 +287,31 @@ const handleLogin = async () => {
     }
 
     if (result.success) {
-      notify.success(`Chào mừng ${result.user.name}! 🎉`)
+      showSimpleNotification(`Chào mừng ${result.user.name}! 🎉`, 'success')
       
       // Small delay for better UX
       setTimeout(() => {
         router.push('/dashboard')
       }, 500)
     } else {
-      notify.error(result.message || 'Đăng nhập thất bại')
+      showSimpleNotification(result.message || 'Đăng nhập thất bại', 'error')
       errors.password = result.message || 'Đăng nhập thất bại'
     }
   } catch (error) {
     console.error('Login error:', error)
     
     if (error.message.includes('fetch')) {
-      notify.connectionError()
+      showSimpleNotification('Không thể kết nối đến server. Đang sử dụng chế độ demo.', 'error')
       backendOnline.value = false
       
       // Try demo login as fallback
       const result = await simulateLogin()
       if (result.success) {
-        notify.info('Đang sử dụng chế độ demo')
+        showSimpleNotification('Đang sử dụng chế độ demo', 'info')
         setTimeout(() => router.push('/dashboard'), 500)
       }
     } else {
-      notify.apiError(error)
+      showSimpleNotification(error.message || 'Đăng nhập thất bại', 'error')
     }
   } finally {
     loading.value = false
@@ -343,7 +372,7 @@ const fillDemoAccount = (accountType) => {
   loginForm.password = 'password123'
   loginForm.rememberMe = false
   
-  notify.info(`Đã điền thông tin tài khoản ${accountType}`, { timeout: 2000 })
+  showSimpleNotification(`Đã điền thông tin tài khoản ${accountType}`, 'info')
 }
 </script>
 
