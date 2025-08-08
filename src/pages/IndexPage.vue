@@ -424,6 +424,11 @@ const addBotMessage = (text, participants = null) => {
 }
 
 const addAnswerMessage = (text, timestamp) => {
+  // Ensure chatMessages.value is always an array
+  if (!Array.isArray(chatMessages.value)) {
+    chatMessages.value = []
+  }
+
   chatMessages.value.push({
     type: 'answer',
     text,
@@ -433,6 +438,11 @@ const addAnswerMessage = (text, timestamp) => {
 }
 
 const addUserAnswerMessage = (userName, answer, timestamp) => {
+  // Ensure chatMessages.value is always an array
+  if (!Array.isArray(chatMessages.value)) {
+    chatMessages.value = []
+  }
+
   chatMessages.value.push({
     type: 'userAnswer',
     userName,
