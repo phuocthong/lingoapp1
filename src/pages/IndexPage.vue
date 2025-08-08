@@ -209,7 +209,7 @@
           <q-card-section class="leaderboard-content">
             <div v-if="loadingLeaderboard" class="loading-container">
               <q-spinner color="primary" size="2em" />
-              <p>Đang t��i bảng xếp hạng...</p>
+              <p>Đang t����i bảng xếp hạng...</p>
             </div>
 
             <div v-else-if="leaderboardError" class="error-container">
@@ -375,6 +375,11 @@ const handleBotMessage = (event) => {
 const handleAnswerDisplay = (event) => {
   const { message, timestamp } = event.detail
   addAnswerMessage(message, timestamp)
+
+  // Update history immediately when answer is displayed
+  setTimeout(() => {
+    updateQuestionHistory()
+  }, 100)
 }
 
 const handleAnswerFeedback = (event) => {
