@@ -389,7 +389,7 @@ const startBot = async () => {
 
   isBotActive.value = true
   await chatService.startBot()
-  addBotMessage('Chat bot đã bắt đầu! Tôi sẽ đưa ra câu hỏi mỗi 30-60 giây.')
+  addBotMessage('Chat bot đ�� bắt đầu! Tôi sẽ đưa ra câu hỏi mỗi 30-60 giây.')
 }
 
 const stopBot = () => {
@@ -461,9 +461,19 @@ const addUserAnswerMessage = (userName, answer, timestamp) => {
 
 const scrollToBottom = () => {
   nextTick(() => {
-    const element = chatMessagesElement.value
-    if (element) {
-      element.scrollTop = element.scrollHeight
+    try {
+      const element = chatMessagesElement.value
+      if (element && element.scrollHeight > element.clientHeight) {
+        const targetScrollTop = element.scrollHeight - element.clientHeight
+
+        // Only scroll if we actually need to
+        if (Math.abs(element.scrollTop - targetScrollTop) > 1) {
+          element.scrollTop = targetScrollTop
+        }
+      }
+    } catch (error) {
+      // Silently handle any scrolling errors
+      console.debug('Scroll error (suppressed):', error.message)
     }
   })
 }
