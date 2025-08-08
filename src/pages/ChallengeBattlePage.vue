@@ -345,7 +345,7 @@
           <!-- Game info stats -->
           <div class="game-info">
             <span class="info-item">📝 {{ totalQuestions }} câu hỏi</span>
-            <span class="info-item">👥 {{ players.length }} ngư���i chơi</span>
+            <span class="info-item">👥 {{ players.length }} người chơi</span>
             <span class="info-item">⏱️ 30 s mỗi câu</span>
           </div>
         </div>

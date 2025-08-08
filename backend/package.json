@@ -5,32 +5,29 @@
   "description": "ElysiaJS backend for Lingo Challenge vocabulary app",
   "main": "src/index.js",
   "scripts": {
-    "dev": "bun --watch src/index.js",
-    "start": "bun src/index.js",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "bun src/scripts/migrate.js",
-    "db:seed": "bun src/scripts/seed.js",
-    "db:studio": "drizzle-kit studio",
-    "test": "bun test"
+    "dev": "node src/index.js",
+    "start": "node src/index.js",
+    "db:generate": "npx drizzle-kit generate:sqlite",
+    "db:migrate": "node src/scripts/migrate.js",
+    "db:seed": "node src/scripts/seed.js",
+    "db:studio": "npx drizzle-kit studio",
+    "test": "echo \"No tests defined\""
   },
   "dependencies": {
-    "elysia": "^1.0.0",
     "@elysiajs/cors": "^1.0.0",
     "@elysiajs/static": "^1.0.0",
     "@elysiajs/swagger": "^1.0.0",
-    "drizzle-orm": "^0.29.0",
-    "better-sqlite3": "^9.2.2",
     "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^12.2.0",
+    "drizzle-orm": "^0.29.0",
+    "elysia": "^1.0.0",
     "jsonwebtoken": "^9.0.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.20.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.5",
-    "bun-types": "latest"
-  },
-  "engines": {
-    "bun": ">=1.0.0"
+    "bun-types": "latest",
+    "drizzle-kit": "^0.20.0"
   }
 }
