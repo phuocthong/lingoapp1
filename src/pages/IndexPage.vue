@@ -403,7 +403,12 @@ const startBot = async () => {
 
   isBotActive.value = true
   await chatService.startBot()
-  addBotMessage('Chat bot đã bắt đầu! Tôi sẽ đưa ra câu hỏi mỗi 30-60 giây.')
+  addBotMessage('Chat bot đã bắt đầu! Tôi sẽ đưa ra câu hỏi mỗi 20 giây.')
+
+  // Force history update after starting
+  setTimeout(() => {
+    updateQuestionHistory()
+  }, 1000)
 }
 
 const stopBot = () => {
