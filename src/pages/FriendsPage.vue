@@ -206,6 +206,16 @@ const loadFallbackFriends = () => {
   ]
 }
 
+// Computed filtered friends
+const filteredFriends = computed(() => {
+  if (!searchQuery.value) return friends.value
+
+  return friends.value.filter(friend =>
+    friend.name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+    friend.username.toLowerCase().includes(searchQuery.value.toLowerCase())
+  )
+})
+
 // Challenge friend function
 const challengeFriend = (friend) => {
   createNotification(`Đã gửi lời thách đấu tới ${friend.name}!`, 'success')
