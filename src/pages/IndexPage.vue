@@ -90,7 +90,7 @@
                 size="8px"
               />
               <span class="status-text">
-                {{ currentUser ? `Đăng nhập với tên: ${currentUser.name}` : 'Chưa đăng nhập' }}
+                {{ currentUser ? `Đăng nh���p với tên: ${currentUser.name}` : 'Chưa đăng nhập' }}
               </span>
             </div>
           </q-card-section>
@@ -389,7 +389,9 @@ const handleAnswerFeedback = (event) => {
 
 const handleHistoryUpdate = (event) => {
   console.log('History update received:', event.detail)
+  console.log('Current questionHistory length before update:', questionHistory.value.length)
   updateQuestionHistory()
+  console.log('Current questionHistory length after update:', questionHistory.value.length)
 }
 
 // Chat functions
