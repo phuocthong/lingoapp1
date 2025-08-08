@@ -116,7 +116,7 @@
                 </div>
 
                 <!-- Room Title -->
-                <h4 class="room-title">🏆 Cuộc thi t��� vựng cơ bản</h4>
+                <h4 class="room-title">🏆 Cuộc thi từ vựng cơ bản</h4>
 
                 <!-- Room Stats -->
                 <div class="room-stats">
@@ -444,7 +444,7 @@ const challengeTypes = [
   {
     id: 'custom',
     emoji: '⚙️',
-    title: 'Tùy chỉnh',
+    title: 'T��y chỉnh',
     description: 'Tạo phòng với cài đặt tùy chỉnh',
     maxPlayers: 4,
     questions: 10,
@@ -723,6 +723,18 @@ onUnmounted(() => {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   overflow: hidden;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .challenge-type-item {
