@@ -1,6 +1,10 @@
 // API Base URL - adjust for your backend
-const API_BASE = process.env.NODE_ENV === 'production' 
-  ? 'https://your-backend-url.com/api' 
+const isCloudEnvironment = typeof window !== 'undefined' &&
+  window.location.hostname !== 'localhost' &&
+  window.location.hostname !== '127.0.0.1'
+
+const API_BASE = isCloudEnvironment
+  ? 'https://your-backend-url.com/api' // Backend not available in cloud demo
   : 'http://localhost:3001/api'
 
 class ApiService {
