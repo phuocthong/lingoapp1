@@ -46,11 +46,13 @@ const app = new Elysia()
       },
     }),
   )
-  .use(staticPlugin({
-    assets: "public",
-    prefix: "/static",
-    noExtension: false
-  }))
+  .use(
+    staticPlugin({
+      assets: 'public',
+      prefix: '/static',
+      noExtension: false,
+    }),
+  )
 
   // Health check endpoint
   .get('/', () => ({
