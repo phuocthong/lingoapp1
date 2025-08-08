@@ -502,8 +502,18 @@ const loadLeaderboard = async () => {
     }
   } catch (error) {
     console.error('Leaderboard load error:', error)
-    leaderboardError.value = 'Lỗi kết nối. Đang sử dụng dữ liệu mẫu.'
-    loadFallbackLeaderboard()
+
+    // Check if backend is running
+    const isCloudEnvironment =
+      window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+
+    if (isCloudEnvironment) {
+      leaderboardError.value = 'Chế độ demo - sử dụng dữ liệu mẫu'
+      loadFallbackLeaderboard()
+    } else {
+      leaderboardError.value = 'Không thể kết nối backend. Hãy đảm bảo backend đang chạy ở port 3000.'
+      currentLeaderboard.value = []
+    }
   } finally {
     loadingLeaderboard.value = false
   }
