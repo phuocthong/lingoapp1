@@ -226,7 +226,10 @@ export class ChatService {
 
   // Update history with answer results
   updateHistoryWithResults() {
-    if (this.questionHistory.length === 0) return
+    if (this.questionHistory.length === 0) {
+      console.log('No history to update')
+      return
+    }
 
     const currentItem = this.questionHistory[0]
     const participants = Array.from(this.answersReceived.values())
@@ -241,8 +244,10 @@ export class ChatService {
 
     currentItem.stats = {
       totalAnswers: participants.length,
-      correctAnswers: participants.filter((p) => this.isAnswerCorrect(p.answer)).length,
+      correctAnswers: participants.filter((p) => this.isAnswerCorreived(p.answer)).length,
     }
+
+    console.log('Updated history item with results:', currentItem.question, 'Participants:', participants.length)
   }
 
   // Check if answer is correct
