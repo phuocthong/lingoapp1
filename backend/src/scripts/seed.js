@@ -1,5 +1,14 @@
 import { db } from '../db/index.js'
-import { users, vocabulary, questions, tasks, rewards, userTaskProgress, friends, userProgress } from '../db/schema.js'
+import {
+  users,
+  vocabulary,
+  questions,
+  tasks,
+  rewards,
+  userTaskProgress,
+  friends,
+  userProgress,
+} from '../db/schema.js'
 import bcrypt from 'bcryptjs'
 
 console.log('Seeding database...')

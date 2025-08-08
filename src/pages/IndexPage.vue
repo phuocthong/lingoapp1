@@ -511,7 +511,8 @@ const loadLeaderboard = async () => {
       leaderboardError.value = 'Chế độ demo - sử dụng dữ liệu mẫu'
       loadFallbackLeaderboard()
     } else {
-      leaderboardError.value = 'Không thể kết nối backend. Hãy đảm bảo backend đang chạy ở port 3000.'
+      leaderboardError.value =
+        'Không thể kết nối backend. Hãy đảm bảo backend đang chạy ở port 3000.'
       currentLeaderboard.value = []
     }
   } finally {
@@ -523,25 +524,70 @@ const loadFallbackLeaderboard = () => {
   // Fallback data when API is not available (matches seeded data)
   const fallbackData = {
     week: [
-      { user: { name: 'Thu Trang', id: 4, username: 'thutrang' }, stats: { totalXp: 330, accuracy: 94 } },
-      { user: { name: 'Admin User', id: 1, username: 'admin' }, stats: { totalXp: 220, accuracy: 88 } },
-      { user: { name: 'Minh Anh', id: 2, username: 'minhanh' }, stats: { totalXp: 240, accuracy: 86 } },
-      { user: { name: 'Văn Nam', id: 5, username: 'vannam' }, stats: { totalXp: 190, accuracy: 86 } },
-      { user: { name: 'Thành Hòa', id: 3, username: 'thanhhoa' }, stats: { totalXp: 180, accuracy: 90 } },
+      {
+        user: { name: 'Thu Trang', id: 4, username: 'thutrang' },
+        stats: { totalXp: 330, accuracy: 94 },
+      },
+      {
+        user: { name: 'Admin User', id: 1, username: 'admin' },
+        stats: { totalXp: 220, accuracy: 88 },
+      },
+      {
+        user: { name: 'Minh Anh', id: 2, username: 'minhanh' },
+        stats: { totalXp: 240, accuracy: 86 },
+      },
+      {
+        user: { name: 'Văn Nam', id: 5, username: 'vannam' },
+        stats: { totalXp: 190, accuracy: 86 },
+      },
+      {
+        user: { name: 'Thành Hòa', id: 3, username: 'thanhhoa' },
+        stats: { totalXp: 180, accuracy: 90 },
+      },
     ],
     month: [
-      { user: { name: 'Thu Trang', id: 4, username: 'thutrang' }, stats: { totalXp: 3200, accuracy: 94 } },
-      { user: { name: 'Admin User', id: 1, username: 'admin' }, stats: { totalXp: 2500, accuracy: 88 } },
-      { user: { name: 'Văn Nam', id: 5, username: 'vannam' }, stats: { totalXp: 2100, accuracy: 86 } },
-      { user: { name: 'Minh Anh', id: 2, username: 'minhanh' }, stats: { totalXp: 1800, accuracy: 86 } },
-      { user: { name: 'Thành Hòa', id: 3, username: 'thanhhoa' }, stats: { totalXp: 1200, accuracy: 90 } },
+      {
+        user: { name: 'Thu Trang', id: 4, username: 'thutrang' },
+        stats: { totalXp: 3200, accuracy: 94 },
+      },
+      {
+        user: { name: 'Admin User', id: 1, username: 'admin' },
+        stats: { totalXp: 2500, accuracy: 88 },
+      },
+      {
+        user: { name: 'Văn Nam', id: 5, username: 'vannam' },
+        stats: { totalXp: 2100, accuracy: 86 },
+      },
+      {
+        user: { name: 'Minh Anh', id: 2, username: 'minhanh' },
+        stats: { totalXp: 1800, accuracy: 86 },
+      },
+      {
+        user: { name: 'Thành Hòa', id: 3, username: 'thanhhoa' },
+        stats: { totalXp: 1200, accuracy: 90 },
+      },
     ],
     year: [
-      { user: { name: 'Thu Trang', id: 4, username: 'thutrang' }, stats: { totalXp: 15600, accuracy: 94 } },
-      { user: { name: 'Admin User', id: 1, username: 'admin' }, stats: { totalXp: 12500, accuracy: 88 } },
-      { user: { name: 'Văn Nam', id: 5, username: 'vannam' }, stats: { totalXp: 10500, accuracy: 86 } },
-      { user: { name: 'Minh Anh', id: 2, username: 'minhanh' }, stats: { totalXp: 9000, accuracy: 86 } },
-      { user: { name: 'Thành Hòa', id: 3, username: 'thanhhoa' }, stats: { totalXp: 6000, accuracy: 90 } },
+      {
+        user: { name: 'Thu Trang', id: 4, username: 'thutrang' },
+        stats: { totalXp: 15600, accuracy: 94 },
+      },
+      {
+        user: { name: 'Admin User', id: 1, username: 'admin' },
+        stats: { totalXp: 12500, accuracy: 88 },
+      },
+      {
+        user: { name: 'Văn Nam', id: 5, username: 'vannam' },
+        stats: { totalXp: 10500, accuracy: 86 },
+      },
+      {
+        user: { name: 'Minh Anh', id: 2, username: 'minhanh' },
+        stats: { totalXp: 9000, accuracy: 86 },
+      },
+      {
+        user: { name: 'Thành Hòa', id: 3, username: 'thanhhoa' },
+        stats: { totalXp: 6000, accuracy: 90 },
+      },
     ],
   }
 
