@@ -188,6 +188,7 @@
             <div class="header-content">
               <q-icon name="emoji_events" size="20px" />
               <div class="header-title">Bảng xếp hạng</div>
+              <div v-if="isDemoMode" class="demo-badge">Demo</div>
               <q-icon name="trending_up" size="16px" class="trend-icon" />
             </div>
 
@@ -312,15 +313,19 @@ const currentUser = ref(null)
 const userRank = ref(null)
 const totalPlayers = ref(0)
 const chatMessages_ref = ref(null)
+const isDemoMode = ref(false)
 
 // Computed properties
 const chatMessagesElement = computed(() => chatMessages_ref.value)
 
 // Initialize component
 onMounted(async () => {
+  // Check if in demo mode
+  isDemoMode.value = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+
   // Get current user
   currentUser.value = auth.getCurrentUser()
-  
+
   // Auto-login for demo
   if (!currentUser.value) {
     auth.autoLogin()
@@ -332,9 +337,12 @@ onMounted(async () => {
 
   // Load initial data
   await loadLeaderboard()
-  
+
   // Add welcome message
-  addBotMessage('Xin chào! Tôi là EnglishBot. Nhấn "Bắt đầu" để tôi bắt đầu đưa ra các câu hỏi tiếng Anh.')
+  const welcomeMsg = isDemoMode.value
+    ? 'Xin chào! Tôi là EnglishBot. Bạn đang ở chế độ demo. Nhấn "Bắt đầu" để thử nghiệm!'
+    : 'Xin chào! Tôi là EnglishBot. Nhấn "Bắt đầu" để tôi bắt đầu đưa ra các câu hỏi tiếng Anh.'
+  addBotMessage(welcomeMsg)
 })
 
 onUnmounted(() => {
@@ -791,6 +799,17 @@ const showNotification = (message, type = 'info') => {
 .header-subtitle {
   font-size: 12px;
   color: #6b7280;
+}
+
+.demo-badge {
+  background: #fbbf24;
+  color: #92400e;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .trend-icon {
