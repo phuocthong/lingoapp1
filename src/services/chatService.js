@@ -242,12 +242,16 @@ export class ChatService {
     const currentItem = this.questionHistory[0]
     const participants = Array.from(this.answersReceived.values())
 
+    // Sort participants by response time (fastest first)
+    participants.sort((a, b) => a.timestamp - b.timestamp)
+
     currentItem.participants = participants.map((p, index) => ({
       id: index + 1,
       name: p.user,
       avatar: p.avatar,
-      time: this.formatResponseTime(p.timestamp),
+      time: this.formatResponseTimeFromStart(p.timestamp, p.questionStartTime),
       correct: this.isAnswerCorrect(p.answer),
+      responseTime: p.timestamp - (p.questionStartTime || currentItem.timestamp),
     }))
 
     currentItem.stats = {
@@ -258,8 +262,10 @@ export class ChatService {
     console.log(
       'Updated history item with results:',
       currentItem.question,
-      'Participants:',
-      participants.length,
+      'Total:',
+      currentItem.stats.totalAnswers,
+      'Correct:',
+      currentItem.stats.correctAnswers,
     )
   }
 
