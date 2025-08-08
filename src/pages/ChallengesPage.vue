@@ -50,6 +50,7 @@
                     v-for="challengeType in challengeTypes"
                     :key="challengeType.id"
                     class="challenge-type-item"
+                    :class="{ 'custom-type': challengeType.isCustom }"
                     @click="createRoomWithType(challengeType)"
                   >
                     <div class="challenge-type-icon">{{ challengeType.emoji }}</div>
@@ -443,7 +444,7 @@ const challengeTypes = [
   {
     id: 'custom',
     emoji: '⚙️',
-    title: 'Tùy ch��nh',
+    title: 'Tùy chỉnh',
     description: 'Tạo phòng với cài đặt tùy chỉnh',
     maxPlayers: 4,
     questions: 10,
