@@ -1882,27 +1882,27 @@ const getPlayerGradient = (playerId) => {
 }
 
 .floating-crown {
-  font-size: 40px;
-  margin-bottom: 15px;
+  font-size: 32px;
+  margin-bottom: 10px;
   animation: crown-bounce 2s ease-in-out infinite;
 }
 
 @keyframes crown-bounce {
-  0%, 100% { transform: translateY(0px) rotate(-5deg); }
-  50% { transform: translateY(-15px) rotate(5deg); }
+  0%, 100% { transform: translateY(0px) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
 }
 
 .champion-circle {
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px;
+  margin: 0 auto 15px;
   position: relative;
-  border: 5px solid rgba(255,255,255,0.4);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  border: 4px solid rgba(255,255,255,0.4);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
 }
 
 .champion-initial {
