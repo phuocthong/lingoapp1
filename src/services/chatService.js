@@ -133,13 +133,23 @@ export class ChatService {
     this.currentQuestion.startTime = new Date()
     this.answersReceived.clear()
 
+    // Add to history first
+    this.addToHistory(this.currentQuestion)
+
     this.sendBotMessage(this.currentQuestion.question, true)
+
+    // Trigger immediate history update
+    setTimeout(() => {
+      const event = new CustomEvent('historyUpdated', {
+        detail: { history: this.questionHistory },
+      })
+      window.dispatchEvent(event)
+      console.log('Immediate history update triggered after fallback question')
+    }, 100)
 
     this.answerTimer = setTimeout(() => {
       this.showCorrectAnswer()
     }, 20000)
-
-    this.addToHistory(this.currentQuestion)
   }
 
   // Handle user answer
