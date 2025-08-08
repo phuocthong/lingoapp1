@@ -62,23 +62,26 @@ export class ChatService {
   // Ask a new question
   async askQuestion() {
     try {
-      // Get a random question from API
+      // Get a random question from API (works in demo mode too)
       const response = await apiService.getQuestions({ count: 1, difficulty: 'easy' })
-      
+
       if (response.success && response.questions.length > 0) {
         this.currentQuestion = response.questions[0]
         this.answersReceived.clear()
-        
+
         // Send question to chat
         this.sendBotMessage(this.currentQuestion.question, true)
-        
+
         // Set timer for showing answer (20 seconds)
         this.answerTimer = setTimeout(() => {
           this.showCorrectAnswer()
         }, 20000)
-        
+
         // Add to history
         this.addToHistory(this.currentQuestion)
+      } else {
+        // Use fallback question if no questions returned
+        this.askFallbackQuestion()
       }
     } catch (error) {
       console.error('Failed to get question:', error)
@@ -248,18 +251,22 @@ export class ChatService {
     try {
       const user = auth.getCurrentUser()
       if (!user) return
-      
-      // Record daily progress
-      await apiService.recordProgress({
-        questionsAnswered: 1,
-        correctAnswers: isCorrect ? 1 : 0,
-        xpEarned: isCorrect ? 10 : 2,
-        timeSpent: 1 // 1 minute
-      })
-      
-      // Update task progress
-      await apiService.updateTaskProgress(1) // Complete questions task
-      
+
+      // Try to record progress (works in demo mode)
+      try {
+        await apiService.recordProgress({
+          questionsAnswered: 1,
+          correctAnswers: isCorrect ? 1 : 0,
+          xpEarned: isCorrect ? 10 : 2,
+          timeSpent: 1 // 1 minute
+        })
+
+        // Update task progress
+        await apiService.updateTaskProgress(1) // Complete questions task
+      } catch (apiError) {
+        console.log('API not available, updating locally only')
+      }
+
       if (isCorrect) {
         // Update user XP locally
         const updatedUser = { ...user, xp: user.xp + 10 }
