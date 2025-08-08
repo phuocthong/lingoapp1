@@ -1,0 +1,217 @@
+// API Base URL - adjust for your backend
+const API_BASE = process.env.NODE_ENV === 'production' 
+  ? 'https://your-backend-url.com/api' 
+  : 'http://localhost:3001/api'
+
+class ApiService {
+  constructor() {
+    this.baseURL = API_BASE
+  }
+
+  // Get authorization header
+  getAuthHeader() {
+    const token = localStorage.getItem('user_token') || sessionStorage.getItem('user_session')
+    return token ? { Authorization: `Bearer ${token}` } : {}
+  }
+
+  // Generic API request method
+  async request(endpoint, options = {}) {
+    const url = `${this.baseURL}${endpoint}`
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        ...this.getAuthHeader(),
+        ...options.headers,
+      },
+      ...options,
+    }
+
+    try {
+      const response = await fetch(url, config)
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || 'API request failed')
+      }
+
+      return data
+    } catch (error) {
+      console.error(`API Error (${endpoint}):`, error)
+      throw error
+    }
+  }
+
+  // Authentication endpoints
+  async login(username, password) {
+    return this.request('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+    })
+  }
+
+  async register(userData) {
+    return this.request('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    })
+  }
+
+  async logout() {
+    return this.request('/auth/logout', { method: 'POST' })
+  }
+
+  async forgotPassword(email) {
+    return this.request('/auth/forgot-password', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    })
+  }
+
+  // User endpoints
+  async getUserProfile() {
+    return this.request('/user/profile')
+  }
+
+  async updateProfile(profileData) {
+    return this.request('/user/profile', {
+      method: 'PUT',
+      body: JSON.stringify(profileData),
+    })
+  }
+
+  async changePassword(passwordData) {
+    return this.request('/user/password', {
+      method: 'PUT',
+      body: JSON.stringify(passwordData),
+    })
+  }
+
+  async getUserStats() {
+    return this.request('/user/stats')
+  }
+
+  // Vocabulary endpoints
+  async getVocabulary(params = {}) {
+    const query = new URLSearchParams(params).toString()
+    return this.request(`/vocabulary${query ? `?${query}` : ''}`)
+  }
+
+  async getQuestions(params = {}) {
+    const query = new URLSearchParams(params).toString()
+    return this.request(`/vocabulary/questions${query ? `?${query}` : ''}`)
+  }
+
+  async submitAnswer(questionId, answerData) {
+    return this.request(`/vocabulary/questions/${questionId}/answer`, {
+      method: 'POST',
+      body: JSON.stringify(answerData),
+    })
+  }
+
+  // Room endpoints
+  async getRooms(status = 'waiting') {
+    return this.request(`/rooms?status=${status}`)
+  }
+
+  async createRoom(roomData) {
+    return this.request('/rooms', {
+      method: 'POST',
+      body: JSON.stringify(roomData),
+    })
+  }
+
+  async getRoom(roomId) {
+    return this.request(`/rooms/${roomId}`)
+  }
+
+  async joinRoom(roomId) {
+    return this.request(`/rooms/${roomId}/join`, { method: 'POST' })
+  }
+
+  async leaveRoom(roomId) {
+    return this.request(`/rooms/${roomId}/leave`, { method: 'DELETE' })
+  }
+
+  // Task endpoints
+  async getTasks() {
+    return this.request('/tasks')
+  }
+
+  async claimTaskReward(taskId) {
+    return this.request(`/tasks/${taskId}/claim`, { method: 'POST' })
+  }
+
+  async updateTaskProgress(taskId, increment = 1) {
+    return this.request(`/tasks/${taskId}/progress`, {
+      method: 'POST',
+      body: JSON.stringify({ increment }),
+    })
+  }
+
+  // Friend endpoints
+  async getFriends() {
+    return this.request('/friends')
+  }
+
+  async getFriendRequests() {
+    return this.request('/friends/requests')
+  }
+
+  async searchUsers(query) {
+    return this.request('/friends/search', {
+      method: 'POST',
+      body: JSON.stringify({ query }),
+    })
+  }
+
+  async addFriend(userId) {
+    return this.request('/friends/add', {
+      method: 'POST',
+      body: JSON.stringify({ userId }),
+    })
+  }
+
+  async acceptFriend(friendshipId) {
+    return this.request(`/friends/accept/${friendshipId}`, { method: 'POST' })
+  }
+
+  async removeFriend(friendshipId) {
+    return this.request(`/friends/${friendshipId}`, { method: 'DELETE' })
+  }
+
+  // Reward endpoints
+  async getRewards(category) {
+    const query = category ? `?category=${category}` : ''
+    return this.request(`/rewards${query}`)
+  }
+
+  async redeemReward(rewardId) {
+    return this.request(`/rewards/${rewardId}/redeem`, { method: 'POST' })
+  }
+
+  async getTransactions(params = {}) {
+    const query = new URLSearchParams(params).toString()
+    return this.request(`/rewards/transactions${query ? `?${query}` : ''}`)
+  }
+
+  // Progress endpoints
+  async getProgress(params = {}) {
+    const query = new URLSearchParams(params).toString()
+    return this.request(`/progress${query ? `?${query}` : ''}`)
+  }
+
+  async recordProgress(progressData) {
+    return this.request('/progress/record', {
+      method: 'POST',
+      body: JSON.stringify(progressData),
+    })
+  }
+
+  async getLeaderboard(period = 'week', limit = 10) {
+    return this.request(`/progress/leaderboard?period=${period}&limit=${limit}`)
+  }
+}
+
+// Export singleton instance
+export const apiService = new ApiService()
+export default apiService
