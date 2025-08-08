@@ -12,6 +12,45 @@ class ApiService {
     this.baseURL = API_BASE
   }
 
+  // Mock response handler for demo mode
+  async getMockResponse(endpoint, options = {}) {
+    const { getMockLeaderboard, getMockQuestions, getMockTasks, mockSubmitAnswer } = await import('./mockData.js')
+
+    // Parse endpoint and return appropriate mock data
+    if (endpoint.includes('/progress/leaderboard')) {
+      const params = new URLSearchParams(endpoint.split('?')[1] || '')
+      const period = params.get('period') || 'week'
+      const limit = parseInt(params.get('limit') || '10')
+      return getMockLeaderboard(period, limit)
+    }
+
+    if (endpoint.includes('/vocabulary/questions')) {
+      const params = new URLSearchParams(endpoint.split('?')[1] || '')
+      return getMockQuestions({
+        count: params.get('count') || 1,
+        difficulty: params.get('difficulty'),
+        type: params.get('type')
+      })
+    }
+
+    if (endpoint === '/tasks') {
+      return getMockTasks()
+    }
+
+    if (endpoint.includes('/vocabulary/questions/') && endpoint.includes('/answer')) {
+      const questionId = endpoint.split('/')[3]
+      const answerData = options.body ? JSON.parse(options.body) : {}
+      return mockSubmitAnswer(questionId, answerData)
+    }
+
+    // Default success response for other endpoints
+    return {
+      success: true,
+      message: 'Demo mode - feature not implemented',
+      data: null
+    }
+  }
+
   // Get authorization header
   getAuthHeader() {
     const token = localStorage.getItem('user_token') || sessionStorage.getItem('user_session')
@@ -31,10 +70,10 @@ class ApiService {
     }
 
     try {
-      // In cloud environment, simulate API responses for demo
+      // In cloud environment, return mock data for demo
       if (isCloudEnvironment) {
         console.log(`Demo mode: API call to ${endpoint}`)
-        throw new Error('Backend not available in demo environment')
+        return await this.getMockResponse(endpoint, options)
       }
 
       const response = await fetch(url, config)
