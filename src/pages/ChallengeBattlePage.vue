@@ -763,6 +763,10 @@ const resetToGame = () => {
 }
 
 const exitGame = () => {
+  // Restore body scroll
+  document.body.style.overflow = ''
+  document.documentElement.style.overflow = ''
+
   // Clear any running timer
   if (gameInterval.value) {
     clearInterval(gameInterval.value)
