@@ -7,6 +7,8 @@ console.log('Seeding database...')
 try {
   // Clear existing data (in development)
   console.log('Clearing existing data...')
+  await db.delete(friends)
+  await db.delete(userProgress)
   await db.delete(rewards)
   await db.delete(userTaskProgress)
   await db.delete(tasks)
