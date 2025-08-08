@@ -158,7 +158,7 @@ try {
     {
       vocabularyId: seedVocabulary[0].id,
       question: "What does 'beautiful' mean?",
-      correctAnswer: '��ẹp, xinh đẹp',
+      correctAnswer: 'đẹp, xinh đẹp',
       wrongAnswers: JSON.stringify(['xấu xí', 'buồn bã', 'tức giận']),
       type: 'multiple_choice',
       difficulty: 'easy',
@@ -324,17 +324,148 @@ try {
     },
   ])
 
+  // Seed friends relationships
+  console.log('Seeding friends...')
+  await db.insert(friends).values([
+    // Admin có các bạn bè
+    {
+      userId: seedUsers[0].id, // admin
+      friendId: seedUsers[1].id, // minhanh
+      status: 'accepted',
+      createdAt: new Date(),
+      acceptedAt: new Date(),
+    },
+    {
+      userId: seedUsers[0].id, // admin
+      friendId: seedUsers[2].id, // thanhhoa
+      status: 'accepted',
+      createdAt: new Date(),
+      acceptedAt: new Date(),
+    },
+    {
+      userId: seedUsers[0].id, // admin
+      friendId: seedUsers[3].id, // thutrang
+      status: 'accepted',
+      createdAt: new Date(),
+      acceptedAt: new Date(),
+    },
+    // Các mối quan hệ bạn bè khác
+    {
+      userId: seedUsers[1].id, // minhanh
+      friendId: seedUsers[2].id, // thanhhoa
+      status: 'accepted',
+      createdAt: new Date(),
+      acceptedAt: new Date(),
+    },
+    {
+      userId: seedUsers[1].id, // minhanh
+      friendId: seedUsers[4].id, // vannam
+      status: 'accepted',
+      createdAt: new Date(),
+      acceptedAt: new Date(),
+    },
+    {
+      userId: seedUsers[2].id, // thanhhoa
+      friendId: seedUsers[3].id, // thutrang
+      status: 'pending',
+      createdAt: new Date(),
+    },
+  ])
+
+  // Seed user progress for leaderboard
+  console.log('Seeding user progress...')
+  const today = new Date().toISOString().split('T')[0]
+  const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+
+  await db.insert(userProgress).values([
+    // Admin progress
+    {
+      userId: seedUsers[0].id,
+      date: today,
+      questionsAnswered: 25,
+      correctAnswers: 22,
+      wrongAnswers: 3,
+      xpEarned: 220,
+      timeSpent: 45,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+    {
+      userId: seedUsers[0].id,
+      date: yesterday,
+      questionsAnswered: 18,
+      correctAnswers: 16,
+      wrongAnswers: 2,
+      xpEarned: 160,
+      timeSpent: 30,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+    // Thu Trang progress (top performer)
+    {
+      userId: seedUsers[3].id,
+      date: today,
+      questionsAnswered: 35,
+      correctAnswers: 33,
+      wrongAnswers: 2,
+      xpEarned: 330,
+      timeSpent: 60,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+    // Minh Anh progress
+    {
+      userId: seedUsers[1].id,
+      date: today,
+      questionsAnswered: 28,
+      correctAnswers: 24,
+      wrongAnswers: 4,
+      xpEarned: 240,
+      timeSpent: 50,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+    // Thành Hòa progress
+    {
+      userId: seedUsers[2].id,
+      date: today,
+      questionsAnswered: 20,
+      correctAnswers: 18,
+      wrongAnswers: 2,
+      xpEarned: 180,
+      timeSpent: 35,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+    // Văn Nam progress
+    {
+      userId: seedUsers[4].id,
+      date: today,
+      questionsAnswered: 22,
+      correctAnswers: 19,
+      wrongAnswers: 3,
+      xpEarned: 190,
+      timeSpent: 40,
+      streakMaintained: true,
+      createdAt: new Date(),
+    },
+  ])
+
   console.log('Database seeded successfully!')
   console.log(`Created ${seedUsers.length} users`)
   console.log(`Created ${seedVocabulary.length} vocabulary words`)
   console.log(`Created 6 questions`)
   console.log(`Created ${seedTasks.length} tasks`)
   console.log(`Created 4 rewards`)
+  console.log(`Created 6 friend relationships`)
+  console.log(`Created user progress entries`)
 
   console.log('\nTest accounts:')
   console.log('Username: admin, Password: 123456')
   console.log('Username: minhanh, Password: 123456')
   console.log('Username: thanhhoa, Password: 123456')
+  console.log('Username: thutrang, Password: 123456')
+  console.log('Username: vannam, Password: 123456')
 } catch (error) {
   console.error('Seeding failed:', error)
 } finally {
