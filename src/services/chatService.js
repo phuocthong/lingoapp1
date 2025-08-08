@@ -51,8 +51,8 @@ export class ChatService {
   scheduleNextQuestion() {
     if (!this.isActive) return
 
-    // Random interval between 30-60 seconds
-    const interval = Math.random() * 30000 + 30000
+    // Fixed interval of 20 seconds
+    const interval = 20000
 
     this.botInterval = setTimeout(() => {
       if (this.isActive) {
