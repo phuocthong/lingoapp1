@@ -501,11 +501,10 @@ function cancelCreateForm() {
 }
 
 function confirmCreateRoom() {
-  // Validate room name
-  if (!roomSettings.value.name.trim()) {
-    // Show error or use default name
-    console.error('Room name is required')
-    return
+  // Use default room name if empty
+  let roomName = roomSettings.value.name.trim()
+  if (!roomName) {
+    roomName = `Thử thách ${roomSettings.value.questions} câu`
   }
 
   console.log('Creating room with settings:', roomSettings.value)
@@ -521,7 +520,7 @@ function confirmCreateRoom() {
     path: '/dashboard/waiting-room',
     query: {
       roomCode: roomCode,
-      roomName: roomSettings.value.name,
+      roomName: roomName,
       questions: roomSettings.value.questions,
       timePerQuestion: roomSettings.value.timePerQuestion,
       maxPlayers: roomSettings.value.maxPlayers,
