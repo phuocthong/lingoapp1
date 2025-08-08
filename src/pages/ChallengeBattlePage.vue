@@ -776,6 +776,10 @@ const exitGame = () => {
 }
 
 const viewLeaderboard = () => {
+  // Restore body scroll
+  document.body.style.overflow = ''
+  document.documentElement.style.overflow = ''
+
   router.push('/dashboard/leaderboard')
 }
 
