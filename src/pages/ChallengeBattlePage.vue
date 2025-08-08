@@ -2522,6 +2522,7 @@ const getPlayerGradient = (playerId) => {
   }
 }
 
+@media (max-width: 600px) {
   .ranking-card {
     padding: 10px 12px;
     gap: 10px;
