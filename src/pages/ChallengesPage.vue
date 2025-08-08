@@ -1015,6 +1015,28 @@ onUnmounted(() => {
   }
 }
 
+@media (max-width: 768px) {
+  .challenge-type-dropdown {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 16px 16px 0 0;
+    border: none;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .challenge-type-item {
+    padding: 20px 16px;
+  }
+
+  .challenge-type-stats {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
 @media (max-width: 480px) {
   .create-room-content {
     padding: 24px 16px;
@@ -1031,6 +1053,20 @@ onUnmounted(() => {
   }
 
   .room-owner {
+    justify-content: center;
+  }
+
+  .challenge-type-item {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .challenge-type-info {
+    align-items: center;
+  }
+
+  .challenge-type-stats {
     justify-content: center;
   }
 }
