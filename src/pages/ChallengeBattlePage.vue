@@ -1876,6 +1876,8 @@ const getPlayerGradient = (playerId) => {
   display: flex;
   justify-content: center;
   padding: 0 24px 16px;
+  overflow-y: auto;
+  min-height: 0;
 }
 
 .results-container {
