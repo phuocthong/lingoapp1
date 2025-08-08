@@ -744,26 +744,6 @@ const playAgain = () => {
   startTimer()
 }
 
-// Debug function - force reset to game state
-const resetToGame = () => {
-  gameOver.value = false
-  currentQuestion.value = 1
-  answered.value = false
-  selectedAnswer.value = null
-  correctAnswer.value = null
-  timeLeft.value = timePerQuestion.value
-
-  // Reset all players
-  players.value.forEach((player) => {
-    player.score = 0
-    player.streak = 0
-    player.rank = 1
-    player.status = 'thinking'
-  })
-
-  loadQuestion()
-  startTimer()
-}
 
 const exitGame = () => {
   // Restore body scroll
