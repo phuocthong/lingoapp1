@@ -10,7 +10,7 @@
               <q-icon name="extension" class="header-icon" />
               <div class="header-info">
                 <div class="header-title">Thách đấu với Bot</div>
-                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi mỗi 30-60 giây</div>
+                <div class="header-subtitle">Bot sẽ đưa ra câu hỏi mỗi 20 giây</div>
               </div>
               <div class="header-actions">
                 <q-btn v-if="!isBotActive" @click="startBot" color="primary" size="sm" no-caps>
@@ -273,7 +273,7 @@
                   </div>
                   <div class="user-stats">
                     <div class="user-score">{{ userRank.xp }}</div>
-                    <div class="user-total">/ {{ totalPlayers }} ngư��i chơi</div>
+                    <div class="user-total">/ {{ totalPlayers }} người chơi</div>
                   </div>
                 </div>
               </div>
