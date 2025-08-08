@@ -253,7 +253,7 @@ try {
       // Từ vựng khó
       {
         word: 'phenomenal',
-        meaning: 'phi thường, tuyệt vời',
+        meaning: 'phi thường, tuyệt v���i',
         pronunciation: '/fəˈnɒmɪnl/',
         example: 'His performance was phenomenal.',
         difficulty: 'hard',
@@ -941,7 +941,7 @@ try {
   console.log('Database seeded successfully!')
   console.log(`Created ${seedUsers.length} users`)
   console.log(`Created ${seedVocabulary.length} vocabulary words`)
-  console.log(`Created 12 questions`)
+  console.log(`Created 25 questions`)
   console.log(`Created ${seedTasks.length} tasks`)
   console.log(`Created 4 rewards`)
   console.log(`Created 6 friend relationships`)
