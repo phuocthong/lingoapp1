@@ -171,12 +171,20 @@ const loadFriends = async () => {
         xp: friend.xp || 0
       }))
     } else {
-      console.log('API response:', response)
-      // Fallback friends data if API fails
+      console.log('Invalid API response structure:', response)
+      createNotification('Không thể tải danh sách bạn bè từ server', 'warning')
       loadFallbackFriends()
     }
   } catch (error) {
     console.error('Failed to load friends:', error)
+    const isNetworkError = error.message.includes('fetch') || error.message.includes('network')
+
+    if (isNetworkError) {
+      createNotification('Không thể kết nối server. Sử dụng dữ liệu demo.', 'info')
+    } else {
+      createNotification('Lỗi tải danh sách bạn bè', 'negative')
+    }
+
     loadFallbackFriends()
   } finally {
     loading.value = false
