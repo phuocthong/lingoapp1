@@ -209,7 +209,7 @@
           <q-card-section class="leaderboard-content">
             <div v-if="loadingLeaderboard" class="loading-container">
               <q-spinner color="primary" size="2em" />
-              <p>Đang tải bảng xếp hạng...</p>
+              <p>Đang t��i bảng xếp hạng...</p>
             </div>
 
             <div v-else-if="leaderboardError" class="error-container">
@@ -520,25 +520,28 @@ const loadLeaderboard = async () => {
 }
 
 const loadFallbackLeaderboard = () => {
-  // Fallback data when API is not available
+  // Fallback data when API is not available (matches seeded data)
   const fallbackData = {
     week: [
-      { user: { name: 'Thu Trang', id: 1 }, stats: { totalXp: 156, accuracy: 92 } },
-      { user: { name: 'Minh Anh', id: 2 }, stats: { totalXp: 142, accuracy: 88 } },
-      { user: { name: 'Văn Nam', id: 3 }, stats: { totalXp: 138, accuracy: 85 } },
-      { user: { name: 'Thành Hòa', id: 4 }, stats: { totalXp: 125, accuracy: 90 } },
+      { user: { name: 'Thu Trang', id: 4, username: 'thutrang' }, stats: { totalXp: 330, accuracy: 94 } },
+      { user: { name: 'Admin User', id: 1, username: 'admin' }, stats: { totalXp: 220, accuracy: 88 } },
+      { user: { name: 'Minh Anh', id: 2, username: 'minhanh' }, stats: { totalXp: 240, accuracy: 86 } },
+      { user: { name: 'Văn Nam', id: 5, username: 'vannam' }, stats: { totalXp: 190, accuracy: 86 } },
+      { user: { name: 'Thành Hòa', id: 3, username: 'thanhhoa' }, stats: { totalXp: 180, accuracy: 90 } },
     ],
     month: [
-      { user: { name: 'Thành Hòa', id: 4 }, stats: { totalXp: 487, accuracy: 90 } },
-      { user: { name: 'Minh Anh', id: 2 }, stats: { totalXp: 445, accuracy: 88 } },
-      { user: { name: 'Văn Nam', id: 3 }, stats: { totalXp: 398, accuracy: 85 } },
-      { user: { name: 'Thu Trang', id: 1 }, stats: { totalXp: 367, accuracy: 92 } },
+      { user: { name: 'Thu Trang', id: 4, username: 'thutrang' }, stats: { totalXp: 3200, accuracy: 94 } },
+      { user: { name: 'Admin User', id: 1, username: 'admin' }, stats: { totalXp: 2500, accuracy: 88 } },
+      { user: { name: 'Văn Nam', id: 5, username: 'vannam' }, stats: { totalXp: 2100, accuracy: 86 } },
+      { user: { name: 'Minh Anh', id: 2, username: 'minhanh' }, stats: { totalXp: 1800, accuracy: 86 } },
+      { user: { name: 'Thành Hòa', id: 3, username: 'thanhhoa' }, stats: { totalXp: 1200, accuracy: 90 } },
     ],
     year: [
-      { user: { name: 'Minh Anh', id: 2 }, stats: { totalXp: 2456, accuracy: 88 } },
-      { user: { name: 'Thành Hòa', id: 4 }, stats: { totalXp: 2195, accuracy: 90 } },
-      { user: { name: 'Văn Nam', id: 3 }, stats: { totalXp: 1957, accuracy: 85 } },
-      { user: { name: 'Thu Trang', id: 1 }, stats: { totalXp: 1834, accuracy: 92 } },
+      { user: { name: 'Thu Trang', id: 4, username: 'thutrang' }, stats: { totalXp: 15600, accuracy: 94 } },
+      { user: { name: 'Admin User', id: 1, username: 'admin' }, stats: { totalXp: 12500, accuracy: 88 } },
+      { user: { name: 'Văn Nam', id: 5, username: 'vannam' }, stats: { totalXp: 10500, accuracy: 86 } },
+      { user: { name: 'Minh Anh', id: 2, username: 'minhanh' }, stats: { totalXp: 9000, accuracy: 86 } },
+      { user: { name: 'Thành Hòa', id: 3, username: 'thanhhoa' }, stats: { totalXp: 6000, accuracy: 90 } },
     ],
   }
 
