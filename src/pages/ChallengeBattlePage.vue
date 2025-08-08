@@ -1988,17 +1988,17 @@ const getPlayerGradient = (playerId) => {
 .stat-item {
   background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
   backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 25px;
+  border-radius: 18px;
+  padding: 18px 15px;
   text-align: center;
   border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
 
 .stat-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 .stat-item.special {
@@ -2007,16 +2007,16 @@ const getPlayerGradient = (playerId) => {
 }
 
 .stat-icon {
-  font-size: 32px;
-  margin-bottom: 12px;
+  font-size: 28px;
+  margin-bottom: 8px;
   display: block;
 }
 
 .stat-number {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 900;
   color: white;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
