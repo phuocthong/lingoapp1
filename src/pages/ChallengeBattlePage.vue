@@ -1906,7 +1906,7 @@ const getPlayerGradient = (playerId) => {
 }
 
 .champion-initial {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 900;
   color: white;
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
@@ -1916,10 +1916,10 @@ const getPlayerGradient = (playerId) => {
 
 .winner-pulse {
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
   border-radius: 50%;
   background: linear-gradient(45deg, #FFD700, #FFA500);
   opacity: 0.6;
@@ -1932,29 +1932,29 @@ const getPlayerGradient = (playerId) => {
 }
 
 .champion-name {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 800;
   color: white;
-  margin: 0 0 15px;
-  text-shadow: 0 3px 6px rgba(0,0,0,0.4);
+  margin: 0 0 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 .champion-score {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 6px;
+  margin-bottom: 15px;
 }
 
 .score-number {
-  font-size: 56px;
+  font-size: 42px;
   font-weight: 900;
   background: linear-gradient(135deg, #FFD700, #FFA500);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 4px 8px rgba(255,215,0,0.5);
+  text-shadow: 0 3px 6px rgba(255,215,0,0.5);
 }
 
 .score-label {
