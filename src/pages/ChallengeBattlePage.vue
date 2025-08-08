@@ -1863,7 +1863,7 @@ const getPlayerGradient = (playerId) => {
 .winner-podium {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .podium-base {
@@ -1871,9 +1871,9 @@ const getPlayerGradient = (playerId) => {
   background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
   backdrop-filter: blur(20px);
   border-radius: 25px;
-  padding: 40px;
+  padding: 25px 30px;
   border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 .champion-spotlight {
