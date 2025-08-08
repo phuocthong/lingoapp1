@@ -702,18 +702,21 @@ const showNotification = (message, type = 'info') => {
 
 .answer-display {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 16px 0;
 }
 
 .correct-answer {
   background: #dcfce7;
   border: 1px solid #bbf7d0;
-  border-radius: 8px;
-  padding: 12px 16px;
+  border-radius: 12px;
+  padding: 12px 20px;
   color: #166534;
   font-size: 14px;
+  font-weight: 500;
   position: relative;
+  box-shadow: 0 2px 4px rgba(34, 197, 94, 0.1);
+  text-align: center;
 }
 
 .answer-time {
