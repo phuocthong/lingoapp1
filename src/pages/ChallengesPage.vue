@@ -513,8 +513,8 @@ function confirmCreateRoom() {
   // Generate room code
   const roomCode = Math.random().toString(36).substring(2, 8).toUpperCase()
 
-  // Close modal
-  showCreateRoomModal.value = false
+  // Close form
+  showCreateForm.value = false
 
   // Navigate to waiting room with room data
   router.push({
