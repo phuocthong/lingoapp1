@@ -460,7 +460,8 @@ export class ChatService {
 
   // Get question history
   getHistory() {
-    return this.questionHistory
+    console.log('getHistory called, returning:', this.questionHistory.length, 'questions')
+    return Array.isArray(this.questionHistory) ? this.questionHistory : []
   }
 
   // Get current question
