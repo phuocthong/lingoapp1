@@ -142,6 +142,17 @@ const loadFriends = async () => {
     const user = auth.getCurrentUser()
     if (!user) {
       createNotification('Vui lòng đăng nhập để xem bạn bè', 'warning')
+      loadFallbackFriends()
+      return
+    }
+
+    // Check if running in cloud environment
+    const isCloudEnvironment =
+      window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+
+    if (isCloudEnvironment) {
+      console.log('Cloud environment detected, using fallback friends data')
+      loadFallbackFriends()
       return
     }
 
