@@ -780,7 +780,7 @@ const getMotivationIcon = () => {
 const getAccuracyRate = (player) => {
   if (!player || !totalQuestions.value) return 0
   // Giả sử mỗi câu đúng được 1 điểm, có thể có bonus
-  // Để tính chính xác, ta giới hạn tối đa là số câu hỏi
+  // Đ��� tính chính xác, ta giới hạn tối đa là số câu hỏi
   const correctAnswers = Math.min(player.score, totalQuestions.value)
   return Math.round((correctAnswers / totalQuestions.value) * 100)
 }
@@ -1829,18 +1829,19 @@ const getPlayerGradient = (playerId) => {
 }
 
 .victory-title-new {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 900;
   background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  line-height: 1.1;
 }
 
 .victory-subtitle-new {
-  font-size: 24px;
+  font-size: 18px;
   color: rgba(255,255,255,0.9);
   margin: 0;
   font-weight: 600;
