@@ -1980,9 +1980,9 @@ const getPlayerGradient = (playerId) => {
 /* Stats Showcase */
 .stats-showcase {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin-bottom: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
 .stat-item {
