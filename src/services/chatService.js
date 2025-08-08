@@ -280,11 +280,29 @@ export class ChatService {
     return answer.toLowerCase().trim() === correctAnswer?.toLowerCase().trim()
   }
 
-  // Format response time
+  // Format response time (legacy method)
   formatResponseTime(timestamp) {
     const now = new Date()
     const diff = Math.floor((now - timestamp) / 1000)
     return `${Math.max(1, 20 - diff)}.${Math.floor(Math.random() * 10)}s`
+  }
+
+  // Format response time from question start
+  formatResponseTimeFromStart(answerTime, questionStartTime) {
+    if (!questionStartTime) {
+      return this.formatResponseTime(answerTime)
+    }
+
+    const responseTimeMs = answerTime - questionStartTime
+    const responseTimeSec = Math.max(0.1, responseTimeMs / 1000)
+
+    if (responseTimeSec < 1) {
+      return `${(responseTimeSec * 1000).toFixed(0)}ms`
+    } else if (responseTimeSec < 10) {
+      return `${responseTimeSec.toFixed(1)}s`
+    } else {
+      return `${Math.floor(responseTimeSec)}s`
+    }
   }
 
   // Update user progress
