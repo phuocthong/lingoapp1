@@ -216,6 +216,7 @@ export class ChatService {
     }
 
     this.questionHistory.unshift(historyItem)
+    console.log('Added question to history:', historyItem.question, 'Total history:', this.questionHistory.length)
 
     // Keep only last 20 questions
     if (this.questionHistory.length > 20) {
