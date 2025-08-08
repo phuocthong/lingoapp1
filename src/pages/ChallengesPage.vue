@@ -459,13 +459,10 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-// Click outside to close dropdown
-const createBtnContainer = ref(null)
-
 const searchQuery = ref('')
 const showResultsModal = ref(false)
 const showCreateRoomModal = ref(false)
-const showChallengeTypeDropdown = ref(false)
+const showCreateForm = ref(false)
 
 // Room creation settings
 const roomSettings = ref({
