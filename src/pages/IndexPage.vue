@@ -723,17 +723,19 @@ const showNotification = (message, type = 'info') => {
 
 .user-answer-feedback {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   margin: 8px 0;
 }
 
 .feedback-content {
-  background: #e0e7ff;
-  border: 1px solid #c7d2fe;
-  border-radius: 8px;
+  background: #dbeafe;
+  border: 1px solid #93c5fd;
+  border-radius: 18px 18px 4px 18px;
   padding: 8px 12px;
   color: #1e40af;
   font-size: 13px;
+  max-width: 70%;
+  box-shadow: 0 1px 2px rgba(59, 130, 246, 0.1);
 }
 
 .feedback-time {
