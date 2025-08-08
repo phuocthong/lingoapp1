@@ -1,4 +1,5 @@
 <template>
+<template>
   <div class="challenge-battle-page">
     <!-- Floating Particles Background -->
     <div class="particles-background">
