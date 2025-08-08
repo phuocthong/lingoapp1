@@ -586,7 +586,14 @@ const roomStatusText = computed(() => {
   if (canStartGame.value) {
     return '🟢 Sẵn sàng'
   }
-  return '🟡 Chờ'
+  return '�� Chờ'
+})
+
+const roomDisplayName = computed(() => {
+  if (roomName.value && roomName.value !== 'Phòng chờ') {
+    return roomName.value
+  }
+  return `⚡ Thử thách nhanh ${totalQuestions.value} câu`
 })
 
 // Authentication check
