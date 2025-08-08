@@ -412,6 +412,28 @@ const challengeFriend = (friend) => {
   line-height: 180%;
 }
 
+.loading-container {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.loading-container p {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.no-friends {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.no-friends p {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .friends-container {
