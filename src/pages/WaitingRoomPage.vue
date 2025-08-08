@@ -728,6 +728,30 @@ const leaveRoom = () => {
   margin: 0 0 20px 0;
 }
 
+.room-code-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.room-code-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.room-code {
+  font-size: 16px;
+  color: #2563eb;
+  font-weight: 700;
+  background: #eff6ff;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid #bfdbfe;
+}
+
 .room-stats {
   display: flex;
   justify-content: center;
