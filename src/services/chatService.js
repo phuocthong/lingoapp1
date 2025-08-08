@@ -189,7 +189,7 @@ export class ChatService {
     // Trigger history update in UI
     setTimeout(() => {
       const event = new CustomEvent('historyUpdated', {
-        detail: { history: this.questionHistory }
+        detail: { history: this.questionHistory },
       })
       window.dispatchEvent(event)
     }, 500)
@@ -216,7 +216,12 @@ export class ChatService {
     }
 
     this.questionHistory.unshift(historyItem)
-    console.log('Added question to history:', historyItem.question, 'Total history:', this.questionHistory.length)
+    console.log(
+      'Added question to history:',
+      historyItem.question,
+      'Total history:',
+      this.questionHistory.length,
+    )
 
     // Keep only last 20 questions
     if (this.questionHistory.length > 20) {
@@ -247,7 +252,12 @@ export class ChatService {
       correctAnswers: participants.filter((p) => this.isAnswerCorrect(p.answer)).length,
     }
 
-    console.log('Updated history item with results:', currentItem.question, 'Participants:', participants.length)
+    console.log(
+      'Updated history item with results:',
+      currentItem.question,
+      'Participants:',
+      participants.length,
+    )
   }
 
   // Check if answer is correct
