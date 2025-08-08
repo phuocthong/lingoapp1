@@ -780,7 +780,7 @@ const getMotivationIcon = () => {
 const getAccuracyRate = (player) => {
   if (!player || !totalQuestions.value) return 0
   // Giả sử mỗi câu đúng được 1 điểm, có thể có bonus
-  // Đ��� tính chính xác, ta giới hạn tối đa là số câu hỏi
+  // Để tính chính xác, ta giới hạn tối đa là số câu hỏi
   const correctAnswers = Math.min(player.score, totalQuestions.value)
   return Math.round((correctAnswers / totalQuestions.value) * 100)
 }
@@ -792,7 +792,7 @@ const getMotivationTitle = () => {
   const accuracy = getAccuracyRate(currentPlayerData)
   if (accuracy >= 90) return 'Xuất sắc!'
   if (accuracy >= 70) return 'Rất tốt!'
-  if (accuracy >= 50) return 'Khá ổn!'
+  if (accuracy >= 50) return 'Kh�� ổn!'
   return 'Cố gắng hơn nữa!'
 }
 
@@ -1851,11 +1851,11 @@ const getPlayerGradient = (playerId) => {
 /* Modern Results Container */
 .modern-results-container {
   flex: 1;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  overflow-y: auto;
+  gap: 20px;
+  overflow: visible;
   min-height: 0;
 }
 
