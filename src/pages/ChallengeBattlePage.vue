@@ -265,23 +265,83 @@
           <!-- Decorative icons -->
           <div class="header-decorations">
             <svg class="decoration-left" width="65" height="64" viewBox="0 0 65 64" fill="none">
-              <path d="M15.6665 30.1333L5.5332 58.6667L34.0665 48.56" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M10.8672 8H10.8939" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M58.8672 21.3333H58.8939" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M40.2002 5.33333H40.2269" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M58.8672 53.3333H58.8939" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M15.6665 30.1333L5.5332 58.6667L34.0665 48.56"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10.8672 8H10.8939"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M58.8672 21.3333H58.8939"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M40.2002 5.33333H40.2269"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M58.8672 53.3333H58.8939"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
             <svg class="decoration-right" width="65" height="64" viewBox="0 0 65 64" fill="none">
-              <path d="M26.6984 41.3333L32.201 32L37.701 41.3333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M53.5332 8V18.6667" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M58.8669 13.3333H48.2002" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M10.8672 45.3333V50.6667" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M13.5335 48H8.2002" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M26.6984 41.3333L32.201 32L37.701 41.3333"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M53.5332 8V18.6667"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M58.8669 13.3333H48.2002"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10.8672 45.3333V50.6667"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M13.5335 48H8.2002"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </div>
-          
+
           <h1 class="figma-title">🏆 KẾT QUẢ THÁCH ĐẤU</h1>
-          
+
           <!-- Game info stats -->
           <div class="game-info">
             <span class="info-item">📝 {{ totalQuestions }} câu hỏi</span>
@@ -296,51 +356,95 @@
           <div class="personal-results-card">
             <div class="card-header">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
-                <circle cx="12" cy="12" r="6" stroke="white" stroke-width="2"/>
-                <circle cx="12" cy="12" r="2" stroke="white" stroke-width="2"/>
+                <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" />
+                <circle cx="12" cy="12" r="6" stroke="white" stroke-width="2" />
+                <circle cx="12" cy="12" r="2" stroke="white" stroke-width="2" />
               </svg>
               <h3>Kết quả của bạn</h3>
             </div>
-            
+
             <div class="champion-section">
               <svg class="crown-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <path d="M15.578 4.65464L20.682 12.1266C20.7759 12.2997 21.6002 12.7998 21.6002 12.7998L28.406 7.6333L25.6914 21.9866H7.90869L2.85536 8.32664L9.62069 12.52L15.578 4.65464Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M6.8291 28.3H25.4958" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M15.578 4.65464L20.682 12.1266C20.7759 12.2997 21.6002 12.7998 21.6002 12.7998L28.406 7.6333L25.6914 21.9866H7.90869L2.85536 8.32664L9.62069 12.52L15.578 4.65464Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6.8291 28.3H25.4958"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
               <div class="champion-badge">🥇 CHAMPION</div>
-              <div class="champion-score">{{ currentPlayer.score }} / {{ totalQuestions }} điểm</div>
+              <div class="champion-score">
+                {{ currentPlayer.score }} / {{ totalQuestions }} điểm
+              </div>
               <div class="champion-accuracy">{{ getAccuracyRate(currentPlayer) }} % chính xác</div>
             </div>
-            
-            <div class="achievement-message">
-              🎉 CHAMPION! Bạn đã giành chiến thắng!
-            </div>
-            
+
+            <div class="achievement-message">🎉 CHAMPION! Bạn đã giành chiến thắng!</div>
+
             <div class="personal-stats">
               <div class="stat-box high-score">
                 <div class="stat-number">{{ currentPlayer.score }}</div>
                 <div class="stat-label">Điểm cao nhất</div>
               </div>
               <div class="stat-box avg-score">
-                <div class="stat-number">{{ (currentPlayer.score / totalQuestions * 10).toFixed(1) }}</div>
+                <div class="stat-number">
+                  {{ ((currentPlayer.score / totalQuestions) * 10).toFixed(1) }}
+                </div>
                 <div class="stat-label">Điểm TB</div>
               </div>
             </div>
-            
+
             <div class="action-buttons">
               <button class="btn-primary" @click="playAgain">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M10.7627 14.9V9.56663H6.7627V14.9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M2.7627 7.56663L8.7627 2.23364L14.7627 7.56663V13.5666C14.7627 13.9203 14.6222 14.2594 14.3722 14.5094C14.1221 14.7595 13.783 14.9 13.4294 14.9H4.09603C3.74241 14.9 3.40327 14.7595 3.15322 14.5094C2.90317 14.2594 2.7627 13.9203 2.7627 13.5666V7.56663Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path
+                    d="M10.7627 14.9V9.56663H6.7627V14.9"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M2.7627 7.56663L8.7627 2.23364L14.7627 7.56663V13.5666C14.7627 13.9203 14.6222 14.2594 14.3722 14.5094C14.1221 14.7595 13.783 14.9 13.4294 14.9H4.09603C3.74241 14.9 3.40327 14.7595 3.15322 14.5094C2.90317 14.2594 2.7627 13.9203 2.7627 13.5666V7.56663Z"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
                 Quay về sảnh
               </button>
               <button class="btn-secondary" @click="exitGame">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M12.7627 6.23328C13.8673 6.23328 14.7627 5.33785 14.7627 4.23328C14.7627 3.12871 13.8673 2.23328 12.7627 2.23328C11.6581 2.23328 10.7627 3.12871 10.7627 4.23328C10.7627 5.33785 11.6581 6.23328 12.7627 6.23328Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M6.48926 9.90662L11.0426 12.5599" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M11.0359 5.23999L6.48926 7.89332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path
+                    d="M12.7627 6.23328C13.8673 6.23328 14.7627 5.33785 14.7627 4.23328C14.7627 3.12871 13.8673 2.23328 12.7627 2.23328C11.6581 2.23328 10.7627 3.12871 10.7627 4.23328C10.7627 5.33785 11.6581 6.23328 12.7627 6.23328Z"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M6.48926 9.90662L11.0426 12.5599"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M11.0359 5.23999L6.48926 7.89332"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
                 Chia sẻ kết quả
               </button>
@@ -350,13 +454,25 @@
           <!-- Center Column - Trophy Podium -->
           <div class="trophy-podium">
             <h2 class="podium-title">🏆 LINGO VINH DANH</h2>
-            
+
             <div class="podium-container">
               <!-- Winner on top -->
               <div class="podium-winner">
                 <svg class="trophy-large" width="70" height="70" viewBox="0 0 70 70" fill="none">
-                  <path d="M34.2227 9.82586L45.3877 26.1709C45.593 26.5493 47.3961 27.6434 47.3961 27.6434L62.2839 16.3417L56.3456 47.7396H17.446L6.39185 17.8584L21.191 27.0313L34.2227 9.82586Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M15.083 61.55H55.9163" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path
+                    d="M34.2227 9.82586L45.3877 26.1709C45.593 26.5493 47.3961 27.6434 47.3961 27.6434L62.2839 16.3417L56.3456 47.7396H17.446L6.39185 17.8584L21.191 27.0313L34.2227 9.82586Z"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M15.083 61.55H55.9163"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
                 <div class="winner-avatar" :style="{ background: getPlayerGradient(winner.id) }">
                   {{ winner.initials || winner.name.charAt(0) }}
@@ -371,11 +487,26 @@
               <!-- Second place -->
               <div class="podium-second" v-if="sortedPlayers[1]">
                 <svg class="trophy-medium" width="62" height="62" viewBox="0 0 62 62" fill="none">
-                  <path d="M18.9731 39.25L7.21893 18.945C6.71208 18.0689 11.7139 7.73335 11.7139 7.73335L50.9806 7.73335L55.1139 13.2617L43.7214 39.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="31.3473" cy="44.4167" r="12.9167" stroke="white" stroke-width="2"/>
-                  <path d="M31.3473 47V41.8334H30.0557" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path
+                    d="M18.9731 39.25L7.21893 18.945C6.71208 18.0689 11.7139 7.73335 11.7139 7.73335L50.9806 7.73335L55.1139 13.2617L43.7214 39.25"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <circle cx="31.3473" cy="44.4167" r="12.9167" stroke="white" stroke-width="2" />
+                  <path
+                    d="M31.3473 47V41.8334H30.0557"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
-                <div class="second-avatar" :style="{ background: getPlayerGradient(sortedPlayers[1].id) }">
+                <div
+                  class="second-avatar"
+                  :style="{ background: getPlayerGradient(sortedPlayers[1].id) }"
+                >
                   {{ sortedPlayers[1].initials || sortedPlayers[1].name.charAt(0) }}
                 </div>
                 <div class="second-name">{{ sortedPlayers[1].name }}</div>
@@ -391,34 +522,71 @@
           <div class="full-leaderboard">
             <div class="leaderboard-header">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M22.2373 7.30002L13.7373 15.8L8.7373 10.8L2.2373 17.3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M16.2373 7.30002H22.2373V13.3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path
+                  d="M22.2373 7.30002L13.7373 15.8L8.7373 10.8L2.2373 17.3"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16.2373 7.30002H22.2373V13.3"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
               <h3>Bảng xếp hạng đầy đủ</h3>
             </div>
-            
+
             <div class="leaderboard-list">
-              <div 
-                v-for="(player, index) in sortedPlayers" 
+              <div
+                v-for="(player, index) in sortedPlayers"
                 :key="player.id"
                 class="leaderboard-item"
                 :class="{ 'is-current-user': player.isCurrentUser }"
               >
                 <div class="player-rank">
-                  <svg v-if="index === 0" class="rank-crown" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <path d="M15.6532 4.45468L20.7572 11.9267L28.4812 7.43335L25.7665 21.7867H7.98389L2.93055 8.12668L9.69588 12.32L15.6532 4.45468Z" stroke="white" stroke-width="2"/>
-                    <path d="M6.9043 28.1H25.571" stroke="white" stroke-width="2"/>
+                  <svg
+                    v-if="index === 0"
+                    class="rank-crown"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <path
+                      d="M15.6532 4.45468L20.7572 11.9267L28.4812 7.43335L25.7665 21.7867H7.98389L2.93055 8.12668L9.69588 12.32L15.6532 4.45468Z"
+                      stroke="white"
+                      stroke-width="2"
+                    />
+                    <path d="M6.9043 28.1H25.571" stroke="white" stroke-width="2" />
                   </svg>
-                  <svg v-else-if="index === 1" class="rank-trophy" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <path d="M9.8509 20.7L3.78424 10.22L8.23757 3.3667H24.2376L28.6909 10.22L22.6242 20.7" stroke="white" stroke-width="2"/>
-                    <circle cx="16.237" cy="23.3667" r="6.6667" stroke="white" stroke-width="2"/>
+                  <svg
+                    v-else-if="index === 1"
+                    class="rank-trophy"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <path
+                      d="M9.8509 20.7L3.78424 10.22L8.23757 3.3667H24.2376L28.6909 10.22L22.6242 20.7"
+                      stroke="white"
+                      stroke-width="2"
+                    />
+                    <circle cx="16.237" cy="23.3667" r="6.6667" stroke="white" stroke-width="2" />
                   </svg>
                 </div>
-                
-                <div class="player-avatar-small" :style="{ background: getPlayerGradient(player.id) }">
+
+                <div
+                  class="player-avatar-small"
+                  :style="{ background: getPlayerGradient(player.id) }"
+                >
                   {{ player.initials || player.name.charAt(0) }}
                 </div>
-                
+
                 <div class="player-info">
                   <div class="player-name">
                     {{ player.name }}
@@ -426,7 +594,7 @@
                   </div>
                   <div class="player-accuracy">{{ getAccuracyRate(player) }} % chính xác</div>
                 </div>
-                
+
                 <div class="player-score">
                   <div class="score-value">{{ player.score }}</div>
                   <div class="score-unit">điểm</div>
@@ -584,7 +752,7 @@ onUnmounted(() => {
   // Restore body scroll
   document.body.style.overflow = ''
   document.documentElement.style.overflow = ''
-  
+
   if (gameInterval.value) {
     clearInterval(gameInterval.value)
   }
@@ -700,7 +868,7 @@ const endGame = () => {
     clearInterval(gameInterval.value)
   }
   gameOver.value = true
-  
+
   // Prevent body scroll when showing fullscreen results
   document.body.style.overflow = 'hidden'
   document.documentElement.style.overflow = 'hidden'
@@ -721,7 +889,7 @@ const playAgain = () => {
   // Restore body scroll
   document.body.style.overflow = ''
   document.documentElement.style.overflow = ''
-  
+
   // Reset game state
   currentQuestion.value = 1
   timeLeft.value = timePerQuestion.value
@@ -746,7 +914,7 @@ const exitGame = () => {
   // Restore body scroll
   document.body.style.overflow = ''
   document.documentElement.style.overflow = ''
-  
+
   // Clear any running timer
   if (gameInterval.value) {
     clearInterval(gameInterval.value)
@@ -827,33 +995,68 @@ const getPlayerGradient = (playerId) => {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(100vh) scale(0);
     opacity: 0;
   }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
   100% {
     transform: translateY(-10vh) scale(1);
     opacity: 0;
   }
 }
 
-.particle:nth-child(1) { left: 10%; }
-.particle:nth-child(2) { left: 20%; }
-.particle:nth-child(3) { left: 30%; }
-.particle:nth-child(4) { left: 40%; }
-.particle:nth-child(5) { left: 50%; }
-.particle:nth-child(6) { left: 60%; }
-.particle:nth-child(7) { left: 70%; }
-.particle:nth-child(8) { left: 80%; }
-.particle:nth-child(9) { left: 90%; }
-.particle:nth-child(10) { left: 5%; }
-.particle:nth-child(11) { left: 15%; }
-.particle:nth-child(12) { left: 25%; }
-.particle:nth-child(13) { left: 35%; }
-.particle:nth-child(14) { left: 65%; }
-.particle:nth-child(15) { left: 85%; }
+.particle:nth-child(1) {
+  left: 10%;
+}
+.particle:nth-child(2) {
+  left: 20%;
+}
+.particle:nth-child(3) {
+  left: 30%;
+}
+.particle:nth-child(4) {
+  left: 40%;
+}
+.particle:nth-child(5) {
+  left: 50%;
+}
+.particle:nth-child(6) {
+  left: 60%;
+}
+.particle:nth-child(7) {
+  left: 70%;
+}
+.particle:nth-child(8) {
+  left: 80%;
+}
+.particle:nth-child(9) {
+  left: 90%;
+}
+.particle:nth-child(10) {
+  left: 5%;
+}
+.particle:nth-child(11) {
+  left: 15%;
+}
+.particle:nth-child(12) {
+  left: 25%;
+}
+.particle:nth-child(13) {
+  left: 35%;
+}
+.particle:nth-child(14) {
+  left: 65%;
+}
+.particle:nth-child(15) {
+  left: 85%;
+}
 
 /* Game Header */
 .game-header {
@@ -958,13 +1161,24 @@ const getPlayerGradient = (playerId) => {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
-.timer-circle.warning { color: #f59e0b; }
-.timer-circle.critical { color: #ef4444; }
-.timer-circle.pulse { animation: pulse 1s infinite; }
+.timer-circle.warning {
+  color: #f59e0b;
+}
+.timer-circle.critical {
+  color: #ef4444;
+}
+.timer-circle.pulse {
+  animation: pulse 1s infinite;
+}
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .timer-svg {
@@ -973,7 +1187,9 @@ const getPlayerGradient = (playerId) => {
   transform: rotate(-90deg);
 }
 
-.timer-track { opacity: 0.2; }
+.timer-track {
+  opacity: 0.2;
+}
 
 .timer-progress {
   transition: stroke-dashoffset 1s linear;
@@ -1084,7 +1300,18 @@ const getPlayerGradient = (playerId) => {
   width: 12px;
   height: 12px;
   background: #e5e7eb;
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
 }
 
 .star.filled {
@@ -1203,7 +1430,8 @@ const getPlayerGradient = (playerId) => {
   color: white;
 }
 
-.answer-check, .answer-x {
+.answer-check,
+.answer-x {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1326,9 +1554,15 @@ const getPlayerGradient = (playerId) => {
   border-radius: 50%;
 }
 
-.status-dot.answered { background: #10b981; }
-.status-dot.thinking { background: #f59e0b; }
-.status-dot.waiting { background: #6b7280; }
+.status-dot.answered {
+  background: #10b981;
+}
+.status-dot.thinking {
+  background: #f59e0b;
+}
+.status-dot.waiting {
+  background: #6b7280;
+}
 
 .player-name {
   font-size: 16px;
@@ -1387,7 +1621,7 @@ const getPlayerGradient = (playerId) => {
 
 .figma-background {
   min-height: 100vh;
-  background: linear-gradient(90deg, #831843 0%, #581C87 33%, #312E81 100%);
+  background: linear-gradient(90deg, #831843 0%, #581c87 33%, #312e81 100%);
   position: relative;
   padding: 32px 24px;
   display: flex;
@@ -1402,7 +1636,12 @@ const getPlayerGradient = (playerId) => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, rgba(59, 130, 246, 0.20) 0%, rgba(0, 0, 0, 0.00) 33%, rgba(124, 58, 237, 0.20) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.2) 0%,
+    rgba(0, 0, 0, 0) 33%,
+    rgba(124, 58, 237, 0.2) 100%
+  );
   pointer-events: none;
 }
 
@@ -1444,7 +1683,7 @@ const getPlayerGradient = (playerId) => {
 }
 
 .info-item {
-  color: #D8B4FE;
+  color: #d8b4fe;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1462,9 +1701,9 @@ const getPlayerGradient = (playerId) => {
 
 /* Left Column - Personal Results */
 .personal-results-card {
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 24px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -1487,8 +1726,8 @@ const getPlayerGradient = (playerId) => {
 }
 
 .champion-section {
-  background: linear-gradient(90deg, rgba(59, 130, 246, 0.20) 0%, rgba(124, 58, 237, 0.20) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 24px 45px 26px;
   text-align: center;
@@ -1512,7 +1751,7 @@ const getPlayerGradient = (playerId) => {
 }
 
 .champion-accuracy {
-  color: #E9D5FF;
+  color: #e9d5ff;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1520,12 +1759,12 @@ const getPlayerGradient = (playerId) => {
 }
 
 .achievement-message {
-  background: rgba(59, 130, 246, 0.20);
-  border: 1px solid rgba(96, 165, 250, 0.30);
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(96, 165, 250, 0.3);
   border-radius: 8px;
   padding: 18px;
   text-align: center;
-  color: #BFDBFE;
+  color: #bfdbfe;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1546,13 +1785,13 @@ const getPlayerGradient = (playerId) => {
 }
 
 .stat-box.high-score {
-  background: rgba(234, 179, 8, 0.20);
-  border: 1px solid rgba(250, 204, 21, 0.30);
+  background: rgba(234, 179, 8, 0.2);
+  border: 1px solid rgba(250, 204, 21, 0.3);
 }
 
 .stat-box.avg-score {
-  background: rgba(34, 197, 94, 0.20);
-  border: 1px solid rgba(74, 222, 128, 0.30);
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(74, 222, 128, 0.3);
 }
 
 .stat-number {
@@ -1563,11 +1802,11 @@ const getPlayerGradient = (playerId) => {
 }
 
 .stat-box.high-score .stat-number {
-  color: #FEF08A;
+  color: #fef08a;
 }
 
 .stat-box.avg-score .stat-number {
-  color: #BBF7D0;
+  color: #bbf7d0;
 }
 
 .stat-label {
@@ -1577,11 +1816,11 @@ const getPlayerGradient = (playerId) => {
 }
 
 .stat-box.high-score .stat-label {
-  color: #FDE047;
+  color: #fde047;
 }
 
 .stat-box.avg-score .stat-label {
-  color: #86EFAC;
+  color: #86efac;
 }
 
 .action-buttons {
@@ -1591,7 +1830,7 @@ const getPlayerGradient = (playerId) => {
 }
 
 .btn-primary {
-  background: linear-gradient(90deg, #2563EB 0%, #6D28D9 100%);
+  background: linear-gradient(90deg, #2563eb 0%, #6d28d9 100%);
   color: white;
   border: none;
   border-radius: 6px;
@@ -1615,7 +1854,7 @@ const getPlayerGradient = (playerId) => {
 .btn-secondary {
   background: rgba(255, 255, 255, 0.05);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
   padding: 14px 55px;
   display: flex;
@@ -1636,9 +1875,9 @@ const getPlayerGradient = (playerId) => {
 
 /* Center Column - Trophy Podium */
 .trophy-podium {
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 24px;
   text-align: center;
@@ -1679,7 +1918,7 @@ const getPlayerGradient = (playerId) => {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  background: linear-gradient(90deg, #EAB308 0%, #FACC15 100%);
+  background: linear-gradient(90deg, #eab308 0%, #facc15 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1687,7 +1926,7 @@ const getPlayerGradient = (playerId) => {
   font-size: 20px;
   font-weight: 400;
   line-height: 28px;
-  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.50);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
 }
 
 .winner-name {
@@ -1705,8 +1944,8 @@ const getPlayerGradient = (playerId) => {
 }
 
 .winner-podium-base {
-  background: linear-gradient(90deg, #EAB308 0%, #FACC15 100%);
-  border: 1px solid rgba(255, 255, 255, 0.30);
+  background: linear-gradient(90deg, #eab308 0%, #facc15 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px 8px 0 0;
   padding: 55px 46px 50px 45px;
   width: 136px;
@@ -1736,7 +1975,7 @@ const getPlayerGradient = (playerId) => {
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: linear-gradient(90deg, #9CA3AF 0%, #D1D5DB 100%);
+  background: linear-gradient(90deg, #9ca3af 0%, #d1d5db 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1761,8 +2000,8 @@ const getPlayerGradient = (playerId) => {
 }
 
 .second-podium-base {
-  background: linear-gradient(90deg, #9CA3AF 0%, #D1D5DB 100%);
-  border: 1px solid rgba(255, 255, 255, 0.30);
+  background: linear-gradient(90deg, #9ca3af 0%, #d1d5db 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px 8px 0 0;
   padding: 36px 45px 34px 46px;
   width: 136px;
@@ -1770,9 +2009,9 @@ const getPlayerGradient = (playerId) => {
 
 /* Right Column - Full Leaderboard */
 .full-leaderboard {
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 24px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -1802,7 +2041,7 @@ const getPlayerGradient = (playerId) => {
 
 .leaderboard-item {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 13px;
   display: flex;
@@ -1811,9 +2050,9 @@ const getPlayerGradient = (playerId) => {
 }
 
 .leaderboard-item.is-current-user {
-  background: rgba(124, 58, 237, 0.20);
-  border: 1px solid #C084FC;
-  box-shadow: 0 0 0 0 #C084FC;
+  background: rgba(124, 58, 237, 0.2);
+  border: 1px solid #c084fc;
+  box-shadow: 0 0 0 0 #c084fc;
 }
 
 .player-rank {
@@ -1860,18 +2099,18 @@ const getPlayerGradient = (playerId) => {
 }
 
 .you-badge {
-  background: #6D28D9;
+  background: #6d28d9;
   color: white;
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
   padding: 2px 11px 4px 10px;
   border-radius: 9999px;
-  border: 1px solid rgba(0, 0, 0, 0.00);
+  border: 1px solid rgba(0, 0, 0, 0);
 }
 
 .player-accuracy {
-  color: #E9D5FF;
+  color: #e9d5ff;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -1889,15 +2128,15 @@ const getPlayerGradient = (playerId) => {
 }
 
 .leaderboard-item.is-current-user .score-value {
-  color: #FACC15;
+  color: #facc15;
 }
 
 .leaderboard-item:not(.is-current-user) .score-value {
-  color: #D1D5DB;
+  color: #d1d5db;
 }
 
 .score-unit {
-  color: #E9D5FF;
+  color: #e9d5ff;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -1911,11 +2150,11 @@ const getPlayerGradient = (playerId) => {
     max-width: 600px;
     margin: 0 auto;
   }
-  
+
   .figma-title {
     font-size: 36px;
   }
-  
+
   .game-info {
     flex-direction: column;
     gap: 8px;
@@ -1927,37 +2166,37 @@ const getPlayerGradient = (playerId) => {
     padding: 20px 16px;
     gap: 32px;
   }
-  
+
   .figma-title {
     font-size: 28px;
   }
-  
+
   .header-decorations {
     gap: 8px;
   }
-  
+
   .decoration-left,
   .decoration-right {
     width: 48px;
     height: 48px;
   }
-  
+
   .personal-stats {
     flex-direction: column;
     gap: 12px;
   }
-  
+
   .podium-container {
     flex-direction: column;
     gap: 16px;
   }
-  
+
   .winner-avatar {
     width: 70px;
     height: 70px;
     font-size: 16px;
   }
-  
+
   .second-avatar {
     width: 50px;
     height: 50px;
@@ -1970,21 +2209,21 @@ const getPlayerGradient = (playerId) => {
     padding: 16px 12px;
     gap: 24px;
   }
-  
+
   .figma-title {
     font-size: 24px;
   }
-  
+
   .personal-results-card,
   .trophy-podium,
   .full-leaderboard {
     padding: 16px;
   }
-  
+
   .action-buttons {
     gap: 12px;
   }
-  
+
   .btn-primary,
   .btn-secondary {
     padding: 12px 24px;
