@@ -189,6 +189,11 @@ export class ChatService {
     // Update question history with results
     this.updateHistoryWithResults()
 
+    // Add some mock participants for better demo experience
+    if (this.answersReceived.size === 0) {
+      this.addMockParticipants()
+    }
+
     // Trigger history update in UI
     setTimeout(() => {
       const event = new CustomEvent('historyUpdated', {
