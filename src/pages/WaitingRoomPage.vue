@@ -6,7 +6,7 @@
         <!-- Room Header -->
         <div class="room-header">
           <h1 class="room-title">🏠 Phòng chờ</h1>
-          <h2 class="room-subtitle">⚡ Thử thách nhanh {{ totalQuestions }} câu</h2>
+          <h2 class="room-subtitle">{{ roomDisplayName }}</h2>
 
           <div class="room-stats">
             <div class="room-stat">
