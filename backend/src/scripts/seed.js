@@ -167,7 +167,7 @@ try {
       vocabularyId: seedVocabulary[4].id,
       question: "What does 'difficult' mean?",
       correctAnswer: 'khó khăn',
-      wrongAnswers: JSON.stringify(['dễ dàng', 'đơn giản', 'nhanh chóng']),
+      wrongAnswers: JSON.stringify(['d��� dàng', 'đơn giản', 'nhanh chóng']),
       type: 'multiple_choice',
       difficulty: 'medium',
       createdAt: new Date(),
@@ -304,9 +304,9 @@ try {
   console.log(`Created 4 rewards`)
 
   console.log('\nTest accounts:')
-  console.log('Username: admin, Password: password123')
-  console.log('Username: minhanh, Password: password123')
-  console.log('Username: thanhhoa, Password: password123')
+  console.log('Username: admin, Password: 123456')
+  console.log('Username: minhanh, Password: 123456')
+  console.log('Username: thanhhoa, Password: 123456')
 } catch (error) {
   console.error('Seeding failed:', error)
 } finally {
