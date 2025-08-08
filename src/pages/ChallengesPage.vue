@@ -667,7 +667,7 @@ function watchRoom(roomId) {
 }
 
 .create-btn-container {
-  position: relative;
+  width: 100%;
 }
 
 .create-btn {
@@ -675,39 +675,16 @@ function watchRoom(roomId) {
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
 }
 
-.create-btn.dropdown-open {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.dropdown-arrow {
-  margin-left: auto;
-  transition: transform 0.2s ease;
-}
-
-.dropdown-arrow.rotated {
-  transform: rotate(180deg);
-}
-
-.challenge-type-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
+/* Create Room Form Styles */
+.create-room-form {
+  width: 100%;
   background: white;
   border: 1px solid #e2e8f0;
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  overflow: hidden;
-  animation: slideDown 0.2s ease-out;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  animation: slideDown 0.3s ease-out;
 }
 
 @keyframes slideDown {
@@ -721,100 +698,150 @@ function watchRoom(roomId) {
   }
 }
 
-.challenge-type-item {
-  padding: 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  border-bottom: 1px solid #f3f4f6;
-}
-
-.challenge-type-item:last-child {
-  border-bottom: none;
-}
-
-.challenge-type-item:hover {
-  background: #f8fafc;
-}
-
-.challenge-type-item.custom-type {
-  border-top: 1px solid #e2e8f0;
-  background: #fafafa;
-}
-
-.challenge-type-item.custom-type:hover {
-  background: #f0f0f0;
-}
-
-.challenge-type-item.custom-type .challenge-type-title {
-  color: #6d28d9;
-}
-
-.challenge-type-item.custom-type .challenge-type-icon {
-  filter: grayscale(0.3);
-}
-
-.challenge-type-icon {
-  font-size: 20px;
-  line-height: 1;
-  margin-top: 2px;
-}
-
-.challenge-type-info {
-  flex: 1;
+.form-header {
+  padding: 24px 24px 6px 24px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
-.challenge-type-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #111827;
-  line-height: 1.2;
-}
-
-.challenge-type-description {
-  font-size: 14px;
-  color: #6b7280;
-  line-height: 1.4;
-}
-
-.challenge-type-stats {
+.form-title {
   display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #020817;
+  line-height: 24px;
+  letter-spacing: -0.6px;
+}
+
+.plus-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748b;
+  line-height: 20px;
+}
+
+.form-content {
+  padding: 0 24px 25px 24px;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 20px;
+}
+
+.field-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.field-value {
+  font-size: 14px;
+  font-weight: 400;
+  color: #374151;
+  line-height: 20px;
+}
+
+.room-input {
+  height: 40px;
+}
+
+.room-input .q-field__control {
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.room-input .q-field__native {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #999;
+}
+
+.option-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.option-btn {
+  min-width: auto;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #020817;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: none;
+}
+
+.option-btn.selected {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.option-btn:hover {
+  border-color: #2563eb;
+}
+
+.time-btn {
+  padding: 8px 13px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
   margin-top: 8px;
 }
 
-.challenge-stat {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #4b5563;
-  font-size: 12px;
+.create-room-btn {
+  flex: 1;
+  height: 40px;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: none;
 }
 
-.challenge-stat .q-icon {
-  opacity: 0.7;
+.cancel-btn {
+  height: 40px;
+  padding: 10px 17px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #020817;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: none;
 }
 
-.mobile-backdrop {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .mobile-backdrop {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 999;
-  }
+.cancel-btn:hover {
+  border-color: #2563eb;
 }
 
 /* Rooms Section */
