@@ -656,7 +656,7 @@ try {
   console.log('Database seeded successfully!')
   console.log(`Created ${seedUsers.length} users`)
   console.log(`Created ${seedVocabulary.length} vocabulary words`)
-  console.log(`Created 6 questions`)
+  console.log(`Created 12 questions`)
   console.log(`Created ${seedTasks.length} tasks`)
   console.log(`Created 4 rewards`)
   console.log(`Created 6 friend relationships`)
