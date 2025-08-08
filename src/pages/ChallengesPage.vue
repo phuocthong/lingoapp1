@@ -89,7 +89,7 @@
             </div>
             <q-input
               v-model="searchQuery"
-              placeholder="Tìm ki���m phòng..."
+              placeholder="Tìm kiếm phòng..."
               outlined
               dense
               class="search-input"
@@ -116,7 +116,7 @@
                 </div>
 
                 <!-- Room Title -->
-                <h4 class="room-title">🏆 Cuộc thi từ vựng cơ bản</h4>
+                <h4 class="room-title">🏆 Cuộc thi t��� vựng cơ bản</h4>
 
                 <!-- Room Stats -->
                 <div class="room-stats">
@@ -495,6 +495,7 @@ function createRoomWithType(challengeType) {
 function confirmCreateRoom() {
   // Validate room name
   if (!roomSettings.value.name.trim()) {
+    // Show error or use default name
     console.error('Room name is required')
     return
   }
@@ -516,6 +517,7 @@ function confirmCreateRoom() {
       questions: roomSettings.value.questions,
       timePerQuestion: roomSettings.value.timePerQuestion,
       maxPlayers: roomSettings.value.maxPlayers,
+      isOwner: 'true'
     },
   })
 
