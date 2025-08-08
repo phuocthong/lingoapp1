@@ -1,38 +1,37 @@
-// Import Quasar's Notify or use fallback
-let Notify;
-try {
-  const quasar = await import('quasar');
-  Notify = quasar.Notify;
-} catch (e) {
-  // Fallback notification system
-  Notify = {
-    create: (options) => {
-      console.log(`${options.type?.toUpperCase() || 'INFO'}: ${options.message}`);
-      // Simple browser notification as fallback
-      if (typeof alert !== 'undefined') {
-        if (options.type === 'negative') {
-          alert('❌ ' + options.message);
-        } else if (options.type === 'positive') {
-          alert('✅ ' + options.message);
-        } else {
-          alert('ℹ️ ' + options.message);
-        }
-      }
-    }
-  };
+// Notification service that works with Quasar's Notify plugin
+const getNotify = () => {
+  // Try to get Quasar's Notify from global
+  if (typeof window !== 'undefined' && window.$q && window.$q.notify) {
+    return window.$q.notify
+  }
+
+  // Try to import from Quasar
+  try {
+    const { Notify } = require('quasar')
+    return Notify
+  } catch (e) {
+    // Fallback to custom notifications
+    return null
+  }
 }
 
 export class NotificationService {
   // Success notifications
   static success(message, options = {}) {
-    Notify.create({
-      type: 'positive',
-      message,
-      position: 'top',
-      timeout: 3000,
-      icon: 'check_circle',
-      ...options
-    })
+    const notify = getNotify()
+    if (notify && notify.create) {
+      notify.create({
+        type: 'positive',
+        message,
+        position: 'top',
+        timeout: 3000,
+        icon: 'check_circle',
+        ...options
+      })
+    } else {
+      // Fallback to custom notification
+      this.createCustomNotification(message, 'success', options.timeout || 3000)
+    }
   }
 
   // Error notifications
@@ -227,6 +226,19 @@ export class NotificationService {
     this.success('Đã kết nối lại mạng', {
       timeout: 2000,
       icon: 'wifi'
+    })
+  }
+
+  // Custom notification fallback
+  static createCustomNotification(message, type, duration = 3000) {
+    if (typeof window === 'undefined') return
+
+    // Import and use the custom notification utility
+    import('../utils/notifications.js').then(({ createNotification }) => {
+      createNotification(message, type, duration)
+    }).catch(() => {
+      // Final fallback to console
+      console.log(`${type.toUpperCase()}: ${message}`)
     })
   }
 }
