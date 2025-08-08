@@ -18,7 +18,7 @@
                 <q-icon name="add" class="create-icon" />
                 <h3 class="create-title">Tạo phòng mới</h3>
               </div>
-              <p class="create-description">Tạo phòng thử thách riêng với các cài đặt tùy chỉnh</p>
+              <p class="create-description">Tạo phòng thử thách riêng với các cài đặt t��y chỉnh</p>
               <!-- Room Creation Form -->
               <div v-if="!showCreateForm" class="create-btn-container">
                 <q-btn color="primary" class="create-btn" no-caps @click="showCreateForm = true">
@@ -477,46 +477,6 @@ const playerOptions = [4, 6, 8, 10]
 const questionOptions = [10, 15, 20, 25]
 const timeOptions = [20, 30, 45, 60]
 
-// Challenge types for dropdown
-const challengeTypes = [
-  {
-    id: 'vocabulary',
-    emoji: '🏆',
-    title: 'Cuộc thi từ vựng cơ bản',
-    description: 'Thử thách kiến thức từ vựng cơ bản',
-    maxPlayers: 6,
-    questions: 15,
-    timePerQuestion: 30
-  },
-  {
-    id: 'quick',
-    emoji: '⚡',
-    title: 'Thử thách nhanh 10 câu',
-    description: 'Trả lời nhanh các câu hỏi ngắn',
-    maxPlayers: 4,
-    questions: 10,
-    timePerQuestion: 20
-  },
-  {
-    id: 'professional',
-    emoji: '🎯',
-    title: 'Thách đấu chuyên nghiệp',
-    description: 'Dành cho người chơi có kinh nghiệm',
-    maxPlayers: 8,
-    questions: 25,
-    timePerQuestion: 45
-  },
-  {
-    id: 'custom',
-    emoji: '⚙️',
-    title: 'Tùy chỉnh',
-    description: 'Tạo phòng với cài đặt tùy chỉnh',
-    maxPlayers: 4,
-    questions: 10,
-    timePerQuestion: 20,
-    isCustom: true
-  }
-]
 
 const topPlayers = ref([
   { name: 'Minh Anh', time: '10:31' },
