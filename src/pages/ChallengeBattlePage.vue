@@ -664,29 +664,9 @@ const players = ref([
   },
 ])
 
-// Sample questions
-const questions = ref([
-  {
-    question: "What does 'intelligent' mean?",
-    word: 'intelligent',
-    answers: [
-      { text: 'stupid', correct: false },
-      { text: 'smart, clever', correct: true },
-      { text: 'lazy', correct: false },
-      { text: 'tired', correct: false },
-    ],
-  },
-  {
-    question: "What does 'courageous' mean?",
-    word: 'courageous',
-    answers: [
-      { text: 'afraid, scared', correct: false },
-      { text: 'hungry', correct: false },
-      { text: 'brave, fearless', correct: true },
-      { text: 'sleepy', correct: false },
-    ],
-  },
-])
+// Questions loaded from API
+const questions = ref([])
+const questionsLoaded = ref(false)
 
 // Computed properties
 const questionProgress = computed(() => (currentQuestion.value / totalQuestions.value) * 100)
