@@ -360,7 +360,7 @@
                 <circle cx="12" cy="12" r="6" stroke="white" stroke-width="2" />
                 <circle cx="12" cy="12" r="2" stroke="white" stroke-width="2" />
               </svg>
-              <h3>Kết quả c��a bạn</h3>
+              <h3>Kết quả của bạn</h3>
             </div>
 
             <div class="champion-section">
@@ -721,31 +721,10 @@ const loadQuestionsFromAPI = async () => {
     }
   } catch (error) {
     console.error('Error loading questions:', error)
-    // Fallback to basic questions if API fails
-    questions.value = [
-      {
-        question: "What does 'intelligent' mean?",
-        word: 'intelligent',
-        answers: [
-          { text: 'stupid', correct: false },
-          { text: 'smart, clever', correct: true },
-          { text: 'lazy', correct: false },
-          { text: 'tired', correct: false },
-        ],
-      },
-      {
-        question: "What does 'beautiful' mean?",
-        word: 'beautiful',
-        answers: [
-          { text: 'ugly', correct: false },
-          { text: 'pretty, attractive', correct: true },
-          { text: 'sad', correct: false },
-          { text: 'angry', correct: false },
-        ],
-      },
-    ]
+    // Fallback to expanded mock questions if API fails
+    questions.value = mockQuestions.slice(0, totalQuestions.value)
     questionsLoaded.value = true
-    console.log('Using fallback questions due to API error')
+    console.log(`Using ${questions.value.length} fallback questions due to API error`)
   }
 }
 
