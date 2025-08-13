@@ -38,7 +38,10 @@
         window.addEventListener(
           'error',
           function (e) {
-            if (e.message && e.message.includes('ResizeObserver loop completed')) {
+            if (e.message &&
+                (e.message.includes('ResizeObserver loop completed') ||
+                 e.message.includes('ResizeObserver loop limit') ||
+                 e.message.toLowerCase().includes('resizeobserver'))) {
               e.preventDefault()
               e.stopPropagation()
               return false
