@@ -34,7 +34,7 @@
             @click="register"
           >
             <q-icon name="auto_awesome" size="16px" class="q-mr-xs" />
-            Bắt Đ���u Miễn Phí
+            Bắt Đầu Miễn Phí
             <q-icon name="arrow_forward" size="16px" class="q-ml-xs" />
           </q-btn>
 
