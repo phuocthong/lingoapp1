@@ -446,14 +446,15 @@ export class ChatService {
         'correct'
 
       const answers = [
-        'đẹp',
-        'xấu',
-        'cao',
-        'thấp',
-        'thông minh',
-        'ngu ngốc',
-        'sáng tạo',
-        'phi thường',
+        'đẹp', 'xấu', 'cao', 'thấp', 'thông minh', 'ngu ngốc', 'sáng tạo', 'phi thường',
+        'con mèo', 'con chó', 'con chim', 'con cá', 'con ngựa', 'con voi',
+        'màu đỏ', 'màu xanh', 'màu vàng', 'màu đen', 'màu trắng',
+        'buổi sáng', 'buổi chiều', 'buổi tối', 'hôm qua', 'ngày mai',
+        'quả táo', 'bánh mì', 'cơm', 'thịt gà', 'rau củ',
+        'mẹ', 'bố', 'anh', 'chị', 'bà',
+        'chạy', 'đi bộ', 'bơi', 'nhảy', 'học tập',
+        'vui', 'buồn', 'tức giận', 'phấn khích', 'ngạc nhiên',
+        'giáo viên', 'bác sĩ', 'kỹ sư', 'lập trình viên'
       ]
       const answer = isCorrect ? correctAnswer : answers[Math.floor(Math.random() * answers.length)]
 
