@@ -703,8 +703,53 @@ const checkAuthentication = () => {
   return true
 }
 
+// Load questions from API
+const loadQuestionsFromAPI = async () => {
+  try {
+    const response = await apiService.getQuestions({
+      count: totalQuestions.value,
+      difficulty: route.query.difficulty || undefined,
+    })
+
+    if (response.success && response.questions) {
+      questions.value = response.questions
+      questionsLoaded.value = true
+      console.log(`Loaded ${questions.value.length} questions from API`)
+    } else {
+      throw new Error('Failed to load questions from API')
+    }
+  } catch (error) {
+    console.error('Error loading questions:', error)
+    // Fallback to basic questions if API fails
+    questions.value = [
+      {
+        question: "What does 'intelligent' mean?",
+        word: 'intelligent',
+        answers: [
+          { text: 'stupid', correct: false },
+          { text: 'smart, clever', correct: true },
+          { text: 'lazy', correct: false },
+          { text: 'tired', correct: false },
+        ],
+      },
+      {
+        question: "What does 'beautiful' mean?",
+        word: 'beautiful',
+        answers: [
+          { text: 'ugly', correct: false },
+          { text: 'pretty, attractive', correct: true },
+          { text: 'sad', correct: false },
+          { text: 'angry', correct: false },
+        ],
+      },
+    ]
+    questionsLoaded.value = true
+    console.log('Using fallback questions due to API error')
+  }
+}
+
 // Initialize game
-onMounted(() => {
+onMounted(async () => {
   // Check authentication first
   if (!checkAuthentication()) {
     return
@@ -718,11 +763,15 @@ onMounted(() => {
     timeLeft.value = timePerQuestion.value
   }
 
+  // Load questions from API first
+  await loadQuestionsFromAPI()
+
   // Debug log
   console.log('Game initialized:', {
     gameOver: gameOver.value,
     currentQuestion: currentQuestion.value,
     totalQuestions: totalQuestions.value,
+    questionsCount: questions.value.length,
   })
 
   startTimer()
