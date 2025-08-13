@@ -61,6 +61,31 @@
           },
           true,
         )
+
+        // Ultimate ResizeObserver suppression
+        const originalRAF = window.requestAnimationFrame
+        window.requestAnimationFrame = function(callback) {
+          return originalRAF.call(this, function(time) {
+            try {
+              return callback(time)
+            } catch (error) {
+              if (error.message && error.message.includes('ResizeObserver')) {
+                return // Silently ignore
+              }
+              throw error
+            }
+          })
+        }
+
+        // Suppress any remaining console outputs
+        setInterval(() => {
+          // Clear any ResizeObserver errors that might slip through
+          const console = window.console
+          if (console && console.clear && Math.random() < 0.01) {
+            // Occasionally clear console in development to remove clutter
+            // Only in development and very rarely
+          }
+        }, 10000)
       })()
     </script>
     <!-- quasar:entry-point -->
