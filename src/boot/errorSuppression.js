@@ -43,8 +43,12 @@
     'error',
     (event) => {
       if (event.message) {
-        // Suppress ResizeObserver errors
-        if (event.message.includes('ResizeObserver loop completed')) {
+        // Suppress ResizeObserver errors (all variations)
+        if (
+          event.message.includes('ResizeObserver loop completed') ||
+          event.message.includes('ResizeObserver loop limit') ||
+          event.message.includes('ResizeObserver')
+        ) {
           event.preventDefault()
           event.stopPropagation()
           return false
