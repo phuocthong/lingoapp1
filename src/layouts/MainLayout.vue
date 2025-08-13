@@ -7,8 +7,6 @@
         <div class="header-logo" @click="$router.push('/')">
           <q-icon name="extension" class="logo-icon" />
 
-          <div class="logo-text">Lingo</div>
-
           <div class="logo-text">Lingo challenge</div>
 
         </div>
@@ -36,7 +34,7 @@
             @click="register"
           >
             <q-icon name="auto_awesome" size="16px" class="q-mr-xs" />
-            Bắt Đầu Miễn Phí
+            Bắt Đ���u Miễn Phí
             <q-icon name="arrow_forward" size="16px" class="q-ml-xs" />
           </q-btn>
 
