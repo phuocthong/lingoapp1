@@ -890,24 +890,13 @@ const playAgain = () => {
   document.body.style.overflow = ''
   document.documentElement.style.overflow = ''
 
-  // Reset game state
-  currentQuestion.value = 1
-  timeLeft.value = timePerQuestion.value
-  answered.value = false
-  gameOver.value = false
-  selectedAnswer.value = null
-  correctAnswer.value = null
+  // Clear any running timer
+  if (gameInterval.value) {
+    clearInterval(gameInterval.value)
+  }
 
-  // Reset players
-  players.value.forEach((player) => {
-    player.score = 0
-    player.streak = 0
-    player.rank = 1
-    player.status = 'thinking'
-  })
-
-  loadQuestion()
-  startTimer()
+  // Navigate back to dashboard main page (sảnh chính)
+  router.push('/dashboard')
 }
 
 const exitGame = () => {
