@@ -9,8 +9,12 @@
     const errorMessage = args[0]
 
     if (typeof errorMessage === 'string') {
-      // Suppress ResizeObserver errors
-      if (errorMessage.includes('ResizeObserver loop completed with undelivered notifications')) {
+      // Suppress ResizeObserver errors (multiple variations)
+      if (
+        errorMessage.includes('ResizeObserver loop completed with undelivered notifications') ||
+        errorMessage.includes('ResizeObserver loop limit exceeded') ||
+        errorMessage.includes('ResizeObserver')
+      ) {
         return
       }
 
