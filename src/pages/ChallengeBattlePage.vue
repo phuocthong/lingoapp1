@@ -844,7 +844,9 @@ const selectAnswer = (answerIndex) => {
   updateRankings()
 
   // Show answer for 2 seconds, then next question
-  console.log(`Answer selected. Moving to next question in 2s. Current: ${currentQuestion.value}/${totalQuestions.value}`)
+  console.log(
+    `Answer selected. Moving to next question in 2s. Current: ${currentQuestion.value}/${totalQuestions.value}`,
+  )
   setTimeout(() => {
     nextQuestion()
   }, 2000)
@@ -869,7 +871,9 @@ const timeUp = () => {
 }
 
 const nextQuestion = () => {
-  console.log(`nextQuestion called. Current: ${currentQuestion.value}, Total: ${totalQuestions.value}`)
+  console.log(
+    `nextQuestion called. Current: ${currentQuestion.value}, Total: ${totalQuestions.value}`,
+  )
   if (currentQuestion.value >= totalQuestions.value) {
     console.log('Game ending...')
     endGame()
