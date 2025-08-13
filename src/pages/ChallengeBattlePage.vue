@@ -801,11 +801,33 @@ const startTimer = () => {
 }
 
 const loadQuestion = () => {
-  // Wait for questions to be loaded
+  // Wait for questions to be loaded, but don't retry infinitely
   if (!questionsLoaded.value || questions.value.length === 0) {
-    console.warn('Questions not loaded yet, retrying...')
-    setTimeout(loadQuestion, 500)
-    return
+    console.warn('Questions not loaded yet, using fallback...')
+    // Use fallback questions immediately if loading fails
+    questions.value = [
+      {
+        question: "What does 'beautiful' mean?",
+        word: 'beautiful',
+        answers: [
+          { text: 'ugly', correct: false },
+          { text: 'pretty, attractive', correct: true },
+          { text: 'sad', correct: false },
+          { text: 'angry', correct: false },
+        ],
+      },
+      {
+        question: "What does 'intelligent' mean?",
+        word: 'intelligent',
+        answers: [
+          { text: 'stupid', correct: false },
+          { text: 'smart, clever', correct: true },
+          { text: 'lazy', correct: false },
+          { text: 'tired', correct: false },
+        ],
+      },
+    ]
+    questionsLoaded.value = true
   }
 
   const questionIndex = (currentQuestion.value - 1) % questions.value.length
@@ -814,6 +836,8 @@ const loadQuestion = () => {
   correctAnswer.value = currentQuestionData.value.answers.findIndex((a) => a.correct)
   answered.value = false
   timeLeft.value = timePerQuestion.value
+
+  console.log(`Loading question ${currentQuestion.value}:`, currentQuestionData.value.question)
 
   // Reset player statuses
   players.value.forEach((player) => {
