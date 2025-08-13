@@ -398,7 +398,7 @@
                 <div class="stat-number">
                   {{ ((currentPlayer.score / totalQuestions) * 10).toFixed(1) }}
                 </div>
-                <div class="stat-label">Đi���m TB</div>
+                <div class="stat-label">Điểm TB</div>
               </div>
             </div>
 
@@ -909,10 +909,13 @@ const timeUp = () => {
 }
 
 const nextQuestion = () => {
+  console.log(`nextQuestion called. Current: ${currentQuestion.value}, Total: ${totalQuestions.value}`)
   if (currentQuestion.value >= totalQuestions.value) {
+    console.log('Game ending...')
     endGame()
   } else {
     currentQuestion.value++
+    console.log(`Moving to question ${currentQuestion.value}`)
     loadQuestion()
   }
 }
