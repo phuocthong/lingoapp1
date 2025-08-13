@@ -930,7 +930,7 @@ try {
       vocabularyId: seedVocabulary[4].id,
       question: "What does 'difficult' mean?",
       correctAnswer: 'khó khăn',
-      wrongAnswers: JSON.stringify(['dễ dàng', '��ơn giản', 'nhanh chóng']),
+      wrongAnswers: JSON.stringify(['dễ dàng', 'đơn giản', 'nhanh chóng']),
       type: 'multiple_choice',
       difficulty: 'medium',
       createdAt: new Date(),
@@ -1078,7 +1078,7 @@ try {
       vocabularyId: seedVocabulary[35].id, // intellectual
       question: "What does 'intellectual' mean?",
       correctAnswer: 'trí thức, thuộc về trí tuệ',
-      wrongAnswers: JSON.stringify(['thể chất', 'cảm xúc', 'bản năng']),
+      wrongAnswers: JSON.stringify(['thể ch���t', 'cảm xúc', 'bản năng']),
       type: 'multiple_choice',
       difficulty: 'hard',
       createdAt: new Date(),
@@ -1097,6 +1097,240 @@ try {
       question: "What does 'comprehensive' mean?",
       correctAnswer: 'toàn diện, bao quát',
       wrongAnswers: JSON.stringify(['hạn chế', 'một phần', 'thiếu sót']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho động vật
+    {
+      vocabularyId: seedVocabulary[41].id, // bird
+      question: "What does 'bird' mean?",
+      correctAnswer: 'con chim',
+      wrongAnswers: JSON.stringify(['con cá', 'con mèo', 'con chó']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[42].id, // fish
+      question: "What does 'fish' mean?",
+      correctAnswer: 'con cá',
+      wrongAnswers: JSON.stringify(['con chim', 'con thỏ', 'con ngựa']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[45].id, // elephant
+      question: "What does 'elephant' mean?",
+      correctAnswer: 'con voi',
+      wrongAnswers: JSON.stringify(['con thỏ', 'con mèo', 'con chim']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho màu sắc
+    {
+      vocabularyId: seedVocabulary[46].id, // red
+      question: "What does 'red' mean?",
+      correctAnswer: 'màu đỏ',
+      wrongAnswers: JSON.stringify(['màu xanh', 'màu vàng', 'màu đen']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[47].id, // blue
+      question: "What does 'blue' mean?",
+      correctAnswer: 'màu xanh dương',
+      wrongAnswers: JSON.stringify(['màu đỏ', 'màu vàng', 'màu xanh lá']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[48].id, // green
+      question: "What does 'green' mean?",
+      correctAnswer: 'màu xanh lá',
+      wrongAnswers: JSON.stringify(['màu xanh dương', 'màu đỏ', 'màu tím']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho thời gian
+    {
+      vocabularyId: seedVocabulary[52].id, // morning
+      question: "What does 'morning' mean?",
+      correctAnswer: 'buổi sáng',
+      wrongAnswers: JSON.stringify(['buổi chiều', 'buổi tối', 'buổi trưa']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[55].id, // yesterday
+      question: "What does 'yesterday' mean?",
+      correctAnswer: 'hôm qua',
+      wrongAnswers: JSON.stringify(['ngày mai', 'hôm nay', 'tuần tới']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[56].id, // tomorrow
+      question: "What does 'tomorrow' mean?",
+      correctAnswer: 'ngày mai',
+      wrongAnswers: JSON.stringify(['hôm qua', 'hôm nay', 'tuần trước']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho thức ăn
+    {
+      vocabularyId: seedVocabulary[57].id, // apple
+      question: "What does 'apple' mean?",
+      correctAnswer: 'quả táo',
+      wrongAnswers: JSON.stringify(['quả cam', 'quả chuối', 'quả nho']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[59].id, // rice
+      question: "What does 'rice' mean?",
+      correctAnswer: 'cơm, gạo',
+      wrongAnswers: JSON.stringify(['bánh mì', 'mì', 'khoai tây']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[61].id, // vegetable
+      question: "What does 'vegetable' mean?",
+      correctAnswer: 'rau củ',
+      wrongAnswers: JSON.stringify(['trái cây', 'thịt', 'cá']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho gia đình
+    {
+      vocabularyId: seedVocabulary[62].id, // mother
+      question: "What does 'mother' mean?",
+      correctAnswer: 'mẹ',
+      wrongAnswers: JSON.stringify(['bố', 'anh', 'chị']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[63].id, // father
+      question: "What does 'father' mean?",
+      correctAnswer: 'bố',
+      wrongAnswers: JSON.stringify(['mẹ', 'anh', 'em']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[66].id, // grandmother
+      question: "What does 'grandmother' mean?",
+      correctAnswer: 'bà',
+      wrongAnswers: JSON.stringify(['ông', 'mẹ', 'cô']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho hành động
+    {
+      vocabularyId: seedVocabulary[67].id, // run
+      question: "What does 'run' mean?",
+      correctAnswer: 'chạy',
+      wrongAnswers: JSON.stringify(['đi bộ', 'nhảy', 'bơi']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[69].id, // swim
+      question: "What does 'swim' mean?",
+      correctAnswer: 'bơi',
+      wrongAnswers: JSON.stringify(['chạy', 'nhảy', 'bay']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[72].id, // exercise
+      question: "What does 'exercise' mean?",
+      correctAnswer: 'tập thể dục',
+      wrongAnswers: JSON.stringify(['nghỉ ngơi', 'ăn uống', 'ngủ']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho cảm xúc
+    {
+      vocabularyId: seedVocabulary[73].id, // sad
+      question: "What does 'sad' mean?",
+      correctAnswer: 'buồn',
+      wrongAnswers: JSON.stringify(['vui', 'tức giận', 'ngạc nhiên']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[75].id, // excited
+      question: "What does 'excited' mean?",
+      correctAnswer: 'phấn khích',
+      wrongAnswers: JSON.stringify(['buồn chán', 'mệt mỏi', 'thờ ơ']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho công việc
+    {
+      vocabularyId: seedVocabulary[77].id, // teacher
+      question: "What does 'teacher' mean?",
+      correctAnswer: 'giáo viên',
+      wrongAnswers: JSON.stringify(['học sinh', 'bác sĩ', 'kỹ sư']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[78].id, // doctor
+      question: "What does 'doctor' mean?",
+      correctAnswer: 'bác sĩ',
+      wrongAnswers: JSON.stringify(['giáo viên', 'kỹ sư', 'nông dân']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[80].id, // programmer
+      question: "What does 'programmer' mean?",
+      correctAnswer: 'lập trình viên',
+      wrongAnswers: JSON.stringify(['kỹ sư', 'bác sĩ', 'giáo viên']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho tính từ nâng cao
+    {
+      vocabularyId: seedVocabulary[81].id, // ambitious
+      question: "What does 'ambitious' mean?",
+      correctAnswer: 'tham vọng',
+      wrongAnswers: JSON.stringify(['khiêm tốn', 'lười biếng', 'thụ động']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[83].id, // eloquent
+      question: "What does 'eloquent' mean?",
+      correctAnswer: 'hùng biện',
+      wrongAnswers: JSON.stringify(['lắp bắp', 'im lặng', 'nhút nhát']),
       type: 'multiple_choice',
       difficulty: 'hard',
       createdAt: new Date(),
