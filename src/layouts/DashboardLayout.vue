@@ -8,7 +8,6 @@
           <q-icon name="extension" class="logo-icon" />
 
           <div class="logo-text">Lingo Challenge</div>
-
         </div>
 
         <!-- Navigation -->
