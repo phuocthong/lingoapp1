@@ -398,7 +398,7 @@
                 <div class="stat-number">
                   {{ ((currentPlayer.score / totalQuestions) * 10).toFixed(1) }}
                 </div>
-                <div class="stat-label">Điểm TB</div>
+                <div class="stat-label">Đi���m TB</div>
               </div>
             </div>
 
@@ -884,6 +884,7 @@ const selectAnswer = (answerIndex) => {
   updateRankings()
 
   // Show answer for 2 seconds, then next question
+  console.log(`Answer selected. Moving to next question in 2s. Current: ${currentQuestion.value}/${totalQuestions.value}`)
   setTimeout(() => {
     nextQuestion()
   }, 2000)
