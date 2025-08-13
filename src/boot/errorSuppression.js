@@ -9,8 +9,12 @@
     const errorMessage = args[0]
 
     if (typeof errorMessage === 'string') {
-      // Suppress ResizeObserver errors
-      if (errorMessage.includes('ResizeObserver loop completed with undelivered notifications')) {
+      // Suppress ResizeObserver errors (multiple variations)
+      if (
+        errorMessage.includes('ResizeObserver loop completed with undelivered notifications') ||
+        errorMessage.includes('ResizeObserver loop limit exceeded') ||
+        errorMessage.includes('ResizeObserver')
+      ) {
         return
       }
 
@@ -39,8 +43,12 @@
     'error',
     (event) => {
       if (event.message) {
-        // Suppress ResizeObserver errors
-        if (event.message.includes('ResizeObserver loop completed')) {
+        // Suppress ResizeObserver errors (all variations)
+        if (
+          event.message.includes('ResizeObserver loop completed') ||
+          event.message.includes('ResizeObserver loop limit') ||
+          event.message.includes('ResizeObserver')
+        ) {
           event.preventDefault()
           event.stopPropagation()
           return false
@@ -104,9 +112,19 @@
       constructor(callback) {
         const wrappedCallback = (entries, observer) => {
           try {
-            callback(entries, observer)
+            // Use requestAnimationFrame to prevent loop issues
+            requestAnimationFrame(() => {
+              try {
+                callback(entries, observer)
+              } catch (error) {
+                if (!error.message || !error.message.includes('ResizeObserver')) {
+                  throw error
+                }
+                // Silently ignore ResizeObserver errors
+              }
+            })
           } catch (error) {
-            if (!error.message.includes('ResizeObserver loop completed')) {
+            if (!error.message || !error.message.includes('ResizeObserver')) {
               throw error
             }
             // Silently catch and ignore ResizeObserver loop errors

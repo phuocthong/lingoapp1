@@ -7,19 +7,16 @@
         <div class="header-logo" @click="$router.push('/')">
           <q-icon name="extension" class="logo-icon" />
 
-          <div class="logo-text">Lingo</div>
-
           <div class="logo-text">Lingo challenge</div>
-
         </div>
 
         <!-- Navigation -->
         <div class="header-nav" v-if="!$q.screen.lt.md">
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/')"> Trang chủ </q-btn>
-          <q-btn flat no-caps class="nav-btn"  @click="$router.push('/introduction')"> Giới thiệu </q-btn>
-          <q-btn flat no-caps class="nav-btn" >
-            Thử thách
+          <q-btn flat no-caps class="nav-btn" @click="$router.push('/home')"> Trang chủ </q-btn>
+          <q-btn flat no-caps class="nav-btn" @click="$router.push('/introduction')">
+            Giới thiệu
           </q-btn>
+          <q-btn flat no-caps class="nav-btn"> Thử thách </q-btn>
         </div>
 
         <q-space />

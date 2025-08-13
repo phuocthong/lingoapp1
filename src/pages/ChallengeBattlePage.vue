@@ -344,7 +344,7 @@
 
           <!-- Game info stats -->
           <div class="game-info">
-            <span class="info-item">📝 {{ totalQuestions }} câu hỏi</span>
+            <span class="info-item">📝 {{ totalQuestions }} câu h��i</span>
             <span class="info-item">👥 {{ players.length }} người chơi</span>
             <span class="info-item">⏱️ 30 s mỗi câu</span>
           </div>
@@ -420,7 +420,7 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-                Quay về sảnh
+                Về trang chính
               </button>
               <button class="btn-secondary" @click="exitGame">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -611,6 +611,8 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { apiService } from '../services/api.js'
+import { mockQuestions } from '../services/mockData.js'
 
 const router = useRouter()
 const route = useRoute()
@@ -663,29 +665,9 @@ const players = ref([
   },
 ])
 
-// Sample questions
-const questions = ref([
-  {
-    question: "What does 'intelligent' mean?",
-    word: 'intelligent',
-    answers: [
-      { text: 'stupid', correct: false },
-      { text: 'smart, clever', correct: true },
-      { text: 'lazy', correct: false },
-      { text: 'tired', correct: false },
-    ],
-  },
-  {
-    question: "What does 'courageous' mean?",
-    word: 'courageous',
-    answers: [
-      { text: 'afraid, scared', correct: false },
-      { text: 'hungry', correct: false },
-      { text: 'brave, fearless', correct: true },
-      { text: 'sleepy', correct: false },
-    ],
-  },
-])
+// Questions loaded from API
+const questions = ref([])
+const questionsLoaded = ref(false)
 
 // Computed properties
 const questionProgress = computed(() => (currentQuestion.value / totalQuestions.value) * 100)
@@ -722,8 +704,32 @@ const checkAuthentication = () => {
   return true
 }
 
+// Load questions from API
+const loadQuestionsFromAPI = async () => {
+  try {
+    const response = await apiService.getQuestions({
+      count: totalQuestions.value,
+      difficulty: route.query.difficulty || undefined,
+    })
+
+    if (response.success && response.questions) {
+      questions.value = response.questions
+      questionsLoaded.value = true
+      console.log(`Loaded ${questions.value.length} questions from API`)
+    } else {
+      throw new Error('Failed to load questions from API')
+    }
+  } catch (error) {
+    console.error('Error loading questions:', error)
+    // Fallback to expanded mock questions if API fails
+    questions.value = mockQuestions.slice(0, totalQuestions.value)
+    questionsLoaded.value = true
+    console.log(`Using ${questions.value.length} fallback questions due to API error`)
+  }
+}
+
 // Initialize game
-onMounted(() => {
+onMounted(async () => {
   // Check authentication first
   if (!checkAuthentication()) {
     return
@@ -737,11 +743,15 @@ onMounted(() => {
     timeLeft.value = timePerQuestion.value
   }
 
+  // Load questions from API first
+  await loadQuestionsFromAPI()
+
   // Debug log
   console.log('Game initialized:', {
     gameOver: gameOver.value,
     currentQuestion: currentQuestion.value,
     totalQuestions: totalQuestions.value,
+    questionsCount: questions.value.length,
   })
 
   startTimer()
@@ -771,12 +781,23 @@ const startTimer = () => {
 }
 
 const loadQuestion = () => {
+  // Wait for questions to be loaded, but don't retry infinitely
+  if (!questionsLoaded.value || questions.value.length === 0) {
+    console.warn('Questions not loaded yet, using expanded fallback...')
+    // Use expanded mock questions immediately if loading fails
+    questions.value = mockQuestions.slice(0, totalQuestions.value)
+    questionsLoaded.value = true
+    console.log(`Loaded ${questions.value.length} fallback questions`)
+  }
+
   const questionIndex = (currentQuestion.value - 1) % questions.value.length
   currentQuestionData.value = questions.value[questionIndex]
   selectedAnswer.value = null
   correctAnswer.value = currentQuestionData.value.answers.findIndex((a) => a.correct)
   answered.value = false
   timeLeft.value = timePerQuestion.value
+
+  console.log(`Loading question ${currentQuestion.value}:`, currentQuestionData.value.question)
 
   // Reset player statuses
   players.value.forEach((player) => {
@@ -823,6 +844,9 @@ const selectAnswer = (answerIndex) => {
   updateRankings()
 
   // Show answer for 2 seconds, then next question
+  console.log(
+    `Answer selected. Moving to next question in 2s. Current: ${currentQuestion.value}/${totalQuestions.value}`,
+  )
   setTimeout(() => {
     nextQuestion()
   }, 2000)
@@ -847,10 +871,15 @@ const timeUp = () => {
 }
 
 const nextQuestion = () => {
+  console.log(
+    `nextQuestion called. Current: ${currentQuestion.value}, Total: ${totalQuestions.value}`,
+  )
   if (currentQuestion.value >= totalQuestions.value) {
+    console.log('Game ending...')
     endGame()
   } else {
     currentQuestion.value++
+    console.log(`Moving to question ${currentQuestion.value}`)
     loadQuestion()
   }
 }
@@ -890,24 +919,13 @@ const playAgain = () => {
   document.body.style.overflow = ''
   document.documentElement.style.overflow = ''
 
-  // Reset game state
-  currentQuestion.value = 1
-  timeLeft.value = timePerQuestion.value
-  answered.value = false
-  gameOver.value = false
-  selectedAnswer.value = null
-  correctAnswer.value = null
+  // Clear any running timer
+  if (gameInterval.value) {
+    clearInterval(gameInterval.value)
+  }
 
-  // Reset players
-  players.value.forEach((player) => {
-    player.score = 0
-    player.streak = 0
-    player.rank = 1
-    player.status = 'thinking'
-  })
-
-  loadQuestion()
-  startTimer()
+  // Navigate back to dashboard main page (sảnh chính)
+  router.push('/dashboard')
 }
 
 const exitGame = () => {

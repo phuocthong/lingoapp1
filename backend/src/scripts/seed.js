@@ -253,7 +253,7 @@ try {
       // Từ vựng khó
       {
         word: 'phenomenal',
-        meaning: 'phi thường, tuyệt v���i',
+        meaning: 'phi thường, tuyệt vời',
         pronunciation: '/fəˈnɒmɪnl/',
         example: 'His performance was phenomenal.',
         difficulty: 'hard',
@@ -409,7 +409,7 @@ try {
       // Thêm từ vựng Hard mới
       {
         word: 'magnificent',
-        meaning: 'tráng lệ, hùng vĩ',
+        meaning: 'tráng l��, hùng vĩ',
         pronunciation: '/mæɡˈnɪfɪsənt/',
         example: 'The view was absolutely magnificent.',
         difficulty: 'hard',
@@ -477,6 +477,411 @@ try {
         example: 'Can you demonstrate how it works?',
         difficulty: 'hard',
         category: 'academic',
+        createdAt: new Date(),
+      },
+      // Động vật (Animals) - Easy
+      {
+        word: 'bird',
+        meaning: 'con chim',
+        pronunciation: '/bɜːrd/',
+        example: 'The bird is singing in the tree.',
+        difficulty: 'easy',
+        category: 'animals',
+        createdAt: new Date(),
+      },
+      {
+        word: 'fish',
+        meaning: 'con cá',
+        pronunciation: '/fɪʃ/',
+        example: 'Fish swim in the water.',
+        difficulty: 'easy',
+        category: 'animals',
+        createdAt: new Date(),
+      },
+      {
+        word: 'horse',
+        meaning: 'con ngựa',
+        pronunciation: '/hɔːrs/',
+        example: 'The horse runs very fast.',
+        difficulty: 'easy',
+        category: 'animals',
+        createdAt: new Date(),
+      },
+      {
+        word: 'rabbit',
+        meaning: 'con thỏ',
+        pronunciation: '/ˈræbɪt/',
+        example: 'The rabbit has long ears.',
+        difficulty: 'easy',
+        category: 'animals',
+        createdAt: new Date(),
+      },
+      {
+        word: 'elephant',
+        meaning: 'con voi',
+        pronunciation: '/ˈelɪfənt/',
+        example: 'The elephant is very big.',
+        difficulty: 'easy',
+        category: 'animals',
+        createdAt: new Date(),
+      },
+      // Màu sắc (Colors) - Easy
+      {
+        word: 'red',
+        meaning: 'màu đỏ',
+        pronunciation: '/red/',
+        example: 'The apple is red.',
+        difficulty: 'easy',
+        category: 'colors',
+        createdAt: new Date(),
+      },
+      {
+        word: 'blue',
+        meaning: 'màu xanh dương',
+        pronunciation: '/bluː/',
+        example: 'The sky is blue.',
+        difficulty: 'easy',
+        category: 'colors',
+        createdAt: new Date(),
+      },
+      {
+        word: 'green',
+        meaning: 'màu xanh lá',
+        pronunciation: '/ɡriːn/',
+        example: 'The grass is green.',
+        difficulty: 'easy',
+        category: 'colors',
+        createdAt: new Date(),
+      },
+      {
+        word: 'yellow',
+        meaning: 'màu vàng',
+        pronunciation: '/ˈjeloʊ/',
+        example: 'The sun is yellow.',
+        difficulty: 'easy',
+        category: 'colors',
+        createdAt: new Date(),
+      },
+      {
+        word: 'black',
+        meaning: 'màu đen',
+        pronunciation: '/blæk/',
+        example: 'The night is black.',
+        difficulty: 'easy',
+        category: 'colors',
+        createdAt: new Date(),
+      },
+      {
+        word: 'white',
+        meaning: 'màu trắng',
+        pronunciation: '/waɪt/',
+        example: 'Snow is white.',
+        difficulty: 'easy',
+        category: 'colors',
+        createdAt: new Date(),
+      },
+      // Thời gian (Time) - Easy/Medium
+      {
+        word: 'morning',
+        meaning: 'buổi sáng',
+        pronunciation: '/ˈmɔːrnɪŋ/',
+        example: 'I wake up in the morning.',
+        difficulty: 'easy',
+        category: 'time',
+        createdAt: new Date(),
+      },
+      {
+        word: 'afternoon',
+        meaning: 'buổi chiều',
+        pronunciation: '/ˌæftərˈnuːn/',
+        example: 'We have lunch in the afternoon.',
+        difficulty: 'easy',
+        category: 'time',
+        createdAt: new Date(),
+      },
+      {
+        word: 'evening',
+        meaning: 'buổi tối',
+        pronunciation: '/ˈiːvnɪŋ/',
+        example: 'I watch TV in the evening.',
+        difficulty: 'easy',
+        category: 'time',
+        createdAt: new Date(),
+      },
+      {
+        word: 'yesterday',
+        meaning: 'hôm qua',
+        pronunciation: '/ˈjestərdeɪ/',
+        example: 'I went shopping yesterday.',
+        difficulty: 'medium',
+        category: 'time',
+        createdAt: new Date(),
+      },
+      {
+        word: 'tomorrow',
+        meaning: 'ngày mai',
+        pronunciation: '/təˈmɔːroʊ/',
+        example: 'Tomorrow is my birthday.',
+        difficulty: 'medium',
+        category: 'time',
+        createdAt: new Date(),
+      },
+      // Thức ăn (Food) - Easy/Medium
+      {
+        word: 'apple',
+        meaning: 'quả táo',
+        pronunciation: '/ˈæpəl/',
+        example: 'An apple a day keeps the doctor away.',
+        difficulty: 'easy',
+        category: 'food',
+        createdAt: new Date(),
+      },
+      {
+        word: 'bread',
+        meaning: 'bánh mì',
+        pronunciation: '/bred/',
+        example: 'I eat bread for breakfast.',
+        difficulty: 'easy',
+        category: 'food',
+        createdAt: new Date(),
+      },
+      {
+        word: 'rice',
+        meaning: 'cơm, gạo',
+        pronunciation: '/raɪs/',
+        example: 'Rice is a staple food in Asia.',
+        difficulty: 'easy',
+        category: 'food',
+        createdAt: new Date(),
+      },
+      {
+        word: 'chicken',
+        meaning: 'thịt gà',
+        pronunciation: '/ˈtʃɪkɪn/',
+        example: 'Chicken is delicious.',
+        difficulty: 'easy',
+        category: 'food',
+        createdAt: new Date(),
+      },
+      {
+        word: 'vegetable',
+        meaning: 'rau củ',
+        pronunciation: '/ˈvedʒtəbəl/',
+        example: 'Vegetables are good for health.',
+        difficulty: 'medium',
+        category: 'food',
+        createdAt: new Date(),
+      },
+      // Gia đình (Family) - Easy/Medium
+      {
+        word: 'mother',
+        meaning: 'mẹ',
+        pronunciation: '/ˈmʌðər/',
+        example: 'My mother is very kind.',
+        difficulty: 'easy',
+        category: 'family',
+        createdAt: new Date(),
+      },
+      {
+        word: 'father',
+        meaning: 'bố',
+        pronunciation: '/ˈfɑːðər/',
+        example: 'My father works in an office.',
+        difficulty: 'easy',
+        category: 'family',
+        createdAt: new Date(),
+      },
+      {
+        word: 'brother',
+        meaning: 'anh/em trai',
+        pronunciation: '/ˈbrʌðər/',
+        example: 'My brother is older than me.',
+        difficulty: 'easy',
+        category: 'family',
+        createdAt: new Date(),
+      },
+      {
+        word: 'sister',
+        meaning: 'chị/em gái',
+        pronunciation: '/ˈsɪstər/',
+        example: 'My sister loves to read books.',
+        difficulty: 'easy',
+        category: 'family',
+        createdAt: new Date(),
+      },
+      {
+        word: 'grandmother',
+        meaning: 'bà',
+        pronunciation: '/ˈɡrænmʌðər/',
+        example: 'My grandmother tells great stories.',
+        difficulty: 'medium',
+        category: 'family',
+        createdAt: new Date(),
+      },
+      // Hành động (Actions) - Easy/Medium
+      {
+        word: 'run',
+        meaning: 'chạy',
+        pronunciation: '/rʌn/',
+        example: 'I run every morning.',
+        difficulty: 'easy',
+        category: 'actions',
+        createdAt: new Date(),
+      },
+      {
+        word: 'walk',
+        meaning: 'đi bộ',
+        pronunciation: '/wɔːk/',
+        example: "Let's walk to the park.",
+        difficulty: 'easy',
+        category: 'actions',
+        createdAt: new Date(),
+      },
+      {
+        word: 'swim',
+        meaning: 'bơi',
+        pronunciation: '/swɪm/',
+        example: 'Fish can swim underwater.',
+        difficulty: 'easy',
+        category: 'actions',
+        createdAt: new Date(),
+      },
+      {
+        word: 'dance',
+        meaning: 'nhảy, khiêu vũ',
+        pronunciation: '/dæns/',
+        example: 'She loves to dance.',
+        difficulty: 'easy',
+        category: 'actions',
+        createdAt: new Date(),
+      },
+      {
+        word: 'study',
+        meaning: 'học tập',
+        pronunciation: '/ˈstʌdi/',
+        example: 'I study English every day.',
+        difficulty: 'easy',
+        category: 'actions',
+        createdAt: new Date(),
+      },
+      {
+        word: 'exercise',
+        meaning: 'tập thể dục',
+        pronunciation: '/ˈeksərsaɪz/',
+        example: 'Exercise is good for your health.',
+        difficulty: 'medium',
+        category: 'actions',
+        createdAt: new Date(),
+      },
+      // Cảm xúc (Emotions) - Easy/Medium
+      {
+        word: 'sad',
+        meaning: 'buồn',
+        pronunciation: '/sæd/',
+        example: 'I feel sad when it rains.',
+        difficulty: 'easy',
+        category: 'emotions',
+        createdAt: new Date(),
+      },
+      {
+        word: 'angry',
+        meaning: 'tức giận',
+        pronunciation: '/ˈæŋɡri/',
+        example: "Don't make me angry.",
+        difficulty: 'easy',
+        category: 'emotions',
+        createdAt: new Date(),
+      },
+      {
+        word: 'excited',
+        meaning: 'phấn khích',
+        pronunciation: '/ɪkˈsaɪtɪd/',
+        example: "I'm excited about the trip.",
+        difficulty: 'medium',
+        category: 'emotions',
+        createdAt: new Date(),
+      },
+      {
+        word: 'surprised',
+        meaning: 'ngạc nhiên',
+        pronunciation: '/sərˈpraɪzd/',
+        example: 'I was surprised by the news.',
+        difficulty: 'medium',
+        category: 'emotions',
+        createdAt: new Date(),
+      },
+      // Công việc (Jobs) - Medium
+      {
+        word: 'teacher',
+        meaning: 'giáo viên',
+        pronunciation: '/ˈtiːtʃər/',
+        example: 'My teacher is very helpful.',
+        difficulty: 'easy',
+        category: 'jobs',
+        createdAt: new Date(),
+      },
+      {
+        word: 'doctor',
+        meaning: 'bác sĩ',
+        pronunciation: '/ˈdɑːktər/',
+        example: 'The doctor helps sick people.',
+        difficulty: 'easy',
+        category: 'jobs',
+        createdAt: new Date(),
+      },
+      {
+        word: 'engineer',
+        meaning: 'kỹ sư',
+        pronunciation: '/ˌendʒɪˈnɪr/',
+        example: 'The engineer builds bridges.',
+        difficulty: 'medium',
+        category: 'jobs',
+        createdAt: new Date(),
+      },
+      {
+        word: 'programmer',
+        meaning: 'lập trình viên',
+        pronunciation: '/ˈproʊɡræmər/',
+        example: 'The programmer writes code.',
+        difficulty: 'medium',
+        category: 'jobs',
+        createdAt: new Date(),
+      },
+      // Tính từ nâng cao (Advanced Adjectives) - Hard
+      {
+        word: 'ambitious',
+        meaning: 'tham vọng',
+        pronunciation: '/æmˈbɪʃəs/',
+        example: 'She is very ambitious in her career.',
+        difficulty: 'hard',
+        category: 'personality',
+        createdAt: new Date(),
+      },
+      {
+        word: 'persistent',
+        meaning: 'kiên trì',
+        pronunciation: '/pərˈsɪstənt/',
+        example: 'Be persistent in pursuing your goals.',
+        difficulty: 'hard',
+        category: 'personality',
+        createdAt: new Date(),
+      },
+      {
+        word: 'eloquent',
+        meaning: 'hùng biện',
+        pronunciation: '/ˈeləkwənt/',
+        example: 'The speaker was very eloquent.',
+        difficulty: 'hard',
+        category: 'communication',
+        createdAt: new Date(),
+      },
+      {
+        word: 'versatile',
+        meaning: 'đa năng, linh ho��t',
+        pronunciation: '/ˈvɜːrsətaɪl/',
+        example: 'He is a versatile athlete.',
+        difficulty: 'hard',
+        category: 'personality',
         createdAt: new Date(),
       },
     ])
@@ -692,6 +1097,240 @@ try {
       question: "What does 'comprehensive' mean?",
       correctAnswer: 'toàn diện, bao quát',
       wrongAnswers: JSON.stringify(['hạn chế', 'một phần', 'thiếu sót']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho động vật
+    {
+      vocabularyId: seedVocabulary[41].id, // bird
+      question: "What does 'bird' mean?",
+      correctAnswer: 'con chim',
+      wrongAnswers: JSON.stringify(['con cá', 'con mèo', 'con chó']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[42].id, // fish
+      question: "What does 'fish' mean?",
+      correctAnswer: 'con cá',
+      wrongAnswers: JSON.stringify(['con chim', 'con thỏ', 'con ngựa']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[45].id, // elephant
+      question: "What does 'elephant' mean?",
+      correctAnswer: 'con voi',
+      wrongAnswers: JSON.stringify(['con thỏ', 'con mèo', 'con chim']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho màu sắc
+    {
+      vocabularyId: seedVocabulary[46].id, // red
+      question: "What does 'red' mean?",
+      correctAnswer: 'màu đỏ',
+      wrongAnswers: JSON.stringify(['màu xanh', 'màu vàng', 'màu đen']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[47].id, // blue
+      question: "What does 'blue' mean?",
+      correctAnswer: 'màu xanh dương',
+      wrongAnswers: JSON.stringify(['màu đỏ', 'màu vàng', 'màu xanh lá']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[48].id, // green
+      question: "What does 'green' mean?",
+      correctAnswer: 'màu xanh lá',
+      wrongAnswers: JSON.stringify(['màu xanh dương', 'màu đỏ', 'màu tím']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho thời gian
+    {
+      vocabularyId: seedVocabulary[52].id, // morning
+      question: "What does 'morning' mean?",
+      correctAnswer: 'buổi sáng',
+      wrongAnswers: JSON.stringify(['buổi chiều', 'buổi tối', 'buổi trưa']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[55].id, // yesterday
+      question: "What does 'yesterday' mean?",
+      correctAnswer: 'hôm qua',
+      wrongAnswers: JSON.stringify(['ngày mai', 'hôm nay', 'tuần tới']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[56].id, // tomorrow
+      question: "What does 'tomorrow' mean?",
+      correctAnswer: 'ngày mai',
+      wrongAnswers: JSON.stringify(['hôm qua', 'hôm nay', 'tuần trước']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho thức ăn
+    {
+      vocabularyId: seedVocabulary[57].id, // apple
+      question: "What does 'apple' mean?",
+      correctAnswer: 'quả táo',
+      wrongAnswers: JSON.stringify(['quả cam', 'quả chuối', 'quả nho']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[59].id, // rice
+      question: "What does 'rice' mean?",
+      correctAnswer: 'cơm, gạo',
+      wrongAnswers: JSON.stringify(['bánh mì', 'mì', 'khoai tây']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[61].id, // vegetable
+      question: "What does 'vegetable' mean?",
+      correctAnswer: 'rau củ',
+      wrongAnswers: JSON.stringify(['trái cây', 'thịt', 'cá']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho gia đình
+    {
+      vocabularyId: seedVocabulary[62].id, // mother
+      question: "What does 'mother' mean?",
+      correctAnswer: 'mẹ',
+      wrongAnswers: JSON.stringify(['bố', 'anh', 'chị']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[63].id, // father
+      question: "What does 'father' mean?",
+      correctAnswer: 'bố',
+      wrongAnswers: JSON.stringify(['mẹ', 'anh', 'em']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[66].id, // grandmother
+      question: "What does 'grandmother' mean?",
+      correctAnswer: 'bà',
+      wrongAnswers: JSON.stringify(['ông', 'mẹ', 'cô']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho hành động
+    {
+      vocabularyId: seedVocabulary[67].id, // run
+      question: "What does 'run' mean?",
+      correctAnswer: 'chạy',
+      wrongAnswers: JSON.stringify(['đi bộ', 'nhảy', 'bơi']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[69].id, // swim
+      question: "What does 'swim' mean?",
+      correctAnswer: 'bơi',
+      wrongAnswers: JSON.stringify(['chạy', 'nhảy', 'bay']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[72].id, // exercise
+      question: "What does 'exercise' mean?",
+      correctAnswer: 'tập thể dục',
+      wrongAnswers: JSON.stringify(['nghỉ ngơi', 'ăn uống', 'ngủ']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho cảm xúc
+    {
+      vocabularyId: seedVocabulary[73].id, // sad
+      question: "What does 'sad' mean?",
+      correctAnswer: 'buồn',
+      wrongAnswers: JSON.stringify(['vui', 'tức giận', 'ngạc nhiên']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[75].id, // excited
+      question: "What does 'excited' mean?",
+      correctAnswer: 'phấn khích',
+      wrongAnswers: JSON.stringify(['buồn chán', 'mệt mỏi', 'thờ ơ']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho công việc
+    {
+      vocabularyId: seedVocabulary[77].id, // teacher
+      question: "What does 'teacher' mean?",
+      correctAnswer: 'giáo viên',
+      wrongAnswers: JSON.stringify(['học sinh', 'bác sĩ', 'kỹ sư']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[78].id, // doctor
+      question: "What does 'doctor' mean?",
+      correctAnswer: 'bác sĩ',
+      wrongAnswers: JSON.stringify(['giáo viên', 'kỹ sư', 'nông dân']),
+      type: 'multiple_choice',
+      difficulty: 'easy',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[80].id, // programmer
+      question: "What does 'programmer' mean?",
+      correctAnswer: 'lập trình viên',
+      wrongAnswers: JSON.stringify(['kỹ sư', 'bác sĩ', 'giáo viên']),
+      type: 'multiple_choice',
+      difficulty: 'medium',
+      createdAt: new Date(),
+    },
+    // Câu hỏi cho tính từ nâng cao
+    {
+      vocabularyId: seedVocabulary[81].id, // ambitious
+      question: "What does 'ambitious' mean?",
+      correctAnswer: 'tham vọng',
+      wrongAnswers: JSON.stringify(['khiêm tốn', 'lười biếng', 'thụ động']),
+      type: 'multiple_choice',
+      difficulty: 'hard',
+      createdAt: new Date(),
+    },
+    {
+      vocabularyId: seedVocabulary[83].id, // eloquent
+      question: "What does 'eloquent' mean?",
+      correctAnswer: 'hùng biện',
+      wrongAnswers: JSON.stringify(['lắp bắp', 'im lặng', 'nhút nhát']),
       type: 'multiple_choice',
       difficulty: 'hard',
       createdAt: new Date(),
@@ -941,11 +1580,23 @@ try {
   console.log('Database seeded successfully!')
   console.log(`Created ${seedUsers.length} users`)
   console.log(`Created ${seedVocabulary.length} vocabulary words`)
-  console.log(`Created 25 questions`)
+  console.log(`Created 50+ questions across multiple categories`)
   console.log(`Created ${seedTasks.length} tasks`)
   console.log(`Created 4 rewards`)
   console.log(`Created 6 friend relationships`)
   console.log(`Created user progress entries`)
+
+  console.log('\nVocabulary categories:')
+  console.log('- Basic words (easy): 20+')
+  console.log('- Animals: 5 words')
+  console.log('- Colors: 6 words')
+  console.log('- Time: 5 words')
+  console.log('- Food: 5 words')
+  console.log('- Family: 5 words')
+  console.log('- Actions: 6 words')
+  console.log('- Emotions: 4 words')
+  console.log('- Jobs: 4 words')
+  console.log('- Advanced/Academic: 25+ words')
 
   console.log('\nTest accounts:')
   console.log('Username: admin, Password: 123456')
