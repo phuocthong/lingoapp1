@@ -143,6 +143,13 @@ iframe,
   will-change: auto;
 }
 
+// Chat messages specific optimizations
+.chat-messages {
+  contain: layout style;
+  overflow-anchor: auto;
+  scroll-behavior: smooth;
+}
+
 // Custom scrollbar for chat
 .chat-messages::-webkit-scrollbar {
   width: 4px;
@@ -159,6 +166,14 @@ iframe,
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
+}
+
+// Prevent resize issues in message elements
+.message-wrapper,
+.message-row,
+.message-bubble {
+  contain: layout;
+  will-change: auto;
 }
 
 // Responsive design
