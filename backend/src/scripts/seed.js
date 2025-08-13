@@ -409,7 +409,7 @@ try {
       // Thêm từ vựng Hard mới
       {
         word: 'magnificent',
-        meaning: 'tráng lệ, hùng vĩ',
+        meaning: 'tráng l��, hùng vĩ',
         pronunciation: '/mæɡˈnɪfɪsənt/',
         example: 'The view was absolutely magnificent.',
         difficulty: 'hard',
@@ -877,7 +877,7 @@ try {
       },
       {
         word: 'versatile',
-        meaning: 'đa năng, linh hoạt',
+        meaning: 'đa năng, linh ho��t',
         pronunciation: '/ˈvɜːrsətaɪl/',
         example: 'He is a versatile athlete.',
         difficulty: 'hard',
@@ -1078,7 +1078,7 @@ try {
       vocabularyId: seedVocabulary[35].id, // intellectual
       question: "What does 'intellectual' mean?",
       correctAnswer: 'trí thức, thuộc về trí tuệ',
-      wrongAnswers: JSON.stringify(['thể ch���t', 'cảm xúc', 'bản năng']),
+      wrongAnswers: JSON.stringify(['thể chất', 'cảm xúc', 'bản năng']),
       type: 'multiple_choice',
       difficulty: 'hard',
       createdAt: new Date(),
@@ -1580,11 +1580,23 @@ try {
   console.log('Database seeded successfully!')
   console.log(`Created ${seedUsers.length} users`)
   console.log(`Created ${seedVocabulary.length} vocabulary words`)
-  console.log(`Created 25 questions`)
+  console.log(`Created 50+ questions across multiple categories`)
   console.log(`Created ${seedTasks.length} tasks`)
   console.log(`Created 4 rewards`)
   console.log(`Created 6 friend relationships`)
   console.log(`Created user progress entries`)
+
+  console.log('\nVocabulary categories:')
+  console.log('- Basic words (easy): 20+')
+  console.log('- Animals: 5 words')
+  console.log('- Colors: 6 words')
+  console.log('- Time: 5 words')
+  console.log('- Food: 5 words')
+  console.log('- Family: 5 words')
+  console.log('- Actions: 6 words')
+  console.log('- Emotions: 4 words')
+  console.log('- Jobs: 4 words')
+  console.log('- Advanced/Academic: 25+ words')
 
   console.log('\nTest accounts:')
   console.log('Username: admin, Password: 123456')
