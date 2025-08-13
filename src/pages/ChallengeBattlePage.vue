@@ -360,7 +360,7 @@
                 <circle cx="12" cy="12" r="6" stroke="white" stroke-width="2" />
                 <circle cx="12" cy="12" r="2" stroke="white" stroke-width="2" />
               </svg>
-              <h3>Kết quả của bạn</h3>
+              <h3>Kết quả c��a bạn</h3>
             </div>
 
             <div class="champion-section">
@@ -612,6 +612,7 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { apiService } from '../services/api.js'
+import { mockQuestions } from '../services/mockData.js'
 
 const router = useRouter()
 const route = useRoute()
