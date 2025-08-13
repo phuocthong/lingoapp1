@@ -112,9 +112,19 @@
       constructor(callback) {
         const wrappedCallback = (entries, observer) => {
           try {
-            callback(entries, observer)
+            // Use requestAnimationFrame to prevent loop issues
+            requestAnimationFrame(() => {
+              try {
+                callback(entries, observer)
+              } catch (error) {
+                if (!error.message || !error.message.includes('ResizeObserver')) {
+                  throw error
+                }
+                // Silently ignore ResizeObserver errors
+              }
+            })
           } catch (error) {
-            if (!error.message.includes('ResizeObserver loop completed')) {
+            if (!error.message || !error.message.includes('ResizeObserver')) {
               throw error
             }
             // Silently catch and ignore ResizeObserver loop errors
