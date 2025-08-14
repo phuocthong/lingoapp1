@@ -69,10 +69,10 @@ export function debounceResizeObserver(callback, delay = 16) {
 // Create a stable ResizeObserver that won't cause loops
 export function createStableResizeObserver(callback) {
   let isObserving = false
-  
+
   const debouncedCallback = debounceResizeObserver((entries) => {
     if (!isObserving) return
-    
+
     try {
       callback(entries)
     } catch (error) {
@@ -95,6 +95,34 @@ export function createStableResizeObserver(callback) {
     disconnect() {
       isObserving = false
       observer.disconnect()
+    }
+  }
+}
+
+// Suppress API connection errors in development
+export function suppressApiErrors() {
+  // Global error handler for API fetch errors
+  const originalFetch = window.fetch
+  window.fetch = async function (...args) {
+    try {
+      const response = await originalFetch.apply(this, args)
+      return response
+    } catch (error) {
+      // Silently handle connection errors in development
+      if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+        const url = args[0]
+        // Only log API connection issues, not other fetch errors
+        if (url && url.includes('localhost:3000')) {
+          console.log('🔄 Backend API connection failed - using demo mode')
+        }
+        // Return a mock response for demo purposes
+        return {
+          ok: false,
+          status: 503,
+          json: async () => ({ success: false, message: 'Backend unavailable - demo mode' }),
+        }
+      }
+      throw error
     }
   }
 }
