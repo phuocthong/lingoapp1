@@ -164,7 +164,12 @@ watch(route, () => {
 // Set initial active tab on mount
 onMounted(() => {
   updateActiveTabFromRoute()
+  loadUserData()
 })
+
+// Watch for storage changes to update user data
+window.addEventListener('storage', loadUserData)
+window.addEventListener('userDataUpdate', loadUserData)
 </script>
 
 <style scoped>
