@@ -85,13 +85,30 @@ const showInstructions = ref(false)
 let connectionCheckInterval = null
 
 const checkConnection = async () => {
+  // Skip connection check in cloud/hosted environments
+  const isCloudEnvironment =
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1'
+
+  if (isCloudEnvironment) {
+    isConnected.value = false
+    return
+  }
+
   try {
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 2000)
+
     const response = await fetch('http://localhost:3000', {
       method: 'GET',
       mode: 'cors',
+      signal: controller.signal
     })
+
+    clearTimeout(timeoutId)
     isConnected.value = response.ok
   } catch (error) {
+    // Silently handle connection errors - this is expected when backend isn't running
     isConnected.value = false
   }
 }
