@@ -32,12 +32,12 @@
             <span class="stat-text"># 45</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number correct">523</span>
-            <span class="stat-label">đúng</span>
+            <span class="stat-number correct">{{ userProfile.xp || 0 }}</span>
+            <span class="stat-label">XP</span>
           </div>
           <div class="stat-item">
             <span class="stat-label">Streak:</span>
-            <span class="stat-number streak">7</span>
+            <span class="stat-number streak">{{ userProfile.streak || 0 }}</span>
           </div>
         </div>
 
