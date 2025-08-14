@@ -108,12 +108,16 @@ export function suppressApiErrors() {
       const response = await originalFetch.apply(this, args)
       return response
     } catch (error) {
-      // Silently handle connection errors in development
-      if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+      // Silently handle connection errors
+      if (error.message.includes('Failed to fetch') ||
+          error.message.includes('NetworkError') ||
+          error.name === 'AbortError' ||
+          error.message.includes('net::ERR_')) {
         const url = args[0]
-        // Only log API connection issues, not other fetch errors
-        if (url && url.includes('localhost:3000')) {
+        // Only log localhost API connection issues once
+        if (url && url.includes('localhost:3000') && !window._localhostWarningShown) {
           console.log('🔄 Backend API connection failed - using demo mode')
+          window._localhostWarningShown = true
         }
         // Return a mock response for demo purposes
         return {
@@ -124,5 +128,19 @@ export function suppressApiErrors() {
       }
       throw error
     }
+  }
+
+  // Also suppress console errors for fetch failures
+  const originalConsoleError = console.error
+  console.error = function (...args) {
+    const errorMessage = args[0]
+    if (typeof errorMessage === 'string') {
+      // Suppress fetch-related errors to localhost
+      if (errorMessage.includes('Failed to fetch') &&
+          JSON.stringify(args).includes('localhost:3000')) {
+        return
+      }
+    }
+    originalConsoleError.apply(console, args)
   }
 }
