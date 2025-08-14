@@ -71,7 +71,9 @@
             <div class="input-container">
               <q-input
                 v-model="messageInput"
-                :placeholder="isBotActive ? 'Nhập câu trả lời của bạn...' : 'Nhấn Bắt đầu để trả lời câu hỏi'"
+                :placeholder="
+                  isBotActive ? 'Nhập câu trả lời của bạn...' : 'Nhấn Bắt đầu để trả lời câu hỏi'
+                "
                 outlined
                 class="message-input"
                 @keyup.enter="sendMessage"
@@ -560,7 +562,7 @@ const loadLeaderboard = async () => {
     // Add minimum loading time for better UX
     const [response] = await Promise.all([
       apiService.getLeaderboard(activeTab.value, 10),
-      new Promise(resolve => setTimeout(resolve, 300)) // Minimum 300ms loading
+      new Promise((resolve) => setTimeout(resolve, 300)), // Minimum 300ms loading
     ])
 
     if (response.success) {

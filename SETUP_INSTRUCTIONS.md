@@ -118,6 +118,7 @@ Nếu backend không chạy, ứng dụng sẽ tự động chuyển sang demo m
 ## **🔄 Workflow khi pull code các lần sau:**
 
 ### **Khi có pull request mới từ team:**
+
 ```bash
 # 1. Pull latest changes
 git pull origin main
@@ -137,6 +138,7 @@ bun run dev
 ```
 
 ### **Khi gặp conflict hoặc lỗi:**
+
 ```bash
 # Reset về state sạch
 git stash  # Lưu changes local
@@ -152,6 +154,7 @@ cd ..
 ```
 
 ### **Quick commands cho developer:**
+
 ```bash
 # Pull và run ngay
 git pull && bun install && bun run dev
