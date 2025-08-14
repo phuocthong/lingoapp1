@@ -33,11 +33,16 @@ const userRoutes = new Elysia({ prefix: '/user' })
     '/profile',
     async ({ body, user, set }) => {
       try {
-        const { name, avatar, phone, bio, isPublicProfile, allowFriendRequests, username, email } = body
+        const { name, avatar, phone, bio, isPublicProfile, allowFriendRequests, username, email } =
+          body
 
         // Check if username/email are being changed and if they're unique
         if (username && username !== user.username) {
-          const existingUser = await db.select().from(users).where(eq(users.username, username)).get()
+          const existingUser = await db
+            .select()
+            .from(users)
+            .where(eq(users.username, username))
+            .get()
           if (existingUser && existingUser.id !== user.id) {
             set.status = 400
             return { success: false, message: 'Username already exists' }
