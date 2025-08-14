@@ -48,10 +48,11 @@
             size="32px"
             @click="$router.push('/dashboard/profile')"
           >
-            ND
+            <img v-if="userProfile.avatar" :src="userProfile.avatar" alt="User Avatar" />
+            <span v-else>{{ userProfile.name.charAt(0).toUpperCase() }}</span>
           </q-avatar>
           <span class="user-name clickable" @click="$router.push('/dashboard/profile')">
-            Người dùng
+            {{ userProfile.name }}
           </span>
 
           <q-btn flat dense class="logout-btn" @click="logout">
