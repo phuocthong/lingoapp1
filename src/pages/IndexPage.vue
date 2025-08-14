@@ -138,7 +138,7 @@
                   flat
                   no-caps
                   size="sm"
-                  label="▼ Top 5 nhanh nhất"
+                  label="▼ Top 5 nhanh nh��t"
                 >
                   <div class="top-answerers-dropdown">
                     <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
@@ -545,6 +545,8 @@ const loadLeaderboard = async () => {
     const response = await apiService.getLeaderboard(activeTab.value, 10)
 
     if (response.success) {
+      // API success - not in demo mode
+      isDemoMode.value = false
       currentLeaderboard.value = response.leaderboard || []
 
       // Calculate user rank
