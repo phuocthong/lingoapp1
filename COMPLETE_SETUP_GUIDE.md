@@ -5,12 +5,14 @@
 ### Option 1: Automated Setup (Recommended)
 
 **For Linux/Mac:**
+
 ```bash
 chmod +x start-full-app.sh
 ./start-full-app.sh
 ```
 
 **For Windows:**
+
 ```cmd
 start-full-app.bat
 ```
@@ -18,6 +20,7 @@ start-full-app.bat
 ### Option 2: Manual Setup
 
 #### Prerequisites
+
 - Node.js (v18 or higher)
 - Bun runtime for backend
 - Git
@@ -25,12 +28,14 @@ start-full-app.bat
 #### Step 1: Install Dependencies
 
 **Backend:**
+
 ```bash
 cd backend
 bun install
 ```
 
 **Frontend:**
+
 ```bash
 cd ..
 npm install
@@ -50,12 +55,14 @@ bun run db:seed
 #### Step 3: Start Servers
 
 **Terminal 1 - Backend:**
+
 ```bash
 cd backend
 bun run dev
 ```
 
 **Terminal 2 - Frontend:**
+
 ```bash
 npm run dev
 ```
@@ -65,6 +72,7 @@ npm run dev
 ### Environment Variables
 
 Create `.env` file in the backend directory if needed:
+
 ```env
 PORT=3000
 JWT_SECRET=your-secret-key
@@ -74,12 +82,14 @@ NODE_ENV=development
 ### API Configuration
 
 The app automatically detects the environment:
+
 - **Local development**: Uses `http://localhost:3000/api`
 - **Production/Cloud**: Falls back to demo mode
 
 ## 📊 Database Schema
 
 The app includes:
+
 - **Users**: Profile data, authentication, XP, levels
 - **Vocabulary**: 84+ words across 10 categories
 - **Questions**: 50+ questions with multiple difficulty levels
@@ -92,6 +102,7 @@ The app includes:
 ### Available at http://localhost:3000/swagger
 
 Key endpoints:
+
 - `GET /api/friends` - Get user's friends list
 - `GET /api/progress/leaderboard` - Get leaderboard data
 - `GET /api/vocabulary/questions` - Get questions
@@ -103,11 +114,13 @@ Key endpoints:
 ### Backend Not Loading
 
 1. **Check if backend is running:**
+
    ```bash
    curl http://localhost:3000
    ```
 
 2. **Check database exists:**
+
    ```bash
    cd backend
    ls -la | grep db.sqlite
@@ -132,6 +145,7 @@ This happens when backend API is not accessible. Check:
 ### Common Issues
 
 **Port already in use:**
+
 ```bash
 # Kill process on port 3000
 lsof -ti:3000 | xargs kill -9
@@ -141,6 +155,7 @@ lsof -ti:9000 | xargs kill -9
 ```
 
 **Database errors:**
+
 ```bash
 cd backend
 # Reset database
@@ -150,6 +165,7 @@ bun run db:seed
 ```
 
 **Dependencies issues:**
+
 ```bash
 # Clean install frontend
 rm -rf node_modules package-lock.json
@@ -164,6 +180,7 @@ bun install
 ## 📱 Features
 
 ### ✅ Working Features
+
 - User authentication and profiles
 - Friends system with real database
 - Vocabulary learning with 84+ words
@@ -174,6 +191,7 @@ bun install
 - XP system and user ranking
 
 ### 🔄 Data Flow
+
 1. Frontend makes API calls to `http://localhost:3000/api`
 2. Backend processes requests using ElysiaJS
 3. Database operations via Drizzle ORM

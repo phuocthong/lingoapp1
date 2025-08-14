@@ -3,15 +3,17 @@
 export function suppressResizeObserverErrors() {
   // Override console.error to filter out ResizeObserver errors
   const originalConsoleError = console.error
-  console.error = function(...args) {
+  console.error = function (...args) {
     const errorMessage = args[0]
-    
+
     // Check if it's a ResizeObserver error
-    if (typeof errorMessage === 'string' && 
-        errorMessage.includes('ResizeObserver loop completed with undelivered notifications')) {
+    if (
+      typeof errorMessage === 'string' &&
+      errorMessage.includes('ResizeObserver loop completed with undelivered notifications')
+    ) {
       return // Suppress this error
     }
-    
+
     // Allow other errors through
     originalConsoleError.apply(console, args)
   }
@@ -27,8 +29,7 @@ export function suppressResizeObserverErrors() {
 
   // Handle unhandled promise rejections that might be ResizeObserver related
   window.addEventListener('unhandledrejection', (event) => {
-    if (event.reason && event.reason.message && 
-        event.reason.message.includes('ResizeObserver')) {
+    if (event.reason && event.reason.message && event.reason.message.includes('ResizeObserver')) {
       event.preventDefault()
       return false
     }
@@ -39,13 +40,12 @@ export function suppressResizeObserverErrors() {
     const overlays = [
       '#webpack-dev-server-client-overlay',
       '#webpack-dev-server-client-overlay-div',
-      '.webpack-dev-server-client-overlay'
+      '.webpack-dev-server-client-overlay',
     ]
-    
-    overlays.forEach(selector => {
+
+    overlays.forEach((selector) => {
       const element = document.querySelector(selector)
-      if (element && element.textContent && 
-          element.textContent.includes('ResizeObserver')) {
+      if (element && element.textContent && element.textContent.includes('ResizeObserver')) {
         element.style.display = 'none'
       }
     })
@@ -60,7 +60,7 @@ export function suppressResizeObserverErrors() {
 // Debounce function to prevent excessive ResizeObserver callbacks
 export function debounceResizeObserver(callback, delay = 16) {
   let timeoutId
-  return function(...args) {
+  return function (...args) {
     clearTimeout(timeoutId)
     timeoutId = setTimeout(() => callback.apply(this, args), delay)
   }
@@ -95,7 +95,7 @@ export function createStableResizeObserver(callback) {
     disconnect() {
       isObserving = false
       observer.disconnect()
-    }
+    },
   }
 }
 

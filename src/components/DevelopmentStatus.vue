@@ -1,10 +1,5 @@
 <template>
-  <q-card
-    v-if="!isBackendConnected && showStatus"
-    class="development-status q-mb-md"
-    flat
-    bordered
-  >
+  <q-card v-if="!isBackendConnected && showStatus" class="development-status q-mb-md" flat bordered>
     <q-card-section class="row items-center">
       <q-avatar color="primary" text-color="white" icon="code" />
       <div class="q-ml-md">
@@ -22,14 +17,7 @@
         @click="showInstructions"
         size="sm"
       />
-      <q-btn
-        flat
-        color="negative"
-        icon="close"
-        @click="hideStatus"
-        size="sm"
-        round
-      />
+      <q-btn flat color="negative" icon="close" @click="hideStatus" size="sm" round />
     </q-card-section>
   </q-card>
 </template>

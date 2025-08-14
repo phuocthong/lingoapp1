@@ -1,17 +1,7 @@
 <template>
-  <q-banner
-    v-if="!isConnected"
-    class="connection-banner bg-orange text-white"
-    icon="cloud_off"
-  >
+  <q-banner v-if="!isConnected" class="connection-banner bg-orange text-white" icon="cloud_off">
     <template v-slot:action>
-      <q-btn
-        flat
-        color="white"
-        label="Hướng dẫn"
-        @click="showInstructions = true"
-        icon="help"
-      />
+      <q-btn flat color="white" label="Hướng dẫn" @click="showInstructions = true" icon="help" />
     </template>
     <div class="banner-content">
       <div class="banner-title">Đang sử dụng dữ liệu demo</div>
@@ -32,7 +22,7 @@
           <p class="text-body1">
             Để sử dụng dữ liệu thật (bạn bè, bảng xếp hạng), bạn cần chạy backend server:
           </p>
-          
+
           <div class="step">
             <div class="step-title">📂 Bước 1: Mở terminal mới</div>
             <q-banner class="code-banner bg-grey-2">
@@ -50,7 +40,7 @@
           <div class="step">
             <div class="step-title">🗄️ Bước 3: Setup database</div>
             <q-banner class="code-banner bg-grey-2">
-              <code>bun run db:migrate<br/>bun run db:seed</code>
+              <code>bun run db:migrate<br />bun run db:seed</code>
             </q-banner>
           </div>
 
@@ -72,7 +62,7 @@
             <div class="step-title">⚡ Quick Start (Tự động)</div>
             <p class="text-body2">Hoặc chạy script tự động:</p>
             <q-banner class="code-banner bg-blue-1">
-              <code>./start-full-app.sh</code> (Linux/Mac)<br/>
+              <code>./start-full-app.sh</code> (Linux/Mac)<br />
               <code>start-full-app.bat</code> (Windows)
             </q-banner>
           </div>
@@ -81,11 +71,7 @@
 
       <q-card-actions align="right">
         <q-btn flat label="Đóng" color="primary" v-close-popup />
-        <q-btn 
-          color="primary" 
-          label="Refresh" 
-          @click="refreshConnection"
-        />
+        <q-btn color="primary" label="Refresh" @click="refreshConnection" />
       </q-card-actions>
     </q-card>
   </q-dialog>

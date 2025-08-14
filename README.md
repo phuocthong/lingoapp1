@@ -20,7 +20,7 @@ npm run dev:full
 # 1. Cài đặt frontend dependencies
 npm install
 
-# 2. Cài đặt backend dependencies  
+# 2. Cài đặt backend dependencies
 npm run backend:install
 
 # 3. Setup database
@@ -29,7 +29,7 @@ npm run backend:setup
 # 4. Chạy backend (terminal 1)
 npm run backend:dev
 
-# 5. Chạy frontend (terminal 2)  
+# 5. Chạy frontend (terminal 2)
 npm run dev
 ```
 
@@ -46,13 +46,14 @@ npm run dev
 ## 🔧 Kiểm tra kết nối
 
 App sẽ hiển thị banner cảnh báo nếu backend chưa chạy:
+
 - **Có kết nối**: Dữ liệu thật từ database
 - **Không kết nối**: Demo data (bạn bè và bảng xếp hạng giả)
 
 ## 📚 API & Database
 
 - **Frontend**: Vue 3 + Quasar Framework (Port 9000)
-- **Backend**: ElysiaJS + Bun (Port 3000)  
+- **Backend**: ElysiaJS + Bun (Port 3000)
 - **Database**: SQLite với Drizzle ORM
 - **API Docs**: http://localhost:3000/swagger
 
@@ -73,7 +74,7 @@ npm run lint             # Check code quality
 ```
 lingo-challenge/
 ├── src/                 # Frontend Vue.js
-├── backend/             # Backend ElysiaJS  
+├── backend/             # Backend ElysiaJS
 ├── start-full-app.sh    # Script tự động (Linux/Mac)
 ├── start-full-app.bat   # Script tự động (Windows)
 └── COMPLETE_SETUP_GUIDE.md  # Hướng dẫn chi tiết
@@ -82,10 +83,12 @@ lingo-challenge/
 ## 🔍 Troubleshooting
 
 **App hiển thị demo data?**
+
 - Kiểm tra backend có chạy trên port 3000
 - Refresh lại trang sau khi backend khởi động
 
 **Backend không start được?**
+
 ```bash
 # Xóa và cài lại dependencies
 cd backend
@@ -99,17 +102,19 @@ bun run db:seed
 ```
 
 **Port đã được sử dụng?**
+
 ```bash
 # Kill process đang dùng port 3000
 lsof -ti:3000 | xargs kill -9
 
-# Kill process đang dùng port 9000  
+# Kill process đang dùng port 9000
 lsof -ti:9000 | xargs kill -9
 ```
 
 ## 🎯 Demo Account
 
 Khi chạy với demo data:
+
 - Username: `demo_user`
 - Password: `demo123`
 - 3 bạn bè mẫu có sẵn

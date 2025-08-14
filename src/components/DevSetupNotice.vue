@@ -1,24 +1,8 @@
 <template>
-  <q-banner
-    v-if="showNotice"
-    class="setup-banner bg-info text-white"
-    icon="developer_mode"
-  >
+  <q-banner v-if="showNotice" class="setup-banner bg-info text-white" icon="developer_mode">
     <template v-slot:action>
-      <q-btn
-        flat
-        color="white"
-        label="Đã hiểu"
-        @click="dismissNotice"
-        icon="check"
-      />
-      <q-btn
-        flat
-        color="white"
-        label="Chi tiết"
-        @click="showDetails = true"
-        icon="info"
-      />
+      <q-btn flat color="white" label="Đã hiểu" @click="dismissNotice" icon="check" />
+      <q-btn flat color="white" label="Chi tiết" @click="showDetails = true" icon="info" />
     </template>
     <div class="banner-content">
       <div class="banner-title">🚀 Development Mode</div>
@@ -45,7 +29,7 @@
 
           <div class="step-section">
             <div class="step-title">📋 Để kết nối Backend API:</div>
-            
+
             <div class="step">
               <div class="step-number">1</div>
               <div class="step-content">
@@ -101,11 +85,11 @@
             <div class="step-title">⚡ Quick Commands:</div>
             <q-banner class="code-banner bg-green-1">
               <div class="quick-command">
-                <strong>Setup một lần:</strong><br>
+                <strong>Setup một lần:</strong><br />
                 <code>npm run setup</code>
               </div>
               <div class="quick-command">
-                <strong>Chạy full app:</strong><br>
+                <strong>Chạy full app:</strong><br />
                 <code>npm run dev:full</code>
               </div>
             </q-banner>
@@ -115,20 +99,15 @@
             <template v-slot:avatar>
               <q-icon name="warning" color="orange" />
             </template>
-            <strong>Lưu ý:</strong> Hiện tại app đang sử dụng dữ liệu demo. 
-            Bạn bè và bảng xếp hạng sẽ hiển thị dữ liệu thật sau khi backend kết nối.
+            <strong>Lưu ý:</strong> Hiện tại app đang sử dụng dữ liệu demo. Bạn bè và bảng xếp hạng
+            sẽ hiển thị dữ liệu thật sau khi backend kết nối.
           </q-banner>
         </div>
       </q-card-section>
 
       <q-card-actions align="right">
         <q-btn flat label="Đóng" color="primary" v-close-popup />
-        <q-btn 
-          color="primary" 
-          label="Test Connection" 
-          @click="testConnection"
-          :loading="testing"
-        />
+        <q-btn color="primary" label="Test Connection" @click="testConnection" :loading="testing" />
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -154,7 +133,7 @@ const testConnection = async () => {
       method: 'GET',
       mode: 'cors',
     })
-    
+
     if (response.ok) {
       createNotification('success', '✅ Backend kết nối thành công!')
       showDetails.value = false
