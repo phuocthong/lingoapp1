@@ -470,7 +470,10 @@
                 <span>Bắt đầu thử thách</span>
               </button>
 
-              <p class="start-requirement">Cần ít nhất 2 người để bắt đầu</p>
+              <p class="start-requirement">
+                Cần ít nhất 2 người để bắt đầu
+                ({{ participants.length }}/{{ maxParticipants }} người tham gia)
+              </p>
             </div>
 
             <!-- Leave Room -->
