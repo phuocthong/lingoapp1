@@ -31,15 +31,42 @@ const userRoutes = new Elysia({ prefix: '/user' })
     '/profile',
     async ({ body, user, set }) => {
       try {
-        const { name, avatar } = body
+        const { name, avatar, phone, bio, isPublicProfile, allowFriendRequests, username, email } = body
+
+        // Check if username/email are being changed and if they're unique
+        if (username && username !== user.username) {
+          const existingUser = await db.select().from(users).where(eq(users.username, username)).get()
+          if (existingUser && existingUser.id !== user.id) {
+            set.status = 400
+            return { success: false, message: 'Username already exists' }
+          }
+        }
+
+        if (email && email !== user.email) {
+          const existingUser = await db.select().from(users).where(eq(users.email, email)).get()
+          if (existingUser && existingUser.id !== user.id) {
+            set.status = 400
+            return { success: false, message: 'Email already exists' }
+          }
+        }
+
+        // Prepare update data
+        const updateData = {
+          updatedAt: new Date(),
+        }
+
+        if (name !== undefined) updateData.name = name
+        if (avatar !== undefined) updateData.avatar = avatar
+        if (phone !== undefined) updateData.phone = phone
+        if (bio !== undefined) updateData.bio = bio
+        if (isPublicProfile !== undefined) updateData.isPublicProfile = isPublicProfile
+        if (allowFriendRequests !== undefined) updateData.allowFriendRequests = allowFriendRequests
+        if (username !== undefined) updateData.username = username
+        if (email !== undefined) updateData.email = email
 
         const updatedUser = await db
           .update(users)
-          .set({
-            name: name || user.name,
-            avatar: avatar || user.avatar,
-            updatedAt: new Date(),
-          })
+          .set(updateData)
           .where(eq(users.id, user.id))
           .returning()
           .get()
@@ -53,6 +80,10 @@ const userRoutes = new Elysia({ prefix: '/user' })
             email: updatedUser.email,
             name: updatedUser.name,
             avatar: updatedUser.avatar,
+            phone: updatedUser.phone,
+            bio: updatedUser.bio,
+            isPublicProfile: updatedUser.isPublicProfile,
+            allowFriendRequests: updatedUser.allowFriendRequests,
             level: updatedUser.level,
             xp: updatedUser.xp,
             streak: updatedUser.streak,
@@ -68,11 +99,17 @@ const userRoutes = new Elysia({ prefix: '/user' })
       body: t.Object({
         name: t.Optional(t.String()),
         avatar: t.Optional(t.String()),
+        phone: t.Optional(t.String()),
+        bio: t.Optional(t.String()),
+        isPublicProfile: t.Optional(t.Boolean()),
+        allowFriendRequests: t.Optional(t.Boolean()),
+        username: t.Optional(t.String()),
+        email: t.Optional(t.String()),
       }),
       detail: {
         tags: ['users'],
         summary: 'Update user profile',
-        description: 'Update user profile information',
+        description: 'Update comprehensive user profile information including avatar',
       },
     },
   )
