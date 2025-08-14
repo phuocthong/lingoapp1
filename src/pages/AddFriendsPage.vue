@@ -106,18 +106,10 @@
               >
                 Gửi lời mời
               </q-btn>
-              <q-btn
-                v-else-if="user.friendshipStatus === 'pending'"
-                class="pending-btn"
-                disabled
-              >
+              <q-btn v-else-if="user.friendshipStatus === 'pending'" class="pending-btn" disabled>
                 Đã gửi lời mời
               </q-btn>
-              <q-btn
-                v-else-if="user.friendshipStatus === 'accepted'"
-                class="friends-btn"
-                disabled
-              >
+              <q-btn v-else-if="user.friendshipStatus === 'accepted'" class="friends-btn" disabled>
                 Đã là bạn bè
               </q-btn>
             </div>
@@ -152,11 +144,13 @@ const loadFriendRequests = async () => {
     const response = await apiService.getFriendRequests()
 
     if (response.success) {
-      friendRequests.value = response.incoming.map(request => ({
+      friendRequests.value = response.incoming.map((request) => ({
         id: request.id,
         name: request.name,
         username: request.username.startsWith('@') ? request.username : `@${request.username}`,
-        avatar: request.avatar || 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+        avatar:
+          request.avatar ||
+          'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
         mutualFriends: request.mutualFriends || 0,
         friendshipId: request.friendshipId,
       }))
@@ -173,7 +167,7 @@ const loadFriendRequests = async () => {
 
 const acceptRequest = async (requestId) => {
   try {
-    const request = friendRequests.value.find(req => req.id === requestId)
+    const request = friendRequests.value.find((req) => req.id === requestId)
     if (!request) return
 
     const response = await apiService.acceptFriend(request.friendshipId)
@@ -192,7 +186,7 @@ const acceptRequest = async (requestId) => {
 
 const declineRequest = async (requestId) => {
   try {
-    const request = friendRequests.value.find(req => req.id === requestId)
+    const request = friendRequests.value.find((req) => req.id === requestId)
     if (!request) return
 
     const response = await apiService.removeFriend(request.friendshipId)
@@ -220,11 +214,13 @@ const searchUsers = async () => {
     const response = await apiService.searchUsers(searchQuery.value)
 
     if (response.success) {
-      searchResults.value = response.users.map(user => ({
+      searchResults.value = response.users.map((user) => ({
         id: user.id,
         name: user.name,
         username: user.username.startsWith('@') ? user.username : `@${user.username}`,
-        avatar: user.avatar || 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+        avatar:
+          user.avatar ||
+          'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
         friendshipStatus: user.friendshipStatus,
         mutualFriends: user.mutualFriends || 0,
         level: user.level || 1,
@@ -243,7 +239,7 @@ const searchUsers = async () => {
 
 const sendFriendRequest = async (userId) => {
   try {
-    const user = searchResults.value.find(u => u.id === userId)
+    const user = searchResults.value.find((u) => u.id === userId)
     if (!user) return
 
     const response = await apiService.addFriend(userId)

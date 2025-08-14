@@ -91,7 +91,8 @@ class ApiService {
             id: 2,
             name: 'Minh Anh',
             username: 'minhanh',
-            avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+            avatar:
+              'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
             level: 8,
             streak: 12,
             xp: 1800,
@@ -101,7 +102,8 @@ class ApiService {
             id: 3,
             name: 'Thành Hòa',
             username: 'thanhhoa',
-            avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=55',
+            avatar:
+              'https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=55',
             level: 6,
             streak: 8,
             xp: 1200,
@@ -111,7 +113,8 @@ class ApiService {
             id: 4,
             name: 'Thu Trang',
             username: 'thutrang',
-            avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=55',
+            avatar:
+              'https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=55',
             level: 12,
             streak: 20,
             xp: 3200,
@@ -129,7 +132,8 @@ class ApiService {
             id: 5,
             name: 'Văn Nam',
             username: 'vannam',
-            avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+            avatar:
+              'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
             level: 7,
             streak: 10,
             friendshipId: 4,
@@ -153,7 +157,8 @@ class ApiService {
           id: 6,
           name: 'Lan Anh',
           username: 'lananh',
-          avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=55',
+          avatar:
+            'https://api.builder.io/api/v1/image/assets/TEMP/d0b0d0d7bf9e895d63b544b8849b7b88a157a184?width=55',
           level: 5,
           streak: 5,
           friendshipStatus: 'none',
@@ -163,7 +168,8 @@ class ApiService {
           id: 7,
           name: 'Hòa Bình',
           username: 'hoabinh',
-          avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=55',
+          avatar:
+            'https://api.builder.io/api/v1/image/assets/TEMP/808cc85b683761b4f2649b219713e811950b7da6?width=55',
           level: 9,
           streak: 15,
           friendshipStatus: 'none',
@@ -171,9 +177,10 @@ class ApiService {
         },
       ]
 
-      const filtered = mockUsers.filter(user =>
-        user.name.toLowerCase().includes(query.toLowerCase()) ||
-        user.username.toLowerCase().includes(query.toLowerCase())
+      const filtered = mockUsers.filter(
+        (user) =>
+          user.name.toLowerCase().includes(query.toLowerCase()) ||
+          user.username.toLowerCase().includes(query.toLowerCase()),
       )
 
       return {
