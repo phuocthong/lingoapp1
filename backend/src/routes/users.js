@@ -210,4 +210,110 @@ const userRoutes = new Elysia({ prefix: '/user' })
     },
   )
 
+  .post(
+    '/upload-avatar',
+    async ({ body, user, set }) => {
+      try {
+        const { image, filename } = body
+
+        // Validate image data
+        if (!image || !image.startsWith('data:image/')) {
+          set.status = 400
+          return { success: false, message: 'Invalid image data' }
+        }
+
+        // Extract base64 data and image type
+        const matches = image.match(/^data:image\/([a-zA-Z]+);base64,(.+)$/)
+        if (!matches) {
+          set.status = 400
+          return { success: false, message: 'Invalid image format' }
+        }
+
+        const imageType = matches[1]
+        const base64Data = matches[2]
+
+        // Validate image type
+        if (!['jpeg', 'jpg', 'png', 'gif', 'webp'].includes(imageType.toLowerCase())) {
+          set.status = 400
+          return { success: false, message: 'Unsupported image format' }
+        }
+
+        // Create buffer from base64
+        const imageBuffer = Buffer.from(base64Data, 'base64')
+
+        // Check file size (5MB limit)
+        if (imageBuffer.length > 5 * 1024 * 1024) {
+          set.status = 400
+          return { success: false, message: 'Image size too large (max 5MB)' }
+        }
+
+        // Generate unique filename
+        const timestamp = Date.now()
+        const safeFilename = filename ? filename.replace(/[^a-zA-Z0-9.-]/g, '_') : 'avatar'
+        const uniqueFilename = `${user.id}_${timestamp}_${safeFilename}.${imageType}`
+
+        // Ensure uploads directory exists
+        const uploadsDir = path.join(process.cwd(), 'public', 'uploads', 'avatars')
+        try {
+          await fs.mkdir(uploadsDir, { recursive: true })
+        } catch (error) {
+          console.log('Directory already exists or created')
+        }
+
+        // Save file
+        const filePath = path.join(uploadsDir, uniqueFilename)
+        await fs.writeFile(filePath, imageBuffer)
+
+        // Generate URL for avatar
+        const avatarUrl = `/uploads/avatars/${uniqueFilename}`
+
+        // Update user avatar in database
+        const updatedUser = await db
+          .update(users)
+          .set({
+            avatar: avatarUrl,
+            updatedAt: new Date(),
+          })
+          .where(eq(users.id, user.id))
+          .returning()
+          .get()
+
+        return {
+          success: true,
+          message: 'Avatar uploaded successfully',
+          avatarUrl: avatarUrl,
+          user: {
+            id: updatedUser.id,
+            username: updatedUser.username,
+            email: updatedUser.email,
+            name: updatedUser.name,
+            avatar: updatedUser.avatar,
+            phone: updatedUser.phone,
+            bio: updatedUser.bio,
+            isPublicProfile: updatedUser.isPublicProfile,
+            allowFriendRequests: updatedUser.allowFriendRequests,
+            level: updatedUser.level,
+            xp: updatedUser.xp,
+            streak: updatedUser.streak,
+          },
+        }
+      } catch (error) {
+        console.error('Avatar upload error:', error)
+        set.status = 500
+        return { success: false, message: 'Failed to upload avatar' }
+      }
+    },
+    {
+      body: t.Object({
+        image: t.String(),
+        filename: t.Optional(t.String()),
+      }),
+      detail: {
+        tags: ['users'],
+        summary: 'Upload user avatar',
+        description: 'Upload and set user avatar image',
+      },
+    },
+  )
+
 export default userRoutes
