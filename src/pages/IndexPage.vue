@@ -322,10 +322,6 @@ const chatMessagesElement = computed(() => {
 
 // Initialize component
 onMounted(async () => {
-  // Check if in demo mode
-  isDemoMode.value =
-    window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
-
   // Get current user
   currentUser.value = auth.getCurrentUser()
 
