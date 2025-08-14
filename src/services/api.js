@@ -232,7 +232,6 @@ class ApiService {
     try {
       // In cloud environment, return mock data for demo
       if (isCloudEnvironment) {
-        console.log(`Demo mode: API call to ${endpoint}`)
         return await this.getMockResponse(endpoint, options)
       }
 
@@ -245,6 +244,13 @@ class ApiService {
 
       return data
     } catch (error) {
+      // In development, if backend is not available, fall back to mock data
+      if (error.message.includes('Failed to fetch') ||
+          error.message.includes('NetworkError') ||
+          error.message.includes('net::ERR_')) {
+        return await this.getMockResponse(endpoint, options)
+      }
+
       console.error(`API Error (${endpoint}):`, error)
       throw error
     }
