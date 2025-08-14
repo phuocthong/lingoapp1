@@ -131,6 +131,13 @@ class ApiService {
     })
   }
 
+  async uploadAvatar(imageData, filename) {
+    return this.request('/user/upload-avatar', {
+      method: 'POST',
+      body: JSON.stringify({ image: imageData, filename }),
+    })
+  }
+
   async changePassword(passwordData) {
     return this.request('/user/password', {
       method: 'PUT',
