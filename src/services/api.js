@@ -46,6 +46,43 @@ class ApiService {
       return mockSubmitAnswer(questionId, answerData)
     }
 
+    if (endpoint === '/user/upload-avatar') {
+      const body = options.body ? JSON.parse(options.body) : {}
+      return {
+        success: true,
+        message: 'Avatar uploaded successfully (demo mode)',
+        avatarUrl: body.image, // Use the base64 image data directly in demo mode
+        user: {
+          id: 1,
+          username: 'demo_user',
+          name: 'Demo User',
+          avatar: body.image,
+        },
+      }
+    }
+
+    if (endpoint === '/user/profile' && options.method === 'PUT') {
+      const body = options.body ? JSON.parse(options.body) : {}
+      return {
+        success: true,
+        message: 'Profile updated successfully (demo mode)',
+        user: {
+          id: 1,
+          username: body.username || 'demo_user',
+          email: body.email || 'demo@example.com',
+          name: body.name || 'Demo User',
+          avatar: body.avatar || '',
+          phone: body.phone || '',
+          bio: body.bio || '',
+          isPublicProfile: body.isPublicProfile ?? true,
+          allowFriendRequests: body.allowFriendRequests ?? true,
+          level: 5,
+          xp: 1250,
+          streak: 7,
+        },
+      }
+    }
+
     // Default success response for other endpoints
     return {
       success: true,
