@@ -5,7 +5,7 @@ const isCloudEnvironment =
   window.location.hostname !== '127.0.0.1'
 
 const API_BASE = isCloudEnvironment
-  ? 'https://your-backend-url.com/api' // Backend not available in cloud demo
+  ? 'https://demo-api-unavailable.com/api' // Backend not available in cloud demo
   : 'http://localhost:3000/api'
 
 class ApiService {
