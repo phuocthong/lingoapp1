@@ -621,14 +621,49 @@ onMounted(() => {
     if (currentUser) {
       currentUser.isOwner = false
     }
+    // Add demo existing participants when joining
+    addDemoParticipants()
   } else {
-    // Created own room - user is owner
+    // Created own room - user is owner and only participant initially
     const currentUser = participants.value.find((p) => p.isCurrentUser)
     if (currentUser) {
       currentUser.isOwner = true
     }
+    // Simulate other players joining after some time (for demo)
+    setTimeout(() => {
+      addDemoParticipants()
+    }, 3000)
   }
 })
+
+const addDemoParticipants = () => {
+  // Add demo participants
+  const demoParticipants = [
+    {
+      id: 'user2',
+      name: 'Thành Hòa',
+      initials: 'TH',
+      isOwner: false,
+      isReady: Math.random() > 0.5,
+      isCurrentUser: false,
+    },
+    {
+      id: 'user3',
+      name: 'Lan Anh',
+      initials: 'LA',
+      isOwner: false,
+      isReady: Math.random() > 0.5,
+      isCurrentUser: false,
+    }
+  ]
+
+  // Only add if not already present
+  demoParticipants.forEach(demo => {
+    if (!participants.value.find(p => p.id === demo.id)) {
+      participants.value.push(demo)
+    }
+  })
+}
 
 // Methods
 const toggleReady = () => {
