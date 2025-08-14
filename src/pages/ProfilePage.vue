@@ -146,11 +146,15 @@
         <div class="contact-info">
           <div class="contact-item">
             <q-icon name="email" />
-            <span>nguoidung@gmail.com</span>
+            <span>{{ userProfile.email }}</span>
           </div>
-          <div class="contact-item">
+          <div class="contact-item" v-if="userProfile.phone">
             <q-icon name="phone" />
-            <span>12345678910</span>
+            <span>{{ userProfile.phone }}</span>
+          </div>
+          <div class="contact-item" v-if="userProfile.bio">
+            <q-icon name="info" />
+            <span>{{ userProfile.bio }}</span>
           </div>
         </div>
       </div>
