@@ -111,68 +111,136 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import ProfileSidebar from '../components/ProfileSidebar.vue'
+import { apiService } from '../services/api.js'
+import { createNotification } from '../utils/notifications.js'
 
-// Mock friend requests data
-const friendRequests = ref([
-  {
-    id: 1,
-    name: 'Người dùng A',
-    username: '@nguoidungA',
-    avatar: 'https://via.placeholder.com/55',
-    mutualFriends: 3,
-  },
-  {
-    id: 2,
-    name: 'Người dùng B',
-    username: '@nguoidungB',
-    avatar: 'https://via.placeholder.com/55',
-    mutualFriends: 5,
-  },
-  {
-    id: 3,
-    name: 'Người dùng C',
-    username: '@nguoidungC',
-    avatar: 'https://via.placeholder.com/55',
-    mutualFriends: 2,
-  },
-])
-
-// Search functionality
+// Friend requests data
+const friendRequests = ref([])
 const searchQuery = ref('')
 const searchResults = ref([])
+const loading = ref(false)
+const searchLoading = ref(false)
 
-const acceptRequest = (requestId) => {
-  console.log('Accepting friend request:', requestId)
-  friendRequests.value = friendRequests.value.filter((req) => req.id !== requestId)
-}
+// Load friend requests on mount
+onMounted(async () => {
+  await loadFriendRequests()
+})
 
-const declineRequest = (requestId) => {
-  console.log('Declining friend request:', requestId)
-  friendRequests.value = friendRequests.value.filter((req) => req.id !== requestId)
-}
+const loadFriendRequests = async () => {
+  loading.value = true
+  try {
+    const response = await apiService.getFriendRequests()
 
-const searchUsers = () => {
-  // Mock search results
-  if (searchQuery.value.trim()) {
-    searchResults.value = [
-      {
-        id: 10,
-        name: 'Kết quả tìm kiếm',
-        username: '@ketqua',
-        avatar: 'https://via.placeholder.com/55',
-      },
-    ]
-  } else {
-    searchResults.value = []
+    if (response.success) {
+      friendRequests.value = response.incoming.map(request => ({
+        id: request.id,
+        name: request.name,
+        username: request.username.startsWith('@') ? request.username : `@${request.username}`,
+        avatar: request.avatar || 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+        mutualFriends: request.mutualFriends || 0,
+        friendshipId: request.friendshipId,
+      }))
+    } else {
+      console.log('Failed to load friend requests:', response.message)
+    }
+  } catch (error) {
+    console.error('Error loading friend requests:', error)
+    createNotification('Lỗi tải lời mời kết bạn', 'negative')
+  } finally {
+    loading.value = false
   }
 }
 
-const sendFriendRequest = (userId) => {
-  console.log('Sending friend request to:', userId)
-  // Remove from search results after sending request
-  searchResults.value = searchResults.value.filter((user) => user.id !== userId)
+const acceptRequest = async (requestId) => {
+  try {
+    const request = friendRequests.value.find(req => req.id === requestId)
+    if (!request) return
+
+    const response = await apiService.acceptFriend(request.friendshipId)
+
+    if (response.success) {
+      friendRequests.value = friendRequests.value.filter((req) => req.id !== requestId)
+      createNotification(`Đã chấp nhận lời mời kết bạn từ ${request.name}!`, 'success')
+    } else {
+      createNotification('Không thể chấp nhận lời mời kết bạn', 'negative')
+    }
+  } catch (error) {
+    console.error('Error accepting friend request:', error)
+    createNotification('Lỗi chấp nhận lời mời kết bạn', 'negative')
+  }
+}
+
+const declineRequest = async (requestId) => {
+  try {
+    const request = friendRequests.value.find(req => req.id === requestId)
+    if (!request) return
+
+    const response = await apiService.removeFriend(request.friendshipId)
+
+    if (response.success) {
+      friendRequests.value = friendRequests.value.filter((req) => req.id !== requestId)
+      createNotification(`Đã từ chối lời mời kết bạn từ ${request.name}`, 'info')
+    } else {
+      createNotification('Không thể từ chối lời mời kết bạn', 'negative')
+    }
+  } catch (error) {
+    console.error('Error declining friend request:', error)
+    createNotification('Lỗi từ chối lời mời kết bạn', 'negative')
+  }
+}
+
+const searchUsers = async () => {
+  if (!searchQuery.value.trim() || searchQuery.value.length < 2) {
+    searchResults.value = []
+    return
+  }
+
+  searchLoading.value = true
+  try {
+    const response = await apiService.searchUsers(searchQuery.value)
+
+    if (response.success) {
+      searchResults.value = response.users.map(user => ({
+        id: user.id,
+        name: user.name,
+        username: user.username.startsWith('@') ? user.username : `@${user.username}`,
+        avatar: user.avatar || 'https://api.builder.io/api/v1/image/assets/TEMP/94861390f9be0eb42544493a89935a3e8537e779?width=55',
+        friendshipStatus: user.friendshipStatus,
+        mutualFriends: user.mutualFriends || 0,
+        level: user.level || 1,
+      }))
+    } else {
+      searchResults.value = []
+    }
+  } catch (error) {
+    console.error('Error searching users:', error)
+    createNotification('Lỗi tìm kiếm người dùng', 'negative')
+    searchResults.value = []
+  } finally {
+    searchLoading.value = false
+  }
+}
+
+const sendFriendRequest = async (userId) => {
+  try {
+    const user = searchResults.value.find(u => u.id === userId)
+    if (!user) return
+
+    const response = await apiService.addFriend(userId)
+
+    if (response.success) {
+      // Update user status in search results
+      user.friendshipStatus = 'pending'
+      createNotification(`Đã gửi lời mời kết bạn tới ${user.name}!`, 'success')
+    } else {
+      createNotification(response.message || 'Không thể gửi lời mời kết bạn', 'negative')
+    }
+  } catch (error) {
+    console.error('Error sending friend request:', error)
+    createNotification('Lỗi gửi lời mời kết bạn', 'negative')
+  }
 }
 </script>
 
