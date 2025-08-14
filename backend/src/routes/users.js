@@ -3,6 +3,8 @@ import bcrypt from 'bcryptjs'
 import { db } from '../db/index.js'
 import { users } from '../db/schema.js'
 import { eq } from 'drizzle-orm'
+import { promises as fs } from 'fs'
+import path from 'path'
 
 const userRoutes = new Elysia({ prefix: '/user' })
   .get(
