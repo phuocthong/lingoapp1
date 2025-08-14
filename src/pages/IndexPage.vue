@@ -1,5 +1,8 @@
 <template>
   <q-page class="dashboard-page">
+    <!-- Connection Status -->
+    <ConnectionStatus />
+
     <div class="dashboard-container">
       <!-- Left side - Chat Interface -->
       <div class="chat-section">
@@ -299,6 +302,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue'
+import ConnectionStatus from '../components/ConnectionStatus.vue'
 import { chatService } from '../services/chatService.js'
 import { apiService } from '../services/api.js'
 import { auth } from '../utils/auth.js'
