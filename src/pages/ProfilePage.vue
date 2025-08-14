@@ -10,7 +10,7 @@
         <div class="profile-avatar-section">
           <div class="avatar-container">
             <q-avatar size="81px" class="profile-avatar">
-              <img :src="userAvatar" alt="" />
+              <img :src="userProfile.avatar" alt="" />
             </q-avatar>
             <div class="verified-badge">
               <q-icon name="check_circle" color="green" size="18px" />
@@ -76,7 +76,7 @@
             <q-icon name="check" />
           </div>
           <div class="stat-value">82%</div>
-          <div class="stat-label">Tỷ lệ chính xác</div>
+          <div class="stat-label">Tỷ lệ chính x��c</div>
         </div>
 
         <div class="stat-card">
