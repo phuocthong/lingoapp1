@@ -71,19 +71,25 @@
             <div class="input-container">
               <q-input
                 v-model="messageInput"
-                placeholder="Nhập câu trả lời của bạn..."
+                :placeholder="isBotActive ? 'Nhập câu trả lời của bạn...' : 'Nhấn Bắt đầu để trả lời câu hỏi'"
                 outlined
                 class="message-input"
                 @keyup.enter="sendMessage"
                 :disable="!currentUser || !isBotActive"
-              />
+              >
+                <template v-slot:prepend>
+                  <q-icon name="chat_bubble_outline" color="grey-6" />
+                </template>
+              </q-input>
               <q-btn
                 icon="send"
                 color="primary"
                 class="send-btn"
                 @click="sendMessage"
                 :disable="!currentUser || !isBotActive || !messageInput.trim()"
-              />
+              >
+                <q-tooltip v-if="!isBotActive">Nhấn Bắt đầu để kích hoạt chat</q-tooltip>
+              </q-btn>
             </div>
 
             <div class="status-indicator">
