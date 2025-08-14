@@ -196,7 +196,7 @@
                 :class="['tab-btn', { active: activeTab === 'week' }]"
                 no-caps
                 @click="switchTab('week')"
-                >Tu��n</q-btn
+                >Tuần</q-btn
               >
               <q-btn
                 flat
@@ -212,7 +212,7 @@
                 :class="['tab-btn', { active: activeTab === 'year' }]"
                 no-caps
                 @click="switchTab('year')"
-                >N��m</q-btn
+                >Năm</q-btn
               >
             </div>
           </q-card-section>
