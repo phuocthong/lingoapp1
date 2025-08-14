@@ -76,7 +76,7 @@
             <q-icon name="check" />
           </div>
           <div class="stat-value">82%</div>
-          <div class="stat-label">Tỷ lệ chính x��c</div>
+          <div class="stat-label">Tỷ lệ chính xác</div>
         </div>
 
         <div class="stat-card">
@@ -228,12 +228,6 @@ onMounted(() => {
   }
 })
 
-const userAvatar = ref('')
-
-// Update avatar when profile loads
-onMounted(() => {
-  userAvatar.value = userProfile.avatar
-})
 
 const editProfile = () => {
   // Navigate to edit profile page
