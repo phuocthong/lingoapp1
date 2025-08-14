@@ -171,15 +171,32 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import ProfileSidebar from '../components/ProfileSidebar.vue'
+import { auth } from '../utils/auth.js'
 
 const router = useRouter()
 const route = useRoute()
 
-// Check for success messages from URL params
+// User profile data
+const userProfile = reactive({
+  name: 'Người dùng',
+  username: 'nguoidung',
+  email: 'user@example.com',
+  phone: '12345678910',
+  bio: '',
+  avatar: '',
+  level: 1,
+  xp: 0,
+  streak: 0,
+  isPublicProfile: true,
+  allowFriendRequests: true,
+})
+
+// Load user data
 onMounted(() => {
+  // Check for success messages from URL params
   if (route.query.passwordChanged === 'true') {
     setTimeout(() => {
       alert('Mật khẩu đã được thay đổi thành công!')
@@ -187,11 +204,32 @@ onMounted(() => {
       router.replace({ path: route.path })
     }, 100)
   }
+
+  // Load current user data
+  const currentUser = auth.getCurrentUser()
+  if (currentUser) {
+    Object.assign(userProfile, {
+      name: currentUser.name || 'Người dùng',
+      username: currentUser.username || 'nguoidung',
+      email: currentUser.email || 'user@example.com',
+      phone: currentUser.phone || '12345678910',
+      bio: currentUser.bio || '',
+      avatar: currentUser.avatar || 'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+      level: currentUser.level || 1,
+      xp: currentUser.xp || 0,
+      streak: currentUser.streak || 0,
+      isPublicProfile: currentUser.isPublicProfile ?? true,
+      allowFriendRequests: currentUser.allowFriendRequests ?? true,
+    })
+  }
 })
 
-const userAvatar = ref(
-  'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
-)
+const userAvatar = ref('')
+
+// Update avatar when profile loads
+onMounted(() => {
+  userAvatar.value = userProfile.avatar
+})
 
 const editProfile = () => {
   // Navigate to edit profile page
