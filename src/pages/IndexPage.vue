@@ -786,6 +786,10 @@ const showNotification = (message, type = 'info') => {
   flex-shrink: 0;
 }
 
+.bot-avatar .q-icon[name="check_circle"] {
+  color: #16a34a;
+}
+
 .message-bubble {
   background: #f3f4f6;
   border-radius: 18px 18px 18px 4px;
