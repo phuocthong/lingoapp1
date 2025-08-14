@@ -557,7 +557,8 @@ const roomOwnerName = computed(() => {
 
 const canStartGame = computed(() => {
   const readyCount = participants.value.filter((p) => p.isReady).length
-  return readyCount >= 2
+  const totalParticipants = participants.value.length
+  return readyCount >= 2 && totalParticipants >= 2
 })
 
 const roomStatusClass = computed(() => {
