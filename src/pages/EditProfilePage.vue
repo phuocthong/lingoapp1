@@ -318,10 +318,39 @@ const handleSave = async () => {
   loading.value = true
 
   try {
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    // Prepare update data
+    const updateData = {
+      name: editForm.name,
+      username: editForm.username,
+      email: editForm.email,
+      phone: editForm.phone,
+      bio: editForm.bio,
+      avatar: editForm.avatar,
+      isPublicProfile: editForm.isPublicProfile,
+      allowFriendRequests: editForm.allowFriendRequests,
+    }
 
-    // Update user data in localStorage/sessionStorage
+    // Try to update via API
+    const response = await apiService.updateProfile(updateData)
+
+    if (response.success) {
+      // Update local storage with new user data
+      const updatedUser = response.user
+      if (localStorage.getItem('user_token')) {
+        localStorage.setItem('user_data', JSON.stringify(updatedUser))
+      } else {
+        sessionStorage.setItem('user_data', JSON.stringify(updatedUser))
+      }
+
+      alert('Thông tin đã được cập nhật thành công!')
+      router.push('/dashboard/profile')
+    } else {
+      throw new Error(response.message || 'Update failed')
+    }
+  } catch (error) {
+    console.error('Update failed:', error)
+
+    // Fallback to local storage update for demo mode
     const currentUser = auth.getCurrentUser()
     if (currentUser) {
       const updatedUser = {
@@ -342,14 +371,12 @@ const handleSave = async () => {
       } else {
         sessionStorage.setItem('user_data', JSON.stringify(updatedUser))
       }
-    }
 
-    // Show success message and navigate back
-    alert('Thông tin đã được cập nhật thành công!')
-    router.push('/dashboard/profile')
-  } catch (error) {
-    console.error('Update failed:', error)
-    alert('Cập nhật thông tin thất bại. Vui lòng thử lại.')
+      alert('Thông tin đã được cập nhật (chế độ demo)!')
+      router.push('/dashboard/profile')
+    } else {
+      alert('Cập nhật thông tin thất bại. Vui lòng thử lại.')
+    }
   } finally {
     loading.value = false
   }
