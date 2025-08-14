@@ -649,16 +649,32 @@ const calculateUserRank = () => {
   if (!currentUser.value) return
 
   const userXp = currentUser.value.xp || 1000
-  totalPlayers.value = 1250 // Mock total players
+  const leaderboardData = currentLeaderboard.value || []
 
-  // Simple rank calculation based on XP
-  const rank = Math.max(1, Math.floor(Math.random() * 50) + 1)
-  const percentage = Math.floor((rank / totalPlayers.value) * 100)
+  // Calculate real rank based on leaderboard data
+  let rank = 1
+  let totalPlayers = leaderboardData.length + 50 // Add some extra players for realism
+
+  // Find user position in leaderboard
+  for (let i = 0; i < leaderboardData.length; i++) {
+    if (leaderboardData[i].stats.totalXp < userXp) {
+      rank = i + 1
+      break
+    }
+  }
+
+  // If user XP is lower than all leaderboard entries, rank them lower
+  if (rank === 1 && leaderboardData.length > 0 && leaderboardData[0].stats.totalXp > userXp) {
+    rank = leaderboardData.length + Math.floor(Math.random() * 20) + 1
+  }
+
+  const percentage = Math.min(99, Math.floor((rank / totalPlayers) * 100))
+  totalPlayers.value = totalPlayers
 
   userRank.value = {
     rank,
     xp: userXp,
-    percentage,
+    percentage: percentage || 1, // Ensure at least 1%
   }
 }
 
