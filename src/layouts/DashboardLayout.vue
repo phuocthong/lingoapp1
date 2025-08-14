@@ -12,13 +12,31 @@
 
         <!-- Navigation -->
         <div class="header-nav">
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard')">
+          <q-btn
+            flat
+            no-caps
+            class="nav-btn"
+            :class="{ active: $route.path === '/dashboard' }"
+            @click="$router.push('/dashboard')"
+          >
             Trang chủ
           </q-btn>
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard/introduction')">
+          <q-btn
+            flat
+            no-caps
+            class="nav-btn"
+            :class="{ active: $route.path.includes('/introduction') }"
+            @click="$router.push('/dashboard/introduction')"
+          >
             Giới thiệu
           </q-btn>
-          <q-btn flat no-caps class="nav-btn" @click="$router.push('/dashboard/challenges')">
+          <q-btn
+            flat
+            no-caps
+            class="nav-btn"
+            :class="{ active: $route.path.includes('/challenge') }"
+            @click="$router.push('/dashboard/challenges')"
+          >
             Thử thách
           </q-btn>
         </div>
