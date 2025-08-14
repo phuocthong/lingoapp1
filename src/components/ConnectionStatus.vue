@@ -87,8 +87,7 @@ let connectionCheckInterval = null
 const checkConnection = async () => {
   // Skip connection check in cloud/hosted environments
   const isCloudEnvironment =
-    window.location.hostname !== 'localhost' &&
-    window.location.hostname !== '127.0.0.1'
+    window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
 
   if (isCloudEnvironment) {
     isConnected.value = false
@@ -102,7 +101,7 @@ const checkConnection = async () => {
     const response = await fetch('http://localhost:3000', {
       method: 'GET',
       mode: 'cors',
-      signal: controller.signal
+      signal: controller.signal,
     })
 
     clearTimeout(timeoutId)

@@ -245,9 +245,11 @@ class ApiService {
       return data
     } catch (error) {
       // In development, if backend is not available, fall back to mock data
-      if (error.message.includes('Failed to fetch') ||
-          error.message.includes('NetworkError') ||
-          error.message.includes('net::ERR_')) {
+      if (
+        error.message.includes('Failed to fetch') ||
+        error.message.includes('NetworkError') ||
+        error.message.includes('net::ERR_')
+      ) {
         return await this.getMockResponse(endpoint, options)
       }
 

@@ -109,10 +109,12 @@ export function suppressApiErrors() {
       return response
     } catch (error) {
       // Silently handle connection errors
-      if (error.message.includes('Failed to fetch') ||
-          error.message.includes('NetworkError') ||
-          error.name === 'AbortError' ||
-          error.message.includes('net::ERR_')) {
+      if (
+        error.message.includes('Failed to fetch') ||
+        error.message.includes('NetworkError') ||
+        error.name === 'AbortError' ||
+        error.message.includes('net::ERR_')
+      ) {
         const url = args[0]
         // Only log localhost API connection issues once
         if (url && url.includes('localhost:3000') && !window._localhostWarningShown) {
@@ -136,8 +138,10 @@ export function suppressApiErrors() {
     const errorMessage = args[0]
     if (typeof errorMessage === 'string') {
       // Suppress fetch-related errors to localhost
-      if (errorMessage.includes('Failed to fetch') &&
-          JSON.stringify(args).includes('localhost:3000')) {
+      if (
+        errorMessage.includes('Failed to fetch') &&
+        JSON.stringify(args).includes('localhost:3000')
+      ) {
         return
       }
     }
