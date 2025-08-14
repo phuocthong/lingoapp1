@@ -982,6 +982,8 @@ const showNotification = (message, type = 'info') => {
 
 .history-content {
   padding: 16px;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .no-history {
