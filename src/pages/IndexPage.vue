@@ -799,6 +799,12 @@ const showNotification = (message, type = 'info') => {
   border: 1px solid #e2e8f0;
 }
 
+.answer-message {
+  background: #dcfce7 !important;
+  border: 1px solid #bbf7d0 !important;
+  color: #166534;
+}
+
 .message-text {
   font-size: 14px;
   color: #111827;
