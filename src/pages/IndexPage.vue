@@ -146,7 +146,7 @@
                   flat
                   no-caps
                   size="sm"
-                  label="▼ Top 5 nhanh nh��t"
+                  label="▼ Top 5 nhanh nhất"
                 >
                   <div class="top-answerers-dropdown">
                     <div class="dropdown-title">Top 5 người trả lời nhanh nhất</div>
@@ -348,7 +348,7 @@ onMounted(async () => {
 
   // Add welcome message with better UX
   const welcomeMsg = isDemoMode.value
-    ? '👋 Xin chào! Tôi là EnglishBot. Bạn đang ở chế độ demo. Nhấn "Bắt đầu" để thử nghi��m!'
+    ? '👋 Xin chào! Tôi là EnglishBot. Bạn đang ở chế độ demo. Nhấn "Bắt đầu" để thử nghiệm!'
     : '👋 Xin chào! Tôi là EnglishBot. Nhấn "Bắt đầu" để tôi bắt đầu đưa ra các câu hỏi tiếng Anh mỗi 20 giây.'
   addBotMessage(welcomeMsg)
 
