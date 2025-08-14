@@ -78,10 +78,10 @@
     <div class="sidebar-footer" v-show="!sidebarCollapsed">
       <div class="user-mini-card">
         <q-avatar size="28px" class="user-mini-avatar">
-          <img :src="userAvatar" alt="User" />
+          <img :src="userProfile.avatar" alt="User" />
         </q-avatar>
         <div class="user-mini-info">
-          <div class="user-mini-name">Người dùng</div>
+          <div class="user-mini-name">{{ userProfile.name }}</div>
           <div class="user-mini-status">Online</div>
         </div>
       </div>
