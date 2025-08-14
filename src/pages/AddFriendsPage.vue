@@ -99,8 +99,26 @@
                   <div class="user-username">{{ user.username }}</div>
                 </div>
               </div>
-              <q-btn class="add-friend-btn" @click="sendFriendRequest(user.id)">
+              <q-btn
+                v-if="user.friendshipStatus === 'none'"
+                class="add-friend-btn"
+                @click="sendFriendRequest(user.id)"
+              >
                 Gửi lời mời
+              </q-btn>
+              <q-btn
+                v-else-if="user.friendshipStatus === 'pending'"
+                class="pending-btn"
+                disabled
+              >
+                Đã gửi lời mời
+              </q-btn>
+              <q-btn
+                v-else-if="user.friendshipStatus === 'accepted'"
+                class="friends-btn"
+                disabled
+              >
+                Đã là bạn bè
               </q-btn>
             </div>
           </div>
