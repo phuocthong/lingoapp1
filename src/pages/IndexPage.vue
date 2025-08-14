@@ -210,7 +210,7 @@
                 :class="['tab-btn', { active: activeTab === 'year' }]"
                 no-caps
                 @click="switchTab('year')"
-                >Năm</q-btn
+                >N��m</q-btn
               >
             </div>
           </q-card-section>
@@ -672,7 +672,7 @@ const calculateUserRank = () => {
 
   // Calculate real rank based on leaderboard data
   let rank = 1
-  let totalPlayers = leaderboardData.length + 50 // Add some extra players for realism
+  let totalPlayersCount = leaderboardData.length + 50 // Add some extra players for realism
 
   // Find user position in leaderboard
   for (let i = 0; i < leaderboardData.length; i++) {
@@ -687,8 +687,8 @@ const calculateUserRank = () => {
     rank = leaderboardData.length + Math.floor(Math.random() * 20) + 1
   }
 
-  const percentage = Math.min(99, Math.floor((rank / totalPlayers) * 100))
-  totalPlayers.value = totalPlayers
+  const percentage = Math.min(99, Math.floor((rank / totalPlayersCount) * 100))
+  totalPlayers.value = totalPlayersCount
 
   userRank.value = {
     rank,
