@@ -271,18 +271,19 @@
               <!-- Current User Rank -->
               <div v-if="currentUser && userRank" class="current-user-rank">
                 <div class="user-rank-content">
-                  <q-avatar size="32px" class="user-avatar">{{
-                    getAvatarText(currentUser.name)
-                  }}</q-avatar>
+                  <q-avatar size="32px" class="user-avatar">
+                    <img v-if="currentUser.avatar" :src="currentUser.avatar" alt="User" />
+                    <span v-else>{{ getAvatarText(currentUser.name) }}</span>
+                  </q-avatar>
                   <div class="user-info">
                     <div class="user-title">Hạng của bạn: #{{ userRank.rank }}</div>
                     <div class="user-subtitle">
-                      {{ userRank.xp }} XP • Top {{ userRank.percentage }}%
+                      {{ userRank.xp.toLocaleString() }} XP • Top {{ userRank.percentage }}%
                     </div>
                   </div>
                   <div class="user-stats">
-                    <div class="user-score">{{ userRank.xp }}</div>
-                    <div class="user-total">/ {{ totalPlayers }} người chơi</div>
+                    <div class="user-score">{{ userRank.xp.toLocaleString() }}</div>
+                    <div class="user-total">/ {{ totalPlayers.toLocaleString() }} người chơi</div>
                   </div>
                 </div>
               </div>
@@ -345,7 +346,7 @@ onMounted(async () => {
 
   // Add welcome message with better UX
   const welcomeMsg = isDemoMode.value
-    ? '👋 Xin chào! Tôi là EnglishBot. Bạn đang ở chế độ demo. Nhấn "Bắt đầu" để thử nghiệm!'
+    ? '👋 Xin chào! Tôi là EnglishBot. Bạn đang ở chế độ demo. Nhấn "Bắt đầu" để thử nghi��m!'
     : '👋 Xin chào! Tôi là EnglishBot. Nhấn "Bắt đầu" để tôi bắt đầu đưa ra các câu hỏi tiếng Anh mỗi 20 giây.'
   addBotMessage(welcomeMsg)
 
