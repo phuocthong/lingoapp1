@@ -1,8 +1,9 @@
 # 🚀 Hướng dẫn chạy Lingo Challenge
 
 ## **Yêu cầu hệ thống:**
+
 - **Bun** (runtime JavaScript mới nhất)
-- **Git** 
+- **Git**
 
 ## **Bước 1: Clone và cài đặt**
 
@@ -65,6 +66,7 @@ bun run dev
 ## **🛠️ Lệnh hữu ích:**
 
 ### **Frontend:**
+
 ```bash
 bun run dev          # Chạy frontend development
 bun run build        # Build production
@@ -72,8 +74,9 @@ bun run lint         # Check ESLint
 ```
 
 ### **Backend:**
+
 ```bash
-bun run dev          # Chạy backend development  
+bun run dev          # Chạy backend development
 bun run db:seed      # Seed database
 bun run db:studio    # Mở database studio
 ```
@@ -93,6 +96,7 @@ Lingo_Challenge/
 ## **🔧 Troubleshooting:**
 
 ### **Lỗi database:**
+
 ```bash
 cd backend
 rm lingo-challenge.db  # Xóa database cũ
@@ -101,10 +105,12 @@ bun run db:seed        # Seed data
 ```
 
 ### **Lỗi port đang sử dụng:**
+
 - Frontend: Thay đổi port trong `quasar.config.js`
 - Backend: Thay đổi PORT trong `backend/src/index.js`
 
 ### **Demo mode:**
+
 Nếu backend không chạy, ứng dụng sẽ tự động chuyển sang demo mode với mock data.
 
 ---

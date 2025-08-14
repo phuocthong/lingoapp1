@@ -471,8 +471,10 @@
               </button>
 
               <p class="start-requirement">
-                Cần ít nhất 2 người để bắt đầu
-                ({{ participants.length }}/{{ maxParticipants }} người tham gia)
+                Cần ít nhất 2 người để bắt đầu ({{ participants.length }}/{{
+                  maxParticipants
+                }}
+                người tham gia)
               </p>
             </div>
 
@@ -654,12 +656,12 @@ const addDemoParticipants = () => {
       isOwner: false,
       isReady: Math.random() > 0.5,
       isCurrentUser: false,
-    }
+    },
   ]
 
   // Only add if not already present
-  demoParticipants.forEach(demo => {
-    if (!participants.value.find(p => p.id === demo.id)) {
+  demoParticipants.forEach((demo) => {
+    if (!participants.value.find((p) => p.id === demo.id)) {
       participants.value.push(demo)
     }
   })
