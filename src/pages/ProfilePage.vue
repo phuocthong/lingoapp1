@@ -39,13 +39,13 @@
               <q-icon name="star" />
               <div class="btn-content">
                 <span class="btn-label">Điểm kinh nghiệm</span>
-                <span class="btn-value">1,000 XP</span>
+                <span class="btn-value">{{ userProfile.xp.toLocaleString() }} XP</span>
               </div>
             </q-btn>
 
             <q-btn class="action-btn edit-btn" no-caps @click="editProfile">
               <q-icon name="edit" />
-              <span>Chỉnh s���a thông tin</span>
+              <span>Chỉnh sửa thông tin</span>
             </q-btn>
 
             <q-btn
