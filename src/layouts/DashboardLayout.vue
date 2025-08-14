@@ -177,7 +177,20 @@ const logout = () => {
   color: #374151;
   font-size: 14px;
   font-weight: 500;
-  padding: 4px 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.nav-btn.active {
+  background: #ede9fe;
+  color: #6d28d9;
+  font-weight: 600;
 }
 
 .nav-btn:hover {
