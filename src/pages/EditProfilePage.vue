@@ -108,7 +108,7 @@
               <div class="input-wrapper">
                 <textarea
                   v-model="editForm.bio"
-                  placeholder="Viết một vài dòng giới thiệu về bản thân"
+                  placeholder="Viết m���t vài dòng giới thiệu về bản thân"
                   class="form-textarea"
                   :class="{ error: errors.bio }"
                   rows="4"
@@ -228,7 +228,7 @@ const validateForm = () => {
     errors.username = 'Tên người dùng phải có ít nhất 3 ký tự'
     isValid = false
   } else if (!/^[a-zA-Z0-9_]+$/.test(editForm.username)) {
-    errors.username = 'Tên người dùng chỉ đ��ợc chứa chữ, số và dấu gạch dưới'
+    errors.username = 'Tên người dùng chỉ được chứa chữ, số và dấu gạch dưới'
     isValid = false
   }
 
@@ -377,6 +377,10 @@ const handleSave = async () => {
       }
 
       alert('Thông tin đã được cập nhật (chế độ demo)!')
+
+      // Trigger event to update UI components
+      window.dispatchEvent(new CustomEvent('userDataUpdate'))
+
       router.push('/dashboard/profile')
     } else {
       alert('Cập nhật thông tin thất bại. Vui lòng thử lại.')
