@@ -70,13 +70,36 @@
 </template>
 
 <script setup>
+import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { auth } from '../utils/auth.js'
 
 const router = useRouter()
 
-// Auto-login for demo purposes
-// Authentication is now handled by router guards
+// User profile data
+const userProfile = reactive({
+  name: 'Người dùng',
+  username: 'nguoidung',
+  avatar: '',
+  level: 1,
+  xp: 0,
+  streak: 0,
+})
+
+// Load user data
+onMounted(() => {
+  const currentUser = auth.getCurrentUser()
+  if (currentUser) {
+    Object.assign(userProfile, {
+      name: currentUser.name || 'Người dùng',
+      username: currentUser.username || 'nguoidung',
+      avatar: currentUser.avatar || '',
+      level: currentUser.level || 1,
+      xp: currentUser.xp || 0,
+      streak: currentUser.streak || 0,
+    })
+  }
+})
 
 const logout = () => {
   // Handle logout logic
