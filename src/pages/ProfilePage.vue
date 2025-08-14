@@ -17,8 +17,8 @@
             </div>
           </div>
 
-          <h1 class="user-name">Người dùng</h1>
-          <p class="user-handle">@nguoidung</p>
+          <h1 class="user-name">{{ userProfile.name || 'Người dùng' }}</h1>
+          <p class="user-handle">@{{ userProfile.username || 'nguoidung' }}</p>
 
           <div class="join-date">
             <q-icon name="calendar_today" />
