@@ -786,7 +786,7 @@ const showNotification = (message, type = 'info') => {
   flex-shrink: 0;
 }
 
-.bot-avatar .q-icon[name="check_circle"] {
+.bot-avatar .q-icon[name='check_circle'] {
   color: #16a34a;
 }
 
@@ -837,7 +837,6 @@ const showNotification = (message, type = 'info') => {
 .participant-avatar:first-child {
   margin-left: 0;
 }
-
 
 .user-answer-feedback {
   display: flex;
