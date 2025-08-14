@@ -31,7 +31,7 @@
               <q-icon name="emoji_events" />
               <div class="btn-content">
                 <span class="btn-label">Cấp độ</span>
-                <span class="btn-value">Level 10</span>
+                <span class="btn-value">Level {{ userProfile.level }}</span>
               </div>
             </q-btn>
 
@@ -45,7 +45,7 @@
 
             <q-btn class="action-btn edit-btn" no-caps @click="editProfile">
               <q-icon name="edit" />
-              <span>Chỉnh sửa thông tin</span>
+              <span>Chỉnh s���a thông tin</span>
             </q-btn>
 
             <q-btn
