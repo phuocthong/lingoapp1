@@ -261,7 +261,7 @@ const triggerFileUpload = () => {
   fileInput.value?.click()
 }
 
-const handleAvatarChange = (event) => {
+const handleAvatarChange = async (event) => {
   const file = event.target.files[0]
   if (file) {
     if (file.size > 5 * 1024 * 1024) {
@@ -275,11 +275,39 @@ const handleAvatarChange = (event) => {
       return
     }
 
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      editForm.avatar = e.target.result
+    // Show loading state while uploading
+    loading.value = true
+
+    try {
+      const reader = new FileReader()
+      reader.onload = async (e) => {
+        const imageData = e.target.result
+
+        try {
+          // Upload avatar to server
+          const response = await apiService.uploadAvatar(imageData, file.name)
+
+          if (response.success) {
+            editForm.avatar = response.avatarUrl
+            alert('Ảnh đại diện đã được tải lên thành công!')
+          } else {
+            throw new Error(response.message || 'Upload failed')
+          }
+        } catch (error) {
+          console.error('Avatar upload error:', error)
+          // Fallback to local preview if API upload fails
+          editForm.avatar = imageData
+          alert('Không thể tải ảnh lên server, sẽ sử dụng ảnh tạm thời')
+        } finally {
+          loading.value = false
+        }
+      }
+      reader.readAsDataURL(file)
+    } catch (error) {
+      console.error('File reading error:', error)
+      alert('Không thể đọc file ảnh')
+      loading.value = false
     }
-    reader.readAsDataURL(file)
   }
 }
 
