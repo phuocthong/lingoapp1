@@ -571,6 +571,9 @@ const loadLeaderboard = async () => {
 }
 
 const loadFallbackLeaderboard = () => {
+  // Set demo mode when using fallback data
+  isDemoMode.value = true
+
   // Fallback data when API is not available (matches seeded data)
   const fallbackData = {
     week: [
