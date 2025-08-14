@@ -188,7 +188,7 @@
                 :class="['tab-btn', { active: activeTab === 'week' }]"
                 no-caps
                 @click="switchTab('week')"
-                >Tuần</q-btn
+                >Tu��n</q-btn
               >
               <q-btn
                 flat
@@ -337,11 +337,19 @@ onMounted(async () => {
   // Load initial data
   await loadLeaderboard()
 
-  // Add welcome message
+  // Add welcome message with better UX
   const welcomeMsg = isDemoMode.value
-    ? 'Xin chào! Tôi là EnglishBot. Bạn đang ở chế độ demo. Nhấn "Bắt đầu" để thử nghiệm!'
-    : 'Xin chào! Tôi là EnglishBot. Nhấn "Bắt đầu" để tôi bắt đầu đưa ra các câu hỏi tiếng Anh.'
+    ? '👋 Xin chào! Tôi là EnglishBot. Bạn đang ở chế độ demo. Nhấn "Bắt đầu" để thử nghiệm!'
+    : '👋 Xin chào! Tôi là EnglishBot. Nhấn "Bắt đầu" để tôi bắt đầu đưa ra các câu hỏi tiếng Anh mỗi 20 giây.'
   addBotMessage(welcomeMsg)
+
+  // Add helpful tip after 2 seconds
+  setTimeout(() => {
+    const tipMsg = isDemoMode.value
+      ? '💡 Mẹo: Sau khi bắt đầu, tôi sẽ đưa ra câu hỏi và bạn có thể trả lời bằng tiếng Việt hoặc tiếng Anh!'
+      : '💡 Mẹo: Bạn có thể trả lời bằng tiếng Việt hoặc tiếng Anh. Tôi sẽ hiển thị đáp án đúng sau mỗi câu hỏi!'
+    addBotMessage(tipMsg)
+  }, 2000)
 })
 
 onUnmounted(() => {
