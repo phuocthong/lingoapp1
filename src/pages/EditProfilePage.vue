@@ -160,6 +160,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import ProfileSidebar from '../components/ProfileSidebar.vue'
 import { auth } from '../utils/auth.js'
+import { apiService } from '../services/api.js'
 
 const router = useRouter()
 const fileInput = ref(null)
