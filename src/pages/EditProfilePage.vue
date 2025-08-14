@@ -228,7 +228,7 @@ const validateForm = () => {
     errors.username = 'Tên người dùng phải có ít nhất 3 ký tự'
     isValid = false
   } else if (!/^[a-zA-Z0-9_]+$/.test(editForm.username)) {
-    errors.username = 'Tên người dùng chỉ được chứa chữ, số và dấu gạch dưới'
+    errors.username = 'Tên người dùng chỉ đ��ợc chứa chữ, số và dấu gạch dưới'
     isValid = false
   }
 
@@ -343,6 +343,10 @@ const handleSave = async () => {
       }
 
       alert('Thông tin đã được cập nhật thành công!')
+
+      // Trigger event to update UI components
+      window.dispatchEvent(new CustomEvent('userDataUpdate'))
+
       router.push('/dashboard/profile')
     } else {
       throw new Error(response.message || 'Update failed')
