@@ -45,11 +45,14 @@
                 </div>
               </div>
 
-              <!-- Answer Display -->
-              <div v-else-if="message.type === 'answer'" class="answer-display">
-                <div class="correct-answer">
-                  {{ message.text }}
-                  <div class="answer-time">{{ formatTime(message.timestamp) }}</div>
+              <!-- Answer Display (as bot message) -->
+              <div v-else-if="message.type === 'answer'" class="message-row">
+                <q-avatar size="32px" class="bot-avatar">
+                  <q-icon name="check_circle" size="16px" />
+                </q-avatar>
+                <div class="message-bubble bot-message answer-message">
+                  <div class="message-text">{{ message.text }}</div>
+                  <div class="message-time">{{ formatTime(message.timestamp) }}</div>
                 </div>
               </div>
 
