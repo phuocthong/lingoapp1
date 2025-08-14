@@ -212,7 +212,7 @@
           <q-card-section class="leaderboard-content">
             <div v-if="loadingLeaderboard" class="loading-container">
               <q-spinner color="primary" size="2em" />
-              <p>Đang t��i bảng xếp hạng...</p>
+              <p>{{ isDemoMode ? 'Đang tải dữ liệu demo...' : 'Đang tải bảng xếp hạng...' }}</p>
             </div>
 
             <div v-else-if="leaderboardError" class="error-container">
