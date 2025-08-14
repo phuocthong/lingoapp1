@@ -532,28 +532,13 @@ const roomName = ref('Phòng chờ')
 const currentUserReady = ref(false)
 
 // Sample participants data - would come from real-time server
+// When user creates room, they should be the only participant and owner
 const participants = ref([
-  {
-    id: 'user2',
-    name: 'Thành Hòa',
-    initials: 'TH',
-    isOwner: true,
-    isReady: true,
-    isCurrentUser: false,
-  },
-  {
-    id: 'user3',
-    name: 'Lan Anh',
-    initials: 'LA',
-    isOwner: false,
-    isReady: true,
-    isCurrentUser: false,
-  },
   {
     id: 'user1',
     name: 'Người Dùng',
     initials: 'ND',
-    isOwner: false,
+    isOwner: true,
     isReady: false,
     isCurrentUser: true,
   },
