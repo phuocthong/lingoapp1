@@ -12,7 +12,12 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
-    "postinstall": "quasar prepare"
+    "postinstall": "quasar prepare",
+    "backend:install": "cd backend && bun install",
+    "backend:setup": "cd backend && bun run db:migrate && bun run db:seed",
+    "backend:dev": "cd backend && bun run dev",
+    "setup": "npm run backend:install && npm run backend:setup",
+    "dev:full": "concurrently \"npm run backend:dev\" \"npm run dev\""
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
