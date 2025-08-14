@@ -115,4 +115,51 @@ Nếu backend không chạy, ứng dụng sẽ tự động chuyển sang demo m
 
 ---
 
+## **🔄 Workflow khi pull code các lần sau:**
+
+### **Khi có pull request mới từ team:**
+```bash
+# 1. Pull latest changes
+git pull origin main
+
+# 2. Cài đặt dependencies mới (nếu có)
+bun install
+cd backend && bun install && cd ..
+
+# 3. Check xem có migration database mới không
+cd backend
+bun run src/scripts/migrate-profile-columns.js
+bun run db:seed  # Chỉ chạy nếu cần refresh data
+
+# 4. Chạy app
+cd ..
+bun run dev
+```
+
+### **Khi gặp conflict hoặc lỗi:**
+```bash
+# Reset về state sạch
+git stash  # Lưu changes local
+git pull origin main
+git stash pop  # Restore changes và resolve conflicts
+
+# Nếu database bị lỗi
+cd backend
+rm lingo-challenge.db
+bun run db:migrate
+bun run db:seed
+cd ..
+```
+
+### **Quick commands cho developer:**
+```bash
+# Pull và run ngay
+git pull && bun install && bun run dev
+
+# Full reset (khi có vấn đề)
+git pull && bun install && cd backend && rm lingo-challenge.db && bun run db:migrate && bun run db:seed && cd .. && bun run dev
+```
+
+---
+
 **🎯 Ứng dụng sẵn sàng!** Truy cập http://localhost:9000 để bắt đầu.
