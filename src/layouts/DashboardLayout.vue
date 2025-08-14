@@ -88,7 +88,7 @@ const userProfile = reactive({
 })
 
 // Load user data
-onMounted(() => {
+const loadUserData = () => {
   const currentUser = auth.getCurrentUser()
   if (currentUser) {
     Object.assign(userProfile, {
@@ -100,6 +100,14 @@ onMounted(() => {
       streak: currentUser.streak || 0,
     })
   }
+}
+
+onMounted(() => {
+  loadUserData()
+
+  // Listen for user data updates
+  window.addEventListener('userDataUpdate', loadUserData)
+  window.addEventListener('storage', loadUserData)
 })
 
 const logout = () => {
