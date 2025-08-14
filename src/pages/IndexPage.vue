@@ -550,7 +550,11 @@ const loadLeaderboard = async () => {
   leaderboardError.value = ''
 
   try {
-    const response = await apiService.getLeaderboard(activeTab.value, 10)
+    // Add minimum loading time for better UX
+    const [response] = await Promise.all([
+      apiService.getLeaderboard(activeTab.value, 10),
+      new Promise(resolve => setTimeout(resolve, 300)) // Minimum 300ms loading
+    ])
 
     if (response.success) {
       // API success - not in demo mode
