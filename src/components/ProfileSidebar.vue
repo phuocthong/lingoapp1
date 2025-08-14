@@ -104,7 +104,8 @@ const activeTab = ref('profile')
 const userProfile = reactive({
   name: 'Người dùng',
   username: 'nguoidung',
-  avatar: 'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+  avatar:
+    'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
 })
 
 // Load user data
@@ -114,7 +115,9 @@ const loadUserData = () => {
     Object.assign(userProfile, {
       name: currentUser.name || 'Người dùng',
       username: currentUser.username || 'nguoidung',
-      avatar: currentUser.avatar || 'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+      avatar:
+        currentUser.avatar ||
+        'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
     })
   }
 }
