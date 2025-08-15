@@ -205,16 +205,26 @@ const handleRegister = async () => {
   loading.value = true
 
   try {
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    // Call registration API with proper data
+    const registerData = {
+      name: `${registerForm.firstName} ${registerForm.lastName}`.trim(),
+      email: registerForm.email,
+      password: registerForm.password,
+      username: registerForm.email.split('@')[0] // Generate username from email
+    }
 
-    // Use the existing auth utility
-    login()
+    // Use the auth utility for registration
+    const success = await auth.register(registerData)
 
-    // Navigate to dashboard
-    router.push('/dashboard')
+    if (success) {
+      showNotification(`Chào mừng ${registerData.name}! 🎉`, 'success')
+      router.push('/dashboard')
+    } else {
+      throw new Error('Registration failed')
+    }
   } catch (error) {
     console.error('Registration failed:', error)
+    showNotification('Đăng ký thất bại. Vui lòng thử lại.', 'negative')
     errors.email = 'Đăng ký thất bại. Vui lòng thử lại.'
   } finally {
     loading.value = false
