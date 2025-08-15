@@ -53,7 +53,7 @@
 
           <div class="step">
             <div class="step-title">✅ Bước 5: Refresh trang này</div>
-            <p class="text-caption">Backend sẽ chạy trên http://localhost:3000</p>
+            <p class="text-caption">Backend sẽ chạy trên http://localhost:3001</p>
           </div>
 
           <q-separator class="q-my-md" />
@@ -98,7 +98,7 @@ const checkConnection = async () => {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 2000)
 
-    const response = await fetch('http://localhost:3000', {
+    const response = await fetch('http://localhost:3001', {
       method: 'GET',
       mode: 'cors',
       signal: controller.signal,

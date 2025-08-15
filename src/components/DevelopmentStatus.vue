@@ -43,7 +43,7 @@ const checkBackendConnection = async () => {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 3000)
 
-    const response = await fetch('http://localhost:3000', {
+    const response = await fetch('http://localhost:3001', {
       method: 'GET',
       mode: 'cors',
       signal: controller.signal,

@@ -74,7 +74,7 @@
               <div class="step-number">5</div>
               <div class="step-content">
                 <div class="step-header">Refresh trang này</div>
-                <p class="text-caption">Backend sẽ chạy trên http://localhost:3000</p>
+                <p class="text-caption">Backend sẽ chạy trên http://localhost:3001</p>
               </div>
             </div>
           </div>
@@ -129,7 +129,7 @@ const dismissNotice = () => {
 const testConnection = async () => {
   testing.value = true
   try {
-    const response = await fetch('http://localhost:3000', {
+    const response = await fetch('http://localhost:3001', {
       method: 'GET',
       mode: 'cors',
     })
