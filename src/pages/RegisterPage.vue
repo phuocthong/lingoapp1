@@ -214,13 +214,13 @@ const handleRegister = async () => {
     }
 
     // Use the auth utility for registration
-    const success = await auth.register(registerData)
+    const result = await auth.register(registerData)
 
-    if (success) {
+    if (result.success) {
       showNotification(`Chào mừng ${registerData.name}! 🎉`, 'success')
       router.push('/dashboard')
     } else {
-      throw new Error('Registration failed')
+      throw new Error(result.message || 'Registration failed')
     }
   } catch (error) {
     console.error('Registration failed:', error)

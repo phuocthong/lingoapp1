@@ -32,11 +32,6 @@ const routes = [
       { path: 'change-password', component: () => import('pages/ChangePasswordPage.vue') },
     ],
   },
-  {
-    path: '/profile',
-    component: () => import('layouts/DashboardLayout.vue'),
-    children: [{ path: '', component: () => import('pages/ProfilePage.vue') }],
-  },
 
   // Always leave this as last one,
   // but you can also remove it
