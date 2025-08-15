@@ -175,7 +175,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import ProfileSidebar from '../components/ProfileSidebar.vue'
 import { auth } from '../utils/auth.js'

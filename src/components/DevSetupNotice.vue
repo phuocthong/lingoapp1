@@ -147,7 +147,7 @@ const testConnection = async () => {
     } else {
       createNotification('warning', '⚠️ Backend chưa sẵn sàng, vui lòng kiểm tra lại')
     }
-  } catch (error) {
+  } catch {
     createNotification('negative', '❌ Không thể kết nối backend. Vui lòng chạy backend server.')
   }
   testing.value = false

@@ -106,7 +106,7 @@ const checkConnection = async () => {
 
     clearTimeout(timeoutId)
     isConnected.value = response.ok
-  } catch (error) {
+  } catch {
     // Silently handle connection errors - this is expected when backend isn't running
     isConnected.value = false
   }

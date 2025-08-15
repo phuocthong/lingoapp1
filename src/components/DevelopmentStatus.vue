@@ -51,7 +51,7 @@ const checkBackendConnection = async () => {
 
     clearTimeout(timeoutId)
     isBackendConnected.value = response.ok
-  } catch (error) {
+  } catch {
     // Silently handle connection errors
     isBackendConnected.value = false
   }

@@ -226,7 +226,7 @@
           <q-card-section class="leaderboard-content">
             <div v-if="loadingLeaderboard" class="loading-container">
               <q-spinner color="primary" size="2em" />
-              <p>{{ isDemoMode ? 'Đang tải dữ liệu demo...' : '��ang tải bảng xếp hạng...' }}</p>
+              <p>{{ isDemoMode ? 'Đang tải dữ liệu demo...' : '���ang tải bảng xếp hạng...' }}</p>
             </div>
 
             <div v-else-if="leaderboardError" class="error-container">
@@ -331,7 +331,7 @@ const isDemoMode = ref(false)
 const chatMessagesElement = computed(() => {
   try {
     return chatMessages_ref.value
-  } catch (error) {
+  } catch {
     // Fallback if ref is not available
     return null
   }
@@ -364,7 +364,7 @@ onMounted(async () => {
   setTimeout(() => {
     const tipMsg = isDemoMode.value
       ? '💡 Mẹo: Sau khi bắt đầu, tôi sẽ đưa ra câu hỏi và bạn có thể trả lời bằng tiếng Việt hoặc tiếng Anh!'
-      : '💡 Mẹo: Bạn có thể trả lời bằng tiếng Việt hoặc tiếng Anh. Tôi sẽ hiển thị đáp án đúng sau mỗi câu hỏi!'
+      : '💡 Mẹo: Bạn có thể trả lời bằng tiếng Việt hoặc tiếng Anh. Tôi sẽ hiển thị đáp án đúng sau mỗi c��u hỏi!'
     addBotMessage(tipMsg)
   }, 2000)
 })

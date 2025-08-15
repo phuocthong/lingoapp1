@@ -132,7 +132,8 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { login } from '../utils/auth.js'
+import { auth } from '../utils/auth.js'
+import { showNotification } from '../utils/notifications.js'
 
 const router = useRouter()
 
