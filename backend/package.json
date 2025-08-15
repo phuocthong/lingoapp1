@@ -5,12 +5,14 @@
   "description": "ElysiaJS backend for Lingo Challenge vocabulary app",
   "main": "src/index.js",
   "scripts": {
-    "dev": "bun run src/index.js",
-    "start": "bun run src/index.js",
-    "db:generate": "bun x drizzle-kit generate:sqlite",
-    "db:migrate": "bun run src/scripts/migrate.js",
-    "db:seed": "bun run src/scripts/seed.js",
-    "db:studio": "bun x drizzle-kit studio",
+    "dev": "node --loader=esbuild-register/loader src/index.js",
+    "start": "node --loader=esbuild-register/loader src/index.js",
+    "dev:bun": "bun run src/index.js",
+    "start:bun": "bun run src/index.js",
+    "db:generate": "npx drizzle-kit generate:sqlite",
+    "db:migrate": "node --loader=esbuild-register/loader src/scripts/migrate.js",
+    "db:seed": "node --loader=esbuild-register/loader src/scripts/seed.js",
+    "db:studio": "npx drizzle-kit studio",
     "test": "echo \"No tests defined\""
   },
   "dependencies": {
