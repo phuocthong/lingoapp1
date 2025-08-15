@@ -117,7 +117,7 @@ export function suppressApiErrors() {
       ) {
         const url = args[0]
         // Only log localhost API connection issues once
-        if (url && url.includes('localhost:3001') && !window._localhostWarningShown) {
+        if (url && url.includes('localhost:3000') && !window._localhostWarningShown) {
           console.log('🔄 Backend API connection failed - using demo mode')
           window._localhostWarningShown = true
         }
@@ -140,7 +140,7 @@ export function suppressApiErrors() {
       // Suppress fetch-related errors to localhost
       if (
         errorMessage.includes('Failed to fetch') &&
-        JSON.stringify(args).includes('localhost:3001')
+        JSON.stringify(args).includes('localhost:3000')
       ) {
         return
       }

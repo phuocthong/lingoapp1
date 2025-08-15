@@ -109,6 +109,7 @@ const port = process.env.PORT || 3000
 app.listen(port, () => {
   console.log(`🚀 Lingo Challenge API server running on http://localhost:${port}`)
   console.log(`📚 API Documentation available at http://localhost:${port}/swagger`)
+  console.log(`📊 Database schema available at http://localhost:${port}/api/schema`)
 })
 
 export default app
