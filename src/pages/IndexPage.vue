@@ -1,5 +1,11 @@
 <template>
   <q-page class="dashboard-page">
+    <!-- Development Setup Notice -->
+    <DevSetupNotice />
+
+    <!-- Connection Status -->
+    <ConnectionStatus />
+
     <div class="dashboard-container">
       <!-- Left side - Chat Interface -->
       <div class="chat-section">
@@ -220,7 +226,7 @@
           <q-card-section class="leaderboard-content">
             <div v-if="loadingLeaderboard" class="loading-container">
               <q-spinner color="primary" size="2em" />
-              <p>{{ isDemoMode ? 'Đang tải dữ liệu demo...' : 'Đang tải bảng xếp hạng...' }}</p>
+              <p>{{ isDemoMode ? 'Đang tải dữ liệu demo...' : '��ang tải bảng xếp hạng...' }}</p>
             </div>
 
             <div v-else-if="leaderboardError" class="error-container">
@@ -299,6 +305,8 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue'
+import DevSetupNotice from '../components/DevSetupNotice.vue'
+import ConnectionStatus from '../components/ConnectionStatus.vue'
 import { chatService } from '../services/chatService.js'
 import { apiService } from '../services/api.js'
 import { auth } from '../utils/auth.js'

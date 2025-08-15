@@ -5,6 +5,9 @@
       <ProfileSidebar />
       <!-- Main Content -->
       <div class="friends-content">
+        <!-- Connection Status -->
+        <ConnectionStatus />
+
         <div class="page-header">
           <h1 class="page-title">Bạn bè</h1>
         </div>
@@ -116,6 +119,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import ProfileSidebar from '../components/ProfileSidebar.vue'
+import ConnectionStatus from '../components/ConnectionStatus.vue'
 import { apiService } from '../services/api.js'
 import { auth } from '../utils/auth.js'
 import { createNotification } from '../utils/notifications.js'

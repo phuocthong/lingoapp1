@@ -12,7 +12,12 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
-    "postinstall": "quasar prepare"
+    "postinstall": "quasar prepare",
+    "backend:install": "cd backend && bun install",
+    "backend:setup": "cd backend && bun run db:migrate && bun run db:seed",
+    "backend:dev": "cd backend && bun run dev",
+    "setup": "npm run backend:install && npm run backend:setup",
+    "dev:full": "concurrently \"npm run backend:dev\" \"npm run dev\""
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
@@ -22,15 +27,16 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
+    "@quasar/app-vite": "^2.1.0",
+    "@vue/eslint-config-prettier": "^10.1.0",
+    "autoprefixer": "^10.4.2",
+    "concurrently": "^9.2.0",
     "eslint": "^9.14.0",
     "eslint-plugin-vue": "^9.30.0",
     "globals": "^15.12.0",
-    "vite-plugin-checker": "^0.9.0",
-    "@vue/eslint-config-prettier": "^10.1.0",
+    "postcss": "^8.4.14",
     "prettier": "^3.3.3",
-    "@quasar/app-vite": "^2.1.0",
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.14"
+    "vite-plugin-checker": "^0.9.0"
   },
   "engines": {
     "node": "^28 || ^26 || ^24 || ^22 || ^20 || ^18",
