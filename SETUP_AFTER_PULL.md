@@ -47,6 +47,7 @@ npm run dev
 ## C\u00e1c L\u1ec7nh H\u1eefu \u00cdch Kh\u00e1c
 
 ### Database Management
+
 ```bash
 cd backend
 
@@ -63,6 +64,7 @@ bun run db:seed
 ```
 
 ### Development Tools
+
 ```bash
 # Ki\u1ec3m tra l\u1ed7i code
 npm run lint
@@ -77,6 +79,7 @@ npm run build
 ## X\u1eed L\u00fd L\u1ed7i Th\u01b0\u1eddng G\u1eb7p
 
 ### 1. L\u1ed7i "Script not found"
+
 ```bash
 # \u0110\u1ea3m b\u1ea3o b\u1ea1n \u0111ang \u1edf \u0111\u00fang th\u01b0 m\u1ee5c
 pwd  # Ki\u1ec3m tra th\u01b0 m\u1ee5c hi\u1ec7n t\u1ea1i
@@ -90,6 +93,7 @@ bun run dev  # cho backend
 ```
 
 ### 2. L\u1ed7i Port B\u1ecb Chi\u1ebfm
+
 ```bash
 # T\u00ecm v\u00e0 t\u1eaft process \u0111ang d\u00f9ng port
 netstat -an | findstr :3000  # Windows
@@ -99,6 +103,7 @@ lsof -i :3000  # Mac/Linux
 ```
 
 ### 3. L\u1ed7i Database
+
 ```bash
 cd backend
 
@@ -109,6 +114,7 @@ bun run db:seed
 ```
 
 ### 4. L\u1ed7i Dependencies
+
 ```bash
 # X\u00f3a node_modules v\u00e0 c\u00e0i l\u1ea1i
 rm -rf node_modules
@@ -140,6 +146,7 @@ Lingo_Challenge/
 ## Support
 
 N\u1ebfu g\u1eb7p l\u1ed7i, ki\u1ec3m tra:
+
 1. Console c\u1ee7a browser (F12)
 2. Terminal output
 3. Database connection

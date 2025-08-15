@@ -210,7 +210,7 @@ const handleRegister = async () => {
       name: `${registerForm.firstName} ${registerForm.lastName}`.trim(),
       email: registerForm.email,
       password: registerForm.password,
-      username: registerForm.email.split('@')[0] // Generate username from email
+      username: registerForm.email.split('@')[0], // Generate username from email
     }
 
     // Use the auth utility for registration
