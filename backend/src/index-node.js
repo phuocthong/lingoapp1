@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import { db } from './db/index.js'
-import { users, vocabulary, questions, tasks, friends, rewards, progress } from './db/schema.js'
+import { users, vocabulary, questions, tasks, friends, rewards, userProgress } from './db/schema.js'
 import { eq, desc, count, sql } from 'drizzle-orm'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
