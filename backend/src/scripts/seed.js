@@ -974,7 +974,7 @@ try {
       vocabularyId: seedVocabulary[23].id, // school
       question: "What does 'school' mean?",
       correctAnswer: 'trường học',
-      wrongAnswers: JSON.stringify(['bệnh viện', 'chợ', 'công viên']),
+      wrongAnswers: JSON.stringify(['bệnh vi���n', 'chợ', 'công viên']),
       type: 'multiple_choice',
       difficulty: 'easy',
       createdAt: new Date(),
@@ -1272,7 +1272,7 @@ try {
     {
       vocabularyId: seedVocabulary[81].id, // ambitious
       question: "What does 'ambitious' mean?",
-      correctAnswer: 'tham vọng',
+      correctAnswer: 'tham v��ng',
       wrongAnswers: JSON.stringify(['khiêm tốn', 'lười biếng', 'thụ động']),
       type: 'multiple_choice',
       difficulty: 'hard',
@@ -1432,54 +1432,6 @@ try {
       wrongAnswers: 2,
       xpEarned: 160,
       timeSpent: 30,
-      streakMaintained: true,
-      createdAt: new Date(),
-    },
-    // Thu Trang progress (top performer)
-    {
-      userId: seedUsers[3].id,
-      date: today,
-      questionsAnswered: 35,
-      correctAnswers: 33,
-      wrongAnswers: 2,
-      xpEarned: 330,
-      timeSpent: 60,
-      streakMaintained: true,
-      createdAt: new Date(),
-    },
-    // Minh Anh progress
-    {
-      userId: seedUsers[1].id,
-      date: today,
-      questionsAnswered: 28,
-      correctAnswers: 24,
-      wrongAnswers: 4,
-      xpEarned: 240,
-      timeSpent: 50,
-      streakMaintained: true,
-      createdAt: new Date(),
-    },
-    // Thành Hòa progress
-    {
-      userId: seedUsers[2].id,
-      date: today,
-      questionsAnswered: 20,
-      correctAnswers: 18,
-      wrongAnswers: 2,
-      xpEarned: 180,
-      timeSpent: 35,
-      streakMaintained: true,
-      createdAt: new Date(),
-    },
-    // Văn Nam progress
-    {
-      userId: seedUsers[4].id,
-      date: today,
-      questionsAnswered: 22,
-      correctAnswers: 19,
-      wrongAnswers: 3,
-      xpEarned: 190,
-      timeSpent: 40,
       streakMaintained: true,
       createdAt: new Date(),
     },
