@@ -38,6 +38,10 @@ try {
         name: 'Admin User',
         avatar:
           'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
+        phone: null,
+        bio: null,
+        isPublicProfile: true,
+        allowFriendRequests: true,
         level: 10,
         xp: 2500,
         streak: 15,
@@ -110,7 +114,7 @@ try {
       {
         word: 'cat',
         meaning: 'con mèo',
-        pronunciation: '/kæt/',
+        pronunciation: '/k��t/',
         example: 'The cat is sleeping.',
         difficulty: 'easy',
         category: 'animals',
@@ -412,7 +416,7 @@ try {
       {
         word: 'comprehensive',
         meaning: 'toàn diện, bao quát',
-        pronunciation: '/ˌkɒmpr��ˈhensɪv/',
+        pronunciation: '/ˌkɒmprɪˈhensɪv/',
         example: 'We need a comprehensive solution.',
         difficulty: 'hard',
         category: 'academic',
@@ -458,7 +462,7 @@ try {
       {
         word: 'rabbit',
         meaning: 'con thỏ',
-        pronunciation: '/ˈræb��t/',
+        pronunciation: '/ˈræbɪt/',
         example: 'The rabbit has long ears.',
         difficulty: 'easy',
         category: 'animals',
@@ -988,7 +992,7 @@ try {
     {
       vocabularyId: seedVocabulary[27].id, // creative
       question: "What does 'creative' mean?",
-      correctAnswer: 's��ng tạo',
+      correctAnswer: 'sáng tạo',
       wrongAnswers: JSON.stringify(['nhàm chán', 'thụ động', 'bình thường']),
       type: 'multiple_choice',
       difficulty: 'medium',
@@ -1400,7 +1404,7 @@ try {
 
   // Seed friends relationships (chỉ admin nên bỏ qua)
   console.log('Seeding friends...')
-  // Không có bạn bè vì chỉ có tài khoản admin
+  // Không có bạn b�� vì chỉ có tài khoản admin
 
   // Seed user progress for leaderboard
   console.log('Seeding user progress...')
