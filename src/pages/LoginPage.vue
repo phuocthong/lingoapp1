@@ -49,7 +49,7 @@
               <input
                 v-model="loginForm.password"
                 :type="showPassword ? 'text' : 'password'"
-                placeholder="Nhập mật khẩu"
+                placeholder="Nhập mật kh���u"
                 class="form-input"
                 :class="{ error: errors.password }"
                 @keyup.enter="handleLogin"
@@ -122,9 +122,6 @@
             <div class="demo-accounts">
               <button @click="fillDemoAccount('admin')" class="demo-btn">
                 Admin (admin / password123)
-              </button>
-              <button @click="fillDemoAccount('minhanh')" class="demo-btn">
-                Minh Anh (minhanh / password123)
               </button>
             </div>
           </div>
@@ -313,9 +310,6 @@ const simulateLogin = async () => {
   // Check demo credentials
   const demoAccounts = {
     admin: { name: 'Admin', level: 10, xp: 2500, streak: 15 },
-    minhanh: { name: 'Minh Anh', level: 8, xp: 1800, streak: 12 },
-    thanhhoa: { name: 'Thành Hòa', level: 6, xp: 1200, streak: 8 },
-    nguoidung: { name: 'Người dùng', level: 5, xp: 1000, streak: 10 },
   }
 
   // Simulate API delay
