@@ -24,7 +24,8 @@
     "db:studio:npm": "npx drizzle-kit studio",
     "test": "echo \"No tests defined\"",
     "test:db": "bun run src/index-simple.js",
-    "view:db": "node --loader=esbuild-register/loader src/view-db.js"
+    "view:db": "node --loader=esbuild-register/loader src/view-db.js",
+    "server:simple": "node src/server-simple.js"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.0.0",
