@@ -235,6 +235,79 @@ app.get('/api/tasks', authMiddleware, async (req, res) => {
   }
 })
 
+// Database viewer routes
+app.get('/api/database/overview', async (req, res) => {
+  try {
+    // Get table counts
+    const [usersResult] = await db.select({ count: count() }).from(users)
+    const [vocabResult] = await db.select({ count: count() }).from(vocabulary)
+    const [questionsResult] = await db.select({ count: count() }).from(questions)
+    const [tasksResult] = await db.select({ count: count() }).from(tasks)
+
+    res.json({
+      success: true,
+      data: {
+        tables: {
+          users: usersResult.count,
+          vocabulary: vocabResult.count,
+          questions: questionsResult.count,
+          tasks: tasksResult.count,
+        },
+        database_file: 'backend/lingo-challenge.db',
+        last_checked: new Date().toISOString()
+      }
+    })
+  } catch (error) {
+    console.error('Database overview error:', error)
+    res.status(500).json({ success: false, message: 'Failed to get database overview' })
+  }
+})
+
+app.get('/api/database/users', async (req, res) => {
+  try {
+    const allUsers = await db
+      .select({
+        id: users.id,
+        username: users.username,
+        email: users.email,
+        name: users.name,
+        level: users.level,
+        xp: users.xp,
+        streak: users.streak,
+        createdAt: users.createdAt
+      })
+      .from(users)
+      .limit(20)
+
+    res.json({
+      success: true,
+      data: allUsers,
+      total: allUsers.length
+    })
+  } catch (error) {
+    console.error('Database users error:', error)
+    res.status(500).json({ success: false, message: 'Failed to get users data' })
+  }
+})
+
+app.get('/api/database/vocabulary', async (req, res) => {
+  try {
+    const allVocab = await db
+      .select()
+      .from(vocabulary)
+      .limit(20)
+
+    res.json({
+      success: true,
+      data: allVocab,
+      total: allVocab.length
+    })
+  } catch (error) {
+    console.error('Database vocabulary error:', error)
+    res.status(500).json({ success: false, message: 'Failed to get vocabulary data' })
+  }
+})
+
 // Error handling
 app.use((error, req, res, next) => {
   console.error('Server error:', error)
