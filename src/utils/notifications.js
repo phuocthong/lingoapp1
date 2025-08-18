@@ -129,6 +129,9 @@ export const notifyError = (message) => createNotification(message, 'error')
 export const notifyWarning = (message) => createNotification(message, 'warning')
 export const notifyInfo = (message) => createNotification(message, 'info')
 
+// Alias for backward compatibility
+export const showNotification = createNotification
+
 export default {
   success: notifySuccess,
   error: notifyError,
