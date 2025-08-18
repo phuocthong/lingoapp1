@@ -5,7 +5,7 @@
   "description": "ElysiaJS backend for Lingo Challenge vocabulary app",
   "main": "src/index.js",
   "scripts": {
-    "dev": "bun run src/index.js",
+    "dev": "node --loader=esbuild-register/loader src/index-node.js",
     "start": "node --loader=esbuild-register/loader src/index-node.js",
     "dev:elysia": "node --loader=esbuild-register/loader src/index.js",
     "dev:bun": "bun run src/index.js",
@@ -24,7 +24,6 @@
     "cors": "^2.8.5",
     "drizzle-orm": "^0.29.0",
     "elysia": "^1.0.0",
-    "esbuild-register": "^3.6.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "sqlite3": "^5.1.7",
