@@ -40,7 +40,7 @@
 
           <!-- Username Field -->
           <div class="form-group">
-            <label class="form-label">Tên ngư���i dùng</label>
+            <label class="form-label">Tên người dùng</label>
             <div class="input-wrapper">
               <input
                 v-model="registerForm.username"
@@ -218,14 +218,14 @@ const handleRegister = async () => {
     const result = await auth.register(registerData)
 
     if (result.success) {
-      createNotification(`Chào mừng ${registerData.name}! 🎉`, 'success')
+      showNotification(`Chào mừng ${registerData.name}! 🎉`, 'success')
       router.push('/dashboard')
     } else {
       throw new Error(result.message || 'Registration failed')
     }
   } catch (error) {
     console.error('Registration failed:', error)
-    createNotification('Đăng ký thất bại. Vui lòng thử lại.', 'error')
+    showNotification('Đăng ký thất bại. Vui lòng thử lại.', 'negative')
     errors.email = 'Đăng ký thất bại. Vui lòng thử lại.'
   } finally {
     loading.value = false
