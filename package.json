@@ -20,7 +20,8 @@
     "backend:dev": "cd backend && bun run dev",
     "backend:dev:npm": "cd backend && npm run dev:node",
     "setup": "npm run backend:install && npm run backend:setup",
-    "dev:full": "concurrently \"npm run backend:dev\" \"npm run dev\""
+    "dev:full": "concurrently \"npm run backend:dev\" \"npm run dev\"",
+    "dev:bun": "concurrently \"cd backend && bun run src/bun-server.js\" \"npm run dev\""
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
