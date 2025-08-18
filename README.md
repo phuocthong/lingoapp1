@@ -7,7 +7,6 @@
 ### ⚡ Sử dụng Bun (Khuyến nghị - Nhanh hơn 2-3 lần)
 
 **Windows:**
-
 ```bash
 setup-bun.bat
 ```
