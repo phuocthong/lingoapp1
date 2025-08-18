@@ -26,7 +26,8 @@
     "test:db": "bun run src/index-simple.js",
     "view:db": "node --loader=esbuild-register/loader src/view-db.js",
     "server:simple": "node src/server-simple.cjs",
-    "db:viewer": "node src/db-viewer.cjs"
+    "db:viewer": "node src/db-viewer.cjs",
+    "test:server": "node src/simple-server.cjs"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.0.0",
