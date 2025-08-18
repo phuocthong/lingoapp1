@@ -133,7 +133,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { auth } from '../utils/auth.js'
-import { showNotification } from '../utils/notifications.js'
+import { createNotification } from '../utils/notifications.js'
 
 const router = useRouter()
 
