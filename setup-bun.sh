@@ -46,15 +46,23 @@ fi
 echo "[3/4] Migrate database..."
 bun run db:migrate
 if [ $? -ne 0 ]; then
-    echo "❌ Lỗi: Không thể migrate database"
-    exit 1
+    echo "Thử lại với Node.js fallback..."
+    bun run db:migrate:node
+    if [ $? -ne 0 ]; then
+        echo "❌ Lỗi: Không thể migrate database"
+        exit 1
+    fi
 fi
 
 echo "[4/4] Seed database với dữ liệu mẫu..."
 bun run db:seed
 if [ $? -ne 0 ]; then
-    echo "❌ Lỗi: Không thể seed database"
-    exit 1
+    echo "Thử lại với Node.js fallback..."
+    bun run db:seed:node
+    if [ $? -ne 0 ]; then
+        echo "❌ Lỗi: Không thể seed database"
+        exit 1
+    fi
 fi
 
 cd ..
