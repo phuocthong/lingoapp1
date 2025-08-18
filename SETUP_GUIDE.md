@@ -3,10 +3,12 @@
 ## 📋 Yêu Cầu Hệ Thống
 
 ### Tùy chọn 1: Sử dụng Bun (Khuyến nghị - Nhanh hơn)
+
 - **Bun**: phiên bản 1.0+
 - **Git**
 
 ### Tùy chọn 2: Sử dụng Node.js (Truyền thống)
+
 - **Node.js**: phiên bản 18+ (khuyến nghị 20+)
 - **npm** hoặc **yarn**
 - **Git**
@@ -57,6 +59,7 @@ cd ..
 ## 🗄️ Bước 3: Setup Database
 
 ### Với Bun:
+
 ```bash
 cd backend
 bun run db:migrate
@@ -65,6 +68,7 @@ cd ..
 ```
 
 ### Với npm:
+
 ```bash
 cd backend
 npm run db:migrate
@@ -77,19 +81,23 @@ cd ..
 ### 🚀 Sử dụng Bun
 
 #### Cách 1: Chạy cả Frontend và Backend (Khuyến nghị)
+
 ```bash
 # Từ thư mục root
 bun run dev:full
 ```
 
 #### Cách 2: Chạy riêng biệt
+
 **Terminal 1 - Backend:**
+
 ```bash
 cd backend
 bun run dev
 ```
 
 **Terminal 2 - Frontend:**
+
 ```bash
 # Từ thư mục root
 bun run dev
@@ -98,18 +106,22 @@ bun run dev
 ### 📦 Sử dụng npm
 
 #### Cách 1: Chạy cả Frontend và Backend
+
 ```bash
 npm run dev:full
 ```
 
-#### Cách 2: Chạy riêng biệt  
+#### Cách 2: Chạy riêng biệt
+
 **Terminal 1 - Backend:**
+
 ```bash
 cd backend
 npm run dev
 ```
 
 **Terminal 2 - Frontend:**
+
 ```bash
 npm run dev
 ```
@@ -123,6 +135,7 @@ npm run dev
 ## 👤 Tài Khoản Test
 
 Sau khi seed database, bạn có thể đăng nhập với:
+
 - **Username**: `admin`
 - **Password**: `password123`
 
@@ -131,12 +144,14 @@ Sau khi seed database, bạn có thể đăng nhập với:
 ### Cách 1: Sử dụng Drizzle Studio (Khuyến nghị)
 
 **Với Bun:**
+
 ```bash
 cd backend
 bun run db:studio
 ```
 
 **Với npm:**
+
 ```bash
 cd backend
 npm run db:studio
@@ -145,6 +160,7 @@ npm run db:studio
 Mở trình duyệt tại: http://localhost:4983
 
 ### Cách 2: SQLite CLI
+
 ```bash
 # Vào thư mục backend
 cd backend
@@ -160,12 +176,14 @@ SELECT * FROM users;      # Xem dữ liệu users
 ```
 
 ### Cách 3: Sử dụng DB Browser for SQLite
+
 1. Tải và cài đặt [DB Browser for SQLite](https://sqlitebrowser.org/)
 2. Mở file `backend/lingo-challenge.db`
 
 ## 📊 Cấu Trúc Database
 
 Database chứa các bảng chính:
+
 - `users` - Người dùng
 - `vocabulary` - Từ vựng
 - `questions` - Câu hỏi
@@ -178,6 +196,7 @@ Database chứa các bảng chính:
 ## 🛠️ Scripts Hữu Ích
 
 ### Với Bun:
+
 ```bash
 # Tạo migration mới
 cd backend && bunx drizzle-kit generate:sqlite
@@ -199,6 +218,7 @@ bun run lint
 ```
 
 ### Với npm:
+
 ```bash
 # Tạo migration mới
 cd backend && npx drizzle-kit generate:sqlite
@@ -230,6 +250,7 @@ npm run lint
 ## ⚠️ Xử Lý Lỗi Thường Gặp
 
 ### 1. Bun không được cài đặt
+
 ```bash
 # macOS/Linux:
 curl -fsSL https://bun.sh/install | bash
@@ -240,6 +261,7 @@ powershell -c "irm bun.sh/install.ps1 | iex"
 ```
 
 ### 2. Port đã được sử dụng
+
 ```bash
 # Kiểm tra process đang sử dụng port
 lsof -i :9000  # Frontend
@@ -250,6 +272,7 @@ kill -9 <PID>
 ```
 
 ### 3. Database bị lỗi
+
 ```bash
 # Xóa và tạo lại database
 cd backend
@@ -259,6 +282,7 @@ bun run db:seed
 ```
 
 ### 4. Dependencies bị lỗi với Bun
+
 ```bash
 # Xóa lock files và node_modules
 rm -rf node_modules bun.lockb
@@ -271,6 +295,7 @@ bun install
 ```
 
 ### 5. Dependencies bị lỗi với npm
+
 ```bash
 # Xóa node_modules và cài lại
 rm -rf node_modules package-lock.json
@@ -285,6 +310,7 @@ npm install
 ## 🔄 Cập Nhật Code
 
 ### Với Bun:
+
 ```bash
 # Pull latest changes
 git pull origin flare-works
@@ -298,6 +324,7 @@ cd backend && bun run db:migrate
 ```
 
 ### Với npm:
+
 ```bash
 # Pull latest changes
 git pull origin flare-works
@@ -313,6 +340,7 @@ cd backend && npm run db:migrate
 ## 📱 Tính Năng Chính
 
 Sau khi setup thành công, bạn có thể:
+
 - ✅ Đăng ký/Đăng nhập
 - ✅ Học từ vựng với câu hỏi trắc nghiệm
 - ✅ Tham gia phòng chơi online
@@ -324,6 +352,7 @@ Sau khi setup thành công, bạn có thể:
 ## 🆘 Hỗ Trợ
 
 Nếu gặp vấn đề, hãy kiểm tra:
+
 1. Bun/Node.js version: `bun --version` hoặc `node --version`
 2. Package manager version: `bun --version` hoặc `npm --version`
 3. Log lỗi trong terminal

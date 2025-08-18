@@ -7,11 +7,13 @@
 ### ⚡ Sử dụng Bun (Khuyến nghị - Nhanh hơn 2-3 lần)
 
 **Windows:**
+
 ```bash
 setup-bun.bat
 ```
 
 **macOS/Linux:**
+
 ```bash
 chmod +x setup-bun.sh
 ./setup-bun.sh
@@ -20,11 +22,13 @@ chmod +x setup-bun.sh
 ### 📦 Sử dụng npm (Truyền thống)
 
 **Windows:**
+
 ```bash
 setup.bat
 ```
 
 **macOS/Linux:**
+
 ```bash
 chmod +x setup.sh
 ./setup.sh
@@ -33,6 +37,7 @@ chmod +x setup.sh
 ## 🛠️ Setup Thủ Công
 
 ### Với Bun:
+
 ```bash
 # 1. Cài đặt Bun (nếu chưa có)
 curl -fsSL https://bun.sh/install | bash
@@ -52,6 +57,7 @@ bun run dev:full
 ```
 
 ### Với npm:
+
 ```bash
 # 1. Cài đặt dependencies
 npm install
@@ -87,6 +93,7 @@ Xem file [SETUP_GUIDE.md](./SETUP_GUIDE.md) để có hướng dẫn đầy đ�
 ### Drizzle Studio (Khuyến nghị)
 
 **Với Bun:**
+
 ```bash
 cd backend
 bun run db:studio
@@ -94,6 +101,7 @@ bun run db:studio
 ```
 
 **Với npm:**
+
 ```bash
 cd backend
 npm run db:studio
@@ -101,6 +109,7 @@ npm run db:studio
 ```
 
 ### SQLite CLI
+
 ```bash
 cd backend
 sqlite3 lingo-challenge.db
@@ -109,11 +118,13 @@ SELECT * FROM users;
 ```
 
 ### DB Browser
+
 Tải [DB Browser for SQLite](https://sqlitebrowser.org/) và mở file `backend/lingo-challenge.db`
 
 ## 🛠️ Scripts Hữu Ích
 
 ### Với Bun (Khuyến nghị):
+
 ```bash
 bun run dev:full          # Chạy cả frontend và backend
 bun run dev               # Chỉ frontend
@@ -123,6 +134,7 @@ bun run lint             # Lint code
 ```
 
 ### Với npm:
+
 ```bash
 npm run dev:full          # Chạy cả frontend và backend
 npm run dev               # Chỉ frontend
@@ -162,6 +174,7 @@ npm run lint             # Lint code
 ## 🆘 Xử Lý Lỗi Thường Gặp
 
 ### 1. Bun không được cài đặt
+
 ```bash
 # macOS/Linux:
 curl -fsSL https://bun.sh/install | bash
@@ -172,6 +185,7 @@ powershell -c "irm bun.sh/install.ps1 | iex"
 ```
 
 ### 2. Fallback sang npm nếu Bun có vấn đề
+
 ```bash
 # Sử dụng npm scripts thay thế
 npm run backend:dev:npm    # Thay vì bun run backend:dev
@@ -179,6 +193,7 @@ npm run db:studio         # Thay vì bun run db:studio
 ```
 
 ### 3. Port đã được sử dụng
+
 ```bash
 # Kill process đang sử dụng port
 lsof -i :9000 && kill -9 <PID>  # Frontend
@@ -187,11 +202,11 @@ lsof -i :3001 && kill -9 <PID>  # Backend
 
 ## 🚀 So Sánh Performance
 
-| Command | npm | Bun | Tốc độ |
-|---------|-----|-----|--------|
-| install | ~30s | ~10s | 3x nhanh hơn |
-| dev start | ~5s | ~2s | 2.5x nhanh hơn |
-| hot reload | ~1s | ~300ms | 3x nhanh hơn |
+| Command    | npm  | Bun    | Tốc độ         |
+| ---------- | ---- | ------ | -------------- |
+| install    | ~30s | ~10s   | 3x nhanh hơn   |
+| dev start  | ~5s  | ~2s    | 2.5x nhanh hơn |
+| hot reload | ~1s  | ~300ms | 3x nhanh hơn   |
 
 ## 📱 Screenshots
 
