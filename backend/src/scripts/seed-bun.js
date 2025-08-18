@@ -240,7 +240,6 @@ try {
 
   console.log('\nTest account:')
   console.log('Username: admin, Password: password123')
-
 } catch (error) {
   console.error('Seeding failed:', error)
   process.exit(1)

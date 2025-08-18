@@ -21,12 +21,14 @@ bun run db:seed       # Sử dụng Bun's built-in SQLite
 ### ✅ Giải Pháp 2: Auto Fix Script
 
 **Windows:**
+
 ```bash
 cd backend
 fix-bun-sqlite.bat
 ```
 
 **macOS/Linux:**
+
 ```bash
 cd backend
 chmod +x fix-bun-sqlite.sh
@@ -122,6 +124,7 @@ cd backend && bun run dev
 ## 🆘 Nếu Vẫn Lỗi
 
 1. Sử dụng Node.js cho database operations:
+
    ```bash
    cd backend
    bun run db:migrate:node
@@ -129,6 +132,7 @@ cd backend && bun run dev
    ```
 
 2. Chỉ sử dụng Bun cho application server:
+
    ```bash
    bun run dev    # Chạy server với Bun
    ```
