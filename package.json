@@ -17,7 +17,7 @@
     "backend:install:npm": "cd backend && npm install",
     "backend:setup": "cd backend && bun run db:migrate && bun run db:seed",
     "backend:setup:npm": "cd backend && npm run db:migrate && npm run db:seed",
-    "backend:dev": "cd backend && bun run dev",
+    "backend:dev": "cd backend && npm run dev:node",
     "backend:dev:npm": "cd backend && npm run dev:node",
     "setup": "npm run backend:install && npm run backend:setup",
     "dev:full": "concurrently \"npm run backend:dev\" \"npm run dev\""
