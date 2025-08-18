@@ -218,14 +218,14 @@ const handleRegister = async () => {
     const result = await auth.register(registerData)
 
     if (result.success) {
-      showNotification(`Chào mừng ${registerData.name}! 🎉`, 'success')
+      createNotification(`Chào mừng ${registerData.name}! 🎉`, 'success')
       router.push('/dashboard')
     } else {
       throw new Error(result.message || 'Registration failed')
     }
   } catch (error) {
     console.error('Registration failed:', error)
-    showNotification('Đăng ký thất bại. Vui lòng thử lại.', 'negative')
+    createNotification('Đăng ký thất bại. Vui lòng thử lại.', 'error')
     errors.email = 'Đăng ký thất bại. Vui lòng thử lại.'
   } finally {
     loading.value = false
