@@ -3,9 +3,6 @@ import { cors } from '@elysiajs/cors'
 import { staticPlugin } from '@elysiajs/static'
 import { swagger } from '@elysiajs/swagger'
 
-// Force use Bun SQLite - set environment variable
-process.env.USE_BUN_SQLITE = 'true'
-
 // Import route modules
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/users.js'
