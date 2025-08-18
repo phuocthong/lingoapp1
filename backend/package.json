@@ -22,7 +22,8 @@
     "db:seed:better": "bun run src/scripts/seed.js",
     "db:studio": "bunx drizzle-kit studio",
     "db:studio:npm": "npx drizzle-kit studio",
-    "test": "echo \"No tests defined\""
+    "test": "echo \"No tests defined\"",
+    "test:db": "bun run src/index-simple.js"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.0.0",
