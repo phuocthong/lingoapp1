@@ -1,9 +1,17 @@
 import { Elysia } from 'elysia'
 import { db } from '../db/index.js'
-import { users, vocabulary, questions, rooms, userProgress, friends, rewards } from '../db/schema.js'
+import {
+  users,
+  vocabulary,
+  questions,
+  rooms,
+  userProgress,
+  friends,
+  rewards,
+} from '../db/schema.js'
 
 const databaseRoutes = new Elysia({ prefix: '/database' })
-  
+
   // Get all tables overview
   .get('/overview', async () => {
     try {
@@ -11,7 +19,7 @@ const databaseRoutes = new Elysia({ prefix: '/database' })
       const [vocabCount] = await db.select({ count: vocabulary.id }).from(vocabulary)
       const [questionsCount] = await db.select({ count: questions.id }).from(questions)
       const [roomsCount] = await db.select({ count: rooms.id }).from(rooms)
-      
+
       return {
         success: true,
         data: {
@@ -20,13 +28,13 @@ const databaseRoutes = new Elysia({ prefix: '/database' })
           questions: questionsCount?.count || 0,
           rooms: roomsCount?.count || 0,
           database_path: 'backend/lingo-challenge.db',
-          last_updated: new Date().toISOString()
-        }
+          last_updated: new Date().toISOString(),
+        },
       }
     } catch (error) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       }
     }
   })
@@ -42,19 +50,19 @@ const databaseRoutes = new Elysia({ prefix: '/database' })
           level: users.level,
           xp: users.xp,
           streak: users.streak,
-          createdAt: users.createdAt
+          createdAt: users.createdAt,
         })
         .from(users)
         .limit(10)
 
       return {
         success: true,
-        data: allUsers
+        data: allUsers,
       }
     } catch (error) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       }
     }
   })
@@ -62,19 +70,16 @@ const databaseRoutes = new Elysia({ prefix: '/database' })
   // Get vocabulary data
   .get('/vocabulary', async () => {
     try {
-      const allVocab = await db
-        .select()
-        .from(vocabulary)
-        .limit(10)
+      const allVocab = await db.select().from(vocabulary).limit(10)
 
       return {
         success: true,
-        data: allVocab
+        data: allVocab,
       }
     } catch (error) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       }
     }
   })
@@ -85,12 +90,12 @@ const databaseRoutes = new Elysia({ prefix: '/database' })
       return {
         success: true,
         message: 'Database connection is healthy',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       }
     } catch (error) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       }
     }
   })

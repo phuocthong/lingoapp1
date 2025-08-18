@@ -254,8 +254,8 @@ app.get('/api/database/overview', async (req, res) => {
           tasks: tasksResult.count,
         },
         database_file: 'backend/lingo-challenge.db',
-        last_checked: new Date().toISOString()
-      }
+        last_checked: new Date().toISOString(),
+      },
     })
   } catch (error) {
     console.error('Database overview error:', error)
@@ -274,7 +274,7 @@ app.get('/api/database/users', async (req, res) => {
         level: users.level,
         xp: users.xp,
         streak: users.streak,
-        createdAt: users.createdAt
+        createdAt: users.createdAt,
       })
       .from(users)
       .limit(20)
@@ -282,7 +282,7 @@ app.get('/api/database/users', async (req, res) => {
     res.json({
       success: true,
       data: allUsers,
-      total: allUsers.length
+      total: allUsers.length,
     })
   } catch (error) {
     console.error('Database users error:', error)
@@ -292,15 +292,12 @@ app.get('/api/database/users', async (req, res) => {
 
 app.get('/api/database/vocabulary', async (req, res) => {
   try {
-    const allVocab = await db
-      .select()
-      .from(vocabulary)
-      .limit(20)
+    const allVocab = await db.select().from(vocabulary).limit(20)
 
     res.json({
       success: true,
       data: allVocab,
-      total: allVocab.length
+      total: allVocab.length,
     })
   } catch (error) {
     console.error('Database vocabulary error:', error)

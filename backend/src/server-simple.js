@@ -6,12 +6,14 @@ const app = express()
 const port = process.env.PORT || 3001
 
 // Middleware
-app.use(cors({
-  origin: true,
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}))
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }),
+)
 
 app.use(express.json())
 app.use(express.static('public'))
@@ -22,22 +24,24 @@ app.get('/', (req, res) => {
     message: 'Lingo Challenge API is running!',
     version: '1.0.0',
     timestamp: new Date().toISOString(),
-    database: 'lingo-challenge.db'
+    database: 'lingo-challenge.db',
   })
 })
 
 // Database info endpoint
 app.get('/api/database/info', (req, res) => {
   const Database = require('better-sqlite3')
-  
+
   try {
     const db = new Database('./lingo-challenge.db')
-    
+
     // Get table info
-    const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'").all()
-    
+    const tables = db
+      .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")
+      .all()
+
     const tableInfo = {}
-    tables.forEach(table => {
+    tables.forEach((table) => {
       try {
         const count = db.prepare(`SELECT COUNT(*) as count FROM ${table.name}`).get()
         tableInfo[table.name] = count.count
@@ -45,22 +49,22 @@ app.get('/api/database/info', (req, res) => {
         tableInfo[table.name] = 'Error: ' + error.message
       }
     })
-    
+
     db.close()
-    
+
     res.json({
       success: true,
       data: {
         database_file: './lingo-challenge.db',
         tables: tableInfo,
         total_tables: tables.length,
-        timestamp: new Date().toISOString()
-      }
+        timestamp: new Date().toISOString(),
+      },
     })
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error.message,
     })
   }
 })
@@ -68,23 +72,27 @@ app.get('/api/database/info', (req, res) => {
 // Show users
 app.get('/api/database/users', (req, res) => {
   const Database = require('better-sqlite3')
-  
+
   try {
     const db = new Database('./lingo-challenge.db')
-    
-    const users = db.prepare("SELECT id, username, email, name, level, xp, streak, created_at FROM users LIMIT 10").all()
-    
+
+    const users = db
+      .prepare(
+        'SELECT id, username, email, name, level, xp, streak, created_at FROM users LIMIT 10',
+      )
+      .all()
+
     db.close()
-    
+
     res.json({
       success: true,
       data: users,
-      total: users.length
+      total: users.length,
     })
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error.message,
     })
   }
 })
@@ -92,23 +100,23 @@ app.get('/api/database/users', (req, res) => {
 // Show vocabulary
 app.get('/api/database/vocabulary', (req, res) => {
   const Database = require('better-sqlite3')
-  
+
   try {
     const db = new Database('./lingo-challenge.db')
-    
-    const vocabulary = db.prepare("SELECT * FROM vocabulary LIMIT 10").all()
-    
+
+    const vocabulary = db.prepare('SELECT * FROM vocabulary LIMIT 10').all()
+
     db.close()
-    
+
     res.json({
       success: true,
       data: vocabulary,
-      total: vocabulary.length
+      total: vocabulary.length,
     })
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error.message,
     })
   }
 })
@@ -116,23 +124,23 @@ app.get('/api/database/vocabulary', (req, res) => {
 // Show questions
 app.get('/api/database/questions', (req, res) => {
   const Database = require('better-sqlite3')
-  
+
   try {
     const db = new Database('./lingo-challenge.db')
-    
-    const questions = db.prepare("SELECT * FROM questions LIMIT 10").all()
-    
+
+    const questions = db.prepare('SELECT * FROM questions LIMIT 10').all()
+
     db.close()
-    
+
     res.json({
       success: true,
       data: questions,
-      total: questions.length
+      total: questions.length,
     })
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error.message,
     })
   }
 })
