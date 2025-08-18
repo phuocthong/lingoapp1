@@ -7,21 +7,25 @@ import { Database } from 'bun:sqlite'
 const db = new Database('lingo-challenge.db')
 
 const app = new Elysia()
-  .use(cors({
-    origin: true,
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  }))
-  .use(swagger({
-    documentation: {
-      info: {
-        title: 'Lingo Challenge API (Bun)',
-        version: '1.0.0',
-        description: 'REST API for Lingo Challenge with Bun SQLite',
+  .use(
+    cors({
+      origin: true,
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+    }),
+  )
+  .use(
+    swagger({
+      documentation: {
+        info: {
+          title: 'Lingo Challenge API (Bun)',
+          version: '1.0.0',
+          description: 'REST API for Lingo Challenge with Bun SQLite',
+        },
       },
-    },
-  }))
+    }),
+  )
 
   // Health check
   .get('/', () => ({
@@ -35,10 +39,12 @@ const app = new Elysia()
   // Database info
   .get('/api/database/info', () => {
     try {
-      const tables = db.query("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'").all()
-      
+      const tables = db
+        .query("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")
+        .all()
+
       const tableInfo = {}
-      tables.forEach(table => {
+      tables.forEach((table) => {
         try {
           const count = db.query(`SELECT COUNT(*) as count FROM ${table.name}`).get()
           tableInfo[table.name] = count.count
@@ -54,13 +60,13 @@ const app = new Elysia()
           tables: tableInfo,
           total_tables: tables.length,
           runtime: 'Bun SQLite',
-          timestamp: new Date().toISOString()
-        }
+          timestamp: new Date().toISOString(),
+        },
       }
     } catch (error) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       }
     }
   })
@@ -68,18 +74,22 @@ const app = new Elysia()
   // Get users
   .get('/api/database/users', () => {
     try {
-      const users = db.query("SELECT id, username, email, name, level, xp, streak, created_at FROM users LIMIT 10").all()
-      
+      const users = db
+        .query(
+          'SELECT id, username, email, name, level, xp, streak, created_at FROM users LIMIT 10',
+        )
+        .all()
+
       return {
         success: true,
         data: users,
         total: users.length,
-        runtime: 'Bun SQLite'
+        runtime: 'Bun SQLite',
       }
     } catch (error) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       }
     }
   })
@@ -87,18 +97,18 @@ const app = new Elysia()
   // Get vocabulary
   .get('/api/database/vocabulary', () => {
     try {
-      const vocabulary = db.query("SELECT * FROM vocabulary LIMIT 10").all()
-      
+      const vocabulary = db.query('SELECT * FROM vocabulary LIMIT 10').all()
+
       return {
         success: true,
         data: vocabulary,
         total: vocabulary.length,
-        runtime: 'Bun SQLite'
+        runtime: 'Bun SQLite',
       }
     } catch (error) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       }
     }
   })
@@ -106,18 +116,18 @@ const app = new Elysia()
   // Get questions
   .get('/api/database/questions', () => {
     try {
-      const questions = db.query("SELECT * FROM questions LIMIT 10").all()
-      
+      const questions = db.query('SELECT * FROM questions LIMIT 10').all()
+
       return {
         success: true,
         data: questions,
         total: questions.length,
-        runtime: 'Bun SQLite'
+        runtime: 'Bun SQLite',
       }
     } catch (error) {
       return {
         success: false,
-        error: error.message
+        error: error.message,
       }
     }
   })
@@ -128,7 +138,7 @@ const app = new Elysia()
       success: true,
       message: 'Bun server is working!',
       received: body,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     }
   })
 

@@ -7,16 +7,16 @@ console.log('🚀 Starting Lingo Challenge with Bun...')
 const backend = spawn(['bun', 'run', 'src/bun-server.js'], {
   cwd: './backend',
   env: { ...process.env, PORT: '3010' },
-  stdio: 'inherit'
+  stdio: 'inherit',
 })
 
 // Wait a bit then start frontend
 setTimeout(() => {
   console.log('🎨 Starting frontend...')
   const frontend = spawn(['bun', 'run', 'dev'], {
-    stdio: 'inherit'
+    stdio: 'inherit',
   })
-  
+
   // Handle cleanup
   process.on('SIGINT', () => {
     console.log('\n🛑 Stopping servers...')
