@@ -163,14 +163,14 @@ const app = new Elysia()
 
 const port = process.env.PORT || 3003
 
-app.listen(port, () => {
-  console.log(`🚀 Lingo Challenge API (Bun) running on http://localhost:${port}`)
-  console.log(`📚 API Documentation: http://localhost:${port}/swagger`)
-  console.log(`🗄️ Database endpoints:`)
-  console.log(`   http://localhost:${port}/api/database/info`)
-  console.log(`   http://localhost:${port}/api/database/users`)
-  console.log(`   http://localhost:${port}/api/database/vocabulary`)
-  console.log(`   http://localhost:${port}/api/database/questions`)
-})
+const server = app.listen(port)
 
-export default app
+console.log(`🚀 Lingo Challenge API (Bun) running on http://localhost:${port}`)
+console.log(`📚 API Documentation: http://localhost:${port}/swagger`)
+console.log(`🗄️ Database endpoints:`)
+console.log(`   http://localhost:${port}/api/database/info`)
+console.log(`   http://localhost:${port}/api/database/users`)
+console.log(`   http://localhost:${port}/api/database/vocabulary`)
+console.log(`   http://localhost:${port}/api/database/questions`)
+
+export default server
