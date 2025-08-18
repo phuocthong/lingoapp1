@@ -27,7 +27,7 @@ try {
 
   // Seed users
   console.log('Seeding users...')
-  const hashedPassword = await bcrypt.hash('123456', 10)
+  const hashedPassword = await bcrypt.hash('password123', 10)
   const seedUsers = await db
     .insert(users)
     .values([
@@ -41,58 +41,6 @@ try {
         level: 10,
         xp: 2500,
         streak: 15,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        username: 'minhanh',
-        email: 'minhanh@example.com',
-        password: hashedPassword,
-        name: 'Minh Anh',
-        avatar:
-          'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
-        level: 8,
-        xp: 1800,
-        streak: 12,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        username: 'thanhhoa',
-        email: 'thanhhoa@example.com',
-        password: hashedPassword,
-        name: 'Thành Hòa',
-        avatar:
-          'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
-        level: 6,
-        xp: 1200,
-        streak: 8,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        username: 'thutrang',
-        email: 'thutrang@example.com',
-        password: hashedPassword,
-        name: 'Thu Trang',
-        avatar:
-          'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
-        level: 12,
-        xp: 3200,
-        streak: 20,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        username: 'vannam',
-        email: 'vannam@example.com',
-        password: hashedPassword,
-        name: 'Văn Nam',
-        avatar:
-          'https://cdn.builder.io/o/assets%2Ff046890c17ca436cab38cffc651fb9cb%2Fd0e1a2af26da485f8609e3080da7d7b8?alt=media&token=aca82dee-2b72-4297-9d9d-7921d490a327&apiKey=f046890c17ca436cab38cffc651fb9cb',
-        level: 9,
-        xp: 2100,
-        streak: 14,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
