@@ -40,7 +40,7 @@
 
           <!-- Username Field -->
           <div class="form-group">
-            <label class="form-label">Tên người dùng</label>
+            <label class="form-label">Tên ngư���i dùng</label>
             <div class="input-wrapper">
               <input
                 v-model="registerForm.username"
@@ -133,7 +133,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { auth } from '../utils/auth.js'
-import { createNotification } from '../utils/notifications.js'
+import { showNotification } from '../utils/notifications.js'
 
 const router = useRouter()
 
