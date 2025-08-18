@@ -20,12 +20,14 @@ git checkout flare-works
 ## 📦 Bước 2: Cài Đặt Dependencies
 
 ### Frontend (Root)
+
 ```bash
 # Cài đặt dependencies cho frontend
 npm install
 ```
 
 ### Backend
+
 ```bash
 # Cài đặt dependencies cho backend
 cd backend
@@ -48,6 +50,7 @@ cd ..
 ## 🚀 Bước 4: Chạy Ứng Dụng
 
 ### Cách 1: Chạy cả Frontend và Backend cùng lúc (Khuyến nghị)
+
 ```bash
 # Chạy từ thư mục root
 npm run dev:full
@@ -56,12 +59,14 @@ npm run dev:full
 ### Cách 2: Chạy từng phần riêng biệt
 
 **Terminal 1 - Backend:**
+
 ```bash
 cd backend
 npm run dev
 ```
 
 **Terminal 2 - Frontend:**
+
 ```bash
 # Từ thư mục root
 npm run dev
@@ -76,19 +81,23 @@ npm run dev
 ## 👤 Tài Khoản Test
 
 Sau khi seed database, bạn có thể đăng nhập với:
+
 - **Username**: `admin`
 - **Password**: `password123`
 
 ## 🗄️ Xem và Quản Lý Database
 
 ### Cách 1: Sử dụng Drizzle Studio (Khuyến nghị)
+
 ```bash
 cd backend
 npm run db:studio
 ```
+
 Mở trình duyệt tại: http://localhost:4983
 
 ### Cách 2: SQLite CLI
+
 ```bash
 # Vào thư mục backend
 cd backend
@@ -104,12 +113,14 @@ SELECT * FROM users;      # Xem dữ liệu users
 ```
 
 ### Cách 3: Sử dụng DB Browser for SQLite
+
 1. Tải và cài đặt [DB Browser for SQLite](https://sqlitebrowser.org/)
 2. Mở file `backend/lingo-challenge.db`
 
 ## 📊 Cấu Trúc Database
 
 Database chứa các bảng chính:
+
 - `users` - Người dùng
 - `vocabulary` - Từ vựng
 - `questions` - Câu hỏi
@@ -144,6 +155,7 @@ npm run lint
 ## ⚠️ Xử Lý Lỗi Thường Gặp
 
 ### 1. Port đã được sử dụng
+
 ```bash
 # Kiểm tra process đang sử dụng port
 lsof -i :9000  # Frontend
@@ -154,6 +166,7 @@ kill -9 <PID>
 ```
 
 ### 2. Database bị lỗi
+
 ```bash
 # Xóa và tạo lại database
 cd backend
@@ -163,6 +176,7 @@ npm run db:seed
 ```
 
 ### 3. Dependencies bị lỗi
+
 ```bash
 # Xóa node_modules và cài lại
 rm -rf node_modules package-lock.json
@@ -191,6 +205,7 @@ cd backend && npm run db:migrate
 ## 📱 Tính Năng Chính
 
 Sau khi setup thành công, bạn có thể:
+
 - ✅ Đăng ký/Đăng nhập
 - ✅ Học từ vựng với câu hỏi trắc nghiệm
 - ✅ Tham gia phòng chơi online
@@ -202,6 +217,7 @@ Sau khi setup thành công, bạn có thể:
 ## 🆘 Hỗ Trợ
 
 Nếu gặp vấn đề, hãy kiểm tra:
+
 1. Node.js version: `node --version`
 2. npm version: `npm --version`
 3. Log lỗi trong terminal

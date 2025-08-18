@@ -7,11 +7,13 @@
 ### Cách 1: Sử dụng Script Tự Động
 
 **Windows:**
+
 ```bash
 setup.bat
 ```
 
 **macOS/Linux:**
+
 ```bash
 chmod +x setup.sh
 ./setup.sh
@@ -52,6 +54,7 @@ Xem file [SETUP_GUIDE.md](./SETUP_GUIDE.md) để có hướng dẫn đầy đ�
 ## 🗄️ Xem Database
 
 ### Drizzle Studio (Khuyến nghị)
+
 ```bash
 cd backend
 npm run db:studio
@@ -59,6 +62,7 @@ npm run db:studio
 ```
 
 ### SQLite CLI
+
 ```bash
 cd backend
 sqlite3 lingo-challenge.db
@@ -67,6 +71,7 @@ SELECT * FROM users;
 ```
 
 ### DB Browser
+
 Tải [DB Browser for SQLite](https://sqlitebrowser.org/) và mở file `backend/lingo-challenge.db`
 
 ## 🛠️ Scripts Hữu Ích
