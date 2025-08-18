@@ -974,7 +974,7 @@ try {
       vocabularyId: seedVocabulary[23].id, // school
       question: "What does 'school' mean?",
       correctAnswer: 'trường học',
-      wrongAnswers: JSON.stringify(['bệnh vi���n', 'chợ', 'công viên']),
+      wrongAnswers: JSON.stringify(['bệnh viện', 'chợ', 'công viên']),
       type: 'multiple_choice',
       difficulty: 'easy',
       createdAt: new Date(),
@@ -1272,7 +1272,7 @@ try {
     {
       vocabularyId: seedVocabulary[81].id, // ambitious
       question: "What does 'ambitious' mean?",
-      correctAnswer: 'tham v��ng',
+      correctAnswer: 'tham vọng',
       wrongAnswers: JSON.stringify(['khiêm tốn', 'lười biếng', 'thụ động']),
       type: 'multiple_choice',
       difficulty: 'hard',
@@ -1443,8 +1443,7 @@ try {
   console.log(`Created 50+ questions across multiple categories`)
   console.log(`Created ${seedTasks.length} tasks`)
   console.log(`Created 4 rewards`)
-  console.log(`Created 6 friend relationships`)
-  console.log(`Created user progress entries`)
+  console.log(`Created admin user progress entries`)
 
   console.log('\nVocabulary categories:')
   console.log('- Basic words (easy): 20+')
@@ -1458,8 +1457,8 @@ try {
   console.log('- Jobs: 4 words')
   console.log('- Advanced/Academic: 25+ words')
 
-  console.log('\nTest accounts:')
-  console.log('Username: admin, Password: 123456')
+  console.log('\nTest account:')
+  console.log('Username: admin, Password: password123')
   console.log('Username: minhanh, Password: 123456')
   console.log('Username: thanhhoa, Password: 123456')
   console.log('Username: thutrang, Password: 123456')
