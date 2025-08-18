@@ -7,19 +7,21 @@ try {
   const { Database } = await import('bun:sqlite')
   const sqlite = new Database('lingo-challenge.db')
   console.log('✅ Bun SQLite works!')
-  
+
   // Test database connection
   const tables = sqlite.query("SELECT name FROM sqlite_master WHERE type='table'").all()
-  console.log('📊 Available tables:', tables.map(t => t.name))
-  
+  console.log(
+    '📊 Available tables:',
+    tables.map((t) => t.name),
+  )
+
   sqlite.close()
-  
+
   console.log('✅ Database test completed successfully!')
   console.log('')
   console.log('🎯 Backend is ready! You can now run:')
   console.log('   bun run dev:bun     # Use this version')
   console.log('   bun run dev:node    # Or fallback to Node.js')
-  
 } catch (error) {
   console.error('❌ Error testing database:', error.message)
   console.log('')

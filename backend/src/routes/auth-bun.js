@@ -13,11 +13,7 @@ const authRoutes = new Elysia({ prefix: '/auth' })
         const { username, email, password } = body
 
         // Check if user already exists
-        const existingUser = await db
-          .select()
-          .from(users)
-          .where(eq(users.email, email))
-          .get()
+        const existingUser = await db.select().from(users).where(eq(users.email, email)).get()
 
         if (existingUser) {
           set.status = 400
@@ -82,11 +78,7 @@ const authRoutes = new Elysia({ prefix: '/auth' })
         const { email, password } = body
 
         // Find user
-        const user = await db
-          .select()
-          .from(users)
-          .where(eq(users.email, email))
-          .get()
+        const user = await db.select().from(users).where(eq(users.email, email)).get()
 
         if (!user) {
           set.status = 401
