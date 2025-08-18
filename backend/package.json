@@ -5,7 +5,7 @@
   "description": "ElysiaJS backend for Lingo Challenge vocabulary app",
   "main": "src/index.js",
   "scripts": {
-    "dev": "bun run src/index-bun.js",
+    "dev": "bun run src/bun-server.js",
     "dev:node": "node --loader=esbuild-register/loader src/index-node.js",
     "start": "bun run src/index.js",
     "start:node": "node --loader=esbuild-register/loader src/index-node.js",
