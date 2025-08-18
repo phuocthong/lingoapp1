@@ -412,7 +412,7 @@ try {
       {
         word: 'comprehensive',
         meaning: 'toàn diện, bao quát',
-        pronunciation: '/ˌkɒmprɪˈhensɪv/',
+        pronunciation: '/ˌkɒmpr��ˈhensɪv/',
         example: 'We need a comprehensive solution.',
         difficulty: 'hard',
         category: 'academic',
@@ -458,7 +458,7 @@ try {
       {
         word: 'rabbit',
         meaning: 'con thỏ',
-        pronunciation: '/ˈræbɪt/',
+        pronunciation: '/ˈræb��t/',
         example: 'The rabbit has long ears.',
         difficulty: 'easy',
         category: 'animals',
@@ -988,7 +988,7 @@ try {
     {
       vocabularyId: seedVocabulary[27].id, // creative
       question: "What does 'creative' mean?",
-      correctAnswer: 'sáng tạo',
+      correctAnswer: 's��ng tạo',
       wrongAnswers: JSON.stringify(['nhàm chán', 'thụ động', 'bình thường']),
       type: 'multiple_choice',
       difficulty: 'medium',
@@ -1398,53 +1398,9 @@ try {
     },
   ])
 
-  // Seed friends relationships
+  // Seed friends relationships (chỉ admin nên bỏ qua)
   console.log('Seeding friends...')
-  await db.insert(friends).values([
-    // Admin có các bạn bè
-    {
-      userId: seedUsers[0].id, // admin
-      friendId: seedUsers[1].id, // minhanh
-      status: 'accepted',
-      createdAt: new Date(),
-      acceptedAt: new Date(),
-    },
-    {
-      userId: seedUsers[0].id, // admin
-      friendId: seedUsers[2].id, // thanhhoa
-      status: 'accepted',
-      createdAt: new Date(),
-      acceptedAt: new Date(),
-    },
-    {
-      userId: seedUsers[0].id, // admin
-      friendId: seedUsers[3].id, // thutrang
-      status: 'accepted',
-      createdAt: new Date(),
-      acceptedAt: new Date(),
-    },
-    // Các mối quan hệ bạn bè khác
-    {
-      userId: seedUsers[1].id, // minhanh
-      friendId: seedUsers[2].id, // thanhhoa
-      status: 'accepted',
-      createdAt: new Date(),
-      acceptedAt: new Date(),
-    },
-    {
-      userId: seedUsers[1].id, // minhanh
-      friendId: seedUsers[4].id, // vannam
-      status: 'accepted',
-      createdAt: new Date(),
-      acceptedAt: new Date(),
-    },
-    {
-      userId: seedUsers[2].id, // thanhhoa
-      friendId: seedUsers[3].id, // thutrang
-      status: 'pending',
-      createdAt: new Date(),
-    },
-  ])
+  // Không có bạn bè vì chỉ có tài khoản admin
 
   // Seed user progress for leaderboard
   console.log('Seeding user progress...')
