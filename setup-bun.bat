@@ -39,17 +39,25 @@ if %ERRORLEVEL% neq 0 (
 echo [3/4] Migrate database...
 call bun run db:migrate
 if %ERRORLEVEL% neq 0 (
-    echo Loi: Khong the migrate database
-    pause
-    exit /b 1
+    echo Thu lai voi Node.js fallback...
+    call bun run db:migrate:node
+    if %ERRORLEVEL% neq 0 (
+        echo Loi: Khong the migrate database
+        pause
+        exit /b 1
+    )
 )
 
 echo [4/4] Seed database voi du lieu mau...
 call bun run db:seed
 if %ERRORLEVEL% neq 0 (
-    echo Loi: Khong the seed database
-    pause
-    exit /b 1
+    echo Thu lai voi Node.js fallback...
+    call bun run db:seed:node
+    if %ERRORLEVEL% neq 0 (
+        echo Loi: Khong the seed database
+        pause
+        exit /b 1
+    )
 )
 
 cd ..
