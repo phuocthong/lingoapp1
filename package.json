@@ -17,7 +17,7 @@
     "backend:install:npm": "cd backend && npm install",
     "backend:setup": "cd backend && bun run db:migrate && bun run db:seed",
     "backend:setup:npm": "cd backend && npm run db:migrate && npm run db:seed",
-    "backend:dev": "cd backend && bun src/working-server.js",
+    "backend:dev": "cd backend && bun src/bun-simple.js",
     "backend:dev:npm": "cd backend && npm run dev:node",
     "setup": "bun run backend:install && bun run backend:setup",
     "dev:full": "concurrently \"bun run backend:dev\" \"bun run dev\"",
