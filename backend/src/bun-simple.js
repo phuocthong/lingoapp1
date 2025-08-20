@@ -42,7 +42,7 @@ const server = Bun.serve({
               '/database/info - Database info',
               '/api/auth/register (POST) - Register user',
               '/api/auth/login (POST) - Login user',
-              '/api/vocabulary/questions - Get questions'
+              '/api/vocabulary/questions - Get questions',
             ],
             timestamp: new Date().toISOString(),
           },
@@ -95,28 +95,33 @@ const server = Bun.serve({
         const body = await req.json()
         const { username, email, password, name } = body
 
-        return new Response(JSON.stringify({
-          success: true,
-          message: 'User registered successfully',
-          user: {
-            id: Math.random().toString(36).substr(2, 9),
-            username: username || email.split('@')[0],
-            email,
-            name: name || username || email.split('@')[0],
-            level: 1,
-            xp: 0,
-            streak: 0,
-            createdAt: new Date().toISOString()
-          },
-          token: 'demo-jwt-token-' + Date.now()
-        }), { headers })
-
+        return new Response(
+          JSON.stringify({
+            success: true,
+            message: 'User registered successfully',
+            user: {
+              id: Math.random().toString(36).substr(2, 9),
+              username: username || email.split('@')[0],
+              email,
+              name: name || username || email.split('@')[0],
+              level: 1,
+              xp: 0,
+              streak: 0,
+              createdAt: new Date().toISOString(),
+            },
+            token: 'demo-jwt-token-' + Date.now(),
+          }),
+          { headers },
+        )
       } catch (error) {
-        return new Response(JSON.stringify({
-          success: false,
-          message: 'Registration failed',
-          error: error.message
-        }), { status: 400, headers })
+        return new Response(
+          JSON.stringify({
+            success: false,
+            message: 'Registration failed',
+            error: error.message,
+          }),
+          { status: 400, headers },
+        )
       }
     }
 
@@ -126,51 +131,59 @@ const server = Bun.serve({
         const body = await req.json()
         const { email, password } = body
 
-        return new Response(JSON.stringify({
-          success: true,
-          message: 'Login successful',
-          user: {
-            id: 'demo-user-id',
-            username: email.split('@')[0],
-            email,
-            name: email.split('@')[0],
-            level: 5,
-            xp: 1250,
-            streak: 7
-          },
-          token: 'demo-jwt-token-' + Date.now()
-        }), { headers })
-
+        return new Response(
+          JSON.stringify({
+            success: true,
+            message: 'Login successful',
+            user: {
+              id: 'demo-user-id',
+              username: email.split('@')[0],
+              email,
+              name: email.split('@')[0],
+              level: 5,
+              xp: 1250,
+              streak: 7,
+            },
+            token: 'demo-jwt-token-' + Date.now(),
+          }),
+          { headers },
+        )
       } catch (error) {
-        return new Response(JSON.stringify({
-          success: false,
-          message: 'Login failed',
-          error: error.message
-        }), { status: 400, headers })
+        return new Response(
+          JSON.stringify({
+            success: false,
+            message: 'Login failed',
+            error: error.message,
+          }),
+          { status: 400, headers },
+        )
       }
     }
 
     // API - Get vocabulary questions
     if (url.pathname === '/api/vocabulary/questions') {
-      return new Response(JSON.stringify({
-        success: true,
-        questions: [
-          {
-            id: 1,
-            question: "What does 'Hello' mean?",
-            correctAnswer: "Xin chào",
-            wrongAnswers: ["Tạm biệt", "Cảm ơn", "Xin lỗi"],
-            difficulty: "easy"
-          },
-          {
-            id: 2,
-            question: "What does 'Thank you' mean?",
-            correctAnswer: "Cảm ơn",
-            wrongAnswers: ["Xin chào", "Tạm biệt", "Xin lỗi"],
-            difficulty: "easy"
-          }
-        ]
-      }), { headers })
+      return new Response(
+        JSON.stringify({
+          success: true,
+          questions: [
+            {
+              id: 1,
+              question: "What does 'Hello' mean?",
+              correctAnswer: 'Xin chào',
+              wrongAnswers: ['Tạm biệt', 'Cảm ơn', 'Xin lỗi'],
+              difficulty: 'easy',
+            },
+            {
+              id: 2,
+              question: "What does 'Thank you' mean?",
+              correctAnswer: 'Cảm ơn',
+              wrongAnswers: ['Xin chào', 'Tạm biệt', 'Xin lỗi'],
+              difficulty: 'easy',
+            },
+          ],
+        }),
+        { headers },
+      )
     }
 
     // Database info (if database exists)
