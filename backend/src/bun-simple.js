@@ -95,15 +95,19 @@ const server = Bun.serve({
         const body = await req.json()
         const { username, email, password, name } = body
 
+        if (!username || !email || !password) {
+          throw new Error('Username, email and password are required')
+        }
+
         return new Response(
           JSON.stringify({
             success: true,
             message: 'User registered successfully',
             user: {
               id: Math.random().toString(36).substr(2, 9),
-              username: username || email.split('@')[0],
-              email,
-              name: name || username || email.split('@')[0],
+              username: username,
+              email: email,
+              name: name || username,
               level: 1,
               xp: 0,
               streak: 0,
