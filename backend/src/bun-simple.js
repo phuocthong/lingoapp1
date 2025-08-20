@@ -146,7 +146,9 @@ const server = Bun.serve({
               message: 'Login successful',
               user: {
                 id: 'demo-user-id',
-                username: userIdentifier.includes('@') ? userIdentifier.split('@')[0] : userIdentifier,
+                username: userIdentifier.includes('@')
+                  ? userIdentifier.split('@')[0]
+                  : userIdentifier,
                 email: userIdentifier.includes('@') ? userIdentifier : `${userIdentifier}@demo.com`,
                 name: userIdentifier,
                 level: 5,
