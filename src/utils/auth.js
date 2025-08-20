@@ -37,10 +37,7 @@ export const auth = {
       if (response.success) {
         const { user, token } = response
 
-        // Auto-login after registration
-        sessionStorage.setItem('user_session', token)
-        sessionStorage.setItem('user_data', JSON.stringify(user))
-
+        // Don't auto-login after registration, let user login manually
         return { success: true, user, token }
       } else {
         return { success: false, message: response.message || 'Registration failed' }
