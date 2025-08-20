@@ -6,7 +6,7 @@ const isCloudEnvironment =
 
 const API_BASE = isCloudEnvironment
   ? 'https://demo-api-unavailable.com/api' // Backend not available in cloud demo
-  : 'http://localhost:3010/api'
+  : 'http://localhost:3000/api'
 
 class ApiService {
   constructor() {
