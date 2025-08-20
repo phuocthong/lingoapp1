@@ -109,7 +109,9 @@ const server = Bun.serve({
         }
 
         // Check if user already exists
-        const existingUser = db.query('SELECT * FROM users WHERE email = ? OR username = ?').get(email, username)
+        const existingUser = db
+          .query('SELECT * FROM users WHERE email = ? OR username = ?')
+          .get(email, username)
         if (existingUser) {
           return new Response(
             JSON.stringify({
@@ -140,18 +142,16 @@ const server = Bun.serve({
           0, // xp
           0, // streak
           now, // created_at
-          now  // updated_at
+          now, // updated_at
         )
 
         // Get the created user
         const newUser = db.query('SELECT * FROM users WHERE id = ?').get(result.lastInsertRowid)
 
         // Generate JWT token
-        const token = jwt.sign(
-          { userId: newUser.id, username: newUser.username },
-          JWT_SECRET,
-          { expiresIn: '7d' }
-        )
+        const token = jwt.sign({ userId: newUser.id, username: newUser.username }, JWT_SECRET, {
+          expiresIn: '7d',
+        })
 
         return new Response(
           JSON.stringify({
@@ -190,7 +190,7 @@ const server = Bun.serve({
       try {
         const body = await req.json()
         const { username, email, password } = body
-        
+
         // Accept either username or email
         const userIdentifier = username || email
         if (!userIdentifier || !password) {
@@ -198,7 +198,9 @@ const server = Bun.serve({
         }
 
         // Find user in database
-        const user = db.query('SELECT * FROM users WHERE username = ? OR email = ?').get(userIdentifier, userIdentifier)
+        const user = db
+          .query('SELECT * FROM users WHERE username = ? OR email = ?')
+          .get(userIdentifier, userIdentifier)
 
         if (!user) {
           return new Response(
@@ -223,11 +225,9 @@ const server = Bun.serve({
         }
 
         // Generate JWT token
-        const token = jwt.sign(
-          { userId: user.id, username: user.username },
-          JWT_SECRET,
-          { expiresIn: '7d' }
-        )
+        const token = jwt.sign({ userId: user.id, username: user.username }, JWT_SECRET, {
+          expiresIn: '7d',
+        })
 
         return new Response(
           JSON.stringify({
@@ -263,13 +263,17 @@ const server = Bun.serve({
     // Get users (for debugging)
     if (url.pathname === '/api/database/users') {
       try {
-        const users = db.query('SELECT id, username, email, name, level, xp, streak, created_at FROM users ORDER BY created_at DESC LIMIT 10').all()
+        const users = db
+          .query(
+            'SELECT id, username, email, name, level, xp, streak, created_at FROM users ORDER BY created_at DESC LIMIT 10',
+          )
+          .all()
 
         return new Response(
           JSON.stringify(
             {
               success: true,
-              data: users.map(user => ({
+              data: users.map((user) => ({
                 ...user,
                 createdAt: new Date(user.created_at).toISOString(),
               })),
@@ -302,7 +306,13 @@ const server = Bun.serve({
         {
           error: 'Not found',
           path: url.pathname,
-          available_paths: ['/', '/health', '/api/auth/register', '/api/auth/login', '/api/database/users'],
+          available_paths: [
+            '/',
+            '/health',
+            '/api/auth/register',
+            '/api/auth/login',
+            '/api/database/users',
+          ],
         },
         null,
         2,
