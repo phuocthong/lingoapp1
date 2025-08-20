@@ -129,25 +129,33 @@ const server = Bun.serve({
     if (url.pathname === '/api/auth/login' && req.method === 'POST') {
       try {
         const body = await req.json()
-        const { email, password } = body
+        const { username, email, password } = body
 
-        return new Response(
-          JSON.stringify({
-            success: true,
-            message: 'Login successful',
-            user: {
-              id: 'demo-user-id',
-              username: email.split('@')[0],
-              email,
-              name: email.split('@')[0],
-              level: 5,
-              xp: 1250,
-              streak: 7,
-            },
-            token: 'demo-jwt-token-' + Date.now(),
-          }),
-          { headers },
-        )
+        // Accept either username or email
+        const userIdentifier = username || email || 'admin'
+
+        // Demo login - accept any credentials
+        if (password) {
+          return new Response(
+            JSON.stringify({
+              success: true,
+              message: 'Login successful',
+              user: {
+                id: 'demo-user-id',
+                username: userIdentifier.includes('@') ? userIdentifier.split('@')[0] : userIdentifier,
+                email: userIdentifier.includes('@') ? userIdentifier : `${userIdentifier}@demo.com`,
+                name: userIdentifier,
+                level: 5,
+                xp: 1250,
+                streak: 7,
+              },
+              token: 'demo-jwt-token-' + Date.now(),
+            }),
+            { headers },
+          )
+        } else {
+          throw new Error('Password is required')
+        }
       } catch (error) {
         return new Response(
           JSON.stringify({
