@@ -40,6 +40,9 @@ const server = Bun.serve({
               '/health - Health check',
               '/test - Test endpoint',
               '/database/info - Database info',
+              '/api/auth/register (POST) - Register user',
+              '/api/auth/login (POST) - Login user',
+              '/api/vocabulary/questions - Get questions'
             ],
             timestamp: new Date().toISOString(),
           },
