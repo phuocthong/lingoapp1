@@ -267,7 +267,14 @@ const validateForm = () => {
 
 // Handle login
 const handleLogin = async () => {
-  if (!validateForm()) return
+  console.log('=== LOGIN ATTEMPT ===')
+  console.log('Form data:', { username: loginForm.username, password: '***' })
+  console.log('Backend online status:', backendOnline.value)
+
+  if (!validateForm()) {
+    console.log('Form validation failed')
+    return
+  }
 
   loading.value = true
 
@@ -275,9 +282,12 @@ const handleLogin = async () => {
     let result
 
     if (backendOnline.value) {
+      console.log('🔑 Attempting real API login...')
       // Try real API login
       result = await auth.login(loginForm.username, loginForm.password, loginForm.rememberMe)
+      console.log('Login result:', result)
     } else {
+      console.log('🎭 Using demo mode login...')
       // Demo mode login
       result = await simulateLogin()
     }
