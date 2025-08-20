@@ -49,7 +49,7 @@
               <input
                 v-model="loginForm.password"
                 :type="showPassword ? 'text' : 'password'"
-                placeholder="Nhập mật kh���u"
+                placeholder="Nhập m���t kh���u"
                 class="form-input"
                 :class="{ error: errors.password }"
                 @keyup.enter="handleLogin"
@@ -199,10 +199,15 @@ onMounted(async () => {
 // Check backend connectivity
 const checkBackendStatus = async () => {
   try {
+    console.log('=== BACKEND STATUS CHECK ===')
+    console.log('Current hostname:', window.location.hostname)
+
     // In cloud environment, backend won't be available at localhost
     // So we'll skip the check and default to demo mode
     const isCloudEnvironment =
       window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+
+    console.log('Is cloud environment:', isCloudEnvironment)
 
     if (isCloudEnvironment) {
       backendOnline.value = false
@@ -346,7 +351,7 @@ const simulateLogin = async () => {
   } else {
     return {
       success: false,
-      message: 'Tên đăng nhập hoặc mật khẩu không đúng',
+      message: 'Tên đăng nhập ho��c mật khẩu không đúng',
     }
   }
 }
