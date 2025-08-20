@@ -17,11 +17,11 @@
     "backend:install:npm": "cd backend && npm install",
     "backend:setup": "cd backend && bun run db:migrate && bun run db:seed",
     "backend:setup:npm": "cd backend && npm run db:migrate && npm run db:seed",
-    "backend:dev": "cd backend && node src/working-server.cjs",
+    "backend:dev": "cd backend && bun src/working-server.js",
     "backend:dev:npm": "cd backend && npm run dev:node",
-    "setup": "npm run backend:install && npm run backend:setup",
-    "dev:full": "concurrently \"npm run backend:dev\" \"npm run dev\"",
-    "dev:bun": "concurrently \"cd backend && bun run src/bun-server.js\" \"npm run dev\"",
+    "setup": "bun run backend:install && bun run backend:setup",
+    "dev:full": "concurrently \"bun run backend:dev\" \"bun run dev\"",
+    "dev:npm": "concurrently \"npm run backend:dev:npm\" \"npm run dev\"",
     "start:bun": "bun run start-bun.js"
   },
   "dependencies": {
