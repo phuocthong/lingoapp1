@@ -201,7 +201,13 @@ const validateForm = () => {
 
 // Handle registration
 const handleRegister = async () => {
-  if (!validateForm()) return
+  console.log('=== REGISTRATION DEBUG ===')
+  console.log('Form data:', registerForm)
+
+  if (!validateForm()) {
+    console.log('Validation failed:', errors)
+    return
+  }
 
   loading.value = true
 
@@ -214,8 +220,12 @@ const handleRegister = async () => {
       username: registerForm.username,
     }
 
+    console.log('Sending registration data:', registerData)
+
     // Use the auth utility for registration
     const result = await auth.register(registerData)
+
+    console.log('Registration result:', result)
 
     if (result.success) {
       showNotification(`Chào mừng ${registerData.name}! 🎉`, 'success')
