@@ -49,7 +49,7 @@
               <input
                 v-model="loginForm.password"
                 :type="showPassword ? 'text' : 'password'"
-                placeholder="Nhập m���t kh���u"
+                placeholder="Nhập mật khẩu"
                 class="form-input"
                 :class="{ error: errors.password }"
                 @keyup.enter="handleLogin"
@@ -365,7 +365,7 @@ const simulateLogin = async () => {
   } else {
     return {
       success: false,
-      message: 'Tên đăng nhập ho��c mật khẩu không đúng',
+      message: 'Tên đăng nhập hoặc mật khẩu không đúng',
     }
   }
 }
