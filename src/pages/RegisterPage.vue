@@ -22,7 +22,7 @@
         </div>
 
         <!-- Auth Form -->
-        <div class="auth-form">
+        <form @submit.prevent="handleRegister" class="auth-form">
           <!-- Email Field -->
           <div class="form-group">
             <label class="form-label">Địa chỉ email</label>
@@ -119,11 +119,11 @@
           </div>
 
           <!-- Register Button -->
-          <button type="submit" class="register-button" :disabled="loading" @click="handleRegister">
+          <button type="submit" class="register-button" :disabled="loading">
             <span v-if="loading">Đang đăng ký...</span>
             <span v-else>Đăng ký</span>
           </button>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -183,7 +183,7 @@ const validateForm = () => {
 
   // Password validation
   if (!registerForm.password.trim()) {
-    errors.password = 'Vui lòng nhập mật khẩu'
+    errors.password = 'Vui lòng nh��p mật khẩu'
     isValid = false
   } else if (registerForm.password.length < 6) {
     errors.password = 'Mật khẩu phải có ít nhất 6 ký tự'
