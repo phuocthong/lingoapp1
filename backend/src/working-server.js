@@ -2,7 +2,7 @@ import { Database } from 'bun:sqlite'
 
 // Bun-compatible backend server with SQLite
 const server = Bun.serve({
-  port: 3002,
+  port: 3003,
   
   async fetch(req) {
     // Enable CORS
