@@ -226,15 +226,19 @@ const checkBackendStatus = async () => {
 
     clearTimeout(timeoutId)
 
+    console.log('Backend response status:', response.status, response.statusText)
+
     if (response.ok) {
       backendOnline.value = true
+      console.log('✅ Backend is ONLINE - will use real authentication')
       showSimpleNotification('Backend đã kết nối thành công! ✅', 'success')
     } else {
       backendOnline.value = false
+      console.log('❌ Backend offline - response not ok')
     }
-  } catch {
+  } catch (error) {
     backendOnline.value = false
-    console.log('Backend not available, using demo mode')
+    console.log('❌ Backend not available, using demo mode. Error:', error.message)
   }
 }
 
