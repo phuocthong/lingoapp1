@@ -9,7 +9,7 @@ const server = Bun.serve({
   port: PORT,
   hostname: '0.0.0.0',
 
-  fetch(req) {
+  async fetch(req) {
     const url = new URL(req.url)
 
     // CORS headers
