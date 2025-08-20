@@ -229,14 +229,21 @@ class ApiService {
       ...options,
     }
 
+    console.log(`🌐 API Request: ${options.method || 'GET'} ${url}`)
+    console.log('Is cloud environment:', isCloudEnvironment)
+
     try {
       // In cloud environment, return mock data for demo
       if (isCloudEnvironment) {
+        console.log('☁️ Using cloud mock data')
         return await this.getMockResponse(endpoint, options)
       }
 
+      console.log('🔥 Making real API call...')
       const response = await fetch(url, config)
       const data = await response.json()
+
+      console.log('📡 API Response:', response.status, data)
 
       if (!response.ok) {
         throw new Error(data.message || 'API request failed')
@@ -244,12 +251,14 @@ class ApiService {
 
       return data
     } catch (error) {
+      console.log('❌ API Error:', error.message)
       // In development, if backend is not available, fall back to mock data
       if (
         error.message.includes('Failed to fetch') ||
         error.message.includes('NetworkError') ||
         error.message.includes('net::ERR_')
       ) {
+        console.log('🎭 Falling back to mock data')
         return await this.getMockResponse(endpoint, options)
       }
 
