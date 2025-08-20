@@ -183,7 +183,7 @@ const validateForm = () => {
 
   // Password validation
   if (!registerForm.password.trim()) {
-    errors.password = 'Vui lòng nh��p mật khẩu'
+    errors.password = 'Vui lòng nhập mật khẩu'
     isValid = false
   } else if (registerForm.password.length < 6) {
     errors.password = 'Mật khẩu phải có ít nhất 6 ký tự'
@@ -228,8 +228,14 @@ const handleRegister = async () => {
     console.log('Registration result:', result)
 
     if (result.success) {
-      showNotification(`Chào mừng ${registerData.name}! 🎉`, 'success')
-      router.push('/dashboard')
+      showNotification(`Đăng ký thành công! Vui lòng đăng nhập để tiếp tục. 🎉`, 'success')
+      // Clear form after successful registration
+      registerForm.email = ''
+      registerForm.username = ''
+      registerForm.password = ''
+      registerForm.agreeToTerms = false
+      // Redirect to login page
+      router.push('/login')
     } else {
       throw new Error(result.message || 'Registration failed')
     }
