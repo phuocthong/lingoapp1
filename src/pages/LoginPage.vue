@@ -116,15 +116,6 @@
             <span v-else>Đăng nhập</span>
           </button>
 
-          <!-- Demo Account Info -->
-          <div class="demo-info">
-            <p class="demo-title">🚀 Tài khoản demo:</p>
-            <div class="demo-accounts">
-              <button @click="fillDemoAccount('admin')" class="demo-btn">
-                Admin (admin / password123)
-              </button>
-            </div>
-          </div>
 
           <!-- Backend Status -->
           <div class="backend-status">
