@@ -37,11 +37,13 @@
 Set these environment variables on Render:
 
 **Backend:**
+
 - `NODE_ENV`: `production`
 - `PORT`: `3003`
 - `JWT_SECRET`: Generate a secure secret key
 
 **Frontend:**
+
 - `BACKEND_URL`: URL of your backend service
 
 ## 🐳 Local Docker Deployment
@@ -96,6 +98,7 @@ The backend uses SQLite database by default. For production, consider:
 ### Frontend Configuration
 
 The frontend automatically detects the environment:
+
 - **Local development**: Uses `http://localhost:3003`
 - **Production**: Uses the `BACKEND_URL` environment variable
 
@@ -110,6 +113,7 @@ The frontend automatically detects the environment:
 ## 📊 Health Checks
 
 Both services include health checks:
+
 - Frontend: HTTP GET to `/`
 - Backend: HTTP GET to `/health`
 

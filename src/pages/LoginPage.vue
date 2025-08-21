@@ -116,7 +116,6 @@
             <span v-else>Đăng nhập</span>
           </button>
 
-
           <!-- Backend Status -->
           <div class="backend-status">
             <div
@@ -360,7 +359,6 @@ const simulateLogin = async () => {
     }
   }
 }
-
 </script>
 
 <style scoped>
@@ -618,7 +616,6 @@ const simulateLogin = async () => {
   transform: none;
 }
 
-
 /* Backend Status */
 .backend-status {
   margin-top: 16px;
@@ -702,7 +699,6 @@ const simulateLogin = async () => {
     font-size: 14px;
     height: 36px;
   }
-
 }
 
 @media (max-width: 480px) {
