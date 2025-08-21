@@ -1,0 +1,44 @@
+services:
+  # Backend Service
+  - type: web
+    name: lingo-challenge-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    region: singapore
+    buildCommand: ""
+    startCommand: ""
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3003
+      - key: JWT_SECRET
+        generateValue: true
+    autoDeploy: true
+    branch: main
+
+  # Frontend Service
+  - type: web
+    name: lingo-challenge-frontend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    region: singapore
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: BACKEND_URL
+        fromService:
+          type: web
+          name: lingo-challenge-backend
+          property: host
+    autoDeploy: true
+    branch: main
+
+databases:
+  # SQLite database will be part of the backend container
+  # For production, consider using PostgreSQL instead
